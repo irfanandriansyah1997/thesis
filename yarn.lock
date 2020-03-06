@@ -22,10 +22,27 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+commander@^2.9.0:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
+
 csstype@^2.2.0:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
   integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
+
+get-git-info@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/get-git-info/-/get-git-info-1.0.0.tgz#4f3030f0688968cfb296167abedfcc28b861e51a"
+  integrity sha1-TzAw8GiJaM+ylhZ6vt/MKLhh5Ro=
+  dependencies:
+    iniparser "^1.0.5"
+
+iniparser@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/iniparser/-/iniparser-1.0.5.tgz#836d6befe6dfbfcee0bccf1cf9f2acc7027f783d"
+  integrity sha1-g21r7+bfv87gvM8c+fKsxwJ/eD0=
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
@@ -84,3 +101,11 @@ scheduler@^0.19.0:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+travis-cli@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/travis-cli/-/travis-cli-1.0.9.tgz#adebb3d16271d249408e1f04e45c8209efcea5d4"
+  integrity sha1-reuz0WJx0klAjh8E5FyCCe/OpdQ=
+  dependencies:
+    commander "^2.9.0"
+    get-git-info "^1.0.0"
