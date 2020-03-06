@@ -2,20 +2,20 @@ module.exports = {
     env: {
         browser: true,
         es6: true,
-        node: true
+        node: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb'],
+    extends: ['plugin:react/recommended', 'airbnb', 'prettier/@typescript-eslint', 'plugin:prettier/recommended'],
     globals: {
         Atomics: 'readonly',
-        SharedArrayBuffer: 'readonly'
+        SharedArrayBuffer: 'readonly',
     },
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
-            jsx: true
+            jsx: true,
         },
         ecmaVersion: 2018,
-        sourceType: 'module'
+        sourceType: 'module',
     },
     plugins: ['react', '@typescript-eslint', 'require-jsdoc-except'],
     rules: {
@@ -30,7 +30,7 @@ module.exports = {
                     'static-methods',
                     'lifecycle',
                     'everything-else',
-                    'render'
+                    'render',
                 ],
                 groups: {
                     lifecycle: [
@@ -58,10 +58,10 @@ module.exports = {
                         'getSnapshotBeforeUpdate',
                         'componentDidUpdate',
                         'componentDidCatch',
-                        'componentWillUnmount'
-                    ]
-                }
-            }
+                        'componentWillUnmount',
+                    ],
+                },
+            },
         ],
         'require-jsdoc-except/require-jsdoc': [
             2,
@@ -71,7 +71,7 @@ module.exports = {
                     MethodDefinition: true,
                     ClassDeclaration: true,
                     ArrowFunctionExpression: true,
-                    FunctionExpression: true
+                    FunctionExpression: true,
                 },
                 ignore: [
                     'constructor',
@@ -85,9 +85,9 @@ module.exports = {
                     'componentWillMount',
                     'componentWillUnmount',
                     'componentDidCatch',
-                    'pageDidMount'
-                ]
-            }
-        ]
-    }
+                    'pageDidMount',
+                ],
+            },
+        ],
+    },
 };
