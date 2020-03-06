@@ -6,4 +6,4 @@ function a() {
     return 1;
 }
 
-a();
+export default a;

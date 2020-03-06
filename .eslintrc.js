@@ -1,8 +1,10 @@
 module.exports = {
     env: {
-        browser: true,
         es6: true,
-        node: true
+        node: true,
+        jest: true,
+        browser: true,
+        jasmine: true
     },
     extends: ['plugin:react/recommended', 'airbnb', 'prettier/@typescript-eslint', 'plugin:prettier/recommended'],
     globals: {
@@ -11,14 +13,25 @@ module.exports = {
     },
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        ecmaFeatures: {
-            jsx: true
-        },
         ecmaVersion: 2018,
-        sourceType: 'module'
+        typescript: true,
+        sourceType: 'module',
+        ecmaFeatures: {
+            experimentalObjectRestSpread: true,
+            experimentalDecorators: true,
+            jsx: true
+        }
     },
-    plugins: ['react', '@typescript-eslint', 'require-jsdoc-except'],
+    plugins: ['react', '@typescript-eslint', 'require-jsdoc-except', 'jest'],
+    settings: {
+        'import/resolver': {
+            node: {
+                extensions: ['.js', '.jsx', '.ts', '.tsx']
+            }
+        }
+    },
     rules: {
+        'import/no-unresolved': [2, { amd: true, commonjs: true }],
         indent: [2, 4],
         'import/no-extraneous-dependencies': [
             2,
@@ -35,6 +48,16 @@ module.exports = {
                     '**/*.test.tsx',
                     '**/*.spec.tsx'
                 ]
+            }
+        ],
+        'import/extensions': [
+            2,
+            'ignorePackages',
+            {
+                jsx: 'never',
+                tsx: 'never',
+                js: 'never',
+                ts: 'never'
             }
         ],
         'react/jsx-indent': [1, 4],
