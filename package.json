@@ -1,6 +1,6 @@
 {
     "name": "component-ninetynine",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "base component for 99 group website",
     "main": "index.js",
     "scripts": {
