@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "jest -w 1 --verbose src",
-        "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix --color --format pretty",
+        "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet --fix --color --format pretty src",
         "prelint": "node_modules/.bin/stylelint src",
         "check-code": "yarn run test",
         "precheck-code": "yarn run lint"
