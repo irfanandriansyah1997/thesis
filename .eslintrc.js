@@ -32,7 +32,6 @@ module.exports = {
     },
     rules: {
         'import/no-unresolved': [2, { amd: true, commonjs: true }],
-        indent: [2, 4],
         'import/no-extraneous-dependencies': [
             2,
             {
@@ -60,7 +59,9 @@ module.exports = {
                 ts: 'never'
             }
         ],
-        'react/jsx-indent': [1, 4],
+        indent: [2, 4],
+        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+        'react/jsx-indent': [2, 4],
         'react/sort-comp': [
             2,
             {
