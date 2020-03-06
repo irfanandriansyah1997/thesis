@@ -1,4 +1,8 @@
-function c () {
+/**
+ * Function C
+ * @returns {number}
+ */
+function c() {
     return 1;
 }
 
