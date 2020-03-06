@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\"",
-        "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix --color --format pretty"
+        "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix --color --format pretty",
+        "check-code": "echo \"Message: will run testing code\"",
+        "precheck-code": "yarn run lint"
     },
     "repository": {
         "type": "git",

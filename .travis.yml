@@ -1,6 +1,10 @@
 language: node_js
 node_js:
-- '12.15'
+  - '12.15'
+
+script:
+  - yarn run check-code
+
 deploy:
   provider: npm
   email: irfanandriansyah10@gmail.com
