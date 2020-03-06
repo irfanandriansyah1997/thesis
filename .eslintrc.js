@@ -2,24 +2,41 @@ module.exports = {
     env: {
         browser: true,
         es6: true,
-        node: true,
+        node: true
     },
     extends: ['plugin:react/recommended', 'airbnb', 'prettier/@typescript-eslint', 'plugin:prettier/recommended'],
     globals: {
         Atomics: 'readonly',
-        SharedArrayBuffer: 'readonly',
+        SharedArrayBuffer: 'readonly'
     },
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
-            jsx: true,
+            jsx: true
         },
         ecmaVersion: 2018,
-        sourceType: 'module',
+        sourceType: 'module'
     },
     plugins: ['react', '@typescript-eslint', 'require-jsdoc-except'],
     rules: {
         indent: [2, 4],
+        'import/no-extraneous-dependencies': [
+            2,
+            {
+                devDependencies: [
+                    '**/*.test.js',
+                    '**/*.spec.js',
+                    '**/*.config.js',
+                    '**/*.test.jsx',
+                    '**/*.spec.jsx',
+                    '**/*.test.ts',
+                    '**/*.spec.ts',
+                    '**/*.config.ts',
+                    '**/*.test.tsx',
+                    '**/*.spec.tsx'
+                ]
+            }
+        ],
         'react/jsx-indent': [1, 4],
         'react/sort-comp': [
             2,
@@ -30,7 +47,7 @@ module.exports = {
                     'static-methods',
                     'lifecycle',
                     'everything-else',
-                    'render',
+                    'render'
                 ],
                 groups: {
                     lifecycle: [
@@ -58,10 +75,10 @@ module.exports = {
                         'getSnapshotBeforeUpdate',
                         'componentDidUpdate',
                         'componentDidCatch',
-                        'componentWillUnmount',
-                    ],
-                },
-            },
+                        'componentWillUnmount'
+                    ]
+                }
+            }
         ],
         'require-jsdoc-except/require-jsdoc': [
             2,
@@ -71,7 +88,7 @@ module.exports = {
                     MethodDefinition: true,
                     ClassDeclaration: true,
                     ArrowFunctionExpression: true,
-                    FunctionExpression: true,
+                    FunctionExpression: true
                 },
                 ignore: [
                     'constructor',
@@ -85,9 +102,9 @@ module.exports = {
                     'componentWillMount',
                     'componentWillUnmount',
                     'componentDidCatch',
-                    'pageDidMount',
-                ],
-            },
-        ],
-    },
+                    'pageDidMount'
+                ]
+            }
+        ]
+    }
 };
