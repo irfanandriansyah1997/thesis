@@ -4,7 +4,10 @@
     "description": "base component for 99 group website",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\""
+        "test": "jest -w 1 --verbose src",
+        "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix --color --format pretty",
+        "check-code": "yarn run test",
+        "precheck-code": "yarn run lint"
     },
     "repository": {
         "type": "git",
@@ -22,11 +25,37 @@
     "homepage": "https://github.com/irfanandriansyah1997/base-component#readme",
     "dependencies": {
         "react": "^16.13.0",
-        "react-dom": "^16.13.0",
-        "travis-cli": "^1.0.9"
+        "react-dom": "^16.13.0"
     },
     "devDependencies": {
+        "@testing-library/jest-dom": "^5.1.1",
+        "@testing-library/react": "^9.5.0",
+        "@types/enzyme": "^3.10.5",
+        "@types/enzyme-adapter-react-16": "^1.0.6",
+        "@types/jest": "^25.1.3",
         "@types/react": "^16.9.23",
-        "@types/react-dom": "^16.9.5"
+        "@types/react-dom": "^16.9.5",
+        "@typescript-eslint/eslint-plugin": "^2.22.0",
+        "@typescript-eslint/parser": "^2.22.0",
+        "babel-jest": "^25.1.0",
+        "codecov": "^3.6.5",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "enzyme-to-json": "^3.4.4",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-formatter-pretty": "^3.0.1",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-jest": "^23.8.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-react": "^7.18.3",
+        "eslint-plugin-react-hooks": "^1.7.0",
+        "eslint-plugin-require-jsdoc-except": "^1.3.0",
+        "jest": "^25.1.0",
+        "prettier": "^1.19.1",
+        "ts-jest": "^25.2.1",
+        "typescript": "^3.8.3"
     }
 }
