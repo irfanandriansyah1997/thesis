@@ -109,3 +109,5 @@ dist
 tmp
 etc
 src
+package.json
+yarn.lock
