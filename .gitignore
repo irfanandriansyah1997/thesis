@@ -107,3 +107,4 @@ dist
 .jest_coverage
 .tmp
 tmp
+lib

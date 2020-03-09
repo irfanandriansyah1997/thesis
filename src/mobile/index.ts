@@ -1,4 +1,4 @@
-import b from '../common/testing';
+import b from '../common/button/button.component';
 
 /**
  * Function C
