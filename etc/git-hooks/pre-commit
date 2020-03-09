@@ -119,4 +119,5 @@ fi
 
 RETVAL=$(($ESLINT_RETVAL+$STYLELINT_RETVAL))
 rm -rf ./tmp
+rm -r $TMP_STAGING
 exit $RETVAL

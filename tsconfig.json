@@ -75,6 +75,7 @@
     "example",
     "node_modules",
     "src/**/*.spec.ts",
+    "src/**/*.documentation.ts",
     "rollup.config.js",
     "src/documentation"
   ]
