@@ -8,7 +8,7 @@ import { ButtonPropsInterface } from './interface/testing.interface';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.03.09
  */
-class ButtonComponent extends Component<ButtonPropsInterface> {
+export class ButtonComponent extends Component<ButtonPropsInterface> {
     render(): ReactNode {
         return <button type="button">Hello</button>;
     }
