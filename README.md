@@ -156,6 +156,12 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
     │   │   └── style
     ├── desktop                     # e.g. "desktop navbar component"
     ├── mobile                      # e.g. "mobile dialog component"
+    ├── documentation               # e.g. "layout for documentation"
+    │   ├── modules                 # e.g. "documentation modules & router"
+    │   │   ├── common              # e.g. "documentation modules for common component"
+    │   │   ├── desktop             # e.g. "documentation modules for desktop component"
+    │   │   └── mobile              # e.g. "documentation modules for mobile component"
+    │   └── template                # e.g. "documentation template"
     ├── shared
     │   ├── abstract
     │   ├── builder
