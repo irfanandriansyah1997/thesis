@@ -6,7 +6,13 @@ module.exports = {
         browser: true,
         jasmine: true
     },
-    extends: ['plugin:react/recommended', 'airbnb', 'prettier/@typescript-eslint', 'plugin:prettier/recommended'],
+    extends: [
+        'airbnb',
+        'plugin:react/recommended',
+        'prettier/@typescript-eslint',
+        'plugin:prettier/recommended',
+        'plugin:@typescript-eslint/recommended'
+    ],
     globals: {
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly'
@@ -45,7 +51,8 @@ module.exports = {
                     '**/*.spec.ts',
                     '**/*.config.ts',
                     '**/*.test.tsx',
-                    '**/*.spec.tsx'
+                    '**/*.spec.tsx',
+                    './etc/webpack/*.js'
                 ]
             }
         ],
@@ -62,6 +69,7 @@ module.exports = {
         indent: [2, 4],
         'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
         'react/jsx-indent': [2, 4],
+        'react/prefer-stateless-function': [0],
         'react/sort-comp': [
             2,
             {
@@ -129,6 +137,17 @@ module.exports = {
                     'pageDidMount'
                 ]
             }
-        ]
-    }
+        ],
+        '@typescript-eslint/explicit-function-return-type': 0,
+        '@typescript-eslint/no-var-requires': 0
+    },
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx'],
+            rules: {
+                '@typescript-eslint/explicit-function-return-type': [2],
+                '@typescript-eslint/no-var-requires': [2]
+            }
+        }
+    ]
 };

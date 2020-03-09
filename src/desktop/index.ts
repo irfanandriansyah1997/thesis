@@ -2,8 +2,8 @@
  * Function B
  * @returns {number}
  */
-function b() {
+function b(): number {
     return 1;
 }
 
-b();
+export default b;
