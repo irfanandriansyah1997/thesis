@@ -36,6 +36,7 @@ module.exports = {
             }
         }
     },
+    ignorePatterns: ['lib/', 'node_modules/', 'etc/'],
     rules: {
         'import/no-unresolved': [2, { amd: true, commonjs: true }],
         'import/no-extraneous-dependencies': [
