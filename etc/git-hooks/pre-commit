@@ -7,9 +7,10 @@ ERRORS_BUFFER=""
 
 FILE_PATTERN="\.(js|es6|jsx|tsx|ts|scss)$"
 
+ESLINT_CONFIG=$ROOT_DIR/.eslintrc.js
+ESLINT_IGNORE_CONFIG=$ROOT_DIR/.eslintignore
 ESLINT_BIN=$ROOT_DIR/node_modules/.bin/eslint
 STYLELINT_BIN=$ROOT_DIR/node_modules/.bin/stylelint
-ESLINT_CONFIG=$ROOT_DIR/.eslintrc.js
 
 
 TMP_STAGING=".tmp_staging"
@@ -95,7 +96,7 @@ echo "" > ./tmp/eslint.txt
 ESLINT_RETVAL=0
 if [ "$JS_STAGED_FILES" != "" ]; then
     # will fix after free sprint
-    $ESLINT_BIN -o ./tmp/eslint.txt --no-ignore --no-color --max-warnings 100 -c $ESLINT_CONFIG $JS_STAGED_FILES
+    $ESLINT_BIN -o ./tmp/eslint.txt --no-ignore --no-color --max-warnings 100 --ignore-path $ESLINT_IGNORE_CONFIG -c $ESLINT_CONFIG $JS_STAGED_FILES 
     ESLINT_RETVAL=$?
 fi
 
