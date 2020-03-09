@@ -5,7 +5,6 @@
 Tujuan dibuat repositori ini adalah untuk mengumpulkan component berupa atom, molekul, organism pada website portal 99.co indonesia. diharapkan dengan membuat component ini mengurangi duplikasi kode pada website tersebut.
 
 ## Cara Instalasi
----
 
 Jika anda ingin menggunakan library ini anda dapat menginstal menggunakan yarn atau npm dengan cara
 
@@ -18,7 +17,6 @@ npm install --save component-ninetynine@<version-library>
 ```
 
 ## Design Pattern (TODO)
----
 - [atomic design pattern](https://bradfrost.com/blog/post/atomic-web-design/)
 - [abstract factory pattern](https://refactoring.guru/design-patterns/abstract-factory)
 - repository pattern
@@ -26,7 +24,6 @@ npm install --save component-ninetynine@<version-library>
 
 
 ## Library & Minimum Requirement (TODO)
----
 
 * ### node js 12+
     node js yang digunakan minimal menggunakan versi 12 keatas
@@ -41,14 +38,12 @@ npm install --save component-ninetynine@<version-library>
     rollup digunakan untuk melakukan build asset javascript dan dts (jika menggunakan typescript)
 
 ## Cara Pengerjaan (TODO)
----
 
 - jalankan perintah di dalam terminal `make init-dev` <b>hanya pada saat awal pengerjaan saja</b>
 - lalu jika suda selesai anda dapat menjalankan `make run-dev`
 - lalu jalankan port 8008
 
 ## Cara Build Library
----
 
 apabila anda ingin mencoba build library anda dapat menggunakan cara dibawah ini:
 
@@ -63,7 +58,6 @@ make build-documentation
 ```
 
 ## Penamaan File
----
 
 Jika anda ingin membuat suatu modules / file maka anda dapat mengacu pada aturan nama yang telah tersedia seperti dibawah ini:
 
@@ -71,8 +65,8 @@ Jika anda ingin membuat suatu modules / file maka anda dapat mengacu pada aturan
 
 | Tipe File        | Penamaan File          | Penamaan Class / Fungsi           |
 | ------------- |:-------------|:-------------|
-| Abstract File | `abstract-name.abstract.(ts | tsx)`      | `<nama-file>Abstract` |
-| Builder File | `builder-name.builder.(ts | tsx)`      |`<nama-file>Builder` |
+| Abstract File | `abstract-name.abstract.(ts/tsx)`      | `<nama-file>Abstract` |
+| Builder File | `builder-name.builder.(ts/tsx)`      |`<nama-file>Builder` |
 | Config File | `config-name.config.ts`      |`-` |
 | Constant File | `constant-name.const.ts`      |`-` |
 | Documentation TSX Component | `component-name.documentation.tsx`      |`<nama-file>Documentation` |
@@ -81,7 +75,7 @@ Jika anda ingin membuat suatu modules / file maka anda dapat mengacu pada aturan
 | React Context File | `context-name.context.ts`      |`<nama-file>Context` |
 | TSX Component | `component-name.component.tsx`      |`<nama-file>Component` |
 | Typings File | `typings-name.typings.d.ts`      |`<nama-file>Abstract` |
-| Unit Testing File | `component-name.spec.(ts | tsx)`      |`-` |
+| Unit Testing File | `component-name.spec.(ts/tsx)`      |`-` |
 
 ### Penamaan File CSS / SCSS
 
@@ -97,7 +91,6 @@ Jika anda ingin membuat suatu modules / file maka anda dapat mengacu pada aturan
 | Variable File | `variable-name.variable.scss` |
 
 ## Cara Penulisan
----
 
 Jika anda ingin menambahkan atau merubah source code component yang ada anda dapat mengikuti rules yang sudah ada seperti dibawah ini:
 
@@ -144,7 +137,6 @@ export default ComponentNameComponent;
 ```
 
 ## Struktur Direktori
----
 
 Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ada yang merasa implementasi saat ini tidak seperti dibawah ini, jangan ragu untuk mengoreksi hal ini.
 
