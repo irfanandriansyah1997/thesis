@@ -145,7 +145,7 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
 │   ├── git-hooks
 │   ├── gulp
 │   ├── jest
-│   ├── rollout
+│   ├── rollup
 │   └── webpack
 │       └── library
 └── src

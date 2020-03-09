@@ -4,7 +4,7 @@ node_js:
 
 script:
   - yarn run check-code
-  - yarn run build-typings
+  - yarn run build-asset
   - ./node_modules/.bin/codecov --token=824259f4-32e9-437c-99ff-70ef92067346
 
 deploy:

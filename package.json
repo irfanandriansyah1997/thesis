@@ -1,6 +1,6 @@
 {
     "name": "component-ninetynine",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "description": "base component for 99 group website",
     "main": "index.js",
     "scripts": {
@@ -9,7 +9,9 @@
         "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet --fix --color --no-ignore --max-warnings 100 --format pretty src",
         "precheck-code": "yarn run lint",
         "check-code": "yarn run test",
-        "build-typings": "tsc --declaration",
+        "prebuild-asset": "if [ -d lib ]; then rm -Rf lib; fi",
+        "build-asset": "rollup -c etc/rollup/rollup.config.js",
+        "postbuild-asset": "tsc --declaration --declarationDir ./lib && rm -rf dist",
         "build": "node_modules/.bin/webpack --config etc/webpack/webpack.config.production.js"
     },
     "repository": {
@@ -68,6 +70,13 @@
         "node-sass": "^4.13.1",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "prettier": "^1.19.1",
+        "rollup": "^2.0.2",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-multi-input": "^1.1.1",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-peer-deps-external": "^2.2.2",
+        "rollup-plugin-terser": "^5.2.0",
+        "rollup-plugin-typescript2": "^0.26.0",
         "sass-loader": "^8.0.2",
         "stylelint": "^13.2.0",
         "stylelint-config-prettier": "^8.0.1",
