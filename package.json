@@ -4,7 +4,7 @@
     "description": "base component for 99 group website",
     "main": "index.js",
     "scripts": {
-        "test": "jest -w 1 --verbose src",
+        "test": "jest -w 1 --verbose src --passWithNoTests",
         "prelint": "node_modules/.bin/stylelint src",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet --fix --color --no-ignore --max-warnings 100 --format pretty src",
         "precheck-code": "yarn run lint",
