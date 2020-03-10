@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta property="og:site_name" content="Cross Post Admin Panel" />
+        <meta property="og:title" content="Cross Post Admin Panel" />
+        <meta property="og:description" content="Cross Post Admin Panel" />
+        <meta property="og:type" content="website" />
+        <title>
+            Base Component
+        </title>
+        <!-- Register Asset Preload -->
+        <link href="https://public.urbanindo.com/fonts/Avenir/style.css" rel="preload" as="style" />
+        <link href="https://fonts.googleapis.com/icon?family=Roboto:300,400|Material+Icons" rel="preload" as="style" />
+        <link
+            href="https://public.urbanindo.com/fonts/UrbanIndoIcons-20190611081950/fonts.css"
+            rel="preload"
+            as="style"
+        />
+
+        <!-- Register Asset -->
+        <link href="https://public.urbanindo.com/fonts/Avenir/style.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Roboto:300,400|Material+Icons" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href="https://public.urbanindo.com/fonts/UrbanIndoIcons-20190611081950/fonts.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script>
+            (function() {
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker
+                            .register('sw.js')
+                            .then((registration) => {
+                                console.log('SW registered: ', registration);
+                            })
+                            .catch((registrationError) => {
+                                console.log('SW registration failed: ', registrationError);
+                            });
+                    });
+                }
+            })();
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5iL9z9IWgD0nrARQqKzvhnbmq44dIhyQ&libraries=places"></script>
+    </body>
+</html>

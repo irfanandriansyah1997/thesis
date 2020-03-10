@@ -24,7 +24,8 @@ export default {
         typescript({
             rollupCommonJSResolveHack: true,
             exclude: '**/__tests__/**',
-            clean: true
+            clean: true,
+            tsconfig: './tsconfig.build.json'
         }),
         commonjs({
             include: 'node_modules/**'
