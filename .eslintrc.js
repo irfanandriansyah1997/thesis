@@ -68,8 +68,10 @@ module.exports = {
             }
         ],
         indent: [2, 4],
+        'react/display-name': [0],
         'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
         'react/jsx-indent': [2, 4],
+        'react/jsx-props-no-spreading': [0],
         'react/prefer-stateless-function': [0],
         'react/sort-comp': [
             2,
