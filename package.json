@@ -12,7 +12,7 @@
         "build-css": "gulp --gulpfile etc/gulp/gulpfile.babel.js",
         "prebuild-asset": "if [ -d lib ]; then rm -Rf lib; fi",
         "build-asset": "rollup -c etc/rollup/rollup.config.js && yarn run build-css",
-        "postbuild-asset": "tsc --declaration --declarationDir ./lib && rm -rf dist",
+        "postbuild-asset": "tsc --build tsconfig.build.json && rm -rf dist",
         "build": "node_modules/.bin/webpack --config etc/webpack/webpack.config.production.js"
     },
     "repository": {

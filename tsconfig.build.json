@@ -1,0 +1,25 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "declaration": true,
+        "declarationDir": "./lib"
+    },
+    "exclude": [
+        "etc",
+        "lib",
+        "dist",
+        "test",
+        "example",
+        "node_modules",
+        "src/**/test",
+        "src/**/*.spec.ts",
+        "src/**/*.spec.tsx",
+        "src/**/documentation",
+        "src/**/documentation.*.tsx",
+        "src/**/*.documentation.tsx",
+        "src/**/*.documentation.ts",
+        "src/**/*.documentation.tsx",
+        "rollup.config.js",
+        "src/documentation"
+    ]
+}
