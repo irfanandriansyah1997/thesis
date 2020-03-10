@@ -5,6 +5,7 @@ node_js:
 script:
   - yarn run check-code
   - yarn run build-asset
+  - yarn run build-documentation
   - ./node_modules/.bin/codecov --token=824259f4-32e9-437c-99ff-70ef92067346
 
 deploy:
@@ -20,6 +21,6 @@ deploy:
     skip_cleanup: true
     github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
     keep_history: true
-    local_dir: lib
+    local_dir: documentation
     on:
       branch: master

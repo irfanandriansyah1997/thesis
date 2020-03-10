@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
+import { ReactNode } from 'react';
 import DocumentationModuleAbstract from '../../shared/abstract/documentation/documentation-module.abstract';
 
 /**

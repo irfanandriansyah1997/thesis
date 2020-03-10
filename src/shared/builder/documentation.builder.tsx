@@ -91,7 +91,6 @@ class DocumentationBuilder {
     public generate(): void {
         try {
             const { App } = this;
-
             if (App) {
                 ReactDOM.render(<App />, document.getElementById('app'));
             } else {
