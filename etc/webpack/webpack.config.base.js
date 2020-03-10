@@ -1,6 +1,11 @@
-/* eslint-disable @typescript-eslint/camelcase */
-const StyleLintPlugin = require('stylelint-webpack-plugin');
+/* eslint-disable */
+const UglifyPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const OptimizeAssetPlugin = require('optimize-css-assets-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const path = require('path');
 const utils = require('./library/util.lib');
 
 module.exports = {
@@ -12,7 +17,8 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        chunkFilename: '[name].bundle.js'
+        chunkFilename: '[name].bundle.js',
+        path: path.resolve(__dirname, '../../documentation')
     },
     module: {
         rules: [
@@ -21,11 +27,6 @@ module.exports = {
                 exclude: /node_modules/,
                 use: 'eslint-loader',
                 enforce: 'pre'
-            },
-            {
-                test: /\.(ts|tsx)$/,
-                exclude: /node_modules/,
-                loader: 'ts-loader'
             },
             {
                 test: /\.(ts|tsx)$/,
@@ -101,7 +102,33 @@ module.exports = {
             }
         },
         usedExports: true,
-        minimizer: []
+        minimizer: [
+            new UglifyPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+                uglifyOptions: {
+                    mangle: {
+                        keep_fnames: false
+                    }
+                }
+            })
+        ]
     },
-    plugins: [new OptimizeAssetPlugin(), new StyleLintPlugin()]
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'etc/html/index.html',
+            inject: true,
+            hash: true
+        }),
+        new OptimizeAssetPlugin(),
+        new PreloadWebpackPlugin({
+            rel: 'preload',
+            include: 'allAssets',
+            fileWhitelist: [/\.css/],
+            fileBlacklist: [/\.js/]
+        }),
+        new StyleLintPlugin()
+    ]
 };
