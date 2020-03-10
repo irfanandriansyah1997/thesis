@@ -76,6 +76,7 @@ Jika anda ingin membuat suatu modules / file maka anda dapat mengacu pada aturan
 | TSX Component | `component-name.component.tsx`      |`<nama-file>Component` |
 | Typings File | `typings-name.typings.d.ts`      |`<nama-file>Abstract` |
 | Unit Testing File | `component-name.spec.(ts/tsx)`      |`-` |
+| View File | `view-name.view.ts`      |`<nama-file>View` |
 
 ### Penamaan File CSS / SCSS
 
@@ -161,7 +162,7 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
     │   │   ├── common              # e.g. "documentation modules for common component"
     │   │   ├── desktop             # e.g. "documentation modules for desktop component"
     │   │   └── mobile              # e.g. "documentation modules for mobile component"
-    │   └── template                # e.g. "documentation template"
+    │   └── core                    # e.g. "documentation view, router config, component"
     ├── shared
     │   ├── abstract
     │   ├── builder
