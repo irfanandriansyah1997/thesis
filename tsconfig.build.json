@@ -1,8 +1,21 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
+        "module": "ESNext",
+        "lib": [
+            "ES6",
+            "DOM",
+            "ES2016",
+            "ES2017"
+        ],
+        "allowJs": false,
+        "checkJs": false,
         "declaration": true,
-        "declarationDir": "./lib"
+        "rootDir": "./src",
+        "composite": true,
+        "tsBuildInfoFile": "dist/tsbuild.info",
+        "declarationDir": "./lib",
+        "noImplicitAny": true
     },
     "exclude": [
         "etc",
