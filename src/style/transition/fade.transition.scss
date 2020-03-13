@@ -1,0 +1,41 @@
+.fade {
+    &-apear {
+        display: none;
+        opacity: 0;
+    }
+
+    &-apear.fade-appear-active {
+        display: block;
+        opacity: 1;
+    }
+
+    &-enter {
+        display: block;
+        opacity: 0;
+    }
+
+    &-enter.fade-enter-active {
+        display: block;
+        opacity: 1;
+    }
+
+    &-enter-done {
+        display: block;
+        opacity: 1;
+    }
+
+    &-exit {
+        display: block;
+        opacity: 0;
+    }
+
+    &-exit.fade-exit-active {
+        display: block;
+        opacity: 0;
+    }
+
+    &-exit-done {
+        display: none;
+        opacity: 0;
+    }
+}

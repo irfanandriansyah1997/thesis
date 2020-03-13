@@ -1,0 +1,78 @@
+@import '../mixins/mixin.scss';
+
+.slide-down {
+    &-apear {
+        @include opacity(0);
+
+        z-index: 1;
+        display: none;
+
+        &.slide-down-appear-active {
+            @include opacity(1);
+
+            display: block;
+
+            transform: translateY(0%);
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -o-transform: translateY(0%);
+        }
+    }
+
+    &-enter {
+        @include opacity(0);
+
+        z-index: 1;
+        display: flex;
+
+        &.slide-down-enter-active {
+            @include opacity(0);
+
+            display: flex;
+
+            transform: translateY(50%);
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -o-transform: translateY(50%);
+        }
+
+        &-done {
+            @include opacity(1);
+
+            display: flex;
+
+            transform: translateY(0%);
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -o-transform: translateY(0%);
+        }
+    }
+
+    &-exit {
+        @include opacity(0);
+
+        display: flex;
+
+        &.slide-down-exit-active {
+            @include opacity(0);
+
+            display: flex;
+
+            transform: translateY(50%);
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -o-transform: translateY(50%);
+        }
+
+        &-done {
+            @include opacity(0);
+
+            display: none;
+
+            transform: translateY(50%);
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -o-transform: translateY(50%);
+        }
+    }
+}

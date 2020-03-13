@@ -13,6 +13,7 @@
             "custom-properties",
             "declarations"
         ],
+        "scss/at-import-partial-extension-blacklist": null,
         "order/properties-alphabetical-order": true,
         "prettier/prettier": [
             true,

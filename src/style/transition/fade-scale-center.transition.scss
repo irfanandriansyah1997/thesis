@@ -1,0 +1,41 @@
+.fade-scale-center {
+    &-apear {
+        display: none;
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+
+    &-apear.fade-scale-center-active {
+        display: flex;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &-enter {
+        display: flex;
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+
+    &-enter.fade-scale-center-enter-active {
+        display: flex;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &-enter-done {
+        display: flex;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &-exit {
+        display: flex;
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+
+    &-exit.fade-scale-center-exit-active {
+        display: flex;
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+
+    &-exit-done {
+        display: none;
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+}
