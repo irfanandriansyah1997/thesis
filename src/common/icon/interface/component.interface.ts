@@ -1,14 +1,18 @@
-import { ComponentDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { HTMLAttributes } from 'react';
 
-export type IconType = 'material' | '99';
+import { ColorType } from '../../../shared/interface/common/color.interface';
+import { ComponentTextSize } from '../../../shared/interface/component/component-size.interface';
 
 /**
  * Icon Props Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.03.12
  */
-export interface IconPropsInterface extends ComponentDefaultInterface {
-    icon: string;
-    type: IconType;
-    color: string;
-}
+export type IconPropsInterface = Omit<
+    HTMLAttributes<HTMLElement>,
+    'dangerouslySetInnerHTML' | 'children'
+> & {
+    color: ColorType;
+    children: string;
+    size: ComponentTextSize;
+};
