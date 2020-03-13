@@ -5,8 +5,6 @@ import ValidatorHelper from '../../shared/helper/validator.helper';
 import { TextPropsInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../shared/interface/component/componen-default.interface';
 
-import './style/style.scss';
-
 /**
  * Text Component
  * @author Irfan Andriansyah <irfan@99.co>

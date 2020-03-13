@@ -5,8 +5,12 @@ import typescript from 'rollup-plugin-typescript2';
 import multiInput from 'rollup-plugin-multi-input';
 import external from 'rollup-plugin-peer-deps-external';
 
+import Common from './constant/common.constant';
+import Mobile from './constant/mobile.constant';
+import Desktop from './constant/desktop.constant';
+
 export default {
-    input: ['./src/common/button/button.component.tsx'],
+    input: [Common, Mobile, Desktop],
     output: {
         format: 'es',
         dir: 'lib'
