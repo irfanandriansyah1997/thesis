@@ -33,6 +33,7 @@
     },
     "homepage": "https://github.com/urbanindo/style-guide#readme",
     "dependencies": {
+        "csstype": "^2.6.9",
         "react": "^16.13.0",
         "react-dom": "^16.13.0",
         "react-router-dom": "^5.1.2"
