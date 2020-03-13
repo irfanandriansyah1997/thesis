@@ -83,7 +83,7 @@ do
   if [ "$RETVAL" -eq "0" ]
   then
       echo "$FILE"
-      STYLE_STAGED_FILES="$STYLE_STAGED_FILES $TMP_STAGING/$FILE"
+      STYLE_STAGED_FILES="$STYLE_STAGED_FILES $FILE"
   fi
 
 done

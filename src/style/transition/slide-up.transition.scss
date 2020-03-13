@@ -1,0 +1,58 @@
+@import '../mixin/mixin.scss';
+
+.slide-up {
+    &-apear {
+        @include opacity(0);
+
+        display: none;
+        z-index: 1;
+
+        &.slide-up-appear-active {
+            @include opacity(1);
+
+            display: block;
+            transform: translateY(0%);
+        }
+    }
+
+    &-enter {
+        @include opacity(0);
+
+        display: flex;
+        z-index: 1;
+
+        &.slide-up-enter-active {
+            @include opacity(0);
+
+            display: flex;
+            transform: translateY(100%);
+        }
+
+        &-done {
+            @include opacity(1);
+
+            display: flex;
+            transform: translateY(0%);
+        }
+    }
+
+    &-exit {
+        @include opacity(1);
+
+        display: flex;
+
+        &.slide-up-exit-active {
+            @include opacity(0);
+
+            display: flex;
+            transform: translateY(100%);
+        }
+
+        &-done {
+            @include opacity(0);
+
+            display: none;
+            transform: translateY(100%);
+        }
+    }
+}
