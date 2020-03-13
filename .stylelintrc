@@ -16,7 +16,7 @@
         "scss/at-import-partial-extension-blacklist": null,
         "order/properties-alphabetical-order": true,
         "max-nesting-depth": [
-            2,
+            3,
             {
                 "ignoreAtRules": [
                     "each",
