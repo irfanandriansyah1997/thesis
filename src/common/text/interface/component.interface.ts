@@ -2,11 +2,11 @@ import { HTMLAttributes } from 'react';
 import { TextAlignProperty } from 'csstype';
 import { ComponentTextTag } from '../../../shared/interface/component/component-tag.interface';
 import {
-    ComponentColorTypography,
     ComponentStylingTypography,
     ComponentFontfaceTypography,
     ComponentFontWeightTypography
 } from '../../../shared/interface/component/component-typography.interface';
+import { ColorType } from '../../../shared/interface/common/color.interface';
 
 type ParagraphElement = HTMLAttributes<HTMLHeadingElement> & BasePropsInterface;
 
@@ -21,8 +21,8 @@ type HeadingElement = HTMLAttributes<HTMLHeadingElement> & BasePropsInterface;
  * @since 2020.03.13
  */
 interface BasePropsInterface {
+    color?: ColorType;
     tag: ComponentTextTag;
-    color?: ComponentColorTypography;
     align: TextAlignProperty;
     styling: ComponentStylingTypography;
     fontFamily: ComponentFontfaceTypography;

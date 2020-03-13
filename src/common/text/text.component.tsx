@@ -4,6 +4,8 @@ import StringHelper from '../../shared/helper/string.helper';
 import ValidatorHelper from '../../shared/helper/validator.helper';
 import { TextPropsInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../shared/interface/component/componen-default.interface';
+import ColorDefaultConstant from '../../shared/constant/color.constant';
+import { ColorType } from '../../shared/interface/common/color.interface';
 
 /**
  * Text Component
@@ -11,18 +13,20 @@ import { ComponentClassnameDefaultInterface } from '../../shared/interface/compo
  * @since 2020.03.13
  */
 const TextComponent: SFC<TextPropsInterface> = ({
+    tag,
     align,
+    color,
+    styling,
+    className,
     fontFamily,
     fontWeight,
-    styling,
-    tag,
-    className,
     ...res
 }: TextPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
-        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className),
+        [`ui-atomic-text`]: true,
         [`ui-atomic-text--styling-${styling}`]: true,
-        [`ui-atomic-text--typeface-${fontFamily}`]: true
+        [`ui-atomic-text--typeface-${fontFamily}`]: true,
+        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
     return createElement(tag, {
@@ -30,6 +34,12 @@ const TextComponent: SFC<TextPropsInterface> = ({
         style: {
             ...res.style,
             fontWeight,
+            color: ValidatorHelper.verifiedKeyIsExist(
+                ColorDefaultConstant,
+                color
+            )
+                ? ColorDefaultConstant[color as ColorType]
+                : undefined,
             textAlign: align
         },
         ...res
