@@ -1,4 +1,4 @@
-import { ComponentDefaultInterface } from '../../../shared/interface/common/componen.interface';
+import { ComponentDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
 
 export type IconType = 'material' | '99';
 

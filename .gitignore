@@ -107,5 +107,6 @@ dist
 .jest_coverage
 .tmp
 tmp
+.tmp_staging
 lib
 documentation

@@ -32,7 +32,10 @@ module.exports = {
     settings: {
         'import/resolver': {
             node: {
-                extensions: ['.js', '.jsx', '.ts', '.tsx']
+                extensions: ['.js', '.jsx', '.ts', '.tsx', '.es6']
+            },
+            typescript: {
+                alwaysTryTypes: true // always try to resolve types under `<roo/>@types` directory even it doesn't contain any source code, like `@types/unist`
             }
         }
     },
@@ -141,6 +144,7 @@ module.exports = {
                 ]
             }
         ],
+        '@typescript-eslint/no-explicit-any': [2],
         '@typescript-eslint/explicit-function-return-type': 0,
         '@typescript-eslint/no-var-requires': 0
     },
@@ -149,7 +153,9 @@ module.exports = {
             files: ['*.ts', '*.tsx'],
             rules: {
                 '@typescript-eslint/explicit-function-return-type': [2],
-                '@typescript-eslint/no-var-requires': [2]
+                '@typescript-eslint/no-var-requires': [2],
+                '@typescript-eslint/no-explicit-any': [2],
+                '@typescript-eslint/no-unused-vars': [2]
             }
         }
     ]

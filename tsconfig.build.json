@@ -12,8 +12,11 @@
         "checkJs": false,
         "declaration": true,
         "rootDir": "./src",
+        "baseUrl": "./src",
+        "noEmit": true,
         "composite": true,
         "tsBuildInfoFile": "dist/tsbuild.info",
+        "outDir": "./",
         "declarationDir": "./lib",
         "noImplicitAny": true
     },
