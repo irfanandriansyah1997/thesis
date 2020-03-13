@@ -1,0 +1,51 @@
+/**
+ * Text Style Component Helper
+ */
+
+.bold {
+    @include font-weight(bold);
+}
+
+.regular {
+    @include font-weight(normal);
+}
+
+.light {
+    @include font-weight(300);
+}
+
+.semibold {
+    @include font-weight(500);
+}
+
+.italic {
+    @include font-style(italic);
+}
+
+.break-word {
+    word-wrap: break-word;
+}
+
+.no-wrap,
+%no-wrap {
+    white-space: nowrap;
+}
+
+.truncate {
+    @extend %no-wrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ui-atomic-error {
+    &.ui-atomic-text {
+        @include font-color(error);
+    }
+
+    &--no-margin {
+        &.ui-atomic-text {
+            @include margin-top(-5px);
+        }
+    }
+}
