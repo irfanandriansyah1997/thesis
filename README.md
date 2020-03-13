@@ -1,6 +1,6 @@
-# Design System
+# Style Guide
 
-[![Build Status](https://travis-ci.org/irfanandriansyah1997/base-component.svg?branch=master)](https://travis-ci.org/irfanandriansyah1997/base-component) <img src="https://img.shields.io/npm/v/component-ninetynine.svg"> [![codecov](https://codecov.io/gh/irfanandriansyah1997/base-component/branch/master/graph/badge.svg)](https://codecov.io/gh/irfanandriansyah1997/base-component)
+[![Build Status](https://travis-ci.org/irfanandriansyah1997/base-component.svg?branch=master)](https://travis-ci.org/irfanandriansyah1997/base-component) <img src="https://img.shields.io/npm/v/component-ninetynine.svg"> [![codecov](https://codecov.io/gh/urbanindo/style-guide/branch/master/graph/badge.svg?token=bqgdBKlcgv)](https://codecov.io/gh/urbanindo/style-guide)
 
 Tujuan dibuat repositori ini adalah untuk mengumpulkan component berupa atom, molekul, organism pada website portal 99.co indonesia. diharapkan dengan membuat component ini mengurangi duplikasi kode pada website tersebut.
 

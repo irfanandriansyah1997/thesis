@@ -6,7 +6,7 @@ script:
   - yarn run check-code
   - yarn run build-asset
   - yarn run build-documentation
-  - ./node_modules/.bin/codecov --token=824259f4-32e9-437c-99ff-70ef92067346
+  - ./node_modules/.bin/codecov --token=b4765ae3-4fd3-4af9-89e5-b44876a1764b
 
 deploy:
   - provider: npm
