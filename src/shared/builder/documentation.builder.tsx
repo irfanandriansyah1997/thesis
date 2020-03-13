@@ -68,11 +68,20 @@ class DocumentationBuilder {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         {Object.keys(ModuleComponent).map((item: string) => {
-                            const ModuleItemComponent = ModuleComponent[item as DocumentRouterModuleType];
-                            const ModuleProps: DocumentRouterModuleInterface = router[item as DocumentRouterModuleType];
+                            const ModuleItemComponent =
+                                ModuleComponent[
+                                    item as DocumentRouterModuleType
+                                ];
+                            const ModuleProps: DocumentRouterModuleInterface =
+                                router[item as DocumentRouterModuleType];
 
                             if (ModuleItemComponent) {
-                                return <ModuleItemComponent key={item} {...ModuleProps} />;
+                                return (
+                                    <ModuleItemComponent
+                                        key={item}
+                                        {...ModuleProps}
+                                    />
+                                );
                             }
 
                             return null;

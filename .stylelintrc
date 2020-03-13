@@ -15,6 +15,7 @@
         ],
         "scss/at-import-partial-extension-blacklist": null,
         "order/properties-alphabetical-order": true,
+        "function-parentheses-space-inside": "never",
         "max-nesting-depth": [
             3,
             {

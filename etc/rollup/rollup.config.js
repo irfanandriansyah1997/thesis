@@ -10,7 +10,7 @@ import Mobile from './constant/mobile.constant';
 import Desktop from './constant/desktop.constant';
 
 export default {
-    input: [Common, Mobile, Desktop],
+    input: [...Common, ...Mobile, ...Desktop],
     output: {
         format: 'es',
         dir: 'lib'

@@ -1,4 +1,7 @@
-import { GenericReactComponentInterface, GenericReactComponentStrictInterface } from '../common/object.interface';
+import {
+    GenericReactComponentInterface,
+    GenericReactComponentStrictInterface
+} from '../common/object.interface';
 
 export type DocumentRouterModuleType = 'common' | 'desktop' | 'mobile';
 
@@ -17,7 +20,9 @@ export type DocumentRouterAppInterface = {
  * @since 2020.03.10
  */
 export type DocumentRouterModuleComponentInterface = {
-    [key in DocumentRouterModuleType]: GenericReactComponentInterface<DocumentRouterModuleInterface>;
+    [key in DocumentRouterModuleType]: GenericReactComponentInterface<
+        DocumentRouterModuleInterface
+    >;
 };
 
 /**
@@ -35,7 +40,9 @@ export type DocumentRouterModuleInterface = DocumentRouterBaseInterface & {
  * @since 2020.03.10
  */
 export type DocumentRouterItemInterface = DocumentRouterBaseInterface & {
-    ModuleItemComponent: GenericReactComponentStrictInterface<DocumentRouterItemComponentInterface>;
+    ModuleItemComponent: GenericReactComponentStrictInterface<
+        DocumentRouterItemComponentInterface
+    >;
 };
 
 /**
