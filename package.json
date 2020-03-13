@@ -1,6 +1,6 @@
 {
     "name": "component-ninetynine",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "base component for 99 group website",
     "main": "index.js",
     "scripts": {
@@ -20,18 +20,18 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/irfanandriansyah1997/base-component.git"
+        "url": "git+https://github.com/urbanindo/style-guide.git"
     },
     "keywords": [
         "react",
         "atomic design pattern"
     ],
-    "author": "Irfan Andriansyah <irfanandriansyah10@gmail.com> (https://twitter.com/without_names_0)",
+    "author": "99.co",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/irfanandriansyah1997/base-component/issues"
+        "url": "https://github.com/urbanindo/style-guide/issues"
     },
-    "homepage": "https://github.com/irfanandriansyah1997/base-component#readme",
+    "homepage": "https://github.com/urbanindo/style-guide#readme",
     "dependencies": {
         "react": "^16.13.0",
         "react-dom": "^16.13.0",
