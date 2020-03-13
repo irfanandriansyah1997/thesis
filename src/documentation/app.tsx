@@ -2,6 +2,8 @@
 import CommonModuleDocumentation from './modules/common.documentation';
 import DocumentationBuilder from '../shared/builder/documentation.builder';
 
+import '../style/app.scss';
+
 new DocumentationBuilder({
     common: {
         menu: [],

@@ -6,7 +6,9 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import rename from 'gulp-rename';
 import concat from 'gulp-concat';
+import postcss from 'gulp-postcss';
 import minify from 'gulp-minify-css';
+import autoprefixer from 'autoprefixer';
 import { src, task, series } from 'gulp';
 
 class GulpModule {
@@ -18,6 +20,7 @@ class GulpModule {
                 }).on('error', sass.logError)
             )
             .pipe(concat('temp.css'))
+            .pipe(postcss([autoprefixer()]))
             .pipe(minify())
             .pipe(
                 rename({
