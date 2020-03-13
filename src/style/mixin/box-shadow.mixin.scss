@@ -2,7 +2,7 @@
  * Box Shadow Mixin
  */
 
-@mixin box-shadow(template) {
+@mixin box-shadow($template) {
     box-shadow: get-shadow($template);
 }
 

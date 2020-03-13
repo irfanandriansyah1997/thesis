@@ -6,7 +6,9 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import rename from 'gulp-rename';
 import concat from 'gulp-concat';
+import postcss from 'gulp-postcss';
 import minify from 'gulp-minify-css';
+import autoprefixer from 'autoprefixer';
 import { src, task, series } from 'gulp';
 
 class GulpModule {
@@ -18,6 +20,7 @@ class GulpModule {
                 }).on('error', sass.logError)
             )
             .pipe(concat('temp.css'))
+            .pipe(postcss([autoprefixer()]))
             .pipe(minify())
             .pipe(
                 rename({
@@ -33,5 +36,6 @@ class GulpModule {
 task('sass-common', () => GulpModule.generateSCSS('common', '../../src/common/**/*.scss'));
 task('sass-mobile', () => GulpModule.generateSCSS('mobile', '../../src/mobile/**/*.scss'));
 task('sass-desktop', () => GulpModule.generateSCSS('desktop', '../../src/desktop/**/*.scss'));
+task('sass-etc', () => GulpModule.generateSCSS('all', '../../src/style/app.scss'));
 
-task('default', series('sass-common', 'sass-mobile', 'sass-desktop'));
+task('default', series('sass-common', 'sass-mobile', 'sass-desktop', 'sass-etc'));

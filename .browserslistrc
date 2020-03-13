@@ -1,0 +1,6 @@
+# Browsers that we support
+
+last 3 versions
+Firefox ESR
+> 1%
+ie >= 11
