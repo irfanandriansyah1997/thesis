@@ -6,8 +6,8 @@ import { MappingModulesComponentInterface } from '../../../shared/interface/docu
 /**
  * Atomic Component
  */
-import TextDocumentation from '../../../common/text/documentation/text.documentation';
-import IconDocumentation from '../../../common/icon/documentation/icon.documentation';
+import TextDocumentation from '../../../common/atomic/text/documentation/text.documentation';
+import IconDocumentation from '../../../common/atomic/icon/documentation/icon.documentation';
 
 /**
  * Common Module Documentation

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SFC } from 'react';
 
-import { DocumentRouterItemComponentInterface } from '../../../shared/interface/documentation/documentation-router.interface';
+import { DocumentRouterItemComponentInterface } from '../../../../shared/interface/documentation/documentation-router.interface';
 
 /**
  * Text Component Documentation

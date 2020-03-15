@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 
-import { ColorType } from '../../../shared/interface/common/color.interface';
-import { ComponentTextSize } from '../../../shared/interface/component/component-size.interface';
+import { ColorType } from '../../../../shared/interface/common/color.interface';
+import { ComponentTextSize } from '../../../../shared/interface/component/component-size.interface';
 
 /**
  * Icon Props Interface

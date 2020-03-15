@@ -151,10 +151,13 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
 │       └── library
 └── src
     ├── common                      # e.g. "button, text component"
-    │   └── button
-    │       ├── documentation
-    │       ├── interface
-    │       └── style
+    │   ├── atomic
+    |   |    └── component
+    │   |       ├── documentation
+    │   |       ├── interface
+    │   |       └── style
+    │   ├── molecules
+    │   └── organism
     ├── desktop                     # e.g. "desktop navbar component"
     ├── mobile                      # e.g. "mobile dialog component"
     ├── documentation               # e.g. "layout for documentation"
@@ -179,3 +182,30 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
         ├── transition
         └── variable
 ```
+
+## Cara Membuat Component
+
+Apabila anda ingin membuat component maka berikut hal yang anda harus ikuti adalah sebagai berikut:
+
+- buatlah component pada direktori common, desktop atau mobile dengan format sebagai berikut:
+  ```
+  └── (nama component)
+      ├── documentation
+      |   └── (nama component).documentation.tsx
+      ├── interface
+      |   └── component.interface.ts
+      ├── style
+      |   └── style.scss
+      └── (nama component).component.tsx
+  ```
+  | Nama File        | Direktori           | Fungsi           |
+  | ------------- |:-------------|:-------------|
+  | (nama component).documentation.tsx | `documentation` | File ini dibuat dengan tujuan untuk dokumentasi component tersebut. |
+  | component.interface.ts | `interface` | Interface yang akan digunakan pada component tersebut. |
+  | style.scss | `style` | SCSS file component tersebut. |
+
+- Daftarkan file component yang telah anda buat pada `etc/rollup/constant` entah common, desktop atau mobile component.
+- Jika anda ingin mendaftarkan component anda pada dokumentasi yang telah tersedia maka anda dapat mendaftarkan di beberapa file ini:
+  - common  : `src/documentation/modules/common/common.documentation.tsx`
+  - desktop : `src/documentation/modules/desktop/desktop.documentation.tsx`
+  - mobile  : `src/documentation/modules/mobile/mobile.documentation.tsx`
