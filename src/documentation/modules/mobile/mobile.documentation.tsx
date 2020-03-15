@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
-import DocumentationModuleAbstract from '../../shared/abstract/documentation/documentation-module.abstract';
+
+import DocumentationModuleAbstract from '../../../shared/abstract/documentation/documentation-module.abstract';
+import { MappingModulesComponentInterface } from '../../../shared/interface/documentation/documentation-router.interface';
 
 /**
  * Mobile Module Documentation
@@ -8,6 +10,17 @@ import DocumentationModuleAbstract from '../../shared/abstract/documentation/doc
  * @since 2020.03.10
  */
 class MobileModuleDocumentation extends DocumentationModuleAbstract {
+    /**
+     * Register All Component
+     */
+    static get component(): MappingModulesComponentInterface {
+        return {
+            atomic: [],
+            molecules: [],
+            organism: []
+        };
+    }
+
     /**
      * generate path default in mobile module
      * @return {ReactNode}

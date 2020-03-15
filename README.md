@@ -151,10 +151,10 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
 │       └── library
 └── src
     ├── common                      # e.g. "button, text component"
-    │   ├── button
-    │   │   ├── documentation
-    │   │   ├── interface
-    │   │   └── style
+    │   └── button
+    │       ├── documentation
+    │       ├── interface
+    │       └── style
     ├── desktop                     # e.g. "desktop navbar component"
     ├── mobile                      # e.g. "mobile dialog component"
     ├── documentation               # e.g. "layout for documentation"
