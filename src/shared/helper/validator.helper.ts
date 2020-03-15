@@ -35,7 +35,7 @@ class ValidatorHelper extends ErrorHelperAbstract {
         try {
             return (
                 [undefined, null, ''].filter((item: unknown) => param === item)
-                    .length > 0
+                    .length === 0
             );
         } catch (e) {
             ValidatorHelper.logError(e);

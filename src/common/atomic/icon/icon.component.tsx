@@ -39,8 +39,10 @@ const IconComponent: SFC<IconPropsInterface> = ({
                 color
             )
                 ? ColorDefaultConstant[color as ColorType]
-                : undefined
+                : undefined,
+            fontSize: ValidatorHelper.isNumber(size) ? `${size}px` : undefined
         },
+        children: isUrbanindoIcon ? undefined : children,
         ...res
     });
 };

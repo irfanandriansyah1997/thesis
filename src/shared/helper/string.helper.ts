@@ -17,7 +17,7 @@ class StringHelper extends ErrorHelperAbstract {
             return Object.keys(obj)
                 .filter((item: string) => obj[item])
                 .map((item: string) => item)
-                .join('');
+                .join(' ');
         } catch (e) {
             StringHelper.logError(e);
             throw e;

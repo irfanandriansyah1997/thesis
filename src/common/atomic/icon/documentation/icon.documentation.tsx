@@ -2,6 +2,7 @@ import * as React from 'react';
 import { SFC } from 'react';
 
 import { DocumentRouterItemComponentInterface } from '../../../../shared/interface/documentation/documentation-router.interface';
+import IconComponent from '../icon.component';
 
 /**
  * Icon Component Documentation
@@ -12,8 +13,10 @@ const IconDocumentation: SFC<DocumentRouterItemComponentInterface> = ({
     name
 }: DocumentRouterItemComponentInterface) => (
     <div>
-        <p>asas</p>
-        <p>{name}</p>
+        {name}
+        <IconComponent color="primary200" size="default">
+            close
+        </IconComponent>
     </div>
 );
 

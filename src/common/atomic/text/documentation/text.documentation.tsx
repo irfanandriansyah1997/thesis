@@ -2,6 +2,7 @@ import * as React from 'react';
 import { SFC } from 'react';
 
 import { DocumentRouterItemComponentInterface } from '../../../../shared/interface/documentation/documentation-router.interface';
+import TextComponent from '../text.component';
 
 /**
  * Text Component Documentation
@@ -10,6 +11,16 @@ import { DocumentRouterItemComponentInterface } from '../../../../shared/interfa
  */
 const TextDocumentation: SFC<DocumentRouterItemComponentInterface> = ({
     name
-}: DocumentRouterItemComponentInterface) => <div>{name}</div>;
+}: DocumentRouterItemComponentInterface) => (
+    <TextComponent
+        align="center"
+        fontFamily="primary"
+        fontWeight={600}
+        styling="heading-1"
+        tag="h1"
+    >
+        {name}
+    </TextComponent>
+);
 
 export default TextDocumentation;
