@@ -63,3 +63,19 @@ export interface DocumentRouterBaseInterface {
     path: string;
     name: string;
 }
+
+/**
+ * Mapping Modules Component
+ */
+
+/**
+ * Mapping Document Router Item Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @description
+ * @since 2020.03.15
+ */
+export interface MappingModulesComponentInterface {
+    atomic: DocumentRouterItemInterface[];
+    molecules: DocumentRouterItemInterface[];
+    organism: DocumentRouterItemInterface[];
+}

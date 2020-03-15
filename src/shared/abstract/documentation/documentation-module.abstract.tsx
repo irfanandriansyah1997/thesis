@@ -2,8 +2,8 @@ import { Route } from 'react-router-dom';
 import React, { Component, ReactNode } from 'react';
 
 import {
-    DocumentRouterModuleInterface,
-    DocumentRouterItemInterface
+    DocumentRouterItemInterface,
+    DocumentRouterModuleInterface
 } from '../../interface/documentation/documentation-router.interface';
 
 /**
@@ -47,7 +47,9 @@ abstract class DocumentationModuleAbstract extends Component<
         return (
             <>
                 {router}
-                <Route path={path}>{view}</Route>
+                <Route exact path={path}>
+                    {view}
+                </Route>
             </>
         );
     }
