@@ -108,5 +108,5 @@ dist
 .tmp
 tmp
 .tmp_staging
-lib
-documentation
+/lib
+/documentation

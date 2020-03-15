@@ -3,9 +3,9 @@ import { SFC, createElement } from 'react';
 import StringHelper from '../../shared/helper/string.helper';
 import ValidatorHelper from '../../shared/helper/validator.helper';
 import { IconPropsInterface } from './interface/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../shared/interface/component/componen-default.interface';
 import ColorDefaultConstant from '../../shared/constant/color.constant';
 import { ColorType } from '../../shared/interface/common/color.interface';
+import { ComponentClassnameDefaultInterface } from '../../shared/interface/component/componen-default.interface';
 
 /**
  * Icon Component
