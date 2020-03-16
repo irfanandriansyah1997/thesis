@@ -29,7 +29,7 @@ class ValidatorHelper extends ErrorHelperAbstract {
     /**
      * Verified Is Not Empty
      * @param {unknown} param - parameter to check
-     * Validator checking parameter input is undefined / null
+     * Validator checking parameter input is not undefined / null
      */
     static verifiedIsNotEmpty(param: unknown): boolean {
         try {
@@ -37,6 +37,28 @@ class ValidatorHelper extends ErrorHelperAbstract {
                 [undefined, null, ''].filter((item: unknown) => param === item)
                     .length === 0
             );
+        } catch (e) {
+            ValidatorHelper.logError(e);
+            throw e;
+        }
+    }
+
+    /**
+     * Verified Is Not False
+     * @param {boolean | undefined} param - parameter to check
+     * Validator checking parameter input is true
+     */
+    static verifiedIsNotFalse(param: boolean | undefined): boolean {
+        try {
+            const stage1 =
+                [undefined, false].filter((i: unknown) => param === i)
+                    .length === 0;
+
+            if (stage1 && param === true) {
+                return true;
+            }
+
+            return false;
         } catch (e) {
             ValidatorHelper.logError(e);
             throw e;

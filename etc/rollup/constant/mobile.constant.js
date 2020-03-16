@@ -1,1 +1,14 @@
-export default [];
+export default [
+    /**
+     * Atomic
+     */
+    ...[],
+    /**
+     * Molecules
+     */
+    ...[],
+    /**
+     * Organism
+     */
+    ...[]
+];
