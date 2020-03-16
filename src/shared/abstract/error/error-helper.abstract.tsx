@@ -5,6 +5,15 @@
  */
 abstract class ErrorHelperAbstract {
     /**
+     * Log Debug Apps
+     * @param {unknown} message - debug message
+     * @return {void}
+     */
+    static logDebug(message: unknown): void {
+        console.debug(message);
+    }
+
+    /**
      * Log Error
      * @param {Error} e - stacktrace error
      * @return {void}

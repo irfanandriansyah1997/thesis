@@ -103,6 +103,11 @@ video {
     outline: 0;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 /* make sure to set some focus styles for accessibility */
 :focus {
     outline: 0;

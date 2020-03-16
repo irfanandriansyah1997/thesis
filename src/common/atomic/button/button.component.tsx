@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { Component, ReactNode } from 'react';
+import React, { SFC } from 'react';
 
 import { ButtonPropsInterface } from './interface/testing.interface';
 
@@ -8,10 +7,11 @@ import { ButtonPropsInterface } from './interface/testing.interface';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.03.09
  */
-export class ButtonComponent extends Component<ButtonPropsInterface> {
-    render(): ReactNode {
-        return <button type="button">Hello</button>;
-    }
-}
+const ButtonComponent: SFC<ButtonPropsInterface> = ({
+    children,
+    ...res
+}: ButtonPropsInterface) => {
+    return <button {...res}>{children}</button>;
+};
 
 export default ButtonComponent;
