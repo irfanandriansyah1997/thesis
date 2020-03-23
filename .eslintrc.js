@@ -73,6 +73,7 @@ module.exports = {
         indent: [2, 4],
         'no-console': [2, { allow: ['debug', 'error'] }],
         'react/display-name': [0],
+        'react/button-has-type': [0],
         'react/jsx-filename-extension': [
             2,
             { extensions: ['.js', '.jsx', '.tsx'] }

@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { SFC } from 'react';
+import React, { SFC } from 'react';
 
-import { DocumentRouterItemComponentInterface } from '../../../../shared/interface/documentation/documentation-router.interface';
 import IconComponent from '../icon.component';
+import { DocumentRouterItemComponentInterface } from '../../../../shared/interface/documentation/documentation-router.interface';
+
+import '../style/style.scss';
 
 /**
  * Icon Component Documentation
