@@ -1,6 +1,6 @@
 import React, { SFC } from 'react';
 
-import { ButtonPropsInterface } from './interface/testing.interface';
+import { ButtonPropsInterface } from './interface/component.interface';
 
 /**
  * Button Component
