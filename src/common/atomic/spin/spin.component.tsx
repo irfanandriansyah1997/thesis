@@ -21,18 +21,6 @@ const SpinComponent: SFC<SpinPropsInterface> = ({
 }: SpinPropsInterface) => {
     const refSpinner = useRef<HTMLDivElement>(null);
     const refChildren = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (
-            refChildren.current &&
-            refSpinner.current &&
-            ValidatorHelper.verifiedIsNotEmpty(children)
-        ) {
-            refSpinner.current.style.width = `${refChildren.current.children[0].clientWidth}px`;
-            refSpinner.current.style.height = `${refChildren.current.children[0].clientHeight}px`;
-        }
-    }, [refChildren]);
-
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
         relative: true,
@@ -40,7 +28,6 @@ const SpinComponent: SFC<SpinPropsInterface> = ({
         'ui-atomic-spin--show': show,
         'ui-atomic-spin--nested': ValidatorHelper.verifiedIsNotEmpty(children)
     };
-
     const SpinContentComponent: ReactNode = (
         <div
             className={StringHelper.objToString({
@@ -83,6 +70,17 @@ const SpinComponent: SFC<SpinPropsInterface> = ({
             </div>
         </div>
     );
+
+    useEffect(() => {
+        if (
+            refChildren.current &&
+            refSpinner.current &&
+            ValidatorHelper.verifiedIsNotEmpty(children)
+        ) {
+            refSpinner.current.style.width = `${refChildren.current.children[0].clientWidth}px`;
+            refSpinner.current.style.height = `${refChildren.current.children[0].clientHeight}px`;
+        }
+    }, [refChildren]);
 
     return (
         <div className={StringHelper.objToString(className)} {...res}>

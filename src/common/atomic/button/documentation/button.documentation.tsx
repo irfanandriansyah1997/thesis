@@ -11,7 +11,7 @@ import '../style/style.scss';
  */
 class ButtonDocumentation extends Component {
     render(): React.ReactNode {
-        return <ButtonComponent size="default" />;
+        return <ButtonComponent theme="info" size="default" />;
     }
 }
 
