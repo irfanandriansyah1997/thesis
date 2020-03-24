@@ -1,4 +1,4 @@
-import ErrorHelperAbstract from '../abstract/error/error-helper.abstract';
+import LogHelperAbstract from '../abstract/log/log-helper.abstract';
 import { ComponentClassnameDefaultInterface } from '../interface/component/componen-default.interface';
 
 /**
@@ -6,7 +6,7 @@ import { ComponentClassnameDefaultInterface } from '../interface/component/compo
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.03.13
  */
-class StringHelper extends ErrorHelperAbstract {
+class StringHelper extends LogHelperAbstract {
     /**
      * Object To String
      * @param {ComponentClassnameDefaultInterface} obj - object classname
