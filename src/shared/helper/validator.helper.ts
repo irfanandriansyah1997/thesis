@@ -1,4 +1,4 @@
-import ErrorHelperAbstract from '../abstract/error/error-helper.abstract';
+import LogHelperAbstract from '../abstract/log/log-helper.abstract';
 import { DefaultDynamicObject } from '../interface/common/object.interface';
 
 /**
@@ -7,7 +7,7 @@ import { DefaultDynamicObject } from '../interface/common/object.interface';
  * @description
  * @since 2020.03.13
  */
-class ValidatorHelper extends ErrorHelperAbstract {
+class ValidatorHelper extends LogHelperAbstract {
     /**
      * Check is number
      * @param {unknown} param - parameter to check
@@ -32,37 +32,27 @@ class ValidatorHelper extends ErrorHelperAbstract {
      * Validator checking parameter input is not undefined / null
      */
     static verifiedIsNotEmpty(param: unknown): boolean {
-        try {
-            return (
-                [undefined, null, ''].filter((item: unknown) => param === item)
-                    .length === 0
-            );
-        } catch (e) {
-            ValidatorHelper.logError(e);
-            throw e;
-        }
+        return (
+            [undefined, null, ''].filter((item: unknown) => param === item)
+                .length === 0
+        );
     }
 
     /**
      * Verified Is Not False
-     * @param {boolean | undefined} param - parameter to check
+     * @param {boolean | undefined | null} param - parameter to check
      * Validator checking parameter input is true
      */
-    static verifiedIsNotFalse(param: boolean | undefined): boolean {
-        try {
-            const stage1 =
-                [undefined, false].filter((i: unknown) => param === i)
-                    .length === 0;
+    static verifiedIsNotFalse(param: boolean | undefined | null): boolean {
+        const stage1 =
+            [undefined, null, false].filter((i: unknown) => param === i)
+                .length === 0;
 
-            if (stage1 && param === true) {
-                return true;
-            }
-
-            return false;
-        } catch (e) {
-            ValidatorHelper.logError(e);
-            throw e;
+        if (stage1 && param === true) {
+            return true;
         }
+
+        return false;
     }
 
     /**
