@@ -1,4 +1,4 @@
-import ErrorHelperAbstract from '../abstract/error/error-helper.abstract';
+import LogHelperAbstract from '../abstract/log/log-helper.abstract';
 import { DefaultDynamicObject } from '../interface/common/object.interface';
 
 /**
@@ -7,7 +7,7 @@ import { DefaultDynamicObject } from '../interface/common/object.interface';
  * @description
  * @since 2020.03.13
  */
-class ValidatorHelper extends ErrorHelperAbstract {
+class ValidatorHelper extends LogHelperAbstract {
     /**
      * Check is number
      * @param {unknown} param - parameter to check
