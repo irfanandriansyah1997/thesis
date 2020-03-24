@@ -11,12 +11,17 @@ module.exports = {
         '!src/*.scss',
         '!src/*.less',
         '!lib/**/*.js',
-        '!documentation/*.js',
-        '!documentation/**/*.js',
         'src/**/*.{js,jsx,ts,tsx}',
         '!src/**/*.mock.{js,jsx,ts,tsx}',
+        '!documentation/*.{js,ts,jsx,tsx}',
         '!src/**/*.constant.{js,jsx,ts,tsx}',
-        '!src/**/*.documentation.{js,jsx,ts,tsx}'
+        '!documentation/**/*.{js,ts,jsx,tsx}',
+        '!src/documentation/*.{js,jsx,ts,tsx}',
+        '!src/**/documentation-*.{js,jsx,ts,tsx}',
+        '!src/**/documentation.*.{js,jsx,ts,tsx}',
+        '!src/**/*documentation*.{js,jsx,ts,tsx}',
+        '!src/**/*.documentation.{js,jsx,ts,tsx}',
+        '!src/documentation/**/*.{js,ts,jsx,tsx}'
     ],
     moduleNameMapper: {
         '^.+\\.(css|less|scss)$': 'babel-jest'
