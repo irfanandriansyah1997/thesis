@@ -5,7 +5,19 @@ module.exports = {
     },
     collectCoverage: true,
     testURL: 'http://localhost/',
-    collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+    collectCoverageFrom: [
+        '!lib/*.js',
+        '!src/*.svg',
+        '!src/*.scss',
+        '!src/*.less',
+        '!lib/**/*.js',
+        '!documentation/*.js',
+        '!documentation/**/*.js',
+        'src/**/*.{js,jsx,ts,tsx}',
+        '!src/**/*.mock.{js,jsx,ts,tsx}',
+        '!src/**/*.constant.{js,jsx,ts,tsx}',
+        '!src/**/*.documentation.{js,jsx,ts,tsx}'
+    ],
     moduleNameMapper: {
         '^.+\\.(css|less|scss)$': 'babel-jest'
     },
@@ -20,5 +32,8 @@ module.exports = {
     },
     transformIgnorePatterns: ['node_modules/'],
     snapshotSerializers: ['enzyme-to-json/serializer'],
-    setupFilesAfterEnv: ['<rootDir>/etc/jest/enzyme.config.ts', '@testing-library/jest-dom/extend-expect']
+    setupFilesAfterEnv: [
+        '<rootDir>/etc/jest/enzyme.config.ts',
+        '@testing-library/jest-dom/extend-expect'
+    ]
 };
