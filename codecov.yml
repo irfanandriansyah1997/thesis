@@ -1,0 +1,15 @@
+#####################################################################
+# Codecov configuration.
+#####################################################################
+ignore:
+    - "**/etc/.*"
+    - "**/*.svg"
+    - "**/*.scss"
+    - "**/types/.*"
+    - "**/*.spec.ts"
+    - "**/*.spec.tsx"
+    - "**/interfaces/.*"
+    - "src/documentation/.*"
+    - "**/*.documentation.ts"
+    - "**/*.documentation.tsx"
+    - "src/documentation/app.tsx"
