@@ -10,7 +10,7 @@ import { ColorType } from '../../../../shared/interface/common/color.interface';
  */
 export type LabelPropsInterface = HTMLAttributes<HTMLDivElement> & {
     color?: ColorType;
-    rounded?: boolean;
+    rounded: boolean;
     labelText: string;
     icon?: string;
 };

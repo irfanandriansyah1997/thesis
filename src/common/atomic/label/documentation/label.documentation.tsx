@@ -16,7 +16,7 @@ const LabelDocumentation: SFC<DocumentRouterItemComponentInterface> = ({
 }: DocumentRouterItemComponentInterface) => (
     <div>
         {name}
-        <LabelComponent rounded icon labelText="Label" iconText="close" />
+        <LabelComponent rounded={false} labelText="Label" icon="close" />
     </div>
 );
 

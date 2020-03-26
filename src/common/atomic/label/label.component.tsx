@@ -29,7 +29,7 @@ const LabelComponent: SFC<LabelPropsInterface> = ({
      */
     const className: ComponentClassnameDefaultInterface = {
         'ui-atomic-label': true,
-        [`ui-atomic-label--styling-${rounded}`]: true,
+        [`ui-atomic-label--styling-rounded`]: rounded,
         [`ui-atomic-label--styling-${color}`]: true,
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className)
     };
@@ -47,7 +47,7 @@ const LabelComponent: SFC<LabelPropsInterface> = ({
                 {labelText}
             </TextComponent>
 
-            {icon ? (
+            {icon !== undefined ? (
                 <IconComponent color="primary" size="small">
                     {icon}
                 </IconComponent>
@@ -58,7 +58,7 @@ const LabelComponent: SFC<LabelPropsInterface> = ({
 
 LabelComponent.propTypes = {
     labelText: PropTypes.string.isRequired,
-    rounded: PropTypes.bool,
+    rounded: PropTypes.bool.isRequired,
     icon: PropTypes.string,
     className: PropTypes.string,
     color: PropTypes.oneOf(Object.keys(ColorDefaultConstant)) as Validator<
@@ -68,7 +68,6 @@ LabelComponent.propTypes = {
 
 LabelComponent.defaultProps = {
     color: 'primary',
-    rounded: false,
     className: undefined,
     icon: undefined
 };
