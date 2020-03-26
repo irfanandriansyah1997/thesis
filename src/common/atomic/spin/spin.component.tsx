@@ -83,7 +83,7 @@ const SpinComponent: SFC<SpinPropsInterface> = ({
     }, [refChildren]);
 
     return (
-        <div className={StringHelper.objToString(className)} {...res}>
+        <div {...res} className={StringHelper.objToString(className)}>
             {SpinContentComponent}
             {ValidatorHelper.verifiedIsNotEmpty(children) ? (
                 <div className="relative" ref={refChildren}>
