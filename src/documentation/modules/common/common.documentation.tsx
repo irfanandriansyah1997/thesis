@@ -9,6 +9,7 @@ import { MappingModulesComponentInterface } from '../../../shared/interface/docu
 import TextDocumentation from '../../../common/atomic/text/documentation/text.documentation';
 import IconDocumentation from '../../../common/atomic/icon/documentation/icon.documentation';
 import SpinDocumentation from '../../../common/atomic/spin/documentation/spin.documentation';
+import LabelComponent from '../../../common/atomic/label/documentation/label.documentation';
 
 /**
  * Common Module Documentation
@@ -37,6 +38,11 @@ class CommonModuleDocumentation extends DocumentationModuleAbstract {
                     ModuleItemComponent: SpinDocumentation,
                     name: 'Spin Component',
                     path: 'spin'
+                },
+                {
+                    ModuleItemComponent: LabelComponent,
+                    name: 'Label Component',
+                    path: 'label'
                 }
             ],
             molecules: [],
