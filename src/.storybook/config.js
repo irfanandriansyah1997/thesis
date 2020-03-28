@@ -2,7 +2,7 @@
 
 import { addParameters, configure } from '@storybook/react';
 
-const req = require.context('../src', true, /.stories.tsx$/);
+const req = require.context('../', true, /.stories.tsx$/);
 
 /**
  * Load All Stories

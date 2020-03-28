@@ -1,4 +1,4 @@
-@import '../../../../../src/style/import.scss';
+@import '../../../../../style/import.scss';
 
 .ui-heading {
     @include font-face(primary, heading, 18px, 500, normal, none, none, 20);

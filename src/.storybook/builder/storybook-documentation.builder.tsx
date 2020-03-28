@@ -6,7 +6,7 @@ import DefaultTemplateDocsComponent from '../component/templates/default/default
 import {
     DocumentComponentType,
     DocumentRouterModuleType
-} from '../../src/shared/interface/documentation/documentation-router.interface';
+} from '../../shared/interface/documentation/documentation-router.interface';
 
 /**
  * Storybook Documentation Builder

@@ -1,9 +1,9 @@
 import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
-import StringHelper from '../../../../src/shared/helper/string.helper';
+import StringHelper from '../../../../shared/helper/string.helper';
 import { HeadingComponentPropsInterface } from './interface/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../../../src/shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../../shared/interface/component/componen-default.interface';
 
 import './style/style.scss';
 

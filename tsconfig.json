@@ -77,8 +77,6 @@
     "documentation",
     "src/**/*.spec.ts",
     "rollup.config.js",
-    "src/**/*.spec.tsx",
-    "src/**/*.stories.ts",
-    "src/**/*.stories.tsx"
+    "src/**/*.spec.tsx"
   ]
 }

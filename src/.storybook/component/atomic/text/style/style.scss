@@ -1,4 +1,4 @@
-@import '../../../../../src/style/import.scss';
+@import '../../../../../style/import.scss';
 
 .ui-text {
     @include font-face(primary, text, 16px, 400, normal, none, none, 24);

@@ -142,11 +142,6 @@ export default ComponentNameComponent;
 Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ada yang merasa implementasi saat ini tidak seperti dibawah ini, jangan ragu untuk mengoreksi hal ini.
 
 ```
-├── .storybook
-│   └── component
-│       ├── atomic
-│       ├── molecules
-│       └── templates
 ├── etc
 │   ├── git-hooks
 │   ├── gulp
@@ -155,6 +150,12 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
 │   └── webpack
 │       └── library
 └── src
+    ├── .storybook
+    │      ├── builder
+    │      └── component
+    │          ├── atomic
+    │          ├── molecules
+    │          └── templates
     ├── common                      # e.g. "button, text component"
     │   ├── atomic
     |   |    └── component

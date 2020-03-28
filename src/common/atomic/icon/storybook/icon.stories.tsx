@@ -2,10 +2,10 @@
 import React from 'react';
 
 import IconComponent from '../icon.component';
-import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
-import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
-import StorybookDocumentationBuilder from '../../../../../.storybook/builder/storybook-documentation.builder';
-import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
+import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
+import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
+import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
+import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 import '../style/style.scss';
 
