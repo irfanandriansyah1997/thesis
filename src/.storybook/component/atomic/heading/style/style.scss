@@ -1,0 +1,11 @@
+@import '../../../../../style/import.scss';
+
+.ui-heading {
+    @include font-face(primary, heading, 18px, 500, normal, none, none, 20);
+    @include margin(all, 0 0 10px);
+
+    &--parent {
+        @include font-face(primary, heading, 26px, 500, normal, none, none, 28);
+        @include margin-bottom(15px);
+    }
+}
