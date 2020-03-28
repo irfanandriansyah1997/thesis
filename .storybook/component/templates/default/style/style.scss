@@ -1,6 +1,6 @@
 /* stylelint-disable */
 
-@import '../../../../../src/style/import.scss';
+@import '../../../../../src/style/app.scss';
 
 @import url('https://public.urbanindo.com/fonts/UrbanIndoIcons-20190423021518/fonts.css');
 @import url('https://public.urbanindo.com/fonts/Avenir/stylesheet.css');
@@ -27,7 +27,7 @@ body {
     hr {
         @include margin(all, 20px 0);
         @include no-border();
-        @include border-bottom(1px, dashed, border-light);
+        @include border-bottom(1px, dashed, heading500);
     }
 
     &__heading {
@@ -115,7 +115,7 @@ body {
         &__heading {
             @include margin(all, -30px -30px 30px);
             @include padding(all, 20px 30px 10px);
-            @include border-bottom(1px, dashed, border-light);
+            @include border-bottom(1px, dashed, heading500);
 
             .ui-text {
                 @include margin-bottom(0);

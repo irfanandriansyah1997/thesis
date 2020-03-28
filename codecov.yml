@@ -8,6 +8,8 @@ ignore:
     - "**/types/.*"
     - "**/*.spec.ts"
     - "**/*.spec.tsx"
+    - "**/*.stories.ts"
+    - "**/*.stories.tsx"
     - "**/interfaces/.*"
     - "src/documentation/.*"
     - "**/*.documentation.ts"

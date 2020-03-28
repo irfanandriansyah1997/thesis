@@ -18,7 +18,7 @@ const HeadingDocsComponent: SFC<HeadingComponentPropsInterface> = ({
 }: HeadingComponentPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
         'ui-heading': true,
-        'ui-heading--parent': parent
+        'ui-heading--parent': parent || false
     };
 
     return <h1 className={StringHelper.objToString(name)}>{children}</h1>;

@@ -146,7 +146,9 @@ hue-6-2: #c18401
 }
 
 .ui-default__code {
-    @include border(all, 1px, solid, border-light);
+    $c: &;
+
+    @include border(all, 1px, solid, heading500);
     @include rounded(5px);
     @include margin(all, 20px 0);
 
@@ -166,10 +168,10 @@ hue-6-2: #c18401
             @include padding(all, 5px 10px);
             @include rounded(0 0 0 5px);
             @include background-color(rgba(#000, 0.025));
-            @include border(all, thin, solid, border-light);
+            @include border(all, thin, solid, heading500);
             @include font-face(
                 primary,
-                rgba(get-color(text-light), 0.75),
+                rgba(get-color(text), 0.75),
                 14px,
                 500,
                 normal,
@@ -189,6 +191,7 @@ hue-6-2: #c18401
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            height: 30px;
             top: 0;
             left: 0;
 
@@ -196,7 +199,7 @@ hue-6-2: #c18401
             @include background-color(rgba(#000, 0.025));
 
             p,
-            a {
+            #{$c}__copy {
                 display: flex;
                 align-items: center;
 
@@ -212,12 +215,16 @@ hue-6-2: #c18401
                 );
             }
 
-            a {
+            #{$c}__copy {
                 @include padding(all, 5px);
                 @include rounded(5px);
+                @include background-color(transparent);
 
+                border: 0px;
                 cursor: pointer;
+                right: 0;
                 overflow: hidden;
+                position: absolute;
 
                 i {
                     @include margin-right(5px);
@@ -225,7 +232,7 @@ hue-6-2: #c18401
                 }
 
                 &:hover {
-                    @include background-color(rgba(#000, 0.05));
+                    @include font-color(text);
                 }
             }
         }

@@ -16,6 +16,7 @@ module.exports = {
         '!src/**/*.mock.{js,jsx,ts,tsx}',
         '!.storybook/**/*.{js,jsx,ts,tsx}',
         '!documentation/*.{js,ts,jsx,tsx}',
+        '!src/**/*.stories.{js,jsx,ts,tsx}',
         '!src/**/*.constant.{js,jsx,ts,tsx}',
         '!documentation/**/*.{js,ts,jsx,tsx}',
         '!src/documentation/*.{js,jsx,ts,tsx}',
