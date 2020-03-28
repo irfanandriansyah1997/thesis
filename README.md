@@ -69,7 +69,7 @@ Jika anda ingin membuat suatu modules / file maka anda dapat mengacu pada aturan
 | Builder File | `builder-name.builder.(ts/tsx)`      |`<nama-file>Builder` |
 | Config File | `config-name.config.ts`      |`-` |
 | Constant File | `constant-name.const.ts`      |`-` |
-| Documentation TSX Component | `component-name.documentation.tsx`      |`<nama-file>Documentation` |
+| Documentation TSX Component | `component-name.stories.tsx`      | `-` |
 | Helper Library | `helper-name.helper.ts`      |`<nama-file>Helper` |
 | Interface      | `file-name.interface.ts`      |`<nama-file>Interface` |
 | React Context File | `context-name.context.ts`      |`<nama-file>Context` |
@@ -150,10 +150,16 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
 │   └── webpack
 │       └── library
 └── src
+    ├── .storybook
+    │      ├── builder
+    │      └── component
+    │          ├── atomic
+    │          ├── molecules
+    │          └── templates
     ├── common                      # e.g. "button, text component"
     │   ├── atomic
     |   |    └── component
-    │   |       ├── documentation
+    │   |       ├── storybook
     │   |       ├── interface
     │   |       ├── style
     │   |       └── test
@@ -161,12 +167,6 @@ Untuk saat ini pada library ini menggunakan sturktur folder seperti ini, Jika ad
     │   └── organism
     ├── desktop                     # e.g. "desktop navbar component"
     ├── mobile                      # e.g. "mobile dialog component"
-    ├── documentation               # e.g. "layout for documentation"
-    │   ├── modules                 # e.g. "documentation modules & router"
-    │   │   ├── common              # e.g. "documentation modules for common component"
-    │   │   ├── desktop             # e.g. "documentation modules for desktop component"
-    │   │   └── mobile              # e.g. "documentation modules for mobile component"
-    │   └── core                    # e.g. "documentation view, router config, component"
     ├── shared
     │   ├── abstract
     │   ├── builder
@@ -191,8 +191,8 @@ Apabila anda ingin membuat component maka berikut hal yang anda harus ikuti adal
 - buatlah component pada direktori common, desktop atau mobile dengan format sebagai berikut:
   ```
   └── (nama component)
-      ├── documentation
-      |   └── (nama component).documentation.tsx
+      ├── storybook
+      |   └── (nama component).stories.tsx
       ├── interface
       |   └── component.interface.ts
       ├── style
@@ -201,12 +201,15 @@ Apabila anda ingin membuat component maka berikut hal yang anda harus ikuti adal
   ```
   | Nama File        | Direktori           | Fungsi           |
   | ------------- |:-------------|:-------------|
-  | (nama component).documentation.tsx | `documentation` | File ini dibuat dengan tujuan untuk dokumentasi component tersebut. |
+  | (nama component).stories.tsx | `storybook` | File ini dibuat dengan tujuan untuk dokumentasi component tersebut. |
   | component.interface.ts | `interface` | Interface yang akan digunakan pada component tersebut. |
   | style.scss | `style` | SCSS file component tersebut. |
 
 - Daftarkan file component yang telah anda buat pada `etc/rollup/constant` entah common, desktop atau mobile component.
-- Jika anda ingin mendaftarkan component anda pada dokumentasi yang telah tersedia maka anda dapat mendaftarkan di beberapa file ini:
-  - common  : `src/documentation/modules/common/common.documentation.tsx`
-  - desktop : `src/documentation/modules/desktop/desktop.documentation.tsx`
-  - mobile  : `src/documentation/modules/mobile/mobile.documentation.tsx`
+- Jika anda ingin mendaftarkan component anda pada dokumentasi yang telah tersedia maka anda hanya membuat file `<nama-component>.stories.tsx` pada folder storybook.
+
+
+## Catatan
+- [Rollup](https://rollupjs.org/guide/en/#quick-start)
+- [Unit Testing](https://jestjs.io/docs/en/tutorial-react)
+- [Membuat File Storybook](https://storybook.js.org/docs/basics/writing-stories/)
