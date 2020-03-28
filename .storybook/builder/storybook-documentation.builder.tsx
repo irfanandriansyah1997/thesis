@@ -3,7 +3,10 @@ import React, { ReactNode } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import DefaultTemplateDocsComponent from '../component/templates/default/default-templates.component';
-import { DocumentRouterModuleType } from '../../src/shared/interface/documentation/documentation-router.interface';
+import {
+    DocumentComponentType,
+    DocumentRouterModuleType
+} from '../../src/shared/interface/documentation/documentation-router.interface';
 
 /**
  * Storybook Documentation Builder
@@ -15,14 +18,17 @@ class StorybookDocumentationBuilder {
 
     private descriptionComponent: string | undefined;
 
+    private componentType: DocumentComponentType;
+
     private section: DocumentRouterModuleType | undefined = undefined;
 
     private markdown: unknown | undefined = undefined;
 
     private documentation: ReactNode | undefined = undefined;
 
-    constructor(componentName: string) {
+    constructor(componentName: string, componentType: DocumentComponentType) {
         this.componentName = componentName;
+        this.componentType = componentType;
     }
 
     /**
@@ -49,10 +55,30 @@ class StorybookDocumentationBuilder {
      * Getter label documentation component
      * @return {string}
      */
-    private get formattedLabel(): string {
-        const { componentName, formattedSection } = this;
+    private get formattedComponentType(): string {
+        const { componentType } = this;
 
-        return `R123 Styleguide|${formattedSection}/${componentName}`;
+        if (componentType) {
+            const label = {
+                atomic: 'Atomic Component',
+                molecules: 'Molecules Component',
+                organism: 'Organism Component'
+            };
+
+            return label[componentType];
+        }
+
+        return '';
+    }
+
+    /**
+     * Getter label documentation component
+     * @return {string}
+     */
+    private get formattedLabel(): string {
+        const { formattedSection, formattedComponentType } = this;
+
+        return `R123 Styleguide|${formattedSection}/${formattedComponentType}`;
     }
 
     /**

@@ -12,7 +12,7 @@ import '../style/style.scss';
 const IconDocumentation = require('./icon.documentation.md');
 
 ((): void => {
-    new StorybookDocumentationBuilder('Icon Component')
+    new StorybookDocumentationBuilder('Icon Component', 'atomic')
         .setSection('common')
         .setDescriptionComponent('Testing Icon Component')
         .setMarkdownFile(IconDocumentation)
