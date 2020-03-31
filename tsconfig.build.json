@@ -28,16 +28,10 @@
         "example",
         "node_modules",
         "src/**/test",
-        "src/.stories",
+        "src/.storybook",
         "src/**/*.spec.ts",
-        "src/**/*.spec.tsx",
-        "src/**/documentation",
-        "src/**/documentation.*.tsx",
-        "src/**/*.documentation.tsx",
-        "src/**/*.documentation.ts",
-        "src/**/*.documentation.tsx",
-        "src/**/*.stories.tsx",
         "rollup.config.js",
-        "src/documentation"
+        "src/**/*.spec.tsx",
+        "src/**/*.stories.tsx"
     ]
 }

@@ -1,0 +1,10 @@
+@import '../../../../../style/import.scss';
+
+.ui-divider {
+    width: 100%;
+    height: 1px;
+
+    @include margin(all, 20px 0);
+    @include no-border();
+    @include border-bottom(1px, dashed, heading500);
+}
