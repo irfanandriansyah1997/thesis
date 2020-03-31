@@ -12,12 +12,7 @@ class ComponentHelper extends LogHelperAbstract {
      * @return {string}
      */
     static isUrbanindoIcon(className: string): boolean {
-        try {
-            return /^uif-/.test(String(className));
-        } catch (e) {
-            ComponentHelper.logError(e);
-            throw e;
-        }
+        return /^uif-/.test(className);
     }
 
     /**
@@ -26,12 +21,7 @@ class ComponentHelper extends LogHelperAbstract {
      * @return {string}
      */
     static isRumah123Icon(className: string): boolean {
-        try {
-            return /^rui-/.test(String(className));
-        } catch (e) {
-            ComponentHelper.logError(e);
-            throw e;
-        }
+        return /^rui-/.test(className);
     }
 }
 

@@ -38,7 +38,7 @@ const IconDocumentation = require('./icon.documentation.md');
                 <DividerDocsComponent />
                 <>
                     <HeadingDocsComponent>
-                        Penggunaan Komponen Material Icon
+                        Penggunaan Komponen Urbanindo Icon
                     </HeadingDocsComponent>
                     <TextDocsComponent>
                         Contoh penggunaan komponent icon pada urbanindo icon
