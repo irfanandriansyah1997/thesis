@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { SFC, useState } from 'react';
 import PropTypes from 'prop-types';
 import Highlight from 'react-highlight';
 import CopyToClipboard from 'react-copy-to-clipboard';
@@ -16,6 +16,8 @@ const CodingViewerDocsComponent: SFC<CodingViewerComponentPropsInterface> = ({
     children,
     sourceCode
 }: CodingViewerComponentPropsInterface) => {
+    const [hide, setHide] = useState<boolean>(false);
+
     return (
         <div className="ui-default__code">
             <div className="ui-default__code__result">{children}</div>
@@ -31,8 +33,19 @@ const CodingViewerDocsComponent: SFC<CodingViewerComponentPropsInterface> = ({
                             &nbsp;Copy
                         </button>
                     </CopyToClipboard>
+                    <button
+                        type="button"
+                        className="ui-default__code__hide"
+                        onClick={(): void => setHide(!hide)}
+                    >
+                        <i className="material-icons">
+                            {hide ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+                        </i>
+                    </button>
                 </div>
-                <Highlight className="hello">{sourceCode}</Highlight>
+                {hide ? (
+                    <Highlight className="hello">{sourceCode}</Highlight>
+                ) : null}
             </div>
         </div>
     );

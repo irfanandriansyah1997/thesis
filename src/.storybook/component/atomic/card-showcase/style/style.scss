@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: calc(100% + 20px);
+    justify-content: center;
 
     @include margin(all, 0 -10px);
 }
@@ -19,16 +20,16 @@
     display: flex;
     cursor: pointer;
     overflow: hidden;
-    max-width: 140px;
+    max-width: 150px;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     width: calc(calc(100% / 1) - 20px);
     flex: 0 0 calc(calc(100% / 1) - 20px);
 
     @include rounded(5px);
-    @include margin(all, 10px);
     @include padding(all, 0);
+    @include margin(all, 10px);
     @include border(all, 1px, solid, heading400);
     @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
 
