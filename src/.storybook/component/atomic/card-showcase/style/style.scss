@@ -12,6 +12,8 @@
 }
 
 .ui-card-showcase {
+    $c: &;
+
     height: auto;
     height: 170px;
     display: flex;
@@ -86,17 +88,17 @@
             @include transform-translate(-50%, -50%);
             @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
         }
+    }
 
-        &:hover {
+    &:hover {
+        @include box-shadow(elevate-sm);
+
+        #{$c}__children {
             &:before,
             &:after {
                 opacity: 1;
             }
         }
-    }
-
-    &:hover {
-        @include box-shadow(elevate-sm);
     }
 
     .ui-text {
