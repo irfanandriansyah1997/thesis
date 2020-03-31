@@ -15,13 +15,14 @@
     height: auto;
     height: 170px;
     display: flex;
+    cursor: pointer;
     overflow: hidden;
     max-width: 140px;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(calc(100% / 8) - 20px);
-    flex: 0 0 calc(calc(100% / 8) - 20px);
+    width: calc(calc(100% / 1) - 20px);
+    flex: 0 0 calc(calc(100% / 1) - 20px);
 
     @include rounded(5px);
     @include margin(all, 10px);
@@ -32,9 +33,66 @@
     &__children {
         width: 100%;
         display: flex;
+        overflow: hidden;
+        position: relative;
         align-items: center;
         justify-content: center;
-        height: calc(100% - 60px);
+        height: calc(100% - 57px);
+
+        &:before {
+            content: '';
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            @include background-color(rgba(get-color(heading), 0.1));
+        }
+
+        &:after {
+            content: 'file_copy';
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+
+            @include rounded(50%);
+            @include font-color(primary);
+            @include box-shadow(elevate-sm);
+            @include background-color(white);
+            @include transform-translate(-50%, -50%);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+        }
+
+        &:hover {
+            &:before,
+            &:after {
+                opacity: 1;
+            }
+        }
     }
 
     &:hover {
@@ -48,14 +106,29 @@
         line-height: 18px;
         text-align: center;
         align-items: center;
+        flex-direction: column;
         justify-content: center;
 
         @include margin(all, 0);
         @include font-size(14px);
         @include font-weight(500);
         @include padding(all, 10px);
-        @include font-color(heading600);
+        @include font-color(heading);
         @include background-color(heading100);
         @include border-top(1px, dashed, heading400);
+
+        span {
+            @include font-size(12px);
+            @include font-weight(400);
+            @include font-color(heading600);
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .ui-card-showcase {
+        max-width: calc(100% - 20px);
+        width: calc(100% - 20px);
+        flex: 0 0 calc(100% - 20px);
     }
 }

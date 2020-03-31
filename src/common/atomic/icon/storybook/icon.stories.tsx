@@ -77,8 +77,10 @@ const IconDocumentation = require('./icon.documentation.md');
                             <CardShowcaseDocsComponent
                                 key={item}
                                 title={item.replace('rui-icon-', '')}
+                                desc="R123 Icon"
+                                syntax={`<IconComponent color='success' size={32}>${item}</IconComponent>`}
                             >
-                                <IconComponent color="primary" size={42}>
+                                <IconComponent color="primary" size={48}>
                                     {item}
                                 </IconComponent>
                             </CardShowcaseDocsComponent>

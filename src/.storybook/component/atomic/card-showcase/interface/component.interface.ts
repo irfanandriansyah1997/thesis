@@ -6,6 +6,8 @@ import { ReactNode } from 'react';
  * @since 2020.03.31
  */
 export interface CardShowcaseComponentPropsInterface {
-    title: string;
+    desc?: string;
+    syntax: string;
+    title: ReactNode;
     children: ReactNode;
 }
