@@ -1,3 +1,11 @@
-export type DocumentRouterModuleType = 'common' | 'desktop' | 'mobile';
+export type DocumentRouterModuleType =
+    | 'common'
+    | 'desktop'
+    | 'mobile'
+    | 'general';
 
-export type DocumentComponentType = 'atomic' | 'molecules' | 'organism';
+export type DocumentComponentType =
+    | 'atomic'
+    | 'molecules'
+    | 'organism'
+    | 'style';

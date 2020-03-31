@@ -42,7 +42,8 @@ class StorybookDocumentationBuilder {
             const label = {
                 common: 'Common Component',
                 desktop: 'Desktop Component',
-                mobile: 'Mobile Component'
+                mobile: 'Mobile Component',
+                general: 'General Section'
             };
 
             return label[section];
@@ -62,7 +63,8 @@ class StorybookDocumentationBuilder {
             const label = {
                 atomic: 'Atomic Component',
                 molecules: 'Molecules Component',
-                organism: 'Organism Component'
+                organism: 'Organism Component',
+                style: 'styling'
             };
 
             return label[componentType];
@@ -151,8 +153,8 @@ class StorybookDocumentationBuilder {
                     componentName,
                     () => (
                         <DefaultTemplateDocsComponent
-                            componentName="Icon"
-                            description="Testing Icon Component"
+                            componentName={componentName}
+                            description={descriptionComponent}
                         >
                             {documentation}
                         </DefaultTemplateDocsComponent>

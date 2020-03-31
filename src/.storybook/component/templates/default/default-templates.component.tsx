@@ -27,8 +27,8 @@ const DefaultTemplateDocsComponent: SFC<DefaultTemplatePropsInterface> = ({
                     />
                 </div>
                 <div className="ui-default__heading__text">
-                    <h1>Dokumentasi Komponen</h1>
-                    <p>{`Berikut adalah penjelasan dokumentasi komponen ${componentName}`}</p>
+                    <h1>{`Dokumentasi ${componentName}`}</h1>
+                    <p>{`Berikut adalah penjelasan dokumentasi ${componentName}`}</p>
                 </div>
             </div>
             <div className="ui-default__content">
