@@ -6,6 +6,7 @@ import { IconPropsInterface } from './interface/component.interface';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
 import { ColorType } from '../../../shared/interface/common/color.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import ComponentHelper from '../../../shared/helper/component.helper';
 
 /**
  * Icon Component
@@ -19,13 +20,19 @@ const IconComponent: SFC<IconPropsInterface> = ({
     className,
     ...res
 }: IconPropsInterface) => {
-    const isUrbanindoIcon: boolean = /^uif-/.test(String(children));
-
+    const isUrbanindoIcon: boolean = ComponentHelper.isUrbanindoIcon(
+        String(children)
+    );
+    const isRumah123Icon: boolean = ComponentHelper.isRumah123Icon(
+        String(children)
+    );
+    const isVendorIcon: boolean = isUrbanindoIcon || isRumah123Icon;
     const name: ComponentClassnameDefaultInterface = {
         uif: isUrbanindoIcon,
+        'rui-icon': isRumah123Icon,
         'ui-atomic-icon': true,
-        [`${children}`]: isUrbanindoIcon,
-        'material-icons': !isUrbanindoIcon,
+        [`${children}`]: isVendorIcon,
+        'material-icons': !isVendorIcon,
         [`ui-atomic-icon--size-${size}`]: ValidatorHelper.isString(size),
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
@@ -42,7 +49,7 @@ const IconComponent: SFC<IconPropsInterface> = ({
                 : undefined,
             fontSize: ValidatorHelper.isNumber(size) ? `${size}px` : undefined
         },
-        children: isUrbanindoIcon ? undefined : children,
+        children: isVendorIcon ? undefined : children,
         ...res
     });
 };

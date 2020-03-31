@@ -163,6 +163,12 @@ module.exports = {
                 '@typescript-eslint/no-explicit-any': [2],
                 '@typescript-eslint/no-unused-vars': [2]
             }
+        },
+        {
+            files: ['*.stories.tsx'],
+            rules: {
+                '@typescript-eslint/no-var-requires': [0]
+            }
         }
     ]
 };

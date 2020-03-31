@@ -1,0 +1,61 @@
+/* stylelint-disable */
+
+@import '../../../../../style/import.scss';
+
+.ui-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: calc(100% + 20px);
+
+    @include margin(all, 0 -10px);
+}
+
+.ui-card-showcase {
+    height: auto;
+    height: 170px;
+    display: flex;
+    overflow: hidden;
+    max-width: 140px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(calc(100% / 8) - 20px);
+    flex: 0 0 calc(calc(100% / 8) - 20px);
+
+    @include rounded(5px);
+    @include margin(all, 10px);
+    @include padding(all, 0);
+    @include border(all, 1px, solid, heading400);
+    @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+    &__children {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100% - 60px);
+    }
+
+    &:hover {
+        @include box-shadow(elevate-sm);
+    }
+
+    .ui-text {
+        width: 100%;
+        height: 57px;
+        display: flex;
+        line-height: 18px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
+        @include margin(all, 0);
+        @include font-size(14px);
+        @include font-weight(500);
+        @include padding(all, 10px);
+        @include font-color(heading600);
+        @include background-color(heading100);
+        @include border-top(1px, dashed, heading400);
+    }
+}
