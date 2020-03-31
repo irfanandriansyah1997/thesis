@@ -2,6 +2,8 @@
 
 import { addParameters, configure } from '@storybook/react';
 
+import '../style/app.scss';
+
 const req = require.context('../', true, /.stories.tsx$/);
 
 /**

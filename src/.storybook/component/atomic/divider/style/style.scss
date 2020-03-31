@@ -1,0 +1,9 @@
+/* stylelint-disable */
+
+@import '../../../../../style/import.scss';
+
+.ui-default {
+    hr.ui-divider {
+        @include margin(all, 30px 0);
+    }
+}

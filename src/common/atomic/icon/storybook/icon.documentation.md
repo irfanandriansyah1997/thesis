@@ -1,29 +1,37 @@
 # Icon Component
 
-Dalam icon component anda dapat memilih salah satu dari 2 icon yaitu [Material Icon](https://material.io/icons/) atau [Urbanindo Icon](https://s3.amazonaws.com/public.urbanindo.com/fonts/UrbanIndoIcons-20170831060809/index.html)
+Dalam icon component anda dapat memilih salah satu dari 2 icon yaitu [Material Icon](https://material.io/icons/), Rumah123 Icon atau [Urbanindo Icon](https://s3.amazonaws.com/public.urbanindo.com/fonts/UrbanIndoIcons-20170831060809/index.html)
 
 ## Cara Penggunaan
 berikut adalah cara penggunaan icon component
 
-```jsx
-// Import Component
-import Icon from 'icon.component.js'
+### Import Component
 
-// Implementasi di method render
+```jsx
+import IconComponent from '@99/component-ninetynine/lib/common/atomic/icon/icon.component'
+```
+
+### Implementasi Pada Method Render Component
+```jsx
 return (
-    <Icon
-      color="#69acec"
-      size="20px"
+    <IconComponent
+      color="primary"
+      size="default"
   >
       edit
-  </Icon>
+  </IconComponent>
 )
 ```
 
 ## Props
-berikut adalah dokumentasi props component
+berikut adalah beberapa props yang tersedia pada icon component
 
-| Props | PropTypes | Default | Deskripsi |
-|-------|-----------|---------|-----------|
-|color|String / Number|`#3e4246`|Anda dapat menggubah warna  secara spesifik. Bisa menggunakan warna css `(#033 atau rgba(255, 0, 0, 0.5))`.|
-|size|String / Number|`default`|Anda dapat mengatur ukuran font size di icon.|
+| Props | PropTypes | Required | Default | Deskripsi |
+|:-------|:-----------:|:---------:|-----------|-----------|
+|color|`Pallete Warna`| ✅|-|Anda dapat menggubah warna  secara spesifik. Bisa menggunakan warna css `(#033 atau rgba(255, 0, 0, 0.5))`.|
+|size|`number / "big" / "default" / "small"`| ✅|-|Anda dapat mengatur ukuran font size di icon.|
+|children|`string warna`| ✅|-| Icon yang tersedia di material icon, urbanindo icon dan rumah123 icon|
+
+
+## Notes
+- untuk warna anda dapat mengacu pada file [color.constant.ts](https://github.com/urbanindo/style-guide/blob/master/src/shared/constant/color.constant.ts)

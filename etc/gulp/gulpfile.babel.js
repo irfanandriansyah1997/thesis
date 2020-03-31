@@ -33,9 +33,20 @@ class GulpModule {
     }
 }
 
-task('sass-common', () => GulpModule.generateSCSS('common', '../../src/common/**/*.scss'));
-task('sass-mobile', () => GulpModule.generateSCSS('mobile', '../../src/mobile/**/*.scss'));
-task('sass-desktop', () => GulpModule.generateSCSS('desktop', '../../src/desktop/**/*.scss'));
-task('sass-etc', () => GulpModule.generateSCSS('all', '../../src/style/app.scss'));
+task('sass-common', () =>
+    GulpModule.generateSCSS('common', '../../src/common/**/style.scss')
+);
+task('sass-mobile', () =>
+    GulpModule.generateSCSS('mobile', '../../src/mobile/**/style.scss')
+);
+task('sass-desktop', () =>
+    GulpModule.generateSCSS('desktop', '../../src/desktop/**/style.scss')
+);
+task('sass-etc', () =>
+    GulpModule.generateSCSS('all', '../../src/style/app.scss')
+);
 
-task('default', series('sass-common', 'sass-mobile', 'sass-desktop', 'sass-etc'));
+task(
+    'default',
+    series('sass-common', 'sass-mobile', 'sass-desktop', 'sass-etc')
+);
