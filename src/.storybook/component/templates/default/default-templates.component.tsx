@@ -34,7 +34,7 @@ const DefaultTemplateDocsComponent: SFC<DefaultTemplatePropsInterface> = ({
             <div className="ui-default__content">
                 <div className="ui-default__content__heading">
                     <HeadingDocsComponent parent>
-                        {`${componentName} Komponen`}
+                        {`${componentName}`}
                     </HeadingDocsComponent>
                     <TextDocsComponent>{description}</TextDocsComponent>
                 </div>

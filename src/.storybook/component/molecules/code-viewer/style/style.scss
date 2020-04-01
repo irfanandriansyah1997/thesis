@@ -184,22 +184,29 @@ hue-6-2: #c18401
 
     &__source-code {
         position: relative;
+        min-height: 30px;
 
         &__bar {
             position: absolute;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             width: 100%;
             height: 30px;
             top: 0;
             left: 0;
 
-            @include padding(all, 0 20px);
+            @include padding(all, 0);
             @include background-color(rgba(#000, 0.025));
 
+            p {
+                position: absolute;
+                left: 20px;
+            }
+
             p,
-            #{$c}__copy {
+            #{$c}__copy,
+            #{$c}__hide {
                 display: flex;
                 align-items: center;
 
@@ -215,7 +222,8 @@ hue-6-2: #c18401
                 );
             }
 
-            #{$c}__copy {
+            #{$c}__copy,
+            #{$c}__hide {
                 @include padding(all, 5px);
                 @include rounded(5px);
                 @include background-color(transparent);
@@ -224,7 +232,6 @@ hue-6-2: #c18401
                 cursor: pointer;
                 right: 0;
                 overflow: hidden;
-                position: absolute;
 
                 i {
                     @include margin-right(5px);

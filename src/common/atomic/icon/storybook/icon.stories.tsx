@@ -1,6 +1,6 @@
 import React from 'react';
 
-import R123Icon from './rumah123-icon.stories';
+import IconR123DocsTemplate from './template-rumah123-icon.stories';
 import IconComponent from '../icon.component';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
@@ -14,7 +14,7 @@ import '../style/style.scss';
 const IconDocumentation = require('./icon.documentation.md');
 
 ((): void => {
-    new StorybookDocumentationBuilder('Icon Component', 'atomic')
+    new StorybookDocumentationBuilder('Icon Komponen', 'atomic')
         .setSection('common')
         .setDescriptionComponent(
             'Icon komponen digunakan untuk memanggil icon pada material icon / urbanindo / rumah123 icon font'
@@ -73,7 +73,7 @@ const IconDocumentation = require('./icon.documentation.md');
                         123
                     </TextDocsComponent>
                     <div className="ui-showcase">
-                        {R123Icon.map((item) => (
+                        {IconR123DocsTemplate.map((item) => (
                             <CardShowcaseDocsComponent
                                 key={item}
                                 title={item.replace('rui-icon-', '')}

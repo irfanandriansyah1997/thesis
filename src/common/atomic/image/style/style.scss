@@ -1,0 +1,35 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-image {
+    height: auto;
+    position: relative;
+    width: auto;
+
+    @include rounded(0);
+
+    &--type {
+        &-circle {
+            @include rounded(50%);
+        }
+
+        &-rounded {
+            @include rounded(5px);
+        }
+
+        &-rounded-bottom {
+            @include rounded(0 0 5px 5px);
+        }
+
+        &-rounded-left {
+            @include rounded(5px 0 0 5px);
+        }
+
+        &-rounded-top {
+            @include rounded(5px 5px 0 0);
+        }
+
+        &-rounded-right {
+            @include rounded(0 5px 5px 0);
+        }
+    }
+}

@@ -17,7 +17,7 @@ import CardShowcaseDocsComponent from '../../.storybook/component/atomic/card-sh
                         <CardShowcaseDocsComponent
                             key={item}
                             title={item}
-                            desc="pallete warna"
+                            desc={ColorDefaultConstant[item]}
                             syntax={item}
                         >
                             <div

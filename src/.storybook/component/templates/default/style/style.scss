@@ -32,8 +32,9 @@ body {
 
     &__heading {
         display: flex;
-        height: 250px;
+        height: 300px;
         width: 100%;
+        align-items: flex-start;
         background-repeat: repeat-x;
         background-image: -webkit-linear-gradient(
             39deg,
@@ -98,11 +99,11 @@ body {
     }
 
     &__content {
-        width: calc(100% - 100px);
+        width: calc(100% - 150px);
         min-height: 300px;
         overflow: hidden;
 
-        @include margin-top(-60px);
+        @include margin-top(-110px);
         @include rounded(5px);
         @include background-color(white);
         @include padding(all, 30px);

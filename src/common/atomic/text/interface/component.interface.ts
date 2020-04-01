@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
 import { TextAlignProperty } from 'csstype';
+
 import { ComponentTextTag } from '../../../../shared/interface/component/component-tag.interface';
 import {
     ComponentStylingTypography,
