@@ -11,7 +11,7 @@ import CardShowcaseDocsComponent from '../../../../.storybook/component/atomic/c
 
 import '../style/style.scss';
 
-const IconDocumentation = require('./icon.documentation.md');
+const IconDocumentation = require('./markdown/icon.documentation.md');
 
 ((): void => {
     new StorybookDocumentationBuilder('Icon Komponen', 'atomic')

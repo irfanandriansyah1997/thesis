@@ -40,9 +40,9 @@ class StorybookDocumentationBuilder {
 
         if (section) {
             const label = {
-                common: 'Common Component',
-                desktop: 'Desktop Component',
-                mobile: 'Mobile Component',
+                common: 'Common Komponen',
+                desktop: 'Desktop Komponen',
+                mobile: 'Mobile Komponen',
                 general: 'General Section'
             };
 
@@ -61,9 +61,9 @@ class StorybookDocumentationBuilder {
 
         if (componentType) {
             const label = {
-                atomic: 'Atomic Component',
-                molecules: 'Molecules Component',
-                organism: 'Organism Component',
+                atomic: 'Atomic Komponen',
+                molecules: 'Molecules Komponen',
+                organism: 'Organism Komponen',
                 style: 'styling'
             };
 

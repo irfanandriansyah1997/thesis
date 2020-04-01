@@ -1,27 +1,22 @@
 import React from 'react';
 
-import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
-import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
+import SectionDefaultImageComponent from './section/section-default.stories';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 
 import '../style/style.scss';
+
+const ImageDocumentation = require('./markdown/image.documentation.md');
 
 ((): void => {
     new StorybookDocumentationBuilder('Image Komponen', 'atomic')
         .setSection('common')
         .setDescriptionComponent(
-            'Image Component digunakan apabila anda akan membuat component gambar'
+            'Image komponen digunakan apabila anda akan membuat komponen gambar'
         )
+        .setMarkdownFile(ImageDocumentation)
         .registerDocumentation(
             <>
-                <>
-                    <HeadingDocsComponent>
-                        Penggunaan Komponen Image
-                    </HeadingDocsComponent>
-                    <TextDocsComponent>
-                        Berikut adalah contoh penggunaan komponent image
-                    </TextDocsComponent>
-                </>
+                <SectionDefaultImageComponent />
             </>
         )
         .execute();

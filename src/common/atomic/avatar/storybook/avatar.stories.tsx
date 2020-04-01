@@ -12,6 +12,8 @@ import CardShowcaseDocsComponent from '../../../../.storybook/component/atomic/c
 
 import '../../image/style/style.scss';
 
+const AvatarDocumentation = require('./markdown/avatar.documentation.md');
+
 /**
  * Generate Docs
  * @param {string} type - type image
@@ -30,8 +32,9 @@ const docs = (props: AvatarPropsInterface): string =>
     new StorybookDocumentationBuilder('Avatar Komponen', 'atomic')
         .setSection('common')
         .setDescriptionComponent(
-            'Avatar Component digunakan apabila anda akan membuat component gambar berisi photo akun tersebut'
+            'Avatar Komponen digunakan apabila anda akan membuat component gambar berisi photo akun tersebut'
         )
+        .setMarkdownFile(AvatarDocumentation)
         .registerDocumentation(
             <>
                 <>
@@ -53,7 +56,7 @@ const docs = (props: AvatarPropsInterface): string =>
                             .join('\n\n')}
                     >
                         <div className="flex">
-                            {AvatarDocsTemplate.slice(0, 2).map(
+                            {AvatarDocsTemplate.map(
                                 (item: AvatarPropsInterface) => (
                                     <div key={item.src} style={{ margin: 10 }}>
                                         <AvatarComponent

@@ -13,9 +13,9 @@ export type ComponentImageDefaultPropsInterface = Omit<
 > & {
     src: string;
     alt: string;
+    type?: ComponentImageType;
+    objectFit?: ObjectFitProperty;
     overflow?: ComponentImageOverflowType;
-    objectFit: ObjectFitProperty;
-    type: ComponentImageType | undefined;
 };
 
 /**

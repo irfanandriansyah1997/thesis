@@ -197,22 +197,18 @@ Apabila anda ingin membuat component maka berikut hal yang anda harus ikuti adal
       |   ├── templates
       |   |    ├── template-(nama template1).stories.tsx
       |   |    └── template-(nama template2).stories.tsx
-      |   |
       |   ├── section
       |   |    ├── section-(nama section1).stories.tsx
       |   |    └── section-(nama section2).stories.tsx
-      |   |
+      |   ├── markdown
+      |   |    └── (nama-component).documentation.md
       |   └── (nama component).stories.tsx
-      |
       ├── interface
       |   └── component.interface.ts
-      |
       ├── style
       |   └── style.scss
-      |
       ├── test
       |   └── (nama-component).spec.tsx
-      |
       └── (nama component).component.tsx
   ```
   | Nama File        | Direktori           | Fungsi           |
@@ -220,6 +216,7 @@ Apabila anda ingin membuat component maka berikut hal yang anda harus ikuti adal
   | (nama component).stories.tsx | `storybook` | File ini dibuat dengan tujuan untuk dokumentasi component tersebut. |
   | template-(nama template).stories.tsx | `storybook/template` | File ini dibuat dengan tujuan untuk membuat mock file yang berisi array yang digunakan pada storybook file maupun section |
   | section-(nama section).stories.tsx | `storybook/section` | File ini dibuat dengan tujuan untuk menjelaskan beberapa section berupa props maupun lainya |
+  | (nama-component).documentation.md | `storybook/markdown` | File ini dibuat dengan tujuan untuk membuat informasi berupa tabel props dan cara implementasi component tersebut |
   | component.interface.ts | `interface` | Interface yang akan digunakan pada component tersebut. |
   | style.scss | `style` | SCSS file component tersebut. |
   | (nama-component)).spec.tsx | `test` | unit test file component tersebut. |
