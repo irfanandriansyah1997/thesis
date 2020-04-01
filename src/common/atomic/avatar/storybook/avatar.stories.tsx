@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AvatarComponent from '../avatar.component';
-import AvatarDocsTemplate from './template-avatar.stories';
+import AvatarDocsTemplate from './template/template-avatar.stories';
 import { AvatarPropsInterface } from '../interface/component.interface';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
