@@ -5,7 +5,6 @@ import HeadingDocsComponent from '../../../../.storybook/component/atomic/headin
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 
 import '../style/style.scss';
-// import { ComponentImageDefaultPropsInterface } from '../../../../shared/interface/component/component-image.inteface';
 
 ((): void => {
     new StorybookDocumentationBuilder('Image Komponen', 'atomic')
