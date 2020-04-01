@@ -41,7 +41,7 @@ class ComponentHelper extends LogHelperAbstract {
             }
         }
 
-        return 'iniital';
+        return 'initial';
     }
 }
 

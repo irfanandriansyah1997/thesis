@@ -165,6 +165,12 @@ module.exports = {
             }
         },
         {
+            files: ['fixture-*.spec.ts', 'fixture-*.spec.tsx'],
+            rules: {
+                '@typescript-eslint/no-empty-function': [0]
+            }
+        },
+        {
             files: ['*.stories.tsx'],
             rules: {
                 '@typescript-eslint/no-var-requires': [0]

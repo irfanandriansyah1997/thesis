@@ -42,4 +42,12 @@ describe('Testing Component Helper', () => {
             expect(global.console.error).toHaveBeenCalledTimes(1);
         }
     });
+
+    it('testing method registerAttributeStyle working properly', () => {
+        expect(ComponentHelper.registerAttributeStyle(10)).toBe('10px');
+        expect(ComponentHelper.registerAttributeStyle('auto')).toBe('auto');
+        expect(ComponentHelper.registerAttributeStyle(undefined)).toBe(
+            'initial'
+        );
+    });
 });
