@@ -23,8 +23,8 @@ const ImageComponent: SFC<ComponentImageDefaultPropsInterface> = ({
     ...res
 }: ComponentImageDefaultPropsInterface) => {
     const style: CSSProperties = {
+        overflow,
         objectFit,
-        overflow: overflow || 'initial',
         width: ComponentHelper.registerAttributeStyle(width),
         height: ComponentHelper.registerAttributeStyle(height)
     };

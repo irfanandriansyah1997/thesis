@@ -1,4 +1,4 @@
-import { AvatarPropsInterface } from '../interface/component.interface';
+import { AvatarPropsInterface } from '../../interface/component.interface';
 
 const AvatarDocsTemplate: AvatarPropsInterface[] = [
     {

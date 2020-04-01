@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AvatarComponent from '../avatar.component';
-import AvatarDocsTemplate from './template-avatar.stories';
+import AvatarDocsTemplate from './template/template-avatar.stories';
 import { AvatarPropsInterface } from '../interface/component.interface';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
@@ -11,6 +11,8 @@ import CodingViewerDocsComponent from '../../../../.storybook/component/molecule
 import CardShowcaseDocsComponent from '../../../../.storybook/component/atomic/card-showcase/card-showcase.component';
 
 import '../../image/style/style.scss';
+
+const AvatarDocumentation = require('./markdown/avatar.documentation.md');
 
 /**
  * Generate Docs
@@ -30,8 +32,9 @@ const docs = (props: AvatarPropsInterface): string =>
     new StorybookDocumentationBuilder('Avatar Komponen', 'atomic')
         .setSection('common')
         .setDescriptionComponent(
-            'Avatar Component digunakan apabila anda akan membuat component gambar berisi photo akun tersebut'
+            'Avatar Komponen digunakan apabila anda akan membuat component gambar berisi photo akun tersebut'
         )
+        .setMarkdownFile(AvatarDocumentation)
         .registerDocumentation(
             <>
                 <>
@@ -53,7 +56,7 @@ const docs = (props: AvatarPropsInterface): string =>
                             .join('\n\n')}
                     >
                         <div className="flex">
-                            {AvatarDocsTemplate.slice(0, 2).map(
+                            {AvatarDocsTemplate.map(
                                 (item: AvatarPropsInterface) => (
                                     <div key={item.src} style={{ margin: 10 }}>
                                         <AvatarComponent

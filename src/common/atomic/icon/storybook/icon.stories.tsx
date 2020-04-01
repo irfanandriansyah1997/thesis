@@ -1,7 +1,7 @@
 import React from 'react';
 
-import IconR123DocsTemplate from './template-rumah123-icon.stories';
 import IconComponent from '../icon.component';
+import IconR123DocsTemplate from './template/template-rumah123-icon.stories';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
@@ -11,7 +11,7 @@ import CardShowcaseDocsComponent from '../../../../.storybook/component/atomic/c
 
 import '../style/style.scss';
 
-const IconDocumentation = require('./icon.documentation.md');
+const IconDocumentation = require('./markdown/icon.documentation.md');
 
 ((): void => {
     new StorybookDocumentationBuilder('Icon Komponen', 'atomic')
