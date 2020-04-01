@@ -28,8 +28,8 @@ npm install --save component-ninetynine@<version-library>
 * ### node js 12+
     node js yang digunakan minimal menggunakan versi 12 keatas
 
-* ### webpack
-    webpack digunakan untuk melakukan build asset untuk dokumentasi dihalaman github pages
+* ### storybook
+    storybook digunakan untuk melakukan build asset dan showcase dokumentasi dihalaman github pages
 
 * ### gulp
     gulp digunakan untuk melakukan build asset styling berupa file css
@@ -70,6 +70,8 @@ Jika anda ingin membuat suatu modules / file maka anda dapat mengacu pada aturan
 | Config File | `config-name.config.ts`      |`-` |
 | Constant File | `constant-name.const.ts`      |`-` |
 | Documentation TSX Component | `component-name.stories.tsx`      | `-` |
+| Template Documentation | `template-name.stories.tsx`      | `-` |
+| Section Documentation | `section-name.stories.tsx`      | `-` |
 | Helper Library | `helper-name.helper.ts`      |`<nama-file>Helper` |
 | Interface      | `file-name.interface.ts`      |`<nama-file>Interface` |
 | React Context File | `context-name.context.ts`      |`<nama-file>Context` |
@@ -192,18 +194,35 @@ Apabila anda ingin membuat component maka berikut hal yang anda harus ikuti adal
   ```
   └── (nama component)
       ├── storybook
+      |   ├── templates
+      |   |    ├── template-(nama template1).stories.tsx
+      |   |    └── template-(nama template2).stories.tsx
+      |   |
+      |   ├── section
+      |   |    ├── section-(nama section1).stories.tsx
+      |   |    └── section-(nama section2).stories.tsx
+      |   |
       |   └── (nama component).stories.tsx
+      |
       ├── interface
       |   └── component.interface.ts
+      |
       ├── style
       |   └── style.scss
+      |
+      ├── test
+      |   └── (nama-component).spec.tsx
+      |
       └── (nama component).component.tsx
   ```
   | Nama File        | Direktori           | Fungsi           |
   | ------------- |:-------------|:-------------|
   | (nama component).stories.tsx | `storybook` | File ini dibuat dengan tujuan untuk dokumentasi component tersebut. |
+  | template-(nama template).stories.tsx | `storybook/template` | File ini dibuat dengan tujuan untuk membuat mock file yang berisi array yang digunakan pada storybook file maupun section |
+  | section-(nama section).stories.tsx | `storybook/section` | File ini dibuat dengan tujuan untuk menjelaskan beberapa section berupa props maupun lainya |
   | component.interface.ts | `interface` | Interface yang akan digunakan pada component tersebut. |
   | style.scss | `style` | SCSS file component tersebut. |
+  | (nama-component)).spec.tsx | `test` | unit test file component tersebut. |
 
 - Daftarkan file component yang telah anda buat pada `etc/rollup/constant` entah common, desktop atau mobile component.
 - Jika anda ingin mendaftarkan component anda pada dokumentasi yang telah tersedia maka anda hanya membuat file `<nama-component>.stories.tsx` pada folder storybook.
