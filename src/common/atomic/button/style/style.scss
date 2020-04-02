@@ -1,1 +1,66 @@
 @import '../../../../style/import.scss';
+@import '../../../../style/variable/component.variable.scss';
+@use 'sass:map';
+
+button {
+    @include margin-right(map-get($width-general, 2));
+}
+
+.ui-atomic-button {
+    height: map-get($height-general, 8);
+    @include padding-left(map-get($width-general, 4));
+    @include padding-right(map-get($width-general, 4));
+    @include no-background();
+    @include font-size(map-get($font-size-general, sm));
+    @include rounded(map-get($width-general, 1));
+    @include no-border();
+    @include font-weight(500);
+    white-space: nowrap;
+    text-align: center;
+    outline: 0;
+    display: inline-flex;
+    align-items: center;
+    line-height: inherit;
+}
+
+.ui-atomic-button--theme-primary {
+    @extend .ui-atomic-button;
+    @include background-color(#2980B9);
+    @include font-color(#ffffff);
+}
+
+.ui-atomic-button--theme-secondary {
+    @extend .ui-atomic-button;
+    @include border(all, 1px, solid, #2980B9);
+    @include font-color(#2980B9);
+}
+
+.ui-atomic-button--theme-success {
+    @extend .ui-atomic-button;
+    @include background-color(#28a745);
+    @include font-color(#ffffff);
+}
+
+.ui-atomic-button--theme-warning {
+    @extend .ui-atomic-button;
+    @include background-color(#ffc107);
+    @include font-color(#212529);
+}
+
+.ui-atomic-button--theme-danger {
+    @extend .ui-atomic-button;
+    @include background-color(#dc3545);
+    @include font-color(#ffffff);
+}
+
+.ui-atomic-button--theme-info {
+    @extend .ui-atomic-button;
+    @include background-color(#17a2b8);
+    @include font-color(#ffffff);
+}
+
+.ui-atomic-button--size-big {
+    @extend .ui-atomic-button;
+    height: map-get($height-general, 10);
+    @include font-size(map-get($font-size-general, base));
+}
