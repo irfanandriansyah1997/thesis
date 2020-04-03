@@ -4,7 +4,6 @@ import { ButtonPropsInterface } from './interface/component.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
-import './style/style.scss';
 
 /**
  * Button Component
