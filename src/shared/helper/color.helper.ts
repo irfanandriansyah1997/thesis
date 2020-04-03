@@ -34,7 +34,7 @@ class ColorHelper extends LogHelperAbstract {
      * @return {string}
      */
     static hexToRgba(hex: string, alpha: number): string {
-        let color;
+        let color: any;
         if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
             color = hex.substring(1).split('');
 

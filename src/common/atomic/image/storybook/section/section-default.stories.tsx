@@ -1,11 +1,11 @@
 import React, { SFC } from 'react';
 
+import ImageComponent from '../../image.component';
 import { ImageDefaultDocsTemplate } from '../template/template-image.stories';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
-import { ComponentImageDefaultPropsInterface } from '../../../../../shared/interface/component/component-image.inteface';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
-import ImageComponent from '../../image.component';
+import { ComponentImageDefaultPropsInterface } from '../../../../../shared/interface/component/component-image.inteface';
 
 /**
  * Generate Docs
@@ -35,13 +35,12 @@ const SectionDefaultImageComponent: SFC = () => (
             Berikut adalah contoh penggunaan komponent image
         </TextDocsComponent>
         <CodingViewerDocsComponent
-            sourceCode={ImageDefaultDocsTemplate.slice(0, 2)
-                .map((item: ComponentImageDefaultPropsInterface): string =>
+            sourceCode={ImageDefaultDocsTemplate.map(
+                (item: ComponentImageDefaultPropsInterface): string =>
                     docs({
                         ...item
                     })
-                )
-                .join('\n\n')}
+            ).join('\n\n')}
         >
             <div className="flex">
                 {ImageDefaultDocsTemplate.map(
