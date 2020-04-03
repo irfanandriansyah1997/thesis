@@ -10,7 +10,7 @@ const ColorDefaultConstant = {
     milkwhite: '#f3f7f8',
     primary: '#216bff',
     secondary: '#ff72b6',
-    heading: '#222b45',
+    heading: '#333f48',
     text: '#8f9bb3',
     success: '#50bf31',
     info: '#39a0f9',
@@ -73,7 +73,12 @@ const ColorDefaultConstant = {
     heading700: '#2e3a59',
     heading900: '#192038',
     heading1000: '#151a30',
-    heading1100: '#101426'
+    heading1100: '#101426',
+    // R123 Color
+    actionR123: '#c20014',
+    featuredR123: '#00beb3',
+    newPropertyR123: '#ff4f00',
+    premiumR123: '#ffb200'
 } as const;
 
 export default ColorDefaultConstant;

@@ -1,12 +1,14 @@
-import { SFC, createElement } from 'react';
+import PropTypes from 'prop-types';
+import { SFC, createElement, Validator } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { IconPropsInterface } from './interface/component.interface';
+import ComponentHelper from '../../../shared/helper/component.helper';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
 import { ColorType } from '../../../shared/interface/common/color.interface';
+import { ComponentDefaultSize } from '../../../shared/interface/component/component-size.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
-import ComponentHelper from '../../../shared/helper/component.helper';
 
 /**
  * Icon Component
@@ -52,6 +54,15 @@ const IconComponent: SFC<IconPropsInterface> = ({
         children: isVendorIcon ? undefined : children,
         ...res
     });
+};
+
+IconComponent.propTypes = {
+    color: PropTypes.oneOf(Object.keys(ColorDefaultConstant))
+        .isRequired as Validator<ColorType>,
+    size: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf<ComponentDefaultSize>(['big', 'default', 'small'])
+    ]).isRequired
 };
 
 export default IconComponent;
