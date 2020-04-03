@@ -1,15 +1,37 @@
-import React from 'react';
+import React, { SFC } from 'react';
 
 import ButtonComponent from '../button.component';
+import IconComponent from '../../icon/icon.component';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
+import { ButtonPropsInterface } from '../interface/component.interface';
+import { ButtonDefaultDocsTemplate } from './template/template-button.stories';
 
 import '../style/style.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const ButtonDocumentation = require('./button.documentation.md');
+const ButtonDocumentation = require('./markdown/button.documentation.md');
+
+/**
+ * Generate Docs
+ * @param {string} type - type props image
+ * @return {string}
+ */
+const docs = (props: ButtonPropsInterface): string =>
+    `<ButtonComponent size="${props.size} "theme="${props.theme}">Outline</ButtonComponent>
+`;
+
+/**
+ * Create Icon
+ * @return {string}
+ */
+const Icon: SFC = () => (
+    <IconComponent color="primary" size={18}>
+        close
+    </IconComponent>
+);
 
 ((): void => {
     new StorybookDocumentationBuilder('Button Component', 'atomic')
@@ -60,13 +82,18 @@ const ButtonDocumentation = require('./button.documentation.md');
                     </ButtonComponent>
                 </CodingViewerDocsComponent>
                 <CodingViewerDocsComponent
-                    sourceCode={`${"<ButtonComponent theme='secondary' icon={<IconComponent />}>Close</ButtonComponent>"}`}
+                    sourceCode={ButtonDefaultDocsTemplate.map(
+                        (item: ButtonPropsInterface): string =>
+                            docs({
+                                ...item
+                            })
+                    ).join('\n\n')}
                 >
                     <ButtonComponent
                         outline
                         size="default"
                         theme="secondary"
-                        icon="close"
+                        icon={<Icon />}
                     >
                         Close
                     </ButtonComponent>
