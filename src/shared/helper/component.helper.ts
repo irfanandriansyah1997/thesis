@@ -1,5 +1,5 @@
-import ValidatorHelper from './validator.helper';
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
+import ValidatorHelper from './validator.helper';
 
 /**
  * Component Helper
