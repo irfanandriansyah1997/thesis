@@ -3,7 +3,6 @@ import { render } from 'enzyme';
 
 import IconComponent from '../icon.component';
 import ColorDefaultConstant from '../../../../shared/constant/color.constant';
-import { ColorType } from '../../../../shared/interface/common/color.interface';
 
 describe('Testing icon component in atomic component ', () => {
     it('Test render icon material component', () => {
@@ -67,18 +66,5 @@ describe('Testing icon component in atomic component ', () => {
             'color',
             ColorDefaultConstant.primary
         );
-    });
-
-    it('Test render icon with wrong color', () => {
-        const icon = render(
-            <IconComponent
-                color={('info100a' as unknown) as ColorType}
-                size="default"
-            >
-                uif-prospek-harga
-            </IconComponent>
-        );
-
-        expect(icon.prop('style')).toHaveProperty('color', undefined);
     });
 });

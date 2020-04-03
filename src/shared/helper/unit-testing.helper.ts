@@ -16,15 +16,11 @@ class UnitTestingHelper extends LogHelperAbstract {
         param: UnitTestingFixtureInterface<x, y>,
         fn: (input: x, output: y) => void
     ): void {
-        try {
-            const { input, output } = param;
+        const { input, output } = param;
 
-            input.forEach((item: x, index: number): void => {
-                fn(item, output[index]);
-            });
-        } catch (e) {
-            UnitTestingHelper.logError(e);
-        }
+        input.forEach((item: x, index: number): void => {
+            fn(item, output[index]);
+        });
     }
 }
 

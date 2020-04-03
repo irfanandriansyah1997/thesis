@@ -34,33 +34,4 @@ describe('Unit Testing Helper', () => {
             }
         );
     });
-
-    it('Testing running method fixture with throw error', () => {
-        try {
-            UnitTestingHelper.fixture<
-                Record<string, unknown>,
-                Record<string, unknown>
-            >(
-                {
-                    input: [
-                        {
-                            name: 1
-                        }
-                    ],
-                    output: [
-                        {
-                            name: 1
-                        }
-                    ]
-                },
-                (): void => {
-                    throw new Error('error example');
-                }
-            );
-        } catch (e) {
-            expect(e.message).toBe('error example');
-
-            expect(global.console.error).toHaveBeenCalledTimes(1);
-        }
-    });
 });
