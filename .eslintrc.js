@@ -71,6 +71,7 @@ module.exports = {
             }
         ],
         indent: [2, 4],
+        'no-bitwise': [0],
         'no-console': [2, { allow: ['debug', 'error'] }],
         'react/display-name': [0],
         'react/button-has-type': [0],
@@ -173,6 +174,8 @@ module.exports = {
         {
             files: ['*.stories.tsx'],
             rules: {
+                'import/no-extraneous-dependencies': [0],
+                'import/prefer-default-export': [0],
                 '@typescript-eslint/no-var-requires': [0]
             }
         }
