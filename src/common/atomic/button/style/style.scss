@@ -21,37 +21,82 @@
     &--theme {
         &-primary {
             @include background-color(map-get($color-general, primary));
-            @include font-color(map-get($color-general, white));
+
+            .ui-atomic-button--children {
+                @include font-color(map-get($color-general, white));
+            }
+
+            &:hover {
+                @include background-color(
+                    map-get($color-general, hoverPrimary)
+                );
+                border-color: map-get($color-general, hoverPrimary);
+            }
         }
 
         &-secondary {
+            @include background-color(map-get($color-general, secondary));
             @include border(
                 all,
                 1px,
                 solid,
-                map-get($color-general, secondary)
+                map-get($color-general, borderSecondary)
             );
-            @include font-color(map-get($color-general, secondary));
+            @include font-color(map-get($color-general, black));
+
+            &:hover {
+                @include background-color(
+                    map-get($color-general, hoverSecondary)
+                );
+            }
         }
 
         &-success {
             @include background-color(map-get($color-general, success));
-            @include font-color(map-get($color-general, white));
+
+            .ui-atomic-button--children {
+                @include font-color(map-get($color-general, white));
+            }
+
+            &:hover {
+                background: darken(map-get($color-general, success), 10%);
+            }
         }
 
         &-warning {
             @include background-color(map-get($color-general, warning));
-            @include font-color(map-get($color-general, warning900));
+
+            .ui-atomic-button--children {
+                @include font-color(map-get($color-general, warning900));
+            }
+
+            &:hover {
+                background: darken(map-get($color-general, warning), 10%);
+            }
         }
 
         &-danger {
             @include background-color(map-get($color-general, danger));
-            @include font-color(map-get($color-general, white));
+
+            .ui-atomic-button--children {
+                @include font-color(map-get($color-general, white));
+            }
+
+            &:hover {
+                @include background-color(map-get($color-general, hoverDanger));
+            }
         }
 
         &-info {
             @include background-color(map-get($color-general, info));
-            @include font-color(map-get($color-general, white));
+
+            .ui-atomic-button--children {
+                @include font-color(map-get($color-general, white));
+            }
+
+            &:hover {
+                background: darken(map-get($color-general, info), 10%);
+            }
         }
     }
 
@@ -60,5 +105,32 @@
             height: map-get($height-general, 10);
             @include font-size(map-get($font-size-general, base));
         }
+    }
+
+    &--outline {
+        @include no-background();
+        @include border(all, 1px, solid, map-get($color-general, primary));
+
+        .ui-atomic-button--children {
+            @include font-color(map-get($color-general, primary));
+        }
+
+        &:hover {
+            @include no-background();
+            @include border(
+                all,
+                1px,
+                solid,
+                map-get($color-general, hoverOutline)
+            );
+
+            .ui-atomic-button--children {
+                @include font-color(map-get($color-general, hoverOutline));
+            }
+        }
+    }
+
+    &__icon {
+        @include margin-right(map-get($width-general, 1));
     }
 }

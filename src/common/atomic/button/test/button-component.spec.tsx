@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { SFC } from 'react';
 import { render } from 'enzyme';
 
 import UnitTestingHelper from '../../../../shared/helper/unit-testing.helper';
 import ButtonComponent from '../button.component';
+import IconComponent from '../../icon/icon.component';
 import { ButtonPropsInterface } from '../interface/component.interface';
 import FixtureButton from './fixture-button-component.spec';
 
@@ -28,7 +29,7 @@ describe('Testing button component in atomic component ', () => {
         expect(button.hasClass('ui-atomic-button--theme-primary')).toBe(true);
     });
 
-    it('Testing button with fixture', () => {
+    it('Should render button with fixture', () => {
         UnitTestingHelper.fixture<ButtonPropsInterface, ButtonPropsInterface>(
             FixtureButton,
             (
@@ -45,6 +46,25 @@ describe('Testing button component in atomic component ', () => {
                 ).toBe(true);
                 expect(button).toHaveProperty('children');
             }
+        );
+    });
+
+    it('Should render button with icon', () => {
+        // eslint-disable-next-line require-jsdoc-except/require-jsdoc
+        const Icon: SFC = () => (
+            <IconComponent color="primary" size={18}>
+                close
+            </IconComponent>
+        );
+
+        const button = render(
+            <ButtonComponent size="default" theme="primary" icon={<Icon />}>
+                Close
+            </ButtonComponent>
+        );
+
+        expect(button.find('span').hasClass('ui-atomic-button__icon')).toBe(
+            true
         );
     });
 });
