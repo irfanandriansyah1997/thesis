@@ -10,7 +10,7 @@ import { ComponentDefaultTheme } from '../../../../shared/interface/component/co
  */
 export interface LinkDefaultPropsInterface {
     size: ComponentDefaultSize;
-    theme: ComponentDefaultTheme;
+    theme?: ComponentDefaultTheme;
     outline?: boolean;
     icon?: ReactNode;
 }

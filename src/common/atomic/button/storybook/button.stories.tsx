@@ -20,7 +20,7 @@ const ButtonDocumentation = require('./markdown/button.documentation.md');
  * @return {string}
  */
 const docs = (props: ButtonPropsInterface): string =>
-    `<ButtonComponent size="${props.size} "theme="${props.theme}">Outline</ButtonComponent>
+    `<ButtonComponent size="${props.size}" theme="${props.theme}" icon={<Icon />}>Outline</ButtonComponent>
 `;
 
 /**
@@ -47,9 +47,7 @@ const Icon: SFC = () => (
                 <CodingViewerDocsComponent
                     sourceCode={`${"<ButtonComponent theme='primary'>Primary</ButtonComponent>"}\n${"<ButtonComponent theme='secondary'>Secondary</ButtonComponent>"}\n${"<ButtonComponent theme='success'>Success</ButtonComponent>"}\n${"<ButtonComponent theme='warning'>Success</ButtonComponent>"}\n${"<ButtonComponent theme='danger'>Danger</ButtonComponent>"}\n${"<ButtonComponent theme='info'>Info</ButtonComponent>"}`}
                 >
-                    <ButtonComponent size="default" theme="primary">
-                        Primary
-                    </ButtonComponent>
+                    <ButtonComponent size="default">Primary</ButtonComponent>
                     <ButtonComponent size="default" theme="secondary">
                         Secondary
                     </ButtonComponent>
@@ -67,17 +65,20 @@ const Icon: SFC = () => (
                     </ButtonComponent>
                 </CodingViewerDocsComponent>
                 <CodingViewerDocsComponent
-                    sourceCode={`${"<ButtonComponent size='big'>Primary</ButtonComponent>"}\n${"<ButtonComponent size='big'>Secondary</ButtonComponent>"}`}
+                    sourceCode={`${"<ButtonComponent size='big' theme='primary'>Primary</ButtonComponent>"}\n${"<ButtonComponent size='big' theme='secondary'>Secondary</ButtonComponent>"}\n${"<ButtonComponent size='big' theme='danger'>Danger</ButtonComponent>"}`}
                 >
-                    <ButtonComponent size="big" theme="primary">
-                        Primary
+                    <ButtonComponent size="big">
+                        Big primary button
                     </ButtonComponent>
                     <ButtonComponent size="big" theme="secondary">
-                        Secondary
+                        Big secondary button
+                    </ButtonComponent>
+                    <ButtonComponent size="big" theme="danger">
+                        Big danger button
                     </ButtonComponent>
                 </CodingViewerDocsComponent>
                 <CodingViewerDocsComponent sourceCode="<ButtonComponent outline>Outline</ButtonComponent>">
-                    <ButtonComponent outline size="default" theme="secondary">
+                    <ButtonComponent outline size="default">
                         Outline
                     </ButtonComponent>
                 </CodingViewerDocsComponent>
@@ -89,12 +90,7 @@ const Icon: SFC = () => (
                             })
                     ).join('\n\n')}
                 >
-                    <ButtonComponent
-                        outline
-                        size="default"
-                        theme="secondary"
-                        icon={<Icon />}
-                    >
+                    <ButtonComponent outline size="default" icon={<Icon />}>
                         Close
                     </ButtonComponent>
                 </CodingViewerDocsComponent>
