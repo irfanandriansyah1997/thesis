@@ -16,7 +16,7 @@ import {
 } from '../../../shared/interface/component/component-typography.interface';
 
 /**
- * Button Component
+ * Text Component
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.7
  */
