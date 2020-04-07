@@ -24,10 +24,10 @@ type HeadingElement = HTMLAttributes<HTMLHeadingElement> & BasePropsInterface;
 interface BasePropsInterface {
     color?: ColorType;
     tag: ComponentTextTag;
-    align: TextAlignProperty;
-    styling: ComponentStylingTypography;
-    fontFamily: ComponentFontfaceTypography;
-    fontWeight: ComponentFontWeightTypography;
+    align?: TextAlignProperty;
+    styling?: ComponentStylingTypography;
+    fontFamily?: ComponentFontfaceTypography;
+    fontWeight?: ComponentFontWeightTypography;
 }
 
 /**
