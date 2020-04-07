@@ -1,1 +1,44 @@
 @import '../../../../style/import.scss';
+@use 'sass:map';
+
+.ui-atomic-text {
+    &--styling {
+        &-heading-1 {
+            font-size: text-size(5xl);
+        }
+
+        &-heading-2 {
+            font-size: text-size(4xl);
+        }
+
+        &-heading-3 {
+            font-size: text-size(3xl);
+        }
+
+        &-heading-4 {
+            font-size: text-size(2xl);
+        }
+
+        &-heading-5 {
+            font-size: text-size(xl);
+        }
+
+        &-heading-6 {
+            font-size: text-size(base);
+        }
+
+        &-tiny {
+            font-size: text-size(xxs);
+        }
+    }
+
+    &--typeface {
+        &-primary {
+            @include font-family($font-primary);
+        }
+
+        &-secondary {
+            @include font-family($font-secondary);
+        }
+    }
+}
