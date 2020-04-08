@@ -1,0 +1,14 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-link {
+    &--styling {
+        &-underline-none {
+            text-decoration: none;
+        }
+    }
+
+    &__icon {
+        @include margin-right(map-get($width-general, 1));
+        vertical-align: middle;
+    }
+}
