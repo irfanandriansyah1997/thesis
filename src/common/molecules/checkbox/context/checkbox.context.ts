@@ -6,8 +6,9 @@ import { ComponentCheckboxContextInterface } from '../../../../shared/interface/
 
 const CheckboxContext = createContext<ComponentCheckboxContextInterface>({
     name: '',
-    onChange: () => {},
-    value: []
+    value: [],
+    type: 'checkbox',
+    onChange: () => {}
 });
 
 export default CheckboxContext;

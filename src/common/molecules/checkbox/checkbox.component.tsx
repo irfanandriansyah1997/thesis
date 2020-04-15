@@ -10,7 +10,8 @@ import { PositionDirectionType } from '../../../shared/interface/common/position
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
 import {
     ComponentCheckboxInterface,
-    ComponentCheckboxContextInterface
+    ComponentCheckboxContextInterface,
+    ComponentInputMultipleOptionType
 } from '../../../shared/interface/component/component-input.interface';
 
 const MarginValue = -5;
@@ -22,6 +23,7 @@ const MarginValue = -5;
  */
 const CheckboxComponent: CheckboxDefaultExportInterface = ({
     name,
+    type,
     value,
     styling,
     onChange,
@@ -44,6 +46,7 @@ const CheckboxComponent: CheckboxDefaultExportInterface = ({
 
     const contextValue: ComponentCheckboxContextInterface = {
         name,
+        type,
         value,
         styling,
         onChange: onChangeItem
@@ -85,6 +88,10 @@ CheckboxComponent.propTypes = {
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     styling: PropTypes.oneOf<PositionDirectionType>(['horizontal', 'vertical']),
+    type: PropTypes.oneOf<ComponentInputMultipleOptionType>([
+        'checkbox',
+        'radio'
+    ]),
     value: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
     ) as Validator<(string | number)[]>
@@ -92,6 +99,7 @@ CheckboxComponent.propTypes = {
 
 CheckboxComponent.defaultProps = {
     value: [],
+    type: 'checkbox',
     styling: 'vertical'
 };
 

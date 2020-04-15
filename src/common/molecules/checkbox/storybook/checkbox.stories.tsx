@@ -1,6 +1,9 @@
 import React from 'react';
 
+import SectionTypeCheckboxComponent from './section/section-type.stories';
 import SectionDefaultDialogComponent from './section/section-default.stories';
+import SectionPositionCheckboxComponent from './section/section-position.stories';
+import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 
 import '../style/style.scss';
@@ -14,6 +17,10 @@ import '../style/style.scss';
         .registerDocumentation(
             <>
                 <SectionDefaultDialogComponent />
+                <DividerDocsComponent />
+                <SectionPositionCheckboxComponent />
+                <DividerDocsComponent />
+                <SectionTypeCheckboxComponent />
             </>
         )
         .execute();

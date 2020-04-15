@@ -20,7 +20,9 @@ const CheckboxItemComponent: SFC<ComponentMultipleOptionItemInterface> = ({
     label,
     ...res
 }: ComponentMultipleOptionItemInterface) => {
-    const { value, name, onChange, styling } = useContext(CheckboxContext);
+    const { value, name, onChange, styling, type } = useContext(
+        CheckboxContext
+    );
 
     // Getter ClassName
     const className: ComponentClassnameDefaultInterface = {
@@ -29,7 +31,8 @@ const CheckboxItemComponent: SFC<ComponentMultipleOptionItemInterface> = ({
         relative: true,
         'flex-row': true,
         'flex-align-center': true,
-        'ui-molecules-checkbox__item': true
+        'ui-molecules-checkbox__item': true,
+        [`ui-multiple-option-${type}`]: ValidatorHelper.verifiedIsNotEmpty(type)
     };
     delete res.className;
 
@@ -59,6 +62,7 @@ const CheckboxItemComponent: SFC<ComponentMultipleOptionItemInterface> = ({
             <label
                 className={StringHelper.objToString({
                     flex: true,
+                    relative: true,
                     'flex-align-center': true,
                     'ui-molecules-checkbox__label': true
                 })}

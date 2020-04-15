@@ -5,6 +5,8 @@ import {
     ComponentMultipleOptionMultipleOutput
 } from './compone-multiple-option.interface';
 
+export type ComponentInputMultipleOptionType = 'radio' | 'checkbox';
+
 /**
  * Component Checkbox Interface
  * @author Irfan Andriansyah <irfan@99.co>
@@ -13,6 +15,7 @@ import {
  */
 export type ComponentCheckboxInterface = ComponentMultipleOptionMultipleOutput & {
     styling?: PositionDirectionType;
+    type?: ComponentInputMultipleOptionType;
 };
 
 /**
@@ -23,6 +26,7 @@ export type ComponentCheckboxInterface = ComponentMultipleOptionMultipleOutput &
  */
 export type ComponentRadioInterface = ComponentMultipleOptionSingleOutput & {
     styling?: PositionDirectionType;
+    type?: ComponentInputMultipleOptionType;
 };
 
 /**
@@ -37,6 +41,7 @@ export type ComponentCheckboxContextInterface = Omit<
 > & {
     value: (string | number)[];
     styling?: PositionDirectionType;
+    type?: ComponentInputMultipleOptionType;
 };
 
 /**
@@ -47,4 +52,5 @@ export type ComponentCheckboxContextInterface = Omit<
  */
 export type ComponentRadiosContextInterface = ContextMultipleOption & {
     styling?: PositionDirectionType;
+    type?: ComponentInputMultipleOptionType;
 };
