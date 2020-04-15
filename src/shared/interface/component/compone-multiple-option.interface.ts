@@ -15,47 +15,60 @@ export type ComponentMultipleOptionInterface = Omit<
     | 'onKeyDown'
     | 'onKeyPress'
     | 'onChange'
-> & {
-    name: string;
-};
+>;
 
 /**
  * Component Multiple Option With Multiple Output Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.15
  */
-export type ComponentMultipleOptionMultipleOutput = ComponentMultipleOptionInterface & {
-    value: (string | number)[];
-    name: string;
-    onChange: (res: (string | number)[]) => void;
-};
+export type ComponentMultipleOptionMultipleOutput = ComponentMultipleOptionInterface &
+    Omit<ContextMultipleOption, 'onChange'> & {
+        onChange: (res: (string | number)[]) => void;
+    };
 
 /**
  * Component Multiple Option With Single Output Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.15
  */
-export type ComponentMultipleOptionSingleOutput = ComponentMultipleOptionInterface & {
-    value: (string | number)[];
-    name: string;
-    onChange: (res: string | number) => void;
-};
+export type ComponentMultipleOptionSingleOutput = ComponentMultipleOptionInterface &
+    ContextMultipleOption;
 
 /**
  * Component Multiple Option Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @description
- * @since 2020.03.31
+ * @since 2020.04.15
  */
 export type ComponentMultipleOptionItemInterface = Omit<
     InputHTMLAttributes<{}>,
-    | 'dangerouslySetInnerHTML'
-    | 'children'
+    | 'id'
+    | 'name'
+    | 'type'
     | 'onClick'
+    | 'checked'
+    | 'onChange'
+    | 'children'
     | 'onKeyDown'
     | 'onKeyDown'
     | 'onKeyPress'
-    | 'onChange'
+    | 'dangerouslySetInnerHTML'
 > & {
+    // must be unique
+    id: string;
     value: string | number;
+    label?: string;
 };
+
+/**
+ * Context API Interface Multipe Option
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @description
+ * @since 2020.04.15
+ */
+export interface ContextMultipleOption {
+    name: string;
+    value: (string | number)[];
+    onChange: (res: string | number) => void;
+}
