@@ -1,0 +1,56 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-checkbox {
+    &__label {
+        cursor: pointer;
+        height: 18px;
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+        }
+
+        &::after {
+            height: 18px;
+            left: 0;
+            width: 18px;
+
+            @include rounded(3px);
+            @include background-color(white);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            @include border(all, 1px, solid, heading500);
+        }
+
+        &::before {
+            height: 10px;
+            left: 6px;
+            opacity: 0;
+            top: calc(50% - 5.5px);
+            width: 5px;
+            z-index: 1;
+
+            @include transform-rotate(45);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            @include border-bottom(2px, solid, white);
+            @include border-right(2px, solid, white);
+        }
+    }
+
+    &__label-text {
+        @include margin-left(28px);
+    }
+
+    input {
+        &:checked {
+            ~ label::after {
+                @include border(all, 1px, solid, primary);
+                @include background-color(primary);
+            }
+
+            ~ label::before {
+                opacity: 1;
+            }
+        }
+    }
+}

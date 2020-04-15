@@ -31,7 +31,11 @@ export type ComponentRadioInterface = ComponentMultipleOptionSingleOutput & {
  * @description
  * @since 2020.04.15
  */
-export type ComponentCheckboxContextInterface = ContextMultipleOption & {
+export type ComponentCheckboxContextInterface = Omit<
+    ContextMultipleOption,
+    'value'
+> & {
+    value: (string | number)[];
     styling?: PositionDirectionType;
 };
 

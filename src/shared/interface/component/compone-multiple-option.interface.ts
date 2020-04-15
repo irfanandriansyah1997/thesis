@@ -15,6 +15,7 @@ export type ComponentMultipleOptionInterface = Omit<
     | 'onKeyDown'
     | 'onKeyPress'
     | 'onChange'
+    | 'style'
 >;
 
 /**
@@ -23,7 +24,8 @@ export type ComponentMultipleOptionInterface = Omit<
  * @since 2020.04.15
  */
 export type ComponentMultipleOptionMultipleOutput = ComponentMultipleOptionInterface &
-    Omit<ContextMultipleOption, 'onChange'> & {
+    Omit<ContextMultipleOption, 'onChange' | 'value'> & {
+        value: (string | number)[];
         onChange: (res: (string | number)[]) => void;
     };
 
@@ -46,6 +48,7 @@ export type ComponentMultipleOptionItemInterface = Omit<
     | 'id'
     | 'name'
     | 'type'
+    | 'style'
     | 'onClick'
     | 'checked'
     | 'onChange'
@@ -57,8 +60,8 @@ export type ComponentMultipleOptionItemInterface = Omit<
 > & {
     // must be unique
     id: string;
-    value: string | number;
     label?: string;
+    value: string | number;
 };
 
 /**
@@ -69,6 +72,6 @@ export type ComponentMultipleOptionItemInterface = Omit<
  */
 export interface ContextMultipleOption {
     name: string;
-    value: (string | number)[];
+    value: string | number;
     onChange: (res: string | number) => void;
 }
