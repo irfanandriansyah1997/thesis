@@ -1,12 +1,12 @@
 import React, { SFC } from 'react';
 import PropTypes, { Validator } from 'prop-types';
 
-import { ButtonPropsInterface } from './interface/component.interface';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
+import { ButtonPropsInterface } from './interface/component.interface';
 import { ComponentDefaultSize } from '../../../shared/interface/component/component-size.interface';
 import { ComponentDefaultTheme } from '../../../shared/interface/component/component-theme.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
 
 /**
  * Button Component
@@ -14,11 +14,11 @@ import { ComponentDefaultTheme } from '../../../shared/interface/component/compo
  * @since 2020.04.2
  */
 const ButtonComponent: SFC<ButtonPropsInterface> = ({
-    children,
+    icon,
     size,
     theme,
     outline,
-    icon,
+    children,
     ...res
 }: ButtonPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {

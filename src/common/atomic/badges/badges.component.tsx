@@ -17,8 +17,8 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.04.03
  */
 const BadgesComponent: SFC<BadgesPropsInterface> = ({
-    color,
     size,
+    color,
     rounded,
     children,
     className,

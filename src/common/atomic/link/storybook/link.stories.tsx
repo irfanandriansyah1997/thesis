@@ -2,14 +2,15 @@ import React, { SFC } from 'react';
 
 import LinkComponent from '../link.component';
 import IconComponent from '../../icon/icon.component';
-import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
+import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
+import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 import '../style/style.scss';
 
-const TextDocumentation = require('./markdown/link.documentation.md');
+const LinkDocumentation = require('./markdown/link.documentation.md');
 
 /**
  * Create Icon
@@ -27,7 +28,7 @@ const Icon: SFC = () => (
         .setDescriptionComponent(
             'Link component is used to define a relationship between an HTML document and an external resource..'
         )
-        .setMarkdownFile(TextDocumentation)
+        .setMarkdownFile(LinkDocumentation)
         .registerDocumentation(
             <>
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
@@ -48,6 +49,8 @@ const Icon: SFC = () => (
                         <LinkComponent noUnderline>Link</LinkComponent>
                     </div>
                 </CodingViewerDocsComponent>
+                <DividerDocsComponent />
+                <HeadingDocsComponent>Link With Icon</HeadingDocsComponent>
                 <TextDocsComponent>
                     Link component rendered with icon
                 </TextDocsComponent>
@@ -65,6 +68,10 @@ const Icon: SFC = () => (
                         </LinkComponent>
                     </div>
                 </CodingViewerDocsComponent>
+                <DividerDocsComponent />
+                <HeadingDocsComponent>
+                    Render Link With onClick Event
+                </HeadingDocsComponent>
                 <TextDocsComponent>
                     Link component rendered with onClick event
                 </TextDocsComponent>
@@ -81,6 +88,10 @@ const Icon: SFC = () => (
                         </LinkComponent>
                     </div>
                 </CodingViewerDocsComponent>
+                <DividerDocsComponent />
+                <HeadingDocsComponent>
+                    Render Link With href Props
+                </HeadingDocsComponent>
                 <TextDocsComponent>
                     Link component rendered with href attribute
                 </TextDocsComponent>

@@ -16,10 +16,10 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.03.23
  */
 const LabelComponent: SFC<LabelPropsInterface> = ({
+    icon,
     color,
     rounded,
     labelText,
-    icon,
     ...res
 }: LabelPropsInterface) => {
     /**
@@ -38,11 +38,11 @@ const LabelComponent: SFC<LabelPropsInterface> = ({
     return (
         <div {...res} className={StringHelper.objToString(className)}>
             <TextComponent
+                tag="span"
                 align="left"
                 fontWeight={400}
                 styling="default"
                 fontFamily="primary"
-                tag="span"
             >
                 {labelText}
             </TextComponent>
