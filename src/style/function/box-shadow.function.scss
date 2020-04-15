@@ -3,5 +3,5 @@
         @return map_get($shadow-general, $shadow);
     }
 
-    @return $color;
+    @return $shadow;
 }

@@ -1,34 +1,23 @@
 @import '../../../../style/import.scss';
 
 .ui-atomic-dialog {
+    bottom: 0;
     box-sizing: border-box;
     @include font-color(get-color(black));
-    @include margin-top(0);
-    @include margin-right(auto);
-    @include margin-bottom(0);
-    @include margin-left(auto);
     @include no-padding();
+    @include no-margin();
+    display: none;
     font-size: text-size(sm);
-    line-height: 1.5;
+    height: 100%;
+    left: 0;
     list-style: none;
-    padding-bottom: 24px;
-    pointer-events: none;
-    position: relative;
-    top: 100px;
-    width: auto;
+    position: fixed;
+    right: 0;
 
-    &--type {
-        &-popup {
-            width: 520px;
-        }
-    }
-
-    &__show {
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
+    &__content {
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        @include box-shadow(get-shadow(r123));
+        z-index: 999;
     }
 
     &__backdrop {
@@ -40,6 +29,21 @@
         right: 0;
         top: 0;
         @include background-color(get-color(black));
-        z-index: 1000;
+    }
+
+    &__show {
+        display: block;
+        position: absolute;
+    }
+
+    &--type-popup {
+        .ui-atomic-dialog {
+            &__content {
+                @include padding(all, 16px);
+                width: 520px;
+                @include background-color(get-color(white));
+                @include transform-translate(50%, 50%);
+            }
+        }
     }
 }

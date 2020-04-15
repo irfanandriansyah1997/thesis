@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 
 import ButtonComponent from '../../../button/button.component';
 import DialogComponent from '../../dialog.component';
+import IconComponent from '../../../icon/icon.component';
 import {
     PropsInterface,
     StateInterface
@@ -24,44 +25,56 @@ class SectionDefaultDialogComponent extends React.PureComponent<
         this.state = {
             show: false
         };
-        this.setOpenDialog = this.setOpenDialog.bind(this);
+        this.showDialog = this.showDialog.bind(this);
     }
 
     /**
      * Action triggered to open the dialog.
      */
-    setOpenDialog(): void {
+    showDialog = (): void => {
         this.setState({ show: true });
-    }
+    };
 
     /**
      * Action triggered to close the dialog.
      */
-    setCloseDialog(): void {
+    closeDialog = (): void => {
         this.setState({ show: false });
-    }
+    };
 
     render(): ReactNode {
         const { show } = this.state;
         return (
             <>
-                <HeadingDocsComponent>Usage</HeadingDocsComponent>
+                <HeadingDocsComponent>Basic dialog</HeadingDocsComponent>
                 <TextDocsComponent>Basic dialog component</TextDocsComponent>
                 <CodingViewerDocsComponent
                     sourceCode={`${'<DialogComponent>Open dialog</DialogComponent>'}`}
                 >
-                    <ButtonComponent
-                        size="default"
-                        onClick={this.setOpenDialog}
-                    >
+                    <ButtonComponent size="default" onClick={this.showDialog}>
                         Open dialog
                     </ButtonComponent>
                 </CodingViewerDocsComponent>
-                <DialogComponent
-                    show={show}
-                    onCloseDialog={this.setCloseDialog}
-                >
-                    Link
+                <DialogComponent show={show} onCloseDialog={this.closeDialog}>
+                    <IconComponent
+                        color="primary"
+                        size={32}
+                        style={{
+                            position: 'absolute',
+                            right: 0,
+                            top: 0,
+                            padding: 8,
+                            cursor: 'pointer'
+                        }}
+                        onClick={this.closeDialog}
+                    >
+                        close
+                    </IconComponent>
+                    <img
+                        alt="Images 1"
+                        src="https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+                        style={{ width: '100%' }}
+                    />
                 </DialogComponent>
             </>
         );

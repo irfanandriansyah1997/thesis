@@ -126,7 +126,7 @@ module.exports = {
             }
         ],
         'react/static-property-placement': [
-            'warn',
+            2,
             'property assignment',
             {
                 childContextTypes: 'static getter',
