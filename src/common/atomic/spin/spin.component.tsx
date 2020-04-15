@@ -14,9 +14,9 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.03.16
  */
 const SpinComponent: SFC<SpinPropsInterface> = ({
-    children,
-    color,
     show,
+    color,
+    children,
     ...res
 }: SpinPropsInterface) => {
     const refSpinner = useRef<HTMLDivElement>(null);

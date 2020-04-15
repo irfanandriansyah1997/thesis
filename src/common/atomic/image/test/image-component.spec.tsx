@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, shallow } from 'enzyme';
+
 import ImageComponent from '../image.component';
+import FixtureImages from './fixture-image-component.spec';
 import UnitTestingHelper from '../../../../shared/helper/unit-testing.helper';
 import { ComponentImageDefaultPropsInterface } from '../../../../shared/interface/component/component-image.inteface';
-import FixtureImages from './fixture-image-component.spec';
 
 describe('Testing image component in atomic component', () => {
     it('Test render image component', () => {

@@ -1,5 +1,5 @@
-import { UnitTestingFixtureInterface } from '../../../../shared/interface/unit-testing/unit-testing.interface';
 import { ButtonPropsInterface } from '../interface/component.interface';
+import { UnitTestingFixtureInterface } from '../../../../shared/interface/unit-testing/unit-testing.interface';
 
 test.skip('it is not shown', (): void => {});
 
