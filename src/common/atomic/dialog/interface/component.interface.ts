@@ -1,11 +1,12 @@
 import { DefaultDynamicObject } from '../../../../shared/interface/common/object.interface';
+import { DialogType } from '../../../../shared/interface/component/componen-default.interface';
 
 /**
  * Link Interface
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.14
  */
-export type PropsInterface = DefaultDynamicObject & {
+export type DialogPropsInterface = DefaultDynamicObject & {
     type?: DialogType;
     show: boolean;
     className?: string;
@@ -14,11 +15,6 @@ export type PropsInterface = DefaultDynamicObject & {
     isPortal?: boolean;
 };
 
-export interface StateInterface {
+export interface DialogStateInterface {
     show: boolean;
-}
-
-export enum DialogType {
-    POPUP = 0,
-    FULLSCREEN = 1
 }

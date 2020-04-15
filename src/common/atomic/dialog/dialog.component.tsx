@@ -4,10 +4,10 @@ import { CSSTransition } from 'react-transition-group';
 
 import StringHelper from '../../../shared/helper/string.helper';
 import {
-    PropsInterface,
-    StateInterface,
-    DialogType
+    DialogPropsInterface,
+    DialogStateInterface
 } from './interface/component.interface';
+import { DialogType } from '../../../shared/interface/component/componen-default.interface';
 
 import './style/style.scss';
 
@@ -17,8 +17,8 @@ import './style/style.scss';
  * @since 2020.04.14
  */
 class DialogComponent extends React.PureComponent<
-    PropsInterface,
-    StateInterface
+    DialogPropsInterface,
+    DialogStateInterface
 > {
     static propTypes = {
         children: PropTypes.oneOfType([
@@ -26,7 +26,7 @@ class DialogComponent extends React.PureComponent<
             PropTypes.node,
             PropTypes.string
         ]).isRequired,
-        type: PropTypes.oneOf([DialogType.POPUP, DialogType.FULLSCREEN]),
+        type: PropTypes.oneOf<DialogType>(['popup', 'fullscreen']),
         show: PropTypes.bool.isRequired,
         animation: PropTypes.string,
         onCloseDialog: PropTypes.func.isRequired,
@@ -34,14 +34,14 @@ class DialogComponent extends React.PureComponent<
     };
 
     static defaultProps = {
-        type: DialogType.POPUP,
+        type: 'popup',
         animation: 'fade-scale-center',
         className: ''
     };
 
     static getDerivedStateFromProps(
-        props: PropsInterface,
-        state: StateInterface
+        props: DialogPropsInterface,
+        state: DialogStateInterface
     ): unknown {
         if (props.show !== state.show) {
             document.body.style.overflow = props.show ? 'hidden' : 'initial';
@@ -54,7 +54,7 @@ class DialogComponent extends React.PureComponent<
         return null;
     }
 
-    constructor(props: PropsInterface) {
+    constructor(props: DialogPropsInterface) {
         super(props);
         const { show } = props;
 
@@ -76,8 +76,8 @@ class DialogComponent extends React.PureComponent<
             [`${className}`]: true,
             'ui-atomic-dialog': true,
             'ui-atomic-dialog__show': show === true,
-            'ui-atomic-dialog--type-popup': type === DialogType.POPUP,
-            'ui-atomic-dialog--type-fullscreen': type === DialogType.FULLSCREEN
+            'ui-atomic-dialog--type-popup': type === 'popup',
+            'ui-atomic-dialog--type-fullscreen': type === 'fullscreen'
         });
     }
 

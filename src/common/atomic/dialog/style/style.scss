@@ -3,9 +3,6 @@
 .ui-atomic-dialog {
     bottom: 0;
     box-sizing: border-box;
-    @include font-color(get-color(black));
-    @include no-padding();
-    @include no-margin();
     display: none;
     font-size: text-size(sm);
     height: 100%;
@@ -13,10 +10,14 @@
     position: fixed;
     right: 0;
 
+    @include font-color(get-color(black));
+    @include no-padding();
+    @include no-margin();
+
     &__content {
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-        @include box-shadow(get-shadow(r123));
         z-index: 999;
+
+        @include box-shadow(get-shadow(r123));
     }
 
     &__backdrop {
@@ -27,6 +28,7 @@
         position: fixed;
         right: 0;
         top: 0;
+
         @include background-color(get-color(black));
     }
 
@@ -38,8 +40,9 @@
     &--type-popup {
         .ui-atomic-dialog {
             &__content {
-                @include padding(all, 16px);
                 width: 520px;
+
+                @include padding(all, 16px);
                 @include background-color(get-color(white));
                 @include transform-translate(50%, 50%);
             }

@@ -31,7 +31,7 @@ describe('Testing dialog component in atomic component', () => {
     it('should render dialog in fullscreen view correctly', () => {
         const callback = jest.fn();
         const dialog = render(
-            <DialogComponent show type={1} onCloseDialog={callback}>
+            <DialogComponent show type="fullscreen" onCloseDialog={callback}>
                 <img
                     alt="Images 1"
                     src="https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"

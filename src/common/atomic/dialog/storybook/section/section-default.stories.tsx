@@ -4,23 +4,23 @@ import ButtonComponent from '../../../button/button.component';
 import DialogComponent from '../../dialog.component';
 import IconComponent from '../../../icon/icon.component';
 import {
-    PropsInterface,
-    StateInterface
+    DialogPropsInterface,
+    DialogStateInterface
 } from '../../interface/component.interface';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 /**
- * Section Default Badge
+ * Section Default Dialog
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.14
  */
 class SectionDefaultDialogComponent extends React.PureComponent<
-    PropsInterface,
-    StateInterface
+    DialogPropsInterface,
+    DialogStateInterface
 > {
-    constructor(props: PropsInterface) {
+    constructor(props: DialogPropsInterface) {
         super(props);
         this.state = {
             show: false

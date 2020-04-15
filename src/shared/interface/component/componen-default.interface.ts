@@ -20,3 +20,5 @@ export interface ComponentDefaultInterface {
 export interface ComponentClassnameDefaultInterface {
     [key: string]: boolean;
 }
+
+export type DialogType = 'popup' | 'fullscreen';
