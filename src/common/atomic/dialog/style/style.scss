@@ -1,0 +1,45 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-dialog {
+    box-sizing: border-box;
+    @include font-color(get-color(black));
+    @include margin-top(0);
+    @include margin-right(auto);
+    @include margin-bottom(0);
+    @include margin-left(auto);
+    @include no-padding();
+    font-size: text-size(sm);
+    line-height: 1.5;
+    list-style: none;
+    padding-bottom: 24px;
+    pointer-events: none;
+    position: relative;
+    top: 100px;
+    width: auto;
+
+    &--type {
+        &-popup {
+            width: 520px;
+        }
+    }
+
+    &__show {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &__backdrop {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        opacity: 0.6;
+        position: fixed;
+        right: 0;
+        top: 0;
+        @include background-color(get-color(black));
+        z-index: 1000;
+    }
+}
