@@ -1,11 +1,11 @@
 import React, { SFC } from 'react';
 import { render } from 'enzyme';
 
-import UnitTestingHelper from '../../../../shared/helper/unit-testing.helper';
 import ButtonComponent from '../button.component';
 import IconComponent from '../../icon/icon.component';
-import { ButtonPropsInterface } from '../interface/component.interface';
 import FixtureButton from './fixture-button-component.spec';
+import { ButtonPropsInterface } from '../interface/component.interface';
+import UnitTestingHelper from '../../../../shared/helper/unit-testing.helper';
 
 describe('Testing button component in atomic component ', () => {
     it('Should render button component', () => {
