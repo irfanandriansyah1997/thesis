@@ -125,6 +125,18 @@ module.exports = {
                 }
             }
         ],
+        'react/static-property-placement': [
+            'warn',
+            'property assignment',
+            {
+                childContextTypes: 'static getter',
+                contextTypes: 'static public field',
+                contextType: 'static public field',
+                displayName: 'static public field',
+                propTypes: 'static public field',
+                defaultProps: 'static public field'
+            }
+        ],
         'require-jsdoc-except/require-jsdoc': [
             2,
             {

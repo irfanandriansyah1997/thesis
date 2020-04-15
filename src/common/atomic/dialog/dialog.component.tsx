@@ -16,13 +16,10 @@ import './style/style.scss';
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.14
  */
-
-// eslint-disable-next-line require-jsdoc-except/require-jsdoc
 class DialogComponent extends React.PureComponent<
     PropsInterface,
     StateInterface
 > {
-    // eslint-disable-next-line react/static-property-placement
     static propTypes = {
         children: PropTypes.oneOfType([
             PropTypes.arrayOf(PropTypes.node),
@@ -36,7 +33,6 @@ class DialogComponent extends React.PureComponent<
         className: PropTypes.string
     };
 
-    // eslint-disable-next-line react/static-property-placement
     static defaultProps = {
         type: DialogType.POPUP,
         animation: 'fade-scale-center',
