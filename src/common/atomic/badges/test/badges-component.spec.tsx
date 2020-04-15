@@ -3,9 +3,9 @@ import { render, shallow } from 'enzyme';
 
 import BadgesComponent from '../badges.component';
 import IconComponent from '../../icon/icon.component';
-import UnitTestingHelper from '../../../../shared/helper/unit-testing.helper';
-import { BadgesPropsInterface } from '../interface/component.interface';
 import FixtureBadges from './fixture-badge-component.spec';
+import { BadgesPropsInterface } from '../interface/component.interface';
+import UnitTestingHelper from '../../../../shared/helper/unit-testing.helper';
 
 describe('Testing badges component in atomic component ', () => {
     it('Test render badge component', () => {

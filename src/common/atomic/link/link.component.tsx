@@ -1,14 +1,14 @@
 import React, { SFC, Validator } from 'react';
 import PropTypes from 'prop-types';
 
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import TextComponent from '../text/text.component';
+import StringHelper from '../../../shared/helper/string.helper';
 import { LinkPropsInterface } from './interface/component.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import StringHelper from '../../../shared/helper/string.helper';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
 import { ColorType } from '../../../shared/interface/common/color.interface';
-import TextComponent from '../text/text.component';
 import { ComponentFontWeightTypography } from '../../../shared/interface/component/component-typography.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
 
 /**
  * Text Component
@@ -16,11 +16,11 @@ import { ComponentFontWeightTypography } from '../../../shared/interface/compone
  * @since 2020.04.7
  */
 const LinkComponent: SFC<LinkPropsInterface> = ({
-    color,
-    noUnderline,
     icon,
-    fontWeight,
+    color,
     children,
+    fontWeight,
+    noUnderline,
     ...res
 }: LinkPropsInterface) => {
     const className: ComponentClassnameDefaultInterface = {
@@ -49,9 +49,9 @@ const LinkComponent: SFC<LinkPropsInterface> = ({
             <TextComponent
                 tag="span"
                 color={color}
-                fontWeight={fontWeight}
-                fontFamily="primary"
                 styling="default"
+                fontFamily="primary"
+                fontWeight={fontWeight}
                 className="ui-atomic-link--children"
             >
                 {children}
