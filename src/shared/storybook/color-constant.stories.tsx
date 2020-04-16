@@ -7,9 +7,7 @@ import CardShowcaseDocsComponent from '../../.storybook/component/atomic/card-sh
 ((): void => {
     new StorybookDocumentationBuilder('Color Pallete', 'style')
         .setSection('general')
-        .setDescriptionComponent(
-            'Color pallete yang digunakan di R123 Styleguide'
-        )
+        .setDescriptionComponent('Color pallete in R123 styleguide')
         .registerDocumentation(
             <>
                 <div className="ui-showcase">

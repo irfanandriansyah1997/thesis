@@ -15,7 +15,7 @@ export default {
         format: 'es',
         dir: 'lib'
     },
-    external: ['react'],
+    external: ['react', 'react-transition-group', 'prop-types'],
     plugins: [
         multiInput({ relative: 'src/' }),
         terser({

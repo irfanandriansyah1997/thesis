@@ -11,14 +11,16 @@
     right: 0;
     z-index: 9;
 
-    @include font-color(get-color(black));
-    @include no-padding();
     @include no-margin();
+    @include no-padding();
+    @include font-color(get-color(black));
+    @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
 
     &__content {
         z-index: 99;
 
         @include box-shadow(get-shadow(r123));
+        @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
     }
 
     &__backdrop {
@@ -45,8 +47,8 @@
                 width: 520px;
 
                 @include padding(all, 16px);
-                @include background-color(get-color(white));
                 @include transform-translate(-50%, -50%);
+                @include background-color(get-color(white));
             }
         }
     }
@@ -54,11 +56,30 @@
     &--type-fullscreen {
         .ui-atomic-dialog {
             &__content {
+                height: 100%;
                 transform: none;
                 width: 100%;
 
                 @include padding(all, 16px);
                 @include background-color(get-color(white));
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .ui-atomic-dialog {
+        &--type-popup {
+            .ui-atomic-dialog {
+                &__content {
+                    left: 50%;
+                    top: 50%;
+                    width: calc(100% - 30px);
+
+                    @include padding(all, 16px);
+                    @include background-color(get-color(white));
+                    @include transform-translate(-50%, -50%);
+                }
             }
         }
     }

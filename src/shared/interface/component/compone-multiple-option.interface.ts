@@ -72,6 +72,6 @@ export type ComponentMultipleOptionItemInterface = Omit<
  */
 export interface ContextMultipleOption {
     name: string;
-    value: string | number;
+    value?: string | number;
     onChange: (res: string | number) => void;
 }

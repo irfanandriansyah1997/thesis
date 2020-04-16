@@ -1,15 +1,13 @@
-import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import StringHelper from '../../../shared/helper/string.helper';
+import { DialogType } from '../../../shared/interface/component/componen-default.interface';
 import {
     DialogPropsInterface,
     DialogStateInterface
 } from './interface/component.interface';
-import { DialogType } from '../../../shared/interface/component/componen-default.interface';
-
-import './style/style.scss';
 
 /**
  * Dialog Component
