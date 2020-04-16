@@ -1,0 +1,96 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-checkbox {
+    &__label-text {
+        @include margin-left(28px);
+    }
+}
+
+.ui-multiple-option-checkbox,
+.ui-multiple-option-radio {
+    label {
+        cursor: pointer;
+        height: 18px;
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+        }
+
+        &::after {
+            height: 18px;
+            left: 0;
+            width: 18px;
+
+            @include rounded(3px);
+            @include background-color(white);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            @include border(all, 1px, solid, heading500);
+        }
+    }
+
+    input {
+        &:checked {
+            ~ label::before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.ui-multiple-option-checkbox {
+    label {
+        &::before {
+            height: 10px;
+            left: 6px;
+            opacity: 0;
+            top: calc(50% - 5.5px);
+            width: 5px;
+            z-index: 1;
+
+            @include transform-rotate(45);
+            @include border-right(2px, solid, white);
+            @include border-bottom(2px, solid, white);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+        }
+    }
+
+    input {
+        &:checked {
+            ~ label::after {
+                @include border(all, 1px, solid, primary);
+                @include background-color(primary);
+            }
+        }
+    }
+}
+
+.ui-multiple-option-radio {
+    label {
+        &::before {
+            height: 12px;
+            left: 3px;
+            opacity: 0;
+            top: 3px;
+            width: 12px;
+            z-index: 1;
+
+            @include rounded(50%);
+            @include background-color(primary);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+        }
+
+        &::after {
+            @include rounded(50%);
+        }
+    }
+
+    input {
+        &:checked {
+            ~ label::after {
+                @include border(all, 1px, solid, primary);
+            }
+        }
+    }
+}
