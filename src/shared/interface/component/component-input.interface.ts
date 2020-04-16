@@ -50,7 +50,7 @@ export type ComponentCheckboxContextInterface = Omit<
  * @description
  * @since 2020.04.15
  */
-export type ComponentRadiosContextInterface = ContextMultipleOption & {
+export type ComponentRadioContextInterface = ContextMultipleOption & {
     styling?: PositionDirectionType;
     type?: ComponentInputMultipleOptionType;
 };
