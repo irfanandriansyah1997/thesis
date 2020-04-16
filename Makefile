@@ -6,7 +6,7 @@ init-dev:
 	chmod +775 .git/hooks/pre-commit
 
 run-dev:
-	yarn run dev
+	yarn run storybook
 
 build-asset:
 	yarn run build-asset

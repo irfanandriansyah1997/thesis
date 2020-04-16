@@ -1,0 +1,65 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-dialog {
+    bottom: 0;
+    box-sizing: border-box;
+    display: none;
+    font-size: text-size(sm);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 9;
+
+    @include font-color(get-color(black));
+    @include no-padding();
+    @include no-margin();
+
+    &__content {
+        z-index: 99;
+
+        @include box-shadow(get-shadow(r123));
+    }
+
+    &__backdrop {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        opacity: 0.6;
+        position: fixed;
+        right: 0;
+        top: 0;
+
+        @include background-color(get-color(black));
+    }
+
+    &__show {
+        display: block;
+    }
+
+    &--type-popup {
+        .ui-atomic-dialog {
+            &__content {
+                left: 50%;
+                top: 50%;
+                width: 520px;
+
+                @include padding(all, 16px);
+                @include background-color(get-color(white));
+                @include transform-translate(-50%, -50%);
+            }
+        }
+    }
+
+    &--type-fullscreen {
+        .ui-atomic-dialog {
+            &__content {
+                transform: none;
+                width: 100%;
+
+                @include padding(all, 16px);
+                @include background-color(get-color(white));
+            }
+        }
+    }
+}

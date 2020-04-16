@@ -7,7 +7,6 @@
         "registry": "https://packages.99iddev.net"
     },
     "scripts": {
-        "dev": "node_modules/.bin/webpack-dev-server --progress --config etc/webpack/webpack.config.dev.js",
         "storybook": "start-storybook -p 5000 -c src/.storybook",
         "test": "jest -w 2 --verbose src --cache",
         "test-without-coverage": "jest -w 2 --verbose src --cache --collectCoverage=false",
@@ -45,7 +44,8 @@
         "react-copy-to-clipboard": "^5.0.2",
         "react-dom": "^16.13.0",
         "react-highlight": "^0.12.0",
-        "react-router-dom": "^5.1.2"
+        "react-router-dom": "^5.1.2",
+        "react-transition-group": "^4.3.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.8.4",
@@ -72,6 +72,7 @@
         "@types/react-copy-to-clipboard": "^4.3.0",
         "@types/react-dom": "^16.9.5",
         "@types/react-router-dom": "^5.1.3",
+        "@types/react-transition-group": "^4.2.4",
         "@types/vfile-message": "^2.0.0",
         "@typescript-eslint/eslint-plugin": "^2.22.0",
         "@typescript-eslint/parser": "^2.22.0",
