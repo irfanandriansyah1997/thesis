@@ -12,7 +12,7 @@ import Desktop from './constant/desktop.constant';
 export default {
     input: [...Common, ...Mobile, ...Desktop],
     output: {
-        format: 'es',
+        format: 'cjs',
         dir: 'lib'
     },
     external: ['react', 'react-transition-group', 'prop-types'],
