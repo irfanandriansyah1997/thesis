@@ -1,7 +1,10 @@
 import React from 'react';
 
 import SectionDefaultDialogComponent from './section/section-default.stories';
+import SectionCustomDialogComponent from './section/section-custom.stories';
+import SectionSizeDialogComponent from './section/section-size.stories';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
+import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
 
 import '../style/style.scss';
 
@@ -15,10 +18,22 @@ const DialogDocumentation = require('./markdown/dialog.documentation.md');
         )
         .setMarkdownFile(DialogDocumentation)
         .registerDocumentation(
-            <SectionDefaultDialogComponent
-                show={false}
-                onCloseDialog={(): void => alert()}
-            />
+            <>
+                <SectionDefaultDialogComponent
+                    show={false}
+                    onCloseDialog={(): void => alert()}
+                />
+                <DividerDocsComponent />
+                <SectionCustomDialogComponent
+                    show={false}
+                    onCloseDialog={(): void => alert()}
+                />
+                <DividerDocsComponent />
+                <SectionSizeDialogComponent
+                    show={false}
+                    onCloseDialog={(): void => alert()}
+                />
+            </>
         )
         .execute();
 })();

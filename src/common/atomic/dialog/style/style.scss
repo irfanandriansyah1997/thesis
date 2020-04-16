@@ -9,13 +9,14 @@
     left: 0;
     position: fixed;
     right: 0;
+    z-index: 9;
 
     @include font-color(get-color(black));
     @include no-padding();
     @include no-margin();
 
     &__content {
-        z-index: 999;
+        z-index: 99;
 
         @include box-shadow(get-shadow(r123));
     }
@@ -34,17 +35,30 @@
 
     &__show {
         display: block;
-        position: absolute;
     }
 
     &--type-popup {
         .ui-atomic-dialog {
             &__content {
+                left: 50%;
+                top: 50%;
                 width: 520px;
 
                 @include padding(all, 16px);
                 @include background-color(get-color(white));
-                @include transform-translate(50%, 50%);
+                @include transform-translate(-50%, -50%);
+            }
+        }
+    }
+
+    &--type-fullscreen {
+        .ui-atomic-dialog {
+            &__content {
+                transform: none;
+                width: 100%;
+
+                @include padding(all, 16px);
+                @include background-color(get-color(white));
             }
         }
     }

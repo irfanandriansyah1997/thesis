@@ -12,7 +12,6 @@ export type DialogPropsInterface = DefaultDynamicObject & {
     className?: string;
     animation?: string;
     onCloseDialog: () => void;
-    isPortal?: boolean;
 };
 
 export interface DialogStateInterface {
