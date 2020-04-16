@@ -9,8 +9,6 @@ import {
     DialogStateInterface
 } from './interface/component.interface';
 
-import './style/style.scss';
-
 /**
  * Dialog Component
  * @author Dedik Budianto <dedik.budianto@99.co>
