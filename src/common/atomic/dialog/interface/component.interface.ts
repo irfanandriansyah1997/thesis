@@ -2,7 +2,7 @@ import { DefaultDynamicObject } from '../../../../shared/interface/common/object
 import { DialogType } from '../../../../shared/interface/component/componen-default.interface';
 
 /**
- * Link Interface
+ * Dialog Interface
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.14
  */

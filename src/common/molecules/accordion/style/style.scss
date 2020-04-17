@@ -1,0 +1,46 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-accordion {
+    &__content {
+        font-size: text-size(sm);
+        overflow: hidden;
+
+        @include transition(max-height 0.3s ease 0s);
+    }
+
+    &__selector {
+        align-items: end;
+        font-size: text-size(sm);
+        width: 100%;
+
+        @include margin-top(20px);
+
+        &-gradient {
+            &::before {
+                content: '';
+                height: 40px;
+                position: absolute;
+                top: -60px;
+                width: 100%;
+                z-index: 0;
+
+                @include linear-gradient(
+                    rgba(255, 255, 255, 0),
+                    rgb(255, 255, 255),
+                    180deg
+                );
+            }
+        }
+
+        &-button {
+            @include font-color(get-color(primary));
+            @include no-border();
+        }
+
+        &-icon {
+            vertical-align: middle;
+
+            @include margin-left(map-get($width-general, 1));
+        }
+    }
+}
