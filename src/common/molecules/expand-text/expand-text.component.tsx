@@ -1,12 +1,13 @@
-import React, { SFC, useState, useRef, useEffect } from 'react';
+import React, { SFC, useState, useEffect } from 'react';
 
-import StringHelper from '../../../shared/helper/string.helper';
-import { ExpandTextPropsInterface } from './interfaces/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
-import IconComponent from '../../atomic/icon/icon.component';
-import { ColorType } from '../../../shared/interface/common/color.interface';
 import TextComponent from '../../atomic/text/text.component';
+import IconComponent from '../../atomic/icon/icon.component';
+import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
+import { ExpandTextPropsInterface } from './interfaces/component.interface';
+import { ColorType } from '../../../shared/interface/common/color.interface';
+import ComponentResizerHelper from '../../../shared/helper/component-resizer.helper';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
 
 /**
  * Expand Text Component
@@ -23,8 +24,7 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
     const [expand, setExpand] = useState<boolean>(false);
     const [showToggle, setShowToggle] = useState<boolean>(false);
     const [componentHeight, setComponentHeight] = useState<number>(maxHeight);
-
-    const node = useRef<HTMLDivElement>(null);
+    const { width, ref } = ComponentResizerHelper<HTMLDivElement>({});
 
     // Getter ClassName
     const className: ComponentClassnameDefaultInterface = {
@@ -41,9 +41,9 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
      * @return {void}
      */
     const onClickToggle = (): void => {
-        if (node.current) {
+        if (ref.current) {
             setExpand(!expand);
-            setComponentHeight(!expand ? node.current.scrollHeight : maxHeight);
+            setComponentHeight(!expand ? ref.current.scrollHeight : maxHeight);
         }
     };
 
@@ -52,20 +52,18 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
      * @return {void}
      */
     const watchFn = (): void => {
-        if (node.current) {
-            console.debug(node.current.scrollHeight);
-            console.debug(node.current.scrollHeight > maxHeight);
-            setExpand(!(node.current.scrollHeight > maxHeight));
-            setShowToggle(node.current.scrollHeight > maxHeight);
+        if (ref.current) {
+            setExpand(!(ref.current.scrollHeight > maxHeight));
+            setShowToggle(ref.current.scrollHeight > maxHeight);
         }
     };
 
-    useEffect(watchFn, []);
+    useEffect(watchFn, [width]);
 
     return (
         <div className={StringHelper.objToString(className)} {...res}>
             <div
-                ref={node}
+                ref={ref}
                 style={{ maxHeight: `${componentHeight}px` }}
                 className="ui-molecules-expand-text__content relative"
             >
