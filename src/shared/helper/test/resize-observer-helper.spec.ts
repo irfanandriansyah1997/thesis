@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 /* eslint-disable no-new */
-import ResizeObserverHelper from '../resizer-observer.helper';
 import ResizeObserver from '../__mocks__/resizer-observer';
+import ResizeObserverHelper from '../resizer-observer.helper';
 
 describe('Testing Resize Observer Helper With ResizeObserver Undefined', () => {
     beforeEach(() => {

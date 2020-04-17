@@ -77,6 +77,7 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
             {showToggle ? (
                 <TextComponent
                     tag="span"
+                    align="left"
                     styling="heading-6"
                     onClick={onClickToggle}
                     color={color as ColorType}
@@ -88,7 +89,11 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
                     {expand
                         ? textToggleButton.onExpand
                         : textToggleButton.onCLose}
-                    <IconComponent color={color as ColorType} size={12}>
+                    <IconComponent
+                        color={color as ColorType}
+                        size={16}
+                        style={{ marginLeft: 5 }}
+                    >
                         {expand ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
                     </IconComponent>
                 </TextComponent>

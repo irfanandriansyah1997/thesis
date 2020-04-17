@@ -28,7 +28,8 @@
     &__toggle {
         align-items: center;
         bottom: 0;
-        justify-content: center;
+        cursor: pointer;
+        justify-content: flex-start;
         width: 100%;
         z-index: 10;
 
