@@ -76,7 +76,10 @@ class ResizeObserverHelper extends LogHelperAbstract {
      * @param {string} functionName - fn name
      * @param {Element} target - element
      */
-    private executeCommandObserver(fn: string, target: Element): void {
+    private executeCommandObserver(
+        fn: 'disconnect' | 'observe' | 'unobserve',
+        target: Element
+    ): void {
         const { observer } = this;
         const checkTarget = ResizeObserverHelper.targetGuard('observe', target);
         const checkObserver = ResizeObserverHelper.observerGuard(
