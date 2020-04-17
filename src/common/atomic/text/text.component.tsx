@@ -37,6 +37,7 @@ const TextComponent: SFC<TextPropsInterface> = ({
     };
 
     return createElement(tag, {
+        ...res,
         className: StringHelper.objToString(name),
         style: {
             ...res.style,
@@ -48,8 +49,7 @@ const TextComponent: SFC<TextPropsInterface> = ({
                 ? ColorDefaultConstant[color as ColorType]
                 : undefined,
             textAlign: align
-        },
-        ...res
+        }
     });
 };
 

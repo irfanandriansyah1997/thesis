@@ -19,6 +19,7 @@ export default [
      */
     ...[
         './src/common/molecules/checkbox/checkbox.component.tsx',
+        '.src/common/molecules/expand-text/expand-text.component.tsx',
         './src/common/molecules/radio-button/radio-button.component.tsx'
     ],
     /**

@@ -8,6 +8,7 @@ ignore:
     - "**/types/.*"
     - "**/*.spec.ts"
     - "**/*.spec.tsx"
+    - "**/__mocks__/.*"
     - "**/*.stories.ts"
     - "**/*.stories.tsx"
     - "**/interfaces/.*"
