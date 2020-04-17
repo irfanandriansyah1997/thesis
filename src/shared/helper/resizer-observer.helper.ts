@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import ValidatorHelper from './validator.helper';
+import LogHelperAbstract from '../abstract/log/log-helper.abstract';
 
 /**
  * Generate Class
@@ -7,24 +8,16 @@ import ValidatorHelper from './validator.helper';
  * @description
  * @since 2020.04.17
  */
-class ResizeObserverHelper {
+class ResizeObserverHelper extends LogHelperAbstract {
     private observer: ResizeObserver | false = false;
 
     private callback: ResizeObserverCallback | undefined;
 
     constructor() {
+        super();
+
         this.execute = this.execute.bind(this);
         this.executeCommandObserver = this.executeCommandObserver.bind(this);
-    }
-
-    /**
-     * Setter Callback Resize Observer
-     * @param {ResizeObserverCallback} callback - callback observer
-     * @return {ResizeObserverHelper}
-     */
-    public setCallback(callback: ResizeObserverCallback): this {
-        this.callback = callback;
-        return this;
     }
 
     /**
@@ -42,7 +35,7 @@ class ResizeObserverHelper {
                 throw new Error(check);
             }
         } catch (e) {
-            console.error(e.message);
+            ResizeObserverHelper.logError(e.message);
         }
 
         return this;
@@ -57,7 +50,7 @@ class ResizeObserverHelper {
         try {
             this.executeCommandObserver('observe', target);
         } catch (e) {
-            console.error(e.message);
+            ResizeObserverHelper.logError(e.message);
         }
 
         return this;
@@ -72,7 +65,7 @@ class ResizeObserverHelper {
         try {
             this.executeCommandObserver('unobserve', target);
         } catch (e) {
-            console.error(e.message);
+            ResizeObserverHelper.logError(e.message);
         }
 
         return this;
@@ -119,7 +112,7 @@ class ResizeObserverHelper {
                 );
             }
         } catch (e) {
-            console.error(e);
+            ResizeObserverHelper.logError(e);
         }
 
         return this;
@@ -139,7 +132,7 @@ class ResizeObserverHelper {
                 '[Error] Resize Observer is not supported in your browser 😔'
             );
         } catch (e) {
-            console.error(e.message);
+            ResizeObserverHelper.logError(e.message);
 
             return false;
         }

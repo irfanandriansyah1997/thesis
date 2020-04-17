@@ -18,6 +18,7 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
     color,
     children,
     maxHeight,
+    onToggleExpand,
     textToggleButton,
     ...res
 }: ExpandTextPropsInterface) => {
@@ -44,6 +45,10 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
         if (ref.current) {
             setExpand(!expand);
             setComponentHeight(!expand ? ref.current.scrollHeight : maxHeight);
+        }
+
+        if (onToggleExpand) {
+            onToggleExpand(!expand);
         }
     };
 

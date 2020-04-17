@@ -1,7 +1,8 @@
 module.exports = {
     globals: {
-        IntersectionObserver: true,
-        innerWidth: true
+        innerWidth: true,
+        ResizeObserver: true,
+        IntersectionObserver: true
     },
     collectCoverage: true,
     testURL: 'http://localhost/',
@@ -11,6 +12,7 @@ module.exports = {
         '!src/*.scss',
         '!src/*.less',
         '!lib/**/*.js',
+        '!**/__mocks__/*.{js,ts,jsx,tsx}',
         'src/**/*.{js,jsx,ts,tsx}',
         '!.storybook/*.{js,jsx,ts,tsx}',
         '!src/**/*.mock.{js,jsx,ts,tsx}',
