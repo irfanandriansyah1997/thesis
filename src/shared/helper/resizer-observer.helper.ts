@@ -3,7 +3,7 @@ import ValidatorHelper from './validator.helper';
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
 
 /**
- * Generate Class
+ * Resize Observer Helper
  * @author Irfan Andriansyah <irfan@99.co>
  * @description
  * @since 2020.04.17
