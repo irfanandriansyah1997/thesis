@@ -51,6 +51,7 @@ const RadioButtonComponent: RadioButtonDefaultExportInterface = ({
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
         flex: true,
         relative: true,
+        'flex-wrap': true,
         'ui-molecules-radio': true,
         'flex-row': styling === 'horizontal',
         'flex-column': styling === 'vertical',
@@ -61,10 +62,7 @@ const RadioButtonComponent: RadioButtonDefaultExportInterface = ({
 
     // Getter Style
     const style: CSSProperties = {
-        marginTop: styling === 'horizontal' ? 0 : MarginValue,
-        marginLeft: styling === 'horizontal' ? MarginValue : 0,
-        marginRight: styling === 'horizontal' ? MarginValue : 0,
-        marginBottom: styling === 'horizontal' ? 0 : MarginValue
+        margin: MarginValue
     };
 
     return (

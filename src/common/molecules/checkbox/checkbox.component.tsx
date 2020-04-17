@@ -57,6 +57,7 @@ const CheckboxComponent: CheckboxDefaultExportInterface = ({
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
         flex: true,
         relative: true,
+        'flex-wrap': true,
         'ui-molecules-checkbox': true,
         'flex-row': styling === 'horizontal',
         'flex-column': styling === 'vertical',
@@ -67,10 +68,7 @@ const CheckboxComponent: CheckboxDefaultExportInterface = ({
 
     // Getter Style
     const style: CSSProperties = {
-        marginTop: styling === 'horizontal' ? 0 : MarginValue,
-        marginLeft: styling === 'horizontal' ? MarginValue : 0,
-        marginRight: styling === 'horizontal' ? MarginValue : 0,
-        marginBottom: styling === 'horizontal' ? 0 : MarginValue
+        margin: MarginValue
     };
 
     return (
