@@ -20,9 +20,7 @@ const RadioButtonItemComponent: SFC<ComponentMultipleOptionItemInterface> = ({
     label,
     ...res
 }: ComponentMultipleOptionItemInterface) => {
-    const { value, name, onChange, styling, type } = useContext(
-        RadioButtonContext
-    );
+    const { value, name, onChange, type } = useContext(RadioButtonContext);
 
     // Getter ClassName
     const className: ComponentClassnameDefaultInterface = {
@@ -38,10 +36,7 @@ const RadioButtonItemComponent: SFC<ComponentMultipleOptionItemInterface> = ({
 
     // Getter Style
     const style: CSSProperties = {
-        marginTop: styling === 'horizontal' ? 0 : MarginValue,
-        marginLeft: styling === 'horizontal' ? MarginValue : 0,
-        marginRight: styling === 'horizontal' ? MarginValue : 0,
-        marginBottom: styling === 'horizontal' ? 0 : MarginValue
+        margin: MarginValue
     };
 
     return (

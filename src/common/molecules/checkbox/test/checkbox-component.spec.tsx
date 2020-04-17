@@ -105,26 +105,12 @@ describe('Testing text component in atomic component', () => {
 
         const item2 = checkbox2.find('.ui-molecules-checkbox__item').first();
 
-        expect(checkbox1.prop('style')).toHaveProperty('margin-top', '0');
-        expect(checkbox1.prop('style')).toHaveProperty('margin-bottom', '0');
-        expect(checkbox1.prop('style')).toHaveProperty('margin-left', '-5px');
-        expect(checkbox1.prop('style')).toHaveProperty('margin-right', '-5px');
-
+        expect(checkbox1.prop('style')).toHaveProperty('margin', '-5px');
         expect(item1.hasClass('ui-multiple-option-checkbox')).toBe(true);
-        expect(item1.prop('style')).toHaveProperty('margin-top', '0');
-        expect(item1.prop('style')).toHaveProperty('margin-bottom', '0');
-        expect(item1.prop('style')).toHaveProperty('margin-left', '5px');
-        expect(item1.prop('style')).toHaveProperty('margin-right', '5px');
+        expect(item1.prop('style')).toHaveProperty('margin', '5px');
 
-        expect(checkbox2.prop('style')).toHaveProperty('margin-top', '-5px');
-        expect(checkbox2.prop('style')).toHaveProperty('margin-bottom', '-5px');
-        expect(checkbox2.prop('style')).toHaveProperty('margin-left', '0');
-        expect(checkbox2.prop('style')).toHaveProperty('margin-right', '0');
-
+        expect(checkbox2.prop('style')).toHaveProperty('margin', '-5px');
         expect(item2.hasClass('ui-multiple-option-radio')).toBe(true);
-        expect(item2.prop('style')).toHaveProperty('margin-top', '5px');
-        expect(item2.prop('style')).toHaveProperty('margin-bottom', '5px');
-        expect(item2.prop('style')).toHaveProperty('margin-left', '0');
-        expect(item2.prop('style')).toHaveProperty('margin-right', '0');
+        expect(item2.prop('style')).toHaveProperty('margin', '5px');
     });
 });
