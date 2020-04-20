@@ -4,6 +4,8 @@ import { ResizeObserver, install } from 'resize-observer';
 import { ResizeObserverEntry } from 'resize-observer/lib/ResizeObserverEntry';
 
 import StringHelper from '../../../shared/helper/string.helper';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
 import {
     AccordionPropsInterface,
     AccordionStateInterface
@@ -37,9 +39,7 @@ class AccordionComponent extends React.PureComponent<
 
     static defaultProps = {
         show: false,
-        onToggleSelector: (): void => {
-            // toggle
-        },
+        onToggleSelector: undefined,
         collapsedHeight: '0px',
         gradient: false,
         showArrow: false
@@ -55,7 +55,6 @@ class AccordionComponent extends React.PureComponent<
 
         this.onClickToggle = this.onClickToggle.bind(this);
         this.updateSizeContent = this.updateSizeContent.bind(this);
-        this.showArrowIcon = this.showArrowIcon.bind(this);
     }
 
     componentDidMount(): void {
@@ -127,6 +126,18 @@ class AccordionComponent extends React.PureComponent<
     }
 
     /**
+     * Get icon children accordingly
+     */
+    get iconChildren(): string {
+        const { show } = this.state;
+
+        return StringHelper.objToString({
+            'rui-icon-arrow-up-small': show === true,
+            'rui-icon-arrow-down-small': show === false
+        });
+    }
+
+    /**
      * Event handler when updating size
      * @description these method will invoke when accordion resizes
      */
@@ -144,22 +155,18 @@ class AccordionComponent extends React.PureComponent<
         }
     }
 
-    /**
-     * @description Function to display arrow icon
-     */
-    showArrowIcon(): React.ReactNode {
-        const { show } = this.state;
-        return (
-            <IconComponent color="primary" size={18}>
-                {show ? 'rui-icon-arrow-up-small' : 'rui-icon-arrow-down-small'}
-            </IconComponent>
-        );
-    }
-
     render(): React.ReactNode {
-        const { className, onClickToggle } = this;
+        const { className, onClickToggle, iconChildren } = this;
         const { selector, children, gradient, showArrow } = this.props;
         const { height, show } = this.state;
+        const name: ComponentClassnameDefaultInterface = {
+            'ui-molecules-accordion__selector': true,
+            'ui-molecules-accordion__selector-gradient': ValidatorHelper.verifiedIsNotFalse(
+                gradient && !show
+            ),
+            flex: true,
+            relative: true
+        };
 
         return (
             <div className={className}>
@@ -169,13 +176,7 @@ class AccordionComponent extends React.PureComponent<
                 >
                     <div ref={this.node}>{children}</div>
                 </div>
-                <div
-                    className={`${'ui-molecules-accordion__selector flex relative'} ${
-                        gradient && !show
-                            ? 'ui-molecules-accordion__selector-gradient'
-                            : ''
-                    }`}
-                >
+                <div className={StringHelper.objToString(name)}>
                     <button
                         className="ui-molecules-accordion__selector-button"
                         type="submit"
@@ -186,7 +187,9 @@ class AccordionComponent extends React.PureComponent<
                     </button>
                     {showArrow ? (
                         <span className="ui-molecules-accordion__selector-icon">
-                            {this.showArrowIcon()}
+                            <IconComponent color="primary" size={18}>
+                                {iconChildren}
+                            </IconComponent>
                         </span>
                     ) : null}
                 </div>
