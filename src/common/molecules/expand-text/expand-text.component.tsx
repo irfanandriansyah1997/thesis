@@ -39,7 +39,7 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
         setExpand(output);
 
         if (onToggleExpand) {
-            onToggleExpand(!output);
+            onToggleExpand(output);
         }
     };
 

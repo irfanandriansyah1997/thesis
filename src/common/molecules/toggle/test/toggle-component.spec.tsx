@@ -2,8 +2,7 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 
-import ExpandTextComponent from '../expand-text.component';
-import TextComponent from '../../../atomic/text/text.component';
+import ToggleComponent from '../toggle.component';
 import ResizeObserver from '../../../../shared/helper/__mocks__/resizer-observer';
 
 const children = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -53,109 +52,77 @@ describe('Testing expand text component in atomic component', () => {
         global.ResizeObserver = ResizeObserver;
     });
 
-    it('Should render expand text component correctly', () => {
+    it('Should render toggle component correctly', () => {
         const expandText = render(
-            <ExpandTextComponent
+            <ToggleComponent
                 color="text"
                 collapsedHeight={100}
                 className="sample-classname"
-                textToggleButton={{
-                    onCLose: 'Buka',
-                    onExpand: 'Tutup'
-                }}
+                selector={<button>selector</button>}
             >
                 {children}
-            </ExpandTextComponent>
+            </ToggleComponent>
         );
 
         expect(expandText.hasClass('sample-classname')).toBe(true);
         expect(expandText.hasClass('ui-molecules-toggle')).toBe(true);
     });
 
-    it('Testing props onclick toggle', () => {
+    it('Testing props onclick & onComponentResize', () => {
         const toggle = jest.fn((x) => x);
+        const onResize = jest.fn((x) => x);
         const expandText = mount(
-            <ExpandTextComponent
+            <ToggleComponent
                 color="text"
-                collapsedHeight={10}
                 className="sample-classname"
-                textToggleButton={{
-                    onCLose: 'Buka',
-                    onExpand: 'Tutup'
-                }}
+                selector={<button>selector</button>}
                 onToggleExpand={toggle}
+                onComponentResize={onResize}
             >
                 {children}
-            </ExpandTextComponent>
+            </ToggleComponent>
         );
 
-        expect(expandText.find(TextComponent).length).toBe(1);
+        expect(
+            (expandText
+                .find('.ui-molecules-toggle__selector')
+                .at(0)
+                .props().className as string).includes(
+                'ui-molecules-toggle__selector--bottom'
+            )
+        ).toBe(true);
+
+        expect(expandText.find('button').length).toBe(1);
         expandText
-            .find(TextComponent)
+            .find('button')
             .at(0)
             .simulate('click');
 
         expect(toggle.mock.results[0].value).toBe(true);
+        expect(onResize.mock.results[0].value).toBe(200);
+        expect(
+            (expandText
+                .find('.ui-molecules-toggle')
+                .at(0)
+                .props().className as string).includes(
+                'ui-molecules-toggle--expand'
+            )
+        ).toBe(true);
 
         expandText
-            .find(TextComponent)
+            .find('button')
             .at(0)
             .simulate('click');
 
         expect(toggle.mock.results[1].value).toBe(false);
-    });
-
-    it('Testing props onclick toggle without set props onToggleExpan', () => {
-        const expandText = mount(
-            <ExpandTextComponent
-                showArrow={false}
-                color="text"
-                collapsedHeight={10}
-                className="sample-classname"
-                textToggleButton={{
-                    onCLose: 'Buka',
-                    onExpand: 'Tutup'
-                }}
-            >
-                {children}
-            </ExpandTextComponent>
-        );
-
-        expect(expandText.find(TextComponent).length).toBe(1);
-        expandText
-            .find(TextComponent)
-            .at(0)
-            .simulate('click');
-
+        expect(onResize.mock.results[1].value).toBe(200);
         expect(
-            expandText.find('.ui-molecules-toggle__content').props().style
-        ).toHaveProperty('maxHeight', '200px');
-
-        expandText
-            .find(TextComponent)
-            .at(0)
-            .simulate('click');
-        expect(
-            expandText.find('.ui-molecules-toggle__content').props().style
-        ).toHaveProperty('maxHeight', '10px');
-    });
-
-    it('Testing props with scrollHeight is smaller then props collapsedHeight', () => {
-        const expandText = mount(
-            <ExpandTextComponent
-                showArrow
-                color="text"
-                collapsedHeight={1000}
-                className="sample-classname"
-                textToggleButton={{
-                    onCLose: 'Buka',
-                    onExpand: 'Tutup'
-                }}
-            >
-                {children}
-            </ExpandTextComponent>
-        );
-
-        expect(expandText.find(TextComponent).length).toBe(0);
+            (expandText
+                .find('.ui-molecules-toggle')
+                .at(0)
+                .props().className as string).includes(
+                'ui-molecules-toggle--expand'
+            )
+        ).toBe(false);
     });
 });
