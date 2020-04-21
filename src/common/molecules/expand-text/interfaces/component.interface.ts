@@ -8,11 +8,16 @@ import { ColorInterface } from '../../../../shared/interface/common/color.interf
  */
 export type ExpandTextPropsInterface = Omit<
     TogglePropsInterface,
-    'gradient' | 'childrenPosition' | 'selector' | 'onComponentResize'
+    | 'gradient'
+    | 'childrenPosition'
+    | 'selector'
+    | 'onComponentResize'
+    | 'collapsedHeight'
 > &
     ColorInterface & {
-        textToggleButton: ExpandTextToggleButtonInterface;
         showArrow?: boolean;
+        collapsedHeight: number;
+        textToggleButton?: ExpandTextToggleButtonInterface;
     };
 
 /**

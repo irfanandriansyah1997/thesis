@@ -1,6 +1,8 @@
 import React from 'react';
 
-import SectionDefaultCheckboxComponent from './section/section-default.stories';
+import SectionDefaultExpandTextComponent from './section/section-default.stories';
+import SectionWithoutArrowExpandTextComponent from './section/section-without-arrow.stories';
+import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 
 import '../style/style.scss';
@@ -13,7 +15,9 @@ import '../style/style.scss';
         )
         .registerDocumentation(
             <>
-                <SectionDefaultCheckboxComponent />
+                <SectionDefaultExpandTextComponent />
+                <DividerDocsComponent />
+                <SectionWithoutArrowExpandTextComponent />
             </>
         )
         .execute();

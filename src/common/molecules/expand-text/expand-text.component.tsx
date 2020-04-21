@@ -1,4 +1,5 @@
-import React, { SFC, useState, ReactNode } from 'react';
+import PropTypes from 'prop-types';
+import React, { SFC, useState, ReactNode, Validator } from 'react';
 
 import ToggleComponent from '../toggle/toggle.component';
 import TextComponent from '../../atomic/text/text.component';
@@ -8,6 +9,7 @@ import {
     ExpandTextToggleButtonInterface
 } from './interfaces/component.interface';
 import { ColorType } from '../../../shared/interface/common/color.interface';
+import ColorDefaultConstant from '../../../shared/constant/color.constant';
 
 const ARROW_ON_EXPAND = 'rui-icon-arrow-up-small';
 const ARROW_ON_HIDE = 'rui-icon-arrow-down-small';
@@ -96,10 +98,39 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
             selector={selectorToggle(
                 showArrow || false,
                 color as ColorType,
-                textToggleButton
+                textToggleButton as ExpandTextToggleButtonInterface
             )}
         />
     );
+};
+
+ExpandTextComponent.propTypes = {
+    show: PropTypes.bool,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired,
+    collapsedHeight: PropTypes.number.isRequired,
+    onToggleExpand: PropTypes.func,
+    color: PropTypes.oneOf(Object.keys(ColorDefaultConstant)) as Validator<
+        ColorType
+    >,
+    textToggleButton: PropTypes.shape({
+        onCLose: PropTypes.string,
+        onExpand: PropTypes.string
+    }),
+    showArrow: PropTypes.bool
+};
+
+ExpandTextComponent.defaultProps = {
+    show: false,
+    onToggleExpand: undefined,
+    color: 'heading',
+    textToggleButton: {
+        onCLose: 'Open',
+        onExpand: 'Close'
+    },
+    showArrow: true
 };
 
 export default ExpandTextComponent;

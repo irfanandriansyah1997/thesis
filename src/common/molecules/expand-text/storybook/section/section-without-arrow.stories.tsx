@@ -19,6 +19,7 @@ import CodingViewerDocsComponent from '../../../../../.storybook/component/molec
  */
 const docs = (props: ExpandTextPropsInterface): string =>
     `<ExpandComponent \n` +
+    `    showArrow="${props.showArrow}"\n` +
     `    color="${props.color}"\n` +
     `    collapsedHeight="${props.collapsedHeight}"\n` +
     `    textToggleButton={{\n` +
@@ -34,25 +35,28 @@ const docs = (props: ExpandTextPropsInterface): string =>
     `</ExpandComponent>`;
 
 /**
- * Section Default Expand Text
+ * Section Without Arror  Expand Text
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.15
  */
-class SectionDefaultCheckboxComponent extends React.PureComponent<
+class SectionWithoutArrowExpandTextComponent extends React.PureComponent<
     {},
     Record<string, unknown>
 > {
     render(): ReactNode {
         return (
             <>
-                <HeadingDocsComponent>Usage</HeadingDocsComponent>
+                <HeadingDocsComponent>
+                    Customized Expand Text
+                </HeadingDocsComponent>
                 <TextDocsComponent>
-                    Basic usage expand text component
+                    Render expand text component without arrow icon in the
+                    selector.
                 </TextDocsComponent>
                 <CodingViewerDocsComponent
                     sourceCode={docs({
-                        showArrow: true,
-                        color: 'primary',
+                        showArrow: false,
+                        color: 'heading',
                         collapsedHeight: 100,
                         textToggleButton: {
                             onCLose: 'Buka lebih detail',
@@ -62,8 +66,8 @@ class SectionDefaultCheckboxComponent extends React.PureComponent<
                     })}
                 >
                     <ExpandTextComponent
-                        showArrow
-                        color="primary"
+                        showArrow={false}
+                        color="heading"
                         collapsedHeight={100}
                         textToggleButton={{
                             onCLose: 'Buka lebih detail',
@@ -118,4 +122,4 @@ class SectionDefaultCheckboxComponent extends React.PureComponent<
     }
 }
 
-export default SectionDefaultCheckboxComponent;
+export default SectionWithoutArrowExpandTextComponent;
