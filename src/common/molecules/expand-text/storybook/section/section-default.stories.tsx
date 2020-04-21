@@ -17,7 +17,7 @@ import CodingViewerDocsComponent from '../../../../../.storybook/component/molec
 const docs = (props: ExpandTextPropsInterface): string =>
     `<ExpandComponent \n` +
     `    color="${props.color}"\n` +
-    `    maxHeight="${props.maxHeight}"\n` +
+    `    maxHeight="${props.collapsedHeight}"\n` +
     `    textToggleButton={{\n` +
     `        onCLose: '${props.textToggleButton.onCLose}',\n` +
     `        onExpand: '${props.textToggleButton.onExpand}'\n` +
@@ -45,7 +45,7 @@ class SectionDefaultCheckboxComponent extends React.PureComponent<
                 <CodingViewerDocsComponent
                     sourceCode={docs({
                         color: 'heading',
-                        maxHeight: 100,
+                        collapsedHeight: 300,
                         textToggleButton: {
                             onCLose: 'Buka lebih detail',
                             onExpand: 'Tutup Deskripsi'
@@ -54,8 +54,9 @@ class SectionDefaultCheckboxComponent extends React.PureComponent<
                     })}
                 >
                     <ExpandTextComponent
+                        showArrow
                         color="heading"
-                        maxHeight={100}
+                        collapsedHeight={100}
                         textToggleButton={{
                             onCLose: 'Buka lebih detail',
                             onExpand: 'Tutup Deskripsi'

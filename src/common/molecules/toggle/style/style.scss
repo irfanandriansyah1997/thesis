@@ -1,0 +1,50 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-toggle {
+    $c: &;
+    width: 100%;
+
+    &__content {
+        overflow: hidden;
+
+        @include transition(max-height 0.3s cubic-bezier(0.7, 0.3, 0, 1));
+        @include font-face(primary, heading, sm, 400, normal, none, none, 23);
+    }
+
+    &__toggle {
+        align-items: center;
+        bottom: 0;
+        cursor: pointer;
+        justify-content: flex-start;
+        width: 100%;
+        z-index: 10;
+
+        @include font-size(sm);
+    }
+
+    &--expand#{$c}--gradient {
+        #{$c}__content {
+            &::before {
+                opacity: 0;
+            }
+        }
+    }
+
+    &--gradient {
+        #{$c}__content {
+            &::before {
+                bottom: 0;
+                content: '';
+                height: 93px;
+                left: 0;
+                opacity: 1;
+                position: absolute;
+                width: 100%;
+                z-index: 1;
+
+                @include linear-gradient(white, rgba(white, 0.5), to top);
+                @include transition(0.3s cubic-bezier(0.7, 0.3, 0, 1));
+            }
+        }
+    }
+}

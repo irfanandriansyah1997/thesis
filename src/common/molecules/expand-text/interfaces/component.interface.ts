@@ -1,4 +1,4 @@
-import { ReactNode, HTMLAttributes } from 'react';
+import { TogglePropsInterface } from '../../toggle/interfaces/component.interface';
 import { ColorInterface } from '../../../../shared/interface/common/color.interface';
 
 /**
@@ -7,20 +7,12 @@ import { ColorInterface } from '../../../../shared/interface/common/color.interf
  * @since 2020.04.17
  */
 export type ExpandTextPropsInterface = Omit<
-    HTMLAttributes<HTMLElement>,
-    | 'dangerouslySetInnerHTML'
-    | 'onClick'
-    | 'onKeyDown'
-    | 'onKeyDown'
-    | 'onKeyPress'
-    | 'onChange'
-    | 'style'
+    TogglePropsInterface,
+    'gradient' | 'childrenPosition' | 'selector' | 'onComponentResize'
 > &
     ColorInterface & {
-        maxHeight: number;
-        children: ReactNode;
-        onToggleExpand?: (expand: true | false) => void;
         textToggleButton: ExpandTextToggleButtonInterface;
+        showArrow?: boolean;
     };
 
 /**

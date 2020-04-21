@@ -1,13 +1,16 @@
-import React, { SFC, useState, useEffect } from 'react';
+import React, { SFC, useState, ReactNode } from 'react';
 
+import ToggleComponent from '../toggle/toggle.component';
 import TextComponent from '../../atomic/text/text.component';
 import IconComponent from '../../atomic/icon/icon.component';
-import StringHelper from '../../../shared/helper/string.helper';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { ExpandTextPropsInterface } from './interfaces/component.interface';
+import {
+    ExpandTextPropsInterface,
+    ExpandTextToggleButtonInterface
+} from './interfaces/component.interface';
 import { ColorType } from '../../../shared/interface/common/color.interface';
-import ComponentResizerHelper from '../../../shared/helper/component-resizer.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+
+const ARROW_ON_EXPAND = 'rui-icon-arrow-up-small';
+const ARROW_ON_HIDE = 'rui-icon-arrow-down-small';
 
 /**
  * Expand Text Component
@@ -16,89 +19,86 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  */
 const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
     color,
-    children,
-    maxHeight,
+    showArrow,
     onToggleExpand,
     textToggleButton,
     ...res
 }: ExpandTextPropsInterface) => {
-    const [expand, setExpand] = useState<boolean>(false);
-    const [showToggle, setShowToggle] = useState<boolean>(false);
-    const [componentHeight, setComponentHeight] = useState<number>(maxHeight);
-    const { width, ref } = ComponentResizerHelper<HTMLDivElement>({});
-
-    // Getter ClassName
-    const className: ComponentClassnameDefaultInterface = {
-        [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
-        block: true,
-        relative: true,
-        'ui-molecules-expand-text': true,
-        'ui-molecules-expand-text--expand': expand
-    };
-    delete res.className;
+    const [expand, setExpand] = useState<boolean>(res.show || false);
+    const [showToggleSelector, setShowToggleSelector] = useState<boolean>(
+        false
+    );
 
     /**
      * On Click Toggle
      * @return {void}
      */
-    const onClickToggle = (): void => {
-        if (ref.current) {
-            setExpand(!expand);
-            setComponentHeight(!expand ? ref.current.scrollHeight : maxHeight);
-        }
+    const onClickToggle = (output: boolean): void => {
+        setExpand(output);
 
         if (onToggleExpand) {
-            onToggleExpand(!expand);
+            onToggleExpand(!output);
         }
     };
 
     /**
-     * The Purpose method is watch if windows sizing
+     * On Click Toggle
      * @return {void}
      */
-    const watchFn = (): void => {
-        if (ref.current) {
-            setExpand(!(ref.current.scrollHeight > maxHeight));
-            setShowToggle(ref.current.scrollHeight > maxHeight);
-        }
+    const onComponentResize = (output: number): void => {
+        setShowToggleSelector(output > (res.collapsedHeight || 0));
     };
 
-    useEffect(watchFn, [width]);
-
-    return (
-        <div className={StringHelper.objToString(className)} {...res}>
-            <div
-                ref={ref}
-                style={{ maxHeight: `${componentHeight}px` }}
-                className="ui-molecules-expand-text__content relative"
-            >
-                {children}
-            </div>
-            {showToggle ? (
+    /**
+     * Selector Toggle
+     * @description create div element for toggle selector
+     * @return {ReactNode}
+     */
+    const selectorToggle = (
+        isShowArrow: boolean,
+        textColor: ColorType,
+        text: ExpandTextToggleButtonInterface
+    ): ReactNode => (
+        <>
+            {showToggleSelector ? (
                 <TextComponent
                     tag="span"
                     align="left"
                     styling="heading-6"
-                    onClick={onClickToggle}
-                    color={color as ColorType}
+                    color={textColor}
                     className="ui-molecules-expand-text__toggle flex"
                     style={{
                         marginTop: 20
                     }}
                 >
-                    {expand
-                        ? textToggleButton.onExpand
-                        : textToggleButton.onCLose}
-                    <IconComponent
-                        color={color as ColorType}
-                        size={16}
-                        style={{ marginLeft: 5 }}
-                    >
-                        {expand ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-                    </IconComponent>
+                    {expand ? text.onExpand : text.onCLose}
+                    {isShowArrow ? (
+                        <IconComponent
+                            color={color as ColorType}
+                            size={16}
+                            style={{ marginLeft: 5 }}
+                        >
+                            {expand ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
+                        </IconComponent>
+                    ) : null}
                 </TextComponent>
             ) : null}
-        </div>
+        </>
+    );
+
+    return (
+        <ToggleComponent
+            {...res}
+            gradient
+            childrenPosition="bottom"
+            onToggleExpand={onClickToggle}
+            onComponentResize={onComponentResize}
+            selector={selectorToggle(
+                showArrow || false,
+                color as ColorType,
+                textToggleButton
+            )}
+        />
     );
 };
 
