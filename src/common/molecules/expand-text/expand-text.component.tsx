@@ -92,7 +92,7 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
         <ToggleComponent
             {...res}
             gradient
-            childrenPosition="bottom"
+            selectorPosition="bottom"
             onToggleExpand={onClickToggle}
             onComponentResize={onComponentResize}
             selector={selectorToggle(

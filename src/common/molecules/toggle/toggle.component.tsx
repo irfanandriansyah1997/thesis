@@ -7,7 +7,7 @@ import ComponentResizerHelper from '../../../shared/helper/component-resizer.hel
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
 import {
     TogglePropsInterface,
-    ToggleChildrenPositionType
+    ToggleSelectorPositionType
 } from './interfaces/component.interface';
 
 /**
@@ -23,7 +23,7 @@ const ToggleComponent: SFC<TogglePropsInterface> = ({
     children,
     onToggleExpand,
     collapsedHeight,
-    childrenPosition,
+    selectorPosition,
     onComponentResize,
     ...res
 }: TogglePropsInterface) => {
@@ -45,7 +45,7 @@ const ToggleComponent: SFC<TogglePropsInterface> = ({
         'ui-molecules-toggle--expand': expand,
         'ui-molecules-toggle--gradient':
             ValidatorHelper.verifiedIsNotFalse(gradient) &&
-            childrenPosition === 'bottom'
+            selectorPosition === 'bottom'
     };
     delete res.className;
 
@@ -88,7 +88,7 @@ const ToggleComponent: SFC<TogglePropsInterface> = ({
      * @return {ReactNode}
      */
     const selectorToggle = (
-        position: ToggleChildrenPositionType
+        position: ToggleSelectorPositionType
     ): ReactNode => (
         <div
             role="button"
@@ -107,7 +107,7 @@ const ToggleComponent: SFC<TogglePropsInterface> = ({
 
     return (
         <div className={StringHelper.objToString(className)} {...res}>
-            {childrenPosition === 'top' ? selectorToggle('top') : null}
+            {selectorPosition === 'top' ? selectorToggle('top') : null}
             <div
                 ref={ref}
                 style={{ maxHeight: `${componentHeight}px` }}
@@ -115,7 +115,7 @@ const ToggleComponent: SFC<TogglePropsInterface> = ({
             >
                 {children}
             </div>
-            {childrenPosition === 'bottom' ? selectorToggle('bottom') : null}
+            {selectorPosition === 'bottom' ? selectorToggle('bottom') : null}
         </div>
     );
 };
@@ -132,7 +132,7 @@ ToggleComponent.propTypes = {
         PropTypes.node
     ]).isRequired,
     collapsedHeight: PropTypes.number,
-    childrenPosition: PropTypes.oneOf<ToggleChildrenPositionType>([
+    selectorPosition: PropTypes.oneOf<ToggleSelectorPositionType>([
         'bottom',
         'top'
     ]),
@@ -144,7 +144,7 @@ ToggleComponent.defaultProps = {
     show: false,
     gradient: false,
     collapsedHeight: 0,
-    childrenPosition: 'bottom',
+    selectorPosition: 'bottom',
     onToggleExpand: undefined,
     onComponentResize: undefined
 };

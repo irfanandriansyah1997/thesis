@@ -9,7 +9,7 @@ import { ColorInterface } from '../../../../shared/interface/common/color.interf
 export type ExpandTextPropsInterface = Omit<
     TogglePropsInterface,
     | 'gradient'
-    | 'childrenPosition'
+    | 'selectorPosition'
     | 'selector'
     | 'onComponentResize'
     | 'collapsedHeight'

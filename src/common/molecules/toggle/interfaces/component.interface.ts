@@ -1,6 +1,6 @@
 import { ReactNode, HTMLAttributes } from 'react';
 
-export type ToggleChildrenPositionType = 'bottom' | 'top';
+export type ToggleSelectorPositionType = 'bottom' | 'top';
 
 /**
  * Toggle Props Interface
@@ -24,6 +24,6 @@ export type TogglePropsInterface = Omit<
     children: ReactNode;
     collapsedHeight?: number;
     onComponentResize?: (height: number) => void;
-    childrenPosition?: ToggleChildrenPositionType;
+    selectorPosition?: ToggleSelectorPositionType;
     onToggleExpand?: (expand: true | false) => void;
 };
