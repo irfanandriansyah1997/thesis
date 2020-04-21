@@ -8,7 +8,7 @@ import { ReactNode } from 'react';
  */
 export interface ComponentDefaultInterface {
     className?: string;
-    children?: ReactNode;
+    children?: ReactNode | string | Element;
 }
 
 /**
