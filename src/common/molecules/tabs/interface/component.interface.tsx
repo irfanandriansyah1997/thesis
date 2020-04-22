@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC, HTMLAttributes } from 'react';
 import { ComponentDefaultInterface } from '../../../../shared/interface/component/componen-default.interface';
 
 /**
@@ -6,11 +6,11 @@ import { ComponentDefaultInterface } from '../../../../shared/interface/componen
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.21
  */
-export interface TabPanePropsInterface {
+export type TabPanePropsInterface = HTMLAttributes<HTMLDivElement> & {
     tab: TabChildren;
     children: TabChildren;
     isChange?: boolean;
-}
+};
 
 export type TabChildren = React.ReactNode | string | Element;
 
@@ -20,3 +20,7 @@ export interface TabPropsInterface extends ComponentDefaultInterface {
     isDesktop?: boolean;
     renderDynamic?: boolean;
 }
+
+export type TabDefaultExportInterface = SFC<TabPropsInterface> & {
+    Item: SFC<TabPanePropsInterface>;
+};
