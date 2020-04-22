@@ -1,23 +1,23 @@
 import React from 'react';
 
-import SectionDefaultExpandTextComponent from './section/section-default.stories';
-import SectionWithoutArrowExpandTextComponent from './section/section-without-arrow.stories';
+import SectionCustomToggleComponent from './section/section.custom.stories';
+import SectionDefaultToggleComponent from './section/section.default.stories';
 import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 
 import '../style/style.scss';
 
 ((): void => {
-    new StorybookDocumentationBuilder('Expand Text Component', 'molecules')
+    new StorybookDocumentationBuilder('Togggle Component', 'molecules')
         .setSection('common')
         .setDescriptionComponent(
-            'Expand text is used to create a toggle section and you can show and hide section based on height these children props'
+            'Toggle Component is a content area which can be collapsed and expanded, used to group or hide complex regions to keep the page clean.'
         )
         .registerDocumentation(
             <>
-                <SectionDefaultExpandTextComponent />
+                <SectionDefaultToggleComponent />
                 <DividerDocsComponent />
-                <SectionWithoutArrowExpandTextComponent />
+                <SectionCustomToggleComponent />
             </>
         )
         .execute();
