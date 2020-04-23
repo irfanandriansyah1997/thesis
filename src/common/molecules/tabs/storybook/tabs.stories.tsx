@@ -11,6 +11,8 @@ import '../style/style.scss';
 
 const TextDocumentation = require('./markdown/tabs.documentation.md');
 
+const { Item } = TabsComponent;
+
 ((): void => {
     new StorybookDocumentationBuilder('Tabs Component', 'molecules')
         .setSection('common')
@@ -23,10 +25,23 @@ const TextDocumentation = require('./markdown/tabs.documentation.md');
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
                 <TextDocsComponent>Basic tabs component</TextDocsComponent>
                 <CodingViewerDocsComponent
-                    sourceCode={`${"<TextComponent tag='h1' styling='heading-1'>h1 Text heading</TextComponent>"}\n${"<TextComponent tag='h2' styling='heading-2'>h2 Text heading</TextComponent>"}\n${"<TextComponent tag='h3' styling='heading-3'>h3 Text heading</TextComponent>"}\n${"<TextComponent tag='h4' styling='heading-4'>h4 Text heading</TextComponent>"}\n${"<TextComponent tag='h5' styling='heading-5'>h5 Text heading</TextComponent>"}\n${"<TextComponent tag='h6' styling='heading-6'>h6 Text heading</TextComponent>"}`}
+                    sourceCode={
+                        `${'const { Item } = TabsComponent;'}\n\n` +
+                        `${'<TabsComponent>'}\n` +
+                        `   ${'<Item tab="Tab1">'}\n` +
+                        `       ${'<TextComponent tag="p">Content of tab One</TextComponent>'}\n` +
+                        `   ${'</Item>'}\n` +
+                        `   ${'<Item tab="Tab2">'}\n` +
+                        `       ${'<TextComponent tag="p">Content of tab Two</TextComponent>'}\n` +
+                        `   ${'</Item>'}\n` +
+                        `   ${'<Item tab="Tab3">'}\n` +
+                        `       ${'<TextComponent tag="p">Content of tab Three</TextComponent>'}\n` +
+                        `   ${'</Item>'}\n` +
+                        `${'</TabsComponent>'}`
+                    }
                 >
                     <TabsComponent>
-                        <TabsComponent.Item tab="Tab1">
+                        <Item tab="Tab1">
                             <TextComponent
                                 tag="p"
                                 style={{
@@ -35,8 +50,8 @@ const TextDocumentation = require('./markdown/tabs.documentation.md');
                             >
                                 Content of tab One
                             </TextComponent>
-                        </TabsComponent.Item>
-                        <TabsComponent.Item tab="Tab2">
+                        </Item>
+                        <Item tab="Tab2">
                             <TextComponent
                                 tag="p"
                                 style={{
@@ -46,8 +61,8 @@ const TextDocumentation = require('./markdown/tabs.documentation.md');
                             >
                                 Content of tab Two
                             </TextComponent>
-                        </TabsComponent.Item>
-                        <TabsComponent.Item tab="Tab3">
+                        </Item>
+                        <Item tab="Tab3">
                             <TextComponent
                                 tag="p"
                                 style={{
@@ -57,7 +72,7 @@ const TextDocumentation = require('./markdown/tabs.documentation.md');
                             >
                                 Content of tab Three
                             </TextComponent>
-                        </TabsComponent.Item>
+                        </Item>
                     </TabsComponent>
                 </CodingViewerDocsComponent>
             </>

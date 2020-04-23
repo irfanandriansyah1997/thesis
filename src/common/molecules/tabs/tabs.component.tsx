@@ -19,7 +19,6 @@ import {
 const TabsComponent: TabDefaultExportInterface = ({
     activeIndex,
     onTabChange,
-    isDesktop,
     children,
     ...res
 }: TabPropsInterface) => {
@@ -30,15 +29,33 @@ const TabsComponent: TabDefaultExportInterface = ({
     useEffect(() => {
         const tabContent: TabChildren[] = [];
         const tabsTab: TabChildren[] = [];
-
-        if (children) {
-            React.Children.forEach(
-                children as [],
-                (child: React.Component<TabPanePropsInterface>) => {
-                    tabContent.push(child.props.children);
-                    tabsTab.push(child.props.tab);
-                }
-            );
+        try {
+            if (children) {
+                React.Children.forEach(
+                    children as [],
+                    (child: React.Component<TabPanePropsInterface>) => {
+                        if (
+                            ValidatorHelper.verifiedKeyIsExist(
+                                child.props,
+                                'children'
+                            ) ||
+                            ValidatorHelper.verifiedKeyIsExist(
+                                child.props,
+                                'tab'
+                            )
+                        ) {
+                            tabContent.push(child.props.children);
+                            tabsTab.push(child.props.tab);
+                        } else {
+                            throw new Error(
+                                '[Error] child component needs to have tab or child props'
+                            );
+                        }
+                    }
+                );
+            }
+        } catch (e) {
+            console.error(e);
         }
 
         setContents(tabContent);
@@ -63,9 +80,6 @@ const TabsComponent: TabDefaultExportInterface = ({
                 res.className
             ),
             'ui-molecules-tab__pane': true,
-            'ui-molecules-tab__pane--desktop': ValidatorHelper.verifiedIsNotFalse(
-                isDesktop
-            ),
             'ui-molecules-tab__pane--active': selectedId === index
         };
         delete res.className;
@@ -130,14 +144,12 @@ const Item: React.ComponentType<TabPanePropsInterface> = () => null;
 
 TabsComponent.defaultProps = {
     activeIndex: 0,
-    onTabChange: undefined,
-    isDesktop: true
+    onTabChange: undefined
 };
 
 TabsComponent.propTypes = {
     activeIndex: PropTypes.number,
-    onTabChange: PropTypes.func,
-    isDesktop: PropTypes.bool
+    onTabChange: PropTypes.func
 };
 
 TabsComponent.Item = Item;
