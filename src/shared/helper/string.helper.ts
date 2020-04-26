@@ -1,5 +1,5 @@
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
-import { ComponentClassnameDefaultInterface } from '../interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../interface/component/component-default.interface';
 
 /**
  * String Helper

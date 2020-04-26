@@ -1,14 +1,17 @@
-import React, { useState, useEffect, ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState, useEffect, ReactNode, Component } from 'react';
 
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import TabsItemComponent from './tabs-item.component';
+import TabsContentComponent from './tabs-content.component';
+import TabsPaneInterface from './tabs-pane.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
-    TabDefaultExportInterface,
-    TabChildren,
+    TabChildrenType,
+    TabPropsInterface,
     TabPanePropsInterface,
-    TabPropsInterface
+    TabDefaultExportInterface
 } from './interface/component.interface';
 
 /**
@@ -17,35 +20,38 @@ import {
  * @since 2020.04.21
  */
 const TabsComponent: TabDefaultExportInterface = ({
+    tabsID,
+    children,
     activeIndex,
     onTabChange,
-    children,
     ...res
 }: TabPropsInterface) => {
-    const [tabs, setTabs] = useState<TabChildren[]>([]);
-    const [contents, setContents] = useState<TabChildren[]>([]);
+    const [tabs, setTabs] = useState<TabChildrenType[]>([]);
+    const [contents, setContents] = useState<ReactNode[]>([]);
     const [selectedId, setSelectedId] = useState<number>(0);
 
     useEffect(() => {
-        const tabContent: TabChildren[] = [];
-        const tabsTab: TabChildren[] = [];
+        const tabContent: ReactNode[] = [];
+        const tabsTab: TabChildrenType[] = [];
         try {
             if (children) {
                 React.Children.forEach(
                     children as [],
-                    (child: React.Component<TabPanePropsInterface>) => {
-                        if (
-                            ValidatorHelper.verifiedKeyIsExist(
-                                child.props,
-                                'children'
-                            ) ||
-                            ValidatorHelper.verifiedKeyIsExist(
-                                child.props,
-                                'tab'
-                            )
-                        ) {
-                            tabContent.push(child.props.children);
-                            tabsTab.push(child.props.tab);
+                    ({ props }: Component<TabPanePropsInterface>) => {
+                        const validationProps = [
+                            'tab',
+                            'children'
+                        ].filter((item) =>
+                            ValidatorHelper.verifiedKeyIsExist(props, item)
+                        ).length;
+
+                        if (validationProps === 2) {
+                            const { tab, ...resItemContent } = props;
+
+                            tabContent.push(
+                                <TabsContentComponent {...resItemContent} />
+                            );
+                            tabsTab.push(tab);
                         } else {
                             throw new Error(
                                 '[Error] child component needs to have tab or child props'
@@ -58,63 +64,41 @@ const TabsComponent: TabDefaultExportInterface = ({
             console.error(e);
         }
 
-        setContents(tabContent);
         setTabs(tabsTab);
+        setContents(tabContent);
         setSelectedId(activeIndex || 0);
     }, []);
 
     /**
-     * event on click tab item
-     */
-    const selectTab = (index: number): void => setSelectedId(index);
-
-    /**
-     * Generate tab item based on parameter in this method
-     */
-    const generateTabItem = (
-        tab: TabChildren,
-        index: number
-    ): React.ReactNode => {
-        const name: ComponentClassnameDefaultInterface = {
-            [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
-                res.className
-            ),
-            'ui-molecules-tab__pane': true,
-            'ui-molecules-tab__pane--active': selectedId === index
-        };
-        delete res.className;
-
-        return (
-            <div
-                className={StringHelper.objToString(name)}
-                key={index}
-                role="presentation"
-                onClick={(): void => {
-                    selectTab(index);
-                    if (onTabChange) {
-                        onTabChange(index);
-                    }
-                }}
-            >
-                {tab}
-            </div>
-        );
-    };
-
-    /**
      * Generate Tabs
+     * @return {ReactNode}
      */
     const getTabs = (): ReactNode => {
-        if (children) {
-            return React.Children.map(
+        let tabsItem = tabs;
+
+        if (tabsItem.length === 0 || children) {
+            tabsItem = React.Children.map(
                 children as [],
                 (
                     child: React.Component<TabPanePropsInterface>
                 ): React.ReactNode => child.props.tab
-            ).map(generateTabItem);
+            );
         }
 
-        return tabs.map(generateTabItem);
+        return (
+            <TabsPaneInterface
+                tabsID={tabsID}
+                selectedID={selectedId}
+                onClick={(index): void => {
+                    setSelectedId(index);
+
+                    if (onTabChange) {
+                        onTabChange(index);
+                    }
+                }}
+                item={tabsItem}
+            />
+        );
     };
 
     /**
@@ -128,8 +112,8 @@ const TabsComponent: TabDefaultExportInterface = ({
     delete res.className;
 
     return (
-        <div className={StringHelper.objToString(className)}>
-            <div className="ui-molecules-tab__bar flex">{getTabs()}</div>
+        <div className={StringHelper.objToString(className)} {...res}>
+            {getTabs()}
             <div className="ui-molecules-tab__content">
                 {contents[selectedId]}
             </div>
@@ -137,21 +121,17 @@ const TabsComponent: TabDefaultExportInterface = ({
     );
 };
 
-/**
- * @description Item for each tab
- */
-const Item: React.ComponentType<TabPanePropsInterface> = () => null;
-
 TabsComponent.defaultProps = {
     activeIndex: 0,
     onTabChange: undefined
 };
 
 TabsComponent.propTypes = {
+    onTabChange: PropTypes.func,
     activeIndex: PropTypes.number,
-    onTabChange: PropTypes.func
+    tabsID: PropTypes.string.isRequired
 };
 
-TabsComponent.Item = Item;
+TabsComponent.Item = TabsItemComponent;
 
 export default TabsComponent;

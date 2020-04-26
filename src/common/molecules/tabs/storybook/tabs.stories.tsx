@@ -2,9 +2,9 @@ import React from 'react';
 
 import TabsComponent from '../tabs.component';
 import TextComponent from '../../../atomic/text/text.component';
-import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
+import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 import '../style/style.scss';
@@ -40,7 +40,7 @@ const { Item } = TabsComponent;
                         `${'</TabsComponent>'}`
                     }
                 >
-                    <TabsComponent>
+                    <TabsComponent tabsID="tabs-1">
                         <Item tab="Tab1">
                             <TextComponent
                                 tag="p"

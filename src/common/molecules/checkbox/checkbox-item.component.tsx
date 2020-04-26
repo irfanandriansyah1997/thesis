@@ -5,8 +5,8 @@ import CheckboxContext from './context/checkbox.context';
 import TextComponent from '../../atomic/text/text.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
-import { ComponentMultipleOptionItemInterface } from '../../../shared/interface/component/compone-multiple-option.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import { ComponentMultipleOptionItemInterface } from '../../../shared/interface/component/component-multiple-option.interface';
 
 const MarginValue = 5;
 

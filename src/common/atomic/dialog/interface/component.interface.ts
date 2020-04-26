@@ -1,5 +1,5 @@
 import { DefaultDynamicObject } from '../../../../shared/interface/common/object.interface';
-import { DialogType } from '../../../../shared/interface/component/componen-default.interface';
+import { DialogType } from '../../../../shared/interface/component/component-default.interface';
 
 /**
  * Dialog Interface

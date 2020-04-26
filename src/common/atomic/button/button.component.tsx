@@ -6,7 +6,7 @@ import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { ButtonPropsInterface } from './interface/component.interface';
 import { ComponentDefaultSize } from '../../../shared/interface/component/component-size.interface';
 import { ComponentDefaultTheme } from '../../../shared/interface/component/component-theme.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
  * Button Component

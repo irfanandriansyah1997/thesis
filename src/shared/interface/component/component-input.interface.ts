@@ -3,7 +3,7 @@ import {
     ContextMultipleOption,
     ComponentMultipleOptionSingleOutput,
     ComponentMultipleOptionMultipleOutput
-} from './compone-multiple-option.interface';
+} from './component-multiple-option.interface';
 
 export type ComponentInputMultipleOptionType = 'radio' | 'checkbox';
 
@@ -13,7 +13,10 @@ export type ComponentInputMultipleOptionType = 'radio' | 'checkbox';
  * @description
  * @since 2020.04.15
  */
-export type ComponentCheckboxInterface = ComponentMultipleOptionMultipleOutput & {
+export type ComponentCheckboxInterface = Omit<
+    ComponentMultipleOptionMultipleOutput,
+    'children'
+> & {
     styling?: PositionDirectionType;
     type?: ComponentInputMultipleOptionType;
 };
@@ -24,7 +27,10 @@ export type ComponentCheckboxInterface = ComponentMultipleOptionMultipleOutput &
  * @description
  * @since 2020.04.15
  */
-export type ComponentRadioInterface = ComponentMultipleOptionSingleOutput & {
+export type ComponentRadioInterface = Omit<
+    ComponentMultipleOptionSingleOutput,
+    'children'
+> & {
     styling?: PositionDirectionType;
     type?: ComponentInputMultipleOptionType;
 };

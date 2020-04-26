@@ -4,15 +4,16 @@ import React, { SFC, useState, ReactNode, Validator } from 'react';
 import ToggleComponent from '../toggle/toggle.component';
 import TextComponent from '../../atomic/text/text.component';
 import IconComponent from '../../atomic/icon/icon.component';
+import { ColorType } from '../../../shared/interface/common/color.interface';
+import ColorDefaultConstant from '../../../shared/constant/color.constant';
+import {
+    ARROW_ON_HIDE,
+    ARROW_ON_EXPAND
+} from '../../../shared/constant/component.constant';
 import {
     ExpandTextPropsInterface,
     ExpandTextToggleButtonInterface
 } from './interfaces/component.interface';
-import { ColorType } from '../../../shared/interface/common/color.interface';
-import ColorDefaultConstant from '../../../shared/constant/color.constant';
-
-const ARROW_ON_EXPAND = 'rui-icon-arrow-up-small';
-const ARROW_ON_HIDE = 'rui-icon-arrow-down-small';
 
 /**
  * Expand Text Component

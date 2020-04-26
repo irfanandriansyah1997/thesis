@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import ComponentResizerHelper from '../../../shared/helper/component-resizer.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     TogglePropsInterface,
     ToggleSelectorPositionType

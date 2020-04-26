@@ -7,7 +7,7 @@ import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { CheckboxDefaultExportInterface } from './interface/component.interface';
 import { PositionDirectionType } from '../../../shared/interface/common/position.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     ComponentCheckboxInterface,
     ComponentCheckboxContextInterface,

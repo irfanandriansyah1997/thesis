@@ -5,8 +5,8 @@ import RadioButtonContext from './context/radio.context';
 import TextComponent from '../../atomic/text/text.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
-import { ComponentMultipleOptionItemInterface } from '../../../shared/interface/component/compone-multiple-option.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import { ComponentMultipleOptionItemInterface } from '../../../shared/interface/component/component-multiple-option.interface';
 
 const MarginValue = 5;
 
@@ -51,20 +51,18 @@ const RadioButtonItemComponent: SFC<ComponentMultipleOptionItemInterface> = ({
                 type="radio"
                 className="hidden"
                 checked={value === res.value}
-                onChange={(): void => {
-                    onChange(res.value);
-                }}
+                onChange={(): void => onChange(res.value)}
                 {...res}
             />
             <label
+                htmlFor={id}
+                tabIndex={res.tabIndex}
                 className={StringHelper.objToString({
                     flex: true,
                     relative: true,
                     'flex-align-center': true,
                     'ui-molecules-radio__label': true
                 })}
-                htmlFor={id}
-                tabIndex={res.tabIndex}
             >
                 {label ? (
                     <TextComponent
