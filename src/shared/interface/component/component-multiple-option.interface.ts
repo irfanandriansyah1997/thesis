@@ -9,7 +9,6 @@ import { HTMLAttributes, InputHTMLAttributes } from 'react';
 export type ComponentMultipleOptionInterface = Omit<
     HTMLAttributes<HTMLElement>,
     | 'dangerouslySetInnerHTML'
-    | 'children'
     | 'onClick'
     | 'onKeyDown'
     | 'onKeyDown'

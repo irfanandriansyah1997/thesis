@@ -1,5 +1,5 @@
 import React, { SFC, HTMLAttributes } from 'react';
-import { ComponentDefaultInterface } from '../../../../shared/interface/component/componen-default.interface';
+import { ComponentDefaultInterface } from '../../../../shared/interface/component/component-default.interface';
 
 /**
  * Tabs Props Interface

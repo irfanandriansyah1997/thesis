@@ -7,7 +7,7 @@ import CheckboxItemComponent from './radio-button-item.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { RadioButtonDefaultExportInterface } from './interface/component.interface';
 import { PositionDirectionType } from '../../../shared/interface/common/position.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     ComponentRadioInterface,
     ComponentRadioContextInterface,

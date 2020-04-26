@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import {

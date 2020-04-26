@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ComponentDefaultInterface } from '../../../../shared/interface/component/componen-default.interface';
+import { ComponentDefaultInterface } from '../../../../shared/interface/component/component-default.interface';
 
 /**
  * Accordion Props Interface

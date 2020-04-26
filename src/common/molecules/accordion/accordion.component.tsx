@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { ResizeObserver, install } from 'resize-observer';
 import { ResizeObserverEntry } from 'resize-observer/lib/ResizeObserverEntry';
 
+import IconComponent from '../../atomic/icon/icon.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     AccordionPropsInterface,
     AccordionStateInterface
 } from './interface/component.interface';
-
-import IconComponent from '../../atomic/icon/icon.component';
 
 /**
  * Accordion Component

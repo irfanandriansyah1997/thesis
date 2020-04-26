@@ -8,7 +8,7 @@ import ValidatorHelper from '../../../shared/helper/validator.helper';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
 import { ColorType } from '../../../shared/interface/common/color.interface';
 import { ComponentDefaultSize } from '../../../shared/interface/component/component-size.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
  * Icon Component

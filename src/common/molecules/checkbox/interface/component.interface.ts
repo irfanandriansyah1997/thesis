@@ -1,7 +1,7 @@
 import { SFC } from 'react';
 
 import { ComponentCheckboxInterface } from '../../../../shared/interface/component/component-input.interface';
-import { ComponentMultipleOptionItemInterface } from '../../../../shared/interface/component/compone-multiple-option.interface';
+import { ComponentMultipleOptionItemInterface } from '../../../../shared/interface/component/component-multiple-option.interface';
 
 /**
  * Checkbox Default Export Interface

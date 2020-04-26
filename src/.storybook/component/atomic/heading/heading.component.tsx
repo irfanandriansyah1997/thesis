@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import StringHelper from '../../../../shared/helper/string.helper';
 import { HeadingComponentPropsInterface } from './interface/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../../shared/interface/component/component-default.interface';
 
 import './style/style.scss';
 

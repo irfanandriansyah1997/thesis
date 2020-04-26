@@ -1,7 +1,7 @@
 import React, { SFC } from 'react';
 
 import StringHelper from '../../../../shared/helper/string.helper';
-import { ComponentClassnameDefaultInterface } from '../../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../../shared/interface/component/component-default.interface';
 
 import './style/style.scss';
 

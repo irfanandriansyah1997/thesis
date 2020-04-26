@@ -7,7 +7,7 @@ import { TextPropsInterface } from './interface/component.interface';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
 import { ColorType } from '../../../shared/interface/common/color.interface';
 import { ComponentTextTag } from '../../../shared/interface/component/component-tag.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     ComponentStylingTypography,
     ComponentFontfaceTypography,

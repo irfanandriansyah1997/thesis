@@ -1,5 +1,5 @@
 import StringHelper from '../string.helper';
-import { ComponentClassnameDefaultInterface } from '../../interface/component/componen-default.interface';
+import { ComponentClassnameDefaultInterface } from '../../interface/component/component-default.interface';
 
 describe('Testing String Helper', () => {
     beforeEach(() => {

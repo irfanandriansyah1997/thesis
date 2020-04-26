@@ -1,7 +1,7 @@
 import { SFC } from 'react';
 
 import { ComponentRadioInterface } from '../../../../shared/interface/component/component-input.interface';
-import { ComponentMultipleOptionItemInterface } from '../../../../shared/interface/component/compone-multiple-option.interface';
+import { ComponentMultipleOptionItemInterface } from '../../../../shared/interface/component/component-multiple-option.interface';
 
 /**
  * Radio Button Default Export Interface

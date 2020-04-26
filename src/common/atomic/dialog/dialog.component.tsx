@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import StringHelper from '../../../shared/helper/string.helper';
-import { DialogType } from '../../../shared/interface/component/componen-default.interface';
+import { DialogType } from '../../../shared/interface/component/component-default.interface';
 import {
     DialogPropsInterface,
     DialogStateInterface
