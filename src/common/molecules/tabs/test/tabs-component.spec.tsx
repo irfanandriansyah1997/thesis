@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, mount } from 'enzyme';
 
 import TabsComponent from '../tabs.component';
 import TextComponent from '../../../atomic/text/text.component';
@@ -7,7 +7,7 @@ import TextComponent from '../../../atomic/text/text.component';
 describe('Testing tabs component in molecules component', () => {
     it('Should render link component correctly', () => {
         const tabs = render(
-            <TabsComponent>
+            <TabsComponent tabsID="tabs-id">
                 <TabsComponent.Item tab="Tab1">
                     <TextComponent
                         tag="p"
@@ -44,8 +44,8 @@ describe('Testing tabs component in molecules component', () => {
         const callback = jest.fn((x) => x);
         const mockFunc = jest.fn();
         mockFunc.mockReturnValueOnce([{ type: 'div' }]);
-        const tabs = shallow(
-            <TabsComponent onTabChange={callback}>
+        const tabs = mount(
+            <TabsComponent tabsID="tabs-id" onTabChange={callback}>
                 <TabsComponent.Item tab="Tab1">
                     <TextComponent
                         tag="p"
