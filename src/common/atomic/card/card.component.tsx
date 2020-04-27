@@ -1,9 +1,8 @@
-import React, { SFC, Validator } from 'react';
+import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
 import { CardPropsInterface } from './interface/component.interface';
 import ShadowDefaultConstant from '../../../shared/constant/shadow.constant';
-import { ShadowType } from '../../../shared/interface/common/shadow.interface';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
@@ -17,11 +16,12 @@ const CardComponent: SFC<CardPropsInterface> = ({
     className,
     boxShadow,
     children,
-    size
+    size,
+    ...res
 }: CardPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
         [`ui-atomic-card`]: true,
-        [`ui-atomic-card--box-shadow`]: ValidatorHelper.verifiedKeyIsExist(
+        [`box-shadow-${boxShadow}`]: ValidatorHelper.verifiedKeyIsExist(
             ShadowDefaultConstant,
             boxShadow
         ),
@@ -32,15 +32,8 @@ const CardComponent: SFC<CardPropsInterface> = ({
         <div
             className={StringHelper.objToString(name)}
             style={{
-                width: ValidatorHelper.isNumber(size)
-                    ? `${size}px`
-                    : `${360}px`,
-                boxShadow: ValidatorHelper.verifiedKeyIsExist(
-                    ShadowDefaultConstant,
-                    boxShadow
-                )
-                    ? ShadowDefaultConstant[boxShadow as ShadowType]
-                    : undefined
+                width: ValidatorHelper.isNumber(size) ? `${size}px` : 'auto',
+                ...res.style
             }}
         >
             {children}
@@ -50,14 +43,15 @@ const CardComponent: SFC<CardPropsInterface> = ({
 
 CardComponent.defaultProps = {
     className: '',
-    boxShadow: undefined
+    size: 'auto'
 };
 
 CardComponent.propTypes = {
     className: PropTypes.string,
-    boxShadow: PropTypes.oneOf(Object.keys(ShadowDefaultConstant)) as Validator<
-        ShadowType
-    >
+    size: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf<'auto'>(['auto'])
+    ])
 };
 
 export default CardComponent;

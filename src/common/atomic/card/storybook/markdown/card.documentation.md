@@ -23,4 +23,4 @@ return (
 |**className**|string|-|className of card container|
 |**boxShadow**|`default1`, `default2`, `elevateXs`, `elevateSm`, `elevateMd`, `elevateLg`, `elevateXl`, `r123`||Add box-shadow style to the card container|
 |**children**|node / string||Content of the card|
-|**size**|number|`360`|Size of the card (px)|
+|**size**|number / `auto`|`auto`|Size of the card|

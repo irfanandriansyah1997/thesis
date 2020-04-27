@@ -12,16 +12,17 @@ describe('Testing <CardComponent> in atomic component ', () => {
         );
 
         expect(card.hasClass('ui-atomic-card')).toBe(true);
+        expect(card.prop('style')).toHaveProperty('width', 'auto');
         expect(cardWrapper.children()).toHaveLength(1);
     });
 
-    it('Should render card component with box-shadow correctly', () => {
+    it('Should render card component with correct box-shadow', () => {
         const card = render(
             <CardComponent boxShadow="r123">Card content</CardComponent>
         );
 
         expect(card.hasClass('ui-atomic-card')).toBe(true);
-        expect(card.hasClass('ui-atomic-card--box-shadow')).toBe(true);
+        expect(card.hasClass('box-shadow-r123')).toBe(true);
     });
 
     it('Should render card component with the correct size', () => {

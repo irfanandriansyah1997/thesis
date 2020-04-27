@@ -37,7 +37,7 @@ const CardDocumentation = require('./markdown/card.documentation.md');
                             backgroundColor: '#f4f4f4'
                         }}
                     >
-                        <CardComponent>
+                        <CardComponent style={{ maxWidth: 360, padding: 16 }}>
                             <p
                                 style={{
                                     lineHeight: 1.5
@@ -65,7 +65,10 @@ const CardDocumentation = require('./markdown/card.documentation.md');
                         `${'</CardComponent>'}`
                     }
                 >
-                    <CardComponent boxShadow="r123">
+                    <CardComponent
+                        boxShadow="r123"
+                        style={{ maxWidth: 360, padding: 16 }}
+                    >
                         <p
                             style={{
                                 lineHeight: 1.5
@@ -91,7 +94,11 @@ const CardDocumentation = require('./markdown/card.documentation.md');
                         `${'</CardComponent>'}`
                     }
                 >
-                    <CardComponent boxShadow="r123" size={750}>
+                    <CardComponent
+                        boxShadow="r123"
+                        size={750}
+                        style={{ padding: 16 }}
+                    >
                         <p style={{ lineHeight: 1.5, fontSize: 24 }}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit.

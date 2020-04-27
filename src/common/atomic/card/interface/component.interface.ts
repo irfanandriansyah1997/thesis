@@ -10,5 +10,5 @@ export type CardPropsInterface = HTMLAttributes<HTMLDivElement> & {
     className?: string;
     boxShadow?: ShadowType;
     children: ReactNode;
-    size?: number;
+    size?: number | 'auto';
 };
