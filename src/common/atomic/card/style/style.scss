@@ -1,0 +1,5 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-card {
+    @include background-color(get-color(white));
+}

@@ -6,6 +6,7 @@ export default [
         './src/common/atomic/avatar/avatar.component.tsx',
         './src/common/atomic/badges/badges.component.tsx',
         './src/common/atomic/button/button.component.tsx',
+        './src/common/atomic/card/card.component.tsx',
         './src/common/atomic/dialog/dialog.component.tsx',
         './src/common/atomic/icon/icon.component.tsx',
         './src/common/atomic/image/image.component.tsx',
