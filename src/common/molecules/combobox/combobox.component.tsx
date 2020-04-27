@@ -1,13 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect, useRef } from 'react';
 
-import IconComponent from '../../atomic/icon/icon.component';
 import TextComponent from '../../atomic/text/text.component';
 import ComboboxItemComponent from './combobox-item.component';
+import DropdownComponent from '../dropdown/dropdown.component';
 import StringHelper from '../../../shared/helper/string.helper';
-import ComboboxContentComponent from './combobox-content.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import { ComponentMultipleOptionSingleOutput } from '../../../shared/interface/component/component-multiple-option.interface';
 import {
     ComboboxItemPropsInterface,
@@ -25,32 +23,15 @@ import {
  */
 const ComboboxComponent: ComboboxDefaultExportInterface = ({
     name,
-    value,
     onChange,
     children,
     ...res
 }: ComponentMultipleOptionSingleOutput) => {
-    const node = useRef<HTMLDivElement>(null);
-    const [show, setShow] = useState<boolean>(false);
     const [active, setActive] = useState<string>('');
+    const [show, setShow] = useState<boolean>(false);
     const [comboboxItem, setComboboxItem] = useState<
         ComboboxItemPropsInterface[]
     >([]);
-
-    /**
-     * Event Listener On Click
-     * @description event listener for prevent user click outside container dropdown
-     * @return {boolean | string}
-     */
-    const eventListenerOnClick = (e: unknown): void => {
-        const element = node.current;
-        const evt = e as { target: HTMLInputElement };
-
-        /* istanbul ignore next */
-        if (!(element && element.contains(evt.target))) {
-            setShow(false);
-        }
-    };
 
     /**
      * Watch Event
@@ -74,13 +55,13 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
                         ).length;
 
                         if (validationProps === 3) {
-                            if (`${props.id}` === `${value}`) {
+                            if (`${props.id}` === `${res.value}`) {
                                 setActive(props.label);
                             }
                             itemProps.push(props);
                         } else {
                             throw new Error(
-                                '[Error] child component needs to have tab or child props'
+                                '[Error] child component needs to have id, label and value props'
                             );
                         }
                     }
@@ -91,80 +72,62 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
         }
 
         setComboboxItem(itemProps);
-    }, [value]);
-
-    /**
-     * Watch Event
-     * @description will invoke when component did mount and will unmount
-     */
-    useEffect(() => {
-        window.addEventListener('mousedown', eventListenerOnClick);
-
-        return (): void => {
-            window.removeEventListener('mousedown', eventListenerOnClick);
-        };
-    }, []);
+    }, [res.value]);
 
     /**
      * On Click Toggle
      * @return {void}
      */
-    const onClickToggle = (): void => {
-        setShow(!show);
-    };
-
-    // Getter ClassName
-    const className: ComponentClassnameDefaultInterface = {
-        [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
-        relative: true,
-        'inline-block': true,
-        'ui-molecules-combobox': true,
-        'ui-molecules-combobox--show': show
+    const onClickToggle = (isShowed: boolean): void => {
+        setShow(isShowed);
     };
 
     return (
-        <div ref={node} className={StringHelper.objToString(className)}>
-            <div className="flex flex-row flex-wrap">
-                <input
-                    name={name}
-                    value={value}
-                    type="text"
-                    className="hidden"
-                />
-                <TextComponent
-                    tag="span"
-                    align="left"
-                    color="text"
-                    fontWeight={500}
-                    styling="default"
-                    onClick={onClickToggle}
-                    className={StringHelper.objToString({
-                        flex: true,
-                        relative: true,
-                        'flex-justify-between': true,
-                        'ui-molecules-combobox__toggle': true
-                    })}
+        <DropdownComponent
+            name={name}
+            trigger="click"
+            icon={show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
+            onClick={onClickToggle}
+            label={active || 'Not Selected'}
+            className={StringHelper.objToString({
+                [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
+                    res.className
+                ),
+                'ui-molecules-combobox': true
+            })}
+        >
+            {comboboxItem.map(({ id, label, subOption, value, ...resItem }) => (
+                <DropdownComponent.Item
+                    key={id}
+                    subOption={subOption}
+                    active={`${value}` === `${res.value}`}
                 >
-                    {active || 'Not Selected'}
-                    <IconComponent
+                    <TextComponent
+                        {...resItem}
+                        tag="p"
+                        align="left"
                         color="text"
-                        size={16}
-                        style={{ marginLeft: 5 }}
+                        fontWeight={500}
+                        styling="default"
+                        onClick={(): void => {
+                            onChange(value);
+                            onClickToggle(false);
+                        }}
+                        className={StringHelper.objToString({
+                            [`${resItem.className}`]: ValidatorHelper.verifiedIsNotEmpty(
+                                resItem.className
+                            ),
+                            flex: true,
+                            relative: true,
+                            'no-wrap': true,
+                            'ui-molecules-combobox__item': true
+                        })}
                     >
-                        {show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
-                    </IconComponent>
-                </TextComponent>
-            </div>
-            <ComboboxContentComponent
-                show={show}
-                value={value as string | number}
-                item={comboboxItem}
-                onChange={(output): void => {
-                    onClickToggle();
-                    onChange(output);
-                }}
-            />
-        </div>
+                        {label}
+                    </TextComponent>
+                </DropdownComponent.Item>
+            ))}
+        </DropdownComponent>
     );
 };
 

@@ -12,7 +12,9 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.04.27
  */
 const DropdownItemComponent: SFC<DropdownItemPropsInterface> = ({
+    active,
     disabled,
+    subOption,
     ...res
 }) => {
     // Getter ClassName
@@ -22,8 +24,14 @@ const DropdownItemComponent: SFC<DropdownItemPropsInterface> = ({
         relative: true,
         'no-wrap': true,
         'flex-align-center': true,
-        'ui-molecules-combobox__item': true,
-        'ui-molecules-combobox__item--disabled': ValidatorHelper.verifiedIsNotFalse(
+        'ui-molecules-dropdown__item': true,
+        'ui-molecules-dropdown__item--active': ValidatorHelper.verifiedIsNotFalse(
+            active
+        ),
+        'ui-molecules-dropdown__item--sub-option': ValidatorHelper.verifiedIsNotFalse(
+            subOption
+        ),
+        'ui-molecules-dropdown__item--disabled': ValidatorHelper.verifiedIsNotFalse(
             disabled
         )
     };
@@ -44,7 +52,9 @@ const DropdownItemComponent: SFC<DropdownItemPropsInterface> = ({
 };
 
 DropdownItemComponent.propTypes = {
+    active: PropTypes.bool,
     disabled: PropTypes.bool,
+    subOption: PropTypes.bool,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
@@ -53,7 +63,9 @@ DropdownItemComponent.propTypes = {
 };
 
 DropdownItemComponent.defaultProps = {
-    disabled: false
+    active: false,
+    disabled: false,
+    subOption: false
 };
 
 export default DropdownItemComponent;

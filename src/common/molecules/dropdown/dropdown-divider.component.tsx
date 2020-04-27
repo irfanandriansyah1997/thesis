@@ -9,7 +9,7 @@ import { DropdownDividerPropInterface } from './interface/component.interface';
  * @since 2020.04.27
  */
 const DropdownDividerComponent: SFC<DropdownDividerPropInterface> = () => (
-    <hr className="ui-molecules-combobox__divider" />
+    <hr className="ui-molecules-dropdown__divider" />
 );
 
 export default DropdownDividerComponent;

@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -21,6 +21,7 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
 const DropdownComponent: DropdownDefaultExportInterface = ({
     icon,
     label,
+    onClick,
     ...res
 }) => {
     const node = useRef<HTMLDivElement>(null);
@@ -59,6 +60,10 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      */
     const onClickToggle = (): void => {
         setShow(!show);
+
+        if (onClick) {
+            onClick(!show);
+        }
     };
 
     const className: ComponentClassnameDefaultInterface = {
@@ -84,7 +89,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                         flex: true,
                         relative: true,
                         'flex-justify-between': true,
-                        'ui-molecules-combobox__toggle': true
+                        'ui-molecules-dropdown__toggle': true
                     })}
                 >
                     {label}
@@ -100,7 +105,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                 </TextComponent>
             </div>
             <CSSTransition in={show} timeout={600} classNames="fade">
-                <div className="ui-molecules-combobox__content box-shadow-r123">
+                <div className="ui-molecules-dropdown__content box-shadow-r123">
                     {React.Children.toArray(res.children).filter((o: any) => {
                         return (
                             o.type.name === 'DropdownItemComponent' ||
@@ -116,11 +121,13 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
 DropdownComponent.propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    icon: PropTypes.string
+    icon: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 DropdownComponent.defaultProps = {
-    icon: undefined
+    icon: undefined,
+    onClick: undefined
 };
 
 DropdownComponent.Item = DropdownItemComponent;

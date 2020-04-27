@@ -1,0 +1,74 @@
+@import '../../../../style/import.scss';
+
+$max-height: 150px;
+
+.ui-molecules-dropdown {
+    $c: &;
+
+    &--show {
+        #{$c}__content {
+            display: block;
+        }
+    }
+
+    &__toggle {
+        cursor: pointer;
+    }
+
+    &__content {
+        display: none;
+        font-size: text-size(sm);
+        height: auto;
+        left: 0;
+        max-height: $max-height;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: absolute;
+        top: 100%;
+        z-index: 9;
+
+        @include margin(all, 10px 0 0);
+        @include background-color(white);
+        @include font-color(get-color(black));
+        @include border(all, 1px, solid, grayR123);
+        @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+        &.fade {
+            &-enter,
+            &-enter.fade-enter-active,
+            &-enter-done,
+            &-apear.fade-appear-active,
+            &-exit,
+            &-exit.fade-exit-active {
+                display: block;
+            }
+
+            &-apear,
+            &-exit-done {
+                display: none;
+            }
+        }
+    }
+
+    &__item {
+        cursor: pointer;
+        line-height: 27px;
+
+        @include padding(all, 0 24px 0 16px);
+        @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+        &:hover,
+        &--active {
+            @include background-color(grayR123);
+        }
+
+        &--sub-option {
+            @include padding(all, 0 24px 0 32px);
+        }
+    }
+
+    hr#{$c}__divider {
+        @include no-margin();
+        @include border-bottom(1px, solid, grayR123);
+    }
+}

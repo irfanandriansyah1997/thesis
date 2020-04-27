@@ -1,7 +1,9 @@
 import React from 'react';
 
-import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import DropdownComponent from '../dropdown.component';
+import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
+
+import '../style/style.scss';
 
 ((): void => {
     new StorybookDocumentationBuilder('Dropdown Component', 'molecules')
@@ -11,7 +13,12 @@ import DropdownComponent from '../dropdown.component';
         )
         .registerDocumentation(
             <>
-                <DropdownComponent label="Hello" name="hello" trigger="click">
+                <DropdownComponent
+                    label="Hello"
+                    name="hello"
+                    trigger="click"
+                    icon="rui-icon-arrow-up-small"
+                >
                     <DropdownComponent.Item>
                         Hello World 1
                     </DropdownComponent.Item>
@@ -19,6 +26,9 @@ import DropdownComponent from '../dropdown.component';
                         Hello World 2
                     </DropdownComponent.Item>
                     <DropdownComponent.Divider />
+                    <DropdownComponent.Item>
+                        Hello World 2
+                    </DropdownComponent.Item>
                 </DropdownComponent>
             </>
         )

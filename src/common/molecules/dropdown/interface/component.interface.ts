@@ -17,12 +17,13 @@ export type DropdownDefaultExportInterface = SFC<DropdownPropsInterface> & {
  */
 export type DropdownPropsInterface = Omit<
     HTMLAttributes<HTMLDivElement>,
-    'onKeypress' | 'style'
+    'onKeypress' | 'style' | 'onClick'
 > & {
     name: string;
     label: string;
     icon?: string;
     trigger: 'hover' | 'click';
+    onClick?: (show: boolean) => void;
 };
 
 export type DropdownChildren = {
@@ -43,7 +44,9 @@ export type DropdownItemPropsInterface = Omit<
     | 'onKeypress'
     | 'dangerouslySetInnerHTML'
 > & {
+    active?: boolean;
     disabled?: boolean;
+    subOption?: boolean;
     children: ReactNode;
 };
 
