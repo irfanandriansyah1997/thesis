@@ -1,8 +1,9 @@
-import React, { SFC } from 'react';
+import React, { SFC, Validator } from 'react';
 import PropTypes from 'prop-types';
 
 import { CardPropsInterface } from './interface/component.interface';
 import ShadowDefaultConstant from '../../../shared/constant/shadow.constant';
+import { ShadowType } from '../../../shared/interface/common/shadow.interface';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
@@ -43,7 +44,8 @@ const CardComponent: SFC<CardPropsInterface> = ({
 
 CardComponent.defaultProps = {
     className: '',
-    size: 'auto'
+    size: 'auto',
+    boxShadow: undefined
 };
 
 CardComponent.propTypes = {
@@ -51,7 +53,10 @@ CardComponent.propTypes = {
     size: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.oneOf<'auto'>(['auto'])
-    ])
+    ]),
+    boxShadow: PropTypes.oneOf(Object.keys(ShadowDefaultConstant)) as Validator<
+        ShadowType
+    >
 };
 
 export default CardComponent;

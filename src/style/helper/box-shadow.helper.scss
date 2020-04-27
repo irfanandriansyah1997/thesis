@@ -1,0 +1,37 @@
+/**
+ * Box shadow Helper
+ */
+
+.box-shadow {
+    &-default1 {
+        @include box-shadow(default1);
+    }
+
+    &-default2 {
+        @include box-shadow(default2);
+    }
+
+    &-elevateXs {
+        @include box-shadow(elevateXs);
+    }
+
+    &-elevateSm {
+        @include box-shadow(elevateSm);
+    }
+
+    &-elevateMd {
+        @include box-shadow(elevateMd);
+    }
+
+    &-elevateLg {
+        @include box-shadow(elevateLg);
+    }
+
+    &-elevateXl {
+        @include box-shadow(elevateXl);
+    }
+
+    &-r123 {
+        @include box-shadow(r123);
+    }
+}
