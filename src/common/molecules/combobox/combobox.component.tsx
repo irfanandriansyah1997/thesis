@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import IconComponent from '../../atomic/icon/icon.component';
 import TextComponent from '../../atomic/text/text.component';
@@ -30,12 +30,31 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
     children,
     ...res
 }: ComponentMultipleOptionSingleOutput) => {
+    const node = useRef<HTMLDivElement>(null);
     const [show, setShow] = useState<boolean>(false);
     const [active, setActive] = useState<string>('');
     const [comboboxItem, setComboboxItem] = useState<
         ComboboxItemPropsInterface[]
     >([]);
 
+    /**
+     * Event Listener On Click
+     * @description event listener for prevent user click outside container dropdown
+     * @return {boolean | string}
+     */
+    const eventListenerOnClick = (e): void => {
+        const element = node.current;
+
+        /* istanbul ignore next */
+        if (!(element && element.contains(e.target))) {
+            setShow(false);
+        }
+    };
+
+    /**
+     * Watch Event
+     * @description will invoke this method if props value is change
+     */
     useEffect(() => {
         const itemProps: ComboboxItemPropsInterface[] = [];
         try {
@@ -74,6 +93,18 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
     }, [value]);
 
     /**
+     * Watch Event
+     * @description will invoke when component did mount and will unmount
+     */
+    useEffect(() => {
+        window.addEventListener('mousedown', eventListenerOnClick);
+
+        return (): void => {
+            window.removeEventListener('mousedown', eventListenerOnClick);
+        };
+    }, []);
+
+    /**
      * On Click Toggle
      * @return {void}
      */
@@ -85,15 +116,13 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
         relative: true,
-        // 'flex-row': true,
-        // 'flex-wrap': true,
         'inline-block': true,
         'ui-molecules-combobox': true,
         'ui-molecules-combobox--show': show
     };
 
     return (
-        <div className={StringHelper.objToString(className)}>
+        <div ref={node} className={StringHelper.objToString(className)}>
             <div className="flex flex-row flex-wrap">
                 <input
                     name={name}
@@ -106,7 +135,7 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
                     align="left"
                     color="text"
                     fontWeight={500}
-                    styling="heading-6"
+                    styling="default"
                     onClick={onClickToggle}
                     className={StringHelper.objToString({
                         flex: true,
@@ -115,7 +144,7 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
                         'ui-molecules-combobox__toggle': true
                     })}
                 >
-                    {active}
+                    {active || 'Not Selected'}
                     <IconComponent
                         color="text"
                         size={16}

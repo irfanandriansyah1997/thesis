@@ -30,7 +30,7 @@ const docs = (props: ComponentCheckboxInterface): string =>
     `        value={2}\n` +
     `        label="Label ${props.styling} 2"\n` +
     `    />\n` +
-    `</BadgeComponent>`;
+    `</CheckboxComponent>`;
 
 /**
  * Section Position Checkbox
