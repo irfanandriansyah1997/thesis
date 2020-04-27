@@ -35,12 +35,12 @@
         }
 
         &-secondary {
-            @include background-color(map-get($color-general, secondary));
+            @include background-color(map-get($color-general, greyR123));
             @include border(
                 all,
                 1px,
                 solid,
-                map-get($color-general, borderSecondary)
+                map-get($color-general, greyDarkerR123)
             );
             @include font-color(map-get($color-general, black));
 

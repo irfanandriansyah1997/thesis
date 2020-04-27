@@ -18,31 +18,32 @@ import {
 const ComboboxContentComponent: SFC<ComboboxContentPropsInterface> = ({
     item,
     show,
-    value,
-    onChange
+    onChange,
+    ...res
 }) => (
     <CSSTransition in={show} timeout={600} classNames="fade">
-        <div className="ui-molecules-combobox__content">
-            {item.map(({ id, label, subOption, ...res }) => (
+        <div className="ui-molecules-combobox__content box-shadow-r123">
+            {item.map(({ id, label, subOption, value, ...resItem }) => (
                 <TextComponent
-                    {...res}
+                    {...resItem}
                     key={id}
-                    tag="span"
+                    tag="p"
                     align="left"
-                    color="heading"
-                    fontWeight={400}
-                    styling="heading-6"
-                    onClick={(): void => onChange(id)}
+                    color="text"
+                    fontWeight={500}
+                    styling="default"
+                    onClick={(): void => onChange(value)}
                     className={StringHelper.objToString({
-                        [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
-                            res.className
+                        [`${resItem.className}`]: ValidatorHelper.verifiedIsNotEmpty(
+                            resItem.className
                         ),
                         flex: true,
                         relative: true,
-                        'flex-row': true,
+                        'no-wrap': true,
                         'flex-align-center': true,
                         'ui-molecules-combobox__item': true,
-                        'ui-molecules-combobox__item--action': id === value,
+                        'ui-molecules-combobox__item--active':
+                            `${value}` === `${res.value}`,
                         'ui-molecules-combobox__item--sub-option': ValidatorHelper.verifiedIsNotFalse(
                             subOption
                         )

@@ -51,7 +51,7 @@ export const FixtureColorRGBA: UnitTestingFixtureInterface<
         'rgba(255,178,0,0.25)',
         'rgba(243,247,248,0.1)',
         'rgba(121,175,255,1)',
-        'rgba(51,63,72,0.8)',
+        'rgba(34,43,69,0.8)',
         'rgba(255,114,182,1)'
     ]
 };
@@ -88,8 +88,8 @@ export const FixtureColorComponent: UnitTestingFixtureInterface<
     ],
     output: [
         {
-            background: { color: 'danger', hexColor: 'rgba(255,79,56,0.25)' },
-            text: { color: 'danger', hexColor: '#ff4f38' }
+            background: { color: 'danger', hexColor: 'rgba(220,53,69,0.25)' },
+            text: { color: 'danger', hexColor: '#dc3545' }
         },
         {
             background: {
@@ -100,15 +100,15 @@ export const FixtureColorComponent: UnitTestingFixtureInterface<
         },
         {
             background: { color: 'white', hexColor: 'rgba(255,255,255,1)' },
-            text: { color: 'heading', hexColor: '#333f48' }
+            text: { color: 'heading', hexColor: '#222b45' }
         },
         {
             background: { color: 'white', hexColor: 'rgba(255,255,255,0.25)' },
-            text: { color: 'heading', hexColor: '#333f48' }
+            text: { color: 'heading', hexColor: '#222b45' }
         },
         {
-            background: { color: 'primary', hexColor: 'rgba(33,107,255,0.25)' },
-            text: { color: 'primary', hexColor: '#216bff' }
+            background: { color: 'primary', hexColor: 'rgba(41,128,185,0.25)' },
+            text: { color: 'primary', hexColor: '#2980b9' }
         },
         {
             background: {

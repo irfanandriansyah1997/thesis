@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import IconComponent from '../../atomic/icon/icon.component';
 import TextComponent from '../../atomic/text/text.component';
@@ -30,11 +30,32 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
     children,
     ...res
 }: ComponentMultipleOptionSingleOutput) => {
+    const node = useRef<HTMLDivElement>(null);
     const [show, setShow] = useState<boolean>(false);
+    const [active, setActive] = useState<string>('');
     const [comboboxItem, setComboboxItem] = useState<
         ComboboxItemPropsInterface[]
     >([]);
 
+    /**
+     * Event Listener On Click
+     * @description event listener for prevent user click outside container dropdown
+     * @return {boolean | string}
+     */
+    const eventListenerOnClick = (e: unknown): void => {
+        const element = node.current;
+        const evt = e as { target: HTMLInputElement };
+
+        /* istanbul ignore next */
+        if (!(element && element.contains(evt.target))) {
+            setShow(false);
+        }
+    };
+
+    /**
+     * Watch Event
+     * @description will invoke this method if props value is change
+     */
     useEffect(() => {
         const itemProps: ComboboxItemPropsInterface[] = [];
         try {
@@ -53,6 +74,9 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
                         ).length;
 
                         if (validationProps === 3) {
+                            if (`${props.id}` === `${value}`) {
+                                setActive(props.label);
+                            }
                             itemProps.push(props);
                         } else {
                             throw new Error(
@@ -67,6 +91,18 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
         }
 
         setComboboxItem(itemProps);
+    }, [value]);
+
+    /**
+     * Watch Event
+     * @description will invoke when component did mount and will unmount
+     */
+    useEffect(() => {
+        window.addEventListener('mousedown', eventListenerOnClick);
+
+        return (): void => {
+            window.removeEventListener('mousedown', eventListenerOnClick);
+        };
     }, []);
 
     /**
@@ -80,45 +116,53 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
     // Getter ClassName
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
-        flex: true,
         relative: true,
-        'flex-row': true,
-        'flex-wrap': true,
+        'inline-block': true,
         'ui-molecules-combobox': true,
         'ui-molecules-combobox--show': show
     };
 
     return (
-        <div className={StringHelper.objToString(className)}>
-            <input name={name} value={value} type="text" className="hidden" />
-            <TextComponent
-                tag="span"
-                align="left"
-                color="heading"
-                fontWeight={400}
-                styling="heading-6"
-                onClick={onClickToggle}
-                className={StringHelper.objToString({
-                    flex: true,
-                    relative: true,
-                    'flex-justify-between': true,
-                    'ui-molecules-combobox__toggle': true
-                })}
-            >
-                {value}
-                <IconComponent
-                    color="heading"
-                    size={16}
-                    style={{ marginLeft: 5 }}
+        <div ref={node} className={StringHelper.objToString(className)}>
+            <div className="flex flex-row flex-wrap">
+                <input
+                    name={name}
+                    value={value}
+                    type="text"
+                    className="hidden"
+                />
+                <TextComponent
+                    tag="span"
+                    align="left"
+                    color="text"
+                    fontWeight={500}
+                    styling="default"
+                    onClick={onClickToggle}
+                    className={StringHelper.objToString({
+                        flex: true,
+                        relative: true,
+                        'flex-justify-between': true,
+                        'ui-molecules-combobox__toggle': true
+                    })}
                 >
-                    {show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
-                </IconComponent>
-            </TextComponent>
+                    {active || 'Not Selected'}
+                    <IconComponent
+                        color="text"
+                        size={16}
+                        style={{ marginLeft: 5 }}
+                    >
+                        {show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
+                    </IconComponent>
+                </TextComponent>
+            </div>
             <ComboboxContentComponent
                 show={show}
                 value={value as string | number}
                 item={comboboxItem}
-                onChange={onChange}
+                onChange={(output): void => {
+                    onClickToggle();
+                    onChange(output);
+                }}
             />
         </div>
     );

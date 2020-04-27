@@ -50,7 +50,7 @@ describe('Testing badges component in atomic component ', () => {
 
         expect(badges.prop('style')).toHaveProperty(
             'background-color',
-            'rgba(51,63,72,1)'
+            'rgba(34,43,69,1)'
         );
     });
 

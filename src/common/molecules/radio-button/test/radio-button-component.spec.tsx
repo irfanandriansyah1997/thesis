@@ -4,7 +4,7 @@ import { render, mount } from 'enzyme';
 import RadioButtonComponent from '../radio-button.component';
 import TextComponent from '../../../atomic/text/text.component';
 
-describe('Testing radio component in atomic component', () => {
+describe('Testing radio component in molecules component', () => {
     it('Should render checkbox component correctly', () => {
         const radioButton = render(
             <RadioButtonComponent

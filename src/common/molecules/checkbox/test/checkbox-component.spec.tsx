@@ -4,7 +4,7 @@ import { render, mount } from 'enzyme';
 import CheckboxComponent from '../checkbox.component';
 import TextComponent from '../../../atomic/text/text.component';
 
-describe('Testing text component in atomic component', () => {
+describe('Testing checbok component in molecules component', () => {
     it('Should render checkbox component correctly', () => {
         const checkbox = render(
             <CheckboxComponent

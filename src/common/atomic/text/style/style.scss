@@ -27,6 +27,22 @@
             font-size: text-size(base);
         }
 
+        &-default {
+            font-size: text-size(sm);
+        }
+
+        &-featured {
+            font-size: text-size(lg);
+        }
+
+        &-meta {
+            font-size: text-size(sm);
+        }
+
+        &-caption {
+            font-size: text-size(xs);
+        }
+
         &-tiny {
             font-size: text-size(xxs);
         }

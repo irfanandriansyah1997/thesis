@@ -34,7 +34,7 @@ const docs = (props: ComponentCheckboxInterface): string =>
     `        value={3}\n` +
     `        label="Label 3"\n` +
     `    />\n` +
-    `</BadgeComponent>`;
+    `</CheckboxComponent>`;
 
 /**
  * Section Default Checkbox
