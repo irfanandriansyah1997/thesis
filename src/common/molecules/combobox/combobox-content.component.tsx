@@ -22,16 +22,16 @@ const ComboboxContentComponent: SFC<ComboboxContentPropsInterface> = ({
     onChange
 }) => (
     <CSSTransition in={show} timeout={600} classNames="fade">
-        <div className="ui-molecules-combobox__content">
+        <div className="ui-molecules-combobox__content box-shadow-r123">
             {item.map(({ id, label, subOption, ...res }) => (
                 <TextComponent
                     {...res}
                     key={id}
-                    tag="span"
+                    tag="p"
                     align="left"
-                    color="heading"
-                    fontWeight={400}
-                    styling="heading-6"
+                    color="text"
+                    fontWeight={500}
+                    styling="default"
                     onClick={(): void => onChange(id)}
                     className={StringHelper.objToString({
                         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
@@ -39,10 +39,11 @@ const ComboboxContentComponent: SFC<ComboboxContentPropsInterface> = ({
                         ),
                         flex: true,
                         relative: true,
-                        'flex-row': true,
+                        'no-wrap': true,
                         'flex-align-center': true,
                         'ui-molecules-combobox__item': true,
-                        'ui-molecules-combobox__item--action': id === value,
+                        'ui-molecules-combobox__item--active':
+                            `${res.value}` === `${value}`,
                         'ui-molecules-combobox__item--sub-option': ValidatorHelper.verifiedIsNotFalse(
                             subOption
                         )

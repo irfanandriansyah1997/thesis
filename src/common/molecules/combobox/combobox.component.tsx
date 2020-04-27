@@ -31,6 +31,7 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
     ...res
 }: ComponentMultipleOptionSingleOutput) => {
     const [show, setShow] = useState<boolean>(false);
+    const [active, setActive] = useState<string>('');
     const [comboboxItem, setComboboxItem] = useState<
         ComboboxItemPropsInterface[]
     >([]);
@@ -53,6 +54,9 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
                         ).length;
 
                         if (validationProps === 3) {
+                            if (`${props.id}` === `${value}`) {
+                                setActive(props.label);
+                            }
                             itemProps.push(props);
                         } else {
                             throw new Error(
@@ -67,7 +71,7 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
         }
 
         setComboboxItem(itemProps);
-    }, []);
+    }, [value]);
 
     /**
      * On Click Toggle
@@ -80,45 +84,55 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
     // Getter ClassName
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
-        flex: true,
         relative: true,
-        'flex-row': true,
-        'flex-wrap': true,
+        // 'flex-row': true,
+        // 'flex-wrap': true,
+        'inline-block': true,
         'ui-molecules-combobox': true,
         'ui-molecules-combobox--show': show
     };
 
     return (
         <div className={StringHelper.objToString(className)}>
-            <input name={name} value={value} type="text" className="hidden" />
-            <TextComponent
-                tag="span"
-                align="left"
-                color="heading"
-                fontWeight={400}
-                styling="heading-6"
-                onClick={onClickToggle}
-                className={StringHelper.objToString({
-                    flex: true,
-                    relative: true,
-                    'flex-justify-between': true,
-                    'ui-molecules-combobox__toggle': true
-                })}
-            >
-                {value}
-                <IconComponent
-                    color="heading"
-                    size={16}
-                    style={{ marginLeft: 5 }}
+            <div className="flex flex-row flex-wrap">
+                <input
+                    name={name}
+                    value={value}
+                    type="text"
+                    className="hidden"
+                />
+                <TextComponent
+                    tag="span"
+                    align="left"
+                    color="text"
+                    fontWeight={500}
+                    styling="heading-6"
+                    onClick={onClickToggle}
+                    className={StringHelper.objToString({
+                        flex: true,
+                        relative: true,
+                        'flex-justify-between': true,
+                        'ui-molecules-combobox__toggle': true
+                    })}
                 >
-                    {show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
-                </IconComponent>
-            </TextComponent>
+                    {active}
+                    <IconComponent
+                        color="text"
+                        size={16}
+                        style={{ marginLeft: 5 }}
+                    >
+                        {show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
+                    </IconComponent>
+                </TextComponent>
+            </div>
             <ComboboxContentComponent
                 show={show}
                 value={value as string | number}
                 item={comboboxItem}
-                onChange={onChange}
+                onChange={(output): void => {
+                    onClickToggle();
+                    onChange(output);
+                }}
             />
         </div>
     );

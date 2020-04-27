@@ -148,16 +148,14 @@ hue-6-2: #c18401
 .ui-default__code {
     $c: &;
 
-    @include border(all, 1px, solid, heading500);
     @include rounded(5px);
     @include margin(all, 20px 0);
-
-    overflow: hidden;
+    @include border(all, 1px, solid, heading500);
 
     &__result {
         position: relative;
 
-        @include padding(all, 20px);
+        @include padding(all, 30px 20px);
 
         &:before {
             content: 'Result';

@@ -101,7 +101,6 @@ body {
     &__content {
         width: calc(100% - 150px);
         min-height: 300px;
-        overflow: hidden;
 
         @include margin-top(-110px);
         @include rounded(5px);

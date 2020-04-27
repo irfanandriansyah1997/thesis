@@ -39,6 +39,22 @@
         display: block;
     }
 
+    &.fade {
+        &-enter,
+        &-enter.fade-enter-active,
+        &-enter-done,
+        &-apear.fade-appear-active,
+        &-exit,
+        &-exit.fade-exit-active {
+            display: block;
+        }
+
+        &-apear,
+        &-exit-done {
+            display: none;
+        }
+    }
+
     &--type-popup {
         .ui-atomic-dialog {
             &__content {

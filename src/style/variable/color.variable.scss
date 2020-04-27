@@ -7,9 +7,9 @@ $color-general: (
     black: #000,
     milkwhite: #f3f7f8,
     primary: #2980b9,
-    secondary: #e9ebed,
+    secondary: #ff72b6,
     heading: #222b45,
-    text: #8f9bb3,
+    text: #697684,
     success: #50bf31,
     info: #39a0f9,
     warning: #ffc021,
@@ -73,6 +73,9 @@ $color-general: (
     heading900: #192038,
     heading1000: #151a30,
     heading1100: #101426,
+    grayR123: #e9ebed,
+    greyDarkerR123: #d2d6da,
+    borderR123: #030303,
     actionR123: #c20014,
     featuredR123: #00beb3,
     newPropertyR123: #ff4f00,
@@ -80,6 +83,5 @@ $color-general: (
     hoverPrimary: #236d9d,
     hoverSecondary: #d2d6da,
     hoverOutline: #20282e,
-    hoverDanger: #a30000,
-    borderSecondary: #d2d6da
+    hoverDanger: #a30000
 );
