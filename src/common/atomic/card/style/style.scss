@@ -1,0 +1,6 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-card {
+    @include padding(all, 16px);
+    @include background-color(get-color(white));
+}
