@@ -42,11 +42,12 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
      * @description event listener for prevent user click outside container dropdown
      * @return {boolean | string}
      */
-    const eventListenerOnClick = (e): void => {
+    const eventListenerOnClick = (e: unknown): void => {
         const element = node.current;
+        const evt = e as { target: HTMLInputElement };
 
         /* istanbul ignore next */
-        if (!(element && element.contains(e.target))) {
+        if (!(element && element.contains(evt.target))) {
             setShow(false);
         }
     };
