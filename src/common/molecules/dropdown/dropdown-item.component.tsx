@@ -15,8 +15,13 @@ const DropdownItemComponent: SFC<DropdownItemPropsInterface> = ({
     active,
     disabled,
     subOption,
+    disableHover,
+    withoutPadding,
     ...res
 }) => {
+    const isDisableHover = ValidatorHelper.verifiedIsNotFalse(disableHover);
+    const isWithoutPadding = ValidatorHelper.verifiedIsNotFalse(withoutPadding);
+
     // Getter ClassName
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
@@ -25,12 +30,12 @@ const DropdownItemComponent: SFC<DropdownItemPropsInterface> = ({
         'no-wrap': true,
         'flex-align-center': true,
         'ui-molecules-dropdown__item': true,
-        'ui-molecules-dropdown__item--active': ValidatorHelper.verifiedIsNotFalse(
-            active
-        ),
-        'ui-molecules-dropdown__item--sub-option': ValidatorHelper.verifiedIsNotFalse(
-            subOption
-        ),
+        'ui-molecules-dropdown__item--disable-hover': isDisableHover,
+        'ui-molecules-dropdown__item--without-padding': isWithoutPadding,
+        'ui-molecules-dropdown__item--active':
+            ValidatorHelper.verifiedIsNotFalse(active) && !isDisableHover,
+        'ui-molecules-dropdown__item--sub-option':
+            ValidatorHelper.verifiedIsNotFalse(subOption) && !isWithoutPadding,
         'ui-molecules-dropdown__item--disabled': ValidatorHelper.verifiedIsNotFalse(
             disabled
         )
@@ -55,6 +60,8 @@ DropdownItemComponent.propTypes = {
     active: PropTypes.bool,
     disabled: PropTypes.bool,
     subOption: PropTypes.bool,
+    disableHover: PropTypes.bool,
+    withoutPadding: PropTypes.bool,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
@@ -65,7 +72,9 @@ DropdownItemComponent.propTypes = {
 DropdownItemComponent.defaultProps = {
     active: false,
     disabled: false,
-    subOption: false
+    subOption: false,
+    disableHover: false,
+    withoutPadding: false
 };
 
 export default DropdownItemComponent;

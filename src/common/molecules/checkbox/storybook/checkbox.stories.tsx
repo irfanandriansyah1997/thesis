@@ -8,9 +8,12 @@ import StorybookDocumentationBuilder from '../../../../.storybook/builder/storyb
 
 import '../style/style.scss';
 
+const CheckboxDocumentation = require('./markdown/checkbox.documentation.md');
+
 ((): void => {
     new StorybookDocumentationBuilder('Checkbox Component', 'molecules')
         .setSection('common')
+        .setMarkdownFile(CheckboxDocumentation)
         .setDescriptionComponent(
             'Checkbox is used to create a new multiple choice input and we can multiple selection this option'
         )

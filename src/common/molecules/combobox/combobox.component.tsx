@@ -84,11 +84,13 @@ const ComboboxComponent: ComboboxDefaultExportInterface = ({
 
     return (
         <DropdownComponent
+            scroll
+            type="list"
             name={name}
             trigger="click"
-            icon={show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
             onClick={onClickToggle}
             label={active || 'Not Selected'}
+            icon={show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
             className={StringHelper.objToString({
                 [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
                     res.className

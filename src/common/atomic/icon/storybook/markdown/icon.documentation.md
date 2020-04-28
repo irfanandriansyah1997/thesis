@@ -28,7 +28,7 @@ berikut adalah beberapa props yang tersedia pada icon component
 
 | Props | PropTypes | Required | Default | Deskripsi |
 |:-------|:-----------|:---------:|-----------|-----------|
-|**color**|`Pallete Warna`| ✅|-|Anda dapat menggubah warna  secara spesifik. Bisa menggunakan warna css `(#033 atau rgba(255, 0, 0, 0.5))`.|
+|**color**|`Pallete Warna`| ✅|-|Anda dapat menggubah warna  secara spesifik.|
 |**size**|`number / 'big' / 'default' / 'small'`| ✅|-|Anda dapat mengatur ukuran font size di icon.|
 |**children**|`string warna`| ✅|-| Icon yang tersedia di material icon, urbanindo icon dan rumah123 icon|
 

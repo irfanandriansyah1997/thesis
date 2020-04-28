@@ -20,8 +20,10 @@ export type DropdownPropsInterface = Omit<
     'onKeypress' | 'style' | 'onClick'
 > & {
     name: string;
-    label: string;
+    label: string | React.ReactNode;
     icon?: string;
+    scroll?: boolean;
+    type?: 'list' | 'content';
     trigger: 'hover' | 'click';
     onClick?: (show: boolean) => void;
 };
@@ -48,6 +50,8 @@ export type DropdownItemPropsInterface = Omit<
     disabled?: boolean;
     subOption?: boolean;
     children: ReactNode;
+    disableHover?: boolean;
+    withoutPadding?: boolean;
 };
 
 /**

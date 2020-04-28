@@ -11,6 +11,14 @@ $max-height: 150px;
         }
     }
 
+    &--is-scrolled {
+        #{$c}__content {
+            max-height: $max-height;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+
     &__toggle {
         cursor: pointer;
     }
@@ -20,9 +28,7 @@ $max-height: 150px;
         font-size: text-size(sm);
         height: auto;
         left: 0;
-        max-height: $max-height;
         overflow-x: hidden;
-        overflow-y: auto;
         position: absolute;
         top: 100%;
         z-index: 9;
@@ -64,6 +70,18 @@ $max-height: 150px;
 
         &--sub-option {
             @include padding(all, 0 24px 0 32px);
+        }
+
+        &--without-padding {
+            line-height: initial;
+
+            @include no-padding();
+        }
+
+        &--disable-hover {
+            &:hover {
+                @include background-color(transparent);
+            }
         }
     }
 

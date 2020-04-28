@@ -1,6 +1,9 @@
 import React from 'react';
 
-import DropdownComponent from '../dropdown.component';
+import SectionDefaultDropdownComponent from './section/section-default.stories';
+import SectionDropdownAsContentComponent from './section/section-dropdown-as-content.stories';
+import SectionDropdownToggleCustomComponent from './section/section-dropdown-toggle-custom.stories';
+import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 
 import '../style/style.scss';
@@ -9,27 +12,15 @@ import '../style/style.scss';
     new StorybookDocumentationBuilder('Dropdown Component', 'molecules')
         .setSection('common')
         .setDescriptionComponent(
-            'Combobox is used to create a new multiple choice input and we can choose one from this option'
+            'Dropdown Component is a graphical control element, similar to a list box, that allows the user to choose one value from a list.'
         )
         .registerDocumentation(
             <>
-                <DropdownComponent
-                    label="Hello"
-                    name="hello"
-                    trigger="click"
-                    icon="rui-icon-arrow-up-small"
-                >
-                    <DropdownComponent.Item>
-                        Hello World 1
-                    </DropdownComponent.Item>
-                    <DropdownComponent.Item>
-                        Hello World 2
-                    </DropdownComponent.Item>
-                    <DropdownComponent.Divider />
-                    <DropdownComponent.Item>
-                        Hello World 2
-                    </DropdownComponent.Item>
-                </DropdownComponent>
+                <SectionDefaultDropdownComponent />
+                <DividerDocsComponent />
+                <SectionDropdownToggleCustomComponent />
+                <DividerDocsComponent />
+                <SectionDropdownAsContentComponent />
             </>
         )
         .execute();

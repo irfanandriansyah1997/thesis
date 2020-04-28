@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
@@ -19,12 +18,15 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.04.27
  */
 const DropdownComponent: DropdownDefaultExportInterface = ({
+    type,
     icon,
     label,
+    scroll,
     onClick,
     ...res
 }) => {
     const node = useRef<HTMLDivElement>(null);
+    const contentNode = useRef<HTMLDivElement>(null);
     const [show, setShow] = useState<boolean>(false);
 
     /**
@@ -34,11 +36,28 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      */
     const eventListenerOnClick = (e: unknown): void => {
         const element = node.current;
+        const elementContent = contentNode.current;
         const evt = e as { target: HTMLInputElement };
 
-        /* istanbul ignore next */
-        if (!(element && element.contains(evt.target))) {
-            setShow(false);
+        if (type === 'list') {
+            /* istanbul ignore next */
+            if (!(element && element.contains(evt.target))) {
+                setShow(false);
+            }
+        }
+
+        if (type === 'content') {
+            /* istanbul ignore next */
+            if (
+                !(
+                    element &&
+                    elementContent &&
+                    (element.contains(evt.target) ||
+                        elementContent.contains(evt.target))
+                )
+            ) {
+                setShow(false);
+            }
         }
     };
 
@@ -71,28 +90,51 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
         relative: true,
         'inline-block': true,
         'ui-molecules-dropdown': true,
+        'ui-molecules-dropdown--is-scrolled': ValidatorHelper.verifiedIsNotFalse(
+            scroll
+        ),
         'ui-molecules-dropdown--show': show
+    };
+    const classNameLabel: ComponentClassnameDefaultInterface = {
+        flex: true,
+        relative: true,
+        'flex-justify-between': true,
+        'ui-molecules-dropdown__toggle': true
     };
     delete res.className;
 
     return (
         <div className={StringHelper.objToString(className)}>
             <div ref={node} className="flex flex-row flex-wrap">
-                <TextComponent
-                    tag="span"
-                    align="left"
-                    color="text"
-                    fontWeight={500}
-                    styling="default"
+                <div
+                    tabIndex={0}
+                    role="button"
+                    onKeyPress={undefined}
                     onClick={onClickToggle}
-                    className={StringHelper.objToString({
-                        flex: true,
-                        relative: true,
-                        'flex-justify-between': true,
-                        'ui-molecules-dropdown__toggle': true
-                    })}
+                    className={StringHelper.objToString(classNameLabel)}
                 >
-                    {label}
+                    {typeof label === 'string' ? (
+                        <TextComponent
+                            tag="span"
+                            align="left"
+                            color="text"
+                            fontWeight={500}
+                            styling="default"
+                        >
+                            {label}
+                        </TextComponent>
+                    ) : (
+                        <div
+                            tabIndex={0}
+                            role="button"
+                            onKeyPress={undefined}
+                            onClick={onClickToggle}
+                            className={StringHelper.objToString(classNameLabel)}
+                        >
+                            {label}
+                        </div>
+                    )}
+
                     {icon ? (
                         <IconComponent
                             color="text"
@@ -102,10 +144,13 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                             {icon}
                         </IconComponent>
                     ) : null}
-                </TextComponent>
+                </div>
             </div>
             <CSSTransition in={show} timeout={600} classNames="fade">
-                <div className="ui-molecules-dropdown__content box-shadow-r123">
+                <div
+                    ref={contentNode}
+                    className="ui-molecules-dropdown__content box-shadow-r123"
+                >
                     {React.Children.toArray(res.children).filter((o: any) => {
                         return (
                             o.type.name === 'DropdownItemComponent' ||
@@ -119,13 +164,24 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
 };
 
 DropdownComponent.propTypes = {
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    scroll: PropTypes.bool,
     icon: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.node),
+            PropTypes.node,
+            PropTypes.string
+        ])
+    ]).isRequired,
+    type: PropTypes.oneOf(['list', 'content'])
 };
 
 DropdownComponent.defaultProps = {
+    type: 'list',
+    scroll: false,
     icon: undefined,
     onClick: undefined
 };
