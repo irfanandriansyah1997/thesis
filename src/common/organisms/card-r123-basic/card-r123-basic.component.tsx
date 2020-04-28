@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { SFC } from 'react';
 
 import CardComponent from '../../atomic/card/card.component';
 import CardMediaComponent from './card-r123-basic-media.component';
 import CardContentComponent from './card-r123-basic-content.component';
 
-import {
-    CardR123BasicDefaultExportInterface,
-    CardR123BasicPropsInterface
-} from './interface/component.interface';
+import { CardR123BasicPropsInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
@@ -17,35 +14,56 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.27
  */
-const CardR123Basic: CardR123BasicDefaultExportInterface = ({
+const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
     className,
-    children,
-    size,
+    media,
+    content,
     ...res
 }: CardR123BasicPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
         flex: true,
         [`ui-organisms-card`]: true,
         'flex-align-start': true,
+        'flex-row': true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
+
+    const { images, alt } = media;
+    const {
+        heading,
+        title,
+        address,
+        priceTag,
+        landSize,
+        buildingSize,
+        propertyType,
+        attribute
+    } = content;
 
     return (
         <CardComponent
             className={StringHelper.objToString(name)}
             style={{
-                width: ValidatorHelper.isNumber(size) ? `${size}px` : 750,
+                width: 750,
+                height: 282,
                 padding: 16,
                 ...res
             }}
             boxShadow="r123"
         >
-            {children}
+            <CardMediaComponent images={images} alt={alt} />
+            <CardContentComponent
+                heading={heading}
+                title={title}
+                address={address}
+                priceTag={priceTag}
+                landSize={landSize}
+                buildingSize={buildingSize}
+                propertyType={propertyType}
+                attribute={attribute}
+            />
         </CardComponent>
     );
 };
-
-CardR123Basic.Media = CardMediaComponent;
-CardR123Basic.Content = CardContentComponent;
 
 export default CardR123Basic;

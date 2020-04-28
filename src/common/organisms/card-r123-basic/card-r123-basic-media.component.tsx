@@ -1,9 +1,8 @@
-import React, { SFC } from 'react';
+import React, { SFC, createElement } from 'react';
 import PropTypes from 'prop-types';
 
-import { CardMediaPropsInterface } from './interface/component.interface';
+import { SearchPageCardMediaInterface } from '../../../shared/interface/search-page/search-page-card.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
 
 /**
@@ -12,56 +11,27 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @description card content which contains media such as image
  * @since 2020.04.27
  */
-const CardMediaComponent: SFC<CardMediaPropsInterface> = ({
-    className,
-    children,
-    width,
-    height,
-    ...res
+const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
+    images,
+    alt
 }) => {
     const name: ComponentClassnameDefaultInterface = {
-        flex: true,
         [`ui-organisms-card__media-wrapper`]: true,
-        'flex-shrink-0': true,
-        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
+        'flex-shrink-0': true
     };
 
-    return (
-        <div
-            className={StringHelper.objToString(name)}
-            style={{
-                width: ValidatorHelper.isNumber(width) ? `${width}px` : 'auto',
-                height: ValidatorHelper.isNumber(height)
-                    ? `${height}px`
-                    : 'auto',
-                ...res
-            }}
-        >
-            {children}
-        </div>
-    );
-};
+    const image = createElement('img', {
+        src: images,
+        alt,
+        style: { width: '100%', height: '100%', objectFit: 'cover' }
+    });
 
-CardMediaComponent.defaultProps = {
-    width: 'auto',
-    height: 'auto',
-    className: ''
+    return <div className={StringHelper.objToString(name)}>{image}</div>;
 };
 
 CardMediaComponent.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired,
-    width: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.oneOf<'auto'>(['auto'])
-    ]),
-    height: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.oneOf<'auto'>(['auto'])
-    ]),
-    className: PropTypes.string
+    images: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
 };
 
 export default CardMediaComponent;

@@ -1,0 +1,62 @@
+@import '../../../../style/import.scss';
+
+.ui-organisms-card {
+    &__media {
+        &-wrapper {
+            height: 250px;
+            width: 250px;
+        }
+    }
+
+    &__content {
+        &-wrapper {
+            height: 100%;
+            position: relative;
+            width: 100%;
+
+            @include margin-left(16px);
+        }
+    }
+}
+
+.card--content {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
+    &__price-info {
+        display: inline;
+
+        span {
+            height: 24px;
+            width: 100%;
+
+            @include line-height(24);
+            @include font-size(24px);
+        }
+    }
+
+    &__info {
+        white-space: nowrap;
+
+        @include margin-top(16px);
+
+        &-title {
+            height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &-title-link {
+            height: 20px;
+
+            span {
+                @include font-size(16px);
+            }
+        }
+    }
+
+    &__property-type {
+        @include margin-top(16px);
+    }
+}

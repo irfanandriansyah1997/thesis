@@ -1,36 +1,42 @@
-import React, { SFC, HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
+import {
+    SearchPageCardMediaInterface as media,
+    SearchPageCardActionInterface as action
+} from '../../../../shared/interface/search-page/search-page-card.interface';
 
 /**
- * Card Media Props Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.04.27
+ * Card R123 Basic Content Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @description
+ * @since 2020.04.28
  */
-export type CardContentPropsInterface = HTMLAttributes<HTMLDivElement> & {
-    children: CardChildrenType;
-};
+export interface CardR123BasicContentInterface {
+    heading?: ReactNode;
+    title?: string;
+    address?: string;
+    priceTag?: string;
+    landSize?: string;
+    buildingSize?: string;
+    propertyType?: string; // Factory | Home | Apartment
+    attribute?: CardR123BasicContentAttributeInterface[];
+}
 
 /**
- * Card Media Props Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.04.27
+ * Card R123 Basic Content Attribute Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @description
+ * @since 2020.04.28
  */
-export type CardMediaPropsInterface = HTMLAttributes<HTMLDivElement> & {
-    children: CardChildrenType;
-    width?: number | 'auto';
-    height?: number | 'auto';
-};
+export interface CardR123BasicContentAttributeInterface {
+    icon?: ReactNode;
+    alt?: string;
+    value: string;
+}
 
 /**
- * Card Media Children Type
+ * Basic Card R123 Default Props Interface
  * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.04.27
- */
-export type CardChildrenType = React.ReactNode | string | Element;
-
-/**
- * Basic Card R123 Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.04.27
+ * @since 2020.04.21
  */
 export type CardR123BasicPropsInterface = Omit<
     HTMLAttributes<HTMLElement>,
@@ -42,18 +48,7 @@ export type CardR123BasicPropsInterface = Omit<
     | 'onChange'
     | 'style'
 > & {
-    className?: string;
-    size?: number | 'auto';
-};
-
-/**
- * Basic Card R123 Default Props Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.04.21
- */
-export type CardR123BasicDefaultExportInterface = SFC<
-    CardR123BasicPropsInterface
-> & {
-    Media: SFC<CardMediaPropsInterface>;
-    Content: SFC<CardContentPropsInterface>;
+    media: media;
+    action: action;
+    content: CardR123BasicContentInterface;
 };
