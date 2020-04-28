@@ -7,9 +7,12 @@ import StorybookDocumentationBuilder from '../../../../.storybook/builder/storyb
 
 import '../style/style.scss';
 
+const ExpandTextDocumentation = require('./markdown/expand-text.documentation.md');
+
 ((): void => {
     new StorybookDocumentationBuilder('Expand Text Component', 'molecules')
         .setSection('common')
+        .setMarkdownFile(ExpandTextDocumentation)
         .setDescriptionComponent(
             'Expand text is used to create a toggle section and you can show and hide section based on height these children props'
         )

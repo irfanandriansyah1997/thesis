@@ -17,14 +17,14 @@ import {
  * @since 2020.04.21
  */
 const ToggleComponent: SFC<TogglePropsInterface> = ({
-    show,
-    selector,
-    gradient,
-    children,
-    onToggleExpand,
-    collapsedHeight,
+    show, //
+    selector, //
+    gradient, //
+    children, //
+    onToggleExpand, //
+    collapsedHeight, //
     selectorPosition,
-    onComponentResize,
+    onComponentResize, //
     ...res
 }: TogglePropsInterface) => {
     const [expand, setExpand] = useState<boolean>(show || false);

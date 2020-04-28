@@ -8,9 +8,12 @@ import StorybookDocumentationBuilder from '../../../../.storybook/builder/storyb
 
 import '../style/style.scss';
 
+const RadioButtonDocumentation = require('./markdown/radio-button.documentation.md');
+
 ((): void => {
     new StorybookDocumentationBuilder('Radio Button Component', 'molecules')
         .setSection('common')
+        .setMarkdownFile(RadioButtonDocumentation)
         .setDescriptionComponent(
             'Radio Button is used to create a new multiple choice input and we can choose one option'
         )

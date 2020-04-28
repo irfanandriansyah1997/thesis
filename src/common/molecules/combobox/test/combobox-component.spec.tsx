@@ -3,7 +3,7 @@ import { render, mount } from 'enzyme';
 
 import ComboboxComponent from '../combobox.component';
 
-describe('Testing checbok component in molecules component', () => {
+describe('Testing combobox component in molecules component', () => {
     beforeEach(() => {
         global.console = {
             ...global.console,
@@ -34,7 +34,7 @@ describe('Testing checbok component in molecules component', () => {
         );
 
         expect(combobox.hasClass('sample-classname')).toBe(true);
-        expect(combobox.hasClass('ui-molecules-combobox')).toBe(true);
+        expect(combobox.hasClass('ui-molecules-dropdown')).toBe(true);
     });
 
     it('Should mount combobox component correctly', () => {
@@ -58,18 +58,18 @@ describe('Testing checbok component in molecules component', () => {
             </ComboboxComponent>
         );
 
-        const content = combobox.find('.ui-molecules-combobox__content');
+        const content = combobox.find('.ui-molecules-dropdown__content');
 
-        expect(content.find('.ui-molecules-combobox__item').length).toBe(4);
+        expect(content.find('.ui-molecules-dropdown__item').length).toBe(2);
         expect(
             content.find(
-                '.ui-molecules-combobox__item.ui-molecules-combobox__item--active'
+                '.ui-molecules-dropdown__item.ui-molecules-dropdown__item--active'
             ).length
-        ).toBe(2);
+        ).toBe(1);
         expect(
             content
                 .find(
-                    '.ui-molecules-combobox__item.ui-molecules-combobox__item--active'
+                    '.ui-molecules-dropdown__item.ui-molecules-dropdown__item--active'
                 )
                 .at(0)
                 .text()
@@ -101,12 +101,14 @@ describe('Testing checbok component in molecules component', () => {
             </>
         );
 
-        const content = combobox.find('.ui-molecules-combobox__content');
+        const content = combobox.find('.ui-molecules-dropdown__content');
 
         content
             .find(
-                '.ui-molecules-combobox__item:not(.ui-molecules-combobox__item--active)'
+                '.ui-molecules-dropdown__item:not(.ui-molecules-dropdown__item--active)'
             )
+            .at(0)
+            .find('.ui-molecules-combobox__item')
             .at(0)
             .simulate('click');
 
@@ -141,21 +143,21 @@ describe('Testing checbok component in molecules component', () => {
 
         expect(
             combobox
-                .find('.ui-molecules-combobox')
+                .find('.ui-molecules-dropdown')
                 .at(0)
-                .hasClass('ui-molecules-combobox--show')
+                .hasClass('ui-molecules-dropdown--show')
         ).toBe(false);
 
         combobox
-            .find('.ui-molecules-combobox__toggle')
+            .find('.ui-molecules-dropdown__toggle')
             .at(0)
             .simulate('click');
 
         expect(
             combobox
-                .find('.ui-molecules-combobox')
+                .find('.ui-molecules-dropdown')
                 .at(0)
-                .hasClass('ui-molecules-combobox--show')
+                .hasClass('ui-molecules-dropdown--show')
         ).toBe(true);
     });
 

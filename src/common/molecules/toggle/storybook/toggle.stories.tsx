@@ -7,9 +7,12 @@ import StorybookDocumentationBuilder from '../../../../.storybook/builder/storyb
 
 import '../style/style.scss';
 
+const ToggleDocumentation = require('./markdown/toggle.documentation.md');
+
 ((): void => {
     new StorybookDocumentationBuilder('Togggle Component', 'molecules')
         .setSection('common')
+        .setMarkdownFile(ToggleDocumentation)
         .setDescriptionComponent(
             'Toggle Component is a content area which can be collapsed and expanded, used to group or hide complex regions to keep the page clean.'
         )

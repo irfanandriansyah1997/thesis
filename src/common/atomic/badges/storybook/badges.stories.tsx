@@ -14,6 +14,8 @@ import CardShowcaseDocsComponent from '../../../../.storybook/component/atomic/c
 
 import '../style/style.scss';
 
+const BadgesDocumentation = require('./markdown/badges.documentation.md');
+
 /**
  * Generate Docs
  * @param {string} type - type props image
@@ -30,6 +32,7 @@ const docs = (color: ColorType, transparent: boolean): string =>
 ((): void => {
     new StorybookDocumentationBuilder('Badge Komponen', 'atomic')
         .setSection('common')
+        .setMarkdownFile(BadgesDocumentation)
         .setDescriptionComponent(
             'Badges komponen biasa dipakai untuk memberi informasi tertentu di dalam website dengan bentuk bulat maupun persegi'
         )
