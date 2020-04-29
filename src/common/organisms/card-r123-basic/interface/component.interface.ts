@@ -11,7 +11,7 @@ import {
  * @since 2020.04.28
  */
 export interface CardR123BasicContentInterface {
-    headingText?: string;
+    mortgageLinkText?: string;
     title?: string;
     installment?: string;
     address?: string;
@@ -21,6 +21,7 @@ export interface CardR123BasicContentInterface {
     propertyType?: string; // Factory | Home | Apartment
     attribute?: CardR123BasicContentAttributeInterface[];
     onClickSave?: () => void;
+    link?: string;
 }
 
 /**

@@ -58,6 +58,7 @@ const CarparkIcon: SFC = () => (
                         `${'<CardR123Basic'}\n` +
                         `   ${'media={{images: "img.jpg", alt: "Images 1"}}'}\n` +
                         `   ${'content={{'}\n` +
+                        `       ${'mortgageLinkText: "Simulasi KPR",'}\n` +
                         `       ${'title: "Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Malang",'}\n` +
                         `       ${'address: "Malang",'}\n` +
                         `       ${'priceTag: "Rp 2,1 M",'}\n` +
@@ -85,7 +86,7 @@ const CarparkIcon: SFC = () => (
                             alt: 'Images 1'
                         }}
                         content={{
-                            headingText: 'Simulasi KPR',
+                            mortgageLinkText: 'Simulasi KPR',
                             title:
                                 'Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Malang',
                             installment: 'Cicilan : Rp. 7,46 Jt/bulan',

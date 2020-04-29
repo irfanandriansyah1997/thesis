@@ -55,7 +55,7 @@ const CalculatorIcon: SFC = () => (
  * @return {string}
  */
 const MortgageButtonLink: SFC<CardR123BasicContentInterface> = ({
-    headingText
+    mortgageLinkText
 }) => (
     <LinkComponent
         icon={<CalculatorIcon />}
@@ -63,16 +63,16 @@ const MortgageButtonLink: SFC<CardR123BasicContentInterface> = ({
         noUnderline
         fontWeight={500}
     >
-        {headingText}
+        {mortgageLinkText}
     </LinkComponent>
 );
 
 MortgageButtonLink.defaultProps = {
-    headingText: ''
+    mortgageLinkText: ''
 };
 
 MortgageButtonLink.propTypes = {
-    headingText: PropTypes.string
+    mortgageLinkText: PropTypes.string
 };
 
 /**
@@ -83,7 +83,7 @@ MortgageButtonLink.propTypes = {
  */
 const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
     title,
-    headingText,
+    mortgageLinkText,
     installment,
     address,
     priceTag,
@@ -91,7 +91,8 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
     buildingSize,
     propertyType,
     attribute,
-    onClickSave
+    onClickSave,
+    link
 }) => {
     const name: ComponentClassnameDefaultInterface = {
         [`ui-organisms-card__content-wrapper`]: true,
@@ -114,6 +115,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                                 noUnderline
                                 fontWeight={500}
                                 color="basicCardContentR123"
+                                href={link}
                             >
                                 {item.value}
                             </LinkComponent>
@@ -126,7 +128,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
     return (
         <div className={StringHelper.objToString(name)}>
             <div className="card-heading flex flex-justify-end">
-                <MortgageButtonLink headingText={headingText} />
+                <MortgageButtonLink mortgageLinkText={mortgageLinkText} />
                 <SaveButton onClickSave={onClickSave} />
             </div>
             <div className="card--content absolute">
@@ -137,6 +139,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                         fontWeight={700}
                         color="basicCardContentR123"
                         styling="heading-4"
+                        href={link}
                     >
                         {priceTag}
                     </LinkComponent>
@@ -160,6 +163,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                             fontWeight={500}
                             color="basicCardContentR123"
                             styling="heading-6"
+                            href={link}
                         >
                             {title}
                         </LinkComponent>
@@ -173,6 +177,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                             noUnderline
                             fontWeight={500}
                             color="basicCardContentR123"
+                            href={link}
                         >
                             {address}
                         </LinkComponent>
@@ -184,6 +189,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                         noUnderline
                         fontWeight={500}
                         color="basicCardContentR123"
+                        href={link}
                     >
                         {propertyType}
                     </LinkComponent>
@@ -196,6 +202,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                                 noUnderline
                                 fontWeight={500}
                                 color="heading"
+                                href={link}
                             >
                                 {landSize}
                             </LinkComponent>
@@ -206,6 +213,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                                 noUnderline
                                 fontWeight={500}
                                 color="heading"
+                                href={link}
                             >
                                 {buildingSize}
                             </LinkComponent>
@@ -222,7 +230,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
 
 CardContentComponent.defaultProps = {
     title: '',
-    headingText: '',
+    mortgageLinkText: '',
     installment: '',
     address: '',
     priceTag: '',
@@ -233,7 +241,7 @@ CardContentComponent.defaultProps = {
 
 CardContentComponent.propTypes = {
     title: PropTypes.string,
-    headingText: PropTypes.string,
+    mortgageLinkText: PropTypes.string,
     installment: PropTypes.string,
     address: PropTypes.string,
     priceTag: PropTypes.string,
@@ -247,7 +255,8 @@ CardContentComponent.propTypes = {
             alt: PropTypes.string.isRequired,
             value: PropTypes.string.isRequired
         }).isRequired
-    ).isRequired
+    ).isRequired,
+    link: PropTypes.string.isRequired
 };
 
 export default CardContentComponent;

@@ -17,7 +17,7 @@ import StringHelper from '../../../shared/helper/string.helper';
 const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
     images,
     alt,
-    onClickViewDetail
+    onClick
 }) => {
     const name: ComponentClassnameDefaultInterface = {
         [`ui-organisms-card__media-wrapper`]: true,
@@ -31,7 +31,7 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                 noUnderline
                 fontWeight={500}
                 color="heading"
-                onClick={onClickViewDetail}
+                onClick={onClick}
             >
                 <ImageComponent
                     src={images}
@@ -46,13 +46,13 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
 };
 
 CardMediaComponent.defaultProps = {
-    onClickViewDetail: undefined
+    onClick: undefined
 };
 
 CardMediaComponent.propTypes = {
     images: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
-    onClickViewDetail: PropTypes.func
+    onClick: PropTypes.func
 };
 
 export default CardMediaComponent;

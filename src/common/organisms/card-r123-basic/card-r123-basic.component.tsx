@@ -19,6 +19,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
     media,
     content,
     action,
+    link,
     ...res
 }: CardR123BasicPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
@@ -31,7 +32,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
 
     const { images, alt } = media;
     const {
-        headingText,
+        mortgageLinkText,
         title,
         installment,
         address,
@@ -56,10 +57,10 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
             <CardMediaComponent
                 images={images}
                 alt={alt}
-                onClickViewDetail={onClickViewDetail}
+                onClick={onClickViewDetail}
             />
             <CardContentComponent
-                headingText={headingText}
+                mortgageLinkText={mortgageLinkText}
                 title={title}
                 installment={installment}
                 address={address}
@@ -69,6 +70,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
                 propertyType={propertyType}
                 attribute={attribute}
                 onClickSave={onClickSave}
+                link={link}
             />
         </CardComponent>
     );
