@@ -30,7 +30,7 @@ export interface CardR123BasicContentInterface {
  * @since 2020.04.28
  */
 export interface CardR123BasicContentAttributeInterface {
-    icon?: ReactNode;
+    icon: ReactNode;
     alt?: string;
     value: string;
 }
@@ -53,4 +53,5 @@ export type CardR123BasicPropsInterface = Omit<
     media: media;
     action: action;
     content: CardR123BasicContentInterface;
+    link: string;
 };

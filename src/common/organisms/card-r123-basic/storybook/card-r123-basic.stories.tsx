@@ -10,7 +10,7 @@ import StorybookDocumentationBuilder from '../../../../.storybook/builder/storyb
 
 import '../style/style.scss';
 
-const CardR123BasicDocumentation = require('./markdown/card.documentation.md');
+const CardR123BasicDocumentation = require('./markdown/card-r123-basic.documentation.md');
 
 /**
  * Create bedroom icon
@@ -19,6 +19,26 @@ const CardR123BasicDocumentation = require('./markdown/card.documentation.md');
 const BedroomIcon: SFC = () => (
     <IconComponent color="text" size={18}>
         rui-icon-bed
+    </IconComponent>
+);
+
+/**
+ * Create bathroom icon
+ * @return {string}
+ */
+const BathroomIcon: SFC = () => (
+    <IconComponent color="text" size={18}>
+        rui-icon-bath
+    </IconComponent>
+);
+
+/**
+ * Create carpark icon
+ * @return {string}
+ */
+const CarparkIcon: SFC = () => (
+    <IconComponent color="text" size={18}>
+        rui-icon-car
     </IconComponent>
 );
 
@@ -44,12 +64,17 @@ const BedroomIcon: SFC = () => (
                         `       ${'landSize: "Luas tanah: 339 m2",'}\n` +
                         `       ${'buildingSize: "Luas bangunan: 700 m2",'}\n` +
                         `       ${'propertyType: "Rumah",'}\n` +
-                        `       ${'attribute: [{ icon: <BedroomIcon />, value: "3" }]'}\n` +
+                        `       ${'attribute: ['}\n` +
+                        `           ${'{ icon: <BathroomIcon />, value: "2" },'}\n` +
+                        `           ${'{ icon: <BedroomIcon />, value: "3" },'}\n` +
+                        `           ${'{ icon: <CarparkIcon />, value: "1" },'}\n` +
+                        `       ${']'}\n` +
                         `   ${'}}'}\n` +
                         `   ${'content={{'}\n` +
                         `       ${'onClickSave: (): void => {},'}\n` +
                         `       ${'onClickViewDetail: (): void => {}'}\n` +
                         `   ${'}}'}\n` +
+                        `   ${'link="https://www.rumah123.com/"'}\n` +
                         `${'/>'}`
                     }
                 >
@@ -69,12 +94,17 @@ const BedroomIcon: SFC = () => (
                             landSize: 'Luas tanah: 339 m2',
                             buildingSize: 'Luas bangunan: 700 m2',
                             propertyType: 'Rumah',
-                            attribute: [{ icon: <BedroomIcon />, value: '3' }]
+                            attribute: [
+                                { icon: <BathroomIcon />, value: '2' },
+                                { icon: <BedroomIcon />, value: '3' },
+                                { icon: <CarparkIcon />, value: '1' }
+                            ]
                         }}
                         action={{
                             onClickSave: (): void => undefined,
                             onClickViewDetail: (): void => undefined
                         }}
+                        link="https://www.rumah123.com/"
                     />
                 </CodingViewerDocsComponent>
             </>

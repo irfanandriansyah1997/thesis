@@ -1,7 +1,8 @@
-import React, { SFC, createElement } from 'react';
+import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
 import LinkComponent from '../../atomic/link/link.component';
+import ImageComponent from '../../atomic/image/image.component';
 
 import { SearchPageCardMediaInterface } from '../../../shared/interface/search-page/search-page-card.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
@@ -23,12 +24,6 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
         'flex-shrink-0': true
     };
 
-    const image = createElement('img', {
-        src: images,
-        alt,
-        style: { width: '100%', height: '100%', objectFit: 'cover' }
-    });
-
     return (
         <div className={StringHelper.objToString(name)}>
             <LinkComponent
@@ -38,7 +33,13 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                 color="heading"
                 onClick={onClickViewDetail}
             >
-                {image}
+                <ImageComponent
+                    src={images}
+                    alt={alt}
+                    width="100%"
+                    height="100%"
+                    objectFit="cover"
+                />
             </LinkComponent>
         </div>
     );
