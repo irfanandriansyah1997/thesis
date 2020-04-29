@@ -42,7 +42,8 @@ const LinkComponent: SFC<LinkPropsInterface> = ({
                     color
                 )
                     ? ColorDefaultConstant[color as ColorType]
-                    : undefined
+                    : undefined,
+                ...res.style
             }}
         >
             {icon ? <span className="ui-atomic-link__icon">{icon}</span> : null}

@@ -36,6 +36,12 @@
         }
     }
 
+    &__property-type-info {
+        span {
+            @include line-height(20);
+        }
+    }
+
     &__info {
         white-space: nowrap;
 
@@ -52,11 +58,27 @@
 
             span {
                 @include font-size(16px);
+                @include line-height(20);
+            }
+        }
+
+        &-address-link {
+            span {
+                line-height: normal;
             }
         }
     }
 
     &__property-type {
         @include margin-top(16px);
+    }
+}
+
+.attribute {
+    &__config-landsize-info,
+    &__config-buildingsize-info {
+        span {
+            @include line-height(20);
+        }
     }
 }

@@ -86,7 +86,9 @@ const ColorDefaultConstant = {
     hoverPrimary: '#236d9d',
     hoverSecondary: '#d2d6da',
     hoverOutline: '#20282e',
-    hoverDanger: '#a30000'
+    hoverDanger: '#a30000',
+    basicCardHeadingR123: '#a5adb5',
+    basicCardContentR123: '#333f48'
 } as const;
 
 export default ColorDefaultConstant;

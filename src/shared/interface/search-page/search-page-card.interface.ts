@@ -17,6 +17,7 @@ export interface SearchPageCardActionInterface {
 export interface SearchPageCardMediaInterface {
     alt: string;
     images: string;
+    onClickViewDetail?: () => void;
 }
 
 /**

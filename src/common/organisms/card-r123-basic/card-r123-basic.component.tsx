@@ -18,6 +18,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
     className,
     media,
     content,
+    action,
     ...res
 }: CardR123BasicPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
@@ -30,8 +31,9 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
 
     const { images, alt } = media;
     const {
-        heading,
+        headingText,
         title,
+        installment,
         address,
         priceTag,
         landSize,
@@ -39,7 +41,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
         propertyType,
         attribute
     } = content;
-
+    const { onClickSave, onClickViewDetail } = action;
     return (
         <CardComponent
             className={StringHelper.objToString(name)}
@@ -51,16 +53,22 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
             }}
             boxShadow="r123"
         >
-            <CardMediaComponent images={images} alt={alt} />
+            <CardMediaComponent
+                images={images}
+                alt={alt}
+                onClickViewDetail={onClickViewDetail}
+            />
             <CardContentComponent
-                heading={heading}
+                headingText={headingText}
                 title={title}
+                installment={installment}
                 address={address}
                 priceTag={priceTag}
                 landSize={landSize}
                 buildingSize={buildingSize}
                 propertyType={propertyType}
                 attribute={attribute}
+                onClickSave={onClickSave}
             />
         </CardComponent>
     );

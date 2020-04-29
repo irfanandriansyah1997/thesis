@@ -11,14 +11,16 @@ import {
  * @since 2020.04.28
  */
 export interface CardR123BasicContentInterface {
-    heading?: ReactNode;
+    headingText?: string;
     title?: string;
+    installment?: string;
     address?: string;
     priceTag?: string;
     landSize?: string;
     buildingSize?: string;
     propertyType?: string; // Factory | Home | Apartment
     attribute?: CardR123BasicContentAttributeInterface[];
+    onClickSave?: () => void;
 }
 
 /**

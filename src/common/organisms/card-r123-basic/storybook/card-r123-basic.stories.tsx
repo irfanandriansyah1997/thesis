@@ -2,7 +2,6 @@ import React, { SFC } from 'react';
 
 import CardR123Basic from '../card-r123-basic.component';
 import IconComponent from '../../../atomic/icon/icon.component';
-import LinkComponent from '../../../atomic/link/link.component';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
@@ -14,16 +13,6 @@ import '../style/style.scss';
 const CardR123BasicDocumentation = require('./markdown/card.documentation.md');
 
 /**
- * Create save icon
- * @return {string}
- */
-const SaveIcon: SFC = () => (
-    <IconComponent color="primary" size={18}>
-        rui-icon-save
-    </IconComponent>
-);
-
-/**
  * Create bedroom icon
  * @return {string}
  */
@@ -31,21 +20,6 @@ const BedroomIcon: SFC = () => (
     <IconComponent color="text" size={18}>
         rui-icon-bed
     </IconComponent>
-);
-
-/**
- * Create save button
- * @return {string}
- */
-const SaveButton: SFC = () => (
-    <LinkComponent
-        icon={<SaveIcon />}
-        noUnderline
-        // eslint-disable-next-line no-alert
-        onClick={(): void => alert('Saved')}
-    >
-        Simpan
-    </LinkComponent>
 );
 
 ((): void => {
@@ -61,23 +35,22 @@ const SaveButton: SFC = () => (
                 <TextDocsComponent>Deafult Basic R123 card</TextDocsComponent>
                 <CodingViewerDocsComponent
                     sourceCode={
-                        `${'const { Media, Content } = CardR123Basic;'}\n\n` +
-                        `${'<CardR123Basic>'}\n` +
-                        `   ${'<Media width={250} height={250}>'}\n` +
-                        `       ${'<ImageComponent src="https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="Images 1" type="square" width="100%" height="100%" objectFit="cover" />'}\n` +
-                        `   ${'</Media>'}\n` +
-                        `   ${'<Content style={{ marginLeft: 16 }}>'}\n` +
-                        `       ${'<TextComponent tag="p">'}\n` +
-                        `           ${'Some content...'}\n` +
-                        `       ${'</TextComponent>'}\n` +
-                        `       ${'<TextComponent tag="p" style={{ marginTop: 16 }}>'}\n` +
-                        `           ${'Some content...'}\n` +
-                        `       ${'</TextComponent>'}\n` +
-                        `       ${'<TextComponent tag="p" style={{ marginTop: 16 }}>'}\n` +
-                        `           ${'Some content...'}\n` +
-                        `       ${'</TextComponent>'}\n` +
-                        `   ${'</Content>'}\n` +
-                        `${'</CardR123Basic>'}`
+                        `${'<CardR123Basic'}\n` +
+                        `   ${'media={{images: "img.jpg", alt: "Images 1"}}'}\n` +
+                        `   ${'content={{'}\n` +
+                        `       ${'title: "Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Malang",'}\n` +
+                        `       ${'address: "Malang",'}\n` +
+                        `       ${'priceTag: "Rp 2,1 M",'}\n` +
+                        `       ${'landSize: "Luas tanah: 339 m2",'}\n` +
+                        `       ${'buildingSize: "Luas bangunan: 700 m2",'}\n` +
+                        `       ${'propertyType: "Rumah",'}\n` +
+                        `       ${'attribute: [{ icon: <BedroomIcon />, value: "3" }]'}\n` +
+                        `   ${'}}'}\n` +
+                        `   ${'content={{'}\n` +
+                        `       ${'onClickSave: (): void => {},'}\n` +
+                        `       ${'onClickViewDetail: (): void => {}'}\n` +
+                        `   ${'}}'}\n` +
+                        `${'/>'}`
                     }
                 >
                     <CardR123Basic
@@ -87,9 +60,10 @@ const SaveButton: SFC = () => (
                             alt: 'Images 1'
                         }}
                         content={{
-                            heading: <SaveButton />,
+                            headingText: 'Simulasi KPR',
                             title:
                                 'Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Malang',
+                            installment: 'Cicilan : Rp. 7,46 Jt/bulan',
                             address: 'Malang',
                             priceTag: 'Rp 2,1 M',
                             landSize: 'Luas tanah: 339 m2',
@@ -97,7 +71,10 @@ const SaveButton: SFC = () => (
                             propertyType: 'Rumah',
                             attribute: [{ icon: <BedroomIcon />, value: '3' }]
                         }}
-                        action={{}}
+                        action={{
+                            onClickSave: (): void => undefined,
+                            onClickViewDetail: (): void => undefined
+                        }}
                     />
                 </CodingViewerDocsComponent>
             </>
