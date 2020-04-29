@@ -76,6 +76,43 @@ class ValidatorHelper extends LogHelperAbstract {
             throw e;
         }
     }
+
+    /**
+     * Verified param max greater than min
+     * @param {number} max - parameter number 1
+     * @param {number} min - parameter number 2
+     * @param {boolean} isEqual - is equal to param 2 ?
+     * @return {boolean}
+     */
+    static verifiedGreatherThan(
+        max: number,
+        min: number,
+        isEqual = false
+    ): boolean {
+        try {
+            if (
+                ValidatorHelper.isNumber(max) &&
+                ValidatorHelper.isNumber(min)
+            ) {
+                if (max >= min && isEqual) {
+                    return true;
+                }
+
+                if (max > min) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            throw new Error(
+                '[Error] parameter max and min must be integer or float'
+            );
+        } catch (e) {
+            ValidatorHelper.logError(e);
+            throw e;
+        }
+    }
 }
 
 export default ValidatorHelper;
