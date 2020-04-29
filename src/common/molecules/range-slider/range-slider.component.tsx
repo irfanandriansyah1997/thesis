@@ -99,11 +99,9 @@ const RangeSliderComponent: SFC<RangeSliderPropsInterface> = ({
             min,
             valueComponent
         );
+
         if (isValid !== false) {
             validation(output);
-        } else {
-            e.preventDefault();
-            validation(value);
         }
     };
 
@@ -224,10 +222,7 @@ RangeSliderComponent.propTypes = {
 
 RangeSliderComponent.defaultProps = {
     step: 1,
-    label: {
-        maxLabel: 'Max',
-        minLabel: 'Min'
-    }
+    label: undefined
 };
 
 export default RangeSliderComponent;
