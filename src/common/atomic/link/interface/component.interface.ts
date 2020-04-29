@@ -1,7 +1,10 @@
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 
 import { ColorType } from '../../../../shared/interface/common/color.interface';
-import { ComponentFontWeightTypography } from '../../../../shared/interface/component/component-typography.interface';
+import {
+    ComponentFontWeightTypography,
+    ComponentStylingTypography
+} from '../../../../shared/interface/component/component-typography.interface';
 
 /**
  * Link Interface
@@ -13,4 +16,5 @@ export type LinkPropsInterface = AnchorHTMLAttributes<HTMLAnchorElement> & {
     noUnderline?: boolean;
     icon?: ReactNode;
     fontWeight?: ComponentFontWeightTypography;
+    styling?: ComponentStylingTypography;
 };

@@ -7,7 +7,10 @@ import { LinkPropsInterface } from './interface/component.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
 import { ColorType } from '../../../shared/interface/common/color.interface';
-import { ComponentFontWeightTypography } from '../../../shared/interface/component/component-typography.interface';
+import {
+    ComponentFontWeightTypography,
+    ComponentStylingTypography
+} from '../../../shared/interface/component/component-typography.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
@@ -21,6 +24,7 @@ const LinkComponent: SFC<LinkPropsInterface> = ({
     children,
     fontWeight,
     noUnderline,
+    styling,
     ...res
 }: LinkPropsInterface) => {
     const className: ComponentClassnameDefaultInterface = {
@@ -37,6 +41,7 @@ const LinkComponent: SFC<LinkPropsInterface> = ({
             {...res}
             className={StringHelper.objToString(className)}
             style={{
+                ...res.style,
                 color: ValidatorHelper.verifiedKeyIsExist(
                     ColorDefaultConstant,
                     color
@@ -49,7 +54,7 @@ const LinkComponent: SFC<LinkPropsInterface> = ({
             <TextComponent
                 tag="span"
                 color={color}
-                styling="default"
+                styling={styling}
                 fontFamily="primary"
                 fontWeight={fontWeight}
                 className="ui-atomic-link--children"
@@ -66,7 +71,8 @@ LinkComponent.defaultProps = {
     noUnderline: false,
     icon: undefined,
     onClick: undefined,
-    fontWeight: 400
+    fontWeight: 400,
+    styling: 'default'
 };
 
 LinkComponent.propTypes = {
@@ -87,7 +93,20 @@ LinkComponent.propTypes = {
         500,
         600,
         700
-    ]) as Validator<ComponentFontWeightTypography>
+    ]) as Validator<ComponentFontWeightTypography>,
+    styling: PropTypes.oneOf<ComponentStylingTypography>([
+        'heading-1',
+        'heading-2',
+        'heading-3',
+        'heading-4',
+        'heading-5',
+        'heading-6',
+        'default',
+        'featured',
+        'meta',
+        'caption',
+        'tiny'
+    ]) as Validator<ComponentStylingTypography>
 };
 
 export default LinkComponent;

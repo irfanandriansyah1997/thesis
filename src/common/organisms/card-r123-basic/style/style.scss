@@ -1,0 +1,78 @@
+@import '../../../../style/import.scss';
+
+.ui-organisms-card {
+    &__media {
+        &-wrapper {
+            height: 250px;
+            width: 250px;
+        }
+    }
+
+    &__content {
+        &-wrapper {
+            height: 100%;
+            width: 100%;
+
+            @include margin-left(16px);
+        }
+    }
+}
+
+.card--content {
+    bottom: 0;
+    width: 100%;
+
+    &__price-info {
+        span {
+            height: 24px;
+            width: 100%;
+
+            @include line-height(24);
+        }
+    }
+
+    &__property-type-info {
+        span {
+            @include line-height(20);
+        }
+    }
+
+    &__info {
+        @include margin-top(16px);
+
+        &-title {
+            height: 20px;
+        }
+
+        &-title-link {
+            height: 20px;
+
+            span {
+                @include line-height(20);
+            }
+        }
+
+        &-address-link {
+            span {
+                line-height: normal;
+            }
+        }
+    }
+
+    &__property-type {
+        @include margin-top(16px);
+    }
+}
+
+.attribute {
+    &__config-landsize-info,
+    &__config-buildingsize-info {
+        span {
+            @include line-height(20);
+        }
+    }
+
+    &__facility-detail {
+        @include margin-left(8px);
+    }
+}
