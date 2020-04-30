@@ -37,5 +37,5 @@ berikut adalah beberapa props yang tersedia pada ramge slider component
 |**min**| `number`| ✅|-| batas minimum range slider. |
 |**step**|`number`| ❌|`1`| loncatan step setiap range slider digeser |
 |**label**|`object`| ❌|-| label component untuk memberitahu batas maksimum dan minimum |
-|**value**| `object` <br> `number[]`| ✅|`[]`| value component ini untuk mengatur rentang min & maksimum pada component ini |
+|**value**| `object`| ✅|`[]`| value component ini untuk mengatur rentang min & maksimum pada component ini |
 |**onChange**| `function`| ✅|`[]`| callback function yang akan diinvoke apabila terdapat perubahaan value|
