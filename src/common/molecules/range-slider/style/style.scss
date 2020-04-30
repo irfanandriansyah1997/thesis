@@ -1,0 +1,207 @@
+/* stylelint-disable */
+
+@import '../../../../style/import.scss';
+
+.ui-molecules-range-slider {
+    $c: &;
+
+    @include rounded(5px);
+
+    &__content {
+        height: 27px;
+        width: 100%;
+        @include rounded(5px);
+
+        &::before {
+            content: '';
+            height: 4px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+
+            @include background-color(grayR123);
+            @include transform-translate-y(-50%);
+        }
+    }
+
+    /**
+     * Label Element
+     */
+    &__label {
+        @include margin-bottom(12px);
+
+        ~ input {
+            @include margin-top(6px);
+        }
+    }
+
+    /**
+     * Doted
+     */
+    &__doted {
+        height: 8px;
+        top: 50%;
+        width: 100%;
+
+        @include transform-translate-y(-50%);
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            height: 8px;
+            position: absolute;
+            top: 50%;
+            width: 8px;
+            z-index: 1;
+
+            @include rounded(50%);
+            @include background-color(white);
+            @include transform-translate-y(-50%);
+            @include border(all, 2px, solid, grayR123);
+        }
+
+        &::before {
+            left: 0;
+        }
+
+        &::after {
+            right: 0;
+        }
+    }
+
+    /**
+     * Range Element
+     */
+    &__range {
+        height: 15px;
+        left: 0;
+        right: 0;
+        top: 50%;
+
+        @include rounded(5px);
+        @include transform-translate-y(-50%);
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            top: 50%;
+
+            @include transform-translate-y(-50%);
+            @include transition(background 0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            @include background-color(rgba(get-color(primary), 0.5));
+        }
+    }
+
+    /**
+     * Thumb Element
+     */
+    &__thumb {
+        height: 30px;
+        outline: none;
+        top: 50%;
+        width: 30px;
+        z-index: 2;
+
+        @include rounded(50%);
+        @include background-color(white);
+        @include transition(border 0.31s cubic-bezier(0.7, 0.3, 0, 1));
+        @include border(all, 2px, solid, rgba(get-color(primary), 0.5));
+
+        &#{$c}__end-thumb {
+            @include transform-translate(-50%, -50%);
+        }
+    }
+
+    input {
+        cursor: pointer;
+        height: 15px;
+        opacity: 0;
+        pointer-events: none;
+        -webkit-appearance: none;
+        width: 100%;
+        z-index: 5;
+
+        &::-ms-track,
+        &::-ms-fill-lower,
+        &::-ms-fill-upper,
+        &::-moz-range-track {
+            @include font-color(transparent);
+            @include background-color(transparent);
+        }
+
+        &::-ms-track {
+            -webkit-appearance: none;
+        }
+
+        &::-moz-range-track {
+            -moz-appearance: none;
+        }
+
+        &:focus {
+            outline: none;
+
+            &::-webkit-slider-runnable-track {
+                @include font-color(transparent);
+                @include background-color(transparent);
+            }
+        }
+
+        &::-ms-thumb,
+        &::-moz-range-thumb,
+        &::-webkit-slider-thumb {
+            height: 28px;
+            pointer-events: all;
+            width: 28px;
+
+            @include rounded(0);
+            @include no-border();
+            @include background-color(heading);
+        }
+
+        &::-webkit-slider-thumb {
+            height: 28px;
+            pointer-events: all;
+            width: 28px;
+
+            @include rounded(0);
+            @include no-border();
+            @include background-color(heading);
+            -webkit-appearance: none;
+        }
+
+        &::-ms-fill-lower,
+        &::-ms-fill-upper {
+            background: transparent;
+            border: 0 none;
+        }
+
+        &::-ms-tooltip {
+            display: none;
+        }
+
+        &:hover {
+            ~ .ui-molecules-range-slider__content {
+                > .ui-molecules-range-slider__thumb {
+                    @include border(
+                        all,
+                        2px,
+                        solid,
+                        rgba(get-color(primary), 0.75)
+                    );
+                }
+
+                > .ui-molecules-range-slider__range {
+                    &::before {
+                        @include background-color(
+                            rgba(get-color(primary), 0.75)
+                        );
+                    }
+                }
+            }
+        }
+    }
+}
