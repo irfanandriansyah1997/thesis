@@ -135,10 +135,10 @@ const RangeSliderComponent: SFC<RangeSliderPropsInterface> = ({
                         'ui-molecules-range-slider__label': true
                     })}
                 >
-                    <TextComponent tag="p" styling="heading-6">
+                    <TextComponent tag="p" styling="caption">
                         {label.minLabel}
                     </TextComponent>
-                    <TextComponent tag="p" styling="heading-6">
+                    <TextComponent tag="p" styling="caption">
                         {label.maxLabel}
                     </TextComponent>
                 </div>
@@ -169,12 +169,8 @@ const RangeSliderComponent: SFC<RangeSliderPropsInterface> = ({
                 value={valueComponent.end}
                 onChange={(e): void => onChangeValue(e, 'max')}
             />
-            <div
-                className={StringHelper.objToString({
-                    absolute: true,
-                    'ui-molecules-range-slider__content': true
-                })}
-            >
+            <div className="relative ui-molecules-range-slider__content">
+                <div className="ui-molecules-range-slider__doted absolute" />
                 <div
                     ref={rangeSection}
                     className={StringHelper.objToString({

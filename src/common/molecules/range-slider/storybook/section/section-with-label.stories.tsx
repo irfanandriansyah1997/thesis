@@ -5,7 +5,10 @@ import RangeSliderComponent from '../../range-slider.component';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
-import { RangeSliderPropsInterface } from '../../interface/component.interface';
+import {
+    RangeSliderPropsInterface,
+    RangeSliderLabelInterface
+} from '../../interface/component.interface';
 
 /**
  * Generate Docs
@@ -18,6 +21,14 @@ const docs = (props: RangeSliderPropsInterface): string =>
     `    step={${props.step}}\n` +
     `    onChange={(start, end): void => {}}\n` +
     `    value={{\n` +
+    `        maxLabel: ${
+        (props.label as RangeSliderLabelInterface).maxLabel
+    },\n` +
+    `        minLabel: ${
+        (props.label as RangeSliderLabelInterface).minLabel
+    }\n` +
+    `    }}\n` +
+    `    value={{\n` +
     `        start: ${props.value.start},\n` +
     `        end: ${props.value.end}\n` +
     `    }}\n` +
@@ -28,7 +39,7 @@ const docs = (props: RangeSliderPropsInterface): string =>
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.29
  */
-class SectionDefaultRangeSliderComponent extends React.PureComponent<
+class SectionWithLabelRangeSliderComponent extends React.PureComponent<
     {},
     Record<string, unknown>
 > {
@@ -45,15 +56,22 @@ class SectionDefaultRangeSliderComponent extends React.PureComponent<
         const { ...res } = this.state;
         return (
             <>
-                <HeadingDocsComponent>Usage</HeadingDocsComponent>
+                <HeadingDocsComponent>
+                    Range Slider Using Slider
+                </HeadingDocsComponent>
                 <TextDocsComponent>
-                    Basic usage range slider component
+                    If you will attach label to range slider component, you can
+                    add props label in render range slider component
                 </TextDocsComponent>
                 <CodingViewerDocsComponent
                     sourceCode={docs({
                         max: 100,
                         min: 20,
                         step: 1,
+                        label: {
+                            maxLabel: 'max',
+                            minLabel: 'min'
+                        },
                         onChange: () => {},
                         value: {
                             start: res.start as number,
@@ -65,6 +83,10 @@ class SectionDefaultRangeSliderComponent extends React.PureComponent<
                         max={100}
                         min={20}
                         step={1}
+                        label={{
+                            maxLabel: 'max',
+                            minLabel: 'min'
+                        }}
                         onChange={(start, end): void => {
                             this.setState({ start, end });
                         }}
@@ -79,4 +101,4 @@ class SectionDefaultRangeSliderComponent extends React.PureComponent<
     }
 }
 
-export default SectionDefaultRangeSliderComponent;
+export default SectionWithLabelRangeSliderComponent;
