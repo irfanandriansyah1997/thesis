@@ -1,12 +1,10 @@
 import React, { SFC } from 'react';
 
-
-import CardMediaComponent from './card-r123-basic-media.component';
-import CardContentComponent from './card-r123-basic-content.component';
-
 import StringHelper from '../../../shared/helper/string.helper';
+import CardMediaComponent from './card-r123-basic-media.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import CardComponent from '../../../common/atomic/card/card.component';
+import CardContentComponent from './card-r123-basic-content.component';
 import { CardR123BasicPropsInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 

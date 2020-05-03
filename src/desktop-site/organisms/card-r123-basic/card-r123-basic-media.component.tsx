@@ -1,12 +1,11 @@
 import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
-import LinkComponent from '../../atomic/link/link.component';
-import ImageComponent from '../../atomic/image/image.component';
-
 import { SearchPageCardMediaInterface } from '../../../shared/interface/search-page/search-page-card.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import StringHelper from '../../../shared/helper/string.helper';
+import LinkComponent from '../../../common/atomic/link/link.component';
+import ImageComponent from '../../../common/atomic/image/image.component';
 
 /**
  * Card Media Component
