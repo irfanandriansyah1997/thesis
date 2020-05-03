@@ -1,13 +1,12 @@
 import React, { SFC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
-import TextComponent from '../../atomic/text/text.component';
-import IconComponent from '../../atomic/icon/icon.component';
-import LinkComponent from '../../atomic/link/link.component';
-
+import StringHelper from '../../../shared/helper/string.helper';
+import IconComponent from '../../../common/atomic/icon/icon.component';
+import LinkComponent from '../../../common/atomic/link/link.component';
+import TextComponent from '../../../common/atomic/text/text.component';
 import { CardR123BasicContentInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-import StringHelper from '../../../shared/helper/string.helper';
 
 /**
  * Create save icon

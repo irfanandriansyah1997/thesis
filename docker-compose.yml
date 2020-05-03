@@ -1,0 +1,90 @@
+version: '3'
+
+services:
+    nginx:
+        image: nginx:1.17.10-alpine
+        container_name: production_nginx
+        volumes:
+            - ./etc/nginx/sites.conf:/etc/nginx/nginx.conf
+            - ./etc/nginx/error.log:/etc/nginx/error_log.log
+            - ./etc/nginx/cache/:/etc/nginx/cache
+        ports:
+            - 5000:80
+            - 5002:81
+        networks:
+            - internal
+
+    common-module:
+        build:
+            context: ./
+            dockerfile: ./etc/docker/base/Dockerfile
+        container_name: style-guide-common
+        volumes:
+            - ./etc:/usr/src/thesis/etc
+            - ./node_modules:/usr/src/thesis/node_modules
+            - ./src/.storybook/modules/common:/usr/src/thesis/src/.storybook
+            - ./src/.storybook/builder:/usr/src/thesis/src/.storybook/builder
+            - ./src/.storybook/component:/usr/src/thesis/src/.storybook/component
+            - ./src/common:/usr/src/thesis/src/common
+            - ./src/shared:/usr/src/thesis/src/shared
+            - ./src/style:/usr/src/thesis/src/style
+            - ./.babelrc:/usr/src/thesis/.babelrc
+            - ./.browserslistrc:/usr/src/thesis/.browserslistrc
+            - ./.editorconfig:/usr/src/thesis/.editorconfig
+            - ./.eslintignore:/usr/src/thesis/.eslintignore
+            - ./.eslintrc.js:/usr/src/thesis/.eslintrc.js
+            - ./.npmignore:/usr/src/thesis/.npmignore
+            - ./.prettierrc.js:/usr/src/thesis/.prettierrc.js
+            - ./.stylelintrc:/usr/src/thesis/.stylelintrc
+            - ./jest.config.js:/usr/src/thesis/jest.config.js
+            - ./Makefile:/usr/src/thesis/Makefile
+            - ./package.json:/usr/src/thesis/package.json
+            - ./tsconfig.build.json:/usr/src/thesis/tsconfig.build.json
+            - ./tsconfig.json:/usr/src/thesis/tsconfig.json
+            - ./typings.d.ts:/usr/src/thesis/typings.d.ts
+            - ./yarn.lock:/usr/src/thesis/yarn.lock
+        command: yarn run storybook-common
+        expose:
+            - 5000
+        networks:
+            - internal
+
+    desktop-site-module:
+        build:
+            context: ./
+            dockerfile: ./etc/docker/base/Dockerfile
+        container_name: style-guide-desktop-site
+        volumes:
+            - ./etc:/usr/src/thesis/etc
+            - ./node_modules:/usr/src/thesis/node_modules
+            - ./src/.storybook/modules/desktop-site:/usr/src/thesis/src/.storybook
+            - ./src/.storybook/builder:/usr/src/thesis/src/.storybook/builder
+            - ./src/.storybook/component:/usr/src/thesis/src/.storybook/component
+            - ./src/common:/usr/src/thesis/src/common
+            - ./src/desktop-site:/usr/src/thesis/src/desktop-site
+            - ./src/shared:/usr/src/thesis/src/shared
+            - ./src/style:/usr/src/thesis/src/style
+            - ./.babelrc:/usr/src/thesis/.babelrc
+            - ./.browserslistrc:/usr/src/thesis/.browserslistrc
+            - ./.editorconfig:/usr/src/thesis/.editorconfig
+            - ./.eslintignore:/usr/src/thesis/.eslintignore
+            - ./.eslintrc.js:/usr/src/thesis/.eslintrc.js
+            - ./.npmignore:/usr/src/thesis/.npmignore
+            - ./.prettierrc.js:/usr/src/thesis/.prettierrc.js
+            - ./.stylelintrc:/usr/src/thesis/.stylelintrc
+            - ./jest.config.js:/usr/src/thesis/jest.config.js
+            - ./Makefile:/usr/src/thesis/Makefile
+            - ./package.json:/usr/src/thesis/package.json
+            - ./tsconfig.build.json:/usr/src/thesis/tsconfig.build.json
+            - ./tsconfig.json:/usr/src/thesis/tsconfig.json
+            - ./typings.d.ts:/usr/src/thesis/typings.d.ts
+            - ./yarn.lock:/usr/src/thesis/yarn.lock
+        command: yarn run storybook-desktop
+        expose:
+            - 5002
+        networks:
+            - internal
+
+networks:
+    internal:
+        driver: bridge

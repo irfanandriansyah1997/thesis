@@ -108,3 +108,4 @@ tmp
 .tmp_staging
 /lib
 /documentation
+etc/nginx/cache

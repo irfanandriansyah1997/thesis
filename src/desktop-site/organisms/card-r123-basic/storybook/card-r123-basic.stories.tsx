@@ -1,7 +1,7 @@
 import React, { SFC } from 'react';
 
 import CardR123Basic from '../card-r123-basic.component';
-import IconComponent from '../../../atomic/icon/icon.component';
+import IconComponent from '../../../../common/atomic/icon/icon.component';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';

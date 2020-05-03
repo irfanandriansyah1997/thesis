@@ -2,7 +2,7 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 
 import CardR123Basic from '../card-r123-basic.component';
-import LinkComponent from '../../../atomic/link/link.component';
+import LinkComponent from '../../../../common/atomic/link/link.component';
 
 describe('Testing <CardR123Basic> in organisms component ', () => {
     const callback = jest.fn();
