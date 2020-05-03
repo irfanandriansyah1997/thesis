@@ -6,16 +6,16 @@ script:
   - yarn run check-code
   - yarn run build-asset
   - yarn run build-documentation
-  - ./node_modules/.bin/codecov --token=b4765ae3-4fd3-4af9-89e5-b44876a1764b
+#   - ./node_modules/.bin/codecov --token=b4765ae3-4fd3-4af9-89e5-b44876a1764b
 
 deploy:
-  - provider: npm
-    email: irfanandriansyah10@gmail.com
-    skip_cleanup: true
-    api_key: ab599ead0892e12772e70ac2f3b2543a28bdeffc
-    on:
-      branch: master
-      repo: urbanindo/style-guide
+#   - provider: npm
+#     email: irfanandriansyah10@gmail.com
+#     skip_cleanup: true
+#     api_key: ab599ead0892e12772e70ac2f3b2543a28bdeffc
+#     on:
+#       branch: master
+#       repo: urbanindo/style-guide
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
