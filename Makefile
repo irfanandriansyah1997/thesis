@@ -6,7 +6,11 @@ init-dev:
 	chmod +775 .git/hooks/pre-commit
 
 run-dev:
-	yarn run storybook
+	@if [ ! -e "etc/nginx/error.log" ];then touch etc/nginx/error.log ; fi
+	docker-compose up
+
+stop-dev:
+	docker-compose down
 
 build-asset:
 	yarn run build-asset
