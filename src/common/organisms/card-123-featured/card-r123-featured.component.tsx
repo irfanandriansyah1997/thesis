@@ -1,70 +1,68 @@
 import React, { SFC } from 'react';
 
 import CardComponent from '../../atomic/card/card.component';
-import CardMediaComponent from './card-r123-basic-media.component';
-import CardContentComponent from './card-r123-basic-content.component';
+import CardMediaComponent from './card-r123-featured-media.component';
+import CardContentComponent from './card-r123-featured-content.component';
+import CardHeadingComponent from './card-r123-featured-heading.component';
 
-import { CardR123BasicPropsInterface } from './interface/component.interface';
+import { CardR123FeaturedPropsInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
 
 /**
- * R123 Basic Card Component
+ * R123 Featured / Premier Card Component
  * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.04.27
+ * @since 2020.04.30
  */
-const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
+const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
     className,
-    media,
+    heading,
     content,
+    media,
     action,
     link,
     ...res
-}: CardR123BasicPropsInterface) => {
+}: CardR123FeaturedPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
-        flex: true,
-        [`ui-organisms-card`]: true,
-        'flex-align-start': true,
-        'flex-row': true,
+        [`ui-organisms-featured-card`]: true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
-    const { images, alt } = media;
+    const { images, alt, caption, tier } = media;
     const {
         mortgageLinkText,
         title,
-        installment,
         address,
-        priceTag,
         landSize,
         buildingSize,
         propertyType,
         attribute
     } = content;
     const { onClickSave, onClickViewDetail } = action;
+    const { agencyTitle, creationDate } = heading;
     return (
         <CardComponent
             className={StringHelper.objToString(name)}
-            style={{
-                width: 750,
-                height: 282,
-                padding: 16
-            }}
+            style={{ width: 750 }}
             {...res}
             boxShadow="r123"
         >
+            <CardHeadingComponent
+                agencyTitle={agencyTitle}
+                creationDate={creationDate}
+            />
             <CardMediaComponent
                 images={images}
                 alt={alt}
                 onClick={onClickViewDetail}
+                caption={caption}
+                tier={tier}
             />
             <CardContentComponent
                 mortgageLinkText={mortgageLinkText}
                 title={title}
-                installment={installment}
                 address={address}
-                priceTag={priceTag}
                 landSize={landSize}
                 buildingSize={buildingSize}
                 propertyType={propertyType}
@@ -76,4 +74,4 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
     );
 };
 
-export default CardR123Basic;
+export default CardR123Featured;

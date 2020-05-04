@@ -9,6 +9,8 @@ export interface SearchPageCardActionInterface {
     onClickContactAgent?: () => void;
 }
 
+export type ListingCardTier = 'featured' | 'premier';
+
 /**
  * Search Page Card Media Interface
  * @author Irfan Andriansyah <irfan@99.co>
@@ -18,6 +20,20 @@ export interface SearchPageCardMediaInterface {
     alt: string;
     images: string;
     onClick?: () => void;
+    caption?: SearchPageCardMediaCaptionInterface;
+    tier?: ListingCardTier;
+}
+
+/**
+ * Search Page Card Media Caption Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @description
+ * @since 2020.04.30
+ */
+export interface SearchPageCardMediaCaptionInterface {
+    priceTag?: string;
+    installment?: string;
+    numMedias?: number;
 }
 
 /**
