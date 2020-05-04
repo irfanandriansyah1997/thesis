@@ -13,6 +13,10 @@ import {
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 import StringHelper from '../../../shared/helper/string.helper';
+import {
+    HEIGHT_PREMIER,
+    HEIGHT_NON_PREMIER
+} from '../../../shared/constant/component.constant';
 
 /**
  * Featured / Premier Card Media Component
@@ -47,6 +51,51 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
         return badge;
     };
 
+    /**
+     * Get media caption className
+     */
+    const captionClassName: ComponentClassnameDefaultInterface = {
+        'featured-card--media-caption': true,
+        flex: true,
+        'flex-row': true,
+        'flex-align-end': true,
+        'flex-justify-between': true,
+        absolute: true
+    };
+
+    /**
+     * Get price info className
+     */
+    const priceInfoClassName: ComponentClassnameDefaultInterface = {
+        'price-info': true,
+        flex: true,
+        'flex-row': true,
+        'flex-align-baseline': true
+    };
+
+    const basicClassName: ComponentClassnameDefaultInterface = {
+        'inline-flex': true,
+        'flex-align-center': true,
+        'flex-justify-center': true,
+        'no-wrap': true
+    };
+
+    /**
+     * Get flagging badge className
+     */
+    const flaggingBadgeClassName: ComponentClassnameDefaultInterface = {
+        ...basicClassName,
+        'poster-attribute__flaggin-badge': true
+    };
+
+    /**
+     * Get media badge className
+     */
+    const mediaBadgeClassName: ComponentClassnameDefaultInterface = {
+        ...basicClassName,
+        'poster-attribute__medias-badge': true
+    };
+
     return (
         <div className={StringHelper.objToString(name)}>
             <div className="featured-card--media">
@@ -61,13 +110,17 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                         src={images}
                         alt={alt}
                         width={750}
-                        height={tier === 'premier' ? 420 : 320}
+                        height={
+                            tier === 'premier'
+                                ? HEIGHT_PREMIER
+                                : HEIGHT_NON_PREMIER
+                        }
                         objectFit="cover"
                     />
                 </LinkComponent>
             </div>
-            <div className="featured-card--media-caption flex flex-row flex-align-end flex-justify-between absolute">
-                <div className="price-info flex flex-row flex-align-baseline">
+            <div className={StringHelper.objToString(captionClassName)}>
+                <div className={StringHelper.objToString(priceInfoClassName)}>
                     <LinkComponent
                         className="price-info__price inline"
                         noUnderline
@@ -95,7 +148,9 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                 <div className="poster-attribute flex flex-row">
                     <TextComponent
                         tag="p"
-                        className="poster-attribute__flaggin-badge inline-flex flex-align-center flex-justify-center no-wrap"
+                        className={StringHelper.objToString(
+                            flaggingBadgeClassName
+                        )}
                         color={tier === 'premier' ? 'hoverOutline' : 'white'}
                         styling="caption"
                         style={{
@@ -105,7 +160,11 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                     >
                         {getFlaggingBadge()}
                     </TextComponent>
-                    <div className="poster-attribute__medias-badge inline-flex flex-align-center flex-justify-center no-wrap">
+                    <div
+                        className={StringHelper.objToString(
+                            mediaBadgeClassName
+                        )}
+                    >
                         <IconComponent color="basicCardHeadingR123" size={12}>
                             rui-icon-camera
                         </IconComponent>

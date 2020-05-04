@@ -49,9 +49,9 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
             style={{
                 width: 750,
                 height: 282,
-                padding: 16,
-                ...res
+                padding: 16
             }}
+            {...res}
             boxShadow="r123"
         >
             <CardMediaComponent

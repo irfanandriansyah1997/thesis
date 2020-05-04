@@ -44,10 +44,8 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
     return (
         <CardComponent
             className={StringHelper.objToString(name)}
-            style={{
-                width: 750,
-                ...res
-            }}
+            style={{ width: 750 }}
+            {...res}
             boxShadow="r123"
         >
             <CardHeadingComponent

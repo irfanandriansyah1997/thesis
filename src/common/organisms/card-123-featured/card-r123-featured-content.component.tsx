@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 import React, { SFC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
@@ -135,7 +137,6 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
                 {attribute &&
                     attribute.map((item, index) => (
                         <li
-                            // eslint-disable-next-line react/no-array-index-key
                             key={index}
                             className="featured-card-attribute__facility"
                         >
@@ -154,13 +155,35 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
         );
     };
 
+    /**
+     * Get top row card content className
+     */
+    const topRowContentClassName: ComponentClassnameDefaultInterface = {
+        'featured-card--content__top-row': true,
+        flex: true,
+        'flex-justify-between': true,
+        'flex-align-baseline': true
+    };
+
+    /**
+     * Get bottom row card content className
+     */
+    const topBottomContentClassName: ComponentClassnameDefaultInterface = {
+        'featured-card--content__bottom-row': true,
+        flex: true,
+        'flex-justify-between': true,
+        'flex-align-end': true
+    };
+
     return (
         <div
             className={StringHelper.objToString(name)}
             style={{ ...res, minHeight: 147, padding: 16, paddingBottom: 24 }}
         >
             <div className="featured-card--content">
-                <div className="featured-card--content__top-row flex flex-justify-between flex-align-baseline">
+                <div
+                    className={StringHelper.objToString(topRowContentClassName)}
+                >
                     <div className="left-content no-wrap">
                         <TextComponent tag="h2" className="info-title truncate">
                             <LinkComponent
@@ -230,7 +253,11 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
                         </div>
                     </div>
                 </div>
-                <div className="featured-card--content__bottom-row flex flex-justify-between flex-align-end">
+                <div
+                    className={StringHelper.objToString(
+                        topBottomContentClassName
+                    )}
+                >
                     <div className="left-content">{getAttribute()}</div>
                     <div className="right-content">
                         <ContactAgentButton />
