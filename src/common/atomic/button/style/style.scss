@@ -5,7 +5,6 @@
     align-items: center;
     display: inline-flex;
     height: map-get($height-general, 8);
-    @include margin-right(map-get($width-general, 2));
     @include padding-left(map-get($width-general, 4));
     @include padding-right(map-get($width-general, 4));
     @include no-background();

@@ -47,17 +47,35 @@ const Icon: SFC = () => (
                 <CodingViewerDocsComponent
                     sourceCode={`${"<ButtonComponent theme='primary'>Primary</ButtonComponent>"}\n${"<ButtonComponent theme='secondary'>Secondary</ButtonComponent>"}\n${"<ButtonComponent theme='success'>Success</ButtonComponent>"}\n${"<ButtonComponent theme='warning'>Success</ButtonComponent>"}\n${"<ButtonComponent theme='danger'>Danger</ButtonComponent>"}\n${"<ButtonComponent theme='info'>Info</ButtonComponent>"}`}
                 >
-                    <ButtonComponent size="default">Primary</ButtonComponent>
-                    <ButtonComponent size="default" theme="secondary">
+                    <ButtonComponent size="default" style={{ marginRight: 8 }}>
+                        Primary
+                    </ButtonComponent>
+                    <ButtonComponent
+                        size="default"
+                        theme="secondary"
+                        style={{ marginRight: 8 }}
+                    >
                         Secondary
                     </ButtonComponent>
-                    <ButtonComponent size="default" theme="success">
+                    <ButtonComponent
+                        size="default"
+                        theme="success"
+                        style={{ marginRight: 8 }}
+                    >
                         Success
                     </ButtonComponent>
-                    <ButtonComponent size="default" theme="warning">
+                    <ButtonComponent
+                        size="default"
+                        theme="warning"
+                        style={{ marginRight: 8 }}
+                    >
                         Warning
                     </ButtonComponent>
-                    <ButtonComponent size="default" theme="danger">
+                    <ButtonComponent
+                        size="default"
+                        theme="danger"
+                        style={{ marginRight: 8 }}
+                    >
                         Danger
                     </ButtonComponent>
                     <ButtonComponent size="default" theme="info">
@@ -67,10 +85,14 @@ const Icon: SFC = () => (
                 <CodingViewerDocsComponent
                     sourceCode={`${"<ButtonComponent size='big' theme='primary'>Primary</ButtonComponent>"}\n${"<ButtonComponent size='big' theme='secondary'>Secondary</ButtonComponent>"}\n${"<ButtonComponent size='big' theme='danger'>Danger</ButtonComponent>"}`}
                 >
-                    <ButtonComponent size="big">
+                    <ButtonComponent size="big" style={{ marginRight: 8 }}>
                         Big primary button
                     </ButtonComponent>
-                    <ButtonComponent size="big" theme="secondary">
+                    <ButtonComponent
+                        size="big"
+                        theme="secondary"
+                        style={{ marginRight: 8 }}
+                    >
                         Big secondary button
                     </ButtonComponent>
                     <ButtonComponent size="big" theme="danger">

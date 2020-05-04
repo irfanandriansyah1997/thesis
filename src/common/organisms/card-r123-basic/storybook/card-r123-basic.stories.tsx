@@ -71,7 +71,7 @@ const CarparkIcon: SFC = () => (
                         `           ${'{ icon: <CarparkIcon />, value: "1" },'}\n` +
                         `       ${']'}\n` +
                         `   ${'}}'}\n` +
-                        `   ${'content={{'}\n` +
+                        `   ${'action={{'}\n` +
                         `       ${'onClickSave: (): void => {},'}\n` +
                         `       ${'onClickViewDetail: (): void => {}'}\n` +
                         `   ${'}}'}\n` +
