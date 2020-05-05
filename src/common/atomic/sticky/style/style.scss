@@ -1,7 +1,6 @@
 @import '../../../../style/import.scss';
 
 .ui-atomic-sticky {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
+    position: sticky;
+    top: 0;
 }
