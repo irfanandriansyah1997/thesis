@@ -8,4 +8,6 @@ import { HTMLAttributes } from 'react';
 export type StickyPropsInterface = Omit<
     HTMLAttributes<HTMLElement>,
     'dangerouslySetInnerHTML'
->;
+> & {
+    top?: number;
+};

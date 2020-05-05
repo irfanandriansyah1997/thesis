@@ -13,6 +13,7 @@ import { StickyPropsInterface } from './interface/component.interface';
 const StickyComponent: SFC<StickyPropsInterface> = ({
     children,
     className,
+    top,
     ...res
 }: StickyPropsInterface) => {
     return (
@@ -21,6 +22,7 @@ const StickyComponent: SFC<StickyPropsInterface> = ({
                 [`ui-atomic-sticky`]: true,
                 [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
             })}
+            style={{ top }}
             {...res}
         >
             {children}
@@ -29,11 +31,13 @@ const StickyComponent: SFC<StickyPropsInterface> = ({
 };
 
 StickyComponent.propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    top: PropTypes.number
 };
 
 StickyComponent.defaultProps = {
-    className: undefined
+    className: undefined,
+    top: 0
 };
 
 export default StickyComponent;
