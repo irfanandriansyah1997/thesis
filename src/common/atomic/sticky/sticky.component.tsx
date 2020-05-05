@@ -4,7 +4,6 @@ import * as PropTypes from 'prop-types';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { StickyPropsInterface } from './interface/component.interface';
-import { ComponentStickyDirection } from '../../../shared/interface/component/component-sticky.interface';
 
 /**
  * Sticky Component
@@ -12,7 +11,6 @@ import { ComponentStickyDirection } from '../../../shared/interface/component/co
  * @since 2020.05.02
  */
 const StickyComponent: SFC<StickyPropsInterface> = ({
-    direction,
     children,
     className,
     ...res
@@ -21,7 +19,6 @@ const StickyComponent: SFC<StickyPropsInterface> = ({
         <div
             className={StringHelper.objToString({
                 [`ui-atomic-sticky`]: true,
-                [`ui-atomic-sticky--direction-${direction}`]: true,
                 [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
             })}
             {...res}
@@ -32,12 +29,6 @@ const StickyComponent: SFC<StickyPropsInterface> = ({
 };
 
 StickyComponent.propTypes = {
-    direction: PropTypes.oneOf<ComponentStickyDirection>([
-        'topRight',
-        'topLeft',
-        'bottomRight',
-        'bottomLeft'
-    ]).isRequired,
     className: PropTypes.string
 };
 

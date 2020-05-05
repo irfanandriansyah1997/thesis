@@ -1,5 +1,4 @@
 import { HTMLAttributes } from 'react';
-import { ComponentStickyDirection } from '../../../../shared/interface/component/component-sticky.interface';
 
 /**
  * Sticky Component Interface
@@ -9,6 +8,4 @@ import { ComponentStickyDirection } from '../../../../shared/interface/component
 export type StickyPropsInterface = Omit<
     HTMLAttributes<HTMLElement>,
     'dangerouslySetInnerHTML'
-> & {
-    direction: ComponentStickyDirection;
-};
+>;
