@@ -13,7 +13,8 @@ export default [
         './src/common/atomic/label/label.component.tsx',
         './src/common/atomic/link/link.component.tsx',
         './src/common/atomic/spin/spin.component.tsx',
-        './src/common/atomic/text/text.component.tsx'
+        './src/common/atomic/text/text.component.tsx',
+        './src/common/atomic/sticky/sticky.component.tsx'
     ],
     /**
      * Molecules
