@@ -78,14 +78,35 @@ const SectionPremierCardComponent: SFC = () => (
         <TextDocsComponent>R123 Premier card</TextDocsComponent>
         <CodingViewerDocsComponent
             sourceCode={
-                `${'<CardR123Basic'}\n` +
+                `${'const carouselItem = ['}\n` +
+                `   ${'{'}\n` +
+                `       ${'id: 1,'}\n` +
+                `       ${'src: "image-01.jpg",'}\n` +
+                `       ${'alt: "Image 01"'}\n` +
+                `   ${'{'}\n` +
+                `       ${'id: 2,'}\n` +
+                `       ${'src: "image-02.jpg",'}\n` +
+                `       ${'alt: "Image 02"'}\n` +
+                `   ${'{'}\n` +
+                `       ${'id: 3,'}\n` +
+                `       ${'src: "image-03.jpg",'}\n` +
+                `       ${'alt: "Image 03"'}\n` +
+                `   ${'{'}\n` +
+                `       ${'id: 4,'}\n` +
+                `       ${'src: "image-04.jpg",'}\n` +
+                `       ${'alt: "Image 04"'}\n` +
+                `   ${'{'}\n` +
+                `       ${'id: 5,'}\n` +
+                `       ${'src: "image-05.jpg",'}\n` +
+                `       ${'alt: "Image 05"'}\n` +
+                `${']'}\n\n` +
+                `${'<CardR123Featured'}\n` +
                 `   ${'heading={{'}\n` +
                 `       ${'agencyTitle: "Ray White",'}\n` +
                 `       ${'creationDate: "Tayang 5 hari yang lalu"'}\n` +
                 `   ${'}}'}\n` +
                 `   ${'media={{'}\n` +
-                `       ${'images: "",'}\n` +
-                `       ${'alt: "",'}\n` +
+                `       ${'media: carouselItem,'}\n` +
                 `       ${'caption: {'}\n` +
                 `           ${'priceTag: "Rp 2,1 M",'}\n` +
                 `           ${'installment: "Cicilan : Rp. 7,46 Jt/bulan",'}\n` +
@@ -112,11 +133,6 @@ const SectionPremierCardComponent: SFC = () => (
                 `       ${'onClickViewDetail: (): void => {}'}\n` +
                 `   ${'}}'}\n` +
                 `   ${'link="https://www.rumah123.com/"'}\n` +
-                `   ${'carousel={{'}\n` +
-                `       ${'item: carouselItem,'}\n` +
-                `       ${'onChangeActive: (): void => {}'}\n` +
-                `       ${'indicator: nextPrevButton,'}\n` +
-                `   ${'}}'}\n` +
                 `${'/>'}`
             }
         >
@@ -125,9 +141,8 @@ const SectionPremierCardComponent: SFC = () => (
                     agencyTitle: 'Ray White',
                     creationDate: 'Tayang 5 hari yang lalu'
                 }}
-                media={{
-                    images: '',
-                    alt: '',
+                cardMedia={{
+                    media: carouselItem,
                     caption: {
                         priceTag: 'Rp 2,1 M',
                         installment: 'Cicilan : Rp. 7,46 Jt/bulan',
@@ -156,11 +171,7 @@ const SectionPremierCardComponent: SFC = () => (
                     onClickViewDetail: (): void => undefined
                 }}
                 link="https://www.rumah123.com/"
-                carousel={{
-                    item: carouselItem,
-                    onChangeActive: (): void => undefined,
-                    indicator: nextPrevButton
-                }}
+                carouselIndicator={nextPrevButton}
             />
         </CodingViewerDocsComponent>
     </>

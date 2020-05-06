@@ -6,12 +6,16 @@ import LinkComponent from '../../../atomic/link/link.component';
 
 describe('Testing <CardR123Basic> in organisms component ', () => {
     const callback = jest.fn();
-    const baseProps = {
-        media: {
-            images:
+    const image = [
+        {
+            id: 1,
+            src:
                 'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
             alt: 'Images 1'
-        },
+        }
+    ];
+    const baseProps = {
+        cardMedia: { media: image },
         content: {
             title: 'Title of the property',
             address: 'Address of the listed property (city or district)',

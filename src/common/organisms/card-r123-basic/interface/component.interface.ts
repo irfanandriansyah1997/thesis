@@ -51,7 +51,7 @@ export type CardR123BasicPropsInterface = Omit<
     | 'onChange'
     | 'style'
 > & {
-    media: media;
+    cardMedia: media;
     action: action;
     content: CardR123BasicContentInterface;
     link: string;

@@ -12,6 +12,15 @@ import '../style/style.scss';
 
 const CardR123BasicDocumentation = require('./markdown/card-r123-basic.documentation.md');
 
+const image = [
+    {
+        id: 1,
+        src:
+            'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        alt: 'Images 1'
+    }
+];
+
 /**
  * Create bedroom icon
  * @return {string}
@@ -55,8 +64,15 @@ const CarparkIcon: SFC = () => (
                 <TextDocsComponent>Deafult Basic R123 card</TextDocsComponent>
                 <CodingViewerDocsComponent
                     sourceCode={
+                        `${'const image = ['}\n` +
+                        `   ${'{'}\n` +
+                        `       ${'id: 1,'}\n` +
+                        `       ${'src: "image-01.jpg",'}\n` +
+                        `       ${'alt: "Image 01"'}\n` +
+                        `   ${'}'}\n` +
+                        `${']'}\n\n` +
                         `${'<CardR123Basic'}\n` +
-                        `   ${'media={{images: "img.jpg", alt: "Images 1"}}'}\n` +
+                        `   ${'media={{image}}'}\n` +
                         `   ${'content={{'}\n` +
                         `       ${'mortgageLinkText: "Simulasi KPR",'}\n` +
                         `       ${'title: "Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Malang",'}\n` +
@@ -80,11 +96,7 @@ const CarparkIcon: SFC = () => (
                     }
                 >
                     <CardR123Basic
-                        media={{
-                            images:
-                                'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                            alt: 'Images 1'
-                        }}
+                        cardMedia={{ media: image }}
                         content={{
                             mortgageLinkText: 'Simulasi KPR',
                             title:

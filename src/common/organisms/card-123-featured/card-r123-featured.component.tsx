@@ -19,9 +19,10 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
     className,
     heading,
     content,
-    media,
+    cardMedia,
     action,
     link,
+    carouselIndicator,
     ...res
 }: CardR123FeaturedPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
@@ -29,7 +30,7 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
-    const { images, alt, caption, tier } = media;
+    const { caption, tier, media } = cardMedia;
     const {
         mortgageLinkText,
         title,
@@ -53,11 +54,11 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
                 creationDate={creationDate}
             />
             <CardMediaComponent
-                images={images}
-                alt={alt}
+                media={media}
                 onClick={onClickViewDetail}
                 caption={caption}
                 tier={tier}
+                carouselIndicator={carouselIndicator}
             />
             <CardContentComponent
                 mortgageLinkText={mortgageLinkText}
