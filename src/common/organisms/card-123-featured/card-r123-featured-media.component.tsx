@@ -5,6 +5,7 @@ import LinkComponent from '../../atomic/link/link.component';
 import ImageComponent from '../../atomic/image/image.component';
 import TextComponent from '../../atomic/text/text.component';
 import IconComponent from '../../atomic/icon/icon.component';
+import CarouselComponent from '../../molecules/carousel/carousel.component';
 
 import {
     SearchPageCardMediaInterface,
@@ -17,6 +18,39 @@ import {
     HEIGHT_PREMIER,
     HEIGHT_NON_PREMIER
 } from '../../../shared/constant/component.constant';
+
+const carouselItem = [
+    {
+        id: 1,
+        src: 'https://i.postimg.cc/LXbhnMdf/image-01.jpg',
+        alt: 'Image 01'
+    },
+    {
+        id: 2,
+        src: 'https://i.postimg.cc/dt7N7RCT/image-02.jpg',
+        alt: 'Image 02'
+    },
+    {
+        id: 3,
+        src: 'https://i.postimg.cc/j546n2x9/image-03.jpg',
+        alt: 'Image 03'
+    },
+    {
+        id: 4,
+        src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg',
+        alt: 'Image 04'
+    },
+    {
+        id: 5,
+        src: 'https://i.postimg.cc/RZj4T70Z/image-05.jpg',
+        alt: 'Image 05'
+    }
+];
+
+const nextPrevButton = {
+    previous: 'rui-icon-arrow-left',
+    next: 'rui-icon-arrow-right'
+};
 
 /**
  * Featured / Premier Card Media Component
@@ -99,25 +133,32 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
     return (
         <div className={StringHelper.objToString(name)}>
             <div className="featured-card--media">
-                <LinkComponent
-                    className="card--media-link"
-                    noUnderline
-                    fontWeight={500}
-                    color="heading"
-                    onClick={onClick}
-                >
-                    <ImageComponent
-                        src={images}
-                        alt={alt}
-                        width={750}
-                        height={
-                            tier === 'premier'
-                                ? HEIGHT_PREMIER
-                                : HEIGHT_NON_PREMIER
-                        }
-                        objectFit="cover"
-                    />
-                </LinkComponent>
+                {tier === 'premier' ? (
+                    <div id="card-carousel" style={{ height: HEIGHT_PREMIER }}>
+                        <CarouselComponent
+                            item={carouselItem}
+                            onChangeActive={(): void => undefined}
+                            indicator={nextPrevButton}
+                            scrollEffect
+                        />
+                    </div>
+                ) : (
+                    <LinkComponent
+                        className="card--media-link"
+                        noUnderline
+                        fontWeight={500}
+                        color="heading"
+                        onClick={onClick}
+                    >
+                        <ImageComponent
+                            src={images}
+                            alt={alt}
+                            width={750}
+                            height={HEIGHT_NON_PREMIER}
+                            objectFit="cover"
+                        />
+                    </LinkComponent>
+                )}
             </div>
             <div className={StringHelper.objToString(captionClassName)}>
                 <div className={StringHelper.objToString(priceInfoClassName)}>
