@@ -20,12 +20,18 @@ export default [
      * Molecules
      */
     ...[
+        './src/common/molecules/carousel/carousel.component.tsx',
         './src/common/molecules/checkbox/checkbox.component.tsx',
         '.src/common/molecules/expand-text/expand-text.component.tsx',
-        './src/common/molecules/radio-button/radio-button.component.tsx'
+        './src/common/molecules/radio-button/radio-button.component.tsx',
+        './src/common/molecules/tabs/tabs.component.tsx'
+
     ],
     /**
      * Organism
      */
-    ...[]
+    ...[
+        './src/common/organisms/card-123-basic/card-r123-basic.component.tsx',
+        '.src/common/organisms/card-123-featured/card-r123-featured.component.tsx'
+    ]
 ];

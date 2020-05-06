@@ -1,0 +1,25 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-carousel {
+    width: 100%;
+    overflow: hidden;
+
+    &__content {
+        height: inherit;
+        &-scroll {
+            transition: 'transform .2s';
+        }
+    }
+
+    &__action {
+        &--prev,
+        &--next {
+            top: 45%;
+            cursor: pointer;
+        }
+
+        &--next {
+            right: 0;
+        }
+    }
+}

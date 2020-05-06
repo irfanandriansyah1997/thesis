@@ -1,7 +1,7 @@
 # Basic R123 Card Component
 
 ## How to use
-Explanation on how to import and render text component, including list of props.
+Explanation on how to import and render basic R123 card component, including list of props.
 
 ### Import Component
 

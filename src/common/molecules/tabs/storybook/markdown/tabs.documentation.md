@@ -1,7 +1,7 @@
 # Tabs Component
 
 ## How to use
-Explanation on how to import and render dialog component, including list of props.
+Explanation on how to import and render tabs component, including list of props.
 
 ### Import Component
 
