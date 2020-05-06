@@ -6,6 +6,8 @@ import { HTMLAttributes } from 'react';
  * @since 2020.05.02
  */
 export type StickyPropsInterface = Omit<
-    HTMLAttributes<HTMLElement>,
+    HTMLAttributes<HTMLDivElement>,
     'dangerouslySetInnerHTML'
->;
+> & {
+    top?: number;
+};
