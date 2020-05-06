@@ -35,3 +35,10 @@ return (
 |-------|-----------|---------|-----------|
 |**src**|string|-|The address of the carousel image to be displayed|
 |**alt**|string|-|[alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img), defines the alternative text describing the image|
+
+# Carousel Indicator Props
+
+| Property | Type | Default | Description |
+|-------|-----------|---------|-----------|
+|**previous**|string||Icon text for prev button|
+|**next**|string|-|Icon text for next button|

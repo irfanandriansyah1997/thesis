@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-
 import React, { SFC, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -23,13 +21,14 @@ import ValidatorHelper from '../../../shared/helper/validator.helper';
 const CarouselComponent: SFC<CarouselPropsInterface> = ({
     className,
     item,
+    indicator,
     scrollEffect
 }) => {
     const [position, setPosition] = useState(0);
 
     const name: ComponentClassnameDefaultInterface = {
-        [`ui-molecules-carousel`]: true,
         relative: true,
+        'ui-molecules-carousel': true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
@@ -40,40 +39,57 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
         ),
         flex: true,
         absolute: true
-    }
+    };
 
-    const goNext = () => {
-        setPosition(position + 1 === item.length ? 0 : position + 1);
-    }
-
-    const goPrev = () => {
-        setPosition(position === 0 ? item.length - 1 : position - 1);
-    }
+    /**
+     * Handler function for covering prev & next click
+     */
+    const handleClick = (type: string): void => {
+        if (type === 'prev') {
+            setPosition(position === 0 ? item.length - 1 : position - 1);
+        } else if (type === 'next') {
+            setPosition(position + 1 === item.length ? 0 : position + 1);
+        }
+    };
 
     return (
-        <div className={StringHelper.objToString(name)} style={{ height: 420, width: 750 }}>
+        <div className={StringHelper.objToString(name)}>
             <div
                 className={StringHelper.objToString(contentClassname)}
-                style={{ transform: `translate3d(${position * -750}px, 0px, 0px)` }}
+                style={{
+                    transform: `translateX(${position * -100}%)`
+                }}
             >
-                {item.map((image: CarouselItemInterface, index) => (
+                {item.map((image: CarouselItemInterface) => (
                     <ImageComponent
-                        key={index}
+                        key={image.id}
                         src={image.src}
                         alt={image.alt}
                         className="ui-molecules-carousel__item"
-                        width='100%'
-                        height='100%'
+                        width="100%"
+                        height="100%"
                         objectFit="cover"
                     />
                 ))}
             </div>
             <div className="ui-molecules-carousel__action">
-                <div className="ui-molecules-carousel__action--prev absolute" onClick={() => goPrev()}>
-                    <IconComponent color="white" size={48}>rui-icon-arrow-left</IconComponent>
+                <div className="ui-molecules-carousel__action--prev absolute">
+                    <IconComponent
+                        color="white"
+                        size={48}
+                        onClick={(): void => handleClick('prev')}
+                    >
+                        {indicator ? indicator.previous : ''}
+                    </IconComponent>
                 </div>
-                <div className="ui-molecules-carousel__action--next absolute" onClick={() => goNext()}>
-                    <IconComponent color="white" size={48}>rui-icon-arrow-right</IconComponent>
+                <div className="ui-molecules-carousel__action--next absolute">
+                    <IconComponent
+                        color="white"
+                        size={48}
+                        onClick={(): void => handleClick('next')}
+                    >
+                        {indicator ? indicator.next : ''}
+                    </IconComponent>
                 </div>
             </div>
         </div>
@@ -82,18 +98,25 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
 
 CarouselComponent.defaultProps = {
     className: '',
-    scrollEffect: false
+    scrollEffect: false,
+    indicator: undefined
 };
 
 CarouselComponent.propTypes = {
     className: PropTypes.string,
     item: PropTypes.arrayOf(
         PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+                .isRequired,
             alt: PropTypes.string.isRequired,
             src: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    scrollEffect: PropTypes.bool
+    scrollEffect: PropTypes.bool,
+    indicator: PropTypes.shape({
+        previous: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired
+    })
 };
 
 export default CarouselComponent;

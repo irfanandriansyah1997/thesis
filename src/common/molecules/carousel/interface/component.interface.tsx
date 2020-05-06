@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 /**
  * Carousel Props Interface
  * @author Dedik Budianto <dedik.budianto@99.co>
@@ -15,11 +13,12 @@ export interface CarouselPropsInterface {
 }
 
 export interface CarouselItemInterface {
+    id: string | number;
     alt: string;
     src: string;
 }
 
 export interface CarouselIndicatorInterface {
-    previous: ReactNode | string | Element;
-    next: ReactNode | string | Element;
+    previous: string;
+    next: string;
 }
