@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { SFC, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 
 import LinkComponent from '../../atomic/link/link.component';
@@ -12,45 +12,13 @@ import {
     ListingCardTier
 } from '../../../shared/interface/search-page/search-page-card.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import { CarouselPropsInterface } from '../../molecules/carousel/interface/component.interface';
 
 import StringHelper from '../../../shared/helper/string.helper';
 import {
     HEIGHT_PREMIER,
     HEIGHT_NON_PREMIER
 } from '../../../shared/constant/component.constant';
-
-const carouselItem = [
-    {
-        id: 1,
-        src: 'https://i.postimg.cc/LXbhnMdf/image-01.jpg',
-        alt: 'Image 01'
-    },
-    {
-        id: 2,
-        src: 'https://i.postimg.cc/dt7N7RCT/image-02.jpg',
-        alt: 'Image 02'
-    },
-    {
-        id: 3,
-        src: 'https://i.postimg.cc/j546n2x9/image-03.jpg',
-        alt: 'Image 03'
-    },
-    {
-        id: 4,
-        src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg',
-        alt: 'Image 04'
-    },
-    {
-        id: 5,
-        src: 'https://i.postimg.cc/RZj4T70Z/image-05.jpg',
-        alt: 'Image 05'
-    }
-];
-
-const nextPrevButton = {
-    previous: 'rui-icon-arrow-left',
-    next: 'rui-icon-arrow-right'
-};
 
 /**
  * Featured / Premier Card Media Component
@@ -135,12 +103,14 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
             <div className="featured-card--media">
                 {tier === 'premier' ? (
                     <div id="card-carousel" style={{ height: HEIGHT_PREMIER }}>
-                        <CarouselComponent
-                            item={carouselItem}
-                            onChangeActive={(): void => undefined}
-                            indicator={nextPrevButton}
-                            scrollEffect
-                        />
+                        {(props: CarouselPropsInterface): ReactElement => (
+                            <CarouselComponent
+                                item={props.item}
+                                onChangeActive={props.onChangeActive}
+                                indicator={props.indicator}
+                                scrollEffect
+                            />
+                        )}
                     </div>
                 ) : (
                     <LinkComponent

@@ -3,6 +3,7 @@ import {
     SearchPageCardMediaInterface as media,
     SearchPageCardActionInterface as action
 } from '../../../../shared/interface/search-page/search-page-card.interface';
+import { CarouselPropsInterface } from '../../../molecules/carousel/interface/component.interface';
 
 /**
  * Card R123 Featured Content Interface
@@ -66,4 +67,5 @@ export type CardR123FeaturedPropsInterface = Omit<
     action: action;
     content: CardR123FeaturedContentInterface;
     link: string;
+    carousel: CarouselPropsInterface;
 };

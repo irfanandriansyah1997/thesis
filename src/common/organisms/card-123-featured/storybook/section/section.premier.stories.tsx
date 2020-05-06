@@ -5,6 +5,39 @@ import IconComponent from '../../../../atomic/icon/icon.component';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
+const carouselItem = [
+    {
+        id: 1,
+        src: 'https://i.postimg.cc/LXbhnMdf/image-01.jpg',
+        alt: 'Image 01'
+    },
+    {
+        id: 2,
+        src: 'https://i.postimg.cc/dt7N7RCT/image-02.jpg',
+        alt: 'Image 02'
+    },
+    {
+        id: 3,
+        src: 'https://i.postimg.cc/j546n2x9/image-03.jpg',
+        alt: 'Image 03'
+    },
+    {
+        id: 4,
+        src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg',
+        alt: 'Image 04'
+    },
+    {
+        id: 5,
+        src: 'https://i.postimg.cc/RZj4T70Z/image-05.jpg',
+        alt: 'Image 05'
+    }
+];
+
+const nextPrevButton = {
+    previous: 'rui-icon-arrow-left',
+    next: 'rui-icon-arrow-right'
+};
+
 /**
  * Create bedroom icon
  * @return {string}
@@ -51,8 +84,8 @@ const SectionPremierCardComponent: SFC = () => (
                 `       ${'creationDate: "Tayang 5 hari yang lalu"'}\n` +
                 `   ${'}}'}\n` +
                 `   ${'media={{'}\n` +
-                `       ${'images: "image.jpg",'}\n` +
-                `       ${'alt: "Image",'}\n` +
+                `       ${'images: "",'}\n` +
+                `       ${'alt: "",'}\n` +
                 `       ${'caption: {'}\n` +
                 `           ${'priceTag: "Rp 2,1 M",'}\n` +
                 `           ${'installment: "Cicilan : Rp. 7,46 Jt/bulan",'}\n` +
@@ -79,6 +112,11 @@ const SectionPremierCardComponent: SFC = () => (
                 `       ${'onClickViewDetail: (): void => {}'}\n` +
                 `   ${'}}'}\n` +
                 `   ${'link="https://www.rumah123.com/"'}\n` +
+                `   ${'carousel={{'}\n` +
+                `       ${'item: carouselItem,'}\n` +
+                `       ${'onChangeActive: (): void => {}'}\n` +
+                `       ${'indicator: nextPrevButton,'}\n` +
+                `   ${'}}'}\n` +
                 `${'/>'}`
             }
         >
@@ -88,9 +126,8 @@ const SectionPremierCardComponent: SFC = () => (
                     creationDate: 'Tayang 5 hari yang lalu'
                 }}
                 media={{
-                    images:
-                        'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                    alt: 'Images 1',
+                    images: '',
+                    alt: '',
                     caption: {
                         priceTag: 'Rp 2,1 M',
                         installment: 'Cicilan : Rp. 7,46 Jt/bulan',
@@ -119,6 +156,11 @@ const SectionPremierCardComponent: SFC = () => (
                     onClickViewDetail: (): void => undefined
                 }}
                 link="https://www.rumah123.com/"
+                carousel={{
+                    item: carouselItem,
+                    onChangeActive: (): void => undefined,
+                    indicator: nextPrevButton
+                }}
             />
         </CodingViewerDocsComponent>
     </>
