@@ -1,6 +1,6 @@
 # Style Guide
 
-[![Build Status](https://travis-ci.com/urbanindo/style-guide.svg?token=3V7pjCzXDjWyUYpawgCK&branch=master)](https://travis-ci.com/urbanindo/style-guide) [![codecov](https://codecov.io/gh/urbanindo/style-guide/branch/master/graph/badge.svg?token=bqgdBKlcgv)](https://codecov.io/gh/urbanindo/style-guide)
+[![Build Status](https://travis-ci.com/urbanindo/style-guide.svg?token=3V7pjCzXDjWyUYpawgCK&branch=master)](https://travis-ci.com/urbanindo/style-guide) [![codecov](https://codecov.io/gh/irfanandriansyah1997/thesis/branch/master/graph/badge.svg)](https://codecov.io/gh/irfanandriansyah1997/thesis)
 
 Tujuan dibuat repositori ini adalah untuk mengumpulkan component berupa atom, molekul, organism pada website portal 99.co indonesia. diharapkan dengan membuat component ini mengurangi duplikasi kode pada website tersebut.
 
