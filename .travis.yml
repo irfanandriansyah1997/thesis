@@ -3,16 +3,5 @@ node_js:
   - '12.15'
 
 script:
-  - yarn run check-code
-  - yarn run build-asset
-  - yarn run build-documentation
+  - make init-test
   - make build-asset
-
-deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-    keep_history: true
-    local_dir: documentation
-    on:
-      branch: master
