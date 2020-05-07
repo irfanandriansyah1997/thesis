@@ -109,3 +109,4 @@ tmp
 /lib
 /documentation
 etc/nginx/cache
+src/**/deploy/documentation
