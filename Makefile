@@ -12,8 +12,13 @@ run-dev:
 stop-dev:
 	docker-compose down
 
+init-test:
+	yarn run lint
+	yarn run test	
+
 build-asset:
-	yarn run build-asset
+	yarn run build-documentation-common
+	yarn run build-documentation-desktop
 
 build-documentation:
 	yarn run build-documentation
