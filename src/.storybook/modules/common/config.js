@@ -2,9 +2,9 @@
 
 import { addParameters, configure } from '@storybook/react';
 
-import '../style/app.scss';
+import '../../../style/app.scss';
 
-const req = require.context('../common', true, /.stories.tsx$/);
+const req = require.context('../../../common', true, /.stories.tsx$/);
 
 /**
  * Load All Stories

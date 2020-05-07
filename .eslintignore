@@ -1,2 +1,5 @@
 lib
 etc
+src/common/deploy/documentation/*
+src/desktop-site/deploy/documentation/*
+src/mobile-site/deploy/documentation/*

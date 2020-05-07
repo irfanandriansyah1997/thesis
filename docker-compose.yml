@@ -22,9 +22,7 @@ services:
         volumes:
             - ./etc:/usr/src/thesis/etc
             - ./node_modules:/usr/src/thesis/node_modules
-            - ./src/.storybook/modules/common:/usr/src/thesis/src/.storybook
-            - ./src/.storybook/builder:/usr/src/thesis/src/.storybook/builder
-            - ./src/.storybook/component:/usr/src/thesis/src/.storybook/component
+            - ./src/.storybook:/usr/src/thesis/src/.storybook
             - ./src/common:/usr/src/thesis/src/common
             - ./src/shared:/usr/src/thesis/src/shared
             - ./src/style:/usr/src/thesis/src/style
@@ -57,9 +55,7 @@ services:
         volumes:
             - ./etc:/usr/src/thesis/etc
             - ./node_modules:/usr/src/thesis/node_modules
-            - ./src/.storybook/modules/desktop-site:/usr/src/thesis/src/.storybook
-            - ./src/.storybook/builder:/usr/src/thesis/src/.storybook/builder
-            - ./src/.storybook/component:/usr/src/thesis/src/.storybook/component
+            - ./src/.storybook:/usr/src/thesis/src/.storybook
             - ./src/common:/usr/src/thesis/src/common
             - ./src/desktop-site:/usr/src/thesis/src/desktop-site
             - ./src/shared:/usr/src/thesis/src/shared
