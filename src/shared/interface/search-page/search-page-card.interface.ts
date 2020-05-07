@@ -1,3 +1,8 @@
+import {
+    CarouselItemInterface,
+    CarouselIndicatorInterface
+} from '../../../common/molecules/carousel/interface/component.interface';
+
 /**
  * Search Page Card Action Interface
  * @author Irfan Andriansyah <irfan@99.co>
@@ -17,11 +22,11 @@ export type ListingCardTier = 'featured' | 'premier';
  * @since 2020.04.28
  */
 export interface SearchPageCardMediaInterface {
-    alt: string;
-    images: string;
+    media: CarouselItemInterface[];
     onClick?: () => void;
     caption?: SearchPageCardMediaCaptionInterface;
     tier?: ListingCardTier;
+    carouselIndicator?: CarouselIndicatorInterface;
 }
 
 /**

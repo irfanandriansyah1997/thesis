@@ -15,8 +15,7 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @since 2020.04.27
  */
 const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
-    images,
-    alt,
+    media,
     onClick
 }) => {
     const name: ComponentClassnameDefaultInterface = {
@@ -33,13 +32,16 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                 color="heading"
                 onClick={onClick}
             >
-                <ImageComponent
-                    src={images}
-                    alt={alt}
-                    width="100%"
-                    height="100%"
-                    objectFit="cover"
-                />
+                {media.map((item) => (
+                    <ImageComponent
+                        key={item.id}
+                        src={item.src}
+                        alt={item.alt}
+                        width="100%"
+                        height="100%"
+                        objectFit="cover"
+                    />
+                ))}
             </LinkComponent>
         </div>
     );
@@ -50,8 +52,13 @@ CardMediaComponent.defaultProps = {
 };
 
 CardMediaComponent.propTypes = {
-    images: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
+    media: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            src: PropTypes.string.isRequired,
+            alt: PropTypes.string.isRequired
+        }).isRequired
+    ).isRequired,
     onClick: PropTypes.func
 };
 

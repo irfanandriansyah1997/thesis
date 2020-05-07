@@ -5,6 +5,7 @@ import LinkComponent from '../../atomic/link/link.component';
 import ImageComponent from '../../atomic/image/image.component';
 import TextComponent from '../../atomic/text/text.component';
 import IconComponent from '../../atomic/icon/icon.component';
+import CarouselComponent from '../../molecules/carousel/carousel.component';
 
 import {
     SearchPageCardMediaInterface,
@@ -25,11 +26,11 @@ import {
  * @since 2020.04.30
  */
 const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
-    images,
-    alt,
+    media,
     onClick,
     caption,
-    tier
+    tier,
+    carouselIndicator
 }) => {
     const name: ComponentClassnameDefaultInterface = {
         [`ui-organisms-featured-card__media-wrapper`]: true,
@@ -99,25 +100,35 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
     return (
         <div className={StringHelper.objToString(name)}>
             <div className="featured-card--media">
-                <LinkComponent
-                    className="card--media-link"
-                    noUnderline
-                    fontWeight={500}
-                    color="heading"
-                    onClick={onClick}
-                >
-                    <ImageComponent
-                        src={images}
-                        alt={alt}
-                        width={750}
-                        height={
-                            tier === 'premier'
-                                ? HEIGHT_PREMIER
-                                : HEIGHT_NON_PREMIER
-                        }
-                        objectFit="cover"
-                    />
-                </LinkComponent>
+                {tier === 'premier' && media.length > 1 ? (
+                    <div id="card-carousel" style={{ height: HEIGHT_PREMIER }}>
+                        <CarouselComponent
+                            item={media}
+                            onChangeActive={(): void => undefined}
+                            indicator={carouselIndicator || undefined}
+                            scrollEffect
+                        />
+                    </div>
+                ) : (
+                    <LinkComponent
+                        className="card--media-link"
+                        noUnderline
+                        fontWeight={500}
+                        color="heading"
+                        onClick={onClick}
+                    >
+                        {media.map((item) => (
+                            <ImageComponent
+                                key={item.id}
+                                src={item.src}
+                                alt={item.alt}
+                                width={750}
+                                height={HEIGHT_NON_PREMIER}
+                                objectFit="cover"
+                            />
+                        ))}
+                    </LinkComponent>
+                )}
             </div>
             <div className={StringHelper.objToString(captionClassName)}>
                 <div className={StringHelper.objToString(priceInfoClassName)}>
@@ -185,12 +196,22 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
 
 CardMediaComponent.defaultProps = {
     onClick: undefined,
-    tier: undefined
+    tier: undefined,
+    carouselIndicator: undefined
 };
 
 CardMediaComponent.propTypes = {
-    images: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
+    media: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            src: PropTypes.string.isRequired,
+            alt: PropTypes.string.isRequired
+        }).isRequired
+    ).isRequired,
+    carouselIndicator: PropTypes.shape({
+        previous: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired
+    }),
     onClick: PropTypes.func,
     caption: PropTypes.shape({
         priceTag: PropTypes.string,

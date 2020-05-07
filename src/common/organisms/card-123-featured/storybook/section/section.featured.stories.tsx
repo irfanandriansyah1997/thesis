@@ -6,6 +6,15 @@ import TextDocsComponent from '../../../../../.storybook/component/atomic/text/t
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
+const image = [
+    {
+        id: 1,
+        src:
+            'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        alt: 'Images 1'
+    }
+];
+
 /**
  * Create bedroom icon
  * @return {string}
@@ -47,14 +56,20 @@ const SectionFeaturedCardComponent: SFC = () => (
         <TextDocsComponent>R123 Featured card</TextDocsComponent>
         <CodingViewerDocsComponent
             sourceCode={
-                `${'<CardR123Basic'}\n` +
+                `${'const image = ['}\n` +
+                `   ${'{'}\n` +
+                `       ${'id: 1,'}\n` +
+                `       ${'src: "image-01.jpg",'}\n` +
+                `       ${'alt: "Image 01"'}\n` +
+                `   ${'}'}\n` +
+                `${']'}\n\n` +
+                `${'<CardR123Featured'}\n` +
                 `   ${'heading={{'}\n` +
                 `       ${'agencyTitle: "Ray White",'}\n` +
                 `       ${'creationDate: "Tayang 5 hari yang lalu"'}\n` +
                 `   ${'}}'}\n` +
                 `   ${'media={{'}\n` +
-                `       ${'images: "image.jpg",'}\n` +
-                `       ${'alt: "Image",'}\n` +
+                `       ${'media: image,'}\n` +
                 `       ${'caption: {'}\n` +
                 `           ${'priceTag: "Rp 2,1 M",'}\n` +
                 `           ${'installment: "Cicilan : Rp. 7,46 Jt/bulan",'}\n` +
@@ -89,10 +104,8 @@ const SectionFeaturedCardComponent: SFC = () => (
                     agencyTitle: 'Ray White',
                     creationDate: 'Tayang 5 hari yang lalu'
                 }}
-                media={{
-                    images:
-                        'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-                    alt: 'Images 1',
+                cardMedia={{
+                    media: image,
                     caption: {
                         priceTag: 'Rp 2,1 M',
                         installment: 'Cicilan : Rp. 7,46 Jt/bulan',

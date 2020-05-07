@@ -1,7 +1,7 @@
 # Card Component
 
 ## How to use
-Explanation on how to import and render text component, including list of props.
+Explanation on how to import and render card component, including list of props.
 
 ### Import Component
 

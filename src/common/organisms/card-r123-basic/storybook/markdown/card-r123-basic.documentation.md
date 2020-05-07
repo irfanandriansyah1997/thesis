@@ -1,7 +1,7 @@
 # Basic R123 Card Component
 
 ## How to use
-Explanation on how to import and render text component, including list of props.
+Explanation on how to import and render basic R123 card component, including list of props.
 
 ### Import Component
 
@@ -12,11 +12,17 @@ import CardR123Basic from '@99/component-ninetynine/lib/common/organisms/card-r1
 ### Implementation In Component Render Method
 ```jsx
 return (
-    <CardR123Basic
-        media={{
-            images: 'image.png',
+    const image = [
+        {
+            id: 1,
+            src:
+                'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
             alt: 'Images 1'
-        }}
+        }
+    ];
+
+    <CardR123Basic
+        cardMedia={{ media: image }}
         content={{
             mortgageLinkText: 'Simulasi KPR',
             title: 'Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Malang',

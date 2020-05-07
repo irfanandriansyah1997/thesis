@@ -16,7 +16,7 @@ import StringHelper from '../../../shared/helper/string.helper';
  */
 const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
     className,
-    media,
+    cardMedia,
     content,
     action,
     link,
@@ -29,8 +29,6 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
         'flex-row': true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
-
-    const { images, alt } = media;
     const {
         mortgageLinkText,
         title,
@@ -43,6 +41,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
         attribute
     } = content;
     const { onClickSave, onClickViewDetail } = action;
+    const { media } = cardMedia;
     return (
         <CardComponent
             className={StringHelper.objToString(name)}
@@ -54,11 +53,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
             {...res}
             boxShadow="r123"
         >
-            <CardMediaComponent
-                images={images}
-                alt={alt}
-                onClick={onClickViewDetail}
-            />
+            <CardMediaComponent media={media} onClick={onClickViewDetail} />
             <CardContentComponent
                 mortgageLinkText={mortgageLinkText}
                 title={title}
