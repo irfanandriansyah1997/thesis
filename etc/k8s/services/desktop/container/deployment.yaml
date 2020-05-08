@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    serviceName: style-guide-desktop-site
+    version: 0.0.1
+  name: style-guide-desktop-site
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: style-guide-desktop-site
+  template:
+    metadata:
+      labels:
+        io.kompose.service: style-guide-desktop-site
+      creationTimestamp: null
+    spec:
+      containers:
+        - name: style-guide-desktop-site
+          image: irfanandriansyah1997/unikom-thesis:desktop-module.latest
+          command: ["sh", "-c"]
+          args: ["
+            node index.js
+          "]
+          ports:
+            - containerPort: 5002
