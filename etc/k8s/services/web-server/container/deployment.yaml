@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    serviceName: style-guide-web-server
+    version: 0.0.1
+  name: style-guide-web-server
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: style-guide-web-server
+  template:
+    metadata:
+      labels:
+        io.kompose.service: style-guide-web-server
+      creationTimestamp: null
+    spec:
+      containers:
+        - name: style-guide-web-server
+          image: nginx:1.17.10-alpine
+          ports:
+            - name: common-module
+              containerPort: 80
+              protocol: TCP
+            - name: desktop-module
+              containerPort: 81
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/nginx/nginx.conf
+              name: shared-file-config
+              subPath: nginx.conf
+            - mountPath: /etc/nginx/error_log.log
+              name: shared-file-config
+              subPath: error_log.log
+            - mountPath: /etc/nginx/cache
+              name: shared-file-config

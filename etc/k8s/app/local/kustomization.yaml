@@ -4,3 +4,4 @@ kind: Kustomization
 bases:
   - ../../services/common/overlay/local
   - ../../services/desktop/overlay/local
+  - ../../services/web-server/overlay/local

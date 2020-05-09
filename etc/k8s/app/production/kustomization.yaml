@@ -4,3 +4,4 @@ kind: Kustomization
 bases:
   - ../../services/common/overlay/production
   - ../../services/desktop/overlay/production
+  - ../../services/web-server/overlay/production

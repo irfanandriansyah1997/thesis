@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: style-guide-web-server
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      initContainers:
+        - name: shared-file-config
+          image: irfanandriansyah1997/unikom-thesis:nginx-config.latest
+          command: ["sh", "-c"]
+          args: ["
+            cd /usr/src/thesis-config;
+            ls -alh;
+            mkdir /etc/nginx/cache;
+            touch /etc/nginx/error_log.log;
+            cp sites.conf /etc/nginx/nginx.conf;
+            ls -alh /etc/nginx;
+          "]
+          volumeMounts:
+            - name: shared-file-config
+              mountPath: /etc/nginx
+      volumes:
+        - name: shared-file-config
+          emptyDir: {}
+status: {}
