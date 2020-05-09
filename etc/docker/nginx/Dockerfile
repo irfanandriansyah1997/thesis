@@ -6,7 +6,7 @@
 
 FROM nginx:1.17.10-alpine
 RUN mkdir -p /usr/src/thesis
-WORKDIR /usr/src/thesis
+WORKDIR /usr/src/thesis-config
 
 RUN mkdir -p cache
 RUN touch error.log
