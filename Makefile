@@ -64,13 +64,20 @@ build-asset:
 	yarn run build-documentation-common
 	yarn run build-documentation-desktop
 
+build-docker:
+	make build-docker-image version=${version}
+	make push-docker-image version=${version}
+
+push-docker-image:
+	docker push irfanandriansyah1997/unikom-thesis:nginx-config.latest
+	docker push irfanandriansyah1997/unikom-thesis:common-module.latest
+	docker push irfanandriansyah1997/unikom-thesis:desktop-module.latest
+	docker push irfanandriansyah1997/unikom-thesis:common-module.${version}
+	docker push irfanandriansyah1997/unikom-thesis:desktop-module.${version}
+
 build-docker-image:
 	docker build -t irfanandriansyah1997/unikom-thesis:nginx-config.latest -f etc/docker/nginx/Dockerfile .
 	docker build -t irfanandriansyah1997/unikom-thesis:common-module.latest -f src/common/deploy/Dockerfile .
 	docker build -t irfanandriansyah1997/unikom-thesis:common-module.${version} -f src/common/deploy/Dockerfile .
 	docker build -t irfanandriansyah1997/unikom-thesis:desktop-module.latest -f src/desktop-site/deploy/Dockerfile .
 	docker build -t irfanandriansyah1997/unikom-thesis:desktop-module.${version} -f src/desktop-site/deploy/Dockerfile .
-	docker push irfanandriansyah1997/unikom-thesis:common-module.latest
-	docker push irfanandriansyah1997/unikom-thesis:desktop-module.latest
-	docker push irfanandriansyah1997/unikom-thesis:common-module.${version}
-	docker push irfanandriansyah1997/unikom-thesis:desktop-module.${version}
