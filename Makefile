@@ -4,6 +4,30 @@
 ## @since: 2020.03.23
 ###########################################################################
 
+###########################################################################
+## Run Minikube And Minikube Dashboard Admin
+###########################################################################
+minikube:
+	@sudo minikube start --vm-driver=none
+
+minikube-dashboard:
+	@kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended.yaml
+	@kubectl proxy
+
+minikube-dashboard-admin:
+	@kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+
+minikube-stop:
+	@sudo minikube stop
+
+minikube-kustomization-local:
+	@kubectl kustomize etc/k8s/app/local > etc/k8s/app/local/generated-config-local.yaml
+
+minikube-kustomization-develop:
+	@kubectl kustomize etc/k8s/app/develop > etc/k8s/app/develop/generated-config-develop.yaml
+
+minikube-kustomization-production:
+	@kubectl kustomize etc/k8s/app/production > etc/k8s/app/production/generated-config-production.yaml
 
 ###########################################################################
 ## Initial Setup Dev
