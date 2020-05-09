@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'documentation')));
 
 // Handles any requests that don't match the ones above
 app.get('/health', (req, res) => {
