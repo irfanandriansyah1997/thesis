@@ -22,6 +22,6 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && make build-docker-image version=${TIMESTAMP}
+    script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && make build-docker version=${TIMESTAMP}
     on:
         branch: master
