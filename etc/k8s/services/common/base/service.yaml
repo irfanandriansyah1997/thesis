@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    label: 99 frontend styleguide
+  creationTimestamp: null
+  name: style-guide-common
+spec:
+  type: LoadBalancer
+status:
+  loadBalancer: {}

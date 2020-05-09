@@ -1,0 +1,9 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: style-guide-desktop-site
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+status: {}

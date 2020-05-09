@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    serviceName: style-guide-common
+    version: 0.0.1
+  name: style-guide-common
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: style-guide-common
+  template:
+    metadata:
+      labels:
+        io.kompose.service: style-guide-common
+      creationTimestamp: null
+    spec:
+      containers:
+        - name: style-guide-common
+          image: irfanandriansyah1997/unikom-thesis:common-module.latest
+          command: ["sh", "-c"]
+          args: ["
+            node index.js
+          "]
+          ports:
+            - containerPort: 5000
