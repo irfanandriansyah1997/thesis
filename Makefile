@@ -65,6 +65,7 @@ build-asset:
 	yarn run build-documentation-desktop
 
 build-docker-image:
+	docker build -t irfanandriansyah1997/unikom-thesis:nginx-config.latest -f etc/docker/nginx/Dockerfile .
 	docker build -t irfanandriansyah1997/unikom-thesis:common-module.latest -f src/common/deploy/Dockerfile .
 	docker build -t irfanandriansyah1997/unikom-thesis:common-module.${version} -f src/common/deploy/Dockerfile .
 	docker build -t irfanandriansyah1997/unikom-thesis:desktop-module.latest -f src/desktop-site/deploy/Dockerfile .
