@@ -1,14 +1,13 @@
 import React, { SFC } from 'react';
 
-import CardComponent from '../../atomic/card/card.component';
+import StringHelper from '../../../shared/helper/string.helper';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
 import CardMediaComponent from './card-r123-featured-media.component';
+import CardComponent from '../../../common/atomic/card/card.component';
 import CardContentComponent from './card-r123-featured-content.component';
 import CardHeadingComponent from './card-r123-featured-heading.component';
-
 import { CardR123FeaturedPropsInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
-import StringHelper from '../../../shared/helper/string.helper';
 
 /**
  * R123 Featured / Premier Card Component
@@ -16,12 +15,12 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @since 2020.04.30
  */
 const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
-    className,
-    heading,
-    content,
-    cardMedia,
-    action,
     link,
+    action,
+    content,
+    heading,
+    className,
+    cardMedia,
     carouselIndicator,
     ...res
 }: CardR123FeaturedPropsInterface) => {
@@ -32,13 +31,13 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
 
     const { caption, tier, media } = cardMedia;
     const {
-        mortgageLinkText,
         title,
         address,
         landSize,
+        attribute,
         buildingSize,
         propertyType,
-        attribute
+        mortgageLinkText
     } = content;
     const { onClickSave, onClickViewDetail } = action;
     const { agencyTitle, creationDate } = heading;
@@ -54,22 +53,22 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
                 creationDate={creationDate}
             />
             <CardMediaComponent
-                media={media}
-                onClick={onClickViewDetail}
-                caption={caption}
                 tier={tier}
+                media={media}
+                caption={caption}
+                onClick={onClickViewDetail}
                 carouselIndicator={carouselIndicator}
             />
             <CardContentComponent
-                mortgageLinkText={mortgageLinkText}
+                link={link}
                 title={title}
                 address={address}
                 landSize={landSize}
-                buildingSize={buildingSize}
-                propertyType={propertyType}
                 attribute={attribute}
                 onClickSave={onClickSave}
-                link={link}
+                buildingSize={buildingSize}
+                propertyType={propertyType}
+                mortgageLinkText={mortgageLinkText}
             />
         </CardComponent>
     );

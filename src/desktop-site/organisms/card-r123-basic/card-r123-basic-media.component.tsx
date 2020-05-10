@@ -1,12 +1,11 @@
 import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
-import LinkComponent from '../../atomic/link/link.component';
-import ImageComponent from '../../atomic/image/image.component';
-
-import { SearchPageCardMediaInterface } from '../../../shared/interface/search-page/search-page-card.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import StringHelper from '../../../shared/helper/string.helper';
+import LinkComponent from '../../../common/atomic/link/link.component';
+import ImageComponent from '../../../common/atomic/image/image.component';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import { R123SearchPageCardMediaInterface } from '../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 
 /**
  * Card Media Component
@@ -14,12 +13,12 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @description card content which contains media such as image
  * @since 2020.04.27
  */
-const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
+const CardMediaComponent: SFC<R123SearchPageCardMediaInterface> = ({
     media,
     onClick
 }) => {
     const name: ComponentClassnameDefaultInterface = {
-        [`ui-organisms-card__media-wrapper`]: true,
+        'ui-organisms-card__media-wrapper': true,
         'flex-shrink-0': true
     };
 
@@ -28,17 +27,17 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
             <LinkComponent
                 className="card--media-link"
                 noUnderline
-                fontWeight={500}
                 color="heading"
+                fontWeight={500}
                 onClick={onClick}
             >
                 {media.map((item) => (
                     <ImageComponent
+                        width="100%"
+                        height="100%"
                         key={item.id}
                         src={item.src}
                         alt={item.alt}
-                        width="100%"
-                        height="100%"
                         objectFit="cover"
                     />
                 ))}

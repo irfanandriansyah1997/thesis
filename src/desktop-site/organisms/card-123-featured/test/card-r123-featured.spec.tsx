@@ -2,7 +2,7 @@ import React, { SFC } from 'react';
 import { render } from 'enzyme';
 
 import CardR123Featured from '../card-r123-featured.component';
-import IconComponent from '../../../atomic/icon/icon.component';
+import IconComponent from '../../../../common/atomic/icon/icon.component';
 
 describe('Testing <CardComponent> in atomic component ', () => {
     /**

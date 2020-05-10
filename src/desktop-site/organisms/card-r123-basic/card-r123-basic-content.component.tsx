@@ -1,13 +1,13 @@
+/* eslint-disable react/no-array-index-key */
 import React, { SFC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
-import TextComponent from '../../atomic/text/text.component';
-import IconComponent from '../../atomic/icon/icon.component';
-import LinkComponent from '../../atomic/link/link.component';
-
+import StringHelper from '../../../shared/helper/string.helper';
+import TextComponent from '../../../common/atomic/text/text.component';
+import IconComponent from '../../../common/atomic/icon/icon.component';
+import LinkComponent from '../../../common/atomic/link/link.component';
 import { CardR123BasicContentInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-import StringHelper from '../../../shared/helper/string.helper';
 
 /**
  * Create save icon
@@ -25,11 +25,11 @@ const SaveIcon: SFC = () => (
  */
 const SaveButton: SFC<CardR123BasicContentInterface> = ({ onClickSave }) => (
     <LinkComponent
-        icon={<SaveIcon />}
-        color="basicCardHeadingR123"
         noUnderline
         fontWeight={500}
+        icon={<SaveIcon />}
         onClick={onClickSave}
+        color="basicCardHeadingR123"
         style={{ marginLeft: 16 }}
     >
         Simpan
@@ -58,10 +58,10 @@ const MortgageButtonLink: SFC<CardR123BasicContentInterface> = ({
     mortgageLinkText
 }) => (
     <LinkComponent
-        icon={<CalculatorIcon />}
-        color="basicCardHeadingR123"
         noUnderline
         fontWeight={500}
+        icon={<CalculatorIcon />}
+        color="basicCardHeadingR123"
     >
         {mortgageLinkText}
     </LinkComponent>
@@ -82,17 +82,17 @@ MortgageButtonLink.propTypes = {
  * @since 2020.04.27
  */
 const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
+    link,
     title,
-    mortgageLinkText,
-    installment,
     address,
     priceTag,
     landSize,
-    buildingSize,
-    propertyType,
     attribute,
+    installment,
     onClickSave,
-    link
+    propertyType,
+    buildingSize,
+    mortgageLinkText
 }) => {
     const name: ComponentClassnameDefaultInterface = {
         [`ui-organisms-card__content-wrapper`]: true,
@@ -106,16 +106,17 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
         return (
             <ul className="attribute__facility-wrapper inline-flex">
                 {attribute &&
-                    // eslint-disable-next-line react/prop-types
                     attribute.map((item, index) => (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <li key={index} className="attribute__facility-detail">
+                        <li
+                            className="attribute__facility-detail"
+                            key={`card-key-attribute-index-${title}-${index}`}
+                        >
                             <LinkComponent
-                                icon={item.icon}
                                 noUnderline
+                                href={link}
+                                icon={item.icon}
                                 fontWeight={500}
                                 color="basicCardContentR123"
-                                href={link}
                             >
                                 {item.value}
                             </LinkComponent>
@@ -134,19 +135,19 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
             <div className="card--content absolute">
                 <div className="card--content__price">
                     <LinkComponent
-                        className="card--content__price-info inline"
+                        href={link}
                         noUnderline
                         fontWeight={700}
-                        color="basicCardContentR123"
                         styling="heading-4"
-                        href={link}
+                        color="basicCardContentR123"
+                        className="card--content__price-info inline"
                     >
                         {priceTag}
                     </LinkComponent>
                     <TextComponent
                         tag="p"
-                        className="card--content__info-installment"
                         color="basicCardContentR123"
+                        className="card--content__info-installment"
                         style={{ marginTop: 4 }}
                     >
                         {installment}
@@ -159,11 +160,11 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                     >
                         <LinkComponent
                             className="card--content__info-title-link"
+                            href={link}
                             noUnderline
                             fontWeight={500}
-                            color="basicCardContentR123"
                             styling="heading-6"
-                            href={link}
+                            color="basicCardContentR123"
                         >
                             {title}
                         </LinkComponent>
@@ -186,23 +187,31 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                 <div className="card--content__property-type">
                     <LinkComponent
                         className="card--content__property-type-info"
+                        href={link}
                         noUnderline
                         fontWeight={500}
                         color="basicCardContentR123"
-                        href={link}
                     >
                         {propertyType}
                     </LinkComponent>
                 </div>
-                <div className="card--content__property-attribute flex flex-row flex-justify-between flex-align-end">
+                <div
+                    className={StringHelper.objToString({
+                        'card--content__property-attribute': true,
+                        flex: true,
+                        'flex-row': true,
+                        'flex-align-end': true,
+                        'flex-justify-between': true
+                    })}
+                >
                     <div className="card--content__property-attribute-config">
                         <div className="attribute__config-landsize">
                             <LinkComponent
                                 className="attribute__config-landsize-info"
-                                noUnderline
-                                fontWeight={500}
-                                color="heading"
                                 href={link}
+                                noUnderline
+                                color="heading"
+                                fontWeight={500}
                             >
                                 {landSize}
                             </LinkComponent>
@@ -211,9 +220,9 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                             <LinkComponent
                                 className="attribute__config-buildingsize-info"
                                 noUnderline
-                                fontWeight={500}
-                                color="heading"
                                 href={link}
+                                color="heading"
+                                fontWeight={500}
                             >
                                 {buildingSize}
                             </LinkComponent>
@@ -230,24 +239,25 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
 
 CardContentComponent.defaultProps = {
     title: '',
-    mortgageLinkText: '',
-    installment: '',
     address: '',
     priceTag: '',
     landSize: '',
+    installment: '',
     buildingSize: '',
-    propertyType: ''
+    propertyType: '',
+    mortgageLinkText: ''
 };
 
 CardContentComponent.propTypes = {
     title: PropTypes.string,
-    mortgageLinkText: PropTypes.string,
-    installment: PropTypes.string,
     address: PropTypes.string,
     priceTag: PropTypes.string,
     landSize: PropTypes.string,
+    installment: PropTypes.string,
     buildingSize: PropTypes.string,
     propertyType: PropTypes.string,
+    link: PropTypes.string.isRequired,
+    mortgageLinkText: PropTypes.string,
     onClickSave: PropTypes.func.isRequired,
     attribute: PropTypes.arrayOf(
         PropTypes.shape({
@@ -255,8 +265,7 @@ CardContentComponent.propTypes = {
             alt: PropTypes.string.isRequired,
             value: PropTypes.string.isRequired
         }).isRequired
-    ).isRequired,
-    link: PropTypes.string.isRequired
+    ).isRequired
 };
 
 export default CardContentComponent;
