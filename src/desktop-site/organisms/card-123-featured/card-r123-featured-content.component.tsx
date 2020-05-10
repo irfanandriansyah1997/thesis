@@ -3,14 +3,17 @@
 import React, { SFC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
+import StringHelper from '../../../shared/helper/string.helper';
 import TextComponent from '../../../common/atomic/text/text.component';
 import IconComponent from '../../../common/atomic/icon/icon.component';
 import LinkComponent from '../../../common/atomic/link/link.component';
 import ButtonComponent from '../../../common/atomic/button/button.component';
-
-import { CardR123FeaturedContentInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-import StringHelper from '../../../shared/helper/string.helper';
+import {
+    R123SearchPageMortgageType as MortgageType,
+    R123SearchPageOnClickSaveType as OnClickType,
+    R123SearchPageCardContentInterface as content
+} from '../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 
 /**
  * Create save icon
@@ -26,7 +29,7 @@ const SaveIcon: SFC = () => (
  * Create save button
  * @return {string}
  */
-const SaveButton: SFC<CardR123FeaturedContentInterface> = ({ onClickSave }) => (
+const SaveButton: SFC<OnClickType> = ({ onClickSave }) => (
     <LinkComponent
         noUnderline
         fontWeight={500}
@@ -57,14 +60,12 @@ const CalculatorIcon: SFC = () => (
  * Create mortgage link button
  * @return {string}
  */
-const MortgageButtonLink: SFC<CardR123FeaturedContentInterface> = ({
-    mortgageLinkText
-}) => (
+const MortgageButtonLink: SFC<MortgageType> = ({ mortgageLinkText }) => (
     <LinkComponent
-        icon={<CalculatorIcon />}
-        color="basicCardHeadingR123"
         noUnderline
         fontWeight={500}
+        icon={<CalculatorIcon />}
+        color="basicCardHeadingR123"
     >
         {mortgageLinkText}
     </LinkComponent>
@@ -109,7 +110,7 @@ const ContactAgentButton: SFC = () => (
  * @description featured / premier card content which contains text, button, etc
  * @since 2020.04.30
  */
-const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
+const CardContentComponent: SFC<content> = ({
     title,
     mortgageLinkText,
     address,
@@ -171,8 +172,8 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
     const topBottomContentClassName: ComponentClassnameDefaultInterface = {
         'featured-card--content__bottom-row': true,
         flex: true,
-        'flex-justify-between': true,
-        'flex-align-end': true
+        'flex-align-end': true,
+        'flex-justify-between': true
     };
 
     return (
@@ -187,23 +188,23 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
                     <div className="left-content no-wrap">
                         <TextComponent tag="h2" className="info-title truncate">
                             <LinkComponent
-                                className="card--content__info-title-link"
+                                href={link}
                                 noUnderline
                                 fontWeight={500}
-                                color="basicCardContentR123"
                                 styling="heading-6"
-                                href={link}
+                                color="basicCardContentR123"
+                                className="card--content__info-title-link"
                             >
                                 {title}
                             </LinkComponent>
                         </TextComponent>
                         <TextComponent tag="h3" className="info-address">
                             <LinkComponent
-                                className="card--content__info-address-link"
                                 noUnderline
+                                href={link}
                                 fontWeight={500}
                                 color="basicCardContentR123"
-                                href={link}
+                                className="card--content__info-address-link"
                             >
                                 {address}
                             </LinkComponent>
@@ -219,11 +220,11 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
                 <div className="featured-card--content__middle-row">
                     <div className="property-type">
                         <LinkComponent
-                            className="card--content__property-type-info"
                             noUnderline
+                            href={link}
                             fontWeight={500}
                             color="basicCardContentR123"
-                            href={link}
+                            className="card--content__property-type-info"
                         >
                             {propertyType}
                         </LinkComponent>
@@ -231,22 +232,22 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
                     <div className="attribute-config flex">
                         <div className="attribute-config__buildingsize">
                             <LinkComponent
-                                className="attribute-config__buildingsize-info"
-                                noUnderline
-                                fontWeight={500}
-                                color="heading"
                                 href={link}
+                                noUnderline
+                                color="heading"
+                                fontWeight={500}
+                                className="attribute-config__buildingsize-info"
                             >
                                 {buildingSize}
                             </LinkComponent>
                         </div>
                         <div className="attribute-config__landsize">
                             <LinkComponent
-                                className="attribute-config__landsize-info"
-                                noUnderline
-                                fontWeight={500}
-                                color="heading"
                                 href={link}
+                                noUnderline
+                                color="heading"
+                                fontWeight={500}
+                                className="attribute-config__landsize-info"
                             >
                                 {landSize}
                             </LinkComponent>
@@ -277,20 +278,20 @@ const CardContentComponent: SFC<CardR123FeaturedContentInterface> = ({
 
 CardContentComponent.defaultProps = {
     title: '',
-    mortgageLinkText: '',
     address: '',
     landSize: '',
     buildingSize: '',
-    propertyType: ''
+    propertyType: '',
+    mortgageLinkText: ''
 };
 
 CardContentComponent.propTypes = {
     title: PropTypes.string,
-    mortgageLinkText: PropTypes.string,
     address: PropTypes.string,
     landSize: PropTypes.string,
     buildingSize: PropTypes.string,
     propertyType: PropTypes.string,
+    mortgageLinkText: PropTypes.string,
     onClickSave: PropTypes.func.isRequired,
     attribute: PropTypes.arrayOf(
         PropTypes.shape({

@@ -14,8 +14,8 @@ import {
 } from '../../../shared/constant/component.constant';
 import {
     ListingCardTier,
-    SearchPageCardMediaInterface
-} from '../../../shared/interface/search-page/search-page-card.interface';
+    R123SearchPageCardMediaInterface
+} from '../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 
 /**
  * Featured / Premier Card Media Component
@@ -23,7 +23,7 @@ import {
  * @description featured / premier card content which contains media such as image
  * @since 2020.04.30
  */
-const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
+const CardMediaComponent: SFC<R123SearchPageCardMediaInterface> = ({
     media,
     tier,
     onClick,

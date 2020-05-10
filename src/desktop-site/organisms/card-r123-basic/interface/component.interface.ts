@@ -1,8 +1,9 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes } from 'react';
 import {
-    SearchPageCardMediaInterface as media,
-    SearchPageCardActionInterface as action
-} from '../../../../shared/interface/search-page/search-page-card.interface';
+    R123SearchPageCardMediaInterface as media,
+    R123SearchPageCardActionInterface as action,
+    R123SearchPageCardContentInterface as content
+} from '../../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 
 /**
  * Card R123 Basic Content Interface
@@ -10,31 +11,10 @@ import {
  * @description
  * @since 2020.04.28
  */
-export interface CardR123BasicContentInterface {
-    link?: string;
-    title?: string;
-    address?: string;
+export type CardR123BasicContentInterface = content & {
     priceTag?: string;
-    landSize?: string;
     installment?: string;
-    buildingSize?: string;
-    propertyType?: string; // Factory | Home | Apartment
-    mortgageLinkText?: string;
-    attribute?: CardR123BasicContentAttributeInterface[];
-    onClickSave?: () => void;
-}
-
-/**
- * Card R123 Basic Content Attribute Interface
- * @author Irfan Andriansyah <irfan@99.co>
- * @description
- * @since 2020.04.28
- */
-export interface CardR123BasicContentAttributeInterface {
-    alt?: string;
-    value: string;
-    icon: ReactNode;
-}
+};
 
 /**
  * Basic Card R123 Default Props Interface

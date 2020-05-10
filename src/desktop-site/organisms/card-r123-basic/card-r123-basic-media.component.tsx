@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import StringHelper from '../../../shared/helper/string.helper';
 import LinkComponent from '../../../common/atomic/link/link.component';
 import ImageComponent from '../../../common/atomic/image/image.component';
-import { SearchPageCardMediaInterface } from '../../../shared/interface/search-page/search-page-card.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import { R123SearchPageCardMediaInterface } from '../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 
 /**
  * Card Media Component
@@ -13,7 +13,7 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @description card content which contains media such as image
  * @since 2020.04.27
  */
-const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
+const CardMediaComponent: SFC<R123SearchPageCardMediaInterface> = ({
     media,
     onClick
 }) => {

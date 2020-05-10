@@ -1,39 +1,11 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes } from 'react';
+
 import {
-    SearchPageCardMediaInterface as media,
-    SearchPageCardActionInterface as action
-} from '../../../../shared/interface/search-page/search-page-card.interface';
+    R123SearchPageCardMediaInterface as media,
+    R123SearchPageCardActionInterface as action,
+    R123SearchPageCardContentInterface as content
+} from '../../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 import { CarouselIndicatorInterface } from '../../../../common/molecules/carousel/interface/component.interface';
-
-/**
- * Card R123 Featured Content Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @description
- * @since 2020.04.30
- */
-export interface CardR123FeaturedContentInterface {
-    title?: string;
-    link?: string;
-    address?: string;
-    landSize?: string;
-    buildingSize?: string;
-    propertyType?: string; // Factory | Home | Apartment
-    onClickSave?: () => void;
-    mortgageLinkText?: string;
-    attribute?: CardR123FeaturedContentAttributeInterface[];
-}
-
-/**
- * Card R123 Featured Content Attribute Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @description
- * @since 2020.04.30
- */
-export interface CardR123FeaturedContentAttributeInterface {
-    alt?: string;
-    value: string;
-    icon: ReactNode;
-}
 
 /**
  * Card R123 Featured Heading Interface
@@ -65,7 +37,7 @@ export type CardR123FeaturedPropsInterface = Omit<
     link: string;
     action: action;
     cardMedia: media;
+    content: content;
     heading: CardR123FeaturedHeadingInterface;
-    content: CardR123FeaturedContentInterface;
     carouselIndicator?: CarouselIndicatorInterface;
 };
