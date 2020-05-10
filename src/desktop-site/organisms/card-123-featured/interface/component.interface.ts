@@ -3,7 +3,7 @@ import {
     SearchPageCardMediaInterface as media,
     SearchPageCardActionInterface as action
 } from '../../../../shared/interface/search-page/search-page-card.interface';
-import { CarouselIndicatorInterface } from '../../../molecules/carousel/interface/component.interface';
+import { CarouselIndicatorInterface } from '../../../../common/molecules/carousel/interface/component.interface';
 
 /**
  * Card R123 Featured Content Interface
@@ -12,15 +12,15 @@ import { CarouselIndicatorInterface } from '../../../molecules/carousel/interfac
  * @since 2020.04.30
  */
 export interface CardR123FeaturedContentInterface {
-    mortgageLinkText?: string;
     title?: string;
+    link?: string;
     address?: string;
     landSize?: string;
     buildingSize?: string;
     propertyType?: string; // Factory | Home | Apartment
-    attribute?: CardR123FeaturedContentAttributeInterface[];
     onClickSave?: () => void;
-    link?: string;
+    mortgageLinkText?: string;
+    attribute?: CardR123FeaturedContentAttributeInterface[];
 }
 
 /**
@@ -30,9 +30,9 @@ export interface CardR123FeaturedContentInterface {
  * @since 2020.04.30
  */
 export interface CardR123FeaturedContentAttributeInterface {
-    icon: ReactNode;
     alt?: string;
     value: string;
+    icon: ReactNode;
 }
 
 /**
@@ -42,9 +42,9 @@ export interface CardR123FeaturedContentAttributeInterface {
  * @since 2020.05.04
  */
 export interface CardR123FeaturedHeadingInterface {
+    link?: string;
     agencyTitle: string;
     creationDate: string;
-    link?: string;
 }
 
 /**
@@ -62,10 +62,10 @@ export type CardR123FeaturedPropsInterface = Omit<
     | 'onChange'
     | 'style'
 > & {
-    heading: CardR123FeaturedHeadingInterface;
-    cardMedia: media;
-    action: action;
-    content: CardR123FeaturedContentInterface;
     link: string;
+    action: action;
+    cardMedia: media;
+    heading: CardR123FeaturedHeadingInterface;
+    content: CardR123FeaturedContentInterface;
     carouselIndicator?: CarouselIndicatorInterface;
 };

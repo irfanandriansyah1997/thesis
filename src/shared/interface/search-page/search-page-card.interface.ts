@@ -22,10 +22,10 @@ export type ListingCardTier = 'featured' | 'premier';
  * @since 2020.04.28
  */
 export interface SearchPageCardMediaInterface {
-    media: CarouselItemInterface[];
     onClick?: () => void;
-    caption?: SearchPageCardMediaCaptionInterface;
     tier?: ListingCardTier;
+    media: CarouselItemInterface[];
+    caption?: SearchPageCardMediaCaptionInterface;
     carouselIndicator?: CarouselIndicatorInterface;
 }
 
@@ -37,8 +37,8 @@ export interface SearchPageCardMediaInterface {
  */
 export interface SearchPageCardMediaCaptionInterface {
     priceTag?: string;
-    installment?: string;
     numMedias?: number;
+    installment?: string;
 }
 
 /**

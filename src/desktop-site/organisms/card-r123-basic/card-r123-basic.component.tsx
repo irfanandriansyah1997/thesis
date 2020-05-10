@@ -1,6 +1,6 @@
 import React, { SFC } from 'react';
 
-import CardComponent from '../../atomic/card/card.component';
+import CardComponent from '../../../common/atomic/card/card.component';
 import CardMediaComponent from './card-r123-basic-media.component';
 import CardContentComponent from './card-r123-basic-content.component';
 
@@ -15,33 +15,34 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @since 2020.04.27
  */
 const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
+    link,
+    action,
+    content,
     className,
     cardMedia,
-    content,
-    action,
-    link,
     ...res
 }: CardR123BasicPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
+        'ui-organisms-card': true,
         flex: true,
-        [`ui-organisms-card`]: true,
-        'flex-align-start': true,
         'flex-row': true,
+        'flex-align-start': true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
     const {
-        mortgageLinkText,
         title,
-        installment,
         address,
         priceTag,
         landSize,
+        attribute,
+        installment,
         buildingSize,
         propertyType,
-        attribute
+        mortgageLinkText
     } = content;
     const { onClickSave, onClickViewDetail } = action;
     const { media } = cardMedia;
+
     return (
         <CardComponent
             className={StringHelper.objToString(name)}
@@ -55,17 +56,17 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
         >
             <CardMediaComponent media={media} onClick={onClickViewDetail} />
             <CardContentComponent
-                mortgageLinkText={mortgageLinkText}
+                link={link}
                 title={title}
-                installment={installment}
                 address={address}
                 priceTag={priceTag}
                 landSize={landSize}
+                attribute={attribute}
+                installment={installment}
+                onClickSave={onClickSave}
                 buildingSize={buildingSize}
                 propertyType={propertyType}
-                attribute={attribute}
-                onClickSave={onClickSave}
-                link={link}
+                mortgageLinkText={mortgageLinkText}
             />
         </CardComponent>
     );

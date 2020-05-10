@@ -3,10 +3,10 @@
 import React, { SFC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 
-import TextComponent from '../../atomic/text/text.component';
-import IconComponent from '../../atomic/icon/icon.component';
-import LinkComponent from '../../atomic/link/link.component';
-import ButtonComponent from '../../atomic/button/button.component';
+import TextComponent from '../../../common/atomic/text/text.component';
+import IconComponent from '../../../common/atomic/icon/icon.component';
+import LinkComponent from '../../../common/atomic/link/link.component';
+import ButtonComponent from '../../../common/atomic/button/button.component';
 
 import { CardR123FeaturedContentInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
@@ -28,11 +28,11 @@ const SaveIcon: SFC = () => (
  */
 const SaveButton: SFC<CardR123FeaturedContentInterface> = ({ onClickSave }) => (
     <LinkComponent
-        icon={<SaveIcon />}
-        color="basicCardHeadingR123"
         noUnderline
         fontWeight={500}
+        icon={<SaveIcon />}
         onClick={onClickSave}
+        color="basicCardHeadingR123"
         style={{ marginLeft: 16 }}
     >
         Simpan

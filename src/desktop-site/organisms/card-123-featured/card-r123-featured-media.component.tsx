@@ -1,23 +1,21 @@
 import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
-import LinkComponent from '../../atomic/link/link.component';
-import ImageComponent from '../../atomic/image/image.component';
-import TextComponent from '../../atomic/text/text.component';
-import IconComponent from '../../atomic/icon/icon.component';
-import CarouselComponent from '../../molecules/carousel/carousel.component';
-
-import {
-    SearchPageCardMediaInterface,
-    ListingCardTier
-} from '../../../shared/interface/search-page/search-page-card.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-
 import StringHelper from '../../../shared/helper/string.helper';
+import LinkComponent from '../../../common/atomic/link/link.component';
+import TextComponent from '../../../common/atomic/text/text.component';
+import IconComponent from '../../../common/atomic/icon/icon.component';
+import ImageComponent from '../../../common/atomic/image/image.component';
+import CarouselComponent from '../../../common/molecules/carousel/carousel.component';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     HEIGHT_PREMIER,
     HEIGHT_NON_PREMIER
 } from '../../../shared/constant/component.constant';
+import {
+    ListingCardTier,
+    SearchPageCardMediaInterface
+} from '../../../shared/interface/search-page/search-page-card.interface';
 
 /**
  * Featured / Premier Card Media Component
@@ -27,13 +25,13 @@ import {
  */
 const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
     media,
+    tier,
     onClick,
     caption,
-    tier,
     carouselIndicator
 }) => {
     const name: ComponentClassnameDefaultInterface = {
-        [`ui-organisms-featured-card__media-wrapper`]: true,
+        'ui-organisms-featured-card__media-wrapper': true,
         relative: true
     };
 
@@ -42,6 +40,7 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
      */
     const getFlaggingBadge = (): string => {
         let badge = '';
+
         if (caption) {
             if (tier === 'premier') {
                 badge = 'Premier';
@@ -104,27 +103,27 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                     <div id="card-carousel" style={{ height: HEIGHT_PREMIER }}>
                         <CarouselComponent
                             item={media}
+                            scrollEffect
                             onChangeActive={(): void => undefined}
                             indicator={carouselIndicator || undefined}
-                            scrollEffect
                         />
                     </div>
                 ) : (
                     <LinkComponent
-                        className="card--media-link"
                         noUnderline
-                        fontWeight={500}
                         color="heading"
+                        fontWeight={500}
                         onClick={onClick}
+                        className="card--media-link"
                     >
                         {media.map((item) => (
                             <ImageComponent
+                                width={750}
                                 key={item.id}
                                 src={item.src}
                                 alt={item.alt}
-                                width={750}
-                                height={HEIGHT_NON_PREMIER}
                                 objectFit="cover"
+                                height={HEIGHT_NON_PREMIER}
                             />
                         ))}
                     </LinkComponent>
@@ -133,19 +132,19 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
             <div className={StringHelper.objToString(captionClassName)}>
                 <div className={StringHelper.objToString(priceInfoClassName)}>
                     <LinkComponent
-                        className="price-info__price inline"
                         noUnderline
-                        fontWeight={700}
                         color="white"
+                        fontWeight={700}
                         styling="heading-4"
+                        className="price-info__price inline"
                     >
                         {caption && caption.priceTag}
                     </LinkComponent>
                     <LinkComponent
-                        className="price-info__installment inline"
                         noUnderline
                         fontWeight={700}
                         styling="heading-4"
+                        className="price-info__installment inline"
                     >
                         <TextComponent
                             tag="p"
@@ -159,11 +158,11 @@ const CardMediaComponent: SFC<SearchPageCardMediaInterface> = ({
                 <div className="poster-attribute flex flex-row">
                     <TextComponent
                         tag="p"
+                        styling="caption"
+                        color={tier === 'premier' ? 'hoverOutline' : 'white'}
                         className={StringHelper.objToString(
                             flaggingBadgeClassName
                         )}
-                        color={tier === 'premier' ? 'hoverOutline' : 'white'}
-                        styling="caption"
                         style={{
                             backgroundColor:
                                 tier === 'premier' ? '#ffb200' : '#00beb3'

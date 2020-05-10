@@ -11,17 +11,17 @@ import {
  * @since 2020.04.28
  */
 export interface CardR123BasicContentInterface {
-    mortgageLinkText?: string;
+    link?: string;
     title?: string;
-    installment?: string;
     address?: string;
     priceTag?: string;
     landSize?: string;
+    installment?: string;
     buildingSize?: string;
     propertyType?: string; // Factory | Home | Apartment
+    mortgageLinkText?: string;
     attribute?: CardR123BasicContentAttributeInterface[];
     onClickSave?: () => void;
-    link?: string;
 }
 
 /**
@@ -31,9 +31,9 @@ export interface CardR123BasicContentInterface {
  * @since 2020.04.28
  */
 export interface CardR123BasicContentAttributeInterface {
-    icon: ReactNode;
     alt?: string;
     value: string;
+    icon: ReactNode;
 }
 
 /**
@@ -51,8 +51,8 @@ export type CardR123BasicPropsInterface = Omit<
     | 'onChange'
     | 'style'
 > & {
-    cardMedia: media;
-    action: action;
-    content: CardR123BasicContentInterface;
     link: string;
+    action: action;
+    cardMedia: media;
+    content: CardR123BasicContentInterface;
 };
