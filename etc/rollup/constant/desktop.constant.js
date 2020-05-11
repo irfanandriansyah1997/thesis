@@ -10,5 +10,8 @@ export default [
     /**
      * Organism
      */
-    ...[]
+    ...[
+        './src/desktop-site/organisms/card-r123-basic/card-r123-basic.component.tsx',
+        './src/desktop-site/organisms/card-123-featured/card-r123-featured.component.tsx'
+    ]
 ];
