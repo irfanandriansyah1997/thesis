@@ -1,4 +1,5 @@
 import { HTMLAttributes, SFC, ReactNode } from 'react';
+import { ColorType } from '../../../../shared/interface/common/color.interface';
 /**
  * List Props Interface
  * @author Irfan Andriansyah <irfan@99.co>
@@ -9,8 +10,9 @@ export type ListPropsInterface = Omit<
     'style' | 'dangerouslySetInnerHTML'
 > & {
     space?: number;
+    dividerColor?: ColorType;
     divider?: 'none' | 'line';
-    direction?: 'column' | 'row';
+    styling?: 'vertical' | 'horizontal';
 };
 
 /**

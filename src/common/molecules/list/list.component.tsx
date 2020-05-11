@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PropTypes from 'prop-types';
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, Validator } from 'react';
 
-import { ListDefaultExportInterface } from './interface/component.interface';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-import StringHelper from '../../../shared/helper/string.helper';
 import ListItemComponent from './list-item.component';
+import StringHelper from '../../../shared/helper/string.helper';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
+import ColorDefaultConstant from '../../../shared/constant/color.constant';
+import { ColorType } from '../../../shared/interface/common/color.interface';
+import { ListDefaultExportInterface } from './interface/component.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
  * List Component
@@ -16,10 +18,11 @@ import ListItemComponent from './list-item.component';
 const ListComponent: ListDefaultExportInterface = ({
     space,
     divider,
-    direction,
+    styling,
+    dividerColor,
     ...res
 }) => {
-    const isColumn = direction === 'column';
+    const isColumn = styling === 'vertical';
     const spaceInComponent = (space as number) / 2;
 
     // Getter ClassName
@@ -39,6 +42,11 @@ const ListComponent: ListDefaultExportInterface = ({
     };
     delete res.className;
 
+    const children = React.Children.toArray(res.children).filter(
+        (o: any): boolean => o.type.name === 'ListItemComponent'
+    );
+    delete res.children;
+
     /**
      * Getter Styling List
      * @param {boolean} isChildren
@@ -50,33 +58,54 @@ const ListComponent: ListDefaultExportInterface = ({
 
         return {
             marginTop: isColumn ? value : undefined,
-            marginLeft: isColumn ? undefined : value,
-            marginRight: isColumn ? undefined : value,
-            marginBottom: isColumn ? value : undefined
+            marginLeft: isColumn ? undefined : value
+        };
+    };
+
+    /**
+     * Getter Styling List Item
+     * @param {number} index - index position component
+     * @return {CSSProperties}
+     */
+    const getStylingItem = (index: number): CSSProperties => {
+        const isDividerLine = divider === 'line';
+        const isLastChildren = index === children.length - 1;
+        const isShowDivider = !isLastChildren && isDividerLine;
+        const isShowDividerVertical = !isColumn && isShowDivider;
+        const isShowDividerHorizontal = isColumn && isShowDivider;
+        const color = ValidatorHelper.verifiedKeyIsExist(
+            ColorDefaultConstant,
+            dividerColor
+        )
+            ? `1px solid ${ColorDefaultConstant[dividerColor as ColorType]}`
+            : `1px solid ${ColorDefaultConstant.heading}`;
+
+        return {
+            ...getStyling(true),
+            borderRight: isShowDividerVertical ? color : undefined,
+            borderBottom: isShowDividerHorizontal ? color : undefined,
+            paddingRight:
+                !isColumn && !isLastChildren ? spaceInComponent : undefined,
+            paddingBottom:
+                isColumn && !isLastChildren ? spaceInComponent : undefined
         };
     };
 
     return (
         <div
-            className={StringHelper.objToString(className)}
-            style={getStyling()}
             {...res}
+            style={getStyling()}
+            className={StringHelper.objToString(className)}
         >
-            {React.Children.toArray(res.children)
-                .filter(
-                    (o: any): boolean => o.type.name === 'ListItemComponent'
-                )
-                .map(({ props, key }: any) => {
-                    return (
-                        <div
-                            key={key}
-                            style={getStyling(true)}
-                            className="ui-molecules-list__item"
-                        >
-                            {props.children}
-                        </div>
-                    );
-                })}
+            {children.map(({ props, key }: any, index) => (
+                <div
+                    key={key}
+                    style={getStylingItem(index)}
+                    className="ui-molecules-list__item relative"
+                >
+                    {props.children}
+                </div>
+            ))}
         </div>
     );
 };
@@ -88,13 +117,17 @@ ListComponent.propTypes = {
     ]).isRequired,
     space: PropTypes.number,
     divider: PropTypes.oneOf(['none', 'line']),
-    direction: PropTypes.oneOf(['column', 'row'])
+    styling: PropTypes.oneOf(['vertical', 'horizontal']),
+    dividerColor: PropTypes.oneOf(
+        Object.keys(ColorDefaultConstant)
+    ) as Validator<ColorType>
 };
 
 ListComponent.defaultProps = {
     space: 15,
     divider: 'none',
-    direction: 'row'
+    styling: 'horizontal',
+    dividerColor: 'heading'
 };
 
 ListComponent.Item = ListItemComponent;
