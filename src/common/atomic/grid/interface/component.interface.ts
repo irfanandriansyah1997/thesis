@@ -1,0 +1,102 @@
+import { HTMLAttributes } from 'react';
+
+type baseImportInterface = Omit<
+    HTMLAttributes<HTMLDivElement>,
+    'style' | 'dangerouslySetInnerHTML'
+>;
+
+/**
+ * Grid Column Size Type
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export type GridColumnSizeType =
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12;
+
+/**
+ * Grid Column Default Size Type
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export type GridColumnDefaultSizeType = GridColumnSizeType | 'default';
+
+/**
+ * Grid Row Align Item Type
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export type GridRowAlignItemType = 'top' | 'middle' | 'bottom';
+
+/**
+ * Grid Row Justify Content Type
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export type GridRowJustifyContentType =
+    | 'start'
+    | 'end'
+    | 'center'
+    | 'space-around'
+    | 'space-between';
+
+/**
+ * Grid Column Viewport Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export interface GridColumnViewportInterface {
+    size: GridColumnSizeType;
+}
+
+/**
+ * Grid Column Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export type GridColumnPropsInterface = baseImportInterface & {
+    order?: number;
+    // under 576px
+    xs?: GridColumnViewportInterface;
+    // between 576px and 768px
+    sm?: GridColumnViewportInterface;
+    // between 768px and 992px
+    md?: GridColumnViewportInterface;
+    // between 992px and 1200px
+    lg?: GridColumnViewportInterface;
+    // above 1200px
+    xl?: GridColumnViewportInterface;
+    // default size
+    defaultSize?: GridColumnDefaultSizeType;
+};
+
+/**
+ * Grid Column Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export type GridRowPropsInterface = baseImportInterface & {
+    padding: {
+        top?: number;
+        bottom?: number;
+    };
+    align: GridRowAlignItemType;
+    justify: GridRowJustifyContentType;
+};
+
+/**
+ * Grid Container Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.11
+ */
+export type GridContainerPropsInterface = baseImportInterface;
