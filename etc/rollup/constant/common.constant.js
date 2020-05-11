@@ -13,8 +13,8 @@ export default [
         './src/common/atomic/label/label.component.tsx',
         './src/common/atomic/link/link.component.tsx',
         './src/common/atomic/spin/spin.component.tsx',
-        './src/common/atomic/text/text.component.tsx',
-        './src/common/atomic/sticky/sticky.component.tsx'
+        './src/common/atomic/sticky/sticky.component.tsx',
+        './src/common/atomic/text/text.component.tsx'
     ],
     /**
      * Molecules
@@ -22,16 +22,17 @@ export default [
     ...[
         './src/common/molecules/carousel/carousel.component.tsx',
         './src/common/molecules/checkbox/checkbox.component.tsx',
-        '.src/common/molecules/expand-text/expand-text.component.tsx',
+        './src/common/molecules/combobox/combobox.component.tsx',
+        './src/common/molecules/dropdown/dropdown.component.tsx',
+        './src/common/molecules/expand-text/expand-text.component.tsx',
+        './src/common/molecules/list/list.component.tsx',
         './src/common/molecules/radio-button/radio-button.component.tsx',
-        './src/common/molecules/tabs/tabs.component.tsx'
-
+        './src/common/molecules/range-slider/range-slider.component.tsx',
+        './src/common/molecules/tabs/tabs.component.tsx',
+        './src/common/molecules/toggle/toggle.component.tsx'
     ],
     /**
      * Organism
      */
-    ...[
-        './src/common/organisms/card-123-basic/card-r123-basic.component.tsx',
-        '.src/common/organisms/card-123-featured/card-r123-featured.component.tsx'
-    ]
+    ...[]
 ];
