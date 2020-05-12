@@ -1,5 +1,5 @@
-import { SFC, Validator } from 'react';
 import PropTypes from 'prop-types';
+import { SFC, Validator } from 'react';
 
 import {
     GridColumnPropsInterface,

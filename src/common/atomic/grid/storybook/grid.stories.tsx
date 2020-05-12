@@ -1,10 +1,9 @@
 import React from 'react';
 
-import '../style/style.scss';
+import Grid from '../grid.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
-import GridContainerComponent from '../grid-container.component';
-import GridRowComponent from '../grid-row.component';
-import GridColumnComponent from '../grid-column.component';
+
+import '../style/style.scss';
 
 ((): void => {
     new StorybookDocumentationBuilder('Grid Component', 'atomic')
@@ -14,16 +13,9 @@ import GridColumnComponent from '../grid-column.component';
         )
         .registerDocumentation(
             <>
-                <GridContainerComponent>
-                    <GridRowComponent>
-                        <GridColumnComponent
-                            sm={{ size: 12 }}
-                            xs={{ size: 12 }}
-                            md={{ size: 8 }}
-                            lg={{ size: 6 }}
-                            xl={{ size: 7 }}
-                            id="id-12"
-                        >
+                <Grid.Container>
+                    <Grid.Row padding={{ vertical: 10, horizontal: 10 }}>
+                        <Grid.Column defaultSize={5} id="id-12">
                             <div
                                 style={{
                                     width: '100%',
@@ -31,15 +23,8 @@ import GridColumnComponent from '../grid-column.component';
                                     background: '#69acec'
                                 }}
                             />
-                        </GridColumnComponent>
-                        <GridColumnComponent
-                            id="id-123"
-                            sm={{ size: 12 }}
-                            xs={{ size: 12 }}
-                            md={{ size: 4 }}
-                            lg={{ size: 6 }}
-                            xl={{ size: 5 }}
-                        >
+                        </Grid.Column>
+                        <Grid.Column id="id-123" defaultSize={7}>
                             <div
                                 style={{
                                     width: '100%',
@@ -47,9 +32,30 @@ import GridColumnComponent from '../grid-column.component';
                                     background: '#69acec'
                                 }}
                             />
-                        </GridColumnComponent>
-                    </GridRowComponent>
-                </GridContainerComponent>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row padding={{ vertical: 10, horizontal: 10 }}>
+                        <Grid.Column defaultSize={8} id="id-12">
+                            <div
+                                style={{
+                                    width: '100%',
+                                    height: '100px',
+                                    background: '#69acec'
+                                }}
+                            />
+                        </Grid.Column>
+                        <Grid.Column id="id-123" defaultSize={4}>
+                            <div
+                                style={{
+                                    width: '100%',
+                                    height: '100px',
+                                    background: '#69acec'
+                                }}
+                            />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <div>Hello World</div>
+                </Grid.Container>
             </>
         )
         .execute();

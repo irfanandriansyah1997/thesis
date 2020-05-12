@@ -7,8 +7,6 @@ $grid-columns: 12;
 
     @include margin-left(auto);
     @include margin-right(auto);
-    @include padding-left(15px);
-    @include padding-right(15px);
 }
 
 .ui-row {

@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, SFC } from 'react';
 
 type baseImportInterface = Omit<
     HTMLAttributes<HTMLDivElement>,
@@ -109,3 +109,14 @@ export interface GridRowPaddingInterface {
  * @since 2020.05.11
  */
 export type GridContainerPropsInterface = baseImportInterface;
+
+/**
+ * Grid Default Export Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.12
+ */
+export type GridDefaultExportInterface = {
+    Row: SFC<GridRowPropsInterface>;
+    Column: SFC<GridColumnPropsInterface>;
+    Container: SFC<GridContainerPropsInterface>;
+};

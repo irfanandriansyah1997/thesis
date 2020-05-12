@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,6 +13,7 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.05.11
  */
 const GridContainerComponent: SFC<GridContainerPropsInterface> = ({
+    children,
     ...res
 }) => {
     /**
@@ -25,11 +27,26 @@ const GridContainerComponent: SFC<GridContainerPropsInterface> = ({
     };
     delete res.className;
 
-    return <div className={StringHelper.objToString(className)} {...res} />;
+    return (
+        <div className={StringHelper.objToString(className)} {...res}>
+            {React.Children.toArray(children).filter((o: any): boolean => {
+                if (o.type) {
+                    return o.type.name === 'GridRowComponent';
+                }
+
+                return false;
+            })}
+        </div>
+    );
 };
 
 GridContainerComponent.propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string
+    ]).isRequired
 };
 
 GridContainerComponent.defaultProps = {

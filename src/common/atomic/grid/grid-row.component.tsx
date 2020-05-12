@@ -33,7 +33,13 @@ const GridRowComponent: SFC<GridRowPropsInterface> = ({
     }
 
     const children = React.Children.toArray(res.children)
-        .filter((o: any): boolean => o.type.name === 'GridColumnComponent')
+        .filter((o: any): boolean => {
+            if (o.type) {
+                return o.type.name === 'GridColumnComponent';
+            }
+
+            return false;
+        })
         .map((o: any): GridColumnPropsInterface => o.props);
     delete res.children;
 
