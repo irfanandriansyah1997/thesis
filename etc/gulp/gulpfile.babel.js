@@ -37,10 +37,10 @@ task('sass-common', () =>
     GulpModule.generateSCSS('common', '../../src/common/**/style.scss')
 );
 task('sass-mobile', () =>
-    GulpModule.generateSCSS('mobile', '../../src/mobile/**/style.scss')
+    GulpModule.generateSCSS('mobile', '../../src/mobile-site/**/style.scss')
 );
 task('sass-desktop', () =>
-    GulpModule.generateSCSS('desktop', '../../src/desktop/**/style.scss')
+    GulpModule.generateSCSS('desktop', '../../src/desktop-site/**/style.scss')
 );
 task('sass-etc', () =>
     GulpModule.generateSCSS('all', '../../src/style/app.scss')

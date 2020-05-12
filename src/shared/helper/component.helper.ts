@@ -1,5 +1,11 @@
+import StringHelper from './string.helper';
 import ValidatorHelper from './validator.helper';
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
+import { ComponentClassnameDefaultInterface } from '../interface/component/component-default.interface';
+import {
+    GridColumnDefaultSizeType,
+    GridColumnViewportInterface
+} from '../../common/atomic/grid/interface/component.interface';
 import {
     RangeSliderEventHandler,
     RangeSliderValueInterface
@@ -84,6 +90,37 @@ class ComponentHelper extends LogHelperAbstract {
             };
         }
         return false;
+    }
+
+    /**
+     * Generate Classname Grid
+     * @param {GridColumnDefaultSizeType} defaultSize - default size column
+     * @param {string | undefined} defaultSize - classname component
+     * @param {GridColumnViewportInterface[]} viewport - viewport
+     * @return {ComponentClassnameDefaultInterface}
+     */
+    static generateClassnameGrid(
+        defaultSize: GridColumnDefaultSizeType,
+        className: string | undefined,
+        ...viewport: (GridColumnViewportInterface | undefined)[]
+    ): string {
+        const key = ['xs', 'sm', 'md', 'lg', 'xl'];
+        const response: ComponentClassnameDefaultInterface = {
+            [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className),
+            'ui-col': defaultSize === 'default',
+            [`ui-col-${defaultSize}`]: defaultSize !== 'default',
+            relative: true
+        };
+
+        viewport.forEach((element, index) => {
+            if (element) {
+                const { size } = element;
+                response[`ui-col-${key[index]}`] = size === 'default';
+                response[`ui-col-${key[index]}-${size}`] = size !== 'default';
+            }
+        });
+
+        return StringHelper.objToString(response);
     }
 }
 

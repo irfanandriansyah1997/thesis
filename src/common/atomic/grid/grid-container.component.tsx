@@ -20,7 +20,7 @@ const GridContainerComponent: SFC<GridContainerPropsInterface> = ({
      * @return {string}
      */
     const className: ComponentClassnameDefaultInterface = {
-        'ui-atomic-container': true,
+        'ui-container': true,
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className)
     };
     delete res.className;

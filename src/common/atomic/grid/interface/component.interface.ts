@@ -36,7 +36,7 @@ export type GridColumnDefaultSizeType = GridColumnSizeType | 'default';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.11
  */
-export type GridRowAlignItemType = 'top' | 'middle' | 'bottom';
+export type GridRowAlignItemType = 'start' | 'center' | 'end';
 
 /**
  * Grid Row Justify Content Type
@@ -47,8 +47,8 @@ export type GridRowJustifyContentType =
     | 'start'
     | 'end'
     | 'center'
-    | 'space-around'
-    | 'space-between';
+    | 'around'
+    | 'between';
 
 /**
  * Grid Column Viewport Interface
@@ -56,7 +56,7 @@ export type GridRowJustifyContentType =
  * @since 2020.05.11
  */
 export interface GridColumnViewportInterface {
-    size: GridColumnSizeType;
+    size: GridColumnDefaultSizeType;
 }
 
 /**
@@ -65,6 +65,7 @@ export interface GridColumnViewportInterface {
  * @since 2020.05.11
  */
 export type GridColumnPropsInterface = baseImportInterface & {
+    id: number | string;
     order?: number;
     // under 576px
     xs?: GridColumnViewportInterface;
@@ -86,13 +87,21 @@ export type GridColumnPropsInterface = baseImportInterface & {
  * @since 2020.05.11
  */
 export type GridRowPropsInterface = baseImportInterface & {
-    padding: {
-        top?: number;
-        bottom?: number;
-    };
-    align: GridRowAlignItemType;
-    justify: GridRowJustifyContentType;
+    align?: GridRowAlignItemType;
+    padding?: GridRowPaddingInterface;
+    justify?: GridRowJustifyContentType;
 };
+
+/**
+ * Generate Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @description
+ * @since 2020.05.11
+ */
+export interface GridRowPaddingInterface {
+    vertical: number;
+    horizontal: number;
+}
 
 /**
  * Grid Container Props Interface

@@ -2,13 +2,12 @@ import { SFC, Validator } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-    GridColumnSizeType,
     GridColumnPropsInterface,
     GridColumnDefaultSizeType,
     GridColumnViewportInterface
 } from './interface/component.interface';
 
-const viewportSize: GridColumnSizeType[] = [
+const viewportSize: GridColumnDefaultSizeType[] = [
     1,
     2,
     3,
@@ -20,7 +19,8 @@ const viewportSize: GridColumnSizeType[] = [
     9,
     10,
     11,
-    12
+    12,
+    'default'
 ];
 
 /**
@@ -28,24 +28,24 @@ const viewportSize: GridColumnSizeType[] = [
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.11
  */
-const GridContainerComponent: SFC<GridColumnPropsInterface> = () => null;
+const GridColumnComponent: SFC<GridColumnPropsInterface> = () => null;
 
-GridContainerComponent.propTypes = {
+GridColumnComponent.propTypes = {
     order: PropTypes.number,
     xs: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnSizeType>(viewportSize)
+        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
     }) as Validator<GridColumnViewportInterface>,
     sm: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnSizeType>(viewportSize)
+        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
     }) as Validator<GridColumnViewportInterface>,
     md: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnSizeType>(viewportSize)
+        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
     }) as Validator<GridColumnViewportInterface>,
     lg: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnSizeType>(viewportSize)
+        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
     }) as Validator<GridColumnViewportInterface>,
     xl: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnSizeType>(viewportSize)
+        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
     }) as Validator<GridColumnViewportInterface>,
     defaultSize: PropTypes.oneOf<GridColumnDefaultSizeType>([
         ...viewportSize,
@@ -53,7 +53,7 @@ GridContainerComponent.propTypes = {
     ]) as Validator<GridColumnDefaultSizeType>
 };
 
-GridContainerComponent.defaultProps = {
+GridColumnComponent.defaultProps = {
     order: undefined,
     xs: undefined,
     sm: undefined,
@@ -63,4 +63,4 @@ GridContainerComponent.defaultProps = {
     defaultSize: undefined
 };
 
-export default GridContainerComponent;
+export default GridColumnComponent;
