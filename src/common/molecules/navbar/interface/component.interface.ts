@@ -1,4 +1,4 @@
-import { ReactNode, MouseEventHandler } from 'react';
+import { ReactNode, MouseEventHandler, SFC } from 'react';
 import { ColorType } from '../../../../shared/interface/common/color.interface';
 
 export type NavbarPositionType = 'absolute' | 'fixed' | 'relative';
@@ -49,4 +49,16 @@ export interface NavbarMenuItemPropsInterface {
  */
 export type NavbarMenuDropdownPropsInterface = NavbarMenuItemPropsInterface & {
     children: ReactNode;
+};
+
+/**
+ * Navbar Default Export Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.12
+ */
+export type NavbarDefaultExportInterface = SFC<NavbarPropsInterface> & {
+    Menu: SFC<NavbarMenuPropsInterface>;
+    Item: SFC<NavbarMenuItemPropsInterface>;
+    MegaMenu: SFC<NavbarMenuDropdownPropsInterface>;
+    Dropdown: SFC<NavbarMenuDropdownPropsInterface>;
 };

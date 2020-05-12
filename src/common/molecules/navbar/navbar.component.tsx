@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PropTypes from 'prop-types';
-import React, { SFC, Validator, CSSProperties } from 'react';
+import React, { Validator, CSSProperties } from 'react';
 
+import NavbarItemComponent from './navbar-item.component';
+import NavbarMenuComponent from './navbar-menu.component';
 import GridComponent from '../../atomic/grid/grid.component';
 import StringHelper from '../../../shared/helper/string.helper';
+import NavbarDropdownComponent from './navbar-dropdown.component';
+import NavbarMegaMenuComponent from './navbar-mega-menu.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
 import { ColorType } from '../../../shared/interface/common/color.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     NavbarPositionType,
-    NavbarPropsInterface
+    NavbarDefaultExportInterface
 } from './interface/component.interface';
 
 /**
@@ -18,7 +22,7 @@ import {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.12
  */
-const NavbarComponent: SFC<NavbarPropsInterface> = ({
+const NavbarComponent: NavbarDefaultExportInterface = ({
     shadow,
     position,
     withContainer,
@@ -48,7 +52,7 @@ const NavbarComponent: SFC<NavbarPropsInterface> = ({
     delete res.className;
 
     const style: CSSProperties = {
-        color: ValidatorHelper.verifiedKeyIsExist(
+        backgroundColor: ValidatorHelper.verifiedKeyIsExist(
             ColorDefaultConstant,
             backgroundColor
         )
@@ -92,5 +96,13 @@ NavbarComponent.defaultProps = {
     withContainer: false,
     backgroundColor: 'white'
 };
+
+NavbarComponent.Menu = NavbarMenuComponent;
+
+NavbarComponent.Item = NavbarItemComponent;
+
+NavbarComponent.MegaMenu = NavbarMegaMenuComponent;
+
+NavbarComponent.Dropdown = NavbarDropdownComponent;
 
 export default NavbarComponent;
