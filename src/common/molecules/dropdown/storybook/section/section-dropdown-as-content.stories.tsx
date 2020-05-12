@@ -74,14 +74,14 @@ class SectionDropdownAsContentComponent extends React.PureComponent<
                     sourceCode={docs({
                         name: 'hello',
                         type: 'content',
-                        trigger: 'click',
+                        trigger: 'hover',
                         label: 'Account'
                     })}
                 >
                     <DropdownComponent
                         name="hello"
                         type="content"
-                        trigger="click"
+                        trigger="hover"
                         label="Account"
                         icon={ARROW_ON_HIDE}
                     >
