@@ -1,11 +1,8 @@
 import StringHelper from './string.helper';
 import ValidatorHelper from './validator.helper';
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
+import { GridColumnDefaultSizeType } from '../../common/atomic/grid/interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../interface/component/component-default.interface';
-import {
-    GridColumnDefaultSizeType,
-    GridColumnViewportInterface
-} from '../../common/atomic/grid/interface/component.interface';
 import {
     RangeSliderEventHandler,
     RangeSliderValueInterface
@@ -96,13 +93,13 @@ class ComponentHelper extends LogHelperAbstract {
      * Generate Classname Grid
      * @param {GridColumnDefaultSizeType} defaultSize - default size column
      * @param {string | undefined} defaultSize - classname component
-     * @param {GridColumnViewportInterface[]} viewport - viewport
+     * @param {GridColumnDefaultSizeType[]} viewport - viewport
      * @return {ComponentClassnameDefaultInterface}
      */
     static generateClassnameGrid(
         defaultSize: GridColumnDefaultSizeType,
         className: string | undefined,
-        ...viewport: (GridColumnViewportInterface | undefined)[]
+        ...viewport: (GridColumnDefaultSizeType | undefined)[]
     ): string {
         const key = ['xs', 'sm', 'md', 'lg', 'xl'];
         const response: ComponentClassnameDefaultInterface = {
@@ -114,9 +111,10 @@ class ComponentHelper extends LogHelperAbstract {
 
         viewport.forEach((element, index) => {
             if (element) {
-                const { size } = element;
-                response[`ui-col-${key[index]}`] = size === 'default';
-                response[`ui-col-${key[index]}-${size}`] = size !== 'default';
+                response[`ui-col-${key[index]}`] = element === 'default';
+                response[`ui-col-${key[index]}-${element}`] =
+                    element !== 'default' &&
+                    ValidatorHelper.verifiedIsNotEmpty(element);
             }
         });
 

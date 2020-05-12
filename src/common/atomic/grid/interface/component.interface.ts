@@ -68,15 +68,15 @@ export type GridColumnPropsInterface = baseImportInterface & {
     id: number | string;
     order?: number;
     // under 576px
-    xs?: GridColumnViewportInterface;
+    xs?: GridColumnDefaultSizeType;
     // between 576px and 768px
-    sm?: GridColumnViewportInterface;
+    sm?: GridColumnDefaultSizeType;
     // between 768px and 992px
-    md?: GridColumnViewportInterface;
+    md?: GridColumnDefaultSizeType;
     // between 992px and 1200px
-    lg?: GridColumnViewportInterface;
+    lg?: GridColumnDefaultSizeType;
     // above 1200px
-    xl?: GridColumnViewportInterface;
+    xl?: GridColumnDefaultSizeType;
     // default size
     defaultSize?: GridColumnDefaultSizeType;
 };
@@ -93,7 +93,7 @@ export type GridRowPropsInterface = baseImportInterface & {
 };
 
 /**
- * Generate Interface
+ * Grid Row Padding Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @description
  * @since 2020.05.11

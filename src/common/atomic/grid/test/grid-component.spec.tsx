@@ -107,11 +107,11 @@ describe('Testing Grid in atomic component ', () => {
                     <Grid.Column
                         id="id-1234"
                         order={1}
-                        xs={{ size: 12 }}
-                        sm={{ size: 10 }}
-                        md={{ size: 8 }}
-                        lg={{ size: 6 }}
-                        xl={{ size: 4 }}
+                        xs={12}
+                        sm={10}
+                        md={8}
+                        lg={6}
+                        xl={4}
                     >
                         Render With Grid Row
                     </Grid.Column>

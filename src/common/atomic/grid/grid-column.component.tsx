@@ -3,8 +3,7 @@ import { SFC, Validator } from 'react';
 
 import {
     GridColumnPropsInterface,
-    GridColumnDefaultSizeType,
-    GridColumnViewportInterface
+    GridColumnDefaultSizeType
 } from './interface/component.interface';
 
 const viewportSize: GridColumnDefaultSizeType[] = [
@@ -32,21 +31,26 @@ const GridColumnComponent: SFC<GridColumnPropsInterface> = () => null;
 
 GridColumnComponent.propTypes = {
     order: PropTypes.number,
-    xs: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
-    }) as Validator<GridColumnViewportInterface>,
-    sm: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
-    }) as Validator<GridColumnViewportInterface>,
-    md: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
-    }) as Validator<GridColumnViewportInterface>,
-    lg: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
-    }) as Validator<GridColumnViewportInterface>,
-    xl: PropTypes.shape({
-        size: PropTypes.oneOf<GridColumnDefaultSizeType>(viewportSize)
-    }) as Validator<GridColumnViewportInterface>,
+    xs: PropTypes.oneOf<GridColumnDefaultSizeType>([
+        ...viewportSize,
+        'default'
+    ]) as Validator<GridColumnDefaultSizeType>,
+    sm: PropTypes.oneOf<GridColumnDefaultSizeType>([
+        ...viewportSize,
+        'default'
+    ]) as Validator<GridColumnDefaultSizeType>,
+    md: PropTypes.oneOf<GridColumnDefaultSizeType>([
+        ...viewportSize,
+        'default'
+    ]) as Validator<GridColumnDefaultSizeType>,
+    lg: PropTypes.oneOf<GridColumnDefaultSizeType>([
+        ...viewportSize,
+        'default'
+    ]) as Validator<GridColumnDefaultSizeType>,
+    xl: PropTypes.oneOf<GridColumnDefaultSizeType>([
+        ...viewportSize,
+        'default'
+    ]) as Validator<GridColumnDefaultSizeType>,
     defaultSize: PropTypes.oneOf<GridColumnDefaultSizeType>([
         ...viewportSize,
         'default'
