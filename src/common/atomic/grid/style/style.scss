@@ -1,0 +1,53 @@
+@import '../../../../style/import.scss';
+
+$grid-columns: 12;
+
+.ui-container {
+    width: 100%;
+
+    @include margin-left(auto);
+    @include margin-right(auto);
+}
+
+.ui-row {
+    @include margin-left(-15px);
+    @include margin-right(-15px);
+}
+
+@include generate-grid('default');
+
+@media (max-width: 576px) {
+    @include generate-grid('xs');
+}
+
+@media (min-width: 576px) {
+    .ui-container {
+        max-width: 540px;
+    }
+
+    @include generate-grid('sm');
+}
+
+@media (min-width: 768px) {
+    .ui-container {
+        max-width: 720px;
+    }
+
+    @include generate-grid('md');
+}
+
+@media (min-width: 992px) {
+    .ui-container {
+        max-width: 960px;
+    }
+
+    @include generate-grid('lg');
+}
+
+@media (min-width: 1200px) {
+    .ui-container {
+        max-width: 1140px;
+    }
+
+    @include generate-grid('xl');
+}
