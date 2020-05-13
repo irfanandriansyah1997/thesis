@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import ComboboxComponent from '../../../common/molecules/combobox/combobox.component';
 
 import { FilterDropdownComponent } from './interface/component.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
+import StringHelper from '../../../shared/helper/string.helper';
 
 /**
  * Combobox Search Filter Component
@@ -14,24 +17,36 @@ import { FilterDropdownComponent } from './interface/component.interface';
 const ComboboxSearchFilter: SFC<FilterDropdownComponent> = ({
     option,
     value,
-    onChange
+    onChange,
+    className
 }) => {
+    const name: ComponentClassnameDefaultInterface = {
+        'filter-content': true,
+        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
+    };
+
     return (
-        <div className="filters flex">
-            <div className="sub-channel" style={{ marginRight: 20 }}>
-                <ComboboxComponent name="id" onChange={onChange} value={value}>
-                    {option.map((item) => (
-                        <ComboboxComponent.Item
-                            key={item.id}
-                            id={item.id}
-                            value={item.value}
-                            label={item.label}
-                        />
-                    ))}
-                </ComboboxComponent>
-            </div>
+        <div
+            className={StringHelper.objToString(name)}
+            style={{ marginRight: 20 }}
+        >
+            <ComboboxComponent name="id" onChange={onChange} value={value}>
+                {option.map((item) => (
+                    <ComboboxComponent.Item
+                        key={item.id}
+                        id={item.id}
+                        value={item.value}
+                        label={item.label}
+                        subOption={item.subOption}
+                    />
+                ))}
+            </ComboboxComponent>
         </div>
     );
+};
+
+ComboboxSearchFilter.defaultProps = {
+    className: undefined
 };
 
 ComboboxSearchFilter.propTypes = {
@@ -43,7 +58,8 @@ ComboboxSearchFilter.propTypes = {
         }).isRequired
     ).isRequired,
     value: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    className: PropTypes.string
 };
 
 export default ComboboxSearchFilter;

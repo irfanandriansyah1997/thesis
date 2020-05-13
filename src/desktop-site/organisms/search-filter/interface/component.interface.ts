@@ -6,6 +6,8 @@ export interface FilterNavbarComponent {
         | FilterDropdownComponent
     )[];
     sortingItem: SortingFilterComponent;
+    onChangeFilterField: (key: string, value: string | number) => void;
+    onChangeSortingField: (value: string | number) => void;
 }
 
 export interface SortingFilterComponent {
@@ -16,24 +18,28 @@ export interface SortingFilterComponent {
 
 export interface FilterComponentItem {
     name: string;
-    onChange: (value: unknown) => void;
     type: 'combobox' | 'range' | 'checkbox';
     isChildrenToggle: boolean;
 }
 
 export interface FilterCheckboxComponent extends FilterComponentItem {
     isChecked: boolean;
+    onChange: (res: (string | number)[]) => void;
 }
 
 export interface FilterRangeComponent extends FilterComponentItem {
     min: number;
     max: number;
-    value: number;
+    value: RangeSliderValueInterface;
+    onChange: (start: number, end: number) => void;
+    className?: string;
 }
 
 export interface FilterDropdownComponent extends FilterComponentItem {
     option: ComboboxItemComponent[];
-    value: number;
+    value: number | string;
+    onChange: (val: string | number) => void;
+    className?: string;
 }
 
 export interface ComboboxItemComponent {
@@ -41,4 +47,9 @@ export interface ComboboxItemComponent {
     label: string;
     subOption?: boolean;
     value: string | number;
+}
+
+export interface RangeSliderValueInterface {
+    end: number;
+    start: number;
 }

@@ -20,6 +20,8 @@ const SearchFilterDocumentation = require('./markdown/search-filter.documentatio
                     searchText="Rumah dijual di Jakarta"
                     filterItem={[]}
                     sortingItem={{ value: 1, sortingText: '', option: [] }}
+                    onChangeFilterField={(): void => undefined}
+                    onChangeSortingField={(): void => undefined}
                 />
             </>
         )

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ReactNode } from 'react';
 
@@ -26,6 +27,87 @@ const subChannel = [
     }
 ];
 
+const propertyType = [
+    {
+        id: '1',
+        value: '1',
+        label: 'Residensial'
+    },
+    {
+        id: '2',
+        value: '2',
+        label: 'Rumah',
+        subOption: true
+    },
+    {
+        id: '3',
+        value: '3',
+        label: 'Apartemen',
+        subOption: true
+    },
+    {
+        id: '4',
+        value: '4',
+        label: 'Ruko'
+    },
+    {
+        id: '5',
+        value: '5',
+        label: 'Tanah'
+    }
+];
+
+const price = [
+    {
+        id: '1',
+        value: '1',
+        label: 'Berapapun'
+    },
+    {
+        id: '2',
+        value: '2',
+        label: '50jt'
+    },
+    {
+        id: '3',
+        value: '3',
+        label: '100jt'
+    },
+    {
+        id: '4',
+        value: '4',
+        label: '200jt'
+    },
+    {
+        id: '5',
+        value: '5',
+        label: '300jt'
+    }
+];
+
+const sortingItem = [
+    {
+        id: '1',
+        value: '1',
+        label: 'Default (Featured)'
+    },
+    {
+        id: '2',
+        value: '2',
+        label: 'Terbaru'
+    },
+    {
+        id: '3',
+        value: '3',
+        label: 'Harga Tertinggi'
+    },
+    {
+        id: '4',
+        value: '4',
+        label: 'Harga Terendah'
+    }
+];
+
 /**
  * Default Search Filter Section
  * @author Dedik Budianto <dedik.budianto@99.co>
@@ -35,15 +117,27 @@ class DeafultSearchFilterSectionComponent extends React.PureComponent<
     FilterNavbarComponent,
     Record<string, unknown>
 > {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         selection: 1
-    //     };
-    // }
+    constructor(props: FilterNavbarComponent) {
+        super(props);
+
+        this.state = {
+            subChannelSelection: 1,
+            propertyTypeSelection: 1,
+            minPriceSelection: 1,
+            maxPriceSelection: 1,
+            start: 0,
+            end: 7000
+        };
+    }
 
     render(): ReactNode {
-        const { filterItem } = this.props;
+        const {
+            subChannelSelection,
+            propertyTypeSelection,
+            minPriceSelection,
+            maxPriceSelection,
+            ...res
+        } = this.state;
         return (
             <>
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
@@ -53,14 +147,81 @@ class DeafultSearchFilterSectionComponent extends React.PureComponent<
                 <CodingViewerDocsComponent sourceCode="sourceCode">
                     <SearchFilter
                         searchText="Rumah dijual di Jakarta"
-                        filterItem={filterItem.map((item) => {
-                            item.onChange;
-                        })}
+                        filterItem={[
+                            {
+                                name: 'combobox',
+                                onChange: (param: string | number): void => {
+                                    this.setState({
+                                        subChannelSelection: param
+                                    });
+                                },
+                                type: 'combobox',
+                                isChildrenToggle: false,
+                                option: subChannel,
+                                value: subChannelSelection as number,
+                                className: 'sub-channel'
+                            },
+                            {
+                                name: 'combobox',
+                                onChange: (param: string | number): void => {
+                                    this.setState({
+                                        propertyTypeSelection: param
+                                    });
+                                },
+                                type: 'combobox',
+                                isChildrenToggle: false,
+                                option: propertyType,
+                                value: propertyTypeSelection as number,
+                                className: 'property-type'
+                            },
+                            {
+                                name: 'combobox',
+                                onChange: (param: string | number): void => {
+                                    this.setState({
+                                        minPriceSelection: param
+                                    });
+                                },
+                                type: 'combobox',
+                                isChildrenToggle: false,
+                                option: price,
+                                value: minPriceSelection as number,
+                                className: 'min-price'
+                            },
+                            {
+                                name: 'combobox',
+                                onChange: (param: string | number): void => {
+                                    this.setState({
+                                        maxPriceSelection: param
+                                    });
+                                },
+                                type: 'combobox',
+                                isChildrenToggle: false,
+                                option: price,
+                                value: maxPriceSelection as number,
+                                className: 'max-price'
+                            },
+                            {
+                                name: 'range',
+                                onChange: (start, end): void => {
+                                    this.setState({ start, end });
+                                },
+                                type: 'range',
+                                isChildrenToggle: false,
+                                min: 0,
+                                max: 7000,
+                                value: {
+                                    start: res.start as number,
+                                    end: res.end as number
+                                }
+                            }
+                        ]}
                         sortingItem={{
                             value: 1,
                             sortingText: '',
-                            option: subChannel
+                            option: sortingItem
                         }}
+                        onChangeFilterField={(): void => undefined}
+                        onChangeSortingField={(): void => undefined}
                     />
                 </CodingViewerDocsComponent>
             </>
