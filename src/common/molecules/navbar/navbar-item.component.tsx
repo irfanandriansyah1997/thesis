@@ -19,17 +19,23 @@ const NavbarItemComponent: SFC<NavbarMenuItemPropsInterface> = ({
     text,
     color,
     onClick,
+    isHeading,
     backgroundColor,
     ...res
 }) => {
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
-        'ui-molecules-navbar__item': true
+        'ui-molecules-navbar__item': true,
+        'ui-molecules-navbar__item--is-heading': ValidatorHelper.verifiedIsNotFalse(
+            isHeading
+        ),
+        relative: true
     };
 
     return (
         <LinkComponent
             href={to}
+            noUnderline
             color={color}
             onClick={onClick}
             className={StringHelper.objToString(className)}
@@ -39,8 +45,11 @@ const NavbarItemComponent: SFC<NavbarMenuItemPropsInterface> = ({
                     backgroundColor
                 )
                     ? ColorDefaultConstant[backgroundColor as ColorType]
-                    : undefined
+                    : undefined,
+                marginLeft: 4,
+                marginRight: 4
             }}
+            {...res}
         >
             {text}
         </LinkComponent>
@@ -49,6 +58,7 @@ const NavbarItemComponent: SFC<NavbarMenuItemPropsInterface> = ({
 
 NavbarItemComponent.propTypes = {
     to: PropTypes.string,
+    isHeading: PropTypes.bool,
     text: PropTypes.string.isRequired,
     color: PropTypes.oneOf(Object.keys(ColorDefaultConstant)) as Validator<
         ColorType
@@ -62,6 +72,7 @@ NavbarItemComponent.propTypes = {
 NavbarItemComponent.defaultProps = {
     to: undefined,
     color: 'heading',
+    isHeading: true,
     onClick: undefined,
     backgroundColor: undefined
 };

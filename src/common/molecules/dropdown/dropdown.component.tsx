@@ -40,25 +40,20 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
         const elementContent = contentNode.current;
         const evt = e as { target: HTMLInputElement };
 
-        if (type === 'list') {
+        if (type === 'list' && trigger === 'click') {
             /* istanbul ignore next */
             if (!(element && element.contains(evt.target))) {
                 setShow(false);
             }
-        }
-
-        if (type === 'content') {
-            /* istanbul ignore next */
-            if (
-                !(
-                    element &&
-                    elementContent &&
-                    (element.contains(evt.target) ||
-                        elementContent.contains(evt.target))
-                )
-            ) {
-                setShow(false);
-            }
+        } else if (
+            !(
+                element &&
+                elementContent &&
+                (element.contains(evt.target) ||
+                    elementContent.contains(evt.target))
+            )
+        ) {
+            setShow(false);
         }
     };
 
@@ -101,7 +96,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      * @return {void}
      */
     const onMouseOverToggle = (): void => {
-        if (trigger === 'hover') {
+        if (trigger === 'hover' && show === false) {
             setShow(!show);
 
             if (onClick) {

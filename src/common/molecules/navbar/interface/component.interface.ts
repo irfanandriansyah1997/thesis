@@ -1,5 +1,7 @@
-import { ReactNode, MouseEventHandler, SFC } from 'react';
+import { ReactNode, SFC } from 'react';
+
 import { ColorType } from '../../../../shared/interface/common/color.interface';
+import { LinkPropsInterface } from '../../../atomic/link/interface/component.interface';
 
 export type NavbarPositionType = 'absolute' | 'fixed' | 'relative';
 
@@ -23,6 +25,7 @@ export interface NavbarPropsInterface {
  * @since 2020.05.12
  */
 export interface NavbarMenuPropsInterface {
+    id: string;
     className?: string;
     children: ReactNode;
     position: 'left' | 'right';
@@ -33,14 +36,15 @@ export interface NavbarMenuPropsInterface {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.12
  */
-export interface NavbarMenuItemPropsInterface {
+export type NavbarMenuItemPropsInterface = Omit<
+    LinkPropsInterface,
+    'noUnderline' | 'icon' | 'href' | 'children' | 'style'
+> & {
     to?: string;
     text: string;
-    color?: ColorType;
-    className?: string;
+    isHeading?: boolean;
     backgroundColor?: ColorType;
-    onClick?: MouseEventHandler<HTMLAnchorElement>;
-}
+};
 
 /**
  * Navbar Menu Dropdown Component Interface

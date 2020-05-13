@@ -41,10 +41,8 @@ const NavbarDropdownComponent: SFC<NavbarMenuDropdownPropsInterface> = ({
             {dropdownItem.map((item) => (
                 <DropdownComponent.Item
                     key={`${item.text as string}-${res.text}`}
-                    disableHover
-                    withoutPadding
                 >
-                    <NavbarItemComponent {...res} />
+                    <NavbarItemComponent {...item} isHeading={false} />
                 </DropdownComponent.Item>
             ))}
         </DropdownComponent>

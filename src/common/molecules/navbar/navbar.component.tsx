@@ -43,7 +43,10 @@ const NavbarComponent: NavbarDefaultExportInterface = ({
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
         'ui-molecules-navbar': true,
-        'ui-molecules-navbar--with-shadow': ValidatorHelper.verifiedIsNotEmpty(
+        'ui-molecules-navbar--with-container': ValidatorHelper.verifiedIsNotFalse(
+            withContainer
+        ),
+        'ui-molecules-navbar--with-shadow': ValidatorHelper.verifiedIsNotFalse(
             shadow
         ),
         block: true,
@@ -64,7 +67,12 @@ const NavbarComponent: NavbarDefaultExportInterface = ({
         return (
             <div style={style} className={StringHelper.objToString(className)}>
                 <GridComponent.Container>
-                    <GridComponent.Row>{children}</GridComponent.Row>
+                    <GridComponent.Row
+                        padding={{ horizontal: 0, vertical: 0 }}
+                        align="center"
+                    >
+                        {children}
+                    </GridComponent.Row>
                 </GridComponent.Container>
             </div>
         );
@@ -72,7 +80,12 @@ const NavbarComponent: NavbarDefaultExportInterface = ({
 
     return (
         <div style={style} className={StringHelper.objToString(className)}>
-            <GridComponent.Row>{children}</GridComponent.Row>
+            <GridComponent.Row
+                padding={{ horizontal: 0, vertical: 0 }}
+                align="center"
+            >
+                {children}
+            </GridComponent.Row>
         </div>
     );
 };
@@ -94,7 +107,7 @@ NavbarComponent.defaultProps = {
     shadow: false,
     position: 'relative',
     withContainer: false,
-    backgroundColor: 'white'
+    backgroundColor: 'milkwhite'
 };
 
 NavbarComponent.Menu = NavbarMenuComponent;

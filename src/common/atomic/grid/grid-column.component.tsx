@@ -29,6 +29,8 @@ const viewportSize: GridColumnDefaultSizeType[] = [
  */
 const GridColumnComponent: SFC<GridColumnPropsInterface> = () => null;
 
+GridColumnComponent.displayName = 'GridColumnComponent';
+
 GridColumnComponent.propTypes = {
     order: PropTypes.number,
     xs: PropTypes.oneOf<GridColumnDefaultSizeType>([

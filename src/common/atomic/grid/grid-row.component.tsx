@@ -35,12 +35,19 @@ const GridRowComponent: SFC<GridRowPropsInterface> = ({
     const children = React.Children.toArray(res.children)
         .filter((o: any): boolean => {
             if (o.type) {
-                return o.type.name === 'GridColumnComponent';
+                return o.type.displayName.includes('GridColumnComponent');
             }
 
             return false;
         })
-        .map((o: any): GridColumnPropsInterface => o.props);
+        .map(
+            (o: any): GridColumnPropsInterface => {
+                if (o.type && o.type.name !== 'GridColumnComponent') {
+                    return o.type(o.props);
+                }
+                return o.props;
+            }
+        );
     delete res.children;
 
     /**
@@ -119,6 +126,8 @@ const GridRowComponent: SFC<GridRowPropsInterface> = ({
         </div>
     );
 };
+
+GridRowComponent.displayName = 'GridRowComponent';
 
 GridRowComponent.propTypes = {
     padding: PropTypes.shape({

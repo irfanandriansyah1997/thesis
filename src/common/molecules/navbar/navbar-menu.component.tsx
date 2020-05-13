@@ -2,10 +2,10 @@
 import PropTypes from 'prop-types';
 import React, { SFC, Validator } from 'react';
 
-import GridComponent from '../../atomic/grid/grid.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { NavbarMenuPropsInterface } from './interface/component.interface';
+import { GridColumnPropsInterface } from '../../atomic/grid/interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
@@ -14,9 +14,10 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.05.12
  */
 const NavbarMenuComponent: SFC<NavbarMenuPropsInterface> = ({
+    id,
     position,
     ...res
-}) => {
+}: NavbarMenuPropsInterface): any => {
     const children = React.Children.toArray(res.children).filter(
         (o: any): boolean => {
             if (o.type) {
@@ -35,19 +36,21 @@ const NavbarMenuComponent: SFC<NavbarMenuPropsInterface> = ({
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
         'ui-molecules-navbar__menu': true,
+        flex: true,
         [`float-${position}`]: ValidatorHelper.verifiedIsNotEmpty(position)
     };
     delete res.className;
 
-    return (
-        <GridComponent.Column
-            id="navbar-menu"
-            className={StringHelper.objToString(className)}
-        >
-            {children}
-        </GridComponent.Column>
-    );
+    const response: GridColumnPropsInterface = {
+        children,
+        id: `navbar-menu-${id}`,
+        className: StringHelper.objToString(className)
+    };
+
+    return response;
 };
+
+NavbarMenuComponent.displayName = 'NavbarMenuComponent - GridColumnComponent';
 
 NavbarMenuComponent.propTypes = {
     className: PropTypes.string,
