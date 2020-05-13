@@ -1,34 +1,9 @@
 import React from 'react';
 
-import SearchFilter from '../search-filter.component';
-import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
-import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
-import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
+import DeafultSearchFilterSectionComponent from './section/search-filter-default.stories';
 
 import '../style/style.scss';
-
-// const items = [
-//     {
-//         option: [
-//             {
-//                 id: '1',
-//                 value: '1',
-//                 label: 'Baru/seken'
-//             },
-//             {
-//                 id: '2',
-//                 value: '2',
-//                 label: 'Properti baru'
-//             },
-//             {
-//                 id: '3',
-//                 value: '3',
-//                 label: 'Property seken'
-//             }
-//         ]
-//     }
-// ];
 
 const SearchFilterDocumentation = require('./markdown/search-filter.documentation.md');
 
@@ -41,21 +16,11 @@ const SearchFilterDocumentation = require('./markdown/search-filter.documentatio
         .setMarkdownFile(SearchFilterDocumentation)
         .registerDocumentation(
             <>
-                <HeadingDocsComponent>Usage</HeadingDocsComponent>
-                <TextDocsComponent>Search Filter</TextDocsComponent>
-                <CodingViewerDocsComponent
-                    sourceCode={
-                        `${'<SearchFilter'}\n` +
-                        `   ${'heading="Residensial dijual"'}\n` +
-                        `${'/>'}`
-                    }
-                >
-                    <SearchFilter
-                        searchText="Rumah dijual di Jakarta"
-                        filterItem={[]}
-                        sortingItem={{ value: 1, sortingText: '', option: [] }}
-                    />
-                </CodingViewerDocsComponent>
+                <DeafultSearchFilterSectionComponent
+                    searchText="Rumah dijual di Jakarta"
+                    filterItem={[]}
+                    sortingItem={{ value: 1, sortingText: '', option: [] }}
+                />
             </>
         )
         .execute();

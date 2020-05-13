@@ -1,36 +1,3 @@
-import { HTMLAttributes } from 'react';
-
-/**
- * Search Filter Content Props Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.05.11
- */
-export type SearchFilterContentPropsInterface = {
-    id: string;
-    value: string;
-    label: string;
-    subOption?: boolean;
-};
-
-/**
- * Search Filter Props Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.05.11
- */
-export type SearchFilterPropsInterface = Omit<
-    HTMLAttributes<HTMLDivElement>,
-    | 'dangerouslySetInnerHTML'
-    | 'onClick'
-    | 'onKeyDown'
-    | 'onKeyDown'
-    | 'onKeyPress'
-    | 'onChange'
-> & {
-    subChannelFilter: SearchFilterContentPropsInterface[];
-    propertyTypeFilter: SearchFilterContentPropsInterface[];
-    minPriceFilter: SearchFilterContentPropsInterface[];
-};
-
 export interface FilterNavbarComponent {
     searchText: string;
     filterItem: (
