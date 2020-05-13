@@ -1,6 +1,9 @@
 import { ReactNode, SFC } from 'react';
 
-import { ColorType } from '../../../../shared/interface/common/color.interface';
+import {
+    ColorType,
+    ColorInterface
+} from '../../../../shared/interface/common/color.interface';
 import { LinkPropsInterface } from '../../../atomic/link/interface/component.interface';
 
 export type NavbarPositionType = 'absolute' | 'fixed' | 'relative';
@@ -32,7 +35,25 @@ export interface NavbarMenuPropsInterface {
 }
 
 /**
- * Navbar Menu Component Interface
+ * Navbar Section Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.13
+ */
+export interface NavbarSectionPropsInterface {
+    className?: string;
+    children: ReactNode;
+}
+
+/**
+ * Navbar Divider Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @description
+ * @since 2020.05.13
+ */
+export type NavbarDividerPropsInterface = ColorInterface;
+
+/**
+ * Navbar Menu Item Component Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.12
  */
@@ -42,6 +63,7 @@ export type NavbarMenuItemPropsInterface = Omit<
 > & {
     to?: string;
     text: string;
+    active?: boolean;
     isHeading?: boolean;
     backgroundColor?: ColorType;
 };
@@ -63,6 +85,8 @@ export type NavbarMenuDropdownPropsInterface = NavbarMenuItemPropsInterface & {
 export type NavbarDefaultExportInterface = SFC<NavbarPropsInterface> & {
     Menu: SFC<NavbarMenuPropsInterface>;
     Item: SFC<NavbarMenuItemPropsInterface>;
+    Divider: SFC<NavbarDividerPropsInterface>;
+    Section: SFC<NavbarSectionPropsInterface>;
     MegaMenu: SFC<NavbarMenuDropdownPropsInterface>;
     Dropdown: SFC<NavbarMenuDropdownPropsInterface>;
 };

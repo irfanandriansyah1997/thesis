@@ -20,11 +20,18 @@ const NavbarMenuComponent: SFC<NavbarMenuPropsInterface> = ({
 }: NavbarMenuPropsInterface): any => {
     const children = React.Children.toArray(res.children).filter(
         (o: any): boolean => {
+            const includeComponent = [
+                'NavbarItemComponent',
+                'NavbarDividerComponent',
+                'NavbarSectionComponent',
+                'NavbarDropdownComponent',
+                'NavbarMegaMenuComponent'
+            ];
+
             if (o.type) {
                 return (
-                    o.type.name === 'NavbarDropdownComponent' ||
-                    o.type.name === 'NavbarMegaMenuComponent' ||
-                    o.type.name === 'NavbarItemComponent'
+                    includeComponent.filter((item) => o.type.name === item)
+                        .length > 0
                 );
             }
 

@@ -18,6 +18,7 @@ const NavbarItemComponent: SFC<NavbarMenuItemPropsInterface> = ({
     to,
     text,
     color,
+    active,
     onClick,
     isHeading,
     backgroundColor,
@@ -26,6 +27,9 @@ const NavbarItemComponent: SFC<NavbarMenuItemPropsInterface> = ({
     const className: ComponentClassnameDefaultInterface = {
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className),
         'ui-molecules-navbar__item': true,
+        'ui-molecules-navbar__item--is-active': ValidatorHelper.verifiedIsNotFalse(
+            active
+        ),
         'ui-molecules-navbar__item--is-heading': ValidatorHelper.verifiedIsNotFalse(
             isHeading
         ),
@@ -58,6 +62,7 @@ const NavbarItemComponent: SFC<NavbarMenuItemPropsInterface> = ({
 
 NavbarItemComponent.propTypes = {
     to: PropTypes.string,
+    active: PropTypes.bool,
     isHeading: PropTypes.bool,
     text: PropTypes.string.isRequired,
     color: PropTypes.oneOf(Object.keys(ColorDefaultConstant)) as Validator<
@@ -71,6 +76,7 @@ NavbarItemComponent.propTypes = {
 
 NavbarItemComponent.defaultProps = {
     to: undefined,
+    active: false,
     color: 'heading',
     isHeading: true,
     onClick: undefined,

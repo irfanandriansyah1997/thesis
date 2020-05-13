@@ -18,6 +18,7 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
 const IconComponent: SFC<IconPropsInterface> = ({
     size,
     color,
+    style,
     children,
     className,
     ...res
@@ -42,13 +43,14 @@ const IconComponent: SFC<IconPropsInterface> = ({
     return createElement('i', {
         className: StringHelper.objToString(name),
         style: {
-            ...res.style,
+            ...style,
             color: ValidatorHelper.verifiedKeyIsExist(
                 ColorDefaultConstant,
                 color
             )
                 ? ColorDefaultConstant[color as ColorType]
                 : undefined,
+            height: ValidatorHelper.isNumber(size) ? `${size}px` : undefined,
             fontSize: ValidatorHelper.isNumber(size) ? `${size}px` : undefined
         },
         children: isVendorIcon ? undefined : children,

@@ -16,8 +16,10 @@ $height-navbar: 51px;
 
     &__menu {
         &.ui-col {
+            flex-basis: initial;
             flex-grow: initial;
             height: 100%;
+            width: initial;
         }
 
         .ui-molecules-dropdown {
@@ -57,13 +59,19 @@ $height-navbar: 51px;
                 @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
             }
 
-            &:hover {
+            &:hover,
+            &#{$c}__item--is-active {
                 opacity: 1;
             }
 
-            &:hover::before {
+            &:hover::before,
+            &#{$c}__item--is-active::before {
                 opacity: 1;
             }
         }
+    }
+
+    &__section {
+        height: 100%;
     }
 }

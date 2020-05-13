@@ -6,6 +6,8 @@ import NavbarItemComponent from './navbar-item.component';
 import NavbarMenuComponent from './navbar-menu.component';
 import GridComponent from '../../atomic/grid/grid.component';
 import StringHelper from '../../../shared/helper/string.helper';
+import NavbarSectionComponent from './navbar-section.component';
+import NavbarDividerComponent from './navbar-divider.component';
 import NavbarDropdownComponent from './navbar-dropdown.component';
 import NavbarMegaMenuComponent from './navbar-mega-menu.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
@@ -113,6 +115,10 @@ NavbarComponent.defaultProps = {
 NavbarComponent.Menu = NavbarMenuComponent;
 
 NavbarComponent.Item = NavbarItemComponent;
+
+NavbarComponent.Divider = NavbarDividerComponent;
+
+NavbarComponent.Section = NavbarSectionComponent;
 
 NavbarComponent.MegaMenu = NavbarMegaMenuComponent;
 
