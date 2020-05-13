@@ -25,12 +25,15 @@ describe('Testing <SearchFilter> in organisms component ', () => {
 
         const component = render(
             <SearchFilter
-                searchText="Rumah dijual di Jakarta"
+                searchResultText="Rumah dijual di Jakarta"
+                hasChildrenToggle
+                hasSortingFilter
                 filterItem={[]}
                 sortingItem={{
                     value: 1,
                     sortingText: '',
-                    option: subChannel
+                    option: subChannel,
+                    onChange: jest.fn()
                 }}
                 onChangeFilterField={jest.fn()}
                 onChangeSortingField={jest.fn()}
