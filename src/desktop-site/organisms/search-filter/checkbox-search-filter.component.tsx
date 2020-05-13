@@ -10,30 +10,28 @@ import { FilterCheckboxComponent } from './interface/component.interface';
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.11
  */
-const CheckboxSearchFilter: SFC<FilterCheckboxComponent> = ({ onChange }) => {
+const CheckboxSearchFilter: SFC<FilterCheckboxComponent> = ({
+    onChange,
+    label
+}) => {
     return (
         <div className="filters flex">
-            <div>
-                <CheckboxComponent
-                    name="sample"
-                    styling="horizontal"
-                    type="checkbox"
-                    onChange={onChange}
-                    value={['value']}
-                >
-                    <CheckboxComponent.Item
-                        id="checkbox"
-                        value={1}
-                        label="Label 1"
-                    />
-                </CheckboxComponent>
-            </div>
+            <CheckboxComponent
+                name="sample"
+                styling="horizontal"
+                type="checkbox"
+                onChange={onChange}
+                value={['value']}
+            >
+                <CheckboxComponent.Item id="checkbox" value={1} label={label} />
+            </CheckboxComponent>
         </div>
     );
 };
 
 CheckboxSearchFilter.propTypes = {
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired
 };
 
 export default CheckboxSearchFilter;

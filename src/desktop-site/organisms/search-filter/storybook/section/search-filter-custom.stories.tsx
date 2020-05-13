@@ -111,12 +111,91 @@ const maxPrice = [
     }
 ];
 
+const bedRoom = [
+    {
+        id: '1',
+        value: '1',
+        label: 'Kamar Tidur'
+    },
+    {
+        id: '2',
+        value: '2',
+        label: '1+'
+    },
+    {
+        id: '3',
+        value: '3',
+        label: '2+'
+    },
+    {
+        id: '4',
+        value: '4',
+        label: '3+'
+    },
+    {
+        id: '5',
+        value: '5',
+        label: '4+'
+    }
+];
+
+const bathRoom = [
+    {
+        id: '1',
+        value: '1',
+        label: 'Kamar Mandi'
+    },
+    {
+        id: '2',
+        value: '2',
+        label: '1+'
+    },
+    {
+        id: '3',
+        value: '3',
+        label: '2+'
+    },
+    {
+        id: '4',
+        value: '4',
+        label: '3+'
+    },
+    {
+        id: '5',
+        value: '5',
+        label: '4+'
+    }
+];
+
+const sortingItem = [
+    {
+        id: '1',
+        value: '1',
+        label: 'Default (Featured)'
+    },
+    {
+        id: '2',
+        value: '2',
+        label: 'Terbaru'
+    },
+    {
+        id: '3',
+        value: '3',
+        label: 'Harga Tertinggi'
+    },
+    {
+        id: '4',
+        value: '4',
+        label: 'Harga Terendah'
+    }
+];
+
 /**
  * Default Search Filter Section
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.13
  */
-class CustomSearchFilterSectionComponent extends React.PureComponent<
+class DefaultSearchFilterSectionComponent extends React.PureComponent<
     FilterNavbarComponent,
     Record<string, unknown>
 > {
@@ -128,6 +207,9 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
             propertyTypeSelection: 1,
             minPriceSelection: 1,
             maxPriceSelection: 1,
+            bedRoomSelection: 1,
+            bathRoomSelection: 1,
+            sortingSelection: 1,
             start: 0,
             end: 7000
         };
@@ -139,18 +221,23 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
             propertyTypeSelection,
             minPriceSelection,
             maxPriceSelection,
+            bedRoomSelection,
+            bathRoomSelection,
+            sortingSelection,
             ...res
         } = this.state;
         return (
             <>
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
                 <TextDocsComponent>
-                    Default search filter component
+                    Search filter component with search result text, children
+                    toggle and sorting filter
                 </TextDocsComponent>
                 <CodingViewerDocsComponent sourceCode="sourceCode">
                     <SearchFilter
-                        hasChildrenToggle={false}
-                        hasSortingFilter={false}
+                        searchResultText="Rumah dijual di Jakarta"
+                        hasChildrenToggle
+                        hasSortingFilter
                         filterItem={[
                             {
                                 name: 'combobox',
@@ -218,8 +305,73 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                                     end: res.end as number
                                 },
                                 label: 'Luas Tanah (m2)'
+                            },
+                            {
+                                name: 'range',
+                                onChange: (start, end): void => {
+                                    this.setState({ start, end });
+                                },
+                                type: 'range',
+                                isChildrenToggle: true,
+                                min: 0,
+                                max: 7000,
+                                value: {
+                                    start: res.start as number,
+                                    end: res.end as number
+                                },
+                                label: 'Luas Bangunan (m2)'
+                            },
+                            {
+                                name: 'combobox',
+                                onChange: (param: string | number): void => {
+                                    this.setState({
+                                        bedRoomSelection: param
+                                    });
+                                },
+                                type: 'combobox',
+                                isChildrenToggle: true,
+                                option: bedRoom,
+                                value: bedRoomSelection as number,
+                                className: 'sub-channel'
+                            },
+                            {
+                                name: 'combobox',
+                                onChange: (param: string | number): void => {
+                                    this.setState({
+                                        bathRoomSelection: param
+                                    });
+                                },
+                                type: 'combobox',
+                                isChildrenToggle: true,
+                                option: bathRoom,
+                                value: bathRoomSelection as number,
+                                className: 'sub-channel'
+                            },
+                            {
+                                name: 'checkbox',
+                                onChange: (param: string | number): void => {
+                                    this.setState({
+                                        bathRoomSelection: param
+                                    });
+                                },
+                                type: 'checkbox',
+                                isChildrenToggle: true,
+                                option: bathRoom,
+                                value: bathRoomSelection as number,
+                                className: 'sub-channel',
+                                label: 'Termasuk iklan terjual'
                             }
                         ]}
+                        sortingItem={{
+                            value: sortingSelection as number,
+                            sortingText: '',
+                            option: sortingItem,
+                            onChange: (param: string | number): void => {
+                                this.setState({
+                                    sortingSelection: param
+                                });
+                            }
+                        }}
                         onChangeFilterField={(): void => undefined}
                         onChangeSortingField={(): void => undefined}
                     />
@@ -229,4 +381,4 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
     }
 }
 
-export default CustomSearchFilterSectionComponent;
+export default DefaultSearchFilterSectionComponent;

@@ -21,7 +21,8 @@ const RangeSliderSearchFilter: SFC<FilterRangeComponent> = ({
     max,
     value,
     onChange,
-    className
+    className,
+    label
 }) => {
     const name: ComponentClassnameDefaultInterface = {
         'filter-content': true,
@@ -34,7 +35,7 @@ const RangeSliderSearchFilter: SFC<FilterRangeComponent> = ({
             style={{ marginRight: 20 }}
         >
             <DropdownComponent
-                label="Luas tanah (m2)"
+                label={label}
                 name="land-size"
                 trigger="click"
                 icon="rui-icon-arrow-down-small"
@@ -78,7 +79,8 @@ RangeSliderSearchFilter.propTypes = {
         start: PropTypes.number.isRequired
     }).isRequired,
     onChange: PropTypes.func.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    label: PropTypes.string.isRequired
 };
 
 export default RangeSliderSearchFilter;

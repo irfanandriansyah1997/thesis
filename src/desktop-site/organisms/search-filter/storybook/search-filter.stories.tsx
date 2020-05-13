@@ -1,7 +1,9 @@
 import React from 'react';
 
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
-import DeafultSearchFilterSectionComponent from './section/search-filter-default.stories';
+import DefaultSearchFilterSectionComponent from './section/search-filter-custom.stories';
+import CustomSearchFilterSectionComponent from './section/search-filter-default.stories';
+import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
 
 import '../style/style.scss';
 
@@ -16,10 +18,30 @@ const SearchFilterDocumentation = require('./markdown/search-filter.documentatio
         .setMarkdownFile(SearchFilterDocumentation)
         .registerDocumentation(
             <>
-                <DeafultSearchFilterSectionComponent
-                    searchText="Rumah dijual di Jakarta"
+                <CustomSearchFilterSectionComponent
+                    hasChildrenToggle={false}
+                    hasSortingFilter={false}
                     filterItem={[]}
-                    sortingItem={{ value: 1, sortingText: '', option: [] }}
+                    sortingItem={{
+                        value: 1,
+                        sortingText: '',
+                        option: [],
+                        onChange: (): void => undefined
+                    }}
+                    onChangeFilterField={(): void => undefined}
+                    onChangeSortingField={(): void => undefined}
+                />
+                <DividerDocsComponent />
+                <DefaultSearchFilterSectionComponent
+                    hasChildrenToggle
+                    hasSortingFilter
+                    filterItem={[]}
+                    sortingItem={{
+                        value: 1,
+                        sortingText: '',
+                        option: [],
+                        onChange: (): void => undefined
+                    }}
                     onChangeFilterField={(): void => undefined}
                     onChangeSortingField={(): void => undefined}
                 />

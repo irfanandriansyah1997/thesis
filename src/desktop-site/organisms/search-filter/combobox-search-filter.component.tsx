@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import ComboboxComponent from '../../../common/molecules/combobox/combobox.component';
 
-import { FilterDropdownComponent } from './interface/component.interface';
+import { FilterComboboxComponent } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
@@ -14,7 +14,7 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.11
  */
-const ComboboxSearchFilter: SFC<FilterDropdownComponent> = ({
+const ComboboxSearchFilter: SFC<FilterComboboxComponent> = ({
     option,
     value,
     onChange,
