@@ -34,7 +34,10 @@ const GridRowComponent: SFC<GridRowPropsInterface> = ({
 
     const children = React.Children.toArray(res.children)
         .filter((o: any): boolean => {
-            if (o.type) {
+            if (
+                o.type &&
+                ValidatorHelper.verifiedIsNotEmpty(o.type.displayName)
+            ) {
                 return o.type.displayName.includes('GridColumnComponent');
             }
 

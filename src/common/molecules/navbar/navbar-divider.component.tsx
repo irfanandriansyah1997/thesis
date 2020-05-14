@@ -14,7 +14,8 @@ import { NavbarDividerPropsInterface } from './interface/component.interface';
  * @since 2020.05.13
  */
 const NavbarDividerComponent: SFC<NavbarDividerPropsInterface> = ({
-    color
+    color,
+    height
 }) => {
     return createElement('div', {
         className: StringHelper.objToString({
@@ -27,8 +28,8 @@ const NavbarDividerComponent: SFC<NavbarDividerPropsInterface> = ({
             )
                 ? ColorDefaultConstant[color as ColorType]
                 : undefined,
+            height,
             width: 1,
-            height: 30,
             marginLeft: 16,
             marginRight: 16
         }
@@ -38,11 +39,13 @@ const NavbarDividerComponent: SFC<NavbarDividerPropsInterface> = ({
 NavbarDividerComponent.propTypes = {
     color: PropTypes.oneOf(Object.keys(ColorDefaultConstant)) as Validator<
         ColorType
-    >
+    >,
+    height: PropTypes.number
 };
 
 NavbarDividerComponent.defaultProps = {
-    color: 'heading'
+    color: 'heading',
+    height: 30
 };
 
 export default NavbarDividerComponent;

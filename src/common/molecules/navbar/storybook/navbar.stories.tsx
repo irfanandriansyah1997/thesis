@@ -42,12 +42,21 @@ import '../style/style.scss';
                             color="white"
                             fontWeight={500}
                         />
-                        <NavbarComponent.Item
-                            to="/"
+                        <NavbarComponent.MegaMenu
+                            to="/berita"
                             text="Panduan"
                             color="white"
                             fontWeight={500}
-                        />
+                        >
+                            <NavbarComponent.Item
+                                to="/"
+                                text="Berita Properti"
+                            />
+                            <NavbarComponent.Item
+                                to="/"
+                                text="Berita Ekonomi"
+                            />
+                        </NavbarComponent.MegaMenu>
                         <NavbarComponent.Dropdown
                             to="/berita"
                             text="Berita"

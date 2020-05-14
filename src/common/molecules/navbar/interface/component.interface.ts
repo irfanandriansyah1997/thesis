@@ -50,7 +50,9 @@ export interface NavbarSectionPropsInterface {
  * @description
  * @since 2020.05.13
  */
-export type NavbarDividerPropsInterface = ColorInterface;
+export type NavbarDividerPropsInterface = ColorInterface & {
+    height?: number;
+};
 
 /**
  * Navbar Menu Item Component Interface
