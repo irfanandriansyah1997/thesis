@@ -85,10 +85,10 @@ const ColorDefaultConstant = {
     premiumR123: '#ffb200',
     hoverPrimary: '#236d9d',
     hoverSecondary: '#d2d6da',
-    hoverOutline: '#20282e',
+    headingDarkerR123: '#20282e',
     hoverDanger: '#a30000',
     basicCardHeadingR123: '#a5adb5',
-    basicCardContentR123: '#333f48'
+    headingR123: '#333f48'
 } as const;
 
 export default ColorDefaultConstant;

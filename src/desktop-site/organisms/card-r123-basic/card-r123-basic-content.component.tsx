@@ -116,7 +116,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                                 href={link}
                                 icon={item.icon}
                                 fontWeight={500}
-                                color="basicCardContentR123"
+                                color="headingR123"
                             >
                                 {item.value}
                             </LinkComponent>
@@ -139,14 +139,14 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                         noUnderline
                         fontWeight={700}
                         styling="heading-4"
-                        color="basicCardContentR123"
+                        color="headingR123"
                         className="card--content__price-info inline"
                     >
                         {priceTag}
                     </LinkComponent>
                     <TextComponent
                         tag="p"
-                        color="basicCardContentR123"
+                        color="headingR123"
                         className="card--content__info-installment"
                         style={{ marginTop: 4 }}
                     >
@@ -156,6 +156,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                 <div className="card--content__info no-wrap">
                     <TextComponent
                         tag="h2"
+                        color="text"
                         className="card--content__info-title truncate"
                     >
                         <LinkComponent
@@ -164,20 +165,21 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                             noUnderline
                             fontWeight={500}
                             styling="heading-6"
-                            color="basicCardContentR123"
+                            color="headingR123"
                         >
                             {title}
                         </LinkComponent>
                     </TextComponent>
                     <TextComponent
                         tag="h3"
+                        color="text"
                         className="card--content__info-address"
                     >
                         <LinkComponent
                             className="card--content__info-address-link"
                             noUnderline
                             fontWeight={500}
-                            color="basicCardContentR123"
+                            color="headingR123"
                             href={link}
                         >
                             {address}
@@ -190,7 +192,7 @@ const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
                         href={link}
                         noUnderline
                         fontWeight={500}
-                        color="basicCardContentR123"
+                        color="headingR123"
                     >
                         {propertyType}
                     </LinkComponent>

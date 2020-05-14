@@ -135,10 +135,10 @@ const RangeSliderComponent: SFC<RangeSliderPropsInterface> = ({
                         'ui-molecules-range-slider__label': true
                     })}
                 >
-                    <TextComponent tag="p" styling="caption">
+                    <TextComponent tag="p" styling="caption" color="text">
                         {label.minLabel}
                     </TextComponent>
-                    <TextComponent tag="p" styling="caption">
+                    <TextComponent tag="p" styling="caption" color="text">
                         {label.maxLabel}
                     </TextComponent>
                 </div>

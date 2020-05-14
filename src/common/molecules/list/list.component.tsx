@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PropTypes from 'prop-types';
-import React, { CSSProperties, Validator } from 'react';
+import React, { CSSProperties } from 'react';
 
 import ListItemComponent from './list-item.component';
 import StringHelper from '../../../shared/helper/string.helper';
@@ -73,15 +73,20 @@ const ListComponent: ListDefaultExportInterface = ({
         const isShowDivider = !isLastChildren && isDividerLine;
         const isShowDividerVertical = !isColumn && isShowDivider;
         const isShowDividerHorizontal = isColumn && isShowDivider;
-        const color = ValidatorHelper.verifiedKeyIsExist(
-            ColorDefaultConstant,
-            dividerColor
-        )
-            ? `1px solid ${ColorDefaultConstant[dividerColor as ColorType]}`
-            : `1px solid ${ColorDefaultConstant.heading}`;
+        let color;
+
+        if (ValidatorHelper.verifiedIsNotEmpty(dividerColor)) {
+            color = ValidatorHelper.verifiedKeyIsExist(
+                ColorDefaultConstant,
+                dividerColor
+            )
+                ? `1px solid ${ColorDefaultConstant[dividerColor as ColorType]}`
+                : `1px solid ${dividerColor}`;
+        }
 
         return {
             ...getStyling(true),
+            width: '100%',
             borderRight: isShowDividerVertical ? color : undefined,
             borderBottom: isShowDividerHorizontal ? color : undefined,
             paddingRight:
@@ -116,11 +121,9 @@ ListComponent.propTypes = {
         PropTypes.node
     ]).isRequired,
     space: PropTypes.number,
+    dividerColor: PropTypes.string,
     divider: PropTypes.oneOf(['none', 'line']),
-    styling: PropTypes.oneOf(['vertical', 'horizontal']),
-    dividerColor: PropTypes.oneOf(
-        Object.keys(ColorDefaultConstant)
-    ) as Validator<ColorType>
+    styling: PropTypes.oneOf(['vertical', 'horizontal'])
 };
 
 ListComponent.defaultProps = {
