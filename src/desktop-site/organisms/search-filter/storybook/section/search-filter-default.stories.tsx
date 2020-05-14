@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ReactNode } from 'react';
 
 import SearchFilter from '../../search-filter.component';
@@ -6,6 +7,21 @@ import HeadingDocsComponent from '../../../../../.storybook/component/atomic/hea
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 import { FilterNavbarComponent } from '../../interface/component.interface';
+
+/**
+ * Generate Docs
+ * @param {string} type - type props image
+ * @return {string}
+ */
+const docs = (props: FilterNavbarComponent): string =>
+    `<SearchFilter \n` +
+    `    searchResultText="${props.searchResultText}"\n` +
+    `    hasChildrenToggle=${props.hasChildrenToggle}\n` +
+    `    hasSortingFilter=${props.hasSortingFilter}\n` +
+    `    filterItem={[${props.filterItem}]}\n` +
+    `    onChangeFilterField={${props.onChangeFilterField}}\n` +
+    `    onChangeSortingField={${props.onChangeFilterField}}\n` +
+    `/>`;
 
 const subChannel = [
     {
@@ -147,7 +163,16 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                 <TextDocsComponent>
                     Default search filter component
                 </TextDocsComponent>
-                <CodingViewerDocsComponent sourceCode="sourceCode">
+                <CodingViewerDocsComponent
+                    sourceCode={docs({
+                        searchResultText: 'Rumah dijual di Jakarta',
+                        hasChildrenToggle: false,
+                        hasSortingFilter: false,
+                        filterItem: [],
+                        onChangeFilterField: (): void => {},
+                        onChangeSortingField: (): void => {}
+                    })}
+                >
                     <SearchFilter
                         hasChildrenToggle={false}
                         hasSortingFilter={false}

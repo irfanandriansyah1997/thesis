@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ReactNode } from 'react';
 
 import SearchFilter from '../../search-filter.component';
@@ -6,6 +7,21 @@ import HeadingDocsComponent from '../../../../../.storybook/component/atomic/hea
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 import { FilterNavbarComponent } from '../../interface/component.interface';
+
+/**
+ * Generate Docs
+ * @param {string} type - type props image
+ * @return {string}
+ */
+const docs = (props: FilterNavbarComponent): string =>
+    `<SearchFilter \n` +
+    `    searchResultText="${props.searchResultText}"\n` +
+    `    hasChildrenToggle=${props.hasChildrenToggle}\n` +
+    `    hasSortingFilter=${props.hasSortingFilter}\n` +
+    `    filterItem={[${props.filterItem}]}\n` +
+    `    onChangeFilterField={${props.onChangeFilterField}}\n` +
+    `    onChangeSortingField={${props.onChangeFilterField}}\n` +
+    `/>`;
 
 const subChannel = [
     {
@@ -233,14 +249,23 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                     Search filter component with search result text, children
                     toggle and sorting filter
                 </TextDocsComponent>
-                <CodingViewerDocsComponent sourceCode="sourceCode">
+                <CodingViewerDocsComponent
+                    sourceCode={docs({
+                        searchResultText: 'Rumah dijual di Jakarta',
+                        hasChildrenToggle: true,
+                        hasSortingFilter: true,
+                        filterItem: [],
+                        onChangeFilterField: (): void => {},
+                        onChangeSortingField: (): void => {}
+                    })}
+                >
                     <SearchFilter
                         searchResultText="Rumah dijual di Jakarta"
                         hasChildrenToggle
                         hasSortingFilter
                         filterItem={[
                             {
-                                name: 'combobox',
+                                name: 'sub-channel',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         subChannelSelection: param
@@ -253,7 +278,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'sub-channel'
                             },
                             {
-                                name: 'combobox',
+                                name: 'property-type',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         propertyTypeSelection: param
@@ -266,7 +291,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'property-type'
                             },
                             {
-                                name: 'combobox',
+                                name: 'min-price',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         minPriceSelection: param
@@ -279,7 +304,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'min-price'
                             },
                             {
-                                name: 'combobox',
+                                name: 'max-price',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         maxPriceSelection: param
@@ -292,7 +317,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'max-price'
                             },
                             {
-                                name: 'range',
+                                name: 'land-size',
                                 onChange: (start, end): void => {
                                     this.setState({ start, end });
                                 },
@@ -307,7 +332,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 label: 'Luas Tanah (m2)'
                             },
                             {
-                                name: 'range',
+                                name: 'building-size',
                                 onChange: (start, end): void => {
                                     this.setState({ start, end });
                                 },
@@ -322,7 +347,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 label: 'Luas Bangunan (m2)'
                             },
                             {
-                                name: 'combobox',
+                                name: 'bedroom',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         bedRoomSelection: param
@@ -332,10 +357,10 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 isChildrenToggle: true,
                                 option: bedRoom,
                                 value: bedRoomSelection as number,
-                                className: 'sub-channel'
+                                className: 'bedroom'
                             },
                             {
-                                name: 'combobox',
+                                name: 'bathroom',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         bathRoomSelection: param
@@ -345,10 +370,10 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 isChildrenToggle: true,
                                 option: bathRoom,
                                 value: bathRoomSelection as number,
-                                className: 'sub-channel'
+                                className: 'bathroom'
                             },
                             {
-                                name: 'checkbox',
+                                name: 'sold-out-property',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         bathRoomSelection: param
@@ -358,7 +383,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                                 isChildrenToggle: true,
                                 option: bathRoom,
                                 value: bathRoomSelection as number,
-                                className: 'sub-channel',
+                                className: 'sold-out-property',
                                 label: 'Termasuk iklan terjual'
                             }
                         ]}

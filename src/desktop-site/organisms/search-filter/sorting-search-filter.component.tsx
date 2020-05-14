@@ -13,14 +13,15 @@ import { SortingFilterComponent } from './interface/component.interface';
  */
 const SortingSearchFilter: SFC<SortingFilterComponent> = ({
     option,
-    value
+    value,
+    onChange
 }) => {
     return (
         <div className="filters flex">
             <div className="sorting-filter">
                 <ComboboxComponent
                     name="sort"
-                    onChange={(): void => undefined}
+                    onChange={onChange}
                     value={value}
                 >
                     {option.map((item) => (
@@ -45,7 +46,8 @@ SortingSearchFilter.propTypes = {
             label: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    value: PropTypes.number.isRequired
+    value: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired
 };
 
 export default SortingSearchFilter;
