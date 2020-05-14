@@ -4,10 +4,10 @@ import React, { SFC, useState, useEffect, ReactNode } from 'react';
 import CardComponent from '../../../common/atomic/card/card.component';
 import TextComponent from '../../../common/atomic/text/text.component';
 import IconComponent from '../../../common/atomic/icon/icon.component';
+import ComboboxComponent from '../../../common/molecules/combobox/combobox.component';
 import ComboboxSearchFilter from './combobox-search-filter.component';
 import RangeSliderSearchFilter from './range-slider-filter.component';
 import CheckboxSearchFilter from './checkbox-search-filter.component';
-import SortingSearchFilter from './sorting-search-filter.component';
 
 import {
     FilterNavbarComponent,
@@ -34,6 +34,7 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
     sortingItem,
     hasChildrenToggle,
     hasSortingFilter,
+    onChangeSortingField,
     ...res
 }: FilterNavbarComponent) => {
     const [expand, setExpand] = useState(false);
@@ -59,13 +60,14 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
      * @return {ReactNode}
      */
     const getFilterItems = (isChildrenToggle: boolean): ReactNode =>
-        filterItem.map((item) => {
+        filterItem.map((item, index) => {
             if (
                 item.type === 'combobox' &&
                 item.isChildrenToggle === isChildrenToggle
             ) {
                 return (
                     <ComboboxSearchFilter
+                        key={index}
                         option={(item as FilterComboboxComponent).option}
                         value={(item as FilterComboboxComponent).value}
                         name={item.name}
@@ -82,6 +84,7 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
             ) {
                 return (
                     <RangeSliderSearchFilter
+                        key={index}
                         min={(item as FilterRangeComponent).min}
                         max={(item as FilterRangeComponent).max}
                         value={(item as FilterRangeComponent).value}
@@ -99,12 +102,14 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
             ) {
                 return (
                     <CheckboxSearchFilter
+                        key={index}
                         isChecked={(item as FilterCheckboxComponent).isChecked}
                         name={item.name}
                         onChange={(item as FilterCheckboxComponent).onChange}
                         type={item.type}
                         isChildrenToggle={item.isChildrenToggle}
                         label={(item as FilterCheckboxComponent).label}
+                        value={(item as FilterCheckboxComponent).value}
                     />
                 );
             }
@@ -189,18 +194,27 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
                     </div>
                     {hasSortingFilter && (
                         <div className="sorting">
-                            <SortingSearchFilter
-                                value={sortingItem ? sortingItem.value : 0}
-                                sortingText={
-                                    sortingItem ? sortingItem.sortingText : ''
-                                }
-                                option={sortingItem ? sortingItem.option : []}
-                                onChange={
-                                    sortingItem
-                                        ? sortingItem.onChange
-                                        : (): void => undefined
-                                }
-                            />
+                            <div className="filters flex">
+                                <div className="sorting-filter">
+                                    <ComboboxComponent
+                                        name="sort"
+                                        onChange={onChangeSortingField}
+                                        value={
+                                            sortingItem ? sortingItem.value : 0
+                                        }
+                                    >
+                                        {sortingItem &&
+                                            sortingItem.option.map((item) => (
+                                                <ComboboxComponent.Item
+                                                    key={item.id}
+                                                    id={item.id}
+                                                    value={item.value}
+                                                    label={item.label}
+                                                />
+                                            ))}
+                                    </ComboboxComponent>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>

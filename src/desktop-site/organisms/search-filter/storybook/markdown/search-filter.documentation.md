@@ -202,61 +202,42 @@ return (
         filterItem={[
             {
                 name: 'sub-channel',
-                onChange: (param: string | number): void => {
-                    this.setState({
-                        subChannelSelection: param
-                    });
-                },
                 type: 'combobox',
                 isChildrenToggle: false,
                 option: subChannel,
                 value: subChannelSelection as number,
-                className: 'sub-channel'
+                className: 'sub-channel',
+                onchange: ((param: string | number) => onChangeFilterField(key, param)
             },
             {
                 name: 'property-type',
-                onChange: (param: string | number): void => {
-                    this.setState({
-                        propertyTypeSelection: param
-                    });
-                },
                 type: 'combobox',
                 isChildrenToggle: false,
                 option: propertyType,
                 value: propertyTypeSelection as number,
-                className: 'property-type'
+                className: 'property-type',
+                onchange: ((param: string | number) => onChangeFilterField(key, param)
             },
             {
                 name: 'min-price',
-                onChange: (param: string | number): void => {
-                    this.setState({
-                        minPriceSelection: param
-                    });
-                },
                 type: 'combobox',
                 isChildrenToggle: false,
                 option: minPrice,
                 value: minPriceSelection as number,
-                className: 'min-price'
+                className: 'min-price',
+                onchange: ((param: string | number) => onChangeFilterField(key, param)
             },
             {
                 name: 'max-price',
-                onChange: (param: string | number): void => {
-                    this.setState({
-                        maxPriceSelection: param
-                    });
-                },
                 type: 'combobox',
                 isChildrenToggle: false,
                 option: maxPrice,
                 value: maxPriceSelection as number,
-                className: 'max-price'
+                className: 'max-price',
+                onchange: ((param: string | number) => onChangeFilterField(key, param)
             },
             {
                 name: 'land-size',
-                onChange: (start, end): void => {
-                    this.setState({ start, end });
-                },
                 type: 'range',
                 isChildrenToggle: false,
                 min: 0,
@@ -265,13 +246,11 @@ return (
                     start: res.start as number,
                     end: res.end as number
                 },
-                label: 'Luas Tanah (m2)'
+                label: 'Luas Tanah (m2)',
+                onchange: ((start: number, end): number => onChangeFilterField(key, [number])
             },
             {
                 name: 'building-size',
-                onChange: (start, end): void => {
-                    this.setState({ start, end });
-                },
                 type: 'range',
                 isChildrenToggle: true,
                 min: 0,
@@ -280,61 +259,50 @@ return (
                     start: res.start as number,
                     end: res.end as number
                 },
-                label: 'Luas Bangunan (m2)'
+                label: 'Luas Bangunan (m2)',
+                onchange: ((start: number, end): number => onChangeFilterField(key, [number])
+            },
             },
             {
                 name: 'bedroom',
-                onChange: (param: string | number): void => {
-                    this.setState({
-                        bedRoomSelection: param
-                    });
-                },
                 type: 'combobox',
                 isChildrenToggle: true,
                 option: bedRoom,
                 value: bedRoomSelection as number,
-                className: 'bedroom'
+                className: 'bedroom',
+                onchange: ((param: string | number) => onChangeFilterField(key, param)
             },
             {
                 name: 'bathroom',
-                onChange: (param: string | number): void => {
-                    this.setState({
-                        bathRoomSelection: param
-                    });
-                },
                 type: 'combobox',
                 isChildrenToggle: true,
                 option: bathRoom,
                 value: bathRoomSelection as number,
-                className: 'bathroom'
+                className: 'bathroom',
+                onchange: ((param: string | number) => onChangeFilterField(key, param)
             },
             {
                 name: 'sold-out-property',
-                onChange: (param: string | number): void => {
-                    this.setState({
-                        bathRoomSelection: param
-                    });
-                },
                 type: 'checkbox',
                 isChildrenToggle: true,
                 option: bathRoom,
                 value: bathRoomSelection as number,
                 className: 'sold-out-property',
-                label: 'Termasuk iklan terjual'
+                label: 'Termasuk iklan terjual',
+                onchange: ((param: (string | number)[]) => onChangeFilterField(key, [param])
             }
         ]}
         sortingItem={{
             value: sortingSelection as number,
             sortingText: '',
-            option: sortingItem,
-            onChange: (param: string | number): void => {
+            option: sortingItem
+        }}
+        onChangeFilterField={(key: string, value: string | number) => void}
+        onChangeSortingField={(param: string | number): void => {
                 this.setState({
                     sortingSelection: param
                 });
-            }
-        }}
-        onChangeFilterField={(): void => undefined}
-        onChangeSortingField={(): void => undefined}
+            }}
     />
 )
 ```
@@ -347,13 +315,14 @@ return (
 |**hasChildrenToggle**|boolean|-|Whether to have closable child filter as collapsed content|
 |**hasSortingFilter**|boolean|-|Whether to have sorting filter, if `true` sorting filter section will be displayed in the search filter|
 |**filterItem**|`object[]`|-|Search filter content|
+|**onChangeSortingField**|`(value: string | number) => void`|-|Callback function executed when sorting filter item changed|
+|**onChangeFilterField**|`(key: string, value: string | number) => void`|-|Callback function executed when filter item changed|
 
 ## Filter Items Props
 
 | Property | Type | Default | Description |
 |-------|-----------|---------|-----------|
 |**name**|string|-|Additional text (mortgage) at the top part of card component|
-|**onChange**|`(event) => void`|-|Callback function executed to make dropdown content visible|
 |**type**|`combobox | range | checkbox`|-|Type of the search filter item|
 |**isChildrenToggle**|boolean|-|If `true`, the filter item will be displayed as collapsed content|
 |**option**|`object[]`|-|Filter item's content|
@@ -368,4 +337,3 @@ return (
 |**value**|`string[] | number[]`|-|Set the active item of sorting filter|
 |**sortingText**|string|-|Sorting filter text label|
 |**option**|`object[]`|-|Content of sorting filter item|
-|**onChange**|`(event) => void`|-|Callback function executed to make dropdown content visible|

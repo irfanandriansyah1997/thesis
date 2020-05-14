@@ -17,6 +17,7 @@ const docs = (props: FilterNavbarComponent): string =>
     `<SearchFilter \n` +
     `    searchResultText="${props.searchResultText}"\n` +
     `    hasChildrenToggle=${props.hasChildrenToggle}\n` +
+    `    sortingItem={${props.sortingItem}}\n` +
     `    hasSortingFilter=${props.hasSortingFilter}\n` +
     `    filterItem={[${props.filterItem}]}\n` +
     `    onChangeFilterField={${props.onChangeFilterField}}\n` +
@@ -227,7 +228,8 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
             bathRoomSelection: 1,
             sortingSelection: 1,
             start: 0,
-            end: 7000
+            end: 100,
+            checkboxSelection: []
         };
     }
 
@@ -240,6 +242,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
             bedRoomSelection,
             bathRoomSelection,
             sortingSelection,
+            checkboxSelection,
             ...res
         } = this.state;
         return (
@@ -254,6 +257,7 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                         searchResultText: 'Rumah dijual di Jakarta',
                         hasChildrenToggle: true,
                         hasSortingFilter: true,
+                        sortingItem: { value: 1, sortingText: '', option: [] },
                         filterItem: [],
                         onChangeFilterField: (): void => {},
                         onChangeSortingField: (): void => {}
@@ -318,13 +322,13 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                             },
                             {
                                 name: 'land-size',
-                                onChange: (start, end): void => {
-                                    this.setState({ start, end });
-                                },
                                 type: 'range',
                                 isChildrenToggle: false,
                                 min: 0,
-                                max: 7000,
+                                max: 100,
+                                onChange: (start, end): void => {
+                                    this.setState({ start, end });
+                                },
                                 value: {
                                     start: res.start as number,
                                     end: res.end as number
@@ -333,13 +337,13 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                             },
                             {
                                 name: 'building-size',
-                                onChange: (start, end): void => {
-                                    this.setState({ start, end });
-                                },
                                 type: 'range',
                                 isChildrenToggle: true,
                                 min: 0,
-                                max: 7000,
+                                max: 100,
+                                onChange: (start, end): void => {
+                                    this.setState({ start, end });
+                                },
                                 value: {
                                     start: res.start as number,
                                     end: res.end as number
@@ -374,31 +378,38 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                             },
                             {
                                 name: 'sold-out-property',
-                                onChange: (param: string | number): void => {
-                                    this.setState({
-                                        bathRoomSelection: param
-                                    });
+                                onChange: (
+                                    param: (string | number)[]
+                                ): void => {
+                                    this.setState(
+                                        { checkboxSelection: param },
+                                        (): void => console.debug(this.state)
+                                    );
                                 },
                                 type: 'checkbox',
                                 isChildrenToggle: true,
-                                option: bathRoom,
-                                value: bathRoomSelection as number,
                                 className: 'sold-out-property',
-                                label: 'Termasuk iklan terjual'
+                                label: 'Termasuk iklan terjual',
+                                value: (checkboxSelection as unknown) as (
+                                    | string
+                                    | number
+                                )[],
+                                isChecked: false
                             }
                         ]}
                         sortingItem={{
                             value: sortingSelection as number,
                             sortingText: '',
-                            option: sortingItem,
-                            onChange: (param: string | number): void => {
-                                this.setState({
-                                    sortingSelection: param
-                                });
-                            }
+                            option: sortingItem
                         }}
                         onChangeFilterField={(): void => undefined}
-                        onChangeSortingField={(): void => undefined}
+                        onChangeSortingField={(
+                            param: string | number
+                        ): void => {
+                            this.setState({
+                                sortingSelection: param
+                            });
+                        }}
                     />
                 </CodingViewerDocsComponent>
             </>

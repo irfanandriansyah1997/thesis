@@ -25,8 +25,7 @@ const SearchFilterDocumentation = require('./markdown/search-filter.documentatio
                     sortingItem={{
                         value: 1,
                         sortingText: '',
-                        option: [],
-                        onChange: (): void => undefined
+                        option: []
                     }}
                     onChangeFilterField={(): void => undefined}
                     onChangeSortingField={(): void => undefined}
@@ -39,8 +38,7 @@ const SearchFilterDocumentation = require('./markdown/search-filter.documentatio
                     sortingItem={{
                         value: 1,
                         sortingText: '',
-                        option: [],
-                        onChange: (): void => undefined
+                        option: []
                     }}
                     onChangeFilterField={(): void => undefined}
                     onChangeSortingField={(): void => undefined}

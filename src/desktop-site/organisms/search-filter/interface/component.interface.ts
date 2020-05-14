@@ -11,7 +11,7 @@ export interface FilterNavbarComponent {
         | FilterComboboxComponent
     )[];
     sortingItem?: SortingFilterComponent;
-    onChangeFilterField: (key: string, value: string | number) => void;
+    onChangeFilterField: (key: string, value: FilterFieldValue) => void;
     onChangeSortingField: (value: string | number) => void;
     hasChildrenToggle: boolean;
     hasSortingFilter: boolean;
@@ -26,7 +26,6 @@ export interface SortingFilterComponent {
     value: number;
     sortingText: string;
     option: ComboboxItemComponent[];
-    onChange: (val: string | number) => void;
 }
 
 /**
@@ -49,6 +48,7 @@ export interface FilterCheckboxComponent extends FilterComponentItem {
     isChecked: boolean;
     onChange: (res: (string | number)[]) => void;
     label: string;
+    value: (string | number)[];
 }
 
 /**
@@ -98,3 +98,10 @@ export interface RangeSliderValueInterface {
     end: number;
     start: number;
 }
+
+/**
+ * Filter Field Value
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.05.14
+ */
+export type FilterFieldValue = string | number | (string | number)[];

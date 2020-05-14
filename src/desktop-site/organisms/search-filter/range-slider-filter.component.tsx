@@ -39,26 +39,40 @@ const RangeSliderSearchFilter: SFC<FilterRangeComponent> = ({
                 name="land-size"
                 trigger="click"
                 icon="rui-icon-arrow-down-small"
+                type="content"
             >
-                <DropdownComponent.Item>
+                <DropdownComponent.Item disableHover>
                     <div style={{ padding: 16, width: 320 }}>
-                        <TextComponent
-                            tag="p"
-                            color="text"
+                        <div
+                            className="range-slider-heading"
                             style={{
                                 paddingBottom: 16,
                                 borderBottom: '1px solid #e9e9e9'
                             }}
                         >
-                            Luas Tanah (m2)
-                        </TextComponent>
+                            <TextComponent
+                                tag="p"
+                                color="text"
+                                fontWeight={700}
+                            >
+                                {label}
+                            </TextComponent>
+                            <TextComponent
+                                tag="p"
+                                color="text"
+                                styling="heading-5"
+                            >
+                                <span>{`${value.start} m2 `}</span>
+                                <span>-</span>
+                                <span>{` ${value.end} m2 +`}</span>
+                            </TextComponent>
+                        </div>
                         <RangeSliderComponent
-                            max={min}
-                            min={max}
-                            step={1}
+                            max={max}
+                            min={min}
                             onChange={onChange}
                             value={value}
-                            style={{ maxWidth: 320, marginTop: 16 }}
+                            style={{ marginTop: 16 }}
                         />
                     </div>
                 </DropdownComponent.Item>

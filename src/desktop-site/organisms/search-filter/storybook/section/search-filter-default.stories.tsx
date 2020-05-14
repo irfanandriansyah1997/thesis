@@ -17,7 +17,7 @@ const docs = (props: FilterNavbarComponent): string =>
     `<SearchFilter \n` +
     `    searchResultText="${props.searchResultText}"\n` +
     `    hasChildrenToggle=${props.hasChildrenToggle}\n` +
-    `    hasSortingFilter=${props.hasSortingFilter}\n` +
+    `    sortingItem=${props.sortingItem}\n` +
     `    filterItem={[${props.filterItem}]}\n` +
     `    onChangeFilterField={${props.onChangeFilterField}}\n` +
     `    onChangeSortingField={${props.onChangeFilterField}}\n` +
@@ -145,7 +145,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
             minPriceSelection: 1,
             maxPriceSelection: 1,
             start: 0,
-            end: 7000
+            end: 100
         };
     }
 
@@ -178,7 +178,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                         hasSortingFilter={false}
                         filterItem={[
                             {
-                                name: 'combobox',
+                                name: 'sub-channel',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         subChannelSelection: param
@@ -191,7 +191,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'sub-channel'
                             },
                             {
-                                name: 'combobox',
+                                name: 'property-type',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         propertyTypeSelection: param
@@ -204,7 +204,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'property-type'
                             },
                             {
-                                name: 'combobox',
+                                name: 'min-price',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         minPriceSelection: param
@@ -217,7 +217,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'min-price'
                             },
                             {
-                                name: 'combobox',
+                                name: 'max-price',
                                 onChange: (param: string | number): void => {
                                     this.setState({
                                         maxPriceSelection: param
@@ -230,14 +230,14 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                                 className: 'max-price'
                             },
                             {
-                                name: 'range',
-                                onChange: (start, end): void => {
-                                    this.setState({ start, end });
-                                },
+                                name: 'land-size',
                                 type: 'range',
                                 isChildrenToggle: false,
                                 min: 0,
-                                max: 7000,
+                                max: 100,
+                                onChange: (start, end): void => {
+                                    this.setState({ start, end });
+                                },
                                 value: {
                                     start: res.start as number,
                                     end: res.end as number

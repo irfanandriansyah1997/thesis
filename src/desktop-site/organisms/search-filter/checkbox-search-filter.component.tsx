@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { SFC, Validator } from 'react';
 import PropTypes from 'prop-types';
 
 import CheckboxComponent from '../../../common/molecules/checkbox/checkbox.component';
@@ -12,7 +12,8 @@ import { FilterCheckboxComponent } from './interface/component.interface';
  */
 const CheckboxSearchFilter: SFC<FilterCheckboxComponent> = ({
     onChange,
-    label
+    label,
+    value
 }) => {
     return (
         <div className="filters flex">
@@ -21,7 +22,7 @@ const CheckboxSearchFilter: SFC<FilterCheckboxComponent> = ({
                 styling="horizontal"
                 type="checkbox"
                 onChange={onChange}
-                value={['value']}
+                value={value}
             >
                 <CheckboxComponent.Item id="checkbox" value={1} label={label} />
             </CheckboxComponent>
@@ -29,9 +30,16 @@ const CheckboxSearchFilter: SFC<FilterCheckboxComponent> = ({
     );
 };
 
+CheckboxSearchFilter.defaultProps = {
+    value: []
+};
+
 CheckboxSearchFilter.propTypes = {
     onChange: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    value: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    ) as Validator<(string | number)[]>
 };
 
 export default CheckboxSearchFilter;
