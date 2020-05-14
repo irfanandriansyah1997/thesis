@@ -1,0 +1,77 @@
+@import '../../../../style/import.scss';
+
+$height-navbar: 51px;
+
+.ui-molecules-navbar {
+    $c: &;
+
+    height: $height-navbar;
+    width: 100%;
+
+    @include padding(all, 0 16px);
+
+    > .ui-row {
+        height: 100%;
+    }
+
+    &__menu {
+        &.ui-col {
+            flex-basis: initial;
+            flex-grow: initial;
+            height: 100%;
+            width: initial;
+        }
+
+        .ui-molecules-dropdown {
+            &__content {
+                min-width: 150px;
+
+                @include no-margin();
+
+                #{$c}__item {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &__item {
+        height: $height-navbar;
+        line-height: $height-navbar;
+
+        &--is-heading {
+            line-height: calc(#{$height-navbar} - 30px);
+            opacity: 0.6;
+
+            @include padding(all, 15px 8px);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+            &::before {
+                bottom: 0;
+                content: '';
+                height: 2px;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                right: 0;
+
+                @include background-color(white);
+                @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            }
+
+            &:hover,
+            &#{$c}__item--is-active {
+                opacity: 1;
+            }
+
+            &:hover::before,
+            &#{$c}__item--is-active::before {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__section {
+        height: 100%;
+    }
+}

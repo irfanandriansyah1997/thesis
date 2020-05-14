@@ -1,9 +1,9 @@
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 
-import { ColorType } from '../../../../shared/interface/common/color.interface';
+import { ColorInterface } from '../../../../shared/interface/common/color.interface';
 import {
-    ComponentFontWeightTypography,
-    ComponentStylingTypography
+    ComponentStylingTypography,
+    ComponentFontWeightTypography
 } from '../../../../shared/interface/component/component-typography.interface';
 
 /**
@@ -11,10 +11,10 @@ import {
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.04.7
  */
-export type LinkPropsInterface = AnchorHTMLAttributes<HTMLAnchorElement> & {
-    color?: ColorType;
-    noUnderline?: boolean;
-    icon?: ReactNode;
-    fontWeight?: ComponentFontWeightTypography;
-    styling?: ComponentStylingTypography;
-};
+export type LinkPropsInterface = AnchorHTMLAttributes<HTMLAnchorElement> &
+    ColorInterface & {
+        icon?: ReactNode;
+        noUnderline?: boolean;
+        styling?: ComponentStylingTypography;
+        fontWeight?: ComponentFontWeightTypography;
+    };

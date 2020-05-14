@@ -87,9 +87,50 @@ describe('Testing dropdown component in molecules component', () => {
         dropdown
             .find('.ui-molecules-dropdown__toggle')
             .at(0)
-            .simulate('click');
+            .simulate('mouseover');
+        expect(callback).toHaveBeenCalledTimes(0);
 
+        dropdown
+            .find('.ui-molecules-dropdown__toggle')
+            .at(0)
+            .simulate('click');
         expect(callback).toHaveBeenCalledTimes(1);
+
+        expect(callback.mock.results[0].value).toBe(true);
+    });
+
+    it('Invoke on hover drodpown item', () => {
+        const callback = jest.fn((item) => item);
+        const dropdown = mount(
+            <>
+                <DropdownComponent
+                    name="testing"
+                    trigger="hover"
+                    label="Testing"
+                    onClick={callback}
+                    className="sample-classname"
+                >
+                    <DropdownComponent.Item>Testing 1</DropdownComponent.Item>
+                    <DropdownComponent.Item active>
+                        Testing 2
+                    </DropdownComponent.Item>
+                </DropdownComponent>
+                <p className="example-link">example</p>
+            </>
+        );
+
+        dropdown
+            .find('.ui-molecules-dropdown__toggle')
+            .at(0)
+            .simulate('click');
+        expect(callback).toHaveBeenCalledTimes(0);
+
+        dropdown
+            .find('.ui-molecules-dropdown__toggle')
+            .at(0)
+            .simulate('mouseover');
+        expect(callback).toHaveBeenCalledTimes(1);
+
         expect(callback.mock.results[0].value).toBe(true);
     });
 

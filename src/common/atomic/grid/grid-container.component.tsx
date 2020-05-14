@@ -40,6 +40,8 @@ const GridContainerComponent: SFC<GridContainerPropsInterface> = ({
     );
 };
 
+GridContainerComponent.displayName = 'GridContainerComponent';
+
 GridContainerComponent.propTypes = {
     className: PropTypes.string,
     children: PropTypes.oneOfType([
