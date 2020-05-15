@@ -179,12 +179,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                         filterItem={[
                             {
                                 name: 'sub-channel',
-                                onChange: (param: string | number): void => {
-                                    this.setState({
-                                        subChannelSelection: param
-                                    });
-                                },
-                                type: 'combobox',
+                                type: 'combobox' as const,
                                 isChildrenToggle: false,
                                 option: subChannel,
                                 value: subChannelSelection as number,
@@ -192,12 +187,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                             },
                             {
                                 name: 'property-type',
-                                onChange: (param: string | number): void => {
-                                    this.setState({
-                                        propertyTypeSelection: param
-                                    });
-                                },
-                                type: 'combobox',
+                                type: 'combobox' as const,
                                 isChildrenToggle: false,
                                 option: propertyType,
                                 value: propertyTypeSelection as number,
@@ -205,12 +195,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                             },
                             {
                                 name: 'min-price',
-                                onChange: (param: string | number): void => {
-                                    this.setState({
-                                        minPriceSelection: param
-                                    });
-                                },
-                                type: 'combobox',
+                                type: 'combobox' as const,
                                 isChildrenToggle: false,
                                 option: minPrice,
                                 value: minPriceSelection as number,
@@ -218,12 +203,7 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                             },
                             {
                                 name: 'max-price',
-                                onChange: (param: string | number): void => {
-                                    this.setState({
-                                        maxPriceSelection: param
-                                    });
-                                },
-                                type: 'combobox',
+                                type: 'combobox' as const,
                                 isChildrenToggle: false,
                                 option: maxPrice,
                                 value: maxPriceSelection as number,
@@ -231,21 +211,38 @@ class CustomSearchFilterSectionComponent extends React.PureComponent<
                             },
                             {
                                 name: 'land-size',
-                                type: 'range',
+                                type: 'range' as const,
                                 isChildrenToggle: false,
                                 min: 0,
                                 max: 100,
-                                onChange: (start, end): void => {
-                                    this.setState({ start, end });
-                                },
                                 value: {
                                     start: res.start as number,
                                     end: res.end as number
                                 },
-                                label: 'Luas Tanah (m2)'
+                                label: 'Luas Tanah (m2)',
+                                className: 'land-size'
                             }
                         ]}
-                        onChangeFilterField={(): void => undefined}
+                        onChangeFilterField={(key, value): void => {
+                            if (key === 'sub-channel') {
+                                this.setState({ subChannelSelection: value });
+                            }
+                            if (key === 'property-type') {
+                                this.setState({ propertyTypeSelection: value });
+                            }
+                            if (key === 'min-price') {
+                                this.setState({ minPriceSelection: value });
+                            }
+                            if (key === 'max-price') {
+                                this.setState({ maxPriceSelection: value });
+                            }
+                            if (key === 'land-size') {
+                                this.setState({
+                                    start: value[0],
+                                    end: value[1]
+                                });
+                            }
+                        }}
                         onChangeSortingField={(): void => undefined}
                     />
                 </CodingViewerDocsComponent>

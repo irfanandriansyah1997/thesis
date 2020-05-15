@@ -5,7 +5,7 @@ import RangeSliderComponent from '../../../common/molecules/range-slider/range-s
 import DropdownComponent from '../../../common/molecules/dropdown/dropdown.component';
 import TextComponent from '../../../common/atomic/text/text.component';
 
-import { FilterRangeComponent } from './interface/component.interface';
+import { FilterRangePropsInterface } from './interface/component.interface';
 import { RangeSliderValueInterface } from '../../../common/molecules/range-slider/interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
@@ -16,30 +16,32 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.11
  */
-const RangeSliderSearchFilter: SFC<FilterRangeComponent> = ({
+const RangeSliderSearchFilter: SFC<FilterRangePropsInterface> = ({
     min,
     max,
     value,
     onChange,
     className,
-    label
+    label,
+    name
 }) => {
-    const name: ComponentClassnameDefaultInterface = {
+    const filterItemClassName: ComponentClassnameDefaultInterface = {
         'filter-content': true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
     return (
         <div
-            className={StringHelper.objToString(name)}
+            className={StringHelper.objToString(filterItemClassName)}
             style={{ marginRight: 20 }}
         >
             <DropdownComponent
                 label={label}
-                name="land-size"
+                name={name}
                 trigger="click"
                 icon="rui-icon-arrow-down-small"
                 type="content"
+                className={className}
             >
                 <DropdownComponent.Item disableHover>
                     <div style={{ padding: 16, width: 320 }}>
@@ -86,15 +88,16 @@ RangeSliderSearchFilter.defaultProps = {
 };
 
 RangeSliderSearchFilter.propTypes = {
+    name: PropTypes.string.isRequired,
     min: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    label: PropTypes.string.isRequired,
     value: PropTypes.shape<ValidationMap<RangeSliderValueInterface>>({
         end: PropTypes.number.isRequired,
         start: PropTypes.number.isRequired
-    }).isRequired,
-    onChange: PropTypes.func.isRequired,
-    className: PropTypes.string,
-    label: PropTypes.string.isRequired
+    }).isRequired
 };
 
 export default RangeSliderSearchFilter;

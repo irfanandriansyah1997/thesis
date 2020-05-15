@@ -53,17 +53,14 @@ describe('Testing <SearchFilter> in organisms component ', () => {
                 filterItem={[
                     {
                         name: 'combobox',
-                        onChange: jest.fn(),
-                        type: 'combobox',
+                        type: 'combobox' as const,
                         isChildrenToggle: false,
                         option: subChannel,
-                        value: 1,
-                        className: 'sub-channel'
+                        value: 1
                     },
                     {
                         name: 'land-size',
-                        onChange: jest.fn(),
-                        type: 'range',
+                        type: 'range' as const,
                         isChildrenToggle: false,
                         min: 0,
                         max: 100,
@@ -71,17 +68,17 @@ describe('Testing <SearchFilter> in organisms component ', () => {
                             start: 0,
                             end: 100
                         },
-                        label: 'Luas Tanah (m2)'
+                        label: ''
                     },
                     {
                         name: 'sold-out-property',
-                        onChange: jest.fn(),
-                        type: 'checkbox',
+                        type: 'checkbox' as const,
+                        id: '',
                         isChildrenToggle: true,
-                        className: 'sold-out-property',
                         label: 'Termasuk iklan terjual',
                         isChecked: false,
-                        value: [1]
+                        value: [1],
+                        itemValue: 1
                     }
                 ]}
                 sortingItem={{

@@ -45,10 +45,21 @@ export interface FilterComponentItem {
  * @since 2020.05.13
  */
 export interface FilterCheckboxComponent extends FilterComponentItem {
+    id: string;
     isChecked: boolean;
-    onChange: (res: (string | number)[]) => void;
-    label: string;
     value: (string | number)[];
+    itemValue: string | number;
+    label: string;
+    className?: string;
+}
+
+/**
+ *  Filter Checkbox Props Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.05.13
+ */
+export interface FilterCheckboxPropsInterface extends FilterCheckboxComponent {
+    onChange: (res: (string | number)[]) => void;
 }
 
 /**
@@ -60,9 +71,17 @@ export interface FilterRangeComponent extends FilterComponentItem {
     min: number;
     max: number;
     value: RangeSliderValueInterface;
-    onChange: (start: number, end: number) => void;
-    className?: string;
     label: string;
+    className?: string;
+}
+
+/**
+ * Filter Range Slider Props Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.05.13
+ */
+export interface FilterRangePropsInterface extends FilterRangeComponent {
+    onChange: (start: number, end: number) => void;
 }
 
 /**
@@ -73,8 +92,16 @@ export interface FilterRangeComponent extends FilterComponentItem {
 export interface FilterComboboxComponent extends FilterComponentItem {
     option: ComboboxItemComponent[];
     value: number | string;
-    onChange: (val: string | number) => void;
     className?: string;
+}
+
+/**
+ * Filter Combobox Props Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.05.13
+ */
+export interface FilterComboboxPropsInterface extends FilterComboboxComponent {
+    onChange: (val: string | number) => void;
 }
 
 /**

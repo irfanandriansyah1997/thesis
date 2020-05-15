@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-curly-newline */
 import React, { SFC } from 'react';
 import PropTypes from 'prop-types';
 
 import ComboboxComponent from '../../../common/molecules/combobox/combobox.component';
 
-import { FilterComboboxComponent } from './interface/component.interface';
+import { FilterComboboxPropsInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
@@ -14,23 +13,29 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.11
  */
-const ComboboxSearchFilter: SFC<FilterComboboxComponent> = ({
+const ComboboxSearchFilter: SFC<FilterComboboxPropsInterface> = ({
     option,
-    value,
     onChange,
-    className
+    className,
+    name,
+    value
 }) => {
-    const name: ComponentClassnameDefaultInterface = {
+    const filterItemClassName: ComponentClassnameDefaultInterface = {
         'filter-content': true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
     return (
         <div
-            className={StringHelper.objToString(name)}
+            className={StringHelper.objToString(filterItemClassName)}
             style={{ marginRight: 20 }}
         >
-            <ComboboxComponent name="id" onChange={onChange} value={value}>
+            <ComboboxComponent
+                name={name}
+                onChange={onChange}
+                value={value}
+                className={className}
+            >
                 {option.map((item) => (
                     <ComboboxComponent.Item
                         key={item.id}
@@ -50,6 +55,9 @@ ComboboxSearchFilter.defaultProps = {
 };
 
 ComboboxSearchFilter.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    className: PropTypes.string,
     option: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -57,9 +65,7 @@ ComboboxSearchFilter.propTypes = {
             label: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    value: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
-    className: PropTypes.string
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
 };
 
 export default ComboboxSearchFilter;

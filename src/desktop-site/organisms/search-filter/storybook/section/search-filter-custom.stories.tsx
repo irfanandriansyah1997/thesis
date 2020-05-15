@@ -2,6 +2,7 @@
 import React, { ReactNode } from 'react';
 
 import SearchFilter from '../../search-filter.component';
+import CardComponent from '../../../../../common/atomic/card/card.component';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
@@ -14,15 +15,20 @@ import { FilterNavbarComponent } from '../../interface/component.interface';
  * @return {string}
  */
 const docs = (props: FilterNavbarComponent): string =>
-    `<SearchFilter \n` +
-    `    searchResultText="${props.searchResultText}"\n` +
-    `    hasChildrenToggle=${props.hasChildrenToggle}\n` +
-    `    sortingItem={${props.sortingItem}}\n` +
-    `    hasSortingFilter=${props.hasSortingFilter}\n` +
-    `    filterItem={[${props.filterItem}]}\n` +
-    `    onChangeFilterField={${props.onChangeFilterField}}\n` +
-    `    onChangeSortingField={${props.onChangeFilterField}}\n` +
-    `/>`;
+    `<CardComponent\n` +
+    `   boxShadow="r123"\n` +
+    `   style={{ width: '100%', padding: '16px' }}\n` +
+    `>\n` +
+    `   <SearchFilter\n` +
+    `       searchResultText="${props.searchResultText}"\n` +
+    `       hasChildrenToggle=${props.hasChildrenToggle}\n` +
+    `       sortingItem={${props.sortingItem}}\n` +
+    `       hasSortingFilter=${props.hasSortingFilter}\n` +
+    `       filterItem={[${props.filterItem}]}\n` +
+    `       onChangeFilterField={${props.onChangeFilterField}}\n` +
+    `       onChangeSortingField={${props.onChangeFilterField}}\n` +
+    `   />\n` +
+    `</CardComponent>`;
 
 const subChannel = [
     {
@@ -263,154 +269,157 @@ class DefaultSearchFilterSectionComponent extends React.PureComponent<
                         onChangeSortingField: (): void => {}
                     })}
                 >
-                    <SearchFilter
-                        searchResultText="Rumah dijual di Jakarta"
-                        hasChildrenToggle
-                        hasSortingFilter
-                        filterItem={[
-                            {
-                                name: 'sub-channel',
-                                onChange: (param: string | number): void => {
+                    <CardComponent
+                        boxShadow="r123"
+                        style={{ width: '100%', padding: '16px' }}
+                    >
+                        <SearchFilter
+                            searchResultText="Rumah dijual di Jakarta"
+                            hasChildrenToggle
+                            hasSortingFilter
+                            filterItem={[
+                                {
+                                    name: 'sub-channel',
+                                    type: 'combobox' as const,
+                                    isChildrenToggle: false,
+                                    option: subChannel,
+                                    value: subChannelSelection as number,
+                                    className: 'sub-channel'
+                                },
+                                {
+                                    name: 'property-type',
+                                    type: 'combobox' as const,
+                                    isChildrenToggle: false,
+                                    option: propertyType,
+                                    value: propertyTypeSelection as number,
+                                    className: 'property-type'
+                                },
+                                {
+                                    name: 'min-price',
+                                    type: 'combobox' as const,
+                                    isChildrenToggle: false,
+                                    option: minPrice,
+                                    value: minPriceSelection as number,
+                                    className: 'min-price'
+                                },
+                                {
+                                    name: 'max-price',
+                                    type: 'combobox' as const,
+                                    isChildrenToggle: false,
+                                    option: maxPrice,
+                                    value: maxPriceSelection as number,
+                                    className: 'max-price'
+                                },
+                                {
+                                    name: 'land-size',
+                                    type: 'range' as const,
+                                    isChildrenToggle: false,
+                                    min: 0,
+                                    max: 100,
+                                    value: {
+                                        start: res.start as number,
+                                        end: res.end as number
+                                    },
+                                    label: 'Luas Tanah (m2)',
+                                    className: 'land-size'
+                                },
+                                {
+                                    name: 'building-size',
+                                    type: 'range' as const,
+                                    isChildrenToggle: true,
+                                    min: 0,
+                                    max: 100,
+                                    value: {
+                                        start: res.start as number,
+                                        end: res.end as number
+                                    },
+                                    label: 'Luas Bangunan (m2)',
+                                    className: 'building-size'
+                                },
+                                {
+                                    name: 'bedroom',
+                                    type: 'combobox' as const,
+                                    isChildrenToggle: true,
+                                    option: bedRoom,
+                                    value: bedRoomSelection as number,
+                                    className: 'bedroom'
+                                },
+                                {
+                                    name: 'bathroom',
+                                    type: 'combobox' as const,
+                                    isChildrenToggle: true,
+                                    option: bathRoom,
+                                    value: bathRoomSelection as number,
+                                    className: 'bathroom'
+                                },
+                                {
+                                    name: 'sold-out',
+                                    id: 'sold-out-property',
+                                    itemValue: 1,
+                                    type: 'checkbox' as const,
+                                    isChildrenToggle: true,
+                                    label: 'Termasuk iklan terjual',
+                                    value: (checkboxSelection as unknown) as (
+                                        | string
+                                        | number
+                                    )[],
+                                    isChecked: false,
+                                    className: 'sold-out'
+                                }
+                            ]}
+                            sortingItem={{
+                                value: sortingSelection as number,
+                                sortingText: '',
+                                option: sortingItem
+                            }}
+                            onChangeFilterField={(key, value): void => {
+                                if (key === 'sub-channel') {
                                     this.setState({
-                                        subChannelSelection: param
+                                        subChannelSelection: value
                                     });
-                                },
-                                type: 'combobox',
-                                isChildrenToggle: false,
-                                option: subChannel,
-                                value: subChannelSelection as number,
-                                className: 'sub-channel'
-                            },
-                            {
-                                name: 'property-type',
-                                onChange: (param: string | number): void => {
+                                }
+                                if (key === 'property-type') {
                                     this.setState({
-                                        propertyTypeSelection: param
+                                        propertyTypeSelection: value
                                     });
-                                },
-                                type: 'combobox',
-                                isChildrenToggle: false,
-                                option: propertyType,
-                                value: propertyTypeSelection as number,
-                                className: 'property-type'
-                            },
-                            {
-                                name: 'min-price',
-                                onChange: (param: string | number): void => {
+                                }
+                                if (key === 'min-price') {
+                                    this.setState({ minPriceSelection: value });
+                                }
+                                if (key === 'max-price') {
+                                    this.setState({ maxPriceSelection: value });
+                                }
+                                if (key === 'land-size') {
                                     this.setState({
-                                        minPriceSelection: param
+                                        start: value[0],
+                                        end: value[1]
                                     });
-                                },
-                                type: 'combobox',
-                                isChildrenToggle: false,
-                                option: minPrice,
-                                value: minPriceSelection as number,
-                                className: 'min-price'
-                            },
-                            {
-                                name: 'max-price',
-                                onChange: (param: string | number): void => {
+                                }
+                                if (key === 'building-size') {
                                     this.setState({
-                                        maxPriceSelection: param
+                                        start: value[0],
+                                        end: value[1]
                                     });
-                                },
-                                type: 'combobox',
-                                isChildrenToggle: false,
-                                option: maxPrice,
-                                value: maxPriceSelection as number,
-                                className: 'max-price'
-                            },
-                            {
-                                name: 'land-size',
-                                type: 'range',
-                                isChildrenToggle: false,
-                                min: 0,
-                                max: 100,
-                                onChange: (start, end): void => {
-                                    this.setState({ start, end });
-                                },
-                                value: {
-                                    start: res.start as number,
-                                    end: res.end as number
-                                },
-                                label: 'Luas Tanah (m2)'
-                            },
-                            {
-                                name: 'building-size',
-                                type: 'range',
-                                isChildrenToggle: true,
-                                min: 0,
-                                max: 100,
-                                onChange: (start, end): void => {
-                                    this.setState({ start, end });
-                                },
-                                value: {
-                                    start: res.start as number,
-                                    end: res.end as number
-                                },
-                                label: 'Luas Bangunan (m2)'
-                            },
-                            {
-                                name: 'bedroom',
-                                onChange: (param: string | number): void => {
-                                    this.setState({
-                                        bedRoomSelection: param
-                                    });
-                                },
-                                type: 'combobox',
-                                isChildrenToggle: true,
-                                option: bedRoom,
-                                value: bedRoomSelection as number,
-                                className: 'bedroom'
-                            },
-                            {
-                                name: 'bathroom',
-                                onChange: (param: string | number): void => {
-                                    this.setState({
-                                        bathRoomSelection: param
-                                    });
-                                },
-                                type: 'combobox',
-                                isChildrenToggle: true,
-                                option: bathRoom,
-                                value: bathRoomSelection as number,
-                                className: 'bathroom'
-                            },
-                            {
-                                name: 'sold-out-property',
-                                onChange: (
-                                    param: (string | number)[]
-                                ): void => {
-                                    this.setState(
-                                        { checkboxSelection: param },
-                                        (): void => console.debug(this.state)
-                                    );
-                                },
-                                type: 'checkbox',
-                                isChildrenToggle: true,
-                                className: 'sold-out-property',
-                                label: 'Termasuk iklan terjual',
-                                value: (checkboxSelection as unknown) as (
-                                    | string
-                                    | number
-                                )[],
-                                isChecked: false
-                            }
-                        ]}
-                        sortingItem={{
-                            value: sortingSelection as number,
-                            sortingText: '',
-                            option: sortingItem
-                        }}
-                        onChangeFilterField={(): void => undefined}
-                        onChangeSortingField={(
-                            param: string | number
-                        ): void => {
-                            this.setState({
-                                sortingSelection: param
-                            });
-                        }}
-                    />
+                                }
+                                if (key === 'bedroom') {
+                                    this.setState({ bedRoomSelection: value });
+                                }
+                                if (key === 'bathroom') {
+                                    this.setState({ bathRoomSelection: value });
+                                }
+                                if (key === 'sold-out') {
+                                    this.setState({ checkboxSelection: value });
+                                }
+                            }}
+                            onChangeSortingField={(
+                                param: string | number
+                            ): void => {
+                                this.setState({
+                                    sortingSelection: param
+                                });
+                            }}
+                        />
+                    </CardComponent>
                 </CodingViewerDocsComponent>
             </>
         );
