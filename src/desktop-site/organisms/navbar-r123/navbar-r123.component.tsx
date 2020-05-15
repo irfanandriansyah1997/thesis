@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 import React, { SFC, Validator } from 'react';
 
+import StringHelper from '../../../shared/helper/string.helper';
+import NavbarR123LoginComponent from './navbar-r123-login.component';
+import ImageComponent from '../../../common/atomic/image/image.component';
+import NavbarR123DropdownComponent from './navbar-r123-dropdown.component';
+import NavbarR123MegaMenuComponent from './navbar-r123-mega-menu.component';
+import NavbarComponent from '../../../common/molecules/navbar/navbar.component';
+import NavbarR123LanguageChooserComponent from './navbar-r123-language.component';
 import {
     NavbarR123PropsInterface,
     NavbarR123DropdownInterface,
     NavbarR123MenuItemInterface
 } from './interface/component.interface';
-import StringHelper from '../../../shared/helper/string.helper';
-import NavbarR123DropdownComponent from './navbar-r123-dropdown.component';
-import NavbarR123MegaMenuComponent from './navbar-r123-mega-menu.component';
-import NavbarComponent from '../../../common/molecules/navbar/navbar.component';
-import NavbarR123LanguageChooserComponent from './navbar-r123-language.component';
-import NavbarR123LoginrComponent from './navbar-r123-login.component';
-import ImageComponent from '../../../common/atomic/image/image.component';
 
 /**
  * Navbar R123 Component
@@ -101,7 +101,7 @@ const NavbarR123Component: SFC<NavbarR123PropsInterface> = ({
                             onChangeLanguange={onChangeLanguange}
                         />
                         <NavbarComponent.Divider color="white" />
-                        <NavbarR123LoginrComponent
+                        <NavbarR123LoginComponent
                             onClickLoginButton={onClickLoginButton}
                         />
                     </NavbarComponent.Section>
@@ -114,11 +114,23 @@ const NavbarR123Component: SFC<NavbarR123PropsInterface> = ({
 NavbarR123Component.propTypes = {
     menu: PropTypes.arrayOf(PropTypes.shape({})).isRequired as Validator<
         (NavbarR123MenuItemInterface | NavbarR123DropdownInterface)[]
-    >
+    >,
+    showLogo: PropTypes.bool,
+    languange: PropTypes.shape({
+        active: PropTypes.string,
+        option: PropTypes.arrayOf(PropTypes.string)
+    }) as Validator<{ active: string; option: string[] }>,
+    onChangeLanguange: PropTypes.func.isRequired,
+    onClickLoginButton: PropTypes.func.isRequired
 };
 
 NavbarR123Component.defaultProps = {
-    menu: []
+    menu: [],
+    showLogo: false,
+    languange: {
+        active: 'Id',
+        option: ['Id', 'En']
+    }
 };
 
 export default NavbarR123Component;

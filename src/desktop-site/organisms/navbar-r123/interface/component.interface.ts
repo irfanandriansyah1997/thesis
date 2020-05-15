@@ -20,7 +20,7 @@ export type NavbarR123PropsInterface = {
  * @since 2020.05.14
  */
 export type NavbarR123DropdownPropsInterface = {
-    dropdownItem?: NavbarR123DropdownItemType[];
+    dropdownItem: NavbarR123DropdownItemType[];
 };
 
 /**
@@ -74,6 +74,5 @@ export interface NavbarR123MenuItemInterface {
  */
 export type NavbarR123DropdownInterface = {
     megamenuItem?: NavbarR123MegaMenuPropsInterface;
-} & NavbarR123MenuItemInterface &
-    NavbarR123MenuItemInterface &
-    NavbarR123DropdownPropsInterface;
+    dropdownItem?: NavbarR123DropdownItemType[];
+} & NavbarR123MenuItemInterface;

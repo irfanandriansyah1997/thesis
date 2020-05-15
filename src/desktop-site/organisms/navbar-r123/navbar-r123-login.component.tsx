@@ -11,7 +11,7 @@ import { NavbarR123LoginButtonPropsInterface } from './interface/component.inter
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.14
  */
-const NavbarR123LoginrComponent: SFC<NavbarR123LoginButtonPropsInterface> = ({
+const NavbarR123LoginComponent: SFC<NavbarR123LoginButtonPropsInterface> = ({
     onClickLoginButton
 }) => (
     <div
@@ -37,8 +37,8 @@ const NavbarR123LoginrComponent: SFC<NavbarR123LoginButtonPropsInterface> = ({
     </div>
 );
 
-NavbarR123LoginrComponent.propTypes = {
+NavbarR123LoginComponent.propTypes = {
     onClickLoginButton: PropTypes.func.isRequired
 };
 
-export default NavbarR123LoginrComponent;
+export default NavbarR123LoginComponent;

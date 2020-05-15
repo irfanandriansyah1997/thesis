@@ -7,8 +7,8 @@ import LinkComponent from '../../../common/atomic/link/link.component';
 import TextComponent from '../../../common/atomic/text/text.component';
 import ListComponent from '../../../common/molecules/list/list.component';
 import {
-    NavbarR123MegaMenuPropsInterface,
-    NavbarR123DropdownItemType
+    NavbarR123DropdownItemType,
+    NavbarR123MegaMenuPropsInterface
 } from './interface/component.interface';
 
 /**

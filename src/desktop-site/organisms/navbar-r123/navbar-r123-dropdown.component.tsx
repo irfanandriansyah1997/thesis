@@ -16,31 +16,27 @@ import {
 const NavbarR123DropdownComponent: SFC<NavbarR123DropdownPropsInterface> = ({
     dropdownItem
 }) => {
-    if (dropdownItem) {
-        return (
-            <ListComponent
-                styling="vertical"
-                className="ui-organism-navbar-r123__dropdown"
-                space={0}
-            >
-                {dropdownItem.map(({ text, to }) => {
-                    return (
-                        <ListComponent.Item key={`${text}-${to}`}>
-                            <LinkComponent
-                                href={to}
-                                noUnderline
-                                className="ui-organism-navbar-r123__item block"
-                            >
-                                {text}
-                            </LinkComponent>
-                        </ListComponent.Item>
-                    );
-                })}
-            </ListComponent>
-        );
-    }
-
-    return null;
+    return (
+        <ListComponent
+            styling="vertical"
+            className="ui-organism-navbar-r123__dropdown"
+            space={0}
+        >
+            {dropdownItem.map(({ text, to }) => {
+                return (
+                    <ListComponent.Item key={`${text}-${to}`}>
+                        <LinkComponent
+                            href={to}
+                            noUnderline
+                            className="ui-organism-navbar-r123__item block"
+                        >
+                            {text}
+                        </LinkComponent>
+                    </ListComponent.Item>
+                );
+            })}
+        </ListComponent>
+    );
 };
 
 NavbarR123DropdownComponent.propTypes = {
