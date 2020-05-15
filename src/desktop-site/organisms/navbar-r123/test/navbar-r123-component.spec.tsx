@@ -95,6 +95,6 @@ describe('Testing navbar r123 in organisms component ', () => {
             .simulate('click');
 
         expect(callback).toHaveBeenCalledTimes(2);
-        expect(callback.mock.results[0].value).toBe('En');
+        expect(callback.mock.results[1].value).toBe('En');
     });
 });

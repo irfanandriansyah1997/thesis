@@ -15,7 +15,7 @@ describe('Testing Navbar Component', () => {
         );
 
         expect(nav.hasClass('ui-molecules-navbar')).toBe(true);
-        expect(nav.hasClass('ui-molecules-navbar--with-shadow')).toBe(false);
+        expect(nav.hasClass('box-shadow-elevateXs')).toBe(false);
         expect(nav.hasClass('ui-molecules-navbar--with-container')).toBe(false);
 
         expect(nav.prop('style')).toHaveProperty(
@@ -33,7 +33,7 @@ describe('Testing Navbar Component', () => {
         );
 
         expect(nav.hasClass('ui-molecules-navbar')).toBe(true);
-        expect(nav.hasClass('ui-molecules-navbar--with-shadow')).toBe(true);
+        expect(nav.hasClass('box-shadow-elevateXs')).toBe(true);
         expect(nav.hasClass('ui-molecules-navbar--with-container')).toBe(true);
 
         expect(nav.prop('style')).toHaveProperty(
