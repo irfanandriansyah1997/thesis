@@ -137,10 +137,10 @@ export const DefaultPropsNavbarR123: NavbarR123PropsInterface = {
             type: 'link'
         }
     ],
-    languange: {
+    language: {
         active: 'Id',
         option: ['Id', 'En']
     },
-    onChangeLanguange: () => undefined,
+    onChangeLanguage: () => undefined,
     onClickLoginButton: () => undefined
 };

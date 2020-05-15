@@ -12,8 +12,8 @@ import { NavbarR123LanguageChooserPropsInterface } from './interface/component.i
  * @since 2020.05.14
  */
 const NavbarR123LanguageChooserComponent: SFC<NavbarR123LanguageChooserPropsInterface> = ({
-    languange,
-    onChangeLanguange
+    language,
+    onChangeLanguage
 }) => (
     <div className="ui-organism-navbar-r123__language-chooser flex flex-align-center">
         <AvatarComponent
@@ -22,18 +22,18 @@ const NavbarR123LanguageChooserComponent: SFC<NavbarR123LanguageChooserPropsInte
             src="https://public.urbanindo.com/style-guide/r123-globe.svg"
         />
         <>
-            {languange.option.map((item) => (
+            {language.option.map((item) => (
                 <TextComponent
                     tag="p"
                     fontWeight={500}
                     styling="default"
-                    key={`languange-${item}`}
+                    key={`language-${item}`}
                     className={StringHelper.objToString({
                         'ui-organism-navbar-r123__language-item': true,
                         'ui-organism-navbar-r123__language-item--active':
-                            item === languange.active
+                            item === language.active
                     })}
-                    onClick={(): void => onChangeLanguange(item)}
+                    onClick={(): void => onChangeLanguage(item)}
                 >
                     {item}
                 </TextComponent>
@@ -43,15 +43,15 @@ const NavbarR123LanguageChooserComponent: SFC<NavbarR123LanguageChooserPropsInte
 );
 
 NavbarR123LanguageChooserComponent.propTypes = {
-    languange: PropTypes.shape({
+    language: PropTypes.shape({
         option: PropTypes.arrayOf(PropTypes.string),
         activ: PropTypes.string
     }).isRequired as Validator<{ active: string; option: string[] }>,
-    onChangeLanguange: PropTypes.func.isRequired
+    onChangeLanguage: PropTypes.func.isRequired
 };
 
 NavbarR123LanguageChooserComponent.defaultProps = {
-    languange: {
+    language: {
         active: 'Id',
         option: ['Id', 'En']
     }

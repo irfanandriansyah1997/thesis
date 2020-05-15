@@ -22,8 +22,8 @@ import {
 const NavbarR123Component: SFC<NavbarR123PropsInterface> = ({
     menu,
     showLogo,
-    languange,
-    onChangeLanguange,
+    language,
+    onChangeLanguage,
     onClickLoginButton
 }) => {
     return (
@@ -97,8 +97,8 @@ const NavbarR123Component: SFC<NavbarR123PropsInterface> = ({
                 >
                     <NavbarComponent.Section>
                         <NavbarR123LanguageChooserComponent
-                            languange={languange}
-                            onChangeLanguange={onChangeLanguange}
+                            language={language}
+                            onChangeLanguage={onChangeLanguage}
                         />
                         <NavbarComponent.Divider color="white" />
                         <NavbarR123LoginComponent
@@ -116,18 +116,18 @@ NavbarR123Component.propTypes = {
         (NavbarR123MenuItemInterface | NavbarR123DropdownInterface)[]
     >,
     showLogo: PropTypes.bool,
-    languange: PropTypes.shape({
+    language: PropTypes.shape({
         active: PropTypes.string,
         option: PropTypes.arrayOf(PropTypes.string)
     }) as Validator<{ active: string; option: string[] }>,
-    onChangeLanguange: PropTypes.func.isRequired,
+    onChangeLanguage: PropTypes.func.isRequired,
     onClickLoginButton: PropTypes.func.isRequired
 };
 
 NavbarR123Component.defaultProps = {
     menu: [],
     showLogo: false,
-    languange: {
+    language: {
         active: 'Id',
         option: ['Id', 'En']
     }

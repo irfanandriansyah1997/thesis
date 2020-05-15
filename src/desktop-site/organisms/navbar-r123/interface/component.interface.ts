@@ -39,11 +39,11 @@ export type NavbarR123MegaMenuPropsInterface = {
  * @since 2020.05.14
  */
 export interface NavbarR123LanguageChooserPropsInterface {
-    languange: {
+    language: {
         active: string;
         option: string[];
     };
-    onChangeLanguange: (language: string) => void;
+    onChangeLanguage: (language: string) => void;
 }
 
 /**

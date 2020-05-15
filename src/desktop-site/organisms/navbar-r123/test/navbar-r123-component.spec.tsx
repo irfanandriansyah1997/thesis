@@ -17,9 +17,9 @@ describe('Testing navbar r123 in organisms component ', () => {
         const navbar = mount(
             <NavbarR123Component
                 menu={[]}
-                onChangeLanguange={callback}
+                onChangeLanguage={callback}
                 onClickLoginButton={callback}
-                languange={{
+                language={{
                     active: 'Id',
                     option: ['Id', 'En']
                 }}
@@ -42,9 +42,9 @@ describe('Testing navbar r123 in organisms component ', () => {
         const navbar = mount(
             <NavbarR123Component
                 menu={[]}
-                onChangeLanguange={callback}
+                onChangeLanguage={callback}
                 onClickLoginButton={callback}
-                languange={{
+                language={{
                     active: 'Id',
                     option: ['Id', 'En']
                 }}
@@ -67,19 +67,19 @@ describe('Testing navbar r123 in organisms component ', () => {
         const navbar = mount(
             <NavbarR123Component
                 menu={[]}
-                onChangeLanguange={callback}
+                onChangeLanguage={callback}
                 onClickLoginButton={jest.fn()}
-                languange={{
+                language={{
                     active: 'Id',
                     option: ['Id', 'En']
                 }}
             />
         );
 
-        const languange = navbar.find(NavbarR123LanguageChooserComponent);
-        expect(languange.length).toBe(1);
+        const language = navbar.find(NavbarR123LanguageChooserComponent);
+        expect(language.length).toBe(1);
 
-        languange
+        language
             .at(0)
             .find(TextComponent)
             .at(0)
@@ -88,7 +88,7 @@ describe('Testing navbar r123 in organisms component ', () => {
         expect(callback).toHaveBeenCalledTimes(1);
         expect(callback.mock.results[0].value).toBe('Id');
 
-        languange
+        language
             .at(0)
             .find(TextComponent)
             .at(1)

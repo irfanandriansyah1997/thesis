@@ -48,9 +48,7 @@ const NavbarComponent: NavbarDefaultExportInterface = ({
         'ui-molecules-navbar--with-container': ValidatorHelper.verifiedIsNotFalse(
             withContainer
         ),
-        'ui-molecules-navbar--with-shadow': ValidatorHelper.verifiedIsNotFalse(
-            shadow
-        ),
+        'box-shadow-elevateXs': ValidatorHelper.verifiedIsNotFalse(shadow),
         block: true,
         [`${position}`]: ValidatorHelper.verifiedIsNotEmpty(position)
     };
