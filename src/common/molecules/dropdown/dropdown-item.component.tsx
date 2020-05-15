@@ -28,7 +28,6 @@ const DropdownItemComponent: SFC<DropdownItemPropsInterface> = ({
         flex: true,
         relative: true,
         'no-wrap': true,
-        'flex-align-center': true,
         'ui-molecules-dropdown__item': true,
         'ui-molecules-dropdown__item--disable-hover': isDisableHover,
         'ui-molecules-dropdown__item--without-padding': isWithoutPadding,

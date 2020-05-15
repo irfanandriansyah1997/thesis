@@ -10,8 +10,8 @@ export type ListPropsInterface = Omit<
     'style' | 'dangerouslySetInnerHTML'
 > & {
     space?: number;
-    dividerColor?: ColorType;
     divider?: 'none' | 'line';
+    dividerColor?: ColorType | string;
     styling?: 'vertical' | 'horizontal';
 };
 

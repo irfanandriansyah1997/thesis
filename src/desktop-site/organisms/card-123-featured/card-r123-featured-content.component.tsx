@@ -145,7 +145,7 @@ const CardContentComponent: SFC<content> = ({
                                 icon={item.icon}
                                 noUnderline
                                 fontWeight={500}
-                                color="basicCardContentR123"
+                                color="headingR123"
                                 href={link}
                             >
                                 {item.value}
@@ -186,24 +186,32 @@ const CardContentComponent: SFC<content> = ({
                     className={StringHelper.objToString(topRowContentClassName)}
                 >
                     <div className="left-content no-wrap">
-                        <TextComponent tag="h2" className="info-title truncate">
+                        <TextComponent
+                            tag="h2"
+                            color="text"
+                            className="info-title truncate"
+                        >
                             <LinkComponent
                                 href={link}
                                 noUnderline
                                 fontWeight={500}
                                 styling="heading-6"
-                                color="basicCardContentR123"
+                                color="headingR123"
                                 className="card--content__info-title-link"
                             >
                                 {title}
                             </LinkComponent>
                         </TextComponent>
-                        <TextComponent tag="h3" className="info-address">
+                        <TextComponent
+                            tag="h3"
+                            color="text"
+                            className="info-address"
+                        >
                             <LinkComponent
                                 noUnderline
                                 href={link}
                                 fontWeight={500}
-                                color="basicCardContentR123"
+                                color="headingR123"
                                 className="card--content__info-address-link"
                             >
                                 {address}
@@ -223,7 +231,7 @@ const CardContentComponent: SFC<content> = ({
                             noUnderline
                             href={link}
                             fontWeight={500}
-                            color="basicCardContentR123"
+                            color="headingR123"
                             className="card--content__property-type-info"
                         >
                             {propertyType}

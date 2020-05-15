@@ -32,7 +32,6 @@ const LinkComponent: SFC<LinkPropsInterface> = ({
         'ui-atomic-link--styling-underline-none': ValidatorHelper.verifiedIsNotFalse(
             noUnderline
         ),
-        [`ui-atomic-link--styling-${color}`]: true,
         [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className)
     };
 
@@ -66,12 +65,12 @@ const LinkComponent: SFC<LinkPropsInterface> = ({
 };
 
 LinkComponent.defaultProps = {
-    color: 'primary',
     href: '',
-    noUnderline: false,
     icon: undefined,
-    onClick: undefined,
     fontWeight: 400,
+    color: undefined,
+    noUnderline: false,
+    onClick: undefined,
     styling: 'default'
 };
 

@@ -3,7 +3,6 @@ import { render, mount } from 'enzyme';
 
 import ListComponent from '../list.component';
 import ColorDefaultConstant from '../../../../shared/constant/color.constant';
-import { ColorType } from '../../../../shared/interface/common/color.interface';
 
 describe('Testing list component in molecules component', () => {
     it('Should render list component horizontal correctly', () => {
@@ -83,11 +82,7 @@ describe('Testing list component in molecules component', () => {
 
     it('Check style attribute in ListItemComponent Horizontal', () => {
         const list = mount(
-            <ListComponent
-                styling="horizontal"
-                divider="line"
-                dividerColor={'not-found-color' as ColorType}
-            >
+            <ListComponent styling="horizontal" divider="line">
                 <ListComponent.Item>Hello World</ListComponent.Item>
                 <ListComponent.Item>
                     Render using ListingComponent Item
@@ -110,9 +105,6 @@ describe('Testing list component in molecules component', () => {
         if (style1) {
             expect(style1.marginLeft).toBe(7.5);
             expect(style1.paddingRight).toBe(7.5);
-            expect(style1.borderRight).toBe(
-                `1px solid ${ColorDefaultConstant.heading}`
-            );
         }
 
         if (style2) {

@@ -11,7 +11,6 @@ describe('Testing link component in atomic component', () => {
 
         expect(link.text()).toContain('Link');
         expect(link.hasClass('ui-atomic-link')).toBe(true);
-        expect(link.hasClass('ui-atomic-link--styling-primary')).toBe(true);
         expect(link.find('span').hasClass('ui-atomic-text')).toBe(true);
         expect(
             link.find('span').hasClass('ui-atomic-text--styling-default')
@@ -25,7 +24,6 @@ describe('Testing link component in atomic component', () => {
         expect(link.hasClass('ui-atomic-link--styling-underline-none')).toBe(
             false
         );
-        expect(link.hasClass('ui-atomic-link--styling-primary')).toBe(true);
     });
 
     it('Should render link component without underline correctly', () => {

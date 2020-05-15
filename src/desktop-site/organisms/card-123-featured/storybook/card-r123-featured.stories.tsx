@@ -11,7 +11,7 @@ const CardR123FeaturedDocumentation = require('./markdown/card-r123-featured.doc
 
 ((): void => {
     new StorybookDocumentationBuilder(
-        'R123 Featured Card Component',
+        'Featured R123 Card Component',
         'organism'
     )
         .setSection('desktop')

@@ -23,7 +23,11 @@ const NavbarMegaMenuComponent: SFC<NavbarMenuDropdownPropsInterface> = ({
             trigger="hover"
             label={<NavbarItemComponent {...res} />}
         >
-            <DropdownComponent.Item disableHover withoutPadding>
+            <DropdownComponent.Item
+                disableHover
+                withoutPadding
+                className="flex-align-start"
+            >
                 {children}
             </DropdownComponent.Item>
         </DropdownComponent>

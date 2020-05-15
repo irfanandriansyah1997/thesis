@@ -120,11 +120,11 @@
                 all,
                 1px,
                 solid,
-                map-get($color-general, hoverOutline)
+                map-get($color-general, headingDarkerR123)
             );
 
             .ui-atomic-button--children {
-                @include font-color(map-get($color-general, hoverOutline));
+                @include font-color(map-get($color-general, headingDarkerR123));
             }
         }
     }

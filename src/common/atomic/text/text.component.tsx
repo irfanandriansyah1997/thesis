@@ -55,7 +55,7 @@ const TextComponent: SFC<TextPropsInterface> = ({
 
 TextComponent.defaultProps = {
     align: 'left',
-    color: 'text',
+    color: undefined,
     fontFamily: 'primary',
     fontWeight: 400,
     styling: 'default'

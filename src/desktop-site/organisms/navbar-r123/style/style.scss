@@ -1,0 +1,126 @@
+/* stylelint-disable */
+
+@import '../../../../style/import.scss';
+
+$width-dropdown-container: 249px;
+
+.ui-organism-navbar-r123 {
+    $c: &;
+
+    width: 100%;
+
+    @include background-color(primary);
+
+    &__logo {
+        @include padding(all, 25px 25px 5px);
+    }
+
+    &__item {
+        @include border(bottom, 1px, solid, rgba(163, 170, 178, 0.15));
+    }
+
+    &__item,
+    &__mega-menu__heading {
+        height: 70px;
+        width: calc(#{$width-dropdown-container} - 48px);
+
+        @include padding(all, 24px 0);
+        @include margin(all, 0 24px);
+    }
+
+    &__dropdown {
+        @include background-color(headingR123);
+
+        width: $width-dropdown-container;
+
+        #{$c}__item {
+            @include font-color(greyDarkerR123);
+
+            &:hover {
+                @include font-color(white);
+            }
+        }
+    }
+
+    &__mega-menu {
+        #{$c}__item {
+            @include font-color(text);
+
+            &:hover {
+                @include font-color(headingDarkerR123);
+            }
+
+            &:first-child {
+                @include border(top, 1px, solid, rgba(163, 170, 178, 0.15));
+            }
+        }
+
+        &__heading {
+            @include font-color(headingDarkerR123);
+        }
+    }
+
+    &__language-chooser {
+        .ui-atomic-avatar {
+            @include margin-right(6px);
+        }
+
+        .ui-atomic-text {
+            @include font-color(white);
+            @include padding(all, 0 4px);
+        }
+    }
+
+    &__language-item {
+        cursor: pointer;
+        opacity: 0.6;
+
+        @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+        &:hover,
+        &--active {
+            opacity: 1;
+        }
+    }
+
+    &__login {
+        .ui-atomic-text {
+            cursor: pointer;
+            opacity: 0.6;
+
+            @include margin-left(6px);
+            @include font-color(white);
+            @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .ui-molecules-list {
+        &__item {
+            &:last-child {
+                #{$c}__item {
+                    @include no-border-bottom();
+                }
+            }
+        }
+    }
+
+    .ui-molecules-dropdown {
+        &__content {
+            @include no-border();
+
+            &::before {
+                content: '';
+                display: block;
+                height: 100%;
+                position: absolute;
+                width: $width-dropdown-container;
+
+                @include background-color(headingR123);
+            }
+        }
+    }
+}

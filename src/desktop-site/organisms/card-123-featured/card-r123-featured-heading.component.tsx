@@ -29,6 +29,7 @@ const CardHeadingComponent: SFC<CardR123FeaturedHeadingInterface> = ({
         <div className={StringHelper.objToString(name)}>
             <TextComponent
                 tag="h2"
+                color="text"
                 styling="heading-6"
                 className="info-title truncate"
             >
@@ -45,6 +46,7 @@ const CardHeadingComponent: SFC<CardR123FeaturedHeadingInterface> = ({
             </TextComponent>
             <TextComponent
                 tag="p"
+                color="text"
                 styling="tiny"
                 className="info-title truncate"
                 style={{ marginLeft: 8 }}

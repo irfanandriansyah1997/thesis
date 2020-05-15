@@ -159,7 +159,9 @@ const CardMediaComponent: SFC<R123SearchPageCardMediaInterface> = ({
                     <TextComponent
                         tag="p"
                         styling="caption"
-                        color={tier === 'premier' ? 'hoverOutline' : 'white'}
+                        color={
+                            tier === 'premier' ? 'headingDarkerR123' : 'white'
+                        }
                         className={StringHelper.objToString(
                             flaggingBadgeClassName
                         )}
