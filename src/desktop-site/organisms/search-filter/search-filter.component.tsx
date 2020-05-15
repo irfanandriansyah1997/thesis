@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { SFC, useState, useEffect, ReactNode } from 'react';
 
 import CardComponent from '../../../common/atomic/card/card.component';
@@ -60,14 +59,14 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
      * @return {ReactNode}
      */
     const getFilterItems = (isChildrenToggle: boolean): ReactNode =>
-        filterItem.map((item, index) => {
+        filterItem.map((item) => {
             if (
                 item.type === 'combobox' &&
                 item.isChildrenToggle === isChildrenToggle
             ) {
                 return (
                     <ComboboxSearchFilter
-                        key={index}
+                        key={item.name}
                         option={(item as FilterComboboxComponent).option}
                         value={(item as FilterComboboxComponent).value}
                         name={item.name}
@@ -84,7 +83,7 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
             ) {
                 return (
                     <RangeSliderSearchFilter
-                        key={index}
+                        key={item.name}
                         min={(item as FilterRangeComponent).min}
                         max={(item as FilterRangeComponent).max}
                         value={(item as FilterRangeComponent).value}
@@ -102,7 +101,7 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
             ) {
                 return (
                     <CheckboxSearchFilter
-                        key={index}
+                        key={item.name}
                         isChecked={(item as FilterCheckboxComponent).isChecked}
                         name={item.name}
                         onChange={(item as FilterCheckboxComponent).onChange}
