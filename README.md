@@ -41,7 +41,7 @@ npm install --save component-ninetynine@<version-library>
 
 - jalankan perintah di dalam terminal `make init-dev` <b>hanya pada saat awal pengerjaan saja</b>
 - lalu jika suda selesai anda dapat menjalankan `make run-dev`
-- lalu jalankan port 8008
+- lalu jalankan port 5000
 
 ## Cara Build Library
 
