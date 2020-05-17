@@ -80,7 +80,6 @@ const IconDocumentation = require('./markdown/icon.documentation.md');
                                 desc="R123 Icon"
                                 syntax={`<IconComponent color='success' size={32}>${item}</IconComponent>`}
                             >
-                                {item}
                                 <IconComponent color="primary" size={48}>
                                     {item}
                                 </IconComponent>
