@@ -30,8 +30,11 @@ const NavbarMenuComponent: SFC<NavbarMenuPropsInterface> = ({
 
             if (o.type) {
                 return (
-                    includeComponent.filter((item) => o.type.name === item)
-                        .length > 0
+                    includeComponent.filter(
+                        (item) =>
+                            o.type.displayName === item ||
+                            o.type.displayName.includes(item)
+                    ).length > 0
                 );
             }
 

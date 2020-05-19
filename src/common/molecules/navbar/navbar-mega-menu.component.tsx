@@ -34,6 +34,8 @@ const NavbarMegaMenuComponent: SFC<NavbarMenuDropdownPropsInterface> = ({
     );
 };
 
+NavbarMegaMenuComponent.displayName = 'NavbarMegaMenuComponent';
+
 NavbarMegaMenuComponent.propTypes = {
     to: PropTypes.string,
     onClick: PropTypes.func,

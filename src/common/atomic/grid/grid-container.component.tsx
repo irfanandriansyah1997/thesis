@@ -31,7 +31,7 @@ const GridContainerComponent: SFC<GridContainerPropsInterface> = ({
         <div className={StringHelper.objToString(className)} {...res}>
             {React.Children.toArray(children).filter((o: any): boolean => {
                 if (o.type) {
-                    return o.type.name === 'GridRowComponent';
+                    return o.type.displayName === 'GridRowComponent';
                 }
 
                 return false;

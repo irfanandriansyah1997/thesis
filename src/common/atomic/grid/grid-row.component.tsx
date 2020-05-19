@@ -45,7 +45,7 @@ const GridRowComponent: SFC<GridRowPropsInterface> = ({
         })
         .map(
             (o: any): GridColumnPropsInterface => {
-                if (o.type && o.type.name !== 'GridColumnComponent') {
+                if (o.type && o.type.displayName !== 'GridColumnComponent') {
                     return o.type(o.props);
                 }
                 return o.props;

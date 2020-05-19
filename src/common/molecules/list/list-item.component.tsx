@@ -10,6 +10,8 @@ import { ListItemPropsInterface } from './interface/component.interface';
  */
 const ListItemComponent: SFC<ListItemPropsInterface> = () => null;
 
+ListItemComponent.displayName = 'ListItemComponent';
+
 ListItemComponent.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
