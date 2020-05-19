@@ -52,16 +52,15 @@ const RangeSliderComponent: SFC<RangeSliderPropsInterface> = ({
     const setAttributeComponent = ({
         range,
         endPosition,
-        startPosition,
-        ...resOption
+        startPosition
     }: RangeSliderEventHandler): void => {
         if (rangeSection.current && startThumb.current && endThumb.current) {
             rangeSection.current.style.left = `${startPosition}%`;
             rangeSection.current.style.width = `${range}%`;
             startThumb.current.style.left = `${startPosition}%`;
-            startThumb.current.style.transform = `translate(-${resOption.value.start}%, -50%)`;
+            startThumb.current.style.transform = `translate(-${startPosition}%, -50%)`;
             endThumb.current.style.left = `${endPosition}%`;
-            endThumb.current.style.transform = `translate(-${resOption.value.end}%, -50%)`;
+            endThumb.current.style.transform = `translate(-${endPosition}%, -50%)`;
         }
     };
 

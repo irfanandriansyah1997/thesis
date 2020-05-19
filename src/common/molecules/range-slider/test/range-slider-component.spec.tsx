@@ -86,11 +86,15 @@ describe('Testing Range Slider Component', () => {
         expect(rangeElement.style.width).toBe('55.55555555555554%');
 
         expect(startThumb.style.left).toBe('22.222222222222225%');
-        expect(startThumb.style.transform).toBe('translate(-30%, -50%)');
+        expect(startThumb.style.transform).toBe(
+            'translate(-22.222222222222225%, -50%)'
+        );
 
         expect(endThumb.style.right).toBe('0px');
         expect(endThumb.style.left).toBe('77.77777777777777%');
-        expect(endThumb.style.transform).toBe('translate(-80%, -50%)');
+        expect(endThumb.style.transform).toBe(
+            'translate(-77.77777777777777%, -50%)'
+        );
     });
 
     it('Simulate onchange value maximum input', () => {
@@ -159,11 +163,15 @@ describe('Testing Range Slider Component', () => {
         expect(rangeElement.style.width).toBe('33.33333333333333%');
 
         expect(startThumb.style.left).toBe('11.11111111111111%');
-        expect(startThumb.style.transform).toBe('translate(-20%, -50%)');
+        expect(startThumb.style.transform).toBe(
+            'translate(-11.11111111111111%, -50%)'
+        );
 
         expect(endThumb.style.right).toBe('0px');
         expect(endThumb.style.left).toBe('44.44444444444444%');
-        expect(endThumb.style.transform).toBe('translate(-50%, -50%)');
+        expect(endThumb.style.transform).toBe(
+            'translate(-44.44444444444444%, -50%)'
+        );
     });
 
     it('Simulate onchange with wrong parameter', () => {
