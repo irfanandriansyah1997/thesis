@@ -12,7 +12,7 @@ $width-dropdown-container: 249px;
     @include background-color(primary);
 
     &__logo {
-        @include padding(all, 25px 25px 5px);
+        @include margin(all, 20px 25px 10px);
     }
 
     &__item {
