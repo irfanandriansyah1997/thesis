@@ -29,6 +29,8 @@ const NavbarSectionComponent: SFC<NavbarSectionPropsInterface> = ({
     );
 };
 
+NavbarSectionComponent.displayName = 'NavbarSectionComponent';
+
 NavbarSectionComponent.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),

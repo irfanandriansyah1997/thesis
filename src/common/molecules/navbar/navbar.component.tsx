@@ -34,7 +34,10 @@ const NavbarComponent: NavbarDefaultExportInterface = ({
     const children = React.Children.toArray(res.children).filter(
         (o: any): boolean => {
             if (o.type) {
-                return o.type.name === 'NavbarMenuComponent';
+                return (
+                    o.type.displayName === 'NavbarMenuComponent' ||
+                    o.type.displayName.includes('NavbarMenuComponent')
+                );
             }
 
             return false;

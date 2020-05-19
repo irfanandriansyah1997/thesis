@@ -25,7 +25,7 @@ const NavbarDropdownComponent: SFC<NavbarMenuDropdownPropsInterface> = ({
     )
         .filter((o: any): boolean => {
             if (o.type) {
-                return o.type.name === 'NavbarItemComponent';
+                return o.type.displayName === 'NavbarItemComponent';
             }
 
             return false;
@@ -48,6 +48,8 @@ const NavbarDropdownComponent: SFC<NavbarMenuDropdownPropsInterface> = ({
         </DropdownComponent>
     );
 };
+
+NavbarDropdownComponent.displayName = 'NavbarDropdownComponent';
 
 NavbarDropdownComponent.propTypes = {
     to: PropTypes.string,

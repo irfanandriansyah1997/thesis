@@ -178,8 +178,10 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                         {React.Children.toArray(res.children).filter(
                             (o: any) => {
                                 return (
-                                    o.type.name === 'DropdownItemComponent' ||
-                                    o.type.name === 'DropdownDividerComponent'
+                                    o.type.displayName ===
+                                        'DropdownItemComponent' ||
+                                    o.type.displayName ===
+                                        'DropdownDividerComponent'
                                 );
                             }
                         )}
@@ -189,6 +191,8 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
         </div>
     );
 };
+
+DropdownComponent.displayName = 'DropdownComponent';
 
 DropdownComponent.propTypes = {
     scroll: PropTypes.bool,

@@ -43,7 +43,7 @@ const ListComponent: ListDefaultExportInterface = ({
     delete res.className;
 
     const children = React.Children.toArray(res.children).filter(
-        (o: any): boolean => o.type.name === 'ListItemComponent'
+        (o: any): boolean => o.type.displayName === 'ListItemComponent'
     );
     delete res.children;
 

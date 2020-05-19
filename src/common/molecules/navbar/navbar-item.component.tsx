@@ -60,6 +60,8 @@ const NavbarItemComponent: SFC<NavbarMenuItemPropsInterface> = ({
     );
 };
 
+NavbarItemComponent.displayName = 'NavbarItemComponent';
+
 NavbarItemComponent.propTypes = {
     to: PropTypes.string,
     active: PropTypes.bool,

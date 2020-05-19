@@ -36,6 +36,8 @@ const NavbarDividerComponent: SFC<NavbarDividerPropsInterface> = ({
     });
 };
 
+NavbarDividerComponent.displayName = 'NavbarDividerComponent';
+
 NavbarDividerComponent.propTypes = {
     color: PropTypes.oneOf(Object.keys(ColorDefaultConstant)) as Validator<
         ColorType

@@ -12,4 +12,6 @@ const DropdownDividerComponent: SFC<DropdownDividerPropInterface> = () => (
     <hr className="ui-molecules-dropdown__divider" />
 );
 
+DropdownDividerComponent.displayName = 'DropdownDividerComponent';
+
 export default DropdownDividerComponent;

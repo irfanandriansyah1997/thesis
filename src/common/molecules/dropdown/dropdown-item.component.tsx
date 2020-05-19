@@ -55,6 +55,8 @@ const DropdownItemComponent: SFC<DropdownItemPropsInterface> = ({
     return null;
 };
 
+DropdownItemComponent.displayName = 'DropdownItemComponent';
+
 DropdownItemComponent.propTypes = {
     active: PropTypes.bool,
     disabled: PropTypes.bool,
