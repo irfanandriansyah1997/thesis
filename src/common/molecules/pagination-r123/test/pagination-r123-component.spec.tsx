@@ -9,7 +9,7 @@ describe('Testing <PaginationR123Component> in molecules component ', () => {
         const component = render(
             <PaginationR123Component
                 page={1}
-                totalPage={30}
+                totalPage={10}
                 pageRange={2}
                 onPageChange={jest.fn()}
             />
@@ -22,7 +22,7 @@ describe('Testing <PaginationR123Component> in molecules component ', () => {
         const wrapper = shallow(
             <PaginationR123Component
                 page={1}
-                totalPage={30}
+                totalPage={10}
                 pageRange={2}
                 onPageChange={jest.fn()}
                 paginationSummary="Showing 10 result"

@@ -12,7 +12,7 @@ export type PaginationPropsInterface = Omit<
 > &
     PaginationInterface & {
         onPageChange: (selectedItem: SelectedPageInterface) => void;
-        pageRange?: number;
+        pageRange: number;
         marginPageDisplay?: number;
         paginationSummary?: ReactNode;
     };
@@ -25,7 +25,7 @@ export type PaginationPropsInterface = Omit<
  */
 export interface PaginationInterface {
     page: number;
-    totalPage?: number;
+    totalPage: number;
     totalRecord?: number;
 }
 

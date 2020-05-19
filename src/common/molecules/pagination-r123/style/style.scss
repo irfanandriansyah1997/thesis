@@ -8,6 +8,7 @@
 
     li {
         align-items: center;
+        cursor: pointer;
         display: flex;
         height: 40px;
         justify-content: center;
@@ -24,7 +25,7 @@
 
         &:first-child,
         &:last-child {
-            a {
+            button {
                 @include rounded(3px);
             }
         }
@@ -34,16 +35,24 @@
             @include rounded(3px);
         }
 
-        a {
+        button {
             align-items: center;
-            cursor: pointer;
+            background-color: inherit;
+            color: inherit;
             display: flex;
             height: 100%;
             justify-content: center;
             width: 100%;
 
             @include padding(all, 10px);
+            @include rounded(3px);
+            @include no-border();
         }
+    }
+
+    .active {
+        @include background-color(rgb(105, 118, 132));
+        @include font-color(white);
     }
 
     .disabled {

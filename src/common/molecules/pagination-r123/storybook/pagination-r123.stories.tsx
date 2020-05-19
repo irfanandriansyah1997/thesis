@@ -23,19 +23,24 @@ const PaginationR123Documentation = require('./markdown/pagination-r123.document
                 <TextDocsComponent>Basic R123 Pagination</TextDocsComponent>
                 <CodingViewerDocsComponent
                     sourceCode={
-                        `${'<PaginationR123Component'}\n` +
-                        `   ${'page={1}'}\n` +
-                        `   ${'totalPage={30}'}\n` +
-                        `   ${'pageRange={1}'}\n` +
-                        `   ${'onPageChange={(): void => undefined}'}\n` +
-                        `${'/>'}`
+                        `${'<div style={{ display: "flex", justifyContent: "center" }}>'}\n` +
+                        `   ${'<PaginationR123Component'}\n` +
+                        `           ${'page={1}'}\n` +
+                        `           ${'totalPage={30}'}\n` +
+                        `           ${'pageRange={1}'}\n` +
+                        `           ${'onPageChange={(): void => undefined}'}\n` +
+                        `   ${'/>'}\n` +
+                        `${'</div>'}`
                     }
                 >
-                    <PaginationR123Component
-                        page={1}
-                        totalPage={30}
-                        onPageChange={(): void => undefined}
-                    />
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <PaginationR123Component
+                            page={1}
+                            totalPage={20}
+                            pageRange={3}
+                            onPageChange={(): void => undefined}
+                        />
+                    </div>
                 </CodingViewerDocsComponent>
             </>
         )
