@@ -1,303 +1,212 @@
-// /* eslint-disable react/no-array-index-key */
+import React, { SFC, useContext, ReactNode } from 'react';
 
-// import React, { SFC, ReactNode } from 'react';
-// import PropTypes from 'prop-types';
+import StringHelper from '../../../shared/helper/string.helper';
+import IconComponent from '../../../common/atomic/icon/icon.component';
+import LinkComponent from '../../../common/atomic/link/link.component';
+import CardR123FeaturedContext from './context/card-r123-featured.context';
+import { ColorType } from '../../../shared/interface/common/color.interface';
+import ButtonComponent from '../../../common/atomic/button/button.component';
+import { CardR123FeaturedContextInterface } from './interface/component.interface';
+import HollowLinkComponent from '../../../common/molecules/hollow-link/hollow-link.component';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import {
+    ComponentStylingTypography,
+    ComponentFontWeightTypography
+} from '../../../shared/interface/component/component-typography.interface';
+import { CardR123BasicGridItemInterface } from '../card-r123-basic/interface/component.interface';
+import CardR123BasicGridComponent from '../card-r123-basic/card-r123-basic-grid.component';
 
-// import StringHelper from '../../../shared/helper/string.helper';
-// import TextComponent from '../../../common/atomic/text/text.component';
-// import IconComponent from '../../../common/atomic/icon/icon.component';
-// import LinkComponent from '../../../common/atomic/link/link.component';
-// import ButtonComponent from '../../../common/atomic/button/button.component';
-// import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-// import {
-//     R123SearchPageMortgageType as MortgageType,
-//     R123SearchPageOnClickSaveType as OnClickType,
-//     R123SearchPageCardContentInterface as content
-// } from '../../../shared/interface/rumah-123/search-page/search-page-card.interface';
+/**
+ * Create phone icon
+ * @return {string}
+ */
+const PhoneIcon: SFC = () => (
+    <IconComponent color="outline" size={18}>
+        rui-icon-call
+    </IconComponent>
+);
 
-// /**
-//  * Create save icon
-//  * @return {string}
-//  */
-// const SaveIcon: SFC = () => (
-//     <IconComponent color="basicCardHeadingR123" size={18}>
-//         rui-icon-save-hollow
-//     </IconComponent>
-// );
+/**
+ * Featured / Premier Card Content Component
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @description featured / premier card content which contains text, button, etc
+ * @since 2020.04.30
+ */
+const CardR123FeaturedContentComponent: SFC = () => {
+    const { data, action } = useContext<CardR123FeaturedContextInterface>(
+        CardR123FeaturedContext
+    );
+    const {
+        onClickSave,
+        onClickContactAgent,
+        onClickMortgageSimulation
+    } = action;
+    const { link, title, address, propertyType, attribute } = data;
+    const PropertySizeAttribute: CardR123BasicGridItemInterface[] = [
+        { key: 'landSize' },
+        { key: 'buildingSize' }
+    ];
+    const PropertyInfoAttribute: CardR123BasicGridItemInterface[] = [
+        { key: 'bathroom', icon: 'rui-icon-bath-small' },
+        { key: 'bedroom', icon: 'rui-icon-bed-small' },
+        { key: 'carport', icon: 'rui-icon-car-small' }
+    ];
 
-// /**
-//  * Create save button
-//  * @return {string}
-//  */
-// const SaveButton: SFC<OnClickType> = ({ onClickSave }) => (
-//     <LinkComponent
-//         noUnderline
-//         fontWeight={500}
-//         icon={<SaveIcon />}
-//         onClick={onClickSave}
-//         color="basicCardHeadingR123"
-//         style={{ marginLeft: 16 }}
-//     >
-//         Simpan
-//     </LinkComponent>
-// );
+    /**
+     * Wrapper Classname
+     */
+    const className: ComponentClassnameDefaultInterface = {
+        [`ui-organisms-card-r123-featured__content-wrapper`]: true,
+        flex: true,
+        'flex-column': true,
+        relative: true
+    };
 
-// SaveButton.propTypes = {
-//     onClickSave: PropTypes.func.isRequired
-// };
+    /**
+     * Get top row card content className
+     */
+    const topSectionClassName: ComponentClassnameDefaultInterface = {
+        'featured-card--content__top-row': true,
+        flex: true,
+        'flex-justify-between': true,
+        'flex-align-baseline': true
+    };
 
-// /**
-//  * Create calculator icon
-//  * @return {string}
-//  */
-// const CalculatorIcon: SFC = () => (
-//     <IconComponent color="basicCardHeadingR123" size={18}>
-//         rui-icon-calculator
-//     </IconComponent>
-// );
+    /**
+     * Get bottom row card content className
+     */
+    const bottomSectionClassName: ComponentClassnameDefaultInterface = {
+        'featured-card--content__bottom-row': true,
+        flex: true,
+        'flex-align-end': true,
+        'flex-justify-between': true
+    };
 
-// /**
-//  * Create mortgage link button
-//  * @return {string}
-//  */
-// const MortgageButtonLink: SFC<MortgageType> = ({ mortgageLinkText }) => (
-//     <LinkComponent
-//         noUnderline
-//         fontWeight={500}
-//         icon={<CalculatorIcon />}
-//         color="basicCardHeadingR123"
-//     >
-//         {mortgageLinkText}
-//     </LinkComponent>
-// );
+    /**
+     * Generate Link Component
+     * @param {string} text - children
+     * @param {ColorType} color - color link
+     * @param {string} classNameComponent - className link component
+     * @param {ComponentStylingTypography} styling  - custom styling in link component
+     * @param {ComponentFontWeightTypography} fontWeight - font weight text
+     * @return {ReactNode}
+     */
+    const generateLinkComponent = (
+        text: string,
+        color: ColorType,
+        fontWeight: ComponentFontWeightTypography,
+        styling: ComponentStylingTypography = 'default',
+        classNameComponent: string | undefined = undefined
+    ): ReactNode => {
+        return (
+            <LinkComponent
+                noUnderline
+                href={link}
+                color={color}
+                styling={styling}
+                fontWeight={fontWeight}
+                className={classNameComponent}
+            >
+                {text}
+            </LinkComponent>
+        );
+    };
 
-// MortgageButtonLink.defaultProps = {
-//     mortgageLinkText: ''
-// };
+    return (
+        <div
+            className={StringHelper.objToString(className)}
+            style={{ minHeight: 147, padding: 16, paddingBottom: 24 }}
+        >
+            <div className="featured-card--content">
+                <div className={StringHelper.objToString(topSectionClassName)}>
+                    <div className="left-content no-wrap">
+                        {generateLinkComponent(
+                            title,
+                            'headingR123',
+                            500,
+                            'heading-6',
+                            'truncate'
+                        )}
+                        {generateLinkComponent(address, 'headingR123', 500)}
+                    </div>
+                    <div className="right-content no-wrap">
+                        <HollowLinkComponent
+                            icon="rui-icon-calculator"
+                            onClick={onClickMortgageSimulation}
+                        >
+                            Simulasi KPR
+                        </HollowLinkComponent>
+                        <HollowLinkComponent
+                            icon="rui-icon-save-hollow"
+                            onClick={onClickSave}
+                        >
+                            Simpan
+                        </HollowLinkComponent>
+                    </div>
+                </div>
+                <div className="featured-card--content__middle-row">
+                    <div className="property-type">
+                        {generateLinkComponent(
+                            propertyType,
+                            'headingR123',
+                            500
+                        )}
+                    </div>
+                    <CardR123BasicGridComponent
+                        to={link}
+                        type="text"
+                        divider="line"
+                        dividerColor="text"
+                        styling="horizontal"
+                        listItem={PropertySizeAttribute}
+                        object={
+                            (attribute as unknown) as Record<string, unknown>
+                        }
+                    />
+                </div>
+                <div
+                    className={StringHelper.objToString(bottomSectionClassName)}
+                >
+                    <div className="left-content">
+                        <CardR123BasicGridComponent
+                            to={link}
+                            divider="line"
+                            styling="horizontal"
+                            type="text-with-icon"
+                            listItem={PropertyInfoAttribute}
+                            object={
+                                (attribute as unknown) as Record<
+                                    string,
+                                    unknown
+                                >
+                            }
+                        />
+                    </div>
+                    <div className="right-content">
+                        <LinkComponent
+                            noUnderline
+                            color="outline"
+                            fontWeight={500}
+                            icon={<PhoneIcon />}
+                            onClick={onClickContactAgent}
+                        >
+                            Kontak Agen
+                        </LinkComponent>
+                        <ButtonComponent
+                            outline
+                            size="default"
+                            className="contact-detail-button"
+                        >
+                            Lihat Detail
+                        </ButtonComponent>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
-// MortgageButtonLink.propTypes = {
-//     mortgageLinkText: PropTypes.string
-// };
+CardR123FeaturedContentComponent.displayName =
+    'CardR123FeaturedContentComponent';
 
-// /**
-//  * Create phone icon
-//  * @return {string}
-//  */
-// const PhoneIcon: SFC = () => (
-//     <IconComponent color="outline" size={18}>
-//         rui-icon-call
-//     </IconComponent>
-// );
-
-// /**
-//  * Create contact agent button
-//  * @return {string}
-//  */
-// const ContactAgentButton: SFC = () => (
-//     <LinkComponent
-//         icon={<PhoneIcon />}
-//         color="outline"
-//         noUnderline
-//         fontWeight={500}
-//     >
-//         Kontak Agen
-//     </LinkComponent>
-// );
-
-// /**
-//  * Featured / Premier Card Content Component
-//  * @author Dedik Budianto <dedik.budianto@99.co>
-//  * @description featured / premier card content which contains text, button, etc
-//  * @since 2020.04.30
-//  */
-// const CardContentComponent: SFC = () => {
-//     const name: ComponentClassnameDefaultInterface = {
-//         [`ui-organisms-card-r123-featured__content-wrapper`]: true,
-//         flex: true,
-//         'flex-column': true,
-//         relative: true
-//     };
-
-//     /**
-//      * Get attribute
-//      */
-//     const getAttribute = (): ReactNode => {
-//         return (
-//             <ul className="featured-card-attribute inline-flex">
-//                 {attribute &&
-//                     attribute.map((item, index) => (
-//                         <li
-//                             key={index}
-//                             className="featured-card-attribute__facility"
-//                         >
-//                             <LinkComponent
-//                                 icon={item.icon}
-//                                 noUnderline
-//                                 fontWeight={500}
-//                                 color="headingR123"
-//                                 href={link}
-//                             >
-//                                 {item.value}
-//                             </LinkComponent>
-//                         </li>
-//                     ))}
-//             </ul>
-//         );
-//     };
-
-//     /**
-//      * Get top row card content className
-//      */
-//     const topRowContentClassName: ComponentClassnameDefaultInterface = {
-//         'featured-card--content__top-row': true,
-//         flex: true,
-//         'flex-justify-between': true,
-//         'flex-align-baseline': true
-//     };
-
-//     /**
-//      * Get bottom row card content className
-//      */
-//     const topBottomContentClassName: ComponentClassnameDefaultInterface = {
-//         'featured-card--content__bottom-row': true,
-//         flex: true,
-//         'flex-align-end': true,
-//         'flex-justify-between': true
-//     };
-
-//     return (
-//         <div
-//             className={StringHelper.objToString(name)}
-//             style={{ ...res, minHeight: 147, padding: 16, paddingBottom: 24 }}
-//         >
-//             <div className="featured-card--content">
-//                 <div
-//                     className={StringHelper.objToString(topRowContentClassName)}
-//                 >
-//                     <div className="left-content no-wrap">
-//                         <TextComponent
-//                             tag="h2"
-//                             color="text"
-//                             className="info-title truncate"
-//                         >
-//                             <LinkComponent
-//                                 href={link}
-//                                 noUnderline
-//                                 fontWeight={500}
-//                                 styling="heading-6"
-//                                 color="headingR123"
-//                                 className="card--content__info-title-link"
-//                             >
-//                                 {title}
-//                             </LinkComponent>
-//                         </TextComponent>
-//                         <TextComponent
-//                             tag="h3"
-//                             color="text"
-//                             className="info-address"
-//                         >
-//                             <LinkComponent
-//                                 noUnderline
-//                                 href={link}
-//                                 fontWeight={500}
-//                                 color="headingR123"
-//                                 className="card--content__info-address-link"
-//                             >
-//                                 {address}
-//                             </LinkComponent>
-//                         </TextComponent>
-//                     </div>
-//                     <div className="right-content no-wrap">
-//                         <MortgageButtonLink
-//                             mortgageLinkText={mortgageLinkText}
-//                         />
-//                         <SaveButton onClickSave={onClickSave} />
-//                     </div>
-//                 </div>
-//                 <div className="featured-card--content__middle-row">
-//                     <div className="property-type">
-//                         <LinkComponent
-//                             noUnderline
-//                             href={link}
-//                             fontWeight={500}
-//                             color="headingR123"
-//                             className="card--content__property-type-info"
-//                         >
-//                             {propertyType}
-//                         </LinkComponent>
-//                     </div>
-//                     <div className="attribute-config flex">
-//                         <div className="attribute-config__buildingsize">
-//                             <LinkComponent
-//                                 href={link}
-//                                 noUnderline
-//                                 color="heading"
-//                                 fontWeight={500}
-//                                 className="attribute-config__buildingsize-info"
-//                             >
-//                                 {buildingSize}
-//                             </LinkComponent>
-//                         </div>
-//                         <div className="attribute-config__landsize">
-//                             <LinkComponent
-//                                 href={link}
-//                                 noUnderline
-//                                 color="heading"
-//                                 fontWeight={500}
-//                                 className="attribute-config__landsize-info"
-//                             >
-//                                 {landSize}
-//                             </LinkComponent>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div
-//                     className={StringHelper.objToString(
-//                         topBottomContentClassName
-//                     )}
-//                 >
-//                     <div className="left-content">{getAttribute()}</div>
-//                     <div className="right-content">
-//                         <ContactAgentButton />
-//                         <ButtonComponent
-//                             outline
-//                             size="default"
-//                             className="contact-detail-button"
-//                         >
-//                             Lihat Detail
-//                         </ButtonComponent>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// CardContentComponent.defaultProps = {
-//     title: '',
-//     address: '',
-//     landSize: '',
-//     buildingSize: '',
-//     propertyType: '',
-//     mortgageLinkText: ''
-// };
-
-// CardContentComponent.propTypes = {
-//     title: PropTypes.string,
-//     address: PropTypes.string,
-//     landSize: PropTypes.string,
-//     buildingSize: PropTypes.string,
-//     propertyType: PropTypes.string,
-//     mortgageLinkText: PropTypes.string,
-//     onClickSave: PropTypes.func.isRequired,
-//     attribute: PropTypes.arrayOf(
-//         PropTypes.shape({
-//             icon: PropTypes.node.isRequired,
-//             alt: PropTypes.string,
-//             value: PropTypes.string.isRequired
-//         }).isRequired
-//     ).isRequired,
-//     link: PropTypes.string.isRequired
-// };
-
-// export default CardContentComponent;
+export default CardR123FeaturedContentComponent;

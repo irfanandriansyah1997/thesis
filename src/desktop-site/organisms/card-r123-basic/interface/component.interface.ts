@@ -4,6 +4,7 @@ import {
     R123SearchPageCardActionInterface as action,
     R123SearchPageCardContentInterface as content
 } from '../../../../shared/interface/rumah-123/search-page/search-page-card.interface';
+import { ListPropsInterface } from '../../../../common/molecules/list/interface/component.interface';
 
 /**
  * Card R123 Basic Content Interface
@@ -36,3 +37,28 @@ export type CardR123BasicPropsInterface = Omit<
     cardMedia: media;
     content: CardR123BasicContentInterface;
 };
+
+/**
+ * Card R123 Basic Grid Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.20
+ */
+export type CardR123BasicGridPropsInterface = Omit<
+    ListPropsInterface,
+    'children' | 'key'
+> & {
+    to: string;
+    type: 'text' | 'text-with-icon';
+    object: Record<string, unknown>;
+    listItem: CardR123BasicGridItemInterface[];
+};
+
+/**
+ * Card R123 Basic Grid Item Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.20
+ */
+export interface CardR123BasicGridItemInterface {
+    key: string;
+    icon?: string;
+}

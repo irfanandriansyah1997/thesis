@@ -21,10 +21,9 @@ const CardR123FeaturedDocumentation = require('./markdown/card-r123-featured.doc
             <>
                 <CardR123Featured
                     action={{
-                        onClickButtonSave: (): void => undefined,
+                        onClickSave: (): void => undefined,
                         onClickContactAgent: (): void => undefined,
                         onClickMortgageSimulation: (): void => undefined,
-                        onClickSave: (): void => undefined,
                         onClickViewDetail: (): void => undefined
                     }}
                     address="Cimareme, Kec Ngamprah, Kab Bandung Barat"
@@ -50,6 +49,13 @@ const CardR123FeaturedDocumentation = require('./markdown/card-r123-featured.doc
                     publishingDate="Tayang 5 hari yang lalu"
                     tier="premier"
                     title="Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Kota Malang"
+                    attribute={{
+                        carport: '1',
+                        bedroom: '2',
+                        bathroom: '1',
+                        landSize: 'Luas Tanah : 60m²'
+                        // buildingSize: 'Luas Bangunan : 60m²'
+                    }}
                 />
             </>
         )

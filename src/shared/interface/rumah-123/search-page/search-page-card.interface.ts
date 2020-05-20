@@ -23,7 +23,6 @@ export interface R123SearchPageCardActionInterface {
  */
 export interface R123SearchPageCardActionInterfaceV2 {
     onClickSave: () => void;
-    onClickButtonSave: () => void;
     onClickViewDetail: () => void;
     onClickContactAgent: () => void;
     onClickMortgageSimulation: () => void;

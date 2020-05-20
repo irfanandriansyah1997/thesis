@@ -11,4 +11,13 @@
         @include margin-right(map-get($width-general, 1));
         vertical-align: middle;
     }
+
+    &.truncate {
+        span {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+    }
 }

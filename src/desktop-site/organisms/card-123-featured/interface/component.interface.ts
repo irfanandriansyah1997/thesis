@@ -32,6 +32,7 @@ export interface CardR123FeaturedPropsDataInterface {
     installment: string;
     propertyType: string;
     publishingDate: string;
+    attribute: CardR123FeaturedPropsAttributeInterface;
 }
 
 export interface CardR123FeaturedContextInterface {
@@ -40,9 +41,9 @@ export interface CardR123FeaturedContextInterface {
 }
 
 export interface CardR123FeaturedPropsAttributeInterface {
-    bedroom: string;
-    carport: string;
-    bathroom: string;
-    landSize: string;
-    buildingSize: string;
+    bedroom?: string;
+    carport?: string;
+    bathroom?: string;
+    landSize?: string;
+    buildingSize?: string;
 }

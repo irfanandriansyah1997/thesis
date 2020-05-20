@@ -2,10 +2,11 @@ import React, { SFC } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import CardMediaComponent from './card-r123-featured-media.component';
+import CardR123FeaturedMediaComponent from './card-r123-featured-media.component';
 import CardComponent from '../../../common/atomic/card/card.component';
-import CardHeadingComponent from './card-r123-featured-heading.component';
+import CardR123FeaturedHeadingComponent from './card-r123-featured-heading.component';
 import CardR123FeaturedContext from './context/card-r123-featured.context';
+import CardR123FeaturedContentComponent from './card-r123-featured-content.component';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     CardR123FeaturedPropsInterface,
@@ -25,6 +26,7 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
     action,
     address,
     priceTag,
+    attribute,
     agentName,
     mediaCount,
     installment,
@@ -48,6 +50,7 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
             address,
             priceTag,
             agentName,
+            attribute,
             mediaCount,
             installment,
             propertyType,
@@ -63,8 +66,9 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
                 {...res}
                 boxShadow="r123"
             >
-                <CardHeadingComponent />
-                <CardMediaComponent />
+                <CardR123FeaturedHeadingComponent />
+                <CardR123FeaturedMediaComponent />
+                <CardR123FeaturedContentComponent />
             </CardComponent>
         </CardR123FeaturedContext.Provider>
     );

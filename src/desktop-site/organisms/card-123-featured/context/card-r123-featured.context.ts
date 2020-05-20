@@ -21,11 +21,17 @@ const CardR123FeaturedContext = createContext<CardR123FeaturedContextInterface>(
             installment: '',
             propertyType: '',
             tier: 'featured',
-            publishingDate: ''
+            publishingDate: '',
+            attribute: {
+                carport: '',
+                bedroom: '',
+                bathroom: '',
+                landSize: '',
+                buildingSize: ''
+            }
         },
         action: {
             onClickSave: (): void => undefined,
-            onClickButtonSave: (): void => undefined,
             onClickViewDetail: (): void => undefined,
             onClickContactAgent: (): void => undefined,
             onClickMortgageSimulation: (): void => undefined

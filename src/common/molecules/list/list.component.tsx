@@ -86,7 +86,6 @@ const ListComponent: ListDefaultExportInterface = ({
 
         return {
             ...getStyling(true),
-            width: '100%',
             borderRight: isShowDividerVertical ? color : undefined,
             borderBottom: isShowDividerHorizontal ? color : undefined,
             paddingRight:
