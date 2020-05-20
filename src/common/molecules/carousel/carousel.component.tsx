@@ -1,17 +1,19 @@
 import React, { SFC, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import ImageComponent from '../../atomic/image/image.component';
 import IconComponent from '../../atomic/icon/icon.component';
-
-import {
-    CarouselPropsInterface,
-    CarouselItemInterface
-} from './interface/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-
+import ImageComponent from '../../atomic/image/image.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import {
+    CarouselItemInterface,
+    CarouselPropsInterface
+} from './interface/component.interface';
+import {
+    ARROW_ON_NEXT,
+    ARROW_ON_PREVIOUS
+} from '../../../shared/constant/component.constant';
 
 /**
  * Default Carousel Component
@@ -76,7 +78,7 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                 <div className="ui-molecules-carousel__action--prev absolute">
                     <IconComponent
                         color="white"
-                        size={48}
+                        size={30}
                         onClick={(): void => handleClick('prev')}
                     >
                         {indicator ? indicator.previous : ''}
@@ -85,7 +87,7 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                 <div className="ui-molecules-carousel__action--next absolute">
                     <IconComponent
                         color="white"
-                        size={48}
+                        size={30}
                         onClick={(): void => handleClick('next')}
                     >
                         {indicator ? indicator.next : ''}
@@ -99,7 +101,10 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
 CarouselComponent.defaultProps = {
     className: '',
     scrollEffect: false,
-    indicator: undefined
+    indicator: {
+        next: ARROW_ON_NEXT,
+        previous: ARROW_ON_PREVIOUS
+    }
 };
 
 CarouselComponent.propTypes = {

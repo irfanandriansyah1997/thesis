@@ -4,10 +4,13 @@ import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import CardMediaComponent from './card-r123-featured-media.component';
 import CardComponent from '../../../common/atomic/card/card.component';
-import CardContentComponent from './card-r123-featured-content.component';
 import CardHeadingComponent from './card-r123-featured-heading.component';
-import { CardR123FeaturedPropsInterface } from './interface/component.interface';
+import CardR123FeaturedContext from './context/card-r123-featured.context';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import {
+    CardR123FeaturedPropsInterface,
+    CardR123FeaturedContextInterface
+} from './interface/component.interface';
 
 /**
  * R123 Featured / Premier Card Component
@@ -16,61 +19,54 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  */
 const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
     link,
+    tier,
+    title,
+    media,
     action,
-    content,
-    heading,
-    className,
-    cardMedia,
-    carouselIndicator,
+    address,
+    priceTag,
+    agentName,
+    mediaCount,
+    installment,
+    propertyType,
+    publishingDate,
     ...res
 }: CardR123FeaturedPropsInterface) => {
-    const name: ComponentClassnameDefaultInterface = {
-        [`ui-organisms-featured-card`]: true,
-        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
+    const className: ComponentClassnameDefaultInterface = {
+        [`ui-organisms-card-r123-featured`]: true,
+        [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className)
+    };
+    delete res.className;
+
+    const contextValue: CardR123FeaturedContextInterface = {
+        action,
+        data: {
+            link,
+            tier,
+            media,
+            title,
+            address,
+            priceTag,
+            agentName,
+            mediaCount,
+            installment,
+            propertyType,
+            publishingDate
+        }
     };
 
-    const { caption, tier, media } = cardMedia;
-    const {
-        title,
-        address,
-        landSize,
-        attribute,
-        buildingSize,
-        propertyType,
-        mortgageLinkText
-    } = content;
-    const { onClickSave, onClickViewDetail } = action;
-    const { agencyTitle, creationDate } = heading;
     return (
-        <CardComponent
-            className={StringHelper.objToString(name)}
-            style={{ width: 750 }}
-            {...res}
-            boxShadow="r123"
-        >
-            <CardHeadingComponent
-                agencyTitle={agencyTitle}
-                creationDate={creationDate}
-            />
-            <CardMediaComponent
-                tier={tier}
-                media={media}
-                caption={caption}
-                onClick={onClickViewDetail}
-                carouselIndicator={carouselIndicator}
-            />
-            <CardContentComponent
-                link={link}
-                title={title}
-                address={address}
-                landSize={landSize}
-                attribute={attribute}
-                onClickSave={onClickSave}
-                buildingSize={buildingSize}
-                propertyType={propertyType}
-                mortgageLinkText={mortgageLinkText}
-            />
-        </CardComponent>
+        <CardR123FeaturedContext.Provider value={contextValue}>
+            <CardComponent
+                className={StringHelper.objToString(className)}
+                style={{ width: 750 }}
+                {...res}
+                boxShadow="r123"
+            >
+                <CardHeadingComponent />
+                <CardMediaComponent />
+            </CardComponent>
+        </CardR123FeaturedContext.Provider>
     );
 };
 

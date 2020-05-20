@@ -16,7 +16,22 @@ export interface R123SearchPageCardActionInterface {
     onClickContactAgent?: () => void;
 }
 
+/**
+ * Search Page Card Action Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.04.28
+ */
+export interface R123SearchPageCardActionInterfaceV2 {
+    onClickSave: () => void;
+    onClickButtonSave: () => void;
+    onClickViewDetail: () => void;
+    onClickContactAgent: () => void;
+    onClickMortgageSimulation: () => void;
+}
+
 export type ListingCardTier = 'featured' | 'premier';
+
+export type R123ListingCardTier = 'featured' | 'premier';
 
 /**
  * Search Page Card Media Interface
@@ -30,6 +45,13 @@ export interface R123SearchPageCardMediaInterface {
     caption?: R123SearchPageCardMediaCaptionInterface;
     carouselIndicator?: CarouselIndicatorInterface;
 }
+
+/**
+ * Search Page Card Media Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.04.28
+ */
+export type R123SearchPageCardMediaInterfaceV2 = CarouselItemInterface[];
 
 /**
  * Search Page Card Attribute Item Interface
