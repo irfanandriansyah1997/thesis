@@ -18,7 +18,7 @@ const EditTextComponent: SFC<EditTextPropsInterface> = ({
     return (
         <input
             className={StringHelper.objToString({
-                [`ui-atomic-editText`]: true,
+                [`ui-atomic-edit-text`]: true,
                 [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
             })}
             value={value}
@@ -31,15 +31,17 @@ EditTextComponent.defaultProps = {
     className: undefined,
     type: 'text',
     placeholder: undefined,
-    disabled: false
+    disabled: false,
+    value: ''
 };
 
 EditTextComponent.propTypes = {
     className: PropTypes.string,
     placeholder: PropTypes.string,
     type: PropTypes.oneOf(['text', 'number', 'password', 'email']),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    disabled: PropTypes.bool
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    disabled: PropTypes.bool,
+    name: PropTypes.string.isRequired
 };
 
 export default EditTextComponent;

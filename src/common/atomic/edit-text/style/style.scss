@@ -1,0 +1,9 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-edit-text {
+    padding: 10px 7px;
+
+    @include background-color(#f3f4f6);
+    @include rounded(2px);
+    @include border(all, 1px, solid, greyDarkerR123);
+}

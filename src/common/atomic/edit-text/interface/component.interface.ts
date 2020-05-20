@@ -20,6 +20,7 @@ export type EditTextPropsInterface = Omit<
     type?: EditTextType;
     disabled?: boolean;
     value?: string | number;
+    name: string;
 };
 
 /**
