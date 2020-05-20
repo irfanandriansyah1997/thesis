@@ -1,6 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-import { ColorType } from '../../../../shared/interface/common/color.interface';
+import { ColorInterface } from '../../../../shared/interface/common/color.interface';
 import { ComponentCustomSize } from '../../../../shared/interface/component/component-size.interface';
 
 /**
@@ -11,8 +11,8 @@ import { ComponentCustomSize } from '../../../../shared/interface/component/comp
 export type IconPropsInterface = Omit<
     HTMLAttributes<HTMLElement>,
     'dangerouslySetInnerHTML' | 'children'
-> & {
-    color: ColorType;
-    children: string;
-    size: ComponentCustomSize;
-};
+> &
+    ColorInterface & {
+        children: string;
+        size: ComponentCustomSize;
+    };
