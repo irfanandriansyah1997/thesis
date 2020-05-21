@@ -42,7 +42,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
         onClickContactAgent,
         onClickMortgageSimulation
     } = action;
-    const { link, title, address, propertyType, attribute } = data;
+    const { id, link, title, address, propertyType, attribute } = data;
     const PropertySizeAttribute: CardR123BasicGridItemInterface[] = [
         { key: 'landSize' },
         { key: 'buildingSize' }
@@ -94,10 +94,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
     };
 
     return (
-        <section
-            className={StringHelper.objToString(className)}
-            style={{ minHeight: 147, padding: 16, paddingBottom: 24 }}
-        >
+        <section className={StringHelper.objToString(className)}>
             <GridComponent.Row
                 justify="between"
                 align="start"
@@ -157,6 +154,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
                 </GridComponent.Column>
                 <GridComponent.Column defaultSize={12} id="property-info-size">
                     <CardR123BasicGridComponent
+                        id={id}
                         to={link}
                         type="text"
                         divider="line"
@@ -178,7 +176,9 @@ const CardR123FeaturedContentComponent: SFC = () => {
             >
                 <GridComponent.Column id="bottom-section-left">
                     <CardR123BasicGridComponent
+                        id={id}
                         to={link}
+                        space={8}
                         styling="horizontal"
                         type="text-with-icon"
                         listItem={PropertyInfoAttribute}

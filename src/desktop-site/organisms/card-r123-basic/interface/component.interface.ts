@@ -1,21 +1,10 @@
 import { HTMLAttributes } from 'react';
-import {
-    R123SearchPageCardMediaInterface as media,
-    R123SearchPageCardActionInterface as action,
-    R123SearchPageCardContentInterface as content
-} from '../../../../shared/interface/rumah-123/search-page/search-page-card.interface';
-import { ListPropsInterface } from '../../../../common/molecules/list/interface/component.interface';
 
-/**
- * Card R123 Basic Content Interface
- * @author Irfan Andriansyah <irfan@99.co>
- * @description
- * @since 2020.04.28
- */
-export type CardR123BasicContentInterface = content & {
-    priceTag?: string;
-    installment?: string;
-};
+import { ListPropsInterface } from '../../../../common/molecules/list/interface/component.interface';
+import {
+    R123SearchPageCardDataInterface as data,
+    R123SearchPageCardActionInterface as action
+} from '../../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 
 /**
  * Basic Card R123 Default Props Interface
@@ -31,12 +20,17 @@ export type CardR123BasicPropsInterface = Omit<
     | 'onKeyPress'
     | 'onChange'
     | 'style'
-> & {
-    link: string;
-    action: action;
-    cardMedia: media;
-    content: CardR123BasicContentInterface;
-};
+> &
+    CardR123BasicPropsDataInterface & {
+        action: action;
+    };
+
+/**
+ * Basic Card R123 Default Props Data Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.21
+ */
+export type CardR123BasicPropsDataInterface = data;
 
 /**
  * Card R123 Basic Grid Props Interface
@@ -47,6 +41,7 @@ export type CardR123BasicGridPropsInterface = Omit<
     ListPropsInterface,
     'children' | 'key'
 > & {
+    id: string;
     to: string;
     type: 'text' | 'text-with-icon';
     object: Record<string, unknown>;
@@ -61,4 +56,14 @@ export type CardR123BasicGridPropsInterface = Omit<
 export interface CardR123BasicGridItemInterface {
     key: string;
     icon?: string;
+}
+
+/**
+ * Card R123 Basic Context API Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.21
+ */
+export interface CardR123BasicContextInterface {
+    action: action;
+    data: CardR123BasicPropsDataInterface;
 }

@@ -7,11 +7,11 @@ import CodingViewerDocsComponent from '../../../../../.storybook/component/molec
 
 /**
  * Generate Docs
- * @param {string} type - type props image
  * @return {string}
  */
 const docs = (): string =>
     `<CardR123Featured\n` +
+    `    id="22u1983129" \n` +
     `    link="99.co"\n` +
     `    mediaCount={2}\n` +
     `    tier="premier"\n` +
@@ -61,6 +61,7 @@ const SectionPremierCardComponent: SFC = () => (
         <TextDocsComponent>R123 Premier card</TextDocsComponent>
         <CodingViewerDocsComponent sourceCode={docs()}>
             <CardR123Featured
+                id="22u1983129"
                 link="99.co"
                 mediaCount={2}
                 tier="premier"

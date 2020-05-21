@@ -2,10 +2,15 @@ import { HTMLAttributes } from 'react';
 
 import {
     R123ListingCardTier as tier,
-    R123SearchPageCardMediaInterfaceV2 as mediaV2,
-    R123SearchPageCardActionInterfaceV2 as actionV2
+    R123SearchPageCardDataInterface as data,
+    R123SearchPageCardActionInterface as action
 } from '../../../../shared/interface/rumah-123/search-page/search-page-card.interface';
 
+/**
+ * Card R123 Feature Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.21
+ */
 export type CardR123FeaturedPropsInterface = Omit<
     HTMLAttributes<HTMLElement>,
     | 'dangerouslySetInnerHTML'
@@ -17,33 +22,37 @@ export type CardR123FeaturedPropsInterface = Omit<
     | 'style'
 > &
     CardR123FeaturedPropsDataInterface & {
-        action: actionV2;
+        action: CardR123FeaturedActionInterface;
     };
 
-export interface CardR123FeaturedPropsDataInterface {
+/**
+ * Card R123 Feature Props Data Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.21
+ */
+export type CardR123FeaturedPropsDataInterface = data & {
     tier: tier;
-    link: string;
-    title: string;
-    media: mediaV2;
-    address: string;
-    priceTag: string;
     agentName: string;
     mediaCount: number;
-    installment: string;
-    propertyType: string;
     publishingDate: string;
-    attribute: CardR123FeaturedPropsAttributeInterface;
-}
+};
 
+/**
+ * Card R123 Feature Context API Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.21
+ */
 export interface CardR123FeaturedContextInterface {
-    action: actionV2;
+    action: CardR123FeaturedActionInterface;
     data: CardR123FeaturedPropsDataInterface;
 }
 
-export interface CardR123FeaturedPropsAttributeInterface {
-    bedroom?: string;
-    carport?: string;
-    bathroom?: string;
-    landSize?: string;
-    buildingSize?: string;
-}
+/**
+ * Search Page Card Action Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.04.28
+ */
+export type CardR123FeaturedActionInterface = action & {
+    onClickViewDetail: () => void;
+    onClickContactAgent: () => void;
+};

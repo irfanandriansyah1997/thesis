@@ -1,21 +1,19 @@
 import React from 'react';
 
+import SectionDefaultHollowLinkComponent from './section/section-default.stories';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 
 import '../style/style.scss';
-import HollowLinkComponent from '../hollow-link.component';
 
 ((): void => {
     new StorybookDocumentationBuilder('Hollow Link', 'molecules')
         .setSection('common')
         .setDescriptionComponent(
-            'R123 Featured Card can be used to display featured or premier listing card on search result page.'
+            'Link component is used to wrapping link component and icon component'
         )
         .registerDocumentation(
             <>
-                <HollowLinkComponent icon="rui-icon-calculator" href="a">
-                    Simulasi KPR
-                </HollowLinkComponent>
+                <SectionDefaultHollowLinkComponent />
             </>
         )
         .execute();

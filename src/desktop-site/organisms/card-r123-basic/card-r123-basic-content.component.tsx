@@ -1,273 +1,201 @@
 /* eslint-disable react/no-array-index-key */
-import React, { SFC, ReactNode } from 'react';
-import PropTypes from 'prop-types';
+import React, { SFC, useContext, ReactNode } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
-import TextComponent from '../../../common/atomic/text/text.component';
-import IconComponent from '../../../common/atomic/icon/icon.component';
+import CardR123BasicContext from './context/card-r123-basic.context';
 import LinkComponent from '../../../common/atomic/link/link.component';
-import { CardR123BasicContentInterface } from './interface/component.interface';
+import GridComponent from '../../../common/atomic/grid/grid.component';
+import CardR123BasicGridComponent from './card-r123-basic-grid.component';
+import { ColorType } from '../../../shared/interface/common/color.interface';
+import HollowLinkComponent from '../../../common/molecules/hollow-link/hollow-link.component';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-
-/**
- * Create save icon
- * @return {string}
- */
-const SaveIcon: SFC = () => (
-    <IconComponent color="basicCardHeadingR123" size={18}>
-        rui-icon-save-hollow
-    </IconComponent>
-);
-
-/**
- * Create save button
- * @return {string}
- */
-const SaveButton: SFC<CardR123BasicContentInterface> = ({ onClickSave }) => (
-    <LinkComponent
-        noUnderline
-        fontWeight={500}
-        icon={<SaveIcon />}
-        onClick={onClickSave}
-        color="basicCardHeadingR123"
-        style={{ marginLeft: 16 }}
-    >
-        Simpan
-    </LinkComponent>
-);
-
-SaveButton.propTypes = {
-    onClickSave: PropTypes.func.isRequired
-};
-
-/**
- * Create calculator icon
- * @return {string}
- */
-const CalculatorIcon: SFC = () => (
-    <IconComponent color="basicCardHeadingR123" size={18}>
-        rui-icon-calculator
-    </IconComponent>
-);
-
-/**
- * Create mortgage link button
- * @return {string}
- */
-const MortgageButtonLink: SFC<CardR123BasicContentInterface> = ({
-    mortgageLinkText
-}) => (
-    <LinkComponent
-        noUnderline
-        fontWeight={500}
-        icon={<CalculatorIcon />}
-        color="basicCardHeadingR123"
-    >
-        {mortgageLinkText}
-    </LinkComponent>
-);
-
-MortgageButtonLink.defaultProps = {
-    mortgageLinkText: ''
-};
-
-MortgageButtonLink.propTypes = {
-    mortgageLinkText: PropTypes.string
-};
+import {
+    CardR123BasicContextInterface,
+    CardR123BasicGridItemInterface
+} from './interface/component.interface';
+import {
+    ComponentStylingTypography,
+    ComponentFontWeightTypography
+} from '../../../shared/interface/component/component-typography.interface';
 
 /**
  * Card Media Component
  * @author Dedik Budianto <dedik.budianto@99.co>
+ * @author Irfan Andriansyah <irfan@99.co>
  * @description card content which contains text, button, etc
  * @since 2020.04.27
  */
-const CardContentComponent: SFC<CardR123BasicContentInterface> = ({
-    link,
-    title,
-    address,
-    priceTag,
-    landSize,
-    attribute,
-    installment,
-    onClickSave,
-    propertyType,
-    buildingSize,
-    mortgageLinkText
-}) => {
-    const name: ComponentClassnameDefaultInterface = {
-        [`ui-organisms-card__content-wrapper`]: true,
+const CardContentComponent: SFC = () => {
+    const { data, action } = useContext<CardR123BasicContextInterface>(
+        CardR123BasicContext
+    );
+    const {
+        id,
+        link,
+        title,
+        address,
+        priceTag,
+        attribute,
+        installment,
+        propertyType
+    } = data;
+    const { onClickMortgageSimulation, onClickSave } = action;
+
+    const PropertySizeAttribute: CardR123BasicGridItemInterface[] = [
+        { key: 'landSize' },
+        { key: 'buildingSize' }
+    ];
+    const PropertyInfoAttribute: CardR123BasicGridItemInterface[] = [
+        { key: 'bathroom', icon: 'rui-icon-bath-small' },
+        { key: 'bedroom', icon: 'rui-icon-bed-small' },
+        { key: 'carport', icon: 'rui-icon-car-small' }
+    ];
+
+    const className: ComponentClassnameDefaultInterface = {
+        [`ui-organisms-card-r123-basic__content-section`]: true,
         relative: true
     };
 
     /**
-     * Get attribute
+     * Generate Link Component
+     * @param {string} text - children
+     * @param {ColorType} color - color link
+     * @param {string} classNameComponent - className link component
+     * @param {ComponentStylingTypography} styling  - custom styling in link component
+     * @param {ComponentFontWeightTypography} fontWeight - font weight text
+     * @return {ReactNode}
      */
-    const getAttribute = (): ReactNode => {
+    const generateLinkComponent = (
+        text: string,
+        color: ColorType,
+        fontWeight: ComponentFontWeightTypography,
+        styling: ComponentStylingTypography = 'default',
+        classNameComponent: string | undefined = undefined
+    ): ReactNode => {
         return (
-            <ul className="attribute__facility-wrapper inline-flex">
-                {attribute &&
-                    attribute.map((item, index) => (
-                        <li
-                            className="attribute__facility-detail"
-                            key={`card-key-attribute-index-${title}-${index}`}
-                        >
-                            <LinkComponent
-                                noUnderline
-                                href={link}
-                                icon={item.icon}
-                                fontWeight={500}
-                                color="headingR123"
-                            >
-                                {item.value}
-                            </LinkComponent>
-                        </li>
-                    ))}
-            </ul>
+            <LinkComponent
+                noUnderline
+                href={link}
+                color={color}
+                styling={styling}
+                fontWeight={fontWeight}
+                className={classNameComponent}
+            >
+                {text}
+            </LinkComponent>
         );
     };
 
     return (
-        <div className={StringHelper.objToString(name)}>
-            <div className="card-heading flex flex-justify-end">
-                <MortgageButtonLink mortgageLinkText={mortgageLinkText} />
-                <SaveButton onClickSave={onClickSave} />
-            </div>
-            <div className="card--content absolute">
-                <div className="card--content__price">
-                    <LinkComponent
-                        href={link}
-                        noUnderline
-                        fontWeight={700}
-                        styling="heading-4"
-                        color="headingR123"
-                        className="card--content__price-info inline"
-                    >
-                        {priceTag}
-                    </LinkComponent>
-                    <TextComponent
-                        tag="p"
-                        color="headingR123"
-                        className="card--content__info-installment"
-                        style={{ marginTop: 4 }}
-                    >
-                        {installment}
-                    </TextComponent>
-                </div>
-                <div className="card--content__info no-wrap">
-                    <TextComponent
-                        tag="h2"
-                        color="text"
-                        className="card--content__info-title truncate"
-                    >
-                        <LinkComponent
-                            className="card--content__info-title-link"
-                            href={link}
-                            noUnderline
-                            fontWeight={500}
-                            styling="heading-6"
-                            color="headingR123"
-                        >
-                            {title}
-                        </LinkComponent>
-                    </TextComponent>
-                    <TextComponent
-                        tag="h3"
-                        color="text"
-                        className="card--content__info-address"
-                    >
-                        <LinkComponent
-                            className="card--content__info-address-link"
-                            noUnderline
-                            fontWeight={500}
-                            color="headingR123"
-                            href={link}
-                        >
-                            {address}
-                        </LinkComponent>
-                    </TextComponent>
-                </div>
-                <div className="card--content__property-type">
-                    <LinkComponent
-                        className="card--content__property-type-info"
-                        href={link}
-                        noUnderline
-                        fontWeight={500}
-                        color="headingR123"
-                    >
-                        {propertyType}
-                    </LinkComponent>
-                </div>
-                <div
-                    className={StringHelper.objToString({
-                        'card--content__property-attribute': true,
-                        flex: true,
-                        'flex-row': true,
-                        'flex-align-end': true,
-                        'flex-justify-between': true
-                    })}
+        <section className={StringHelper.objToString(className)}>
+            <GridComponent.Row
+                className="ui-organisms-card-r123-basic__top-row"
+                justify="end"
+            >
+                <GridComponent.Column
+                    className="flex flex-justify-end"
+                    id="button-section"
                 >
-                    <div className="card--content__property-attribute-config">
-                        <div className="attribute__config-landsize">
-                            <LinkComponent
-                                className="attribute__config-landsize-info"
-                                href={link}
-                                noUnderline
-                                color="heading"
-                                fontWeight={500}
-                            >
-                                {landSize}
-                            </LinkComponent>
-                        </div>
-                        <div className="attribute__config-buildingsize">
-                            <LinkComponent
-                                className="attribute__config-buildingsize-info"
-                                noUnderline
-                                href={link}
-                                color="heading"
-                                fontWeight={500}
-                            >
-                                {buildingSize}
-                            </LinkComponent>
-                        </div>
-                    </div>
-                    <div className="card--content__property-attribute-facility">
-                        {getAttribute()}
-                    </div>
-                </div>
+                    <HollowLinkComponent
+                        icon="rui-icon-calculator"
+                        onClick={onClickMortgageSimulation}
+                    >
+                        Simulasi KPR
+                    </HollowLinkComponent>
+                    <HollowLinkComponent
+                        onClick={onClickSave}
+                        icon="rui-icon-save-hollow"
+                    >
+                        Simpan
+                    </HollowLinkComponent>
+                </GridComponent.Column>
+            </GridComponent.Row>
+            <div className="ui-organisms-card-r123-basic__bottom-row absolute">
+                <GridComponent.Row
+                    padding={{
+                        horizontal: 0,
+                        vertical: 0
+                    }}
+                >
+                    <GridComponent.Column
+                        id="price-section"
+                        className="ui-organisms-card-r123-basic__price-section"
+                    >
+                        {generateLinkComponent(
+                            priceTag,
+                            'headingR123',
+                            700,
+                            'heading-4',
+                            'block'
+                        )}
+                        {generateLinkComponent(installment, 'headingR123', 400)}
+                    </GridComponent.Column>
+                    <GridComponent.Column
+                        id="title-section"
+                        className="ui-organisms-card-r123-basic__title-section"
+                    >
+                        {generateLinkComponent(
+                            title,
+                            'headingR123',
+                            500,
+                            'heading-6',
+                            'block truncate'
+                        )}
+                        {generateLinkComponent(address, 'headingR123', 400)}
+                    </GridComponent.Column>
+                    <GridComponent.Column
+                        id="property-type-section"
+                        className="ui-organisms-card-r123-basic__property-type-section"
+                    >
+                        {generateLinkComponent(
+                            propertyType,
+                            'headingR123',
+                            500
+                        )}
+                    </GridComponent.Column>
+                </GridComponent.Row>
+                <GridComponent.Row
+                    padding={{ horizontal: 0, vertical: 0 }}
+                    align="end"
+                    justify="between"
+                >
+                    <GridComponent.Column id="property-info-size">
+                        <CardR123BasicGridComponent
+                            id={id}
+                            to={link}
+                            space={2}
+                            type="text"
+                            styling="vertical"
+                            listItem={PropertySizeAttribute}
+                            object={
+                                (attribute as unknown) as Record<
+                                    string,
+                                    unknown
+                                >
+                            }
+                        />
+                    </GridComponent.Column>
+                    <GridComponent.Column id="property-info-attribute flex flex-jusify-end">
+                        <CardR123BasicGridComponent
+                            id={id}
+                            to={link}
+                            space={8}
+                            styling="horizontal"
+                            type="text-with-icon"
+                            className="flex-justify-end"
+                            listItem={PropertyInfoAttribute}
+                            object={
+                                (attribute as unknown) as Record<
+                                    string,
+                                    unknown
+                                >
+                            }
+                        />
+                    </GridComponent.Column>
+                </GridComponent.Row>
             </div>
-        </div>
+        </section>
     );
-};
-
-CardContentComponent.defaultProps = {
-    title: '',
-    address: '',
-    priceTag: '',
-    landSize: '',
-    installment: '',
-    buildingSize: '',
-    propertyType: '',
-    mortgageLinkText: ''
-};
-
-CardContentComponent.propTypes = {
-    title: PropTypes.string,
-    address: PropTypes.string,
-    priceTag: PropTypes.string,
-    landSize: PropTypes.string,
-    installment: PropTypes.string,
-    buildingSize: PropTypes.string,
-    propertyType: PropTypes.string,
-    link: PropTypes.string.isRequired,
-    mortgageLinkText: PropTypes.string,
-    onClickSave: PropTypes.func.isRequired,
-    attribute: PropTypes.arrayOf(
-        PropTypes.shape({
-            icon: PropTypes.node.isRequired,
-            alt: PropTypes.string.isRequired,
-            value: PropTypes.string.isRequired
-        }).isRequired
-    ).isRequired
 };
 
 export default CardContentComponent;

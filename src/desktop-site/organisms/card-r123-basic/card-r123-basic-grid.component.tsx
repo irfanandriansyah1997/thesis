@@ -16,6 +16,7 @@ import {
  * @since 2020.05.20
  */
 const CardR123BasicGridComponent: FunctionComponent<CardR123BasicGridPropsInterface> = ({
+    id,
     to,
     type,
     object,
@@ -43,7 +44,7 @@ const CardR123BasicGridComponent: FunctionComponent<CardR123BasicGridPropsInterf
         const iconElement = generateIconElement(item.icon || '');
 
         return (
-            <ListComponent.Item>
+            <ListComponent.Item key={`${id}-${item.key}-${object[item.key]}`}>
                 <LinkComponent
                     href={to}
                     noUnderline
@@ -64,7 +65,7 @@ const CardR123BasicGridComponent: FunctionComponent<CardR123BasicGridPropsInterf
         item: CardR123BasicGridItemInterface
     ): ReactNode => {
         return (
-            <ListComponent.Item>
+            <ListComponent.Item key={`${id}-${item.key}-${object[item.key]}`}>
                 <LinkComponent
                     href={to}
                     noUnderline
@@ -101,6 +102,7 @@ const CardR123BasicGridComponent: FunctionComponent<CardR123BasicGridPropsInterf
 };
 
 CardR123BasicGridComponent.propTypes = {
+    id: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     type: PropTypes.oneOf(['text', 'text-with-icon']).isRequired as Validator<
         'text' | 'text-with-icon'

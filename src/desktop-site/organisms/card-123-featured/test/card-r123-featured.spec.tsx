@@ -1,91 +1,137 @@
-// import React, { SFC } from 'react';
-// import { render } from 'enzyme';
+import React from 'react';
+import { render, mount } from 'enzyme';
 
-// import CardR123Featured from '../card-r123-featured.component';
-// import IconComponent from '../../../../common/atomic/icon/icon.component';
+import CardR123Featured from '../card-r123-featured.component';
+import { CardR123FeaturedPropsInterface } from '../interface/component.interface';
+import BadgesComponent from '../../../../common/atomic/badges/badges.component';
+import HollowLinkComponent from '../../../../common/molecules/hollow-link/hollow-link.component';
+import LinkComponent from '../../../../common/atomic/link/link.component';
 
-// describe('Testing <CardComponent> in atomic component ', () => {
-//     /**
-//      * Create bedroom icon
-//      * @return {string}
-//      */
-//     const BedroomIcon: SFC = () => (
-//         <IconComponent color="text" size={18}>
-//             rui-icon-bed
-//         </IconComponent>
-//     );
+const MOCK_PROPS: CardR123FeaturedPropsInterface = {
+    id: 'ahsjkahdu2ry2r2',
+    link: '99.co',
+    mediaCount: 2,
+    tier: 'premier',
+    priceTag: 'Rp 2,1 M',
+    propertyType: 'Rumah',
+    agentName: 'Ray White',
+    address: 'Lebak Bulus, Jakarta Selatan',
+    publishingDate: 'Tayang 5 hari yang lalu',
+    installment: 'Cicilan : Rp. 7,46 Jt/bulan',
+    title:
+        'Lebak Bulus Rumah Murah Siap Huni, Lebak Bulus, Jakarta Selatan, DKI Jakarta, Indonesia',
+    media: [
+        {
+            alt: '',
+            id: 'image-1',
+            src:
+                'https://img.rea-asia.com/rumah123/750x420-crop/house/ho64/6491275/original/hos6491275-rumah-di-jual-di-bintaro-tangerang-15881493488971.jpg'
+        },
+        {
+            alt: '',
+            id: 'image-2',
+            src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg'
+        }
+    ],
+    attribute: {
+        carport: '1',
+        bedroom: '2',
+        bathroom: '1',
+        landSize: 'Luas Tanah : 60m²',
+        buildingSize: 'Luas Bangunan : 60m²'
+    },
+    action: {
+        onClickSave: (): void => undefined,
+        onClickViewDetail: (): void => undefined,
+        onClickContactAgent: (): void => undefined,
+        onClickMortgageSimulation: (): void => undefined
+    }
+};
 
-//     /**
-//      * Create bathroom icon
-//      * @return {string}
-//      */
-//     const BathroomIcon: SFC = () => (
-//         <IconComponent color="text" size={18}>
-//             rui-icon-bath
-//         </IconComponent>
-//     );
+describe('Testing card r123 featured', () => {
+    it('Should render card component correctly', () => {
+        const card = render(<CardR123Featured {...MOCK_PROPS} />);
 
-//     /**
-//      * Create carpark icon
-//      * @return {string}
-//      */
-//     const CarparkIcon: SFC = () => (
-//         <IconComponent color="text" size={18}>
-//             rui-icon-car
-//         </IconComponent>
-//     );
+        expect(card.hasClass('ui-organisms-card-r123-featured')).toBe(true);
+        expect(card.hasClass('box-shadow-r123')).toBe(true);
+    });
 
-//     const image = [
-//         {
-//             id: 1,
-//             src:
-//                 'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-//             alt: 'Images 1'
-//         }
-//     ];
+    it('Should mount card premium component correctly', () => {
+        const card = mount(<CardR123Featured {...MOCK_PROPS} />);
 
-//     const card = render(
-//         <CardR123Featured
-//             heading={{
-//                 agencyTitle: 'Ray White',
-//                 creationDate: 'Tayang 5 hari yang lalu'
-//             }}
-//             cardMedia={{
-//                 media: image,
-//                 caption: {
-//                     priceTag: 'Rp 2,1 M',
-//                     installment: 'Cicilan : Rp. 7,46 Jt/bulan',
-//                     numMedias: 23
-//                 },
-//                 tier: 'featured'
-//             }}
-//             content={{
-//                 mortgageLinkText: 'Simulasi KPR',
-//                 title:
-//                     'Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Kota Malang',
+        expect(card.find(BadgesComponent).length).toBe(2);
 
-//                 address: 'Malang',
+        const { children, color, textColor } = card
+            .find(BadgesComponent)
+            .at(0)
+            .props();
 
-//                 landSize: 'Luas tanah: 339 m2',
-//                 buildingSize: 'Luas bangunan: 700 m2',
-//                 propertyType: 'Rumah',
-//                 attribute: [
-//                     { icon: <BathroomIcon />, value: '2' },
-//                     { icon: <BedroomIcon />, value: '3' },
-//                     { icon: <CarparkIcon />, value: '1' }
-//                 ]
-//             }}
-//             action={{
-//                 onClickSave: (): void => undefined,
-//                 onClickViewDetail: (): void => undefined
-//             }}
-//             link="https://www.rumah123.com/"
-//         />
-//     );
+        expect(children).toBe('Premier');
+        expect(color).toBe('premiumR123');
+        expect(textColor).toBe('headingDarkerR123');
+    });
 
-//     it('Should render card component correctly', () => {
-//         expect(card.hasClass('ui-organisms-card-r123-featured')).toBe(true);
-//         expect(card.hasClass('box-shadow-r123')).toBe(true);
-//         expect(card.prop('style')).toHaveProperty('width', '750px');
-//     });
-// });
+    it('Should mount card feature component correctly', () => {
+        const card = mount(
+            <CardR123Featured {...MOCK_PROPS} tier="featured" />
+        );
+
+        expect(card.find(BadgesComponent).length).toBe(2);
+
+        const { children, color, textColor } = card
+            .find(BadgesComponent)
+            .at(0)
+            .props();
+
+        expect(children).toBe('Featured');
+        expect(color).toBe('featuredR123');
+        expect(textColor).toBe('white');
+    });
+
+    it('Simulate button click', () => {
+        const mortgageClick = jest.fn();
+        const favouriteClick = jest.fn();
+        const agentClick = jest.fn();
+
+        const card = mount(
+            <CardR123Featured
+                {...MOCK_PROPS}
+                action={{
+                    ...MOCK_PROPS.action,
+                    onClickMortgageSimulation: mortgageClick,
+                    onClickSave: favouriteClick,
+                    onClickContactAgent: agentClick
+                }}
+            />
+        );
+
+        /**
+         * Click Hollow Link
+         */
+        expect(card.find(HollowLinkComponent).length).toBe(2);
+
+        expect(mortgageClick).toHaveBeenCalledTimes(0);
+        expect(favouriteClick).toHaveBeenCalledTimes(0);
+
+        const mortgage = card.find(HollowLinkComponent).at(0);
+        mortgage.simulate('click');
+
+        expect(mortgageClick).toHaveBeenCalledTimes(1);
+
+        const save = card.find(HollowLinkComponent).at(1);
+        save.simulate('click');
+
+        expect(favouriteClick).toHaveBeenCalledTimes(1);
+
+        /**
+         * Click Link Component
+         */
+        expect(card.find(LinkComponent).length).toBe(14);
+        expect(agentClick).toHaveBeenCalledTimes(0);
+
+        const agent = card.find(LinkComponent).at(13);
+        agent.simulate('click');
+
+        expect(agentClick).toHaveBeenCalledTimes(1);
+    });
+});

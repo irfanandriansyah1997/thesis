@@ -12,7 +12,6 @@ describe('Testing <CardComponent> in atomic component ', () => {
         );
 
         expect(card.hasClass('ui-atomic-card')).toBe(true);
-        expect(card.prop('style')).toHaveProperty('width', 'auto');
         expect(cardWrapper.children()).toHaveLength(1);
     });
 
