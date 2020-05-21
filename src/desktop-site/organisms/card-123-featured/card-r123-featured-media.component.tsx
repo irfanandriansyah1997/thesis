@@ -94,7 +94,7 @@ const CardR123FeaturedMediaComponent: SFC = () => {
     };
 
     return (
-        <div className={StringHelper.objToString(name)}>
+        <section className={StringHelper.objToString(name)}>
             <div className="featured-card--media">
                 {tier === 'premier' && media.length > 1 ? (
                     <div id="card-carousel" style={{ height: HEIGHT_PREMIER }}>
@@ -125,6 +125,7 @@ const CardR123FeaturedMediaComponent: SFC = () => {
                     className={StringHelper.objToString(attributeInfoClassName)}
                 >
                     <BadgesComponent
+                        className="flex-justify-center"
                         color={
                             tier === 'premier' ? 'premiumR123' : 'featuredR123'
                         }
@@ -134,18 +135,15 @@ const CardR123FeaturedMediaComponent: SFC = () => {
                     >
                         {flaggingBadge}
                     </BadgesComponent>
-                    <BadgesComponent
-                        color="headingR123"
-                        textColor="basicCardHeadingR123"
-                    >
-                        <IconComponent color="basicCardHeadingR123" size={12}>
+                    <BadgesComponent color="headingR123" textColor="white">
+                        <IconComponent color="white" size={12}>
                             rui-icon-camera
                         </IconComponent>
                         {mediaCount}
                     </BadgesComponent>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

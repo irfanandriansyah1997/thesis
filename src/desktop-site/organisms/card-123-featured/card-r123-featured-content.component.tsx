@@ -1,20 +1,21 @@
 import React, { SFC, useContext, ReactNode } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
+import GridComponent from '../../../common/atomic/grid/grid.component';
 import IconComponent from '../../../common/atomic/icon/icon.component';
 import LinkComponent from '../../../common/atomic/link/link.component';
 import CardR123FeaturedContext from './context/card-r123-featured.context';
 import { ColorType } from '../../../shared/interface/common/color.interface';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import { CardR123FeaturedContextInterface } from './interface/component.interface';
+import CardR123BasicGridComponent from '../card-r123-basic/card-r123-basic-grid.component';
 import HollowLinkComponent from '../../../common/molecules/hollow-link/hollow-link.component';
+import { CardR123BasicGridItemInterface } from '../card-r123-basic/interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     ComponentStylingTypography,
     ComponentFontWeightTypography
 } from '../../../shared/interface/component/component-typography.interface';
-import { CardR123BasicGridItemInterface } from '../card-r123-basic/interface/component.interface';
-import CardR123BasicGridComponent from '../card-r123-basic/card-r123-basic-grid.component';
 
 /**
  * Create phone icon
@@ -56,30 +57,10 @@ const CardR123FeaturedContentComponent: SFC = () => {
      * Wrapper Classname
      */
     const className: ComponentClassnameDefaultInterface = {
-        [`ui-organisms-card-r123-featured__content-wrapper`]: true,
+        'ui-organisms-card-r123-featured__content-section': true,
         flex: true,
         'flex-column': true,
         relative: true
-    };
-
-    /**
-     * Get top row card content className
-     */
-    const topSectionClassName: ComponentClassnameDefaultInterface = {
-        'featured-card--content__top-row': true,
-        flex: true,
-        'flex-justify-between': true,
-        'flex-align-baseline': true
-    };
-
-    /**
-     * Get bottom row card content className
-     */
-    const bottomSectionClassName: ComponentClassnameDefaultInterface = {
-        'featured-card--content__bottom-row': true,
-        flex: true,
-        'flex-align-end': true,
-        'flex-justify-between': true
     };
 
     /**
@@ -113,45 +94,68 @@ const CardR123FeaturedContentComponent: SFC = () => {
     };
 
     return (
-        <div
+        <section
             className={StringHelper.objToString(className)}
             style={{ minHeight: 147, padding: 16, paddingBottom: 24 }}
         >
-            <div className="featured-card--content">
-                <div className={StringHelper.objToString(topSectionClassName)}>
-                    <div className="left-content no-wrap">
-                        {generateLinkComponent(
-                            title,
-                            'headingR123',
-                            500,
-                            'heading-6',
-                            'truncate'
-                        )}
-                        {generateLinkComponent(address, 'headingR123', 500)}
-                    </div>
-                    <div className="right-content no-wrap">
-                        <HollowLinkComponent
-                            icon="rui-icon-calculator"
-                            onClick={onClickMortgageSimulation}
-                        >
-                            Simulasi KPR
-                        </HollowLinkComponent>
-                        <HollowLinkComponent
-                            icon="rui-icon-save-hollow"
-                            onClick={onClickSave}
-                        >
-                            Simpan
-                        </HollowLinkComponent>
-                    </div>
-                </div>
-                <div className="featured-card--content__middle-row">
-                    <div className="property-type">
-                        {generateLinkComponent(
-                            propertyType,
-                            'headingR123',
-                            500
-                        )}
-                    </div>
+            <GridComponent.Row
+                justify="between"
+                align="start"
+                className="ui-organisms-card-r123-featured__top-row"
+                padding={{
+                    horizontal: 0,
+                    vertical: 0
+                }}
+            >
+                <GridComponent.Column
+                    className="ui-organisms-card-r123-featured__title-info truncate"
+                    id="title-section"
+                >
+                    {generateLinkComponent(
+                        title,
+                        'headingR123',
+                        500,
+                        'heading-6',
+                        'block truncate'
+                    )}
+                    {generateLinkComponent(address, 'headingR123', 400)}
+                </GridComponent.Column>
+                <GridComponent.Column
+                    className="ui-organisms-card-r123-featured__property-mortgage"
+                    id="button-section"
+                >
+                    <HollowLinkComponent
+                        icon="rui-icon-calculator"
+                        onClick={onClickMortgageSimulation}
+                    >
+                        Simulasi KPR
+                    </HollowLinkComponent>
+                    <HollowLinkComponent
+                        icon="rui-icon-save-hollow"
+                        onClick={onClickSave}
+                    >
+                        Simpan
+                    </HollowLinkComponent>
+                </GridComponent.Column>
+            </GridComponent.Row>
+            <GridComponent.Row
+                id="content-section"
+                padding={{ vertical: 0, horizontal: 0 }}
+                className="ui-organisms-card-r123-featured__middle-row"
+            >
+                <GridComponent.Column
+                    defaultSize={12}
+                    id="property-type-section"
+                >
+                    {generateLinkComponent(
+                        propertyType,
+                        'headingR123',
+                        500,
+                        'default',
+                        'block'
+                    )}
+                </GridComponent.Column>
+                <GridComponent.Column defaultSize={12} id="property-info-size">
                     <CardR123BasicGridComponent
                         to={link}
                         type="text"
@@ -163,46 +167,49 @@ const CardR123FeaturedContentComponent: SFC = () => {
                             (attribute as unknown) as Record<string, unknown>
                         }
                     />
-                </div>
-                <div
-                    className={StringHelper.objToString(bottomSectionClassName)}
+                </GridComponent.Column>
+            </GridComponent.Row>
+            <GridComponent.Row
+                id="bottom-section"
+                padding={{ vertical: 0, horizontal: 0 }}
+                align="end"
+                justify="between"
+                className="ui-organisms-card-r123-featured__bottom-row"
+            >
+                <GridComponent.Column id="bottom-section-left">
+                    <CardR123BasicGridComponent
+                        to={link}
+                        styling="horizontal"
+                        type="text-with-icon"
+                        listItem={PropertyInfoAttribute}
+                        object={
+                            (attribute as unknown) as Record<string, unknown>
+                        }
+                    />
+                </GridComponent.Column>
+                <GridComponent.Column
+                    id="bottom-section-right"
+                    className="flex flex-justify-end"
                 >
-                    <div className="left-content">
-                        <CardR123BasicGridComponent
-                            to={link}
-                            divider="line"
-                            styling="horizontal"
-                            type="text-with-icon"
-                            listItem={PropertyInfoAttribute}
-                            object={
-                                (attribute as unknown) as Record<
-                                    string,
-                                    unknown
-                                >
-                            }
-                        />
-                    </div>
-                    <div className="right-content">
-                        <LinkComponent
-                            noUnderline
-                            color="outline"
-                            fontWeight={500}
-                            icon={<PhoneIcon />}
-                            onClick={onClickContactAgent}
-                        >
-                            Kontak Agen
-                        </LinkComponent>
-                        <ButtonComponent
-                            outline
-                            size="default"
-                            className="contact-detail-button"
-                        >
-                            Lihat Detail
-                        </ButtonComponent>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <LinkComponent
+                        noUnderline
+                        color="outline"
+                        fontWeight={500}
+                        icon={<PhoneIcon />}
+                        onClick={onClickContactAgent}
+                    >
+                        Kontak Agen
+                    </LinkComponent>
+                    <ButtonComponent
+                        outline
+                        size="default"
+                        className="contact-detail-button"
+                    >
+                        Lihat Detail
+                    </ButtonComponent>
+                </GridComponent.Column>
+            </GridComponent.Row>
+        </section>
     );
 };
 

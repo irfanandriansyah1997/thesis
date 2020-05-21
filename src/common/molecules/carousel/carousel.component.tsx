@@ -40,7 +40,7 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
             scrollEffect
         ),
         flex: true,
-        absolute: true
+        relative: true
     };
 
     /**
@@ -63,15 +63,19 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                 }}
             >
                 {item.map((image: CarouselItemInterface) => (
-                    <ImageComponent
+                    <div
+                        className="ui-molecules-carousel__item relative"
                         key={image.id}
-                        src={image.src}
-                        alt={image.alt}
-                        className="ui-molecules-carousel__item"
-                        width="100%"
-                        height="100%"
-                        objectFit="cover"
-                    />
+                    >
+                        <ImageComponent
+                            width="100%"
+                            height="100%"
+                            src={image.src}
+                            alt={image.alt}
+                            objectFit="cover"
+                            className="ui-molecules-carousel__item"
+                        />
+                    </div>
                 ))}
             </div>
             <div className="ui-molecules-carousel__action">

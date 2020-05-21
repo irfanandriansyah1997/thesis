@@ -1,142 +1,105 @@
-// import React, { SFC } from 'react';
+import React, { SFC } from 'react';
 
-// import CardR123Featured from '../../card-r123-featured.component';
-// import IconComponent from '../../../../../common/atomic/icon/icon.component';
-// import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
-// import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
-// import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
+import CardR123Featured from '../../card-r123-featured.component';
+import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
+import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
+import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
-// const image = [
-//     {
-//         id: 1,
-//         src:
-//             'https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-//         alt: 'Images 1'
-//     }
-// ];
+/**
+ * Generate Docs
+ * @param {string} type - type props image
+ * @return {string}
+ */
+const docs = (): string =>
+    `<CardR123Featured\n` +
+    `    link="99.co"\n` +
+    `    mediaCount={2}\n` +
+    `    tier="featured"\n` +
+    `    priceTag="Rp 2,1 M"\n` +
+    `    propertyType="Rumah"\n` +
+    `    agentName="Ray White"\n` +
+    `    address="Lebak Bulus, Jakarta Selatan"\n` +
+    `    publishingDate="Tayang 5 hari yang lalu"\n` +
+    `    installment="Cicilan : Rp. 7,46 Jt/bulan"\n` +
+    `    title="Lebak Bulus Rumah Murah Siap Huni, Lebak Bulus, Jakarta Selatan, DKI Jakarta, Indonesia"\n` +
+    `    media={[\n` +
+    `        {\n` +
+    `            alt: '',\n` +
+    `            id: 'image-1',\n` +
+    `            src:\n` +
+    `                'https://img.rea-asia.com/rumah123/750x420-crop/house/ho64/6491275/original/hos6491275-rumah-di-jual-di-bintaro-tangerang-15881493488971.jpg'\n` +
+    `        },\n` +
+    `        {\n` +
+    `            alt: '',\n` +
+    `            id: 'image-2',\n` +
+    `            src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg'\n` +
+    `        }\n` +
+    `    ]}\n` +
+    `    attribute={{\n` +
+    `        carport: '1',\n` +
+    `        bedroom: '2',\n` +
+    `        bathroom: '1',\n` +
+    `        landSize: 'Luas Tanah : 60m²',\n` +
+    `        buildingSize: 'Luas Bangunan : 60m²'\n` +
+    `    }}\n` +
+    `    action={{\n` +
+    `        onClickSave: (): void => undefined,\n` +
+    `        onClickContactAgent: (): void => undefined,\n` +
+    `        onClickMortgageSimulation: (): void => undefined,\n` +
+    `        onClickViewDetail: (): void => undefined\n` +
+    `    }}\n` +
+    `/>\n`;
 
-// /**
-//  * Create bedroom icon
-//  * @return {string}
-//  */
-// const BedroomIcon: SFC = () => (
-//     <IconComponent color="text" size={18}>
-//         rui-icon-bed
-//     </IconComponent>
-// );
+/**
+ * Section Featured Card Component
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.05.04
+ */
+const SectionFeaturedCardComponent: SFC = () => (
+    <>
+        <HeadingDocsComponent>Basic Usage</HeadingDocsComponent>
+        <TextDocsComponent>R123 Featured card</TextDocsComponent>
+        <CodingViewerDocsComponent sourceCode={docs()}>
+            <CardR123Featured
+                link="99.co"
+                mediaCount={2}
+                tier="featured"
+                priceTag="Rp 2,1 M"
+                propertyType="Rumah"
+                agentName="Ray White"
+                address="Lebak Bulus, Jakarta Selatan"
+                publishingDate="Tayang 5 hari yang lalu"
+                installment="Cicilan : Rp. 7,46 Jt/bulan"
+                title="Lebak Bulus Rumah Murah Siap Huni, Lebak Bulus, Jakarta Selatan, DKI Jakarta, Indonesia"
+                media={[
+                    {
+                        alt: '',
+                        id: 'image-1',
+                        src:
+                            'https://img.rea-asia.com/rumah123/750x420-crop/house/ho64/6491275/original/hos6491275-rumah-di-jual-di-bintaro-tangerang-15881493488971.jpg'
+                    },
+                    {
+                        alt: '',
+                        id: 'image-2',
+                        src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg'
+                    }
+                ]}
+                attribute={{
+                    carport: '1',
+                    bedroom: '2',
+                    bathroom: '1',
+                    landSize: 'Luas Tanah : 60m²',
+                    buildingSize: 'Luas Bangunan : 60m²'
+                }}
+                action={{
+                    onClickSave: (): void => undefined,
+                    onClickContactAgent: (): void => undefined,
+                    onClickMortgageSimulation: (): void => undefined,
+                    onClickViewDetail: (): void => undefined
+                }}
+            />
+        </CodingViewerDocsComponent>
+    </>
+);
 
-// /**
-//  * Create bathroom icon
-//  * @return {string}
-//  */
-// const BathroomIcon: SFC = () => (
-//     <IconComponent color="text" size={18}>
-//         rui-icon-bath
-//     </IconComponent>
-// );
-
-// /**
-//  * Create carpark icon
-//  * @return {string}
-//  */
-// const CarparkIcon: SFC = () => (
-//     <IconComponent color="text" size={18}>
-//         rui-icon-car
-//     </IconComponent>
-// );
-
-// /**
-//  * Section Featured Card Component
-//  * @author Dedik Budianto <dedik.budianto@99.co>
-//  * @since 2020.05.04
-//  */
-// const SectionFeaturedCardComponent: SFC = () => (
-//     <>
-//         <HeadingDocsComponent>Usage</HeadingDocsComponent>
-//         <TextDocsComponent>R123 Featured card</TextDocsComponent>
-//         <CodingViewerDocsComponent
-//             sourceCode={
-//                 `${'const image = ['}\n` +
-//                 `   ${'{'}\n` +
-//                 `       ${'id: 1,'}\n` +
-//                 `       ${'src: "image-01.jpg",'}\n` +
-//                 `       ${'alt: "Image 01"'}\n` +
-//                 `   ${'}'}\n` +
-//                 `${']'}\n\n` +
-//                 `${'<CardR123Featured'}\n` +
-//                 `   ${'heading={{'}\n` +
-//                 `       ${'agencyTitle: "Ray White",'}\n` +
-//                 `       ${'creationDate: "Tayang 5 hari yang lalu"'}\n` +
-//                 `   ${'}}'}\n` +
-//                 `   ${'media={{'}\n` +
-//                 `       ${'media: image,'}\n` +
-//                 `       ${'caption: {'}\n` +
-//                 `           ${'priceTag: "Rp 2,1 M",'}\n` +
-//                 `           ${'installment: "Cicilan : Rp. 7,46 Jt/bulan",'}\n` +
-//                 `           ${'numMedias: 23,'}\n` +
-//                 `       ${'}'}\n` +
-//                 `       ${'tier: "featured",'}\n` +
-//                 `   ${'}}'}\n` +
-//                 `   ${'content={{'}\n` +
-//                 `       ${'mortgageLinkText: "Simulasi KPR",'}\n` +
-//                 `       ${'title: "Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Kota Malang",'}\n` +
-//                 `       ${'address: "Malang",'}\n` +
-//                 `       ${'priceTag: "Rp 2,1 M",'}\n` +
-//                 `       ${'landSize: "Luas tanah: 339 m2",'}\n` +
-//                 `       ${'buildingSize: "Luas bangunan: 700 m2",'}\n` +
-//                 `       ${'propertyType: "Rumah",'}\n` +
-//                 `       ${'attribute: ['}\n` +
-//                 `           ${'{ icon: <BathroomIcon />, value: "2" },'}\n` +
-//                 `           ${'{ icon: <BedroomIcon />, value: "3" },'}\n` +
-//                 `           ${'{ icon: <CarparkIcon />, value: "1" },'}\n` +
-//                 `       ${']'}\n` +
-//                 `   ${'}}'}\n` +
-//                 `   ${'action={{'}\n` +
-//                 `       ${'onClickSave: (): void => {},'}\n` +
-//                 `       ${'onClickViewDetail: (): void => {}'}\n` +
-//                 `   ${'}}'}\n` +
-//                 `   ${'link="https://www.rumah123.com/"'}\n` +
-//                 `${'/>'}`
-//             }
-//         >
-//             <CardR123Featured
-//                 heading={{
-//                     agencyTitle: 'Ray White',
-//                     creationDate: 'Tayang 5 hari yang lalu'
-//                 }}
-//                 cardMedia={{
-//                     media: image,
-//                     caption: {
-//                         priceTag: 'Rp 2,1 M',
-//                         installment: 'Cicilan : Rp. 7,46 Jt/bulan',
-//                         numMedias: 23
-//                     },
-//                     tier: 'featured'
-//                 }}
-//                 content={{
-//                     mortgageLinkText: 'Simulasi KPR',
-//                     title:
-//                         'Ready Rumah Murah Di Sukun Perum Tirtasari Malang, Sukun, Kota Malang',
-
-//                     address: 'Malang',
-
-//                     landSize: 'Luas tanah: 339 m2',
-//                     buildingSize: 'Luas bangunan: 700 m2',
-//                     propertyType: 'Rumah',
-//                     attribute: [
-//                         { icon: <BathroomIcon />, value: '2' },
-//                         { icon: <BedroomIcon />, value: '3' },
-//                         { icon: <CarparkIcon />, value: '1' }
-//                     ]
-//                 }}
-//                 action={{
-//                     onClickSave: (): void => undefined,
-//                     onClickViewDetail: (): void => undefined
-//                 }}
-//                 link="https://www.rumah123.com/"
-//             />
-//         </CodingViewerDocsComponent>
-//     </>
-// );
-
-// export default SectionFeaturedCardComponent;
+export default SectionFeaturedCardComponent;

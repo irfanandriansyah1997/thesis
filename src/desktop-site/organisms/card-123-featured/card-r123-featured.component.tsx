@@ -62,7 +62,6 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
         <CardR123FeaturedContext.Provider value={contextValue}>
             <CardComponent
                 className={StringHelper.objToString(className)}
-                style={{ width: 750 }}
                 {...res}
                 boxShadow="r123"
             >

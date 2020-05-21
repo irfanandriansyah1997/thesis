@@ -1,9 +1,13 @@
 @import '../../../../style/import.scss';
 
 .ui-organisms-card-r123-featured {
-    &__content-wrapper {
+    $c: &;
+
+    &__content-section {
         height: 100%;
         width: 100%;
+
+        @include padding(all, 16px 16px 24px);
     }
 
     &__media-section {
@@ -31,5 +35,93 @@
                 @include margin-right(8px);
             }
         }
+    }
+
+    &__attribute-info {
+        .ui-atomic-badges {
+            &:first-child {
+                min-width: 105px;
+
+                @include padding(all, 10px 12px);
+                @include margin-right(8px);
+            }
+
+            &:last-child {
+                opacity: 0.7;
+
+                @include padding(all, 10px 12px);
+            }
+
+            &:last-child .ui-atomic-icon {
+                @include margin-right(5px);
+            }
+        }
+    }
+
+    &__title-info {
+        .ui-atomic-link:first-child {
+            min-height: 18px;
+
+            @include margin-bottom(3px);
+        }
+    }
+
+    &__property-mortgage {
+        .ui-molecules-hollow-link {
+            @include margin(all, 0 10px);
+
+            &:last-child {
+                @include margin-right(0);
+            }
+        }
+    }
+
+    &__top-row,
+    &__middle-row,
+    &__bottom-row {
+        width: 100%;
+    }
+
+    &__top-row {
+        > .ui-col {
+            max-width: initial;
+            min-height: initial;
+            width: initial;
+        }
+
+        > #{$c}__property-mortgage {
+            flex-basis: initial;
+            flex-grow: initial;
+        }
+    }
+
+    &__middle-row {
+        @include padding-top(14px);
+
+        > .ui-atomic-link {
+            @include margin-bottom(3px);
+        }
+
+        .ui-molecules-list {
+            height: 21px;
+        }
+    }
+
+    &__bottom-row {
+        .contact-detail-button {
+            @include margin-left(10px);
+        }
+    }
+}
+
+@media (min-width: 1023px) {
+    .ui-organisms-card-r123-featured {
+        width: 750px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .ui-organisms-card-r123-featured {
+        width: 100%;
     }
 }

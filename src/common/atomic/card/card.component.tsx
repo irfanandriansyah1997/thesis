@@ -33,7 +33,7 @@ const CardComponent: SFC<CardPropsInterface> = ({
         <div
             className={StringHelper.objToString(name)}
             style={{
-                width: ValidatorHelper.isNumber(size) ? `${size}px` : 'auto',
+                width: ValidatorHelper.isNumber(size) ? `${size}px` : undefined,
                 ...res.style
             }}
         >

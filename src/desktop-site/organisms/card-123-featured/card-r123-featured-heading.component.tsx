@@ -27,7 +27,7 @@ const CardR123FeaturedHeadingComponent: SFC = () => {
     };
 
     return (
-        <div className={StringHelper.objToString(name)}>
+        <section className={StringHelper.objToString(name)}>
             <TextComponent
                 tag="h2"
                 color="text"
@@ -54,7 +54,7 @@ const CardR123FeaturedHeadingComponent: SFC = () => {
             >
                 {publishingDate}
             </TextComponent>
-        </div>
+        </section>
     );
 };
 

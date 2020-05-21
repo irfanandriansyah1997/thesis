@@ -69,7 +69,7 @@ const CardR123BasicGridComponent: FunctionComponent<CardR123BasicGridPropsInterf
                     href={to}
                     noUnderline
                     color="heading"
-                    fontWeight={500}
+                    fontWeight={400}
                 >
                     {`${object[item.key]}`}
                 </LinkComponent>
