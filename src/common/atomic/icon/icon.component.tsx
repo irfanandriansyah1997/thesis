@@ -59,12 +59,17 @@ const IconComponent: SFC<IconPropsInterface> = ({
 };
 
 IconComponent.propTypes = {
-    color: PropTypes.oneOf(Object.keys(ColorDefaultConstant))
-        .isRequired as Validator<ColorType>,
+    color: PropTypes.oneOf(Object.keys(ColorDefaultConstant)) as Validator<
+        ColorType
+    >,
     size: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.oneOf<ComponentDefaultSize>(['big', 'default', 'small'])
     ]).isRequired
+};
+
+IconComponent.defaultProps = {
+    color: undefined
 };
 
 export default IconComponent;

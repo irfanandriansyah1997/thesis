@@ -7,8 +7,6 @@ import StorybookDocumentationBuilder from '../../../../.storybook/builder/storyb
 
 import '../style/style.scss';
 
-const CardR123FeaturedDocumentation = require('./markdown/card-r123-featured.documentation.md');
-
 ((): void => {
     new StorybookDocumentationBuilder(
         'Featured R123 Card Component',
@@ -18,7 +16,6 @@ const CardR123FeaturedDocumentation = require('./markdown/card-r123-featured.doc
         .setDescriptionComponent(
             'R123 Featured Card can be used to display featured or premier listing card on search result page.'
         )
-        .setMarkdownFile(CardR123FeaturedDocumentation)
         .registerDocumentation(
             <>
                 <SectionFeaturedCardComponent />

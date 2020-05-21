@@ -21,6 +21,7 @@ const BadgesComponent: SFC<BadgesPropsInterface> = ({
     color,
     rounded,
     children,
+    textColor,
     className,
     transparent,
     onCloseBadges,
@@ -28,14 +29,18 @@ const BadgesComponent: SFC<BadgesPropsInterface> = ({
 }: BadgesPropsInterface) => {
     const colorComponent = ColorHelper.generateColorComponent(
         color || 'heading',
-        transparent as boolean,
+        transparent || false,
         'heading'
     );
 
     const style: CSSProperties = {
         borderRadius: rounded ? '20px' : 0,
         backgroundColor: colorComponent.background.hexColor,
-        color: colorComponent.text.hexColor
+        color:
+            textColor &&
+            ValidatorHelper.verifiedKeyIsExist(ColorDefaultConstant, textColor)
+                ? ColorDefaultConstant[textColor]
+                : colorComponent.text.hexColor
     };
 
     const name: ComponentClassnameDefaultInterface = {

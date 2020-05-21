@@ -1,99 +1,127 @@
 @import '../../../../style/import.scss';
 
-.ui-organisms-featured-card {
-    &__content-wrapper {
+.ui-organisms-card-r123-featured {
+    $c: &;
+
+    &__content-section {
         height: 100%;
         width: 100%;
+
+        @include padding(all, 16px 16px 24px);
     }
 
-    &__media-wrapper {
+    &__media-section {
+        width: 100%;
+
+        &__caption {
+            bottom: 0;
+            height: auto;
+            left: 0;
+            min-height: 80px;
+            width: 100%;
+
+            @include padding(all, 0 16px 8px);
+            @include linear-gradient(rgba(0, 0, 0, 0) 0, rgb(0, 0, 0), 180deg);
+        }
+    }
+
+    &__heading-section {
+        @include padding(all, 10px 16px);
+    }
+
+    &__price-info {
+        a {
+            &:first-child {
+                @include margin-right(8px);
+            }
+        }
+    }
+
+    &__attribute-info {
+        .ui-atomic-badges {
+            &:first-child {
+                min-width: 105px;
+
+                @include padding(all, 10px 12px);
+                @include margin-right(8px);
+            }
+
+            &:last-child {
+                opacity: 0.7;
+
+                @include padding(all, 10px 12px);
+            }
+
+            &:last-child .ui-atomic-icon {
+                @include margin-right(5px);
+            }
+        }
+    }
+
+    &__title-info {
+        .ui-atomic-link:first-child {
+            min-height: 18px;
+
+            @include margin-bottom(3px);
+        }
+    }
+
+    &__property-mortgage {
+        .ui-molecules-hollow-link {
+            @include margin(all, 0 10px);
+
+            &:last-child {
+                @include margin-right(0);
+            }
+        }
+    }
+
+    &__top-row,
+    &__middle-row,
+    &__bottom-row {
         width: 100%;
     }
 
-    &__heading-wrapper {
-        @include padding(all, 10px 16px);
-    }
-}
-
-.featured-card--content {
-    width: 100%;
-
     &__top-row {
-        .left-content {
-            overflow: hidden;
+        > .ui-col {
+            max-width: initial;
+            min-height: initial;
+            width: initial;
+        }
 
-            .info-title {
-                height: 20px;
-
-                @include margin-bottom(2px);
-            }
+        > #{$c}__property-mortgage {
+            flex-basis: initial;
+            flex-grow: initial;
         }
     }
 
     &__middle-row {
-        @include margin-top(14px);
+        @include padding-top(14px);
 
-        .attribute-config {
-            &__buildingsize {
-                @include padding-right(5px);
-                @include border-right(1px, solid, heading);
-            }
+        > .ui-atomic-link {
+            @include margin-bottom(3px);
+        }
 
-            &__landsize {
-                @include padding-left(5px);
-            }
+        .ui-molecules-list {
+            height: 21px;
         }
     }
 
     &__bottom-row {
-        .featured-card-attribute {
-            @include margin-top(20px);
-
-            &__facility {
-                @include margin-right(8px);
-            }
-        }
-
         .contact-detail-button {
-            @include margin-left(8px);
+            @include margin-left(10px);
         }
     }
 }
 
-.featured-card--media {
-    width: 100%;
+@media (min-width: 1023px) {
+    .ui-organisms-card-r123-featured {
+        width: 750px;
+    }
+}
 
-    &-caption {
-        bottom: 0;
-        height: auto;
-        left: 0;
+@media (max-width: 1023px) {
+    .ui-organisms-card-r123-featured {
         width: 100%;
-
-        @include padding(all, 42px 16px 8px);
-        @include linear-gradient(rgba(0, 0, 0, 0) 0, rgb(0, 0, 0), 180deg);
-
-        .poster-attribute {
-            &__flaggin-badge {
-                -webkit-font-smoothing: antialiased;
-                height: 30px;
-                min-width: 105px;
-
-                @include padding(all, 6px 12px);
-                @include line-height(30);
-                @include rounded(16px);
-                @include letter-spacing(0.9);
-            }
-
-            &__medias-badge {
-                -webkit-font-smoothing: antialiased;
-                height: 30px;
-                margin-left: 8px;
-                opacity: 0.7;
-
-                @include padding(all, 3px 9px 0 17px);
-                @include rounded(16px);
-                @include background-color(#333f11);
-            }
-        }
     }
 }

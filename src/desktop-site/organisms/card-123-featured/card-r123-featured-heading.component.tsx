@@ -1,10 +1,10 @@
-import React, { SFC } from 'react';
-import PropTypes from 'prop-types';
+import React, { SFC, useContext } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
 import TextComponent from '../../../common/atomic/text/text.component';
 import LinkComponent from '../../../common/atomic/link/link.component';
-import { CardR123FeaturedHeadingInterface } from './interface/component.interface';
+import CardR123FeaturedContext from './context/card-r123-featured.context';
+import { CardR123FeaturedContextInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
@@ -13,20 +13,21 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @description featured / premier card heading
  * @since 2020.05.04
  */
-const CardHeadingComponent: SFC<CardR123FeaturedHeadingInterface> = ({
-    agencyTitle,
-    creationDate,
-    link
-}) => {
+const CardR123FeaturedHeadingComponent: SFC = () => {
+    const { data } = useContext<CardR123FeaturedContextInterface>(
+        CardR123FeaturedContext
+    );
+    const { agentName, publishingDate, link } = data;
+
     const name: ComponentClassnameDefaultInterface = {
-        [`ui-organisms-featured-card__heading-wrapper`]: true,
+        [`ui-organisms-card-r123-featured__heading-section`]: true,
         flex: true,
         relative: true,
         'flex-align-baseline': true
     };
 
     return (
-        <div className={StringHelper.objToString(name)}>
+        <section className={StringHelper.objToString(name)}>
             <TextComponent
                 tag="h2"
                 color="text"
@@ -41,7 +42,7 @@ const CardHeadingComponent: SFC<CardR123FeaturedHeadingInterface> = ({
                     styling="heading-6"
                     className="attribute-config__landsize-info"
                 >
-                    {agencyTitle}
+                    {agentName}
                 </LinkComponent>
             </TextComponent>
             <TextComponent
@@ -51,20 +52,13 @@ const CardHeadingComponent: SFC<CardR123FeaturedHeadingInterface> = ({
                 className="info-title truncate"
                 style={{ marginLeft: 8 }}
             >
-                {creationDate}
+                {publishingDate}
             </TextComponent>
-        </div>
+        </section>
     );
 };
 
-CardHeadingComponent.defaultProps = {
-    link: ''
-};
+CardR123FeaturedHeadingComponent.displayName =
+    'CardR123FeaturedHeadingComponent';
 
-CardHeadingComponent.propTypes = {
-    agencyTitle: PropTypes.string.isRequired,
-    creationDate: PropTypes.string.isRequired,
-    link: PropTypes.string
-};
-
-export default CardHeadingComponent;
+export default CardR123FeaturedHeadingComponent;
