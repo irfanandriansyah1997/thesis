@@ -1,78 +1,58 @@
 @import '../../../../style/import.scss';
 
-.ui-organisms-card {
-    &__media {
-        &-wrapper {
-            height: 250px;
-            width: 250px;
-        }
+.ui-organisms-card-r123-basic {
+    &__media-section {
+        height: 250px;
+        width: 250px;
     }
 
-    &__content {
-        &-wrapper {
-            height: 100%;
-            width: 100%;
+    &__top-row {
+        .ui-molecules-hollow-link {
+            @include margin(all, 0 10px);
 
-            @include margin-left(16px);
-        }
-    }
-}
-
-.card--content {
-    bottom: 0;
-    width: 100%;
-
-    &__price-info {
-        span {
-            height: 24px;
-            width: 100%;
-
-            @include line-height(24);
-        }
-    }
-
-    &__property-type-info {
-        span {
-            @include line-height(20);
-        }
-    }
-
-    &__info {
-        @include margin-top(16px);
-
-        &-title {
-            height: 20px;
-        }
-
-        &-title-link {
-            height: 20px;
-
-            span {
-                @include line-height(20);
-            }
-        }
-
-        &-address-link {
-            span {
-                line-height: normal;
+            &:last-child {
+                @include margin-right(0);
             }
         }
     }
 
-    &__property-type {
+    &__bottom-row {
+        bottom: 0;
+        width: 100%;
+    }
+
+    &__content-section {
+        height: 100%;
+        width: 100%;
+
+        @include margin-left(16px);
+    }
+
+    &__property-type-section {
+        @include margin-bottom(3px);
+    }
+
+    &__title-section,
+    &__property-type-section {
         @include margin-top(16px);
+    }
+
+    &__title-section,
+    &__price-section {
+        .ui-atomic-link:first-child {
+            @include margin-bottom(3px);
+        }
     }
 }
 
-.attribute {
-    &__config-landsize-info,
-    &__config-buildingsize-info {
-        span {
-            @include line-height(20);
-        }
+@media (min-width: 1023px) {
+    .ui-organisms-card-r123-basic {
+        width: 750px;
     }
+}
 
-    &__facility-detail {
-        @include margin-left(8px);
+@media (max-width: 1023px) {
+    .ui-organisms-card-r123-basic {
+        width: 100%;
     }
 }

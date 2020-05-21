@@ -118,7 +118,7 @@ const CardR123FeaturedMediaComponent: SFC = () => {
             </div>
             <div className={StringHelper.objToString(captionClassName)}>
                 <div className={StringHelper.objToString(priceInfoClassName)}>
-                    {generateTextComponent(priceTag, 'heading-4', 500)}
+                    {generateTextComponent(priceTag, 'heading-4', 700)}
                     {generateTextComponent(installment, 'default', 400)}
                 </div>
                 <div

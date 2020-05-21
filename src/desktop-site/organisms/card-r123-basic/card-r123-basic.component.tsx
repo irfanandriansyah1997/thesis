@@ -1,13 +1,16 @@
 import React, { SFC } from 'react';
 
-import CardComponent from '../../../common/atomic/card/card.component';
-import CardMediaComponent from './card-r123-basic-media.component';
-import CardContentComponent from './card-r123-basic-content.component';
-
-import { CardR123BasicPropsInterface } from './interface/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
 import StringHelper from '../../../shared/helper/string.helper';
+import CardMediaComponent from './card-r123-basic-media.component';
+import CardR123BasicContext from './context/card-r123-basic.context';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
+import CardComponent from '../../../common/atomic/card/card.component';
+import CardContentComponent from './card-r123-basic-content.component';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import {
+    CardR123BasicPropsInterface,
+    CardR123BasicContextInterface
+} from './interface/component.interface';
 
 /**
  * R123 Basic Card Component
@@ -16,59 +19,56 @@ import StringHelper from '../../../shared/helper/string.helper';
  */
 const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
     link,
+    media,
+    title,
     action,
-    content,
-    className,
-    cardMedia,
+    address,
+    priceTag,
+    attribute,
+    installment,
+    propertyType,
     ...res
 }: CardR123BasicPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
-        'ui-organisms-card': true,
+        'ui-organisms-card-r123-basic': true,
         flex: true,
+        relative: true,
         'flex-row': true,
         'flex-align-start': true,
-        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
+        [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className)
     };
-    const {
-        title,
-        address,
-        priceTag,
-        landSize,
-        attribute,
-        installment,
-        buildingSize,
-        propertyType,
-        mortgageLinkText
-    } = content;
-    const { onClickSave, onClickViewDetail } = action;
-    const { media } = cardMedia;
+    delete res.className;
+
+    const contextValue: CardR123BasicContextInterface = {
+        action,
+        data: {
+            link,
+            media,
+            title,
+            address,
+            priceTag,
+            attribute,
+            installment,
+            propertyType
+        }
+    };
 
     return (
-        <CardComponent
-            className={StringHelper.objToString(name)}
-            style={{
-                width: 750,
-                height: 282,
-                padding: 16
-            }}
-            {...res}
-            boxShadow="r123"
-        >
-            <CardMediaComponent media={media} onClick={onClickViewDetail} />
-            <CardContentComponent
-                link={link}
-                title={title}
-                address={address}
-                priceTag={priceTag}
-                landSize={landSize}
-                attribute={attribute}
-                installment={installment}
-                onClickSave={onClickSave}
-                buildingSize={buildingSize}
-                propertyType={propertyType}
-                mortgageLinkText={mortgageLinkText}
-            />
-        </CardComponent>
+        <CardR123BasicContext.Provider value={contextValue}>
+            <CardComponent
+                className={StringHelper.objToString(name)}
+                style={{
+                    width: 750,
+                    height: 282,
+                    padding: 16
+                }}
+                {...res}
+                boxShadow="r123"
+            >
+                <CardMediaComponent />
+                <CardContentComponent />
+            </CardComponent>
+        </CardR123BasicContext.Provider>
     );
 };
 

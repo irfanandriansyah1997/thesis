@@ -2,10 +2,10 @@ import React, { SFC } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import CardR123FeaturedMediaComponent from './card-r123-featured-media.component';
 import CardComponent from '../../../common/atomic/card/card.component';
-import CardR123FeaturedHeadingComponent from './card-r123-featured-heading.component';
 import CardR123FeaturedContext from './context/card-r123-featured.context';
+import CardR123FeaturedMediaComponent from './card-r123-featured-media.component';
+import CardR123FeaturedHeadingComponent from './card-r123-featured-heading.component';
 import CardR123FeaturedContentComponent from './card-r123-featured-content.component';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {

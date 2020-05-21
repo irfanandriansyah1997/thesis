@@ -94,10 +94,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
     };
 
     return (
-        <section
-            className={StringHelper.objToString(className)}
-            style={{ minHeight: 147, padding: 16, paddingBottom: 24 }}
-        >
+        <section className={StringHelper.objToString(className)}>
             <GridComponent.Row
                 justify="between"
                 align="start"
@@ -179,6 +176,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
                 <GridComponent.Column id="bottom-section-left">
                     <CardR123BasicGridComponent
                         to={link}
+                        space={8}
                         styling="horizontal"
                         type="text-with-icon"
                         listItem={PropertyInfoAttribute}

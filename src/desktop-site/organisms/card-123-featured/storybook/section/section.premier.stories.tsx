@@ -7,7 +7,6 @@ import CodingViewerDocsComponent from '../../../../../.storybook/component/molec
 
 /**
  * Generate Docs
- * @param {string} type - type props image
  * @return {string}
  */
 const docs = (): string =>
