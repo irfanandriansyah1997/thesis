@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext } from 'react';
 
 import { CardR123FeaturedContextInterface } from '../interface/component.interface';
@@ -11,6 +12,7 @@ import { CardR123FeaturedContextInterface } from '../interface/component.interfa
 const CardR123FeaturedContext = createContext<CardR123FeaturedContextInterface>(
     {
         data: {
+            id: '',
             link: '',
             media: [],
             title: '',
@@ -31,10 +33,10 @@ const CardR123FeaturedContext = createContext<CardR123FeaturedContextInterface>(
             }
         },
         action: {
-            onClickSave: (): void => undefined,
-            onClickViewDetail: (): void => undefined,
-            onClickContactAgent: (): void => undefined,
-            onClickMortgageSimulation: (): void => undefined
+            onClickSave: (): void => {},
+            onClickViewDetail: (): void => {},
+            onClickContactAgent: (): void => {},
+            onClickMortgageSimulation: (): void => {}
         }
     }
 );

@@ -10,6 +10,7 @@ describe('Testing Navbar Component', () => {
             <NavbarComponent>
                 <NavbarComponent.Menu position="left" id="navbar-left">
                     <NavbarComponent.Item text="Hello" to="Yo Dawg" />
+                    Yo Dawg Without Item
                 </NavbarComponent.Menu>
             </NavbarComponent>
         );

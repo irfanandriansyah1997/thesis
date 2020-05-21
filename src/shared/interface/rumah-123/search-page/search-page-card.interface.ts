@@ -30,6 +30,7 @@ export interface R123SearchPageCardActionInterface {
  * @since 2020.05.21
  */
 export type R123SearchPageCardDataInterface = {
+    id: string;
     link: string;
     title: string;
     address: string;

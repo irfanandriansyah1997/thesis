@@ -17,6 +17,7 @@ const CardR123BasicDocumentation = require('./markdown/card-r123-basic.documenta
  */
 const docs = (): string =>
     `<CardR123Basic \n` +
+    `    id="22u1983129" \n` +
     `    link="99.co" \n` +
     `    priceTag="Rp 2,1 M" \n` +
     `    propertyType="Rumah" \n` +
@@ -61,6 +62,7 @@ const docs = (): string =>
                 <TextDocsComponent>Deafult Basic R123 card</TextDocsComponent>
                 <CodingViewerDocsComponent sourceCode={docs()}>
                     <CardR123Basic
+                        id="22u1983129"
                         link="99.co"
                         priceTag="Rp 2,1 M"
                         propertyType="Rumah"

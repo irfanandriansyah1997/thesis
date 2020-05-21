@@ -41,6 +41,7 @@ export type CardR123BasicGridPropsInterface = Omit<
     ListPropsInterface,
     'children' | 'key'
 > & {
+    id: string;
     to: string;
     type: 'text' | 'text-with-icon';
     object: Record<string, unknown>;

@@ -19,6 +19,7 @@ import {
  * @since 2020.04.30
  */
 const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
+    id,
     link,
     tier,
     title,
@@ -43,6 +44,7 @@ const CardR123Featured: SFC<CardR123FeaturedPropsInterface> = ({
     const contextValue: CardR123FeaturedContextInterface = {
         action,
         data: {
+            id,
             link,
             tier,
             media,

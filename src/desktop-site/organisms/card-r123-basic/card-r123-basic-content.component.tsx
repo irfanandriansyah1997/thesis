@@ -30,6 +30,7 @@ const CardContentComponent: SFC = () => {
         CardR123BasicContext
     );
     const {
+        id,
         link,
         title,
         address,
@@ -160,6 +161,7 @@ const CardContentComponent: SFC = () => {
                 >
                     <GridComponent.Column id="property-info-size">
                         <CardR123BasicGridComponent
+                            id={id}
                             to={link}
                             space={2}
                             type="text"
@@ -175,6 +177,7 @@ const CardContentComponent: SFC = () => {
                     </GridComponent.Column>
                     <GridComponent.Column id="property-info-attribute flex flex-jusify-end">
                         <CardR123BasicGridComponent
+                            id={id}
                             to={link}
                             space={8}
                             styling="horizontal"

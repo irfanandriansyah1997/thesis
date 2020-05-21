@@ -41,5 +41,55 @@ describe('Testing <CarouselComponent> in molecules component ', () => {
         expect(
             cardWrapper.find('div.ui-molecules-carousel__content').props().style
         ).toHaveProperty('transform', 'translateX(-100%)');
+
+        cardWrapper
+            .find('div.ui-molecules-carousel__action--prev')
+            .find(IconComponent)
+            .first()
+            .simulate('click');
+
+        expect(
+            cardWrapper.find('div.ui-molecules-carousel__content').props().style
+        ).toHaveProperty('transform', 'translateX(0%)');
+
+        cardWrapper
+            .find('div.ui-molecules-carousel__action--prev')
+            .find(IconComponent)
+            .first()
+            .simulate('click');
+
+        expect(
+            cardWrapper.find('div.ui-molecules-carousel__content').props().style
+        ).toHaveProperty('transform', 'translateX(-100%)');
+
+        cardWrapper
+            .find('div.ui-molecules-carousel__action--prev')
+            .find(IconComponent)
+            .first()
+            .simulate('click');
+
+        expect(
+            cardWrapper.find('div.ui-molecules-carousel__content').props().style
+        ).toHaveProperty('transform', 'translateX(0%)');
+
+        cardWrapper
+            .find('div.ui-molecules-carousel__action--next')
+            .find(IconComponent)
+            .first()
+            .simulate('click');
+
+        expect(
+            cardWrapper.find('div.ui-molecules-carousel__content').props().style
+        ).toHaveProperty('transform', 'translateX(-100%)');
+
+        cardWrapper
+            .find('div.ui-molecules-carousel__action--next')
+            .find(IconComponent)
+            .first()
+            .simulate('click');
+
+        expect(
+            cardWrapper.find('div.ui-molecules-carousel__content').props().style
+        ).toHaveProperty('transform', 'translateX(0%)');
     });
 });

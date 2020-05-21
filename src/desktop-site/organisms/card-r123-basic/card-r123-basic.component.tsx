@@ -18,6 +18,7 @@ import {
  * @since 2020.04.27
  */
 const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
+    id,
     link,
     media,
     title,
@@ -42,6 +43,7 @@ const CardR123Basic: SFC<CardR123BasicPropsInterface> = ({
     const contextValue: CardR123BasicContextInterface = {
         action,
         data: {
+            id,
             link,
             media,
             title,
