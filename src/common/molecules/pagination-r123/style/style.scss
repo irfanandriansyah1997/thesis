@@ -1,0 +1,66 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-pagination {
+    &__item--prev,
+    &__item--next {
+        width: 40px;
+    }
+
+    li {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        min-width: 40px;
+
+        @include margin-right(8px);
+        @include rounded(3px);
+        @include border(all, 1px, solid, rgb(165, 173, 181));
+        @include background-color(get-color(white));
+
+        &:hover {
+            border-color: rgb(51, 63, 72);
+        }
+
+        &:first-child,
+        &:last-child {
+            button {
+                @include rounded(3px);
+            }
+        }
+
+        &:nth-child(2),
+        &:nth-last-child(2) {
+            @include rounded(3px);
+        }
+
+        button {
+            align-items: center;
+            background-color: inherit;
+            color: inherit;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            width: 100%;
+
+            @include padding(all, 10px);
+            @include rounded(3px);
+            @include no-border();
+        }
+    }
+
+    .active {
+        @include background-color(rgb(105, 118, 132));
+        @include font-color(white);
+    }
+
+    .disabled {
+        opacity: 0;
+    }
+
+    &__link--active {
+        @include background-color(rgb(105, 118, 132));
+        @include font-color(white);
+    }
+}
