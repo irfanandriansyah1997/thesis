@@ -35,7 +35,7 @@ const PaginationR123Documentation = require('./markdown/pagination-r123.document
                 >
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <PaginationR123Component
-                            page={1}
+                            page={19}
                             totalPage={20}
                             pageRange={3}
                             onPageChange={(): void => undefined}

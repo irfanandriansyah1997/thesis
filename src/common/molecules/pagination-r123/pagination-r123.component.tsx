@@ -1,14 +1,11 @@
-import React, { SFC, ReactNode, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import React, { SFC, ReactNode, useState, useEffect } from 'react';
 
 import IconComponent from '../../atomic/icon/icon.component';
 import TextComponent from '../../atomic/text/text.component';
-import { PaginationPropsInterface } from './interface/component.interface';
-
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import StringHelper from '../../../shared/helper/string.helper';
-
-import './style/style.scss';
+import { PaginationPropsInterface } from './interface/component.interface';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
  * Create next icon
@@ -39,6 +36,7 @@ const PaginationR123Component: SFC<PaginationPropsInterface> = ({
     page,
     totalPage,
     pageRange,
+    onPageChange,
     paginationSummary
 }: PaginationPropsInterface) => {
     const [currentPage, setCurrentPage] = useState(page || 1);
@@ -63,6 +61,10 @@ const PaginationR123Component: SFC<PaginationPropsInterface> = ({
         if (element) {
             element.classList.add('active');
         }
+
+        onPageChange({
+            selected: currentPage
+        });
     }, [currentPage]);
 
     /**
@@ -89,20 +91,24 @@ const PaginationR123Component: SFC<PaginationPropsInterface> = ({
      * @author Dedik Budianto <dedik.budianto@99.co>
      * @since 2020.05.18
      */
-    const handleClick = (event): void => {
-        const listid = Number(parseInt(event.target.id, 10));
-        setCurrentPage(listid);
-        const activePage = document.querySelector('.active');
-        if (activePage) {
-            activePage.classList.remove('active');
-        }
+    const handleClick = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ): void => {
+        if (event.target instanceof Element) {
+            const listid = Number(parseInt(event.target.id, 10));
+            setCurrentPage(listid);
+            const activePage = document.querySelector('.active');
+            if (activePage) {
+                activePage.classList.remove('active');
+            }
 
-        const element = document.getElementById(`${listid}`);
-        if (element) {
-            element.classList.add('active');
-        }
+            const element = document.getElementById(`${listid}`);
+            if (element) {
+                element.classList.add('active');
+            }
 
-        setPrevAndNextBtnClass(listid);
+            setPrevAndNextBtnClass(listid);
+        }
     };
 
     /**
