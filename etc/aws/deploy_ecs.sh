@@ -23,7 +23,7 @@ CONTAINER_NAME="$1"
 FAMILY_TASK="$1"
 
 echo "Deploying $1..."
-python ${BASH_DIR}/deploy_ecs.py \
+python ${BASH_DIR}/etc/aws/deploy_ecs.py \
     --container-name ${CONTAINER_NAME} \
     --family-task ${FAMILY_TASK} \
     --cluster-name ${CLUSTER_NAME} \
