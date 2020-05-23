@@ -1,19 +1,39 @@
-language: node_js
+language: python
+
+python:
+  - "3.6"
 
 node_js:
   - '12.15'
 
+git:
+  submodules: false
+
 env:
   global:
+  - AWS_ACCESS_KEY_ID=AKIAYD73MS25G7K74AHI
   - TIMESTAMP=$(date +%y%m%d%H%M)
+  - AWS_REGION=ap-southeast-1
+  - BRANCH_NAME=$TRAVIS_BRANCH
+  - APP_NAME=thesis-design-system
   - DOCKER_USERNAME="irfanandriansyah1997"
+
+install: skip
 
 services:
   - docker
 
+before_script:
+  - docker-compose build
+  - docker-compose run --rm apps yarn install
+
 script:
   - make init-test
   - make build-asset
+
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - make build-docker name=${APP_NAME} version=${TIMESTAMP}
 
 deploy:
   - provider: npm
@@ -24,7 +44,7 @@ deploy:
       branch: master
       repo: urbanindo/style-guide
   - provider: script
+    script: etc/aws/deploy_ecs.sh $APP_NAME
     skip_cleanup: true
-    script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && make build-docker version=${TIMESTAMP}
     on:
         branch: master

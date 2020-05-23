@@ -42,11 +42,11 @@ build-asset:
 	yarn run build-documentation
 
 build-docker:
-	make build-docker-image version=${version}
-	make push-docker-image version=${version}
+	make build-docker-image name=${name} version=${version}
+	make push-docker-image name=${name} version=${version}
 
 push-docker-image:
-	docker push irfanandriansyah1997/design-system-thesis:styleguide.${version}
+	docker push irfanandriansyah1997/design-system-thesis:${name}.${version}
 
 build-docker-image:
-	docker build -t irfanandriansyah1997/design-system-thesis:styleguide.${version} -f Dockerfile .
+	docker build -t irfanandriansyah1997/design-system-thesis:${name}.${version} -f Dockerfile .

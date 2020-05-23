@@ -14,7 +14,7 @@
         "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet --fix --color --no-ignore --max-warnings 100 --format pretty src",
         "precheck-code": "yarn run lint",
         "check-code": "yarn run test",
-        "prebuild-documentation": "if [ -d documentation ]; then rm -Rf documentation; fi",
+        "prebuild-documentation": "if [ -d etc/deploy/documentation ]; then rm -Rf etc/deploy/documentation; fi",
         "build-documentation": "build-storybook -c .storybook -o etc/deploy/documentation -c src/.storybook",
         "build-css": "gulp --gulpfile etc/gulp/gulpfile.babel.js",
         "prebuild-asset": "if [ -d lib ]; then rm -Rf lib; fi",
