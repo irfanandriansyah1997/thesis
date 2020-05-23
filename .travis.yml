@@ -24,10 +24,14 @@ services:
   - docker
 
 before_script:
-  - docker-compose build
-  - docker-compose run --rm apps yarn install
+  - nvm ls-remote
+  - nvm install 12.5
+  - yarn install
+  - npm rebuild node-sass
+  - node -v
 
 script:
+  - node -v
   - make init-test
   - make build-asset
 
