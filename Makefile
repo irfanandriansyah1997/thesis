@@ -47,4 +47,4 @@ push-docker-image:
 	docker push irfanandriansyah1997/unikom-thesis:styleguide.${version}
 
 build-docker-image:
-	docker build -t irfanandriansyah1997/unikom-thesis:styleguide.${version} -f src/common/deploy/Dockerfile .
+	docker build -t irfanandriansyah1997/unikom-thesis:styleguide.${version} -f Dockerfile .
