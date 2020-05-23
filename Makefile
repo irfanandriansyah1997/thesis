@@ -54,4 +54,4 @@ build-docker-image:
 deploy:
 	docker login -u ${username} -p ${password}
 	make build-docker version=${version}
-	./etc/aws/deploy_ecs.sh ${name}
+	sh ./etc/aws/deploy_ecs.sh ${name}

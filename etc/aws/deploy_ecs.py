@@ -82,17 +82,21 @@ else:
 
 response = client.register_task_definition(
     family=task_definition['family'],
-    containerDefinitions=task_definition['containerDefinitions'],
     volumes=task_definition['volumes'],
+    networkMode=task_definition['networkMode'],
+    cpu="256",
+    memory="512",
+    executionRoleArn="arn:aws:iam::558336087738:role/ecsTaskExecutionRole",
+    containerDefinitions=task_definition['containerDefinitions'],
     requiresCompatibilities=task_definition['requiresCompatibilities']
 )
-# print("Task definition for %s.%s updated. Current revision: %s." %
-#       (args.family_task, args.container_name, response['taskDefinition']['revision']))
+print("Task definition for %s.%s updated. Current revision: %s." %
+      (args.family_task, args.container_name, response['taskDefinition']['revision']))
 
-# client.update_service(
-#     cluster=args.cluster_name,
-#     service=args.service_name,
-#     taskDefinition=response['taskDefinition']['taskDefinitionArn']
-# )
+client.update_service(
+    cluster=args.cluster_name,
+    service=args.service_name,
+    taskDefinition=response['taskDefinition']['taskDefinitionArn']
+)
 
-# print("Service %s.%s updated." % (args.cluster_name, args.service_name))
+print("Service %s.%s updated." % (args.cluster_name, args.service_name))

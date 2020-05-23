@@ -39,7 +39,7 @@ const docs = (props: AvatarPropsInterface): string =>
             <>
                 <>
                     <HeadingDocsComponent>
-                        Penggunaan Komponen Avatar
+                        Penggunaan Komponen Avatar (Ini Sudah Di Update)
                     </HeadingDocsComponent>
                     <TextDocsComponent>
                         Berikut adalah contoh penggunaan komponent avatar
