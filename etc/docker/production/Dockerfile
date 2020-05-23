@@ -5,13 +5,13 @@
 ###########################################################################
 
 FROM node:12.16.1-alpine as builder
-LABEL maintainer="Irfan Andriansyah <irfanandriansyah10@gmail.com>"
 
 COPY etc/docker/production/package.json ./
 RUN npm install
 
 # Create app directory
 FROM node:12.16.1-alpine
+LABEL maintainer="Irfan Andriansyah <irfanandriansyah10@gmail.com>"
 RUN mkdir -p /usr/src/thesis
 WORKDIR /usr/src/thesis
 

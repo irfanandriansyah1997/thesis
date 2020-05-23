@@ -44,7 +44,7 @@ build-docker:
 	make push-docker-image version=${version}
 
 push-docker-image:
-	docker push irfanandriansyah1997/unikom-thesis:styleguide.${version}
+	docker push irfanandriansyah1997/design-system-thesis:styleguide.${version}
 
 build-docker-image:
-	docker build -t irfanandriansyah1997/unikom-thesis:styleguide.${version} -f Dockerfile .
+	docker build -t irfanandriansyah1997/design-system-thesis:styleguide.${version} -f Dockerfile .
