@@ -35,20 +35,16 @@ script:
   - make init-test
   - make build-asset
 
-before_deploy:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - make build-docker name=${APP_NAME} version=${TIMESTAMP}
-
 deploy:
-  - provider: npm
-    email: irfanandriansyah10@gmail.com
-    skip_cleanup: true
-    api_key: ab599ead0892e12772e70ac2f3b2543a28bdeffc
-    on:
-      branch: master
-      repo: urbanindo/style-guide
   - provider: script
-    script: etc/aws/deploy_ecs.sh $APP_NAME
     skip_cleanup: true
+    script: make deploy version=${TIMESTAMP} name=${APP_NAME} username=${DOCKER_USERNAME} password=${DOCKER_PASSWORD}
     on:
         branch: master
+   #   - provider: npm
+#     email: irfanandriansyah10@gmail.com
+#     skip_cleanup: true
+#     api_key: ab599ead0892e12772e70ac2f3b2543a28bdeffc
+#     on:
+#       branch: master
+#       repo: irfanandriansyah1997/thesis

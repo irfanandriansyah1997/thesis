@@ -50,3 +50,8 @@ push-docker-image:
 
 build-docker-image:
 	docker build -t irfanandriansyah1997/design-system-thesis:${name}.${version} -f Dockerfile .
+
+deploy:
+	docker login -u ${username} -p ${password}
+	make build-docker version=${version}
+	etc/aws/deploy_ecs.sh ${name}
