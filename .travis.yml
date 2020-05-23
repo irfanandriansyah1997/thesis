@@ -1,25 +1,27 @@
 language: node_js
+
 node_js:
   - '12.15'
 
+env:
+  global:
+  - TIMESTAMP=$(date +%y%m%d%H%M)
+  - DOCKER_USERNAME="irfanandriansyah1997"
+
+services:
+  - docker
+
 script:
-  - yarn run check-code
-  - yarn run build-asset
-  - yarn run build-documentation
-  - ./node_modules/.bin/codecov --token=b4765ae3-4fd3-4af9-89e5-b44876a1764b
+  - make init-test
+  - make build-asset
+
+# before_deploy:
+#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#   - make build-docker-image version=${TIMESTAMP}
 
 deploy:
-  - provider: npm
-    email: irfanandriansyah10@gmail.com
+  - provider: script
     skip_cleanup: true
-    api_key: ab599ead0892e12772e70ac2f3b2543a28bdeffc
+    script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && make build-docker version=${TIMESTAMP}
     on:
-      branch: master
-      repo: urbanindo/style-guide
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-    keep_history: true
-    local_dir: documentation
-    on:
-      branch: master
+        branch: master
