@@ -107,4 +107,4 @@ dist
 tmp
 .tmp_staging
 /lib
-/documentation
+/deploy/documentation

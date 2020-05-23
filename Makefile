@@ -36,8 +36,8 @@ init-test:
 ###########################################################################
 
 build-asset:
-	yarn run build-documentation-common
-	yarn run build-documentation-desktop
+	yarn run build-asset
+	yarn run build-documentation
 
 build-docker:
 	make build-docker-image version=${version}

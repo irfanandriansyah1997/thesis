@@ -15,7 +15,7 @@
         "precheck-code": "yarn run lint",
         "check-code": "yarn run test",
         "prebuild-documentation": "if [ -d documentation ]; then rm -Rf documentation; fi",
-        "build-documentation": "build-storybook -c .storybook -o documentation -c src/.storybook",
+        "build-documentation": "build-storybook -c .storybook -o deploy/documentation -c src/.storybook",
         "build-css": "gulp --gulpfile etc/gulp/gulpfile.babel.js",
         "prebuild-asset": "if [ -d lib ]; then rm -Rf lib; fi",
         "build-asset": "rollup -c etc/rollup/rollup.config.js && yarn run build-css",
@@ -39,6 +39,7 @@
     "homepage": "https://github.com/urbanindo/style-guide#readme",
     "dependencies": {
         "csstype": "^2.6.9",
+        "express": "^4.17.1",
         "prop-types": "^15.7.2",
         "react": "^16.13.0",
         "react-copy-to-clipboard": "^5.0.2",
