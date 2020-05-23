@@ -17,4 +17,5 @@ app.get('*', (req, res) => {
 });
 
 const port = 8080;
+console.error(`running in port ${port}`);
 app.listen(port);

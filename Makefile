@@ -15,8 +15,10 @@ init-dev:
 	yarn install
 	chmod +775 .git/hooks/pre-commit
 
+init-dev-env: init-dev
+	docker-compose run apps npm rebuild node-sass
+
 run-dev:
-	@if [ ! -e "etc/nginx/error.log" ];then touch etc/nginx/error.log ; fi
 	docker-compose up
 
 stop-dev:

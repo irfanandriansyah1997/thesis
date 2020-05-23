@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+    apps:
+        build:
+            context: ./
+            dockerfile: ./etc/docker/base/Dockerfile
+        container_name: style-guide-app
+        volumes:
+            - .:/usr/src/thesis/
+            - ./node_modules:/usr/src/thesis/node_modules
+            - ./src:/usr/src/thesis/src
+            - ./.babelrc:/usr/src/thesis/.babelrc
+            - ./.browserslistrc:/usr/src/thesis/.browserslistrc
+            - ./.editorconfig:/usr/src/thesis/.editorconfig
+            - ./.eslintignore:/usr/src/thesis/.eslintignore
+            - ./.eslintrc.js:/usr/src/thesis/.eslintrc.js
+            - ./.npmignore:/usr/src/thesis/.npmignore
+            - ./.prettierrc.js:/usr/src/thesis/.prettierrc.js
+            - ./.stylelintrc:/usr/src/thesis/.stylelintrc
+            - ./jest.config.js:/usr/src/thesis/jest.config.js
+            - ./Makefile:/usr/src/thesis/Makefile
+            - ./package.json:/usr/src/thesis/package.json
+            - ./tsconfig.build.json:/usr/src/thesis/tsconfig.build.json
+            - ./tsconfig.json:/usr/src/thesis/tsconfig.json
+            - ./typings.d.ts:/usr/src/thesis/typings.d.ts
+            - ./yarn.lock:/usr/src/thesis/yarn.lock
+        command: yarn run storybook
+        ports:
+            - 8080:8080
+        expose:
+            - 8080
+        networks:
+            - internal
+
+networks:
+    internal:
+        driver: bridge
