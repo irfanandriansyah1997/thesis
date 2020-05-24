@@ -1,0 +1,184 @@
+@import '../../../../style/import.scss';
+
+.ui-organism-footer-r123 {
+    @include font-color(#d2d6da);
+    text-decoration: none;
+
+    &__upper-container {
+        float: left;
+        margin-top: 16px;
+        padding: 16px 0 32px;
+        width: 100%;
+
+        @include background-color(#20282e);
+
+        &__footer-section {
+            margin: 0 auto;
+            width: 1140px;
+        }
+
+        .tab {
+            @include font-color(#d2d6da);
+        }
+
+        .tab-item {
+            border-bottom: 1px solid rgb(51, 63, 72);
+            height: 50px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+
+        .tab-container {
+            overflow: hidden;
+        }
+
+        .active-content {
+            display: inline-block;
+            line-height: 1.4;
+            padding: 10px 20px 10px 0;
+            text-align: left;
+            vertical-align: top;
+            width: 25%;
+        }
+
+        @media (max-width: 1388px) {
+            &__footer-section {
+                width: 95%;
+            }
+        }
+    }
+
+    &__tab-container {
+        max-height: 160px;
+        overflow: hidden;
+    }
+
+    &__bottom-container {
+        width: 100%;
+        @include background-color(#333f48);
+
+        &__footer-section {
+            margin: 0 auto;
+            width: 1140px;
+        }
+
+        &__block-container {
+            margin: 32px 0;
+
+            &__wrapper {
+                display: flex;
+                float: left;
+            }
+        }
+
+        &__site-title {
+            @include font-size(map-get($font-size-general, sm));
+            @include font-weight(map-get($font-weight-general, bold));
+        }
+
+        &__socmed-section {
+            align-items: center;
+            left: 0;
+        }
+
+        &__local-section {
+            float: right;
+            width: 80%;
+        }
+
+        @media (max-width: 1388px) {
+            &__footer-section {
+                width: 95%;
+            }
+        }
+    }
+
+    .ui-molecules-tab {
+        @include font-color(#d2d6da);
+
+        &__bar {
+            border-bottom: 1px solid rgb(51, 63, 72);
+            height: 40px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+
+        &__pane {
+            box-sizing: border-box;
+            cursor: pointer;
+            display: inline-block;
+            height: 100%;
+            opacity: 1;
+            position: relative;
+            text-decoration: none;
+
+            @include font-size(sm);
+            @include font-weight(map-get($font-weight-general, medium));
+            @include margin-right(56px);
+            @include padding(all, 8px 0);
+
+            &::after {
+                display: block;
+                opacity: 0;
+                position: absolute;
+            }
+
+            &:hover {
+                @include font-color(#d2d6da);
+            }
+
+            &--active {
+                border-bottom: 2px solid rgb(41, 128, 185);
+                left: 0;
+                margin-right: 56;
+                text-align: left;
+
+                @include font-color(#ffffff);
+                @include font-weight(map-get($font-weight-general, bold));
+
+                // &::after {
+                //     opacity: 1;
+                //     @include background-color(primary);
+                // }
+            }
+        }
+    }
+
+    .ui-atomic-link {
+        text-decoration: none;
+
+        @include font-color(#d2d6da);
+
+        &--styling {
+            &-underline-none {
+                text-decoration: none;
+            }
+        }
+
+        &__icon {
+            @include margin-right(map-get($width-general, 1));
+            vertical-align: middle;
+        }
+
+        &:hover {
+            @include font-color(#ffffff);
+        }
+
+        &.truncate {
+            span {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+            }
+        }
+    }
+
+    .ui-molecules-list {
+        &__local-section {
+            float: right;
+        }
+    }
+}
