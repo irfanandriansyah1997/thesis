@@ -1,36 +1,60 @@
 /**
- * Footer Interfaces
+ * Footer Upper Section Props Interface
  * @author nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.15
  */
-
-export interface FooterTopSectionPropsInterface {
-    tabs: FooterTab[];
+export interface FooterUpperSectionPropsInterface {
+    tabs: FooterTabInterface[];
 }
 
-export interface FooterTab {
-    name: string;
-    menu: FooterLink[];
-}
-
-export interface FooterBottomSectionPropsInterface {
-    sitemap: FooterLink[];
-    socmedMedias: MediaLink[];
-    publishMedias: MediaLink[];
-    siteRegions: FooterLink[];
-    partners: FooterLink[];
+/**
+ * Footer Below Section Props Interface
+ * @author nafhul <nafhul.arsyad@99.co>
+ * @since 2020.05.15
+ */
+export interface FooterBelowSectionPropsInterface {
+    sitemap: FooterLinkInterface[];
+    socmedMedias: FooterMediaLinkInterface[];
+    publishMedias: FooterMediaLinkInterface[];
+    siteRegions: FooterLinkInterface[];
+    partners: FooterLinkInterface[];
     copyrightText: string;
 }
 
-export interface FooterLink {
+/**
+ * Footer Tab Interface
+ * @author nafhul <nafhul.arsyad@99.co>
+ * @since 2020.05.15
+ */
+export interface FooterTabInterface {
+    name: string;
+    menu: FooterLinkInterface[];
+}
+
+/**
+ * Footer Link Interface
+ * @author nafhul <nafhul.arsyad@99.co>
+ * @since 2020.05.15
+ */
+export interface FooterLinkInterface {
     text: string;
     to: string;
 }
 
-export interface MediaLink {
+/**
+ * Footer Media(Image) Link Interface
+ * @author nafhul <nafhul.arsyad@99.co>
+ * @since 2020.05.15
+ */
+export interface FooterMediaLinkInterface {
     imageUrl: string;
     to: string;
 }
 
-export type FooterPropsInterface = FooterTopSectionPropsInterface &
-    FooterBottomSectionPropsInterface;
+/**
+ * Footer Props Interface
+ * @author nafhul <nafhul.arsyad@99.co>
+ * @since 2020.05.15
+ */
+export type FooterPropsInterface = FooterUpperSectionPropsInterface &
+    FooterBelowSectionPropsInterface;

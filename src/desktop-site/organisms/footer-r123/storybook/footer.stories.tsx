@@ -1,5 +1,5 @@
 import React from 'react';
-import FooterSectionComponent from '../footer.component';
+import FooterComponent from '../footer.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
@@ -123,11 +123,11 @@ const initParam: FooterPropsInterface = {
         },
         {
             text: 'Karir',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/karir/'
         },
         {
             text: 'Kontak Kami',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/kontak kami/'
         },
         {
             text: 'Iklankan Properti Anda',
@@ -161,35 +161,35 @@ const initParam: FooterPropsInterface = {
     siteRegions: [
         {
             text: 'Australia',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/au/'
         },
         {
             text: 'Hongkong',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/ho/'
         },
         {
             text: 'India',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/indi/'
         },
         {
             text: 'Indonesia',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/id/'
         },
         {
             text: 'Malaysia',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/my/'
         },
         {
             text: 'Singapura',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/sg/'
         },
         {
             text: 'Thailand',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/th/'
         },
         {
             text: 'Amerika Serikat',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/us/'
         }
     ],
     partners: [
@@ -238,7 +238,7 @@ const initParam: FooterPropsInterface = {
                 <CodingViewerDocsComponent
                     sourceCode={`${'const { Item } = TabsComponent;'}\n\n`}
                 >
-                    <FooterSectionComponent
+                    <FooterComponent
                         tabs={param.tabs}
                         socmedMedias={param.socmedMedias}
                         sitemap={param.sitemap}
