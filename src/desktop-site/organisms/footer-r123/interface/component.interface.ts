@@ -5,21 +5,30 @@
  */
 
 export interface FooterTopSectionPropsInterface {
-    tab: {
-        [key: string]: {
-            menu: FooterLink[];
-        };
-    };
+    tabs: FooterTab[];
+}
+
+export interface FooterTab {
+    name: string;
+    menu: FooterLink[];
 }
 
 export interface FooterBottomSectionPropsInterface {
     sitemap: FooterLink[];
+    socmedMedias: MediaLink[];
+    publishMedias: MediaLink[];
     siteRegions: FooterLink[];
     partners: FooterLink[];
+    copyrightText: string;
 }
 
 export interface FooterLink {
     text: string;
+    to: string;
+}
+
+export interface MediaLink {
+    imageUrl: string;
     to: string;
 }
 
