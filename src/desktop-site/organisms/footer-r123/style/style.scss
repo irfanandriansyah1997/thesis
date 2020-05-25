@@ -8,23 +8,29 @@ $link-color: #d2d6da;
 
     &__upper-container {
         float: left;
-        @include margin-top(16px);
-        @include padding(all, 16px 0 32px);
         width: 100%;
 
         @include background-color(#20282e);
+        @include margin-top(16px);
+        @include padding(all, 16px 0 32px);
 
         &__footer-section {
-            margin: 0 auto;
             width: 1140px;
+
+            @include margin(all, 0 auto);
         }
 
         &__active-content {
             display: inline-block;
             line-height: 1.4;
-            padding: 10px 20px 10px 0;
             vertical-align: top;
             width: 25%;
+
+            @include padding(all, 10px 20px 10px 0);
+        }
+
+        &__toggler {
+            cursor: pointer;
         }
 
         @media (max-width: 1388px) {
@@ -40,16 +46,17 @@ $link-color: #d2d6da;
         @include background-color(#333f48);
 
         &__footer-section {
-            margin: 0 auto;
             width: 1140px;
+
+            @include margin(all, 0 auto);
         }
 
         &__block-container {
-            margin: 32px 0;
+            @include margin(all, 32px 0);
         }
 
         &__copyright-container {
-            padding: 16px 0 48px;
+            @include padding(all, 16px 0 48px);
         }
 
         &__wrapper {
@@ -103,6 +110,14 @@ $link-color: #d2d6da;
 
         &:hover {
             @include font-color(white);
+        }
+    }
+
+    .ui-molecules-toggle {
+        &__selector {
+            @include font-size(14px);
+            @include font-weight(700);
+            @include padding-top(24px);
         }
     }
 }

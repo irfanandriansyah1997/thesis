@@ -26,7 +26,7 @@ const FooterBelowSectionComponent: FunctionComponent<FooterBelowSectionPropsInte
         ({ imageUrl, to }: FooterMediaLinkInterface) => {
             return (
                 <ListComponent.Item key={to}>
-                    <LinkComponent href={to}>
+                    <LinkComponent href={to} target="_blank">
                         <ImageComponent alt="img-socmed" src={imageUrl} />
                     </LinkComponent>
                 </ListComponent.Item>
@@ -46,7 +46,7 @@ const FooterBelowSectionComponent: FunctionComponent<FooterBelowSectionPropsInte
         ({ imageUrl, to }: FooterMediaLinkInterface) => {
             return (
                 <ListComponent.Item key={imageUrl}>
-                    <LinkComponent href={to}>
+                    <LinkComponent href={to} target="_blank">
                         <ImageComponent
                             alt="img-store"
                             width={130}
@@ -62,7 +62,9 @@ const FooterBelowSectionComponent: FunctionComponent<FooterBelowSectionPropsInte
         ({ to, text }: FooterLinkInterface) => {
             return (
                 <ListComponent.Item key={text}>
-                    <LinkComponent href={to}>{text}</LinkComponent>
+                    <LinkComponent href={to} target="_blank">
+                        {text}
+                    </LinkComponent>
                 </ListComponent.Item>
             );
         }
@@ -71,7 +73,9 @@ const FooterBelowSectionComponent: FunctionComponent<FooterBelowSectionPropsInte
     const sitePartners = partners.map(({ to, text }: FooterLinkInterface) => {
         return (
             <ListComponent.Item key={text}>
-                <LinkComponent href={to}>{text}</LinkComponent>
+                <LinkComponent href={to} target="_blank">
+                    {text}
+                </LinkComponent>
             </ListComponent.Item>
         );
     });
