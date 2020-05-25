@@ -13,7 +13,6 @@ import {
     NavbarR123DropdownInterface,
     NavbarR123MenuItemInterface
 } from './interface/component.interface';
-import './style/style.scss';
 
 /**
  * Navbar R123 Component
