@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { FooterPropsInterface } from './interface/component.interface';
-import './style/style.scss';
 import StringHelper from '../../../shared/helper/string.helper';
 import FooterUpperSectionComponent from './footer-upper-section.component';
 import FooterBelowSectionComponent from './footer-below-section.component';
