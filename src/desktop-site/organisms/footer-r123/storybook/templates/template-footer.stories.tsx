@@ -3,84 +3,186 @@ import { FooterPropsInterface } from '../../interface/component.interface';
 export const DefaultFooterR123: FooterPropsInterface = {
     tabs: [
         {
-            name: 'Property Dijual di Indonesia',
+            name: 'Property Indonesia',
             menu: [
                 {
-                    text: 'Rumah dijual di Aceh',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/rumah/',
+                    text: 'Rumah Dijual di Indonesia'
                 },
                 {
-                    text: 'Rumah dijual di Bali',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/apartemen/',
+                    text: 'Apartemen Dijual di Indonesia'
                 },
                 {
-                    text: 'Rumah dijual di Banten',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/tanah/',
+                    text: 'Tanah Dijual di Indonesia'
                 },
                 {
-                    text: 'Rumah dijual di Bengkulu',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/ruko/',
+                    text: 'Ruko Dijual di Indonesia'
                 },
                 {
-                    text: 'Rumah dijual di Daerah Istiwema Yogyakarta',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/pabrik/',
+                    text: 'Pabrik Dijual di Indonesia'
                 },
                 {
-                    text: 'Rumah dijual di DKI Jakarta',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/kantor/',
+                    text: 'Kantor Dijual di Indonesia'
                 },
                 {
-                    text: 'Rumah dijual di Gorontalo',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/gudang/',
+                    text: 'Gudang Dijual di Indonesia'
                 },
                 {
-                    text: 'Rumah dijual di Jambi',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Barat',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Tengah',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Timur',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Kalimantan Barat',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Kalimantan Selatan',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Kalimantan Tengah',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Kalimantan Timur',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
-                },
-                {
-                    text: 'Rumah dijual di Jawa Kalimantan Utara',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/ruang-usah',
+                    text: 'Ruang Usaha Dijual di Indonesia'
                 }
             ]
         },
         {
-            name: 'Lokasi Popular',
+            name: 'Provinsi Di Indonesia',
             menu: [
                 {
-                    text: 'Property di Jakarta',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/aceh/rumah/',
+                    text: 'Aceh properti'
                 },
                 {
-                    text: 'Property di Bali',
-                    to: 'https://www.rumah123.com/jual/aceh/residensial/'
+                    to: 'https://www.rumah123.com/jual/bali/rumah/',
+                    text: 'Bali properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/banten/rumah/',
+                    text: 'Banten properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/bengkulu/rumah/',
+                    text: 'Bengkulu properti'
+                },
+                {
+                    to:
+                        'https://www.rumah123.com/jual/daerah-istimewa-yogyakart',
+                    text: 'Daerah Istimewa Yogyakarta properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/dki-jakarta/ruma',
+                    text: 'DKI Jakarta properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/gorontalo/rumah/',
+                    text: 'Gorontalo properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/jambi/rumah/',
+                    text: 'Jambi properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/jawa-barat/ruma',
+                    text: 'Jawa Barat properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/jawa-tengah/ruma',
+                    text: 'Jawa Tengah properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/jawa-timur/ruma',
+                    text: 'Jawa Timur properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/kalimantan-barat/ruma',
+                    text: 'Kalimantan Barat properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/kalimantan-selatan/ruma',
+                    text: 'Kalimantan Selatan properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/kalimantan-tengah/ruma',
+                    text: 'Kalimantan Tengah properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/kalimantan-timur/ruma',
+                    text: 'Kalimantan Timur properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/kalimantan-utara/ruma',
+                    text: 'Kalimantan Utara properti'
+                },
+                {
+                    to:
+                        'https://www.rumah123.com/jual/kepulauan-bangka-belitun',
+                    text: 'Kepulauan Bangka Belitung properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/kepulauan-riau/ruma',
+                    text: 'Kepulauan Riau properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/lampung/rumah/',
+                    text: 'Lampung properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/maluku/rumah/',
+                    text: 'Maluku properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/maluku-utara/ruma',
+                    text: 'Maluku Utara properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/nusa-tenggara-bara',
+                    text: 'Nusa Tenggara Barat properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/nusa-tenggara-timu',
+                    text: 'Nusa Tenggara Timur properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/others/rumah/',
+                    text: 'Others properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/papua/rumah/',
+                    text: 'Papua properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/papua-barat/ruma',
+                    text: 'Papua Barat properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/riau/rumah/',
+                    text: 'Riau properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sulawesi-barat/ruma',
+                    text: 'Sulawesi Barat properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sulawesi-selatan/ruma',
+                    text: 'Sulawesi Selatan properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sulawesi-tengah/ruma',
+                    text: 'Sulawesi Tengah properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sulawesi-tenggara/ruma',
+                    text: 'Sulawesi Tenggara properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sulawesi-utara/ruma',
+                    text: 'Sulawesi Utara properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sumatera-barat/ruma',
+                    text: 'Sumatera Barat properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sumatera-selatan/ruma',
+                    text: 'Sumatera Selatan properti'
+                },
+                {
+                    to: 'https://www.rumah123.com/jual/sumatera-utara/ruma',
+                    text: 'Sumatera Utara properti'
                 }
             ]
         }
@@ -88,53 +190,47 @@ export const DefaultFooterR123: FooterPropsInterface = {
     socmedMedias: [
         {
             imageUrl:
-                'https://public.urbanindo.com/style-guide/icons8-facebook-old.svg',
+                'https://public.urbanindo.com/style-guide/r123-facebook-icon.svg',
             to: 'https://facebook.com'
         },
         {
             imageUrl:
-                'https://public.urbanindo.com/style-guide/icons8-twitter.svg',
+                'https://public.urbanindo.com/style-guide/r123-twitter-icon.svg',
             to: 'https://twitter.com'
         },
         {
             imageUrl:
-                'https://public.urbanindo.com/style-guide/icons8-instagram.svg',
+                'https://public.urbanindo.com/style-guide/r123-instagram-icon.svg',
             to: 'https://instagram.com'
         },
         {
             imageUrl:
-                'https://public.urbanindo.com/style-guide/icons8-play-button.svg',
+                'https://public.urbanindo.com/style-guide/r123-youtube-icon.svg',
             to: 'https://youtube.com'
         }
     ],
     sitemap: [
+        { to: 'https://www.rumah123.com/tentang-kami', text: 'Tentang Kami' },
         {
-            text: 'Tentang Kami',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rea-group.com/careers/locations/jakarta/',
+            text: 'Karir'
+        },
+        { to: 'https://www.rumah123.com/hubungi-kami', text: 'Kontak Kami' },
+        {
+            to: 'https://www.rumah123.com/agent/account-register-id.html',
+            text: 'Iklankan Properti Anda'
         },
         {
-            text: 'Karir',
-            to: 'https://www.rumah123.com/karir/'
+            to: 'https://www.rumah123.com/kebijakan-privasi/',
+            text: 'Kebijakan Privasi'
         },
         {
-            text: 'Kontak Kami',
-            to: 'https://www.rumah123.com/kontak kami/'
+            to: 'https://www.rumah123.com/syarat-penggunaan/',
+            text: 'Syarat Penggunaan'
         },
         {
-            text: 'Iklankan Properti Anda',
-            to: 'https://www.rumah123.com/tentang-kami/'
-        },
-        {
-            text: 'Kebijakan Privasi',
-            to: 'https://www.rumah123.com/tentang-kami/'
-        },
-        {
-            text: 'Syarat Penggunaan',
-            to: 'https://www.rumah123.com/tentang-kami/'
-        },
-        {
-            text: 'Syarat Penggunaan Agen',
-            to: 'https://www.rumah123.com/tentang-kami/'
+            to: 'https://www.rumah123.com/syarat-penggunaan-agen/',
+            text: '>Syarat Penggunaan Agen'
         }
     ],
     publishMedias: [

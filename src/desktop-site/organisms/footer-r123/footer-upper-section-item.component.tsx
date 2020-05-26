@@ -1,25 +1,27 @@
-import React, { FunctionComponent } from 'react';
+import PropTypes from 'prop-types';
+import React, { FunctionComponent, Validator } from 'react';
+
+import LinkComponent from '../../../common/atomic/link/link.component';
 import {
     FooterLinkInterface,
-    FooterTabInterface
+    FooterTabContentInterface
 } from './interface/component.interface';
-import LinkComponent from '../../../common/atomic/link/link.component';
 
 /**
  * Footer Upper Section Tab Item Component
  * @author nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.18
  */
-const FooterUpperSectionTabItemComponent: FunctionComponent<FooterTabInterface> = ({
+const FooterUpperSectionTabItemComponent: FunctionComponent<FooterTabContentInterface> = ({
     menu
-}: FooterTabInterface) => {
+}: FooterTabContentInterface) => {
     return (
         <div>
-            {menu.map(({ text, to }: FooterLinkInterface) => {
+            {menu.map(({ text, to }) => {
                 return (
                     <div
                         key={text}
-                        className="ui-organism-footer-r123__upper-container__active-content"
+                        className="ui-organism-footer-r123__upper-section__active-content"
                     >
                         <LinkComponent href={to}>{text}</LinkComponent>
                     </div>
@@ -27,6 +29,19 @@ const FooterUpperSectionTabItemComponent: FunctionComponent<FooterTabInterface> 
             })}
         </div>
     );
+};
+
+FooterUpperSectionTabItemComponent.propTypes = {
+    menu: PropTypes.arrayOf(
+        PropTypes.shape({
+            text: PropTypes.string,
+            to: PropTypes.string
+        })
+    ).isRequired as Validator<FooterLinkInterface[]>
+};
+
+FooterUpperSectionTabItemComponent.defaultProps = {
+    menu: []
 };
 
 export default FooterUpperSectionTabItemComponent;

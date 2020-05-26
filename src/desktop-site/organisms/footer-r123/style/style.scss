@@ -6,19 +6,13 @@ $link-color: #d2d6da;
     @include font-color($link-color);
     text-decoration: none;
 
-    &__upper-container {
+    &__upper-section {
         float: left;
         width: 100%;
 
         @include background-color(#20282e);
         @include margin-top(16px);
-        @include padding(all, 16px 0 32px);
-
-        &__footer-section {
-            width: 1140px;
-
-            @include margin(all, 0 auto);
-        }
+        @include padding(all, 16px 16px 0);
 
         &__active-content {
             display: inline-block;
@@ -40,23 +34,18 @@ $link-color: #d2d6da;
         }
     }
 
-    &__bottom-container {
+    &__bottom-section {
         width: 100%;
 
         @include background-color(#333f48);
-
-        &__footer-section {
-            width: 1140px;
-
-            @include margin(all, 0 auto);
-        }
+        @include padding(all, 0 16px);
 
         &__block-container {
             @include margin(all, 32px 0);
         }
 
         &__copyright-container {
-            @include padding(all, 16px 0 48px);
+            @include padding(all, 16px 0);
         }
 
         &__wrapper {
@@ -98,7 +87,7 @@ $link-color: #d2d6da;
                 border-bottom: 1px solid rgb(41, 128, 185);
 
                 @include font-color(white);
-                @include font-weight(map-get($font-weight-general, bold));
+                @include font-weight(500);
             }
         }
     }
@@ -117,7 +106,6 @@ $link-color: #d2d6da;
         &__selector {
             @include font-size(14px);
             @include font-weight(700);
-            @include padding-top(24px);
         }
     }
 }

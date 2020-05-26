@@ -13,12 +13,12 @@ export interface FooterUpperSectionPropsInterface {
  * @since 2020.05.15
  */
 export interface FooterBelowSectionPropsInterface {
+    copyrightText: string;
     sitemap: FooterLinkInterface[];
+    partners: FooterLinkInterface[];
+    siteRegions: FooterLinkInterface[];
     socmedMedias: FooterMediaLinkInterface[];
     publishMedias: FooterMediaLinkInterface[];
-    siteRegions: FooterLinkInterface[];
-    partners: FooterLinkInterface[];
-    copyrightText: string;
 }
 
 /**
@@ -26,8 +26,16 @@ export interface FooterBelowSectionPropsInterface {
  * @author nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.15
  */
-export interface FooterTabInterface {
+export type FooterTabInterface = FooterTabContentInterface & {
     name: string;
+};
+
+/**
+ * Footer Tab Content Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.15
+ */
+export interface FooterTabContentInterface {
     menu: FooterLinkInterface[];
 }
 

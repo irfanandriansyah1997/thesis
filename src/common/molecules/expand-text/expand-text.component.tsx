@@ -4,8 +4,9 @@ import React, { SFC, useState, ReactNode, Validator } from 'react';
 import ToggleComponent from '../toggle/toggle.component';
 import TextComponent from '../../atomic/text/text.component';
 import IconComponent from '../../atomic/icon/icon.component';
-import { ColorType } from '../../../shared/interface/common/color.interface';
 import ColorDefaultConstant from '../../../shared/constant/color.constant';
+import { ColorType } from '../../../shared/interface/common/color.interface';
+import { ComponentFontWeightTypography } from '../../../shared/interface/component/component-typography.interface';
 import {
     ARROW_ON_HIDE,
     ARROW_ON_EXPAND
@@ -23,6 +24,7 @@ import {
 const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
     color,
     showArrow,
+    fontWeight,
     onToggleExpand,
     textToggleButton,
     ...res
@@ -67,8 +69,9 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
                 <TextComponent
                     tag="span"
                     align="left"
-                    styling="heading-6"
                     color={textColor}
+                    styling="heading-6"
+                    fontWeight={fontWeight}
                     className="ui-molecules-expand-text__toggle flex"
                     style={{
                         marginTop: 20
@@ -92,7 +95,6 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
     return (
         <ToggleComponent
             {...res}
-            gradient
             selectorPosition="bottom"
             onToggleExpand={onClickToggle}
             onComponentResize={onComponentResize}
@@ -107,6 +109,7 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
 
 ExpandTextComponent.propTypes = {
     show: PropTypes.bool,
+    gradient: PropTypes.bool,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
@@ -120,17 +123,26 @@ ExpandTextComponent.propTypes = {
         onCLose: PropTypes.string,
         onExpand: PropTypes.string
     }),
+    fontWeight: PropTypes.oneOf<ComponentFontWeightTypography>([
+        300,
+        400,
+        500,
+        600,
+        700
+    ]) as Validator<ComponentFontWeightTypography>,
     showArrow: PropTypes.bool
 };
 
 ExpandTextComponent.defaultProps = {
     show: false,
+    gradient: false,
     onToggleExpand: undefined,
     color: 'heading',
     textToggleButton: {
         onCLose: 'Open',
         onExpand: 'Close'
     },
+    fontWeight: 400,
     showArrow: true
 };
 
