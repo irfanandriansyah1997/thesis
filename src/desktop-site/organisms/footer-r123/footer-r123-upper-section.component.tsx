@@ -3,7 +3,7 @@ import React, { FunctionComponent, Validator } from 'react';
 
 import GridComponent from '../../../common/atomic/grid/grid.component';
 import TabsComponent from '../../../common/molecules/tabs/tabs.component';
-import FooterUpperSectionItemComponent from './footer-upper-section-item.component';
+import FooterUpperSectionItemComponent from './footer-r123-upper-section-item.component';
 import ExpandTextComponent from '../../../common/molecules/expand-text/expand-text.component';
 import {
     FooterTabInterface,

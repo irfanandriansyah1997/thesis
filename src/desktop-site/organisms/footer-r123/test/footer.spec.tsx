@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'enzyme';
-import FooterComponent from '../footer.component';
+import FooterComponent from '../footer-r123.component';
 import { DefaultFooterR123 } from '../storybook/templates/template-footer.stories';
 
 describe('Testing footer r123 in organisms component ', () => {

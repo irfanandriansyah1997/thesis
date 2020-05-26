@@ -1,5 +1,5 @@
 import React from 'react';
-import FooterComponent from '../footer.component';
+import FooterComponent from '../footer-r123.component';
 import { DefaultFooterR123 } from './templates/template-footer.stories';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';

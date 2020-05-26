@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { FunctionComponent, Validator } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
-import FooterUpperSectionComponent from './footer-upper-section.component';
-import FooterBelowSectionComponent from './footer-below-section.component';
+import FooterUpperSectionComponent from './footer-r123-upper-section.component';
+import FooterBelowSectionComponent from './footer-r123-below-section.component';
 import {
     FooterTabInterface,
     FooterLinkInterface,
