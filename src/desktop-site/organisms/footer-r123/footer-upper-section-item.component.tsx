@@ -19,12 +19,13 @@ const FooterUpperSectionTabItemComponent: FunctionComponent<FooterTabContentInte
         <div>
             {menu.map(({ text, to }) => {
                 return (
-                    <div
-                        key={text}
+                    <LinkComponent
+                        href={to}
+                        key={`${text}-${to}`}
                         className="ui-organism-footer-r123__upper-section__active-content"
                     >
-                        <LinkComponent href={to}>{text}</LinkComponent>
-                    </div>
+                        {text}
+                    </LinkComponent>
                 );
             })}
         </div>

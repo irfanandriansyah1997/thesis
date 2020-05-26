@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { FunctionComponent, Validator } from 'react';
+import React, { FunctionComponent, Validator, ReactNode } from 'react';
 
 import LinkComponent from '../../../common/atomic/link/link.component';
 import TextComponent from '../../../common/atomic/text/text.component';
@@ -25,57 +25,76 @@ const FooterBelowSectionComponent: FunctionComponent<FooterBelowSectionPropsInte
     publishMedias,
     copyrightText
 }: FooterBelowSectionPropsInterface) => {
-    const socmedLinks = socmedMedias.map(({ imageUrl, to }) => {
-        return (
-            <ListComponent.Item key={to}>
-                <LinkComponent href={to} target="_blank">
-                    <ImageComponent alt="img-socmed" src={imageUrl} />
-                </LinkComponent>
-            </ListComponent.Item>
-        );
-    });
+    /**
+     * Generate Link Item Component
+     * @param {'link' | 'link-with-image'} type - type link item
+     * @param {FooterMediaLinkInterface[] | FooterLinkInterface[]} menu - menu item
+     * @param {string | undefined} target - target attribute in link component
+     * @param {string | undefined} alt - alt attribute in image component
+     * @param {string | undefined} size - width attribute in image component
+     * @return {ReactNode}
+     */
+    const generateLinkItem = (
+        type: 'link' | 'link-with-image',
+        menu: FooterMediaLinkInterface[] | FooterLinkInterface[],
+        target: string | undefined = undefined,
+        alt: string | undefined = undefined,
+        size: number | undefined = undefined
+    ): ReactNode => {
+        if (type === 'link') {
+            return (menu as FooterLinkInterface[]).map(({ to, text }) => {
+                return (
+                    <ListComponent.Item key={text}>
+                        <LinkComponent href={to} target={target}>
+                            {text}
+                        </LinkComponent>
+                    </ListComponent.Item>
+                );
+            });
+        }
 
-    const localLinks = sitemap.map(({ to, text }) => {
-        return (
-            <ListComponent.Item key={text}>
-                <LinkComponent href={to}>{text}</LinkComponent>
-            </ListComponent.Item>
-        );
-    });
+        return (menu as FooterMediaLinkInterface[]).map(({ to, imageUrl }) => {
+            return (
+                <ListComponent.Item key={to}>
+                    <LinkComponent href={to} target={target}>
+                        <ImageComponent
+                            alt={alt || ''}
+                            width={size}
+                            src={imageUrl}
+                        />
+                    </LinkComponent>
+                </ListComponent.Item>
+            );
+        });
+    };
 
-    const appStores = publishMedias.map(({ imageUrl, to }) => {
+    /**
+     * Generate Bottom Link
+     * @param {string} heading - heading section
+     * @param {FooterLinkInterface[]} menu - menu item
+     * @return {ReactNode}
+     */
+    const generateBottomLink = (
+        heading: string,
+        menu: FooterLinkInterface[]
+    ): ReactNode => {
         return (
-            <ListComponent.Item key={imageUrl}>
-                <LinkComponent href={to} target="_blank">
-                    <ImageComponent
-                        alt="img-store"
-                        width={130}
-                        src={imageUrl}
-                    />
-                </LinkComponent>
-            </ListComponent.Item>
+            <>
+                <TextComponent tag="p" fontWeight={700}>
+                    {heading}
+                </TextComponent>
+                <ListComponent
+                    className="ui-organism-footer-r123__bottom-section__block-container"
+                    space={32}
+                    divider="line"
+                    dividerColor="white"
+                >
+                    {generateLinkItem('link', menu, '_blank')}
+                </ListComponent>
+            </>
         );
-    });
+    };
 
-    const regionalSites = siteRegions.map(({ to, text }) => {
-        return (
-            <ListComponent.Item key={text}>
-                <LinkComponent href={to} target="_blank">
-                    {text}
-                </LinkComponent>
-            </ListComponent.Item>
-        );
-    });
-
-    const sitePartners = partners.map(({ to, text }) => {
-        return (
-            <ListComponent.Item key={text}>
-                <LinkComponent href={to} target="_blank">
-                    {text}
-                </LinkComponent>
-            </ListComponent.Item>
-        );
-    });
     return (
         <section className="ui-organism-footer-r123__bottom-section">
             <GridComponent.Container>
@@ -84,40 +103,34 @@ const FooterBelowSectionComponent: FunctionComponent<FooterBelowSectionPropsInte
                         <div className="ui-organism-footer-r123__bottom-section__block-container">
                             <div className="ui-organism-footer-r123__bottom-section__wrapper">
                                 <ListComponent space={20} divider="none">
-                                    {socmedLinks}
+                                    {generateLinkItem(
+                                        'link-with-image',
+                                        socmedMedias,
+                                        '_blank',
+                                        'img-socmed'
+                                    )}
                                 </ListComponent>
                                 <ListComponent space={20} divider="none">
-                                    {localLinks}
+                                    {generateLinkItem('link', sitemap)}
                                 </ListComponent>
                             </div>
                         </div>
                         <div className="ui-organism-footer-r123__bottom-section__block-container">
                             <ListComponent space={20} divider="none">
-                                {appStores}
+                                {generateLinkItem(
+                                    'link-with-image',
+                                    publishMedias,
+                                    '_blank',
+                                    'img-store',
+                                    130
+                                )}
                             </ListComponent>
                         </div>
-                        <TextComponent tag="p" fontWeight={700}>
-                            Situs Internasional:
-                        </TextComponent>
-                        <ListComponent
-                            className="ui-organism-footer-r123__bottom-section__block-container"
-                            space={32}
-                            divider="line"
-                            dividerColor="white"
-                        >
-                            {regionalSites}
-                        </ListComponent>
-                        <TextComponent tag="p" fontWeight={700}>
-                            Situs Partner:
-                        </TextComponent>
-                        <ListComponent
-                            className="ui-organism-footer-r123__bottom-section__block-container"
-                            space={32}
-                            divider="line"
-                            dividerColor="white"
-                        >
-                            {sitePartners}
-                        </ListComponent>
+                        {generateBottomLink(
+                            'Situs Internasional:',
+                            siteRegions
+                        )}
+                        {generateBottomLink('Situs Partner:', partners)}
                         <TextComponent
                             tag="p"
                             className="ui-organism-footer-r123__bottom-section__copyright-container"
