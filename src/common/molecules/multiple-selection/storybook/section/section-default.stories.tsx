@@ -6,6 +6,7 @@ import HeadingDocsComponent from '../../../../../.storybook/component/atomic/hea
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 import MultipleSelectionComponent from '../../multiple-selection.component';
 import MultipleSelectionItemComponent from '../../multiple-selection-item.component';
+import MultipleSelectionHeadingComponent from '../../multiple-selection-heading.component';
 
 /**
  * Section Default Multiple Selection
@@ -30,19 +31,36 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                         placeholder="Hello World"
                         value={[]}
                     >
+                        <MultipleSelectionHeadingComponent key="saran">
+                            Saran Pencarian
+                        </MultipleSelectionHeadingComponent>
                         <MultipleSelectionItemComponent
-                            key="123"
-                            label="Irfan"
-                            value="irfan"
+                            label="Cimahi, Jawa Barat"
+                            key="f574128d9944326385f1aa7be08b8685"
+                            value="f574128d9944326385f1aa7be08b8685"
                         >
-                            Irfan Andriansyah
+                            Cimahi, Jawa Barat
                         </MultipleSelectionItemComponent>
                         <MultipleSelectionItemComponent
-                            key="124"
-                            label="Whot The Fuck"
-                            value="wtf"
+                            key="167411a051e8f85e5949b8712d5b59fa"
+                            label="Cimahi Selatan, Cimahi"
+                            value="167411a051e8f85e5949b8712d5b59fa"
                         >
-                            Who The Fuck
+                            Cimahi Selatan, Cimahi
+                        </MultipleSelectionItemComponent>
+                        <MultipleSelectionItemComponent
+                            label="Cimahi Tengah, Cimahi"
+                            key="b9addc94e54625e8eb6b1ed933b89233"
+                            value="b9addc94e54625e8eb6b1ed933b89233"
+                        >
+                            Cimahi Tengah, Cimahi
+                        </MultipleSelectionItemComponent>
+                        <MultipleSelectionItemComponent
+                            key="f33fc7510f0d5ebfecbe278642ee00e1"
+                            label="Cimahi Utara, Cimahi"
+                            value="f33fc7510f0d5ebfecbe278642ee00e1"
+                        >
+                            Cimahi Utara, Cimahi
                         </MultipleSelectionItemComponent>
                     </MultipleSelectionComponent>
                 </CodingViewerDocsComponent>

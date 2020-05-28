@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState, Validator } from 'react';
+import React, {
+    useRef,
+    useState,
+    useEffect,
+    Validator,
+    RefObject,
+    forwardRef
+} from 'react';
 
 import { CSSTransition } from 'react-transition-group';
 import IconComponent from '../../atomic/icon/icon.component';
@@ -9,7 +16,10 @@ import DropdownItemComponent from './dropdown-item.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import DropdownDividerComponent from './dropdown-divider.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { DropdownDefaultExportInterface } from './interface/component.interface';
+import {
+    DropdownDefaultExportInterface,
+    DropdownPropsInterface
+} from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
@@ -18,17 +28,21 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  * @since 2020.04.27
  */
 const DropdownComponent: DropdownDefaultExportInterface = ({
+    show,
     type,
     icon,
     label,
     scroll,
     onClick,
     trigger,
+    refForward,
     ...res
 }) => {
-    const node = useRef<HTMLDivElement>(null);
+    const node = refForward || useRef<HTMLDivElement>(null);
     const contentNode = useRef<HTMLDivElement>(null);
-    const [show, setShow] = useState<boolean>(false);
+    const [showContent, setShowContent] = useState<boolean>(
+        ValidatorHelper.verifiedIsNotFalse(show)
+    );
 
     /**
      * Event Listener On Click
@@ -43,7 +57,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
         if (type === 'list' && trigger === 'click') {
             /* istanbul ignore next */
             if (!(element && element.contains(evt.target))) {
-                setShow(false);
+                setShowContent(false);
 
                 if (onClick) {
                     onClick(false);
@@ -57,7 +71,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                     elementContent.contains(evt.target))
             )
         ) {
-            setShow(false);
+            setShowContent(false);
 
             if (onClick) {
                 onClick(false);
@@ -91,7 +105,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      */
     const onClickToggle = (): void => {
         if (trigger === 'click') {
-            setShow(!show);
+            setShowContent(!show);
 
             if (onClick) {
                 onClick(!show);
@@ -105,7 +119,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      */
     const onMouseOverToggle = (): void => {
         if (trigger === 'hover' && show === false) {
-            setShow(!show);
+            setShowContent(!show);
 
             if (onClick) {
                 onClick(!show);
@@ -121,7 +135,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
         'ui-molecules-dropdown--is-scrolled': ValidatorHelper.verifiedIsNotFalse(
             scroll
         ),
-        'ui-molecules-dropdown--show': show
+        'ui-molecules-dropdown--show': showContent
     };
 
     const classNameLabel: ComponentClassnameDefaultInterface = {
@@ -140,7 +154,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                     role="button"
                     onKeyPress={undefined}
                     onClick={onClickToggle}
-                    onFocus={(): void => undefined}
+                    onFocus={(): void => console.log('focus')}
                     onMouseOver={(): void => onMouseOverToggle()}
                     className={StringHelper.objToString(classNameLabel)}
                 >
@@ -155,13 +169,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                             {label}
                         </TextComponent>
                     ) : (
-                        <div
-                            tabIndex={0}
-                            role="button"
-                            onKeyPress={undefined}
-                            onClick={onClickToggle}
-                            className={StringHelper.objToString(classNameLabel)}
-                        >
+                        <div className="ui-molecules-dropdown__toggle__children">
                             {label}
                         </div>
                     )}
@@ -188,6 +196,9 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                                 return (
                                     o.type.displayName ===
                                         'DropdownItemComponent' ||
+                                    o.type.displayName.includes(
+                                        'DropdownContentComponent'
+                                    ) ||
                                     o.type.displayName ===
                                         'DropdownDividerComponent'
                                 );
@@ -203,6 +214,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
 DropdownComponent.displayName = 'DropdownComponent';
 
 DropdownComponent.propTypes = {
+    show: PropTypes.bool,
     scroll: PropTypes.bool,
     icon: PropTypes.string,
     onClick: PropTypes.func,
@@ -216,19 +228,36 @@ DropdownComponent.propTypes = {
         ])
     ]).isRequired,
     type: PropTypes.oneOf(['list', 'content']),
-    trigger: PropTypes.oneOf(['click', 'hover']) as Validator<'hover' | 'click'>
+    trigger: PropTypes.oneOf(['click', 'hover']) as Validator<
+        'hover' | 'click'
+    >,
+    refForward: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]) as Validator<RefObject<HTMLDivElement>>
 };
 
 DropdownComponent.defaultProps = {
+    show: false,
     type: 'list',
     scroll: false,
     icon: undefined,
     onClick: undefined,
-    trigger: 'click'
+    trigger: 'click',
+    refForward: undefined
 };
 
 DropdownComponent.Item = DropdownItemComponent;
 
 DropdownComponent.Divider = DropdownDividerComponent;
+
+DropdownComponent.WithRef = forwardRef<HTMLDivElement, DropdownPropsInterface>(
+    (props, ref) => (
+        <DropdownComponent
+            {...props}
+            refForward={ref as RefObject<HTMLDivElement>}
+        />
+    )
+);
 
 export default DropdownComponent;

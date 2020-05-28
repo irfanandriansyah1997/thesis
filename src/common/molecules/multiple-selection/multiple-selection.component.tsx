@@ -1,25 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
-    FunctionComponent,
-    ChangeEvent,
+    useRef,
     useState,
-    ReactNode
+    ReactNode,
+    ChangeEvent,
+    FunctionComponent
 } from 'react';
 
-import TextComponent from '../../atomic/text/text.component';
 import DropdownComponent from '../dropdown/dropdown.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import DropdownItemComponent from '../dropdown/dropdown-item.component';
+import MultipleSelectionToggleComponent from './multiple-selection-toggle.component';
 import {
     MultipleSelectionPropsInterface,
     MultipleSelectionItemPropsInterface,
+    MultipleSelectionContentItemInterface,
     MultipleSelectionHeadingPropsInterface
 } from './interface/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
+import MultipleSelectionContentComponent from './multiple-selection-content.component';
 
-const ItemComponentName = 'MultipleSelectionItemComponent';
-const HeadingComponentName = 'MultipleSelectionHeadingComponent';
+export const ItemComponentName = 'MultipleSelectionItemComponent';
+export const HeadingComponentName = 'MultipleSelectionHeadingComponent';
 
 /**
  * Multiple Selection Component
@@ -31,18 +32,44 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     onSearch,
     onChange,
     children,
-    placeholder,
+    className,
     ...res
 }) => {
+    const node = useRef<HTMLDivElement>(null);
+    const input = useRef<HTMLInputElement>(null);
     const [textValue, setTextValue] = useState<string>('');
-    const [selected] = useState<boolean>(
+    const [showDropdownContent, setShowDropdownContent] = useState<boolean>(
+        false
+    );
+    const [isActive] = useState<boolean>(
         ValidatorHelper.verifiedIsNotEmpty(value)
     );
-    const className: ComponentClassnameDefaultInterface = {
-        'ui-molecules-multiple-selection': true,
-        [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(res.className)
-    };
-    delete res.className;
+    const contentProps = React.Children.toArray(children)
+        .filter((item: any) => {
+            return (
+                item.type.displayName === HeadingComponentName ||
+                item.type.displayName === ItemComponentName
+            );
+        })
+        .map(
+            (item: any): MultipleSelectionContentItemInterface => {
+                if (item.type.displayName === HeadingComponentName) {
+                    const { props } = item;
+
+                    return {
+                        type: HeadingComponentName,
+                        content: props as MultipleSelectionHeadingPropsInterface
+                    };
+                }
+
+                const { props } = item;
+
+                return {
+                    type: HeadingComponentName,
+                    content: props as MultipleSelectionItemPropsInterface
+                };
+            }
+        );
 
     /**
      * On Change Edit Text
@@ -52,6 +79,7 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     const onChangeSearch = ({
         target
     }: ChangeEvent<HTMLInputElement>): void => {
+        setShowDropdownContent(true);
         setTextValue(target.value);
         onSearch({
             query: target.value
@@ -64,59 +92,50 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     };
 
     /**
-     *
+     * On Change Edit Text
+     * @param {ChangeEvent<HTMLInputElement>} target - target param edit text
+     * @return {void}
+     */
+    const onEditTextFocus = (show: boolean): void => {
+        if (node.current) {
+            setShowDropdownContent(show);
+        }
+    };
+
+    /**
+     * Generate Toggle Component
+     * @return {ReactNode}
      */
     const generateToogleComponent = (): ReactNode => {
         return (
-            <div className="ui-molecules-multiple-selection__toggle">
-                {selected && (
-                    <TextComponent color="text" styling="heading-5" tag="p">
-                        {placeholder}
-                    </TextComponent>
-                )}
-                <input {...res} value={textValue} onChange={onChangeSearch} />
-            </div>
+            <MultipleSelectionToggleComponent
+                ref={input}
+                isActive={isActive}
+                textValue={textValue}
+                onChangeSearch={onChangeSearch}
+                onEditTextFocus={onEditTextFocus}
+                onChangePosition={(position): void => console.log(position)}
+                {...res}
+            />
         );
     };
 
     return (
-        <DropdownComponent
+        <DropdownComponent.WithRef
             scroll
             type="list"
             name="testing"
             trigger="click"
+            show={showDropdownContent}
             label={generateToogleComponent()}
-            className={StringHelper.objToString(className)}
+            className={StringHelper.objToString({
+                'ui-molecules-multiple-selection': true,
+                [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
+            })}
+            ref={node}
         >
-            {React.Children.toArray(children)
-                .filter((item: any) => {
-                    return (
-                        item.type.displayName === HeadingComponentName ||
-                        item.type.displayName === ItemComponentName
-                    );
-                })
-                .map((item: any) => {
-                    if (item.type.displayName === HeadingComponentName) {
-                        const {
-                            key,
-                            ...resItem
-                        }: MultipleSelectionHeadingPropsInterface = item.props;
-
-                        return <DropdownItemComponent key={key} {...resItem} />;
-                    }
-
-                    const {
-                        key,
-                        ...resItem
-                    }: MultipleSelectionItemPropsInterface = item.props;
-
-                    return (
-                        <DropdownItemComponent key={key}>
-                            {resItem.children}
-                        </DropdownItemComponent>
-                    );
-                })}
-        </DropdownComponent>
+            <MultipleSelectionContentComponent list={contentProps} />
+        </DropdownComponent.WithRef>
     );
 };
 

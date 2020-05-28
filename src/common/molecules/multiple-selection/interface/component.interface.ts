@@ -1,5 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { InputHTMLAttributes, ReactNode } from 'react';
+import {
+    InputHTMLAttributes,
+    ReactNode,
+    ChangeEvent,
+    ForwardRefExoticComponent,
+    PropsWithoutRef,
+    RefAttributes,
+    RefObject
+} from 'react';
 
 /**
  * Multiple Selection Props Interface
@@ -8,12 +16,7 @@ import { InputHTMLAttributes, ReactNode } from 'react';
  */
 export type MultipleSelectionPropsInterface = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    | 'name'
-    | 'value'
-    | 'onBlur'
-    | 'onChange'
-    | 'children'
-    | 'dangerouslySetInnerHTML'
+    'name' | 'value' | 'onChange' | 'children' | 'dangerouslySetInnerHTML'
 > & {
     value?: string[];
     className?: string;
@@ -21,6 +24,56 @@ export type MultipleSelectionPropsInterface = Omit<
     onSearch: (param: MultipleSelectionSearchParamType) => void;
     onChange: (param: MultipleSelectionActionResponseType) => void;
 };
+
+/**
+ * Multiple Selection Content Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.27
+ */
+export type MultipleSelectionContentInterface = {
+    list: MultipleSelectionContentItemInterface[];
+};
+
+/**
+ * Multiple Selection Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.27
+ */
+export type MultipleSelectionContentItemInterface = {
+    type:
+        | 'MultipleSelectionItemComponent'
+        | 'MultipleSelectionHeadingComponent';
+    content:
+        | MultipleSelectionItemPropsInterface
+        | MultipleSelectionHeadingPropsInterface;
+};
+
+/**
+ * Multiple Selection Toggle Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.27
+ */
+export type MultipleSelectionTogglePropsInterface = Omit<
+    MultipleSelectionPropsInterface,
+    'value' | 'onSearch' | 'onChange'
+> & {
+    isActive: boolean;
+    textValue: string;
+    refForward?: RefObject<HTMLInputElement>;
+    onEditTextFocus: (focus: boolean) => void;
+    onChangePosition: (position: 'up' | 'down') => void;
+    onChangeSearch: (param: ChangeEvent<HTMLInputElement>) => void;
+};
+
+/**
+ * Multiple Selection Toggle Ref Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.27
+ */
+export type MultipleSelectionToggleRefPropsInterface = ForwardRefExoticComponent<
+    PropsWithoutRef<MultipleSelectionTogglePropsInterface> &
+        RefAttributes<HTMLInputElement>
+>;
 
 /**
  * Multiple Selection Item Value

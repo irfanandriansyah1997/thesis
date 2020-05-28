@@ -1,1 +1,9 @@
 @import '../../../../style/import.scss';
+
+.ui-molecules-multiple-selection {
+    width: 100%;
+
+    &__toggle {
+        width: 100%;
+    }
+}
