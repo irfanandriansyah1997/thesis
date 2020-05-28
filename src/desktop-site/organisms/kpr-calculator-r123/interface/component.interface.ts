@@ -3,12 +3,13 @@
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.27
  */
-export interface KPRCalculatorComponent {
+export interface KPRCalculatorComponentInterface {
     heading?: KPRCalculatorHeadingInterface;
     disclaimer?: KPRCalculatorDisclaimerInterface;
     downPayment: KPRCalculatorDownPaymentInterface;
     itemAmount: KPRCalculatorItemAmountPropsInterface;
     propertyPrice: KPRCalculatorPropertyPriceInterface;
+    onChangeDropdownField: (key: string, value: string | number) => void;
 }
 
 /**
@@ -37,8 +38,7 @@ export type KPRCalculatorItemAmountPropsInterface = {
  * @since 2020.05.27
  */
 export interface CalculatorDetailInterface {
-    label: string;
-    value: string;
+    name: string;
 }
 
 /**
@@ -47,9 +47,11 @@ export interface CalculatorDetailInterface {
  * @since 2020.05.27
  */
 export type KPRCalculatorPropertyPriceInterface = CalculatorDetailInterface & {
-    label: string;
-    value: string;
+    priceLabel: string;
+    priceValue: string;
+    interestLabel: string;
     interest: KPRCalculatorOptionInterface;
+    editablePriceValue?: boolean;
 };
 
 /**
@@ -58,6 +60,9 @@ export type KPRCalculatorPropertyPriceInterface = CalculatorDetailInterface & {
  * @since 2020.05.27
  */
 export type KPRCalculatorDownPaymentInterface = CalculatorDetailInterface & {
+    downPaymentLabel: string;
+    downPaymentValue: string;
+    periodLabel: string;
     period: KPRCalculatorOptionInterface;
 };
 
