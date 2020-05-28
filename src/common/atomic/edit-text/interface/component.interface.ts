@@ -1,4 +1,13 @@
-import { HTMLAttributes } from 'react';
+import { SFC, HTMLAttributes } from 'react';
+
+/**
+ * Edit Text Default Interface
+ * @author Cathrine <cathrine@99.co>
+ * @since 2020.05.28
+ */
+export type EditTextDefaultPropsInterface = EditTextPropsInterface & {
+    Addon: SFC<EditTextAddonInterface>;
+};
 
 /**
  * Edit Text Component Interface
@@ -21,7 +30,17 @@ export type EditTextPropsInterface = Omit<
     disabled?: boolean;
     value?: string | number;
     name: string;
+    styling?: EditTextStyle;
 };
+
+/**
+ * Edit Text add on Interface
+ * @author Cathrine <cathrine@99.co>
+ * @since 2020.05.28
+ */
+export interface EditTextAddonInterface {
+    addon?: string;
+}
 
 /**
  * Edit Text Type Interface
@@ -29,3 +48,10 @@ export type EditTextPropsInterface = Omit<
  * @since 2020.05.02
  */
 export type EditTextType = 'text' | 'number' | 'password' | 'email';
+
+/**
+ * Edit Text Styling Interface
+ * @author Cathrine <cathrine@99.co>
+ * @since 2020.05.28
+ */
+export type EditTextStyle = 'primary' | 'secondary';
