@@ -39,6 +39,7 @@ export type DropdownPropsInterface = Omit<
     trigger: 'hover' | 'click';
     onClick?: (show: boolean) => void;
     refForward?: RefObject<HTMLDivElement>;
+    refContentForward?: RefObject<HTMLDivElement>;
 };
 
 export type DropdownChildren = {

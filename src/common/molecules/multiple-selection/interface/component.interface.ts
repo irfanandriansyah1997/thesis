@@ -1,13 +1,41 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-    InputHTMLAttributes,
     ReactNode,
-    ChangeEvent,
-    ForwardRefExoticComponent,
-    PropsWithoutRef,
+    RefObject,
     RefAttributes,
-    RefObject
+    PropsWithoutRef,
+    InputHTMLAttributes,
+    ForwardRefExoticComponent
 } from 'react';
+
+/**
+ * Multiple Selection Context Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.28
+ */
+export interface MultipleSelectionContextInterface {
+    isActive: boolean;
+    textValue: string;
+    positionDropdownContent: number;
+    onEditTextFocus: (show: boolean) => void;
+    onEditTextChange: (value: string) => void;
+    optionList: MultipleSelectionContextOptionInterface[];
+    optionListActive?: MultipleSelectionContextOptionInterface;
+    onChangePositionDropdownContent: (position: 'up' | 'down') => void;
+    onChangeSearch: (
+        valueEditText: string | undefined,
+        valueDropdownItem: MultipleSelectionItemValueInterface | undefined
+    ) => void;
+}
+
+/**
+ * Multiple Selection Context Option Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.28
+ */
+export type MultipleSelectionContextOptionInterface = MultipleSelectionItemValueInterface & {
+    position: number;
+};
 
 /**
  * Multiple Selection Props Interface
@@ -16,12 +44,11 @@ import {
  */
 export type MultipleSelectionPropsInterface = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'name' | 'value' | 'onChange' | 'children' | 'dangerouslySetInnerHTML'
+    'name' | 'value' | 'onChange' | 'dangerouslySetInnerHTML'
 > & {
-    value?: string[];
     className?: string;
     placeholder: string;
-    onSearch: (param: MultipleSelectionSearchParamType) => void;
+    value: MultipleSelectionItemValueInterface[];
     onChange: (param: MultipleSelectionActionResponseType) => void;
 };
 
@@ -57,12 +84,7 @@ export type MultipleSelectionTogglePropsInterface = Omit<
     MultipleSelectionPropsInterface,
     'value' | 'onSearch' | 'onChange'
 > & {
-    isActive: boolean;
-    textValue: string;
     refForward?: RefObject<HTMLInputElement>;
-    onEditTextFocus: (focus: boolean) => void;
-    onChangePosition: (position: 'up' | 'down') => void;
-    onChangeSearch: (param: ChangeEvent<HTMLInputElement>) => void;
 };
 
 /**
@@ -83,6 +105,7 @@ export type MultipleSelectionToggleRefPropsInterface = ForwardRefExoticComponent
 export type MultipleSelectionItemValueInterface = {
     value: string;
     label: string;
+    others?: Record<string, any>;
 };
 
 /**
@@ -91,7 +114,8 @@ export type MultipleSelectionItemValueInterface = {
  * @since 2020.05.27
  */
 export type MultipleSelectionItemPropsInterface = MultipleSelectionItemValueInterface & {
-    key: string;
+    id: string;
+    position?: number;
     className?: string;
     children: ReactNode;
 };
@@ -102,7 +126,7 @@ export type MultipleSelectionItemPropsInterface = MultipleSelectionItemValueInte
  * @since 2020.05.27
  */
 export type MultipleSelectionHeadingPropsInterface = {
-    key: string;
+    id: string;
     children: ReactNode;
 };
 
@@ -112,7 +136,7 @@ export type MultipleSelectionHeadingPropsInterface = {
  * @since 2020.05.27
  */
 export type MultipleSelectionActionResponseType = MultipleSelectionSearchParamType & {
-    object: string[];
+    object: MultipleSelectionItemValueInterface[];
 };
 
 /**

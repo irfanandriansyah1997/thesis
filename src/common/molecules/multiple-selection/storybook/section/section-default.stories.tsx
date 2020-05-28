@@ -7,6 +7,10 @@ import CodingViewerDocsComponent from '../../../../../.storybook/component/molec
 import MultipleSelectionComponent from '../../multiple-selection.component';
 import MultipleSelectionItemComponent from '../../multiple-selection-item.component';
 import MultipleSelectionHeadingComponent from '../../multiple-selection-heading.component';
+import {
+    MultipleSelectionItemValueInterface,
+    MultipleSelectionActionResponseType
+} from '../../interface/component.interface';
 
 /**
  * Section Default Multiple Selection
@@ -17,7 +21,35 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
     {},
     Record<string, unknown>
 > {
+    constructor() {
+        super({});
+        this.state = {
+            option: [
+                {
+                    value: 'f574128d9944326385f1aa7be08b8685',
+                    label: 'Cimahi, Jawa Barat',
+                    others: {
+                        id: '1'
+                    }
+                }
+            ]
+        };
+
+        this.onChangeValue = this.onChangeValue.bind(this);
+    }
+
+    /**
+     * On Change
+     */
+    public onChangeValue({
+        object
+    }: MultipleSelectionActionResponseType): void {
+        this.setState({ option: object });
+    }
+
     render(): ReactNode {
+        const { onChangeValue } = this;
+        const { option } = this.state;
         return (
             <>
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
@@ -26,39 +58,52 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                 </TextDocsComponent>
                 <CodingViewerDocsComponent sourceCode="">
                     <MultipleSelectionComponent
-                        onChange={(): void => {}}
-                        onSearch={(): void => {}}
+                        onChange={onChangeValue}
                         placeholder="Hello World"
-                        value={[]}
+                        value={
+                            (option as unknown) as MultipleSelectionItemValueInterface[]
+                        }
                     >
-                        <MultipleSelectionHeadingComponent key="saran">
+                        <MultipleSelectionHeadingComponent id="saran">
                             Saran Pencarian
                         </MultipleSelectionHeadingComponent>
                         <MultipleSelectionItemComponent
                             label="Cimahi, Jawa Barat"
-                            key="f574128d9944326385f1aa7be08b8685"
+                            id="f574128d9944326385f1aa7be08b8685"
                             value="f574128d9944326385f1aa7be08b8685"
+                            others={{
+                                id: '1'
+                            }}
                         >
                             Cimahi, Jawa Barat
                         </MultipleSelectionItemComponent>
                         <MultipleSelectionItemComponent
-                            key="167411a051e8f85e5949b8712d5b59fa"
+                            id="167411a051e8f85e5949b8712d5b59fa"
                             label="Cimahi Selatan, Cimahi"
                             value="167411a051e8f85e5949b8712d5b59fa"
+                            others={{
+                                id: '2'
+                            }}
                         >
                             Cimahi Selatan, Cimahi
                         </MultipleSelectionItemComponent>
                         <MultipleSelectionItemComponent
                             label="Cimahi Tengah, Cimahi"
-                            key="b9addc94e54625e8eb6b1ed933b89233"
+                            id="b9addc94e54625e8eb6b1ed933b89233"
                             value="b9addc94e54625e8eb6b1ed933b89233"
+                            others={{
+                                id: '2'
+                            }}
                         >
                             Cimahi Tengah, Cimahi
                         </MultipleSelectionItemComponent>
                         <MultipleSelectionItemComponent
-                            key="f33fc7510f0d5ebfecbe278642ee00e1"
+                            id="f33fc7510f0d5ebfecbe278642ee00e1"
                             label="Cimahi Utara, Cimahi"
                             value="f33fc7510f0d5ebfecbe278642ee00e1"
+                            others={{
+                                id: '3'
+                            }}
                         >
                             Cimahi Utara, Cimahi
                         </MultipleSelectionItemComponent>

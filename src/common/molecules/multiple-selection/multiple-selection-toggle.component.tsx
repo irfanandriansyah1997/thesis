@@ -1,16 +1,24 @@
 import PropTypes from 'prop-types';
 import React, {
     RefObject,
+    Validator,
     forwardRef,
     FocusEvent,
+    useContext,
+    ChangeEvent,
     KeyboardEvent,
     FunctionComponent
 } from 'react';
 
 import TextComponent from '../../atomic/text/text.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { MultipleSelectionTogglePropsInterface } from './interface/component.interface';
+import MultiSelectionContext from './context/multiple-selection.context';
 import {
+    MultipleSelectionContextInterface,
+    MultipleSelectionTogglePropsInterface
+} from './interface/component.interface';
+import {
+    ENTER_KEY_CHARCODE,
     ARROW_UP_KEY_CHARCODE,
     BACKSPACE_KEY_CHARCODE,
     ARROW_DOWN_KEY_CHARCODE
@@ -24,15 +32,20 @@ import {
 const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
     onBlur,
     onFocus,
-    isActive,
     onKeyDown,
-    textValue,
+    refForward,
     placeholder,
-    onChangeSearch,
-    onEditTextFocus,
-    onChangePosition,
     ...res
 }) => {
+    const {
+        isActive,
+        textValue,
+        onChangeSearch,
+        onEditTextFocus,
+        onEditTextChange,
+        optionListActive,
+        onChangePositionDropdownContent
+    } = useContext<MultipleSelectionContextInterface>(MultiSelectionContext);
     /**
      * On Input Focus
      * @param {FocusEvent<HTMLInputElement>} event - event dom
@@ -50,8 +63,19 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
         }
 
         if (onBlur && !isFocused) {
-            onBlur(event);
+            setTimeout(() => {
+                onBlur(event);
+            }, 300);
         }
+    };
+
+    /**
+     * On Change Value
+     * @param {ChangeEvent<HTMLInputElement>} target - dom edit text
+     * @return {void}
+     */
+    const onChangeValue = ({ target }: ChangeEvent<HTMLInputElement>): void => {
+        onEditTextChange(target.value);
     };
 
     /**
@@ -66,11 +90,23 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
         }
 
         if (event.keyCode === ARROW_UP_KEY_CHARCODE) {
-            onChangePosition('up');
+            onChangePositionDropdownContent('up');
         }
 
         if (event.keyCode === ARROW_DOWN_KEY_CHARCODE) {
-            onChangePosition('down');
+            onChangePositionDropdownContent('down');
+        }
+
+        if (event.keyCode === ENTER_KEY_CHARCODE) {
+            if (ValidatorHelper.verifiedIsNotEmpty(textValue)) {
+                onChangeSearch(textValue, undefined);
+            } else if (optionListActive) {
+                onChangeSearch(undefined, {
+                    label: optionListActive.label,
+                    value: optionListActive.value,
+                    others: optionListActive.others
+                });
+            }
         }
 
         if (onKeyDown) {
@@ -80,7 +116,7 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
 
     return (
         <div className="ui-molecules-multiple-selection__toggle flex">
-            {isActive && !ValidatorHelper.verifiedIsNotEmpty(textValue) && (
+            {!isActive && !ValidatorHelper.verifiedIsNotEmpty(textValue) && (
                 <TextComponent color="text" styling="heading-5" tag="p">
                     {placeholder}
                 </TextComponent>
@@ -88,8 +124,9 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
             <div className="ui-molecules-multiple-selection__toggle-content">
                 <input
                     {...res}
+                    ref={refForward}
                     value={textValue}
-                    onChange={onChangeSearch}
+                    onChange={onChangeValue}
                     onKeyDown={onInputKeydown}
                     onFocus={(e): void => onInputChangeFocus(e, true)}
                     onBlur={(e): void => onInputChangeFocus(e, false)}
@@ -103,18 +140,18 @@ Component.propTypes = {
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyDown: PropTypes.func,
-    isActive: PropTypes.bool.isRequired,
-    textValue: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
-    onChangeSearch: PropTypes.func.isRequired,
-    onEditTextFocus: PropTypes.func.isRequired,
-    onChangePosition: PropTypes.func.isRequired
+    refForward: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]) as Validator<RefObject<HTMLInputElement>>
 };
 
 Component.defaultProps = {
     onBlur: undefined,
     onFocus: undefined,
-    onKeyDown: undefined
+    onKeyDown: undefined,
+    refForward: undefined
 };
 
 const MultipleSelectionToggleComponent = forwardRef<

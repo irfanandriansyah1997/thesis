@@ -14,14 +14,19 @@ const MultipleSelectionItemComponent: FunctionComponent<MultipleSelectionItemPro
 MultipleSelectionItemComponent.displayName = 'MultipleSelectionItemComponent';
 
 MultipleSelectionItemComponent.propTypes = {
-    key: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
         PropTypes.string
     ]).isRequired,
     label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired
+    value: PropTypes.string.isRequired,
+    others: PropTypes.shape({})
+};
+
+MultipleSelectionItemComponent.defaultProps = {
+    others: undefined
 };
 
 export default MultipleSelectionItemComponent;

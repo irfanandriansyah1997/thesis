@@ -41,6 +41,30 @@ class ObjectHelper extends LogHelperAbstract {
             throw e;
         }
     }
+
+    /**
+     * Remove Duplicate Array
+     * @param {Record<string, unknown>[]} list - list array
+     * @param {Record<string, unknown>} objectItem - object array
+     * @param {string} key - object key
+     * @return {Record<string, unknown>}
+     */
+    static removeDulicateArray(
+        list: Record<string, unknown>[],
+        objectItem: Record<string, unknown>,
+        key: string
+    ): Record<string, unknown>[] {
+        const isExist =
+            list.filter((item) => {
+                return item[key] === objectItem[key];
+            }).length > 0;
+
+        if (isExist) {
+            return list;
+        }
+
+        return [...list, objectItem];
+    }
 }
 
 export default ObjectHelper;

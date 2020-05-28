@@ -15,7 +15,7 @@ MultipleSelectionHeadingComponent.displayName =
     'MultipleSelectionHeadingComponent';
 
 MultipleSelectionHeadingComponent.propTypes = {
-    key: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,

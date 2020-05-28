@@ -16,11 +16,11 @@ import DropdownItemComponent from './dropdown-item.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import DropdownDividerComponent from './dropdown-divider.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
+import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     DropdownDefaultExportInterface,
     DropdownPropsInterface
 } from './interface/component.interface';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
  * Dropdown Component
@@ -36,10 +36,14 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
     onClick,
     trigger,
     refForward,
+    refContentForward,
     ...res
 }) => {
     const node = refForward || useRef<HTMLDivElement>(null);
-    const contentNode = useRef<HTMLDivElement>(null);
+    const contentNode =
+        refForward && refContentForward
+            ? refContentForward
+            : useRef<HTMLDivElement>(null);
     const [showContent, setShowContent] = useState<boolean>(
         ValidatorHelper.verifiedIsNotFalse(show)
     );
@@ -154,7 +158,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                     role="button"
                     onKeyPress={undefined}
                     onClick={onClickToggle}
-                    onFocus={(): void => console.log('focus')}
+                    onFocus={(): void => undefined}
                     onMouseOver={(): void => onMouseOverToggle()}
                     className={StringHelper.objToString(classNameLabel)}
                 >
@@ -234,6 +238,10 @@ DropdownComponent.propTypes = {
     refForward: PropTypes.oneOfType([
         PropTypes.func,
         PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]) as Validator<RefObject<HTMLDivElement>>,
+    refContentForward: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     ]) as Validator<RefObject<HTMLDivElement>>
 };
 
@@ -242,9 +250,10 @@ DropdownComponent.defaultProps = {
     type: 'list',
     scroll: false,
     icon: undefined,
-    onClick: undefined,
     trigger: 'click',
-    refForward: undefined
+    onClick: undefined,
+    refForward: undefined,
+    refContentForward: undefined
 };
 
 DropdownComponent.Item = DropdownItemComponent;
