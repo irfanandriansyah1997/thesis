@@ -18,8 +18,9 @@ export interface ListingInquiryButtonPropsInterface {
 }
 
 export interface ListingInquiryContactPropsInterface {
-    whatsAppUrl: string;
     phoneNumber: string;
+    onClickWhatsAppButton();
+    onClickPhoneButton();
 }
 
 export interface ListingInquiryMsgPropsInterface {
