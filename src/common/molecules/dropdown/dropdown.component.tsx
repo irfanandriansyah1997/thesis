@@ -44,6 +44,10 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
             /* istanbul ignore next */
             if (!(element && element.contains(evt.target))) {
                 setShow(false);
+
+                if (onClick) {
+                    onClick(false);
+                }
             }
         } else if (
             !(
@@ -54,6 +58,10 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
             )
         ) {
             setShow(false);
+
+            if (onClick) {
+                onClick(false);
+            }
         }
     };
 
