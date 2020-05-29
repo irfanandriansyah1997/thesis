@@ -32,7 +32,6 @@ export type EditTextPropsInterface = Omit<
  */
 export type EditTextAddonInterface = EditTextPropsInterface &
     ColorInterface & {
-        addon?: string;
         fontSize?: number;
         fontWeight?: number;
         children: ReactNode;

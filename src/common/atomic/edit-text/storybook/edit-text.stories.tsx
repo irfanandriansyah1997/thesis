@@ -31,11 +31,105 @@ const EditTextDocumentation = require('./markdown/edit-text.documentation.md');
                 <CodingViewerDocsComponent
                     sourceCode={`${'<EditTextComponent className="edit-text-class" id="edit-text" name="edit-text"/>'}`}
                 >
-                    <div>
+                    <TextDocsComponent>
+                        Edit Text default / primary styling
+                    </TextDocsComponent>
+                    <div
+                        style={{
+                            width: '300px'
+                        }}
+                    >
                         <EditTextComponent
                             className="edit-text-class"
                             id="edit-text"
                             name="edit-text"
+                        />
+                    </div>
+                </CodingViewerDocsComponent>
+
+                <CodingViewerDocsComponent
+                    sourceCode={`${'<EditTextComponent className="edit-text-class" id="edit-text" name="edit-text" styling="secondary"/>'}`}
+                >
+                    <TextDocsComponent>
+                        Edit Text secondary styling
+                    </TextDocsComponent>
+                    <div
+                        style={{
+                            width: '300px'
+                        }}
+                    >
+                        <EditTextComponent
+                            className="edit-text-class"
+                            id="edit-text"
+                            name="edit-text"
+                            styling="secondary"
+                        />
+                    </div>
+                </CodingViewerDocsComponent>
+
+                <CodingViewerDocsComponent
+                    sourceCode={`${`<EditTextComponent.Addon name="test">\n` +
+                        `   Rp\n` +
+                        `</EditTextComponent.Addon>\n` +
+                        `<EditTextComponent.Addon\n` +
+                        `       name="test"\n` +
+                        `       position="right"\n` +
+                        `       className="test"\n` +
+                        `>\n` +
+                        `   %\n` +
+                        `</EditTextComponent.Addon>`}`}
+                >
+                    <TextDocsComponent>
+                        Two type alignment of edit text with add on
+                    </TextDocsComponent>
+                    <div
+                        style={{
+                            display: 'flex'
+                        }}
+                    >
+                        <div
+                            style={{
+                                width: '300px'
+                            }}
+                        >
+                            <EditTextComponent.Addon name="test">
+                                Rp
+                            </EditTextComponent.Addon>
+                        </div>
+
+                        <div
+                            style={{
+                                width: '300px'
+                            }}
+                        >
+                            <EditTextComponent.Addon
+                                name="test"
+                                position="right"
+                                className="test"
+                            >
+                                %
+                            </EditTextComponent.Addon>
+                        </div>
+                    </div>
+                </CodingViewerDocsComponent>
+
+                <CodingViewerDocsComponent
+                    sourceCode={`${'<EditTextComponent name="edit-text" styling="primary" disabled/>'}`}
+                >
+                    <TextDocsComponent>
+                        Example of disabled edit text component
+                    </TextDocsComponent>
+                    <div
+                        style={{
+                            width: '300px'
+                        }}
+                    >
+                        <EditTextComponent
+                            className="edit-text-class"
+                            id="edit-text"
+                            name="edit-text"
+                            styling="primary"
+                            disabled
                         />
                     </div>
                 </CodingViewerDocsComponent>

@@ -64,7 +64,7 @@ EditTextAddOnComponent.defaultProps = {
     fontSize: 13,
     fontWeight: 400,
     color: 'addOnText',
-    position: 'right'
+    position: 'left'
 };
 
 EditTextAddOnComponent.propTypes = {
