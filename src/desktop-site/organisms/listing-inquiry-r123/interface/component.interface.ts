@@ -40,7 +40,7 @@ export interface ListingInquiryButtonPropsInterface {
  * @since 2020.05.28
  */
 export interface ListingInquiryContactPropsInterface {
-    phoneNumber: string;
+    phoneNumbers: string[];
     onClickWhatsAppButton: (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => void;
