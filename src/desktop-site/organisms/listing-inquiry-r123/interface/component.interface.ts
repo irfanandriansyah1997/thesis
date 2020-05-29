@@ -64,10 +64,12 @@ export interface ListingInquiryMsgPropsInterface {
  * @author Nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.28
  */
-export type ListingInquirySidebarPropsInterface = ListingInquiryAgentPropsInterface &
-    ListingInquiryOrgPropsInterface &
-    ListingInquiryContactPropsInterface &
-    ListingInquiryButtonPropsInterface;
+export interface ListingInquirySidebarPropsInterface {
+    agent: ListingInquiryAgentPropsInterface;
+    organization: ListingInquiryOrgPropsInterface;
+    contact: ListingInquiryContactPropsInterface;
+    inquiryButton: ListingInquiryButtonPropsInterface;
+}
 
 /**
  * Listing Inquiry R123 Box Props Interface
