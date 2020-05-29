@@ -88,7 +88,9 @@ const ColorDefaultConstant = {
     headingDarkerR123: '#20282e',
     hoverDanger: '#a30000',
     basicCardHeadingR123: '#a5adb5',
-    headingR123: '#333f48'
+    headingR123: '#333f48',
+    editTextSecondary: '#f3f4f6',
+    addOnText: '#555'
 } as const;
 
 export default ColorDefaultConstant;

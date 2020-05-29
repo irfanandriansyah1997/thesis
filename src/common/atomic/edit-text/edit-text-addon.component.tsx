@@ -21,13 +21,15 @@ const EditTextAddOnComponent: SFC<EditTextAddonInterface> = ({
     fontWeight,
     color,
     position,
+    className,
     ...res
 }: EditTextAddonInterface) => {
     const classNameContainer: ComponentClassnameDefaultInterface = {
         'ui-atomic-edit-text__addOnContainer': true,
         flex: true,
         relative: true,
-        [`ui-atomic-edit-text__addOnContainer--${position}`]: true
+        [`ui-atomic-edit-text__addOnContainer--${position}`]: true,
+        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
     return (

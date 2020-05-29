@@ -10,6 +10,9 @@ describe('Testing edit text component', () => {
         );
 
         expect(editText.hasClass('ui-atomic-edit-text')).toBe(true);
+        expect(editText.hasClass('ui-atomic-edit-text__addOnContainer')).toBe(
+            false
+        );
         expect(editText.hasClass('component-test')).toBe(true);
     });
 
@@ -18,6 +21,6 @@ describe('Testing edit text component', () => {
             <EditTextComponent name="edit-text" disabled />
         );
 
-        expect(editText.prop('disabled')).toBe(true);
+        expect(editText.find('input').prop('disabled')).toBe(true);
     });
 });
