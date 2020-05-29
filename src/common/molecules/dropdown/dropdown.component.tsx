@@ -45,7 +45,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
             ? refContentForward
             : useRef<HTMLDivElement>(null);
     const [showContent, setShowContent] = useState<boolean>(
-        ValidatorHelper.verifiedIsNotFalse(show)
+        show === undefined ? false : show
     );
 
     /**
@@ -88,6 +88,12 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      * @description will invoke when component did mount and will unmount
      */
     useEffect(() => {
+        if (show !== undefined) {
+            setShowContent(show);
+        }
+    }, [show]);
+
+    useEffect(() => {
         if (trigger === 'click') {
             window.addEventListener('mousedown', eventListenerOnClick);
         } else {
@@ -109,10 +115,10 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      */
     const onClickToggle = (): void => {
         if (trigger === 'click') {
-            setShowContent(!show);
+            setShowContent(!showContent);
 
             if (onClick) {
-                onClick(!show);
+                onClick(!showContent);
             }
         }
     };
@@ -122,11 +128,11 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      * @return {void}
      */
     const onMouseOverToggle = (): void => {
-        if (trigger === 'hover' && show === false) {
-            setShowContent(!show);
+        if (trigger === 'hover' && showContent === false) {
+            setShowContent(!showContent);
 
             if (onClick) {
-                onClick(!show);
+                onClick(!showContent);
             }
         }
     };
@@ -189,7 +195,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                     ) : null}
                 </div>
             </div>
-            <CSSTransition in={show} timeout={600} classNames="fade">
+            <CSSTransition in={showContent} timeout={600} classNames="fade">
                 <div
                     ref={contentNode}
                     className="ui-molecules-dropdown__wrapper absolute"
@@ -246,7 +252,7 @@ DropdownComponent.propTypes = {
 };
 
 DropdownComponent.defaultProps = {
-    show: false,
+    show: undefined,
     type: 'list',
     scroll: false,
     icon: undefined,
