@@ -5,8 +5,7 @@ import React, {
     useState,
     useEffect,
     ReactNode,
-    Validator,
-    FunctionComponent
+    Validator
 } from 'react';
 
 import DropdownComponent from '../dropdown/dropdown.component';
@@ -15,12 +14,14 @@ import ObjectHelper from '../../../shared/helper/object.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import MultiSelectionContext from './context/multiple-selection.context';
 import MultipleSelectionHelper from './helper/multiple-selection.helper';
+import MultipleSelectionItemComponent from './multiple-selection-item.component';
 import MultipleSelectionToggleComponent from './multiple-selection-toggle.component';
+import MultipleSelectionHeadingComponent from './multiple-selection-heading.component';
 import MultipleSelectionContentComponent from './multiple-selection-content.component';
 import {
-    MultipleSelectionPropsInterface,
     MultipleSelectionContextInterface,
-    MultipleSelectionItemValueInterface
+    MultipleSelectionItemValueInterface,
+    MultipleSelectionDefaultExportInterface
 } from './interface/component.interface';
 
 export const ItemComponentName = 'MultipleSelectionItemComponent';
@@ -31,11 +32,12 @@ export const HeadingComponentName = 'MultipleSelectionHeadingComponent';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.27
  */
-const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterface> = ({
+const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
     value,
     onChange,
     children,
     fontSize,
+    onSearch,
     className,
     customizeFilter,
     ...res
@@ -68,6 +70,18 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     useEffect(() => {
         setIsActive(value.length > 0);
     }, [value]);
+
+    useEffect(() => {
+        if (!showDropdownContent) {
+            setPositionDropdownContent(-1);
+        }
+    }, [showDropdownContent]);
+
+    useEffect(() => {
+        if (ValidatorHelper.verifiedIsNotEmpty(textValue)) {
+            onSearch({ query: textValue });
+        }
+    }, [textValue]);
 
     /**
      * On Change Edit Text
@@ -102,7 +116,6 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
 
         setTextValue('');
         setShowDropdownContent(false);
-        setPositionDropdownContent(-1);
 
         if (input.current) {
             input.current.focus();
@@ -115,10 +128,6 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
      * @return {void}
      */
     const onEditTextFocus = (show: boolean): void => {
-        if (!show) {
-            setPositionDropdownContent(-1);
-        }
-
         if (!show && isActive) {
             setTextValue('');
         }
@@ -136,25 +145,43 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     const onChangePositionDropdownContent = (key: 'up' | 'down'): void => {
         if (showDropdownContent) {
             const length = optionList.length - 1;
+            let scroll = 1;
+
             let currentPosition = positionDropdownContent;
             if (key === 'up' && positionDropdownContent > -1) {
                 currentPosition = positionDropdownContent - 1;
+                scroll = -1;
             } else if (key === 'down' && positionDropdownContent < length) {
                 currentPosition = positionDropdownContent + 1;
+                scroll = 1;
             } else if (key === 'down' && positionDropdownContent >= length) {
                 currentPosition = 0;
+                scroll = -1 * length;
             }
 
             if (
                 dropdownContent.current &&
                 dropdownContent.current.getElementsByClassName(
                     contentDropdownClassName
-                ).length > 0
+                ).length > 0 &&
+                positionDropdownContent > 0
             ) {
+                const component = dropdownContent.current.getElementsByClassName(
+                    contentDropdownClassName
+                )[0];
+                let { scrollHeight } = component;
+
+                if (scroll > length * -1) {
+                    scrollHeight /= optionList.length;
+                    scrollHeight *= scroll;
+                } else {
+                    scrollHeight *= -1;
+                }
+
                 dropdownContent.current
                     .getElementsByClassName(contentDropdownClassName)[0]
                     .scrollBy({
-                        top: 100 * (currentPosition - 1),
+                        top: scrollHeight,
                         behavior: 'smooth'
                     });
             }
@@ -241,6 +268,7 @@ MultipleSelectionComponent.propTypes = {
     fontSize: PropTypes.number,
     className: PropTypes.string,
     customizeFilter: PropTypes.bool,
+    onSearch: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
@@ -262,5 +290,9 @@ MultipleSelectionComponent.defaultProps = {
     className: undefined,
     customizeFilter: false
 };
+
+MultipleSelectionComponent.Item = MultipleSelectionItemComponent;
+
+MultipleSelectionComponent.Heading = MultipleSelectionHeadingComponent;
 
 export default MultipleSelectionComponent;

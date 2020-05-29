@@ -54,6 +54,7 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                     <MultipleSelectionComponent
                         onChange={onChangeValue}
                         fontSize={14}
+                        onSearch={(param): void => console.error(param)}
                         placeholder="Cari berdasarkan lokasi, area sekitar, nama property, nama project, atau nama developer"
                         value={
                             (option as unknown) as MultipleSelectionItemValueInterface[]

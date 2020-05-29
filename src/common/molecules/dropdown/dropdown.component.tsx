@@ -114,7 +114,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
      * @return {void}
      */
     const onClickToggle = (): void => {
-        if (trigger === 'click') {
+        if (trigger === 'click' && show === undefined) {
             setShowContent(!showContent);
 
             if (onClick) {

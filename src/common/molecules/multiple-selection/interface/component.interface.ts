@@ -5,8 +5,39 @@ import {
     RefAttributes,
     PropsWithoutRef,
     InputHTMLAttributes,
-    ForwardRefExoticComponent
+    ForwardRefExoticComponent,
+    FunctionComponent
 } from 'react';
+
+/**
+ * Multiple Selection Default Export Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.27
+ */
+export type MultipleSelectionDefaultExportInterface = FunctionComponent<
+    MultipleSelectionPropsInterface
+> & {
+    Item: FunctionComponent<MultipleSelectionItemPropsInterface>;
+    Heading: FunctionComponent<MultipleSelectionHeadingPropsInterface>;
+};
+
+/**
+ * Multiple Selection Props Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2020.05.27
+ */
+export type MultipleSelectionPropsInterface = Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'name' | 'value' | 'onChange' | 'dangerouslySetInnerHTML'
+> & {
+    fontSize?: number;
+    className?: string;
+    placeholder: string;
+    customizeFilter?: boolean;
+    value: MultipleSelectionItemValueInterface[];
+    onSearch: (param: MultipleSelectionSearchParamType) => void;
+    onChange: (param: MultipleSelectionActionResponseType) => void;
+};
 
 /**
  * Multiple Selection Context Interface
@@ -42,23 +73,6 @@ export interface MultipleSelectionContextInterface {
  */
 export type MultipleSelectionContextOptionInterface = MultipleSelectionItemValueInterface & {
     position: number;
-};
-
-/**
- * Multiple Selection Props Interface
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2020.05.27
- */
-export type MultipleSelectionPropsInterface = Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'name' | 'value' | 'onChange' | 'dangerouslySetInnerHTML'
-> & {
-    fontSize?: number;
-    className?: string;
-    placeholder: string;
-    customizeFilter?: boolean;
-    value: MultipleSelectionItemValueInterface[];
-    onChange: (param: MultipleSelectionActionResponseType) => void;
 };
 
 /**

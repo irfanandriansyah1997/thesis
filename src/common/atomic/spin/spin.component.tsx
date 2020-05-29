@@ -16,6 +16,7 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
 const SpinComponent: SFC<SpinPropsInterface> = ({
     show,
     color,
+    withoutShadow,
     children,
     ...res
 }: SpinPropsInterface) => {
@@ -26,6 +27,9 @@ const SpinComponent: SFC<SpinPropsInterface> = ({
         relative: true,
         'ui-atomic-spin': true,
         'ui-atomic-spin--show': show,
+        'ui-atomic-spin--without-shadow': ValidatorHelper.verifiedIsNotFalse(
+            withoutShadow
+        ),
         'ui-atomic-spin--nested': ValidatorHelper.verifiedIsNotEmpty(children)
     };
     const SpinContentComponent: ReactNode = (
