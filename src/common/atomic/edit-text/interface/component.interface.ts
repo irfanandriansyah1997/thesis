@@ -34,8 +34,9 @@ export type EditTextAddonInterface = EditTextPropsInterface &
     ColorInterface & {
         addon?: string;
         fontSize?: number;
-        fontweight?: number;
+        fontWeight?: number;
         children: ReactNode;
+        position?: 'left' | 'right';
     };
 
 /**
