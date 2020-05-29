@@ -120,6 +120,24 @@ class ComponentHelper extends LogHelperAbstract {
 
         return StringHelper.objToString(response);
     }
+
+    /**
+     * Getter Width From Text
+     * @param {string} text - text sample
+     * @param {string} font - font attribute like font-family font-size
+     */
+    static getWidthFromText(text: string, font: string): number {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        if (context) {
+            context.font = font;
+            const { width } = context.measureText(text);
+
+            return width;
+        }
+
+        return 0;
+    }
 }
 
 export default ComponentHelper;

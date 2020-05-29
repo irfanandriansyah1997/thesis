@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, {
     useRef,
     useState,
+    useEffect,
     ReactNode,
     Validator,
     FunctionComponent
@@ -10,6 +11,7 @@ import React, {
 
 import DropdownComponent from '../dropdown/dropdown.component';
 import StringHelper from '../../../shared/helper/string.helper';
+import ObjectHelper from '../../../shared/helper/object.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import MultiSelectionContext from './context/multiple-selection.context';
 import MultipleSelectionHelper from './helper/multiple-selection.helper';
@@ -20,7 +22,6 @@ import {
     MultipleSelectionContextInterface,
     MultipleSelectionItemValueInterface
 } from './interface/component.interface';
-import ObjectHelper from '../../../shared/helper/object.helper';
 
 export const ItemComponentName = 'MultipleSelectionItemComponent';
 export const HeadingComponentName = 'MultipleSelectionHeadingComponent';
@@ -34,7 +35,9 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     value,
     onChange,
     children,
+    fontSize,
     className,
+    customizeFilter,
     ...res
 }) => {
     const contentDropdownClassName = 'ui-molecules-dropdown__content';
@@ -46,19 +49,25 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     const [showDropdownContent, setShowDropdownContent] = useState<boolean>(
         false
     );
-    const [isActive] = useState<boolean>(value.length > 0);
+    const [isActive, setIsActive] = useState<boolean>(value.length > 0);
     const [positionDropdownContent, setPositionDropdownContent] = useState<
         number
     >(-1);
-
     const {
         optionList,
         contentProps,
         optionListActive
     } = MultipleSelectionHelper.translateChildrenProps(
         children,
-        positionDropdownContent
+        positionDropdownContent,
+        value,
+        textValue,
+        customizeFilter || false
     );
+
+    useEffect(() => {
+        setIsActive(value.length > 0);
+    }, [value]);
 
     /**
      * On Change Edit Text
@@ -73,6 +82,7 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     ): void => {
         if (
             ValidatorHelper.verifiedIsNotEmpty(valueEditText) &&
+            !ValidatorHelper.verifiedIsNotEmpty(valueDropdownItem) &&
             value.length === 0
         ) {
             onChange({
@@ -92,6 +102,11 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
 
         setTextValue('');
         setShowDropdownContent(false);
+        setPositionDropdownContent(-1);
+
+        if (input.current) {
+            input.current.focus();
+        }
     };
 
     /**
@@ -102,6 +117,10 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
     const onEditTextFocus = (show: boolean): void => {
         if (!show) {
             setPositionDropdownContent(-1);
+        }
+
+        if (!show && isActive) {
+            setTextValue('');
         }
 
         if (dropdownToggle.current) {
@@ -146,14 +165,37 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
         }
     };
 
+    /**
+     * On Close Badges
+     * @param {React.MouseEvent<HTMLElement, MouseEvent>} event - event dom
+     * @return {void}
+     */
+    const onCloseBadges = (
+        event: React.MouseEvent<HTMLElement, MouseEvent>,
+        valueId: string
+    ): void => {
+        event.preventDefault();
+
+        onChange({
+            query: '',
+            object: value.filter((item): boolean => {
+                return item.value !== valueId;
+            })
+        });
+    };
+
     const contextValue: MultipleSelectionContextInterface = {
+        value,
         isActive,
         textValue,
         optionList,
+        onCloseBadges,
         onChangeSearch,
         onEditTextFocus,
         optionListActive,
+        showDropdownContent,
         positionDropdownContent,
+        fontSize: fontSize || 18,
         onChangePositionDropdownContent,
         onEditTextChange: (param): void => {
             setTextValue(param);
@@ -176,25 +218,29 @@ const MultipleSelectionComponent: FunctionComponent<MultipleSelectionPropsInterf
                 type="list"
                 name="testing"
                 trigger="click"
-                show={showDropdownContent}
+                ref={dropdownToggle}
                 label={generateToogleComponent()}
+                refContentForward={dropdownContent}
+                show={optionList.length > 0 && showDropdownContent}
                 className={StringHelper.objToString({
                     'ui-molecules-multiple-selection': true,
                     [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(
                         className
                     )
                 })}
-                ref={dropdownToggle}
-                refContentForward={dropdownContent}
             >
-                <MultipleSelectionContentComponent list={contentProps} />
+                {optionList.length > 0 && (
+                    <MultipleSelectionContentComponent list={contentProps} />
+                )}
             </DropdownComponent.WithRef>
         </MultiSelectionContext.Provider>
     );
 };
 
 MultipleSelectionComponent.propTypes = {
+    fontSize: PropTypes.number,
     className: PropTypes.string,
+    customizeFilter: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
@@ -211,8 +257,10 @@ MultipleSelectionComponent.propTypes = {
 
 MultipleSelectionComponent.defaultProps = {
     value: [],
+    fontSize: 18,
     children: undefined,
-    className: undefined
+    className: undefined,
+    customizeFilter: false
 };
 
 export default MultipleSelectionComponent;

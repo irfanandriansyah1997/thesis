@@ -7,17 +7,22 @@ import React, {
     useContext,
     ChangeEvent,
     KeyboardEvent,
-    FunctionComponent
+    FunctionComponent,
+    useEffect,
+    useState
 } from 'react';
 
-import TextComponent from '../../atomic/text/text.component';
+import StringHelper from '../../../shared/helper/string.helper';
+import BadgesComponent from '../../atomic/badges/badges.component';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
+import ComponentHelper from '../../../shared/helper/component.helper';
 import MultiSelectionContext from './context/multiple-selection.context';
 import {
     MultipleSelectionContextInterface,
     MultipleSelectionTogglePropsInterface
 } from './interface/component.interface';
 import {
+    ESC_KEY_CHARCODE,
     ENTER_KEY_CHARCODE,
     ARROW_UP_KEY_CHARCODE,
     BACKSPACE_KEY_CHARCODE,
@@ -38,14 +43,28 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
     ...res
 }) => {
     const {
+        value,
+        fontSize,
         isActive,
         textValue,
+        onCloseBadges,
         onChangeSearch,
         onEditTextFocus,
         onEditTextChange,
         optionListActive,
         onChangePositionDropdownContent
     } = useContext<MultipleSelectionContextInterface>(MultiSelectionContext);
+    const [width, setWidth] = useState<number | undefined>(undefined);
+
+    useEffect(() => {
+        const sampleComponentWidth = ComponentHelper.getWidthFromText(
+            textValue,
+            `${fontSize}px 'Avenir Next'`
+        );
+
+        setWidth(sampleComponentWidth > 20 ? sampleComponentWidth : 20);
+    }, [textValue]);
+
     /**
      * On Input Focus
      * @param {FocusEvent<HTMLInputElement>} event - event dom
@@ -79,9 +98,8 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
     };
 
     /**
-     * On Input Focus
+     * On Input Keydown
      * @param {FocusEvent<HTMLInputElement>} event - event dom
-     * @param {boolean} isFocused - event if input focused
      * @return {void}
      */
     const onInputKeydown = (event: KeyboardEvent<HTMLInputElement>): void => {
@@ -97,8 +115,15 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
             onChangePositionDropdownContent('down');
         }
 
+        if (event.keyCode === ESC_KEY_CHARCODE) {
+            onEditTextFocus(false);
+        }
+
         if (event.keyCode === ENTER_KEY_CHARCODE) {
-            if (ValidatorHelper.verifiedIsNotEmpty(textValue)) {
+            if (
+                ValidatorHelper.verifiedIsNotEmpty(textValue) &&
+                !ValidatorHelper.verifiedIsNotEmpty(optionListActive)
+            ) {
                 onChangeSearch(textValue, undefined);
             } else if (optionListActive) {
                 onChangeSearch(undefined, {
@@ -114,23 +139,83 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
         }
     };
 
+    /**
+     * On Toggle Section Click
+     * @return {void}
+     */
+    const onToggleClick = (): void => {
+        if (refForward && refForward.current) {
+            refForward.current.focus();
+        }
+    };
+
     return (
-        <div className="ui-molecules-multiple-selection__toggle flex">
+        <div
+            className={StringHelper.objToString({
+                'ui-molecules-multiple-selection__toggle': true,
+                relative: true,
+                flex: true,
+                'flex-align-center': true
+            })}
+            tabIndex={0}
+            role="button"
+            onKeyPress={undefined}
+            onClick={onToggleClick}
+        >
             {!isActive && !ValidatorHelper.verifiedIsNotEmpty(textValue) && (
-                <TextComponent color="text" styling="heading-5" tag="p">
+                <p
+                    className={StringHelper.objToString({
+                        'ui-molecules-multiple-selection__placeholder': true,
+                        absolute: true,
+                        truncate: true
+                    })}
+                    style={{ fontSize }}
+                >
                     {placeholder}
-                </TextComponent>
+                </p>
             )}
             <div className="ui-molecules-multiple-selection__toggle-content">
-                <input
-                    {...res}
-                    ref={refForward}
-                    value={textValue}
-                    onChange={onChangeValue}
-                    onKeyDown={onInputKeydown}
-                    onFocus={(e): void => onInputChangeFocus(e, true)}
-                    onBlur={(e): void => onInputChangeFocus(e, false)}
-                />
+                <ul className="flex flex-wrap">
+                    {value.map(({ label, ...resItem }) => {
+                        /**
+                         * On Close Badges
+                         * @param {React.MouseEvent<HTMLElement, MouseEvent>} event - event dom
+                         * @return {void}
+                         */
+                        const onClickIconCloseBadges = (
+                            event: React.MouseEvent<HTMLElement, MouseEvent>
+                        ): void => {
+                            onCloseBadges(event, resItem.value);
+                        };
+
+                        return (
+                            <li key={resItem.value}>
+                                <BadgesComponent
+                                    color="primary300"
+                                    rounded
+                                    transparent
+                                    size="default"
+                                    onCloseBadges={onClickIconCloseBadges}
+                                >
+                                    {label}
+                                </BadgesComponent>
+                            </li>
+                        );
+                    })}
+                    <li>
+                        <input
+                            {...res}
+                            maxLength={50}
+                            ref={refForward}
+                            value={textValue}
+                            style={{ width, fontSize }}
+                            onChange={onChangeValue}
+                            onKeyDown={onInputKeydown}
+                            onFocus={(e): void => onInputChangeFocus(e, true)}
+                            onBlur={(e): void => onInputChangeFocus(e, false)}
+                        />
+                    </li>
+                </ul>
             </div>
         </div>
     );

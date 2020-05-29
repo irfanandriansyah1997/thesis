@@ -6,6 +6,7 @@ import {
     HeadingComponentName
 } from '../multiple-selection.component';
 import {
+    MultipleSelectionItemValueInterface,
     MultipleSelectionItemPropsInterface,
     MultipleSelectionContentItemInterface,
     MultipleSelectionHeadingPropsInterface,
@@ -25,19 +26,55 @@ class MultipleSelectionHelper {
      */
     static translateChildrenProps(
         children: ReactNode,
-        positon: number
+        positon: number,
+        value: MultipleSelectionItemValueInterface[],
+        valueEditText: string,
+        customizeFilter: boolean
     ): {
         contentProps: MultipleSelectionContentItemInterface[];
         optionList: MultipleSelectionContextOptionInterface[];
         optionListActive?: MultipleSelectionContextOptionInterface;
     } {
-        let position = 0;
+        let positionComponent = 0;
         const contentProps = Children.toArray(children)
             .filter((item: any) => {
-                return (
-                    item.type.displayName === HeadingComponentName ||
-                    item.type.displayName === ItemComponentName
-                );
+                if (item.type.displayName === HeadingComponentName) {
+                    return true;
+                }
+
+                if (item.type.displayName === ItemComponentName) {
+                    const { props } = item;
+                    const notExist = MultipleSelectionHelper.filterItemIsAvailableInActive(
+                        props,
+                        value
+                    );
+
+                    if (notExist) {
+                        return true;
+                    }
+                }
+
+                return false;
+            })
+            .filter((item: any) => {
+                if (item.type.displayName === HeadingComponentName) {
+                    return true;
+                }
+
+                if (!customizeFilter) {
+                    const { props } = item;
+                    const {
+                        label
+                    } = props as MultipleSelectionItemPropsInterface;
+
+                    if (label.toLowerCase().includes(valueEditText)) {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+
+                return false;
             })
             .map(
                 (item: any): MultipleSelectionContentItemInterface => {
@@ -53,9 +90,9 @@ class MultipleSelectionHelper {
                     const { props } = item;
                     const content: MultipleSelectionItemPropsInterface = {
                         ...(props as MultipleSelectionItemPropsInterface),
-                        position
+                        position: positionComponent
                     };
-                    position += 1;
+                    positionComponent += 1;
 
                     return {
                         content,
@@ -104,6 +141,30 @@ class MultipleSelectionHelper {
                     };
                 }
             );
+    }
+
+    /**
+     * Filter Item Is Available In Active
+     * @param {MultipleSelectionItemPropsInterface} currentList - current list
+     * @param {MultipleSelectionItemValueInterface[]} currentValue - value props multiple selection
+     * @return {MultipleSelectionItemPropsInterface | undefined}
+     */
+    static filterItemIsAvailableInActive(
+        currentList:
+            | MultipleSelectionItemPropsInterface
+            | MultipleSelectionItemPropsInterface,
+        currentValue: MultipleSelectionItemValueInterface[]
+    ): MultipleSelectionItemPropsInterface | null {
+        const isExist =
+            currentValue.filter(({ value }): boolean => {
+                return currentList.value === value;
+            }).length > 0;
+
+        if (!isExist) {
+            return currentList;
+        }
+
+        return null;
     }
 }
 

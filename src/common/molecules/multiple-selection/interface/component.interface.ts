@@ -14,14 +14,21 @@ import {
  * @since 2020.05.28
  */
 export interface MultipleSelectionContextInterface {
+    fontSize: number;
     isActive: boolean;
     textValue: string;
+    showDropdownContent: boolean;
     positionDropdownContent: number;
     onEditTextFocus: (show: boolean) => void;
     onEditTextChange: (value: string) => void;
+    value: MultipleSelectionItemValueInterface[];
     optionList: MultipleSelectionContextOptionInterface[];
     optionListActive?: MultipleSelectionContextOptionInterface;
     onChangePositionDropdownContent: (position: 'up' | 'down') => void;
+    onCloseBadges: (
+        e: React.MouseEvent<HTMLElement, MouseEvent>,
+        valueId: string
+    ) => void;
     onChangeSearch: (
         valueEditText: string | undefined,
         valueDropdownItem: MultipleSelectionItemValueInterface | undefined
@@ -46,8 +53,10 @@ export type MultipleSelectionPropsInterface = Omit<
     InputHTMLAttributes<HTMLInputElement>,
     'name' | 'value' | 'onChange' | 'dangerouslySetInnerHTML'
 > & {
+    fontSize?: number;
     className?: string;
     placeholder: string;
+    customizeFilter?: boolean;
     value: MultipleSelectionItemValueInterface[];
     onChange: (param: MultipleSelectionActionResponseType) => void;
 };

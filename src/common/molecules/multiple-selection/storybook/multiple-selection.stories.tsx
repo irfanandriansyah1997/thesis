@@ -8,7 +8,9 @@ import '../style/style.scss';
 ((): void => {
     new StorybookDocumentationBuilder('Multiple Selection', 'molecules')
         .setSection('common')
-        .setDescriptionComponent('Multiple Selection')
+        .setDescriptionComponent(
+            'Multiple selection component to select multiple value from options.'
+        )
         .registerDocumentation(
             <>
                 <SectionDefaultMultipleSelectionComponent />
