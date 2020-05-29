@@ -1,11 +1,12 @@
-import { SFC, HTMLAttributes } from 'react';
+import { SFC, InputHTMLAttributes, ReactNode } from 'react';
+import { ColorInterface } from '../../../../shared/interface/common/color.interface';
 
 /**
  * Edit Text Default Interface
  * @author Cathrine <cathrine@99.co>
  * @since 2020.05.28
  */
-export type EditTextDefaultPropsInterface = EditTextPropsInterface & {
+export type EditTextDefaultExportInterface = SFC<EditTextPropsInterface> & {
     Addon: SFC<EditTextAddonInterface>;
 };
 
@@ -15,19 +16,10 @@ export type EditTextDefaultPropsInterface = EditTextPropsInterface & {
  * @since 2020.05.02
  */
 export type EditTextPropsInterface = Omit<
-    HTMLAttributes<HTMLElement>,
-    | 'dangerouslySetInnerHTML'
-    | 'onClick'
-    | 'onKeyDown'
-    | 'onKeyDown'
-    | 'onKeyPress'
-    | 'onChange'
-    | 'style'
+    InputHTMLAttributes<HTMLInputElement>,
+    'dangerouslySetInnerHTML' | 'children' | 'style' | 'type'
 > & {
-    className?: string;
-    placeholder?: string;
     type?: EditTextType;
-    disabled?: boolean;
     value?: string | number;
     name: string;
     styling?: EditTextStyle;
@@ -38,9 +30,13 @@ export type EditTextPropsInterface = Omit<
  * @author Cathrine <cathrine@99.co>
  * @since 2020.05.28
  */
-export interface EditTextAddonInterface {
-    addon?: string;
-}
+export type EditTextAddonInterface = EditTextPropsInterface &
+    ColorInterface & {
+        addon?: string;
+        fontSize?: number;
+        fontweight?: number;
+        children: ReactNode;
+    };
 
 /**
  * Edit Text Type Interface
