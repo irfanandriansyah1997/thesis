@@ -34,9 +34,14 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
     };
 
     const headingClassName: ComponentClassnameDefaultInterface = {
-        'calculator-heading': true,
+        'ui-organisms-kpr-calculator-r123__heading': true,
         flex: true,
         'flex-justify-between': true
+    };
+
+    const calculatorDisclaimerClassName: ComponentClassnameDefaultInterface = {
+        'ui-organisms-kpr-calculator-r123__disclaimer': true,
+        'text-right': true
     };
 
     /**
@@ -98,7 +103,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                     />
                 </div>
             </div>
-            <section className="calculator-detail">
+            <section className="ui-organisms-kpr-calculator-r123__detail">
                 <GridComponent.Row
                     padding={{
                         horizontal: 0,
@@ -181,10 +186,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                                 value={propertyPrice.interest.value}
                                 className="kpr-calculator-dropdown"
                                 onChange={(val: string | number): void =>
-                                    onChangeDropdownField(
-                                        propertyPrice.name,
-                                        val
-                                    )
+                                    onChangeDropdownField('interest', val)
                                 }
                             >
                                 {propertyPrice.interest.option.map((item) => (
@@ -200,7 +202,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                         </div>
                     </GridComponent.Column>
                     <GridComponent.Column id="down-payment">
-                        <div className="property-price">
+                        <div className="downpayment">
                             <TextComponent
                                 tag="p"
                                 color="headingR123"
@@ -221,7 +223,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                                 {downPayment.downPaymentValue}
                             </TextComponent>
                         </div>
-                        <div className="kpr-interest">
+                        <div className="kpr-downpayment">
                             <TextComponent
                                 tag="p"
                                 color="headingR123"
@@ -235,7 +237,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                                 value={downPayment.period.value}
                                 className="kpr-calculator-dropdown"
                                 onChange={(val: string | number): void =>
-                                    onChangeDropdownField(downPayment.name, val)
+                                    onChangeDropdownField('down-payment', val)
                                 }
                             >
                                 {downPayment.period.option.map((item) => (
@@ -252,18 +254,18 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                     </GridComponent.Column>
                 </GridComponent.Row>
             </section>
-            <section className="calculator-disclaimer text-right">
+            <section
+                className={StringHelper.objToString(
+                    calculatorDisclaimerClassName
+                )}
+            >
                 <ToggleComponent
                     selector={createSelector(
                         disclaimer ? disclaimer.disclaimerText : ''
                     )}
                     selectorPosition="top"
-                    className="calculator-disclaimer__toggle"
                 >
-                    <TextComponent
-                        tag="p"
-                        className="calculator-disclaimer__toggle--text"
-                    >
+                    <TextComponent tag="p" className="disclaimer-toggle-text">
                         {disclaimer && disclaimer.disclaimerToggleText}
                     </TextComponent>
                 </ToggleComponent>

@@ -1,19 +1,32 @@
 @import '../../../../style/import.scss';
 
-.calculator-detail {
-    width: 100%;
+.ui-organisms-kpr-calculator-r123 {
+    &__detail {
+        width: 100%;
 
-    @include padding(all, 24px);
-    @include border-bottom(1px, solid, #e9ebed);
+        @include padding(all, 24px);
+        @include border-bottom(1px, solid, #e9ebed);
 
-    .kpr-calculator-dropdown {
-        height: 33px;
-        min-width: 190px;
+        .kpr-calculator-dropdown {
+            height: 33px;
+            min-width: 190px;
 
-        @include background-color(#f3f4f6);
-        @include border(all, 1px, solid, #d2d6da);
-        @include rounded(2px);
-        @include padding(all, 8px);
+            @include background-color(#f3f4f6);
+            @include border(all, 1px, solid, #d2d6da);
+            @include rounded(2px);
+            @include padding(all, 8px);
+        }
+
+        .property-price-input {
+            max-width: 190px;
+            width: 100%;
+
+            @include padding(all, 6px);
+            @include margin(bottom, 8px);
+            @include border(all, 1px, solid, #d2d6da);
+            @include background-color(#f3f4f6);
+            @include rounded(2px);
+        }
 
         .ui-molecules-dropdown {
             &__wrapper {
@@ -33,20 +46,7 @@
         }
     }
 
-    .property-price-input {
-        max-width: 190px;
-        width: 100%;
-
-        @include padding(all, 6px);
-        @include margin(bottom, 8px);
-        @include border(all, 1px, solid, #d2d6da);
-        @include background-color(#f3f4f6);
-        @include rounded(2px);
-    }
-}
-
-.calculator-disclaimer {
-    &__toggle {
+    &__disclaimer {
         .ui-molecules-toggle {
             &__selector {
                 cursor: pointer;
@@ -61,7 +61,7 @@
             }
         }
 
-        &--text {
+        .disclaimer-toggle-text {
             @include font-size(text-size(xs));
             @include padding(top, 16px);
             @include padding(right, 24px);

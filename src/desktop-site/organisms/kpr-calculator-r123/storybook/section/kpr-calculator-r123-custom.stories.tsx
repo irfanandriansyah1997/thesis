@@ -14,11 +14,42 @@ import { KPRCalculatorComponentInterface } from '../../interface/component.inter
  */
 const docs = (props: KPRCalculatorComponentInterface): string =>
     `<KprCalculatorR123Component \n` +
-    `    heading="${props.heading}"\n` +
-    `    itemAmount=${props.itemAmount}\n` +
-    `    downPayment=${props.downPayment}\n` +
-    `    disclaimer={[${props.disclaimer}]}\n` +
-    `    propertyPrice={[${props.propertyPrice}]}\n` +
+    `    heading={\n` +
+    `       headingText: "Kalkulator KPR",\n` +
+    `       headingLogo: "rumah123.jpg"\n` +
+    `    }\n` +
+    `    itemAmount={\n` +
+    `       loanAmount: "Rp. 1.840.168",\n` +
+    `       monthlyPayment: "Jumlah pinjaman: Rp. 220.000.000"\n` +
+    `    }\n` +
+    `    downPayment={\n` +
+    `       name: "down-payment",\n` +
+    `       downPaymentLabel: "Uang muka"\n` +
+    `       downPaymentValue: "Rp. 55.000.000",\n` +
+    `       periodLabel: "Jangka waktu"\n` +
+    `       period: {\n` +
+    `           name: "down-payment",\n` +
+    `           value: 1\n` +
+    `           option: [],\n` +
+    `       }\n` +
+    `    }\n` +
+    `    propertyPrice={\n` +
+    `       name: "interest",\n` +
+    `       priceLabel: "Harga properti (Rp.)"\n` +
+    `       priceValue: "Rp. 275.000.000",\n` +
+    `       interestLabel: "Suku bunga (%)"\n` +
+    `       editablePriceValue: true\n` +
+    `       interest: {\n` +
+    `           name: "interest",\n` +
+    `           value: 1\n` +
+    `           option: [],\n` +
+    `       }\n` +
+    `    }\n` +
+    `    disclaimer={\n` +
+    `       disclaimerText: "Silakan baca disclaimer",\n` +
+    `       disclaimerToggleText: "Disclaimer content"\n` +
+    `       onDisclaimerClick: (): void => {}\n` +
+    `    }\n` +
     `    onChangeDropdownField={${props.onChangeDropdownField}}\n` +
     `/>`;
 
@@ -124,10 +155,6 @@ class CustomKprCalculatorR123 extends React.PureComponent<
                 </TextDocsComponent>
                 <CodingViewerDocsComponent
                     sourceCode={docs({
-                        heading: {
-                            headingText: 'Kalkulator KPR',
-                            headingLogo: 'rumah123.com'
-                        },
                         itemAmount: {
                             loanAmount: 'Rp. 1.840.168',
                             monthlyPayment: 'Jumlah pinjaman: Rp. 220.000.000'
@@ -148,17 +175,12 @@ class CustomKprCalculatorR123 extends React.PureComponent<
                             priceLabel: 'Harga properti (Rp.)',
                             priceValue: 'Rp. 275.000.000',
                             interestLabel: 'Suku bunga (%)',
+                            editablePriceValue: true,
                             interest: {
                                 name: 'interest',
                                 value: 1,
                                 option: interestRate
                             }
-                        },
-                        disclaimer: {
-                            disclaimerText: 'Silakan baca disclaimer',
-                            disclaimerToggleText:
-                                'Hasil dari kalkulator ini hanya merupakan perkiraan saja. Kalkulator ini, atau perhitungan yang dihasilkan, bukan merupakan suatu kesepakatan atau penawaran dari setiap pemberi pinjaman untuk memberikan kredit. Perhitungan ini tidak mencakup ongkos-ongkos dan biaya-biaya apapun yang dapat dikenakan oleh suatu pemberi pinjaman. PT Web Marketing Indonesia dan kelompok perusahaan REA Group Ltd ("Perseroan") tidak bertanggung jawab atas kalkulator atau perhitungannya dan tidak membuat pernyataan-pernyataan baik secara tegas ataupun secara tersirat tentang kalkulator ataupun perhitungan tersebut. Perseroan tidak memiliki tanggung jawab apapun atas kalkulator atau perhitungan tersebut.',
-                            onDisclaimerClick: (): void => {}
                         },
                         onChangeDropdownField: (): void => {}
                     })}

@@ -9,7 +9,10 @@ export interface KPRCalculatorComponentInterface {
     downPayment: KPRCalculatorDownPaymentInterface;
     itemAmount: KPRCalculatorItemAmountPropsInterface;
     propertyPrice: KPRCalculatorPropertyPriceInterface;
-    onChangeDropdownField: (key: string, value: string | number) => void;
+    onChangeDropdownField: (
+        key: 'down-payment' | 'interest',
+        value: string | number
+    ) => void;
 }
 
 /**
