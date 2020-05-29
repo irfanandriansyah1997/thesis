@@ -1,0 +1,100 @@
+.ui-organism-listing-inquiry-r123 {
+    &__container-wrapper {
+        object-fit: contain;
+        pointer-events: all;
+        width: 360px;
+    }
+
+    &__contact-wrapper {
+        background-color: rgb(255, 255, 255);
+        border-color: rgb(210, 214, 218);
+        border-image: initial;
+        border-style: solid;
+        border-width: 1px;
+        padding: 16px;
+    }
+
+    &__agent-wrapper {
+        display: block;
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    &__agent-content {
+        align-items: center;
+        display: flex;
+    }
+
+    &__agent-contact-name {
+        color: rgb(43, 110, 210);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__agent-join-info {
+        color: rgb(165, 173, 181);
+        font-size: 10px;
+        // display: inline-block;
+        // margin-left: 0px;
+        // font-weight: normal;
+        // font-size: 10px;
+    }
+
+    &__inquiry-buttons {
+        display: flex;
+        margin: 0 -5px;
+    }
+
+    &__email-button {
+        border-top: 1px solid rgb(204, 204, 204);
+        margin-top: 16px;
+        padding-top: 16px;
+    }
+
+    &__organization-wrapper {
+        // color: rgb(0, 0, 0);
+        // text-align: left;
+        // background-color: rgb(255, 255, 255);
+        // position: relative;
+        border-color: rgb(210, 214, 218) rgb(210, 214, 218) rgb(210, 214, 218);
+        border-image: initial;
+        border-style: none solid solid;
+        border-width: 1px;
+        display: flex;
+        flex-direction: column;
+        // align-items: flex-start;
+        // -webkit-box-pack: start;
+        // justify-content: flex-start;
+        // min-height: 73px;
+        // border-top: none;
+    }
+
+    &__organization-content {
+        padding: 8px 16px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .ui-atomic-button {
+        justify-content: center;
+        width: 100%;
+
+        &--theme {
+            &-secondary {
+                background-color: #e9ebed;
+                margin: 0 5px;
+
+                &:hover {
+                    background-color: #d2d6da;
+                }
+            }
+        }
+    }
+
+    .ui-atomic-text {
+        margin-bottom: 5px;
+        text-align: center;
+    }
+}
