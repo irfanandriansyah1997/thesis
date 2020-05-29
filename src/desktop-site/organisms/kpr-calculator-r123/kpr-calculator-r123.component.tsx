@@ -25,7 +25,8 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
     disclaimer,
     downPayment,
     propertyPrice,
-    onChangeDropdownField
+    onChangeDropdownField,
+    onChangePrice
 }: KPRCalculatorComponentInterface) => {
     const name: ComponentClassnameDefaultInterface = {
         'ui-organisms-kpr-calculator-r123': true,
@@ -61,22 +62,31 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                     {text}
                 </TextComponent>
                 <IconComponent
-                    color="outline"
+                    color="headingR123"
                     size={10}
                     style={{ marginLeft: 5 }}
+                    className="selector-icon"
                 >
                     rui-icon-arrow-right-small
                 </IconComponent>
             </>
         );
     };
+
+    /**
+     * Create Toggle Class Function
+     */
+    const toggleSelectorIconClass = (): void => {
+        const node = document.querySelector('.selector-icon');
+        if (node) {
+            node.classList.toggle('selector-icon-active');
+        }
+    };
+
     return (
         <CardComponent
             className={StringHelper.objToString(name)}
-            style={{
-                width: 750,
-                padding: 0
-            }}
+            style={{ padding: 0 }}
             boxShadow="r123"
         >
             <div
@@ -157,6 +167,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                                     name="priceValue"
                                     value={propertyPrice.priceValue}
                                     className="property-price-input"
+                                    onChange={onChangePrice && onChangePrice}
                                 />
                             ) : (
                                 <TextComponent
@@ -264,6 +275,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                         disclaimer ? disclaimer.disclaimerText : ''
                     )}
                     selectorPosition="top"
+                    onToggleExpand={toggleSelectorIconClass}
                 >
                     <TextComponent tag="p" className="disclaimer-toggle-text">
                         {disclaimer && disclaimer.disclaimerToggleText}

@@ -58,6 +58,12 @@
                 @include padding(right, 24px);
                 @include padding(bottom, 32px);
                 @include padding(left, 24px);
+                @include line-height(22);
+            }
+
+            .selector-icon-active::before {
+                transform: rotate(90deg);
+                transition: all 0.3s;
             }
         }
 
@@ -70,5 +76,17 @@
             @include line-height(18);
             @include border-top(1px, solid, #d9d9d9);
         }
+    }
+}
+
+@media (min-width: 1023px) {
+    .ui-organisms-kpr-calculator-r123 {
+        width: 750px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .ui-organisms-kpr-calculator-r123 {
+        width: 100%;
     }
 }

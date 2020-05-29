@@ -113,6 +113,7 @@ return (
 |**downPayment**|object|-|Display downpayment & period section|
 |**itemAmount**|object|-|Display monthly payment & loan amount|
 |**propertyPrice**|object|-|Display property price & interest section|
+|**onChangePrice**|`() => void`|-|Callback function executed when property price change (edited)|
 |**onChangeDropdownField**|`(key: 'down-payment' | 'interest',`<br>`value: string| number) => void`|-|Callback function executed when calculator downpayment/interest dropdown item changed|
 
 ## Heading Props
@@ -122,7 +123,7 @@ return (
 |**headingText**|string|-|Display calculator heading text|
 |**headingLogo**|string|-|The address of the image for an image logo|
 
-## Item Amount, Downpayment & Interest Props
+## Item Amount, Downpayment & Property Price Props
 
 | Property | Type | Default | Description |
 |-------|-----------|---------|-----------|

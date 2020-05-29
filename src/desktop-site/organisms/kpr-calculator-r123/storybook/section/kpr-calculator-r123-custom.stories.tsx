@@ -50,6 +50,7 @@ const docs = (props: KPRCalculatorComponentInterface): string =>
     `       disclaimerToggleText: "Disclaimer content"\n` +
     `       onDisclaimerClick: (): void => {}\n` +
     `    }\n` +
+    `    onChangePrice={${props.onChangePrice}}\n` +
     `    onChangeDropdownField={${props.onChangeDropdownField}}\n` +
     `/>`;
 
@@ -182,6 +183,7 @@ class CustomKprCalculatorR123 extends React.PureComponent<
                                 option: interestRate
                             }
                         },
+                        onChangePrice: (): void => {},
                         onChangeDropdownField: (): void => {}
                     })}
                 >
@@ -224,6 +226,7 @@ class CustomKprCalculatorR123 extends React.PureComponent<
                                 'Hasil dari kalkulator ini hanya merupakan perkiraan saja. Kalkulator ini, atau perhitungan yang dihasilkan, bukan merupakan suatu kesepakatan atau penawaran dari setiap pemberi pinjaman untuk memberikan kredit. Perhitungan ini tidak mencakup ongkos-ongkos dan biaya-biaya apapun yang dapat dikenakan oleh suatu pemberi pinjaman. PT Web Marketing Indonesia dan kelompok perusahaan REA Group Ltd ("Perseroan") tidak bertanggung jawab atas kalkulator atau perhitungannya dan tidak membuat pernyataan-pernyataan baik secara tegas ataupun secara tersirat tentang kalkulator ataupun perhitungan tersebut. Perseroan tidak memiliki tanggung jawab apapun atas kalkulator atau perhitungan tersebut.',
                             onDisclaimerClick: (): void => {}
                         }}
+                        onChangePrice={(): void => {}}
                         onChangeDropdownField={(key, value): void => {
                             if (key === 'down-payment') {
                                 this.setState({ periodSelection: value });
