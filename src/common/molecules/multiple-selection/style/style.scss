@@ -28,6 +28,14 @@
             li {
                 @include margin(all, 2.5px);
             }
+
+            li:last-child {
+                flex: 1 1 auto;
+            }
+        }
+
+        &-content {
+            width: 100%;
         }
     }
 

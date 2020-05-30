@@ -43,12 +43,12 @@ class ValidatorHelper extends LogHelperAbstract {
      * @param {boolean | undefined | null} param - parameter to check
      * Validator checking parameter input is true
      */
-    static verifiedIsNotFalse(param: boolean | undefined | null): boolean {
+    static verifiedIsNotFalse(param: unknown): boolean {
         const stage1 =
             [undefined, null, false].filter((i: unknown) => param === i)
                 .length === 0;
 
-        if (stage1 && param === true) {
+        if (stage1 && param !== false) {
             return true;
         }
 

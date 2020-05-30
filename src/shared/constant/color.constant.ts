@@ -77,6 +77,7 @@ const ColorDefaultConstant = {
     heading1000: '#151a30',
     heading1100: '#101426',
     grayR123: '#e9ebed',
+    primaryR123: '#0084ff',
     greyDarkerR123: '#d2d6da',
     borderR123: '#030303',
     actionR123: '#c20014',

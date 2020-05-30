@@ -29,7 +29,9 @@ const BadgesComponent: SFC<BadgesPropsInterface> = ({
 }: BadgesPropsInterface) => {
     const colorComponent = ColorHelper.generateColorComponent(
         color || 'heading',
-        transparent || false,
+        ValidatorHelper.verifiedIsNotFalse(transparent)
+            ? (transparent as number | boolean)
+            : false,
         'heading'
     );
 
@@ -80,7 +82,7 @@ BadgesComponent.propTypes = {
         ColorType
     >,
     rounded: PropTypes.bool,
-    transparent: PropTypes.bool,
+    transparent: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
     onCloseBadges: PropTypes.func,
     size: PropTypes.oneOf<ComponentDefaultSize>(['big', 'default', 'small'])
 };

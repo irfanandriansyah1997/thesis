@@ -144,7 +144,12 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
         }
 
         if (dropdownToggle.current) {
-            setShowDropdownContent(show);
+            setTimeout(
+                () => {
+                    setShowDropdownContent(show);
+                },
+                show ? 0 : 300
+            );
         }
     };
 
@@ -220,6 +225,8 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
                 return item.value !== valueId;
             })
         });
+
+        setShowDropdownContent(false);
     };
 
     const contextValue: MultipleSelectionContextInterface = {
@@ -240,6 +247,8 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
                 query: '',
                 object: ObjectHelper.removeLastItemArray(value)
             });
+
+            setShowDropdownContent(false);
         },
         onEditTextChange: (param): void => {
             setTextValue(param);
