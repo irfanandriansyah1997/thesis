@@ -13,33 +13,20 @@ import {
 } from '../../interface/component.interface';
 
 /**
- * Section Default Multiple Selection
+ * Section Default Autocomplete R123 Selection
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.15
  */
-class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
+class SectionDefaultAutocompleteR123Component extends React.PureComponent<
     {},
     Record<string, unknown>
 > {
-    public timeoutDelay = 500;
-
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            option: []
-        };
-
-        this.onLoadData = this.onLoadData.bind(this);
-        this.onChangeValue = this.onChangeValue.bind(this);
-    }
-
     /**
      * On Load Data
      */
-    public onLoadData(
+    static onLoadData(
         keyword: string
     ): Promise<AutocompleteR123ResponseItemInterface[]> {
-        const { timeoutDelay } = this;
         console.error(`search keyword : ${keyword}`);
 
         return new Promise<AutocompleteR123ResponseItemInterface[]>(
@@ -270,9 +257,18 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                             additionalInfo: null
                         }
                     ]);
-                }, timeoutDelay);
+                }, 2000);
             }
         );
+    }
+
+    constructor(props: {}) {
+        super(props);
+        this.state = {
+            option: []
+        };
+
+        this.onChangeValue = this.onChangeValue.bind(this);
     }
 
     /**
@@ -283,7 +279,7 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
     }
 
     render(): ReactNode {
-        const { onLoadData, onChangeValue } = this;
+        const { onChangeValue } = this;
         const { option } = this.state;
 
         return (
@@ -304,8 +300,11 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                     >
                         <AutoCompleteR123Component
                             onChange={onChangeValue}
+                            placeholder="Cari berdasarkan lokasi, area sekitar, nama property, nama project, atau nama developer"
                             value={option as AutocompleteR123ValueInterface[]}
-                            asyncService={onLoadData}
+                            asyncService={
+                                SectionDefaultAutocompleteR123Component.onLoadData
+                            }
                         />
                     </div>
                 </CodingViewerDocsComponent>
@@ -314,4 +313,4 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
     }
 }
 
-export default SectionDefaultMultipleSelectionComponent;
+export default SectionDefaultAutocompleteR123Component;

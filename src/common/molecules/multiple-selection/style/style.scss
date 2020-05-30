@@ -91,4 +91,13 @@
             }
         }
     }
+
+    .ui-atomic-badges {
+        &__children {
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
 }

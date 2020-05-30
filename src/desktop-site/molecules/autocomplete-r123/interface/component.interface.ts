@@ -9,6 +9,8 @@ import {
  * @since 2020.05.29
  */
 export interface AutocompleteR123PropsInterface {
+    className?: string;
+    placeholder: string;
     value: AutocompleteR123ValueInterface[];
     onChange: (param: AutocompleteR123OnChangeValueType) => void;
     asyncService: (

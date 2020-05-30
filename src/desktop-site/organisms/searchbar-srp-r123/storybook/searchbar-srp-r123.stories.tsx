@@ -6,7 +6,7 @@ import StorybookDocumentationBuilder from '../../../../.storybook/builder/storyb
 import '../style/style.scss';
 
 ((): void => {
-    new StorybookDocumentationBuilder('Autocomplete R123', 'molecules')
+    new StorybookDocumentationBuilder('Searchbar SRP R123', 'organism')
         .setSection('desktop')
         .setDescriptionComponent(
             'Multiple selection component to select multiple value from options.'

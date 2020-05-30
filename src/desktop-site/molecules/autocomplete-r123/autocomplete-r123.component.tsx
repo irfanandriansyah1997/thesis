@@ -16,6 +16,7 @@ import {
     MultipleSelectionSearchParamType,
     MultipleSelectionActionResponseType
 } from '../../../common/molecules/multiple-selection/interface/component.interface';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
 
 /**
  * Generate Class
@@ -26,9 +27,10 @@ import {
 const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterface> = ({
     value,
     onChange,
+    className,
+    placeholder,
     asyncService
 }) => {
-    const [searchText, setSearchText] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const [delay, setDelay] = useState<number | undefined>(undefined);
     const [optionList, setOptionList] = useState<
@@ -49,8 +51,7 @@ const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterfac
 
         setDelay(
             (setTimeout(() => {
-                setSearchText(query || '');
-                asyncService(searchText).then((item) => {
+                asyncService(query || '').then((item) => {
                     setOptionList(item || []);
 
                     setLoading(false);
@@ -78,7 +79,8 @@ const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterfac
             className={StringHelper.objToString({
                 'ui-molecules-autocomplete-r123': true,
                 flex: true,
-                'flex-align-center': true
+                'flex-align-center': true,
+                [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
             })}
         >
             <SpinComponent
@@ -102,7 +104,7 @@ const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterfac
                 customizeFilter
                 onChange={onChangeValue}
                 onSearch={searchKeyword}
-                placeholder="Cari berdasarkan lokasi, area sekitar, nama property, nama project, atau nama developer"
+                placeholder={placeholder}
             >
                 {optionList.map((item) => {
                     const urlImage = `https://public.urbanindo.com/style-guide/r123-${item.type}-icon.svg`;
@@ -188,7 +190,8 @@ AutoCompleteR123Component.propTypes = {
             )
         })
     ).isRequired as Validator<AutocompleteR123ValueInterface[]>,
-    // onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     asyncService: PropTypes.func.isRequired
 };
 
