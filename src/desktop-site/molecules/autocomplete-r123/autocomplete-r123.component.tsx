@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useState, Validator, FunctionComponent } from 'react';
 
+import StringHelper from '../../../shared/helper/string.helper';
+import IconComponent from '../../../common/atomic/icon/icon.component';
+import SpinComponent from '../../../common/atomic/spin/spin.component';
+import TextComponent from '../../../common/atomic/text/text.component';
+import ImageComponent from '../../../common/atomic/image/image.component';
 import MultipleSelectionComponent from '../../../common/molecules/multiple-selection/multiple-selection.component';
 import {
     AutocompleteR123PropsInterface,
@@ -11,11 +16,6 @@ import {
     MultipleSelectionSearchParamType,
     MultipleSelectionActionResponseType
 } from '../../../common/molecules/multiple-selection/interface/component.interface';
-import TextComponent from '../../../common/atomic/text/text.component';
-import ImageComponent from '../../../common/atomic/image/image.component';
-import StringHelper from '../../../shared/helper/string.helper';
-import IconComponent from '../../../common/atomic/icon/icon.component';
-import SpinComponent from '../../../common/atomic/spin/spin.component';
 
 /**
  * Generate Class
@@ -25,6 +25,7 @@ import SpinComponent from '../../../common/atomic/spin/spin.component';
  */
 const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterface> = ({
     value,
+    onChange,
     asyncService
 }) => {
     const [searchText, setSearchText] = useState<string>('');
@@ -66,7 +67,10 @@ const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterfac
         query,
         object
     }: MultipleSelectionActionResponseType): void => {
-        console.error(query, object);
+        onChange({
+            query,
+            object: object as AutocompleteR123ValueInterface[]
+        });
     };
 
     return (

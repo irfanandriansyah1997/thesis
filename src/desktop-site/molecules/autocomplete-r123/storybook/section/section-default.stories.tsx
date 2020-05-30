@@ -2,14 +2,15 @@
 import React, { ReactNode } from 'react';
 
 import AutoCompleteR123Component from '../../autocomplete-r123.component';
+import ColorDefaultConstant from '../../../../../shared/constant/color.constant';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 import {
     AutocompleteR123ValueInterface,
+    AutocompleteR123OnChangeValueType,
     AutocompleteR123ResponseItemInterface
 } from '../../interface/component.interface';
-import ColorDefaultConstant from '../../../../../shared/constant/color.constant';
 
 /**
  * Section Default Multiple Selection
@@ -29,6 +30,7 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
         };
 
         this.onLoadData = this.onLoadData.bind(this);
+        this.onChangeValue = this.onChangeValue.bind(this);
     }
 
     /**
@@ -273,8 +275,15 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
         );
     }
 
+    /**
+     * On Change
+     */
+    public onChangeValue({ object }: AutocompleteR123OnChangeValueType): void {
+        this.setState({ option: object });
+    }
+
     render(): ReactNode {
-        const { onLoadData } = this;
+        const { onLoadData, onChangeValue } = this;
         const { option } = this.state;
 
         return (
@@ -294,7 +303,7 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                         }}
                     >
                         <AutoCompleteR123Component
-                            onChange={(param): void => console.error(param)}
+                            onChange={onChangeValue}
                             value={option as AutocompleteR123ValueInterface[]}
                             asyncService={onLoadData}
                         />

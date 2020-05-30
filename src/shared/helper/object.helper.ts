@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
 
 /**
@@ -64,6 +65,19 @@ class ObjectHelper extends LogHelperAbstract {
         }
 
         return [...list, objectItem];
+    }
+
+    /**
+     * Remive Last Item Array
+     * @param {any[]} arrayList - array list
+     * @return {any[]}
+     */
+    static removeLastItemArray(arrayList: any[]): any[] {
+        if (arrayList.length > 1) {
+            return arrayList.splice(-1, 1);
+        }
+
+        return [];
     }
 }
 

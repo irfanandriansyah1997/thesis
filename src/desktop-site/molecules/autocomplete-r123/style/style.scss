@@ -43,7 +43,9 @@
         }
 
         &__content {
+            left: -50px;
             max-height: 230px;
+            width: calc(100% + 50px);
         }
     }
 

@@ -50,6 +50,7 @@ export interface MultipleSelectionContextInterface {
     textValue: string;
     showDropdownContent: boolean;
     positionDropdownContent: number;
+    onEditTextBackSpaceKeyDown: () => void;
     onEditTextFocus: (show: boolean) => void;
     onEditTextChange: (value: string) => void;
     value: MultipleSelectionItemValueInterface[];

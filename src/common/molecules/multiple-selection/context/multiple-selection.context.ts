@@ -17,6 +17,7 @@ const MultiSelectionContext = createContext<MultipleSelectionContextInterface>({
     onChangeSearch: (): void => {},
     onEditTextFocus: (): void => {},
     onEditTextChange: (): void => {},
+    onEditTextBackSpaceKeyDown: (): void => {},
     onChangePositionDropdownContent: (): void => {}
 });
 

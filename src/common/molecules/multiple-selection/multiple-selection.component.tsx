@@ -75,6 +75,21 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
         if (!showDropdownContent) {
             setPositionDropdownContent(-1);
         }
+
+        if (
+            !showDropdownContent &&
+            dropdownContent.current &&
+            dropdownContent.current.getElementsByClassName(
+                contentDropdownClassName
+            ).length > 0
+        ) {
+            dropdownContent.current
+                .getElementsByClassName(contentDropdownClassName)[0]
+                .scrollBy({
+                    top: -1000000,
+                    behavior: 'smooth'
+                });
+        }
     }, [showDropdownContent]);
 
     useEffect(() => {
@@ -116,10 +131,6 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
 
         setTextValue('');
         setShowDropdownContent(false);
-
-        if (input.current) {
-            input.current.focus();
-        }
     };
 
     /**
@@ -224,6 +235,12 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
         positionDropdownContent,
         fontSize: fontSize || 18,
         onChangePositionDropdownContent,
+        onEditTextBackSpaceKeyDown: (): void => {
+            onChange({
+                query: '',
+                object: ObjectHelper.removeLastItemArray(value)
+            });
+        },
         onEditTextChange: (param): void => {
             setTextValue(param);
             setShowDropdownContent(true);

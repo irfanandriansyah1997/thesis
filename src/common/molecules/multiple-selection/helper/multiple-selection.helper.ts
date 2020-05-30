@@ -49,7 +49,11 @@ class MultipleSelectionHelper {
                         value
                     );
 
-                    if (notExist) {
+                    if (customizeFilter) {
+                        return true;
+                    }
+
+                    if (notExist && !customizeFilter) {
                         return true;
                     }
                 }

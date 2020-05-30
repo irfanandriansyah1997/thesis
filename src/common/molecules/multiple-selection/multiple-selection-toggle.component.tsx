@@ -52,6 +52,7 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
         onEditTextFocus,
         onEditTextChange,
         optionListActive,
+        onEditTextBackSpaceKeyDown,
         onChangePositionDropdownContent
     } = useContext<MultipleSelectionContextInterface>(MultiSelectionContext);
     const [width, setWidth] = useState<number | undefined>(undefined);
@@ -103,8 +104,8 @@ const Component: FunctionComponent<MultipleSelectionTogglePropsInterface> = ({
      * @return {void}
      */
     const onInputKeydown = (event: KeyboardEvent<HTMLInputElement>): void => {
-        if (event.keyCode === BACKSPACE_KEY_CHARCODE) {
-            onEditTextFocus(true);
+        if (event.keyCode === BACKSPACE_KEY_CHARCODE && textValue === '') {
+            onEditTextBackSpaceKeyDown();
         }
 
         if (event.keyCode === ARROW_UP_KEY_CHARCODE) {

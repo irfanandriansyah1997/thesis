@@ -4,7 +4,6 @@ import React, { FunctionComponent, Validator, useContext } from 'react';
 import DropdownComponent from '../dropdown/dropdown.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import MultiSelectionContext from './context/multiple-selection.context';
-import MultipleSelectionHelper from './helper/multiple-selection.helper';
 import MultipleSelectionHeadingComponent from './multiple-selection-heading.component';
 import {
     MultipleSelectionContentInterface,
@@ -24,7 +23,7 @@ import {
 const MultipleSelectionContentComponent: FunctionComponent<MultipleSelectionContentInterface> = ({
     list
 }) => {
-    const { onChangeSearch, positionDropdownContent, value } = useContext<
+    const { onChangeSearch, positionDropdownContent } = useContext<
         MultipleSelectionContextInterface
     >(MultiSelectionContext);
 
@@ -70,51 +69,42 @@ const MultipleSelectionContentComponent: FunctionComponent<MultipleSelectionCont
                     );
                 }
 
-                const isNotExistInValue = MultipleSelectionHelper.filterItemIsAvailableInActive(
-                    content as MultipleSelectionItemPropsInterface,
-                    value
-                );
+                const {
+                    id,
+                    label,
+                    others,
+                    position,
+                    children,
+                    ...res
+                } = content as MultipleSelectionItemPropsInterface;
+                const isActive = positionDropdownContent === position;
+                const param = {
+                    label,
+                    others,
+                    value: res.value
+                };
 
-                if (isNotExistInValue) {
-                    const {
-                        id,
-                        label,
-                        others,
-                        position,
-                        children,
-                        ...res
-                    } = content as MultipleSelectionItemPropsInterface;
-                    const isActive = positionDropdownContent === position;
-                    const param = {
-                        label,
-                        others,
-                        value: res.value
-                    };
-
-                    return (
-                        <DropdownComponent.Item
-                            className={StringHelper.objToString({
-                                'ui-molecules-multiple-selection__item': true,
-                                'ui-molecules-multiple-selection__item--active': isActive
-                            })}
-                            key={id}
-                            disableHover
-                            withoutPadding
+                return (
+                    <DropdownComponent.Item
+                        className={StringHelper.objToString({
+                            'ui-molecules-multiple-selection__item': true,
+                            'ui-molecules-multiple-selection__item--active': isActive
+                        })}
+                        key={id}
+                        disableHover
+                        withoutPadding
+                    >
+                        <div
+                            tabIndex={0}
+                            role="button"
+                            onKeyPress={undefined}
+                            onClick={(): void => onClickItemOption(param)}
+                            className="ui-molecules-multiple-selection__item-content"
                         >
-                            <div
-                                tabIndex={0}
-                                role="button"
-                                onKeyPress={undefined}
-                                onClick={(): void => onClickItemOption(param)}
-                                className="ui-molecules-multiple-selection__item-content"
-                            >
-                                {children}
-                            </div>
-                        </DropdownComponent.Item>
-                    );
-                }
-
-                return isNotExistInValue;
+                            {children}
+                        </div>
+                    </DropdownComponent.Item>
+                );
             })}
         </>
     );
