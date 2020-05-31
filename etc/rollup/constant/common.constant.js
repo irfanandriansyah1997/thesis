@@ -8,6 +8,7 @@ export default [
         './src/common/atomic/button/button.component.tsx',
         './src/common/atomic/card/card.component.tsx',
         './src/common/atomic/dialog/dialog.component.tsx',
+        './src/common/atomic/edit-text/edit-text.component.tsx',
         './src/common/atomic/grid/grid.component.tsx',
         './src/common/atomic/icon/icon.component.tsx',
         './src/common/atomic/image/image.component.tsx',
@@ -15,8 +16,7 @@ export default [
         './src/common/atomic/link/link.component.tsx',
         './src/common/atomic/spin/spin.component.tsx',
         './src/common/atomic/sticky/sticky.component.tsx',
-        './src/common/atomic/text/text.component.tsx',
-        './src/common/atomic/edit-text/edit-text.component.tsx'
+        './src/common/atomic/text/text.component.tsx'
     ],
     /**
      * Molecules
@@ -29,6 +29,7 @@ export default [
         './src/common/molecules/expand-text/expand-text.component.tsx',
         './src/common/molecules/hollow-link/hollow-link.component.tsx',
         './src/common/molecules/list/list.component.tsx',
+        './src/common/molecules/multiple-selection/multiple-selection.component.tsx',
         './src/common/molecules/navbar/navbar.component.tsx',
         './src/common/molecules/pagination-r123/pagination-r123.component.tsx',
         './src/common/molecules/radio-button/radio-button.component.tsx',
