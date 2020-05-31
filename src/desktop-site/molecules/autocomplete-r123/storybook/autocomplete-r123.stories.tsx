@@ -9,7 +9,7 @@ import '../style/style.scss';
     new StorybookDocumentationBuilder('Autocomplete R123', 'molecules')
         .setSection('desktop')
         .setDescriptionComponent(
-            'Multiple selection component to select multiple value from options.'
+            'Component that finishes what is being typed by comparing the current text with previously entered text'
         )
         .registerDocumentation(
             <>

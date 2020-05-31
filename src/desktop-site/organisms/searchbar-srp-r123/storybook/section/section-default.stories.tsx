@@ -7,11 +7,32 @@ import TextDocsComponent from '../../../../../.storybook/component/atomic/text/t
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import { AutocompleteR123ValueInterface } from '../../../../molecules/autocomplete-r123/interface/component.interface';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
+import SectionDefaultAutocompleteR123Component from '../../../../molecules/autocomplete-r123/storybook/section/section-default.stories';
 import {
     SearchBarSRPR123PropertyType,
     SearchBarSRPR123OnChangeValueType
 } from '../../interface/component.interface';
-import SectionDefaultAutocompleteR123Component from '../../../../molecules/autocomplete-r123/storybook/section/section-default.stories';
+
+/**
+ * Generate Docs
+ */
+const docs = (): string =>
+    `<SearchbarSRPR123Component \n` +
+    `    onChange={onChangeValue} \n` +
+    `    value={option as AutocompleteR123ValueInterface[]} \n` +
+    `    propertyType={ \n` +
+    `        propertyType as SearchBarSRPR123PropertyType \n` +
+    `    } \n` +
+    `    asyncService={ \n` +
+    `        SectionDefaultAutocompleteR123Component.onLoadData \n` +
+    `    } \n` +
+    `    placeholder="Cari berdasarkan lokasi, area sekitar, nama property, nama project, atau nama developer" \n` +
+    `    label={{ \n` +
+    `        rentLabel: 'Disewa', \n` +
+    `        saleLabel: 'Dijual', \n` +
+    `        searchLabel: 'Perbarui' \n` +
+    `    }} \n` +
+    `/>`;
 
 /**
  * Section Default Multiple Selection
@@ -51,9 +72,9 @@ class SectionDefaultSearchbarSRPR123Component extends React.PureComponent<
             <>
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
                 <TextDocsComponent>
-                    Basic usage Multiple Selection
+                    Basic usage search bar srp rumah123
                 </TextDocsComponent>
-                <CodingViewerDocsComponent sourceCode="">
+                <CodingViewerDocsComponent sourceCode={docs()}>
                     <div
                         style={{
                             margin: '-30px -20px',

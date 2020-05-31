@@ -13,6 +13,114 @@ import {
 } from '../../interface/component.interface';
 
 /**
+ * Generate Docs
+ */
+const docs = (): string =>
+    `<MultipleSelectionComponent\n` +
+    `    onChange={onChangeValue}\n` +
+    `    fontSize={14}\n` +
+    `    onSearch={(param): void => console.error(param)}\n` +
+    `    placeholder="Cari berdasarkan lokasi, area sekitar, nama property, nama project, atau nama developer"\n` +
+    `    value={(option as unknown) as MultipleSelectionItemValueInterface[]}\n` +
+    `>\n` +
+    `    <MultipleSelectionComponent.Heading id="saran">\n` +
+    `        <div className="flex flex-align-center">\n` +
+    `            <IconComponent color="heading" size={16}>\n` +
+    `                search\n` +
+    `            </IconComponent>\n` +
+    `            &nbsp;\n` +
+    `            <TextComponent\n` +
+    `                tag="p"\n` +
+    `                color="heading"\n` +
+    `                fontWeight={500}\n` +
+    `            >\n` +
+    `                Saran Pencarian\n` +
+    `            </TextComponent>\n` +
+    `        </div>\n` +
+    `    </MultipleSelectionComponent.Heading>\n` +
+    `    <MultipleSelectionComponent.Item\n` +
+    `        label="Cimahi, Jawa Barat"\n` +
+    `        id="f574128d9944326385f1aa7be08b8685"\n` +
+    `        value="f574128d9944326385f1aa7be08b8685"\n` +
+    `        others={{ id: '1' }}\n` +
+    `    >\n` +
+    `        <div className="flex flex-align-center">\n` +
+    `            <IconComponent size={16} color="text">\n` +
+    `                place\n` +
+    `            </IconComponent>\n` +
+    `            &nbsp;\n` +
+    `            <TextComponent\n` +
+    `                tag="p"\n` +
+    `                fontWeight={400}\n` +
+    `                color="text"\n` +
+    `            >\n` +
+    `                Cimahi, Jawa Barat\n` +
+    `            </TextComponent>\n` +
+    `        </div>\n` +
+    `    </MultipleSelectionComponent.Item>\n` +
+    `    <MultipleSelectionComponent.Item\n` +
+    `        id="167411a051e8f85e5949b8712d5b59fa"\n` +
+    `        label="Cimahi Selatan, Cimahi"\n` +
+    `        value="167411a051e8f85e5949b8712d5b59fa"\n` +
+    `        others={{ id: '2' }}\n` +
+    `    >\n` +
+    `        <div className="flex flex-align-center">\n` +
+    `            <IconComponent size={16} color="text">\n` +
+    `                place\n` +
+    `            </IconComponent>\n` +
+    `            &nbsp;\n` +
+    `            <TextComponent\n` +
+    `                tag="p"\n` +
+    `                fontWeight={400}\n` +
+    `                color="text"\n` +
+    `            >\n` +
+    `                Cimahi Selatan, Cimahi\n` +
+    `            </TextComponent>\n` +
+    `        </div>\n` +
+    `    </MultipleSelectionComponent.Item>\n` +
+    `    <MultipleSelectionComponent.Item\n` +
+    `        label="Cimahi Tengah, Cimahi"\n` +
+    `        id="b9addc94e54625e8eb6b1ed933b89233"\n` +
+    `        value="b9addc94e54625e8eb6b1ed933b89233"\n` +
+    `        others={{ id: '2' }}\n` +
+    `    >\n` +
+    `        <div className="flex flex-align-center">\n` +
+    `            <IconComponent size={16} color="text">\n` +
+    `                place\n` +
+    `            </IconComponent>\n` +
+    `            &nbsp;\n` +
+    `            <TextComponent\n` +
+    `                tag="p"\n` +
+    `                fontWeight={400}\n` +
+    `                color="text"\n` +
+    `            >\n` +
+    `                Cimahi Tengah, Cimahi\n` +
+    `            </TextComponent>\n` +
+    `        </div>\n` +
+    `    </MultipleSelectionComponent.Item>\n` +
+    `    <MultipleSelectionComponent.Item\n` +
+    `        id="f33fc7510f0d5ebfecbe278642ee00e1"\n` +
+    `        label="Cimahi Utara, Cimahi"\n` +
+    `        value="f33fc7510f0d5ebfecbe278642ee00e1"\n` +
+    `        others={{ id: '3' }}\n` +
+    `    >\n` +
+    `        <div className="flex flex-align-center">\n` +
+    `            <IconComponent size={16} color="text">\n` +
+    `                place\n` +
+    `            </IconComponent>\n` +
+    `            &nbsp;\n` +
+    `            <TextComponent\n` +
+    `                tag="p"\n` +
+    `                fontWeight={400}\n` +
+    `                color="text"\n` +
+    `            >\n` +
+    `                Cimahi Utara, Cimahi\n` +
+    `            </TextComponent>\n` +
+    `        </div>\n` +
+    `    </MultipleSelectionComponent.Item>\n` +
+    `</MultipleSelectionComponent>`;
+
+/**
  * Section Default Multiple Selection
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.15
@@ -48,7 +156,7 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                 <TextDocsComponent>
                     Basic usage Multiple Selection
                 </TextDocsComponent>
-                <CodingViewerDocsComponent sourceCode="">
+                <CodingViewerDocsComponent sourceCode={docs()}>
                     <MultipleSelectionComponent
                         onChange={onChangeValue}
                         fontSize={14}

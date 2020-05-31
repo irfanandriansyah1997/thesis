@@ -8,9 +8,7 @@ import '../style/style.scss';
 ((): void => {
     new StorybookDocumentationBuilder('Searchbar SRP R123', 'organism')
         .setSection('desktop')
-        .setDescriptionComponent(
-            'Multiple selection component to select multiple value from options.'
-        )
+        .setDescriptionComponent('Search bar compnent in search page rumah123')
         .registerDocumentation(
             <>
                 <SectionDefaultAutocompleteR123Component />

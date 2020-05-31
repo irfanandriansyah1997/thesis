@@ -13,6 +13,19 @@ import {
 } from '../../interface/component.interface';
 
 /**
+ * Generate Docs
+ */
+const docs = (): string =>
+    `<AutoCompleteR123Component\n` +
+    `    onChange={onChangeValue}\n` +
+    `    placeholder="Cari berdasarkan lokasi, area sekitar, nama property, nama project, atau nama developer"\n` +
+    `    value={option as AutocompleteR123ValueInterface[]}\n` +
+    `    asyncService={\n` +
+    `        SectionDefaultAutocompleteR123Component.onLoadData\n` +
+    `    }\n` +
+    `/>`;
+
+/**
  * Section Default Autocomplete R123 Selection
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.15
@@ -286,9 +299,9 @@ class SectionDefaultAutocompleteR123Component extends React.PureComponent<
             <>
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
                 <TextDocsComponent>
-                    Basic usage Multiple Selection
+                    Basic usage Autocomplete R123
                 </TextDocsComponent>
-                <CodingViewerDocsComponent sourceCode="">
+                <CodingViewerDocsComponent sourceCode={docs()}>
                     <div
                         style={{
                             margin: '-30px -20px',
