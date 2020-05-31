@@ -90,7 +90,9 @@ const ColorDefaultConstant = {
     basicCardHeadingR123: '#a5adb5',
     headingR123: '#333f48',
     editTextSecondary: '#f3f4f6',
-    addOnText: '#555'
+    addOnTextR123: '#555',
+    addOnBgR123: '#eee',
+    addOnBorderR123: '#ccc'
 } as const;
 
 export default ColorDefaultConstant;

@@ -25,10 +25,10 @@ const EditTextAddOnComponent: SFC<EditTextAddonInterface> = ({
     ...res
 }: EditTextAddonInterface) => {
     const classNameContainer: ComponentClassnameDefaultInterface = {
-        'ui-atomic-edit-text__addOnContainer': true,
+        'ui-atomic-edit-text__add-on-container': true,
         flex: true,
         relative: true,
-        [`ui-atomic-edit-text__addOnContainer--${position}`]: true,
+        [`ui-atomic-edit-text__add-on-container--${position}`]: true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
     };
 
@@ -37,12 +37,10 @@ const EditTextAddOnComponent: SFC<EditTextAddonInterface> = ({
             {children ? (
                 <span
                     className={StringHelper.objToString({
-                        [`ui-atomic-edit-text__addOn`]: true
+                        [`ui-atomic-edit-text__add-on`]: true
                     })}
                     style={{
-                        fontSize: ValidatorHelper.isNumber(fontSize)
-                            ? `${fontSize}px`
-                            : undefined,
+                        fontSize,
                         fontWeight,
                         color: ValidatorHelper.verifiedKeyIsExist(
                             ColorDefaultConstant,
@@ -63,7 +61,7 @@ const EditTextAddOnComponent: SFC<EditTextAddonInterface> = ({
 EditTextAddOnComponent.defaultProps = {
     fontSize: 13,
     fontWeight: 400,
-    color: 'addOnText',
+    color: 'addOnTextR123',
     position: 'left'
 };
 

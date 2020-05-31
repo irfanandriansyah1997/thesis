@@ -20,7 +20,6 @@ export type EditTextPropsInterface = Omit<
     'dangerouslySetInnerHTML' | 'children' | 'style' | 'type'
 > & {
     type?: EditTextType;
-    value?: string | number;
     name: string;
     styling?: EditTextStyle;
 };

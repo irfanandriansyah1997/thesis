@@ -9,7 +9,9 @@
         }
 
         &-secondary {
-            @include background-color(#f3f4f6);
+            @include background-color(
+                map-get($color-general, editTextSecondary)
+            );
         }
     }
 
@@ -24,17 +26,19 @@
 
         &:disabled {
             cursor: not-allowed;
-            @include background-color(#f3f4f6);
+            @include background-color(
+                map-get($color-general, editTextSecondary)
+            );
         }
     }
 
-    &__addOnContainer {
+    &__add-on-container {
         width: fit-content;
 
         &--right {
             flex-direction: row-reverse;
 
-            #{$c}__addOn {
+            #{$c}__add-on {
                 border-bottom-left-radius: 0;
                 border-top-left-radius: 0;
 
@@ -50,7 +54,7 @@
         &--left {
             flex-direction: row;
 
-            #{$c}__addOn {
+            #{$c}__add-on {
                 border-bottom-right-radius: 0;
                 border-top-right-radius: 0;
 
@@ -64,14 +68,14 @@
         }
     }
 
-    &__addOn {
-        border: 1px solid #ccc;
+    &__add-on {
+        border: 1px solid map-get($color-general, addOnBorderR123);
         border-radius: 4px;
         height: 40px;
         padding: 13px 0;
         text-align: center;
         width: 40px;
 
-        @include background-color(#eee);
+        @include background-color(map-get($color-general, addOnBgR123));
     }
 }

@@ -12,19 +12,19 @@ describe('Testing edit text component', () => {
                 position="right"
                 fontWeight={400}
                 fontSize={13}
-                color="addOnText"
+                color="addOnTextR123"
                 className="component-test"
             >
                 %
             </EditTextComponent.Addon>
         );
 
-        expect(editText.hasClass('ui-atomic-edit-text__addOnContainer')).toBe(
+        expect(editText.hasClass('ui-atomic-edit-text__add-on-container')).toBe(
             true
         );
         expect(editText.hasClass('ui-atomic-edit-text')).toBe(false);
         expect(
-            editText.hasClass('ui-atomic-edit-text__addOnContainer--right')
+            editText.hasClass('ui-atomic-edit-text__add-on-container--right')
         ).toBe(true);
     });
 
@@ -39,12 +39,12 @@ describe('Testing edit text component', () => {
         );
         const span = editText.find('span');
         expect(span.length).toBe(1);
-        expect(span.hasClass('ui-atomic-edit-text__addOn')).toBe(true);
-        expect(span.prop('style')).toHaveProperty('fontSize', '13px');
+        expect(span.hasClass('ui-atomic-edit-text__add-on')).toBe(true);
+        expect(span.prop('style')).toHaveProperty('fontSize', 13);
         expect(span.prop('style')).toHaveProperty('fontWeight', 400);
         expect(span.prop('style')).toHaveProperty(
             'color',
-            ColorDefaultConstant.addOnText
+            ColorDefaultConstant.addOnTextR123
         );
         expect(span.text()).toContain('Rp');
     });

@@ -10,7 +10,7 @@ describe('Testing edit text component', () => {
         );
 
         expect(editText.hasClass('ui-atomic-edit-text')).toBe(true);
-        expect(editText.hasClass('ui-atomic-edit-text__addOnContainer')).toBe(
+        expect(editText.hasClass('ui-atomic-edit-text__add-on-container')).toBe(
             false
         );
         expect(editText.hasClass('component-test')).toBe(true);

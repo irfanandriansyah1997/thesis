@@ -17,7 +17,6 @@ import EditTextAddonComponent from './edit-text-addon.component';
  */
 const EditTextComponent: EditTextDefaultExportInterface = ({
     className,
-    value,
     styling,
     ...res
 }) => {
@@ -33,7 +32,6 @@ const EditTextComponent: EditTextDefaultExportInterface = ({
                     [`ui-atomic-edit-text__input`]: true,
                     [`ui-atomic-edit-text--styling-${styling}`]: true
                 })}
-                value={value}
                 {...res}
             />
         </div>
@@ -43,7 +41,6 @@ const EditTextComponent: EditTextDefaultExportInterface = ({
 EditTextComponent.defaultProps = {
     className: undefined,
     type: 'text',
-    value: '',
     styling: 'primary'
 };
 
@@ -55,7 +52,6 @@ EditTextComponent.propTypes = {
         'password',
         'email'
     ]),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string.isRequired,
     styling: PropTypes.oneOf<EditTextStyle>(['primary', 'secondary'])
 };
