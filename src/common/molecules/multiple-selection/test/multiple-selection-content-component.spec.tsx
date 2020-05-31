@@ -2,6 +2,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
+import DropdownComponent from '../../dropdown/dropdown.component';
 import MultiSelectionContext from '../context/multiple-selection.context';
 import { FixtureMultipleSelectionContext } from './fixture-multiple-selection.spec';
 import MultipleSelectionContentComponent from '../multiple-selection-content.component';
@@ -9,7 +10,6 @@ import {
     MultipleSelectionContextInterface,
     MultipleSelectionContentItemInterface
 } from '../interface/component.interface';
-import DropdownComponent from '../../dropdown/dropdown.component';
 
 const MOCK_MULTIPLE_OPTION: MultipleSelectionContentItemInterface[] = [
     {

@@ -8,10 +8,10 @@ import {
     MultipleSelectionActionResponseType
 } from '../interface/component.interface';
 import {
-    BACKSPACE_KEY_CHARCODE,
-    ARROW_DOWN_KEY_CHARCODE,
+    ENTER_KEY_CHARCODE,
     ARROW_UP_KEY_CHARCODE,
-    ENTER_KEY_CHARCODE
+    BACKSPACE_KEY_CHARCODE,
+    ARROW_DOWN_KEY_CHARCODE
 } from '../../../../shared/constant/keyboard.constant';
 
 const MOCK_MULTIPLE_OPTION: MultipleSelectionItemPropsInterface[] = [

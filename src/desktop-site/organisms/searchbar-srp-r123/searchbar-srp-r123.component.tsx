@@ -1,17 +1,21 @@
-import React, { FunctionComponent, useState } from 'react';
+import PropTypes from 'prop-types';
+import React, { FunctionComponent, useState, Validator } from 'react';
 
+import StringHelper from '../../../shared/helper/string.helper';
+import TextComponent from '../../../common/atomic/text/text.component';
+import ButtonComponent from '../../../common/atomic/button/button.component';
+import AutoCompleteR123Component from '../../molecules/autocomplete-r123/autocomplete-r123.component';
 import {
+    SearchBarSRPR123PropertyType,
+    SearchbarSRPR123LabelInterface,
     SearchbarSRPR123PropsInterface,
     SearchbarSRPR123ButtonInterface
 } from './interface/component.interface';
-import StringHelper from '../../../shared/helper/string.helper';
-import TextComponent from '../../../common/atomic/text/text.component';
-import AutoCompleteR123Component from '../../molecules/autocomplete-r123/autocomplete-r123.component';
 import {
+    AutocompleteR123ValueInterface,
     AutocompleteR123OnChangeValueType,
     AutocompleteR123ResponseItemInterface
 } from '../../molecules/autocomplete-r123/interface/component.interface';
-import ButtonComponent from '../../../common/atomic/button/button.component';
 
 /**
  * Search Bar SRP R123 Component
@@ -141,6 +145,69 @@ const SearchbarSRPR123Component: FunctionComponent<SearchbarSRPR123PropsInterfac
             </div>
         </div>
     );
+};
+
+SearchbarSRPR123Component.propTypes = {
+    value: PropTypes.arrayOf(
+        PropTypes.shape({
+            query: PropTypes.string,
+            object: PropTypes.arrayOf(
+                PropTypes.shape({
+                    value: PropTypes.string,
+                    label: PropTypes.string,
+                    others: PropTypes.shape({
+                        id: PropTypes.string,
+                        type: PropTypes.oneOf([
+                            'location',
+                            'listing',
+                            'history'
+                        ]),
+                        title: PropTypes.string,
+                        label: PropTypes.string,
+                        subtitle: PropTypes.string,
+                        multilanguagePlace: PropTypes.shape({
+                            en: PropTypes.shape({
+                                level1: PropTypes.string,
+                                level2: PropTypes.string,
+                                level3: PropTypes.string,
+                                level4: PropTypes.string,
+                                level5: PropTypes.string
+                            }),
+                            id: PropTypes.shape({
+                                level1: PropTypes.string,
+                                level2: PropTypes.string,
+                                level3: PropTypes.string,
+                                level4: PropTypes.string,
+                                level5: PropTypes.string
+                            })
+                        }),
+                        additionalInfo: PropTypes.shape({})
+                    })
+                })
+            )
+        })
+    ).isRequired as Validator<AutocompleteR123ValueInterface[]>,
+    placeholder: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    asyncService: PropTypes.func.isRequired,
+    propertyType: PropTypes.oneOf(['sale', 'rent']).isRequired as Validator<
+        SearchBarSRPR123PropertyType
+    >,
+    label: PropTypes.shape({
+        saleLabel: PropTypes.string,
+        rentLabel: PropTypes.string,
+        searchLabel: PropTypes.string
+    }).isRequired as Validator<SearchbarSRPR123LabelInterface>
+};
+
+SearchbarSRPR123Component.defaultProps = {
+    value: [],
+    propertyType: 'sale',
+    label: {
+        rentLabel: 'Disewa',
+        saleLabel: 'Dijual',
+        searchLabel: 'Perbarui'
+    }
 };
 
 export default SearchbarSRPR123Component;

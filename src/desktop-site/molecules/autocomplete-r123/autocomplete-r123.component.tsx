@@ -51,7 +51,7 @@ const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterfac
 
         setDelay(
             (setTimeout(() => {
-                asyncService(query || '').then((item) => {
+                asyncService(query as string).then((item) => {
                     setOptionList(item || []);
 
                     setLoading(false);
