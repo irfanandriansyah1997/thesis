@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import PropTypes from 'prop-types';
 import React, {
@@ -164,7 +165,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                     role="button"
                     onKeyPress={undefined}
                     onClick={onClickToggle}
-                    onFocus={(): void => undefined}
+                    onFocus={(): void => {}}
                     onMouseOver={(): void => onMouseOverToggle()}
                     className={StringHelper.objToString(classNameLabel)}
                 >
@@ -204,13 +205,16 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                         {React.Children.toArray(res.children).filter(
                             (o: any) => {
                                 return (
-                                    o.type.displayName ===
+                                    ValidatorHelper.verifiedIsNotEmpty(
+                                        o.type.displayName
+                                    ) &&
+                                    (o.type.displayName ===
                                         'DropdownItemComponent' ||
-                                    o.type.displayName.includes(
-                                        'DropdownContentComponent'
-                                    ) ||
-                                    o.type.displayName ===
-                                        'DropdownDividerComponent'
+                                        o.type.displayName.includes(
+                                            'DropdownContentComponent'
+                                        ) ||
+                                        o.type.displayName ===
+                                            'DropdownDividerComponent')
                                 );
                             }
                         )}

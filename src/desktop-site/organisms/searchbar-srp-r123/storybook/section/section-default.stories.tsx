@@ -35,7 +35,11 @@ class SectionDefaultSearchbarSRPR123Component extends React.PureComponent<
     /**
      * On Change
      */
-    public onChangeValue({ object }: SearchBarSRPR123OnChangeValueType): void {
+    public onChangeValue({
+        object,
+        ...res
+    }: SearchBarSRPR123OnChangeValueType): void {
+        console.error(res, object);
         this.setState({ option: object });
     }
 

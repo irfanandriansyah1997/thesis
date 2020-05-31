@@ -81,7 +81,10 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
             dropdownContent.current &&
             dropdownContent.current.getElementsByClassName(
                 contentDropdownClassName
-            ).length > 0
+            ).length > 0 &&
+            dropdownContent.current.getElementsByClassName(
+                contentDropdownClassName
+            )[0].scrollBy !== undefined
         ) {
             dropdownContent.current
                 .getElementsByClassName(contentDropdownClassName)[0]
@@ -180,7 +183,10 @@ const MultipleSelectionComponent: MultipleSelectionDefaultExportInterface = ({
                 dropdownContent.current.getElementsByClassName(
                     contentDropdownClassName
                 ).length > 0 &&
-                positionDropdownContent > 0
+                positionDropdownContent > 0 &&
+                dropdownContent.current.getElementsByClassName(
+                    contentDropdownClassName
+                )[0].scrollBy !== undefined
             ) {
                 const component = dropdownContent.current.getElementsByClassName(
                     contentDropdownClassName

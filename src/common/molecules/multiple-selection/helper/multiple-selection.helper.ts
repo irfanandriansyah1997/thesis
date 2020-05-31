@@ -154,9 +154,7 @@ class MultipleSelectionHelper {
      * @return {MultipleSelectionItemPropsInterface | undefined}
      */
     static filterItemIsAvailableInActive(
-        currentList:
-            | MultipleSelectionItemPropsInterface
-            | MultipleSelectionItemPropsInterface,
+        currentList: MultipleSelectionItemPropsInterface,
         currentValue: MultipleSelectionItemValueInterface[]
     ): MultipleSelectionItemPropsInterface | null {
         const isExist =

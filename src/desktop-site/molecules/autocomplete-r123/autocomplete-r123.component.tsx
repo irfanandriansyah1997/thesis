@@ -111,6 +111,7 @@ const AutoCompleteR123Component: FunctionComponent<AutocompleteR123PropsInterfac
 
                     return (
                         <MultipleSelectionComponent.Item
+                            others={item}
                             id={item.id}
                             key={item.id}
                             value={item.id}

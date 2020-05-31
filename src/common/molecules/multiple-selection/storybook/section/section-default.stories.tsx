@@ -4,8 +4,6 @@ import React, { ReactNode } from 'react';
 import TextComponent from '../../../../atomic/text/text.component';
 import IconComponent from '../../../../atomic/icon/icon.component';
 import MultipleSelectionComponent from '../../multiple-selection.component';
-import MultipleSelectionItemComponent from '../../multiple-selection-item.component';
-import MultipleSelectionHeadingComponent from '../../multiple-selection-heading.component';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
@@ -60,7 +58,7 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                             (option as unknown) as MultipleSelectionItemValueInterface[]
                         }
                     >
-                        <MultipleSelectionHeadingComponent id="saran">
+                        <MultipleSelectionComponent.Heading id="saran">
                             <div className="flex flex-align-center">
                                 <IconComponent color="heading" size={16}>
                                     search
@@ -74,8 +72,8 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                                     Saran Pencarian
                                 </TextComponent>
                             </div>
-                        </MultipleSelectionHeadingComponent>
-                        <MultipleSelectionItemComponent
+                        </MultipleSelectionComponent.Heading>
+                        <MultipleSelectionComponent.Item
                             label="Cimahi, Jawa Barat"
                             id="f574128d9944326385f1aa7be08b8685"
                             value="f574128d9944326385f1aa7be08b8685"
@@ -96,8 +94,8 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                                     Cimahi, Jawa Barat
                                 </TextComponent>
                             </div>
-                        </MultipleSelectionItemComponent>
-                        <MultipleSelectionItemComponent
+                        </MultipleSelectionComponent.Item>
+                        <MultipleSelectionComponent.Item
                             id="167411a051e8f85e5949b8712d5b59fa"
                             label="Cimahi Selatan, Cimahi"
                             value="167411a051e8f85e5949b8712d5b59fa"
@@ -118,8 +116,8 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                                     Cimahi Selatan, Cimahi
                                 </TextComponent>
                             </div>
-                        </MultipleSelectionItemComponent>
-                        <MultipleSelectionItemComponent
+                        </MultipleSelectionComponent.Item>
+                        <MultipleSelectionComponent.Item
                             label="Cimahi Tengah, Cimahi"
                             id="b9addc94e54625e8eb6b1ed933b89233"
                             value="b9addc94e54625e8eb6b1ed933b89233"
@@ -140,8 +138,8 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                                     Cimahi Tengah, Cimahi
                                 </TextComponent>
                             </div>
-                        </MultipleSelectionItemComponent>
-                        <MultipleSelectionItemComponent
+                        </MultipleSelectionComponent.Item>
+                        <MultipleSelectionComponent.Item
                             id="f33fc7510f0d5ebfecbe278642ee00e1"
                             label="Cimahi Utara, Cimahi"
                             value="f33fc7510f0d5ebfecbe278642ee00e1"
@@ -162,7 +160,7 @@ class SectionDefaultMultipleSelectionComponent extends React.PureComponent<
                                     Cimahi Utara, Cimahi
                                 </TextComponent>
                             </div>
-                        </MultipleSelectionItemComponent>
+                        </MultipleSelectionComponent.Item>
                     </MultipleSelectionComponent>
                 </CodingViewerDocsComponent>
             </>

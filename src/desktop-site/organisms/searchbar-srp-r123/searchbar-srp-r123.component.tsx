@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import {
     SearchbarSRPR123PropsInterface,
@@ -7,7 +7,10 @@ import {
 import StringHelper from '../../../shared/helper/string.helper';
 import TextComponent from '../../../common/atomic/text/text.component';
 import AutoCompleteR123Component from '../../molecules/autocomplete-r123/autocomplete-r123.component';
-import { AutocompleteR123OnChangeValueType } from '../../molecules/autocomplete-r123/interface/component.interface';
+import {
+    AutocompleteR123OnChangeValueType,
+    AutocompleteR123ResponseItemInterface
+} from '../../molecules/autocomplete-r123/interface/component.interface';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 
 /**
@@ -23,6 +26,7 @@ const SearchbarSRPR123Component: FunctionComponent<SearchbarSRPR123PropsInterfac
     asyncService,
     propertyType
 }) => {
+    const [textValue, setTextValue] = useState<string>('');
     /**
      * On Change Value
      * @param {AutocompleteR123OnChangeValueType} param - onchange value autocomplete
@@ -45,10 +49,22 @@ const SearchbarSRPR123Component: FunctionComponent<SearchbarSRPR123PropsInterfac
      */
     const onClickSearchButton = (): void => {
         onChange({
-            query: undefined,
+            propertyType,
             object: value,
-            propertyType
+            query: value.length === 0 ? textValue : undefined
         });
+    };
+
+    /**
+     * On Search Keyword
+     * @param {string} keyword - keyword search bar
+     * @return {Promise<AutocompleteR123ResponseItemInterface[]>}
+     */
+    const onSearchKeyword = (
+        keyword: string
+    ): Promise<AutocompleteR123ResponseItemInterface[]> => {
+        setTextValue(keyword);
+        return asyncService(keyword);
     };
 
     const buttonList: SearchbarSRPR123ButtonInterface[] = [
@@ -89,7 +105,7 @@ const SearchbarSRPR123Component: FunctionComponent<SearchbarSRPR123PropsInterfac
                 value={value}
                 onChange={onChangeValue}
                 placeholder={placeholder}
-                asyncService={asyncService}
+                asyncService={onSearchKeyword}
                 className="ui-organism-search-srp-r123__autocomplete"
             />
             <ButtonComponent

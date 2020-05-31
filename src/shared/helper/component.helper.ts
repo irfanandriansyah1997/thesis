@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import StringHelper from './string.helper';
 import ValidatorHelper from './validator.helper';
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
@@ -7,6 +9,8 @@ import {
     RangeSliderEventHandler,
     RangeSliderValueInterface
 } from '../../common/molecules/range-slider/interface/component.interface';
+
+const { createCanvas } = require('canvas');
 
 /**
  * Component Helper
@@ -127,7 +131,7 @@ class ComponentHelper extends LogHelperAbstract {
      * @param {string} font - font attribute like font-family font-size
      */
     static getWidthFromText(text: string, font: string): number {
-        const canvas = document.createElement('canvas');
+        const canvas = createCanvas(200, 200);
         const context = canvas.getContext('2d');
         if (context) {
             context.font = font;
