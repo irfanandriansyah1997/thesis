@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 import { ListingInquiryOrgPropsInterface } from './interface/component.interface';
 import TextComponent from '../../../common/atomic/text/text.component';
 import LinkComponent from '../../../common/atomic/link/link.component';
@@ -28,7 +29,7 @@ const ListingInquiryR123OrgComponent: FunctionComponent<ListingInquiryOrgPropsIn
                 </TextComponent>
                 <ImageComponent
                     src={imgUrl}
-                    alt="Images 1"
+                    alt="organization-image"
                     type="circle"
                     width={50}
                     height={50}
@@ -39,8 +40,16 @@ const ListingInquiryR123OrgComponent: FunctionComponent<ListingInquiryOrgPropsIn
     );
 };
 
+ListingInquiryR123OrgComponent.propTypes = {
+    organizationName: PropTypes.string,
+    organizationImageUrl: PropTypes.string,
+    organizationPageUrl: PropTypes.string
+};
+
 ListingInquiryR123OrgComponent.defaultProps = {
-    organizationImageUrl: ''
+    organizationName: '',
+    organizationImageUrl: '',
+    organizationPageUrl: ''
 };
 
 export default ListingInquiryR123OrgComponent;

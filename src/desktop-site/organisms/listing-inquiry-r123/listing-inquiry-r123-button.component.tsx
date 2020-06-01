@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import { ListingInquiryButtonPropsInterface } from './interface/component.interface';
 
@@ -18,12 +19,22 @@ const ListingInquiryButtonComponent: FunctionComponent<ListingInquiryButtonProps
                 size="big"
                 theme="danger"
                 icon={buttonIcon}
-                onClick={(event): void => onClickInquiryButton(event)}
+                onClick={onClickInquiryButton}
             >
                 {buttonText}
             </ButtonComponent>
         </div>
     );
+};
+
+ListingInquiryButtonComponent.propTypes = {
+    buttonText: PropTypes.string.isRequired,
+    buttonIcon: PropTypes.string,
+    onClickInquiryButton: PropTypes.func.isRequired
+};
+
+ListingInquiryButtonComponent.defaultProps = {
+    buttonIcon: ''
 };
 
 export default ListingInquiryButtonComponent;

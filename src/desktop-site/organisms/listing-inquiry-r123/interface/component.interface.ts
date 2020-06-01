@@ -66,7 +66,7 @@ export interface ListingInquiryMsgPropsInterface {
  */
 export interface ListingInquirySidebarPropsInterface {
     agent: ListingInquiryAgentPropsInterface;
-    organization: ListingInquiryOrgPropsInterface;
+    organization?: ListingInquiryOrgPropsInterface;
     contact: ListingInquiryContactPropsInterface;
     inquiryButton: ListingInquiryButtonPropsInterface;
 }

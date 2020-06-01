@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, Validator } from 'react';
+import PropTypes from 'prop-types';
 import { ListingInquiryContactPropsInterface } from './interface/component.interface';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import IconComponent from '../../../common/atomic/icon/icon.component';
@@ -22,26 +23,38 @@ const ListingInquiryR123ContactComponent: FunctionComponent<ListingInquiryContac
             rui-icon-whatsapp
         </IconComponent>
     );
-    const phone = phoneNumbers[0];
+    const [phone] = phoneNumbers;
     return (
         <div className="ui-organism-listing-inquiry-r123__inquiry-buttons">
             <ButtonComponent
                 size="big"
                 theme="secondary"
-                onClick={(event): void => onClickPhoneButton(event)}
+                onClick={onClickPhoneButton}
             >
                 {phone}
             </ButtonComponent>
             <ButtonComponent
                 size="big"
                 theme="secondary"
-                onClick={(event): void => onClickWhatsAppButton(event)}
+                onClick={onClickWhatsAppButton}
                 icon={<Icon />}
             >
                 WhatsApp
             </ButtonComponent>
         </div>
     );
+};
+
+ListingInquiryR123ContactComponent.propTypes = {
+    phoneNumbers: PropTypes.arrayOf(PropTypes.string).isRequired as Validator<
+        string[]
+    >,
+    onClickWhatsAppButton: PropTypes.func.isRequired,
+    onClickPhoneButton: PropTypes.func.isRequired
+};
+
+ListingInquiryR123ContactComponent.defaultProps = {
+    phoneNumbers: []
 };
 
 export default ListingInquiryR123ContactComponent;

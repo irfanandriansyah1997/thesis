@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 import { ListingInquiryAgentPropsInterface } from './interface/component.interface';
 import LinkComponent from '../../../common/atomic/link/link.component';
 import ImageComponent from '../../../common/atomic/image/image.component';
@@ -45,6 +46,17 @@ const ListingInquiryR123SidebarAgentComponent: FunctionComponent<ListingInquiryA
             </div>
         </LinkComponent>
     );
+};
+
+ListingInquiryR123SidebarAgentComponent.propTypes = {
+    agentName: PropTypes.string.isRequired,
+    agentJoinInfo: PropTypes.string,
+    agentImageUrl: PropTypes.string.isRequired,
+    agentPageUrl: PropTypes.string.isRequired
+};
+
+ListingInquiryR123SidebarAgentComponent.defaultProps = {
+    agentJoinInfo: ''
 };
 
 export default ListingInquiryR123SidebarAgentComponent;
