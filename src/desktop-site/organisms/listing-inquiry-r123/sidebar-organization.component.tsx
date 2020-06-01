@@ -15,8 +15,6 @@ const ListingInquiryR123OrgComponent: FunctionComponent<ListingInquiryOrgPropsIn
     organizationImageUrl,
     organizationPageUrl
 }: ListingInquiryOrgPropsInterface) => {
-    const imgUrl = organizationImageUrl || '';
-
     return (
         <div className="ui-organism-listing-inquiry-r123__organization-wrapper">
             <LinkComponent
@@ -27,14 +25,16 @@ const ListingInquiryR123OrgComponent: FunctionComponent<ListingInquiryOrgPropsIn
                 <TextComponent tag="p" align="center">
                     {organizationName}
                 </TextComponent>
-                <ImageComponent
-                    src={imgUrl}
-                    alt="organization-image"
-                    type="circle"
-                    width={50}
-                    height={50}
-                    objectFit="fill"
-                />
+                {organizationImageUrl ? (
+                    <ImageComponent
+                        src={organizationImageUrl}
+                        alt="organization-image"
+                        type="circle"
+                        width={50}
+                        height={50}
+                        objectFit="fill"
+                    />
+                ) : null}
             </LinkComponent>
         </div>
     );

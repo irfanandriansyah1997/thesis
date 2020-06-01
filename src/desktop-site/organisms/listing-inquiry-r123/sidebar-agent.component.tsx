@@ -16,13 +16,11 @@ const ListingInquiryR123SidebarAgentComponent: FunctionComponent<ListingInquiryA
     agentImageUrl,
     agentPageUrl
 }: ListingInquiryAgentPropsInterface) => {
-    const imgUrl = agentImageUrl || '';
-
     return (
         <LinkComponent noUnderline href={agentPageUrl}>
             <div className="ui-organism-listing-inquiry-r123__agent-content">
                 <ImageComponent
-                    src={imgUrl}
+                    src={agentImageUrl}
                     alt="Images 1"
                     type="circle"
                     width={80}
