@@ -25,7 +25,7 @@ const ListingInquiryR123ContactComponent: FunctionComponent<ListingInquiryContac
     );
     const [phone] = phoneNumbers;
     return (
-        <div className="ui-organism-listing-inquiry-r123__inquiry-buttons">
+        <div className="ui-organism-listing-inquiry-r123__inquiry-buttons flex">
             <ButtonComponent
                 size="big"
                 theme="secondary"

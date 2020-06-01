@@ -28,7 +28,7 @@ const ListingInquiryR123SidebarComponent: FunctionComponent<ListingInquirySideba
         >
             <div className="ui-organism-listing-inquiry-r123__container-wrapper">
                 <div className="ui-organism-listing-inquiry-r123__contact-wrapper">
-                    <div className="ui-organism-listing-inquiry-r123__agent-wrapper">
+                    <div className="ui-organism-listing-inquiry-r123__agent-wrapper block">
                         <ListingInquiryR123SidebarAgentComponent
                             agentName={agent.agentName}
                             agentJoinInfo={agent.agentJoinInfo}

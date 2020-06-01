@@ -1,3 +1,5 @@
+@import '../../../../style/import.scss';
+
 .ui-organism-listing-inquiry-r123 {
     &__container-wrapper {
         object-fit: contain;
@@ -6,27 +8,16 @@
     }
 
     &__contact-wrapper {
-        background-color: rgb(255, 255, 255);
-        border-color: rgb(210, 214, 218);
-        border-image: initial;
-        border-style: solid;
-        border-width: 1px;
-        padding: 16px;
+        @include border(all, 1px, solid, #d2d6da);
+        @include padding(all, 16px);
     }
 
     &__agent-wrapper {
-        display: block;
-        margin-bottom: 24px;
-        width: 100%;
-    }
-
-    &__agent-content {
-        align-items: center;
-        display: flex;
+        @include margin-bottom(24px);
     }
 
     &__agent-contact-name {
-        color: rgb(43, 110, 210);
+        @include font-color(#2b6ed2);
 
         &:hover {
             text-decoration: underline;
@@ -34,47 +25,27 @@
     }
 
     &__agent-join-info {
-        color: rgb(165, 173, 181);
-        font-size: 10px;
-        // display: inline-block;
-        // margin-left: 0px;
-        // font-weight: normal;
-        // font-size: 10px;
+        @include font-color(#a5adb5);
+        @include font-size(10px);
     }
 
     &__inquiry-buttons {
-        display: flex;
-        margin: 0 -5px;
+        @include margin(all, 0 -5px);
     }
 
     &__email-button {
-        border-top: 1px solid rgb(204, 204, 204);
-        margin-top: 16px;
-        padding-top: 16px;
+        @include border-top(1px, solid, #cccccc);
+        @include margin-top(16px);
+        @include padding-top(16px);
     }
 
     &__organization-wrapper {
-        // color: rgb(0, 0, 0);
-        // text-align: left;
-        // background-color: rgb(255, 255, 255);
-        // position: relative;
-        border-color: rgb(210, 214, 218) rgb(210, 214, 218) rgb(210, 214, 218);
-        border-image: initial;
-        border-style: none solid solid;
-        border-width: 1px;
-        display: flex;
-        flex-direction: column;
-        // align-items: flex-start;
-        // -webkit-box-pack: start;
-        // justify-content: flex-start;
-        // min-height: 73px;
-        // border-top: none;
+        @include border(all, 1px, solid, #d2d6da);
+        @include no-border-top();
     }
 
     &__organization-content {
-        padding: 8px 16px;
-        text-align: center;
-        width: 100%;
+        @include padding(all, 8px 16px);
     }
 
     .ui-atomic-button {
@@ -94,7 +65,8 @@
     }
 
     .ui-atomic-text {
-        margin-bottom: 5px;
         text-align: center;
+
+        @include margin-bottom(5px);
     }
 }

@@ -18,7 +18,7 @@ const ListingInquiryR123SidebarAgentComponent: FunctionComponent<ListingInquiryA
 }: ListingInquiryAgentPropsInterface) => {
     return (
         <LinkComponent noUnderline href={agentPageUrl}>
-            <div className="ui-organism-listing-inquiry-r123__agent-content">
+            <div className="flex flex-align-center">
                 <ImageComponent
                     src={agentImageUrl}
                     alt="Images 1"

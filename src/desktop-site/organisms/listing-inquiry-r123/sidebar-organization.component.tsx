@@ -16,11 +16,11 @@ const ListingInquiryR123OrgComponent: FunctionComponent<ListingInquiryOrgPropsIn
     organizationPageUrl
 }: ListingInquiryOrgPropsInterface) => {
     return (
-        <div className="ui-organism-listing-inquiry-r123__organization-wrapper">
+        <div className="ui-organism-listing-inquiry-r123__organization-wrapper flex flex-column">
             <LinkComponent
                 noUnderline
                 href={organizationPageUrl}
-                className="ui-organism-listing-inquiry-r123__organization-content"
+                className="ui-organism-listing-inquiry-r123__organization-content text-center"
             >
                 <TextComponent tag="p" align="center">
                     {organizationName}
