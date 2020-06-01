@@ -6,6 +6,40 @@ import TextDocsComponent from '../../../../.storybook/component/atomic/text/text
 import ListingInquiryR123SidebarComponent from '../listing-inquiry-r123-sidebar.component';
 import { DefaultPropsListingInquiryR123Sidebar } from './templates/template-listing-inquiry-r123-sidebar.stories';
 import '../style/style.scss';
+import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
+
+/**
+ * Generate Docs
+ * @param {string} type - type props image
+ * @return {string}
+ */
+const docs = (): string =>
+    `<ListingInquiryR123SidebarComponent \n` +
+    ` {...{ \n` +
+    `       agent: { \n` +
+    `           agentName: 'John Doe', \n` +
+    `           agentPageUrl: 'http://google.com', \n` +
+    `           agentJoinInfo: 'Bergabung dari kemarin', \n` +
+    `           agentImageUrl: \n` +
+    `               'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' \n` +
+    `           }, \n` +
+    `       organization: { \n` +
+    `           organizationName: 'Jaya Baya Company', \n` +
+    `           organizationPageUrl: 'http://google.com', \n` +
+    `           organizationImageUrl: \n` +
+    `               'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' \n` +
+    `       }, \n` +
+    `       inquiryButton: { \n` +
+    `           buttonText: 'Kirim Pertanyaan', \n` +
+    `           onClickInquiryButton: (): void => undefined \n` +
+    `       }, \n` +
+    `       contact: { \n` +
+    `           phoneNumbers: ['+621212....'], \n` +
+    `           onClickPhoneButton: (): void => undefined, \n` +
+    `           onClickWhatsAppButton: (): void => undefined \n` +
+    `       }  \n` +
+    `   }} \n` +
+    `/> \n`;
 
 ((): void => {
     new StorybookDocumentationBuilder(
@@ -18,10 +52,37 @@ import '../style/style.scss';
             <>
                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
                 <TextDocsComponent>Listing Inquiry component</TextDocsComponent>
-
-                <ListingInquiryR123SidebarComponent
-                    {...DefaultPropsListingInquiryR123Sidebar}
-                />
+                <CodingViewerDocsComponent sourceCode={docs()}>
+                    <ListingInquiryR123SidebarComponent
+                        {...DefaultPropsListingInquiryR123Sidebar}
+                    />
+                    <ListingInquiryR123SidebarComponent
+                        {...{
+                            agent: {
+                                agentName: 'John Doe',
+                                agentPageUrl: 'http://google.com',
+                                agentJoinInfo: 'Bergabung dari kemarin',
+                                agentImageUrl:
+                                    'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                            },
+                            organization: {
+                                organizationName: 'Jaya Baya Company',
+                                organizationPageUrl: 'http://google.com',
+                                organizationImageUrl:
+                                    'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+                            },
+                            inquiryButton: {
+                                buttonText: 'Kirim Pertanyaan',
+                                onClickInquiryButton: (): void => undefined
+                            },
+                            contact: {
+                                phoneNumbers: ['+621212....'],
+                                onClickPhoneButton: (): void => undefined,
+                                onClickWhatsAppButton: (): void => undefined
+                            }
+                        }}
+                    />
+                </CodingViewerDocsComponent>
             </>
         )
         .execute();

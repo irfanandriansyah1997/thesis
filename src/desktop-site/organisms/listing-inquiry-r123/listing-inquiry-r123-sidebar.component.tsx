@@ -49,11 +49,13 @@ const ListingInquiryR123SidebarComponent: FunctionComponent<ListingInquirySideba
                         }
                     />
                 </div>
-                <ListingInquiryR123OrgComponent
-                    organizationName={organization.organizationName}
-                    organizationImageUrl={organization.organizationImageUrl}
-                    organizationPageUrl={organization.organizationPageUrl}
-                />
+                {organization ? (
+                    <ListingInquiryR123OrgComponent
+                        organizationName={organization.organizationName}
+                        organizationImageUrl={organization.organizationImageUrl}
+                        organizationPageUrl={organization.organizationPageUrl}
+                    />
+                ) : null}
             </div>
         </div>
     );
