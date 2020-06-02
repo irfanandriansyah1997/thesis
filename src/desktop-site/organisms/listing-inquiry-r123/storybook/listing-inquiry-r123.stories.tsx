@@ -7,6 +7,9 @@ import ListingInquiryR123SidebarComponent from '../listing-inquiry-r123-sidebar.
 import { DefaultPropsListingInquiryR123Sidebar } from './templates/template-listing-inquiry-r123-sidebar.stories';
 import '../style/style.scss';
 import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
+import DividerDocsComponent from '../../../../.storybook/component/atomic/divider/divider.component';
+import ListingInquiryR123ContactSectionComponent from '../contact-section-component';
+import ListingInquiryR123EmailSectionComponent from '../email-section-component';
 
 /**
  * Generate Docs
@@ -57,6 +60,22 @@ const docs = (): string =>
                         {...DefaultPropsListingInquiryR123Sidebar}
                     />
                 </CodingViewerDocsComponent>
+                <DividerDocsComponent />
+                <ListingInquiryR123ContactSectionComponent
+                    {...{
+                        contact: {
+                            phoneNumbers: ['+621212....'],
+                            onClickPhoneButton: (): void => undefined,
+                            onClickWhatsAppButton: (): void => undefined
+                        }
+                    }}
+                />
+                <ListingInquiryR123EmailSectionComponent
+                    {...{
+                        buttonText: 'Kirim ke agen',
+                        onClickInquiryButton: (): void => undefined
+                    }}
+                />
             </>
         )
         .execute();

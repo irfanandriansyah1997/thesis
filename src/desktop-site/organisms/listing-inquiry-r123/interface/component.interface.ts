@@ -81,3 +81,12 @@ export type ListingInquiryBoxPropsInterface = ListingInquiryAgentPropsInterface 
     ListingInquiryContactPropsInterface &
     ListingInquiryButtonPropsInterface &
     ListingInquiryMsgPropsInterface;
+
+export interface ListingInquiryContactSectionPropsInterface {
+    agent?: ListingInquiryAgentPropsInterface;
+    organization?: ListingInquiryOrgPropsInterface;
+    contact: ListingInquiryContactPropsInterface;
+}
+
+export type ListingInquiryEmailSectionPropsInterface = ListingInquiryMsgPropsInterface &
+    ListingInquiryButtonPropsInterface;

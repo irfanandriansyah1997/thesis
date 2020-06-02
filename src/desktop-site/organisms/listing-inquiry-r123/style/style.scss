@@ -70,4 +70,51 @@
 
         @include margin-bottom(5px);
     }
+
+    &__inquiry-box-wrapper {
+        display: block;
+        // text-align: center;
+        max-width: 800px;
+        padding: 24px 24px 40px;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__contact-form {
+        margin-bottom: 24px;
+    }
+
+    &__contact-form-title {
+        color: rgb(51, 63, 72);
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 300;
+        margin: 16px 0px;
+    }
+
+    &__agent-logo {
+        width: 80px;
+        height: 80px;
+        display: block;
+        background-color: transparent;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+    }
+
+    &__email-form-body {
+        display: flex;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
+
+    &__email-form-footer {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+    }
 }
