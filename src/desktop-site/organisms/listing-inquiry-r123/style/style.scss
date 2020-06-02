@@ -8,7 +8,7 @@
     }
 
     &__contact-wrapper {
-        @include border(all, 1px, solid, #d2d6da);
+        @include border(all, 1px, solid, greyDarkerR123);
         @include padding(all, 16px);
     }
 
@@ -17,7 +17,7 @@
     }
 
     &__agent-contact-name {
-        @include font-color(#2b6ed2);
+        @include font-color(outline);
 
         &:hover {
             text-decoration: underline;
@@ -25,7 +25,7 @@
     }
 
     &__agent-join-info {
-        @include font-color(#a5adb5);
+        @include font-color(basicCardHeadingR123);
         @include font-size(10px);
     }
 
@@ -40,11 +40,12 @@
     }
 
     &__organization-wrapper {
-        @include border(all, 1px, solid, #d2d6da);
+        @include border(all, 1px, solid, greyDarkerR123);
         @include no-border-top();
     }
 
     &__organization-content {
+        @include font-color(black);
         @include padding(all, 8px 16px);
     }
 
@@ -54,12 +55,12 @@
 
         &--theme {
             &-secondary {
-                background-color: #e9ebed;
-                margin: 0 5px;
+                @include margin(all, 0 5px);
+                @include background-color(grayR123);
+            }
 
-                // &:hover {
-                //     background-color: #d2d6da;
-                // }
+            &-secondary:hover {
+                @include background-color(greyDarkerR123);
             }
         }
     }

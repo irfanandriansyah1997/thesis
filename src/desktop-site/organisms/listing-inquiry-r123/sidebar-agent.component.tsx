@@ -21,7 +21,7 @@ const ListingInquiryR123SidebarAgentComponent: FunctionComponent<ListingInquiryA
             <div className="flex flex-align-center">
                 <ImageComponent
                     src={agentImageUrl}
-                    alt="Images 1"
+                    alt="agent-image"
                     type="circle"
                     width={80}
                     height={80}
@@ -34,12 +34,14 @@ const ListingInquiryR123SidebarAgentComponent: FunctionComponent<ListingInquiryA
                     >
                         {agentName}
                     </TextComponent>
-                    <TextComponent
-                        tag="span"
-                        className="ui-organism-listing-inquiry-r123__agent-join-info"
-                    >
-                        {agentJoinInfo}
-                    </TextComponent>
+                    {agentJoinInfo ? (
+                        <TextComponent
+                            tag="span"
+                            className="ui-organism-listing-inquiry-r123__agent-join-info"
+                        >
+                            {agentJoinInfo}
+                        </TextComponent>
+                    ) : null}
                 </div>
             </div>
         </LinkComponent>
@@ -54,7 +56,7 @@ ListingInquiryR123SidebarAgentComponent.propTypes = {
 };
 
 ListingInquiryR123SidebarAgentComponent.defaultProps = {
-    agentJoinInfo: ''
+    agentJoinInfo: undefined
 };
 
 export default ListingInquiryR123SidebarAgentComponent;

@@ -47,9 +47,9 @@ ListingInquiryR123OrgComponent.propTypes = {
 };
 
 ListingInquiryR123OrgComponent.defaultProps = {
-    organizationName: '',
-    organizationImageUrl: '',
-    organizationPageUrl: ''
+    organizationName: undefined,
+    organizationImageUrl: undefined,
+    organizationPageUrl: undefined
 };
 
 export default ListingInquiryR123OrgComponent;

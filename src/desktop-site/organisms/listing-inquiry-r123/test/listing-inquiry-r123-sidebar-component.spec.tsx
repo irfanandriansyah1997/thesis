@@ -9,6 +9,8 @@ import ListingInquiryR123ContactComponent from '../listing-inquiry-r123-contact.
 import ButtonComponent from '../../../../common/atomic/button/button.component';
 import ListingInquiryR123OrgComponent from '../sidebar-organization.component';
 import ImageComponent from '../../../../common/atomic/image/image.component';
+import ListingInquiryR123SidebarAgentComponent from '../sidebar-agent.component';
+import TextComponent from '../../../../common/atomic/text/text.component';
 
 describe('Testing listing inquiry r123 sidebar in organisms component ', () => {
     it('should render component working properly', () => {
@@ -64,5 +66,20 @@ describe('Testing listing inquiry r123 sidebar in organisms component ', () => {
             ListingInquiryR123OrgComponent
         );
         expect(organizationComponent.length).toBe(0);
+    });
+
+    it('testing agent does not have join info', () => {
+        const inquirySidebarComponent = mount(
+            <ListingInquiryR123SidebarAgentComponent
+                agentImageUrl="http://..."
+                agentName="John Doe"
+                agentPageUrl="http://..."
+            />
+        );
+
+        const agentSectionComponent = inquirySidebarComponent.find(
+            TextComponent
+        );
+        expect(agentSectionComponent.length).toBe(2);
     });
 });
