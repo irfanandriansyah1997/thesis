@@ -5,8 +5,13 @@ import { MapHTMLAttributes } from 'react';
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.06.02
  */
-export type MapInterface = MapHTMLAttributes<HTMLMapElement> & {
-    title: string;
-    mapSource: string;
-    onClickMap?: () => void;
+export type MapsPropsInterface = Omit<ComponentDefaultInterface, 'children'> & {
+    id: string;
+    width: string;
+    height: string;
+    mapKey: string;
+    mapOptions?: Props;
+    options?: MapOptions;
+    location: DefaultLocationMapsInterface;
+    onClick?: (param: ClickEventValue) => void;
 };

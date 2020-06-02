@@ -29,6 +29,7 @@ export default [
         './src/common/molecules/expand-text/expand-text.component.tsx',
         './src/common/molecules/hollow-link/hollow-link.component.tsx',
         './src/common/molecules/list/list.component.tsx',
+        './src/common/molecules/map/map.component.tsx',
         './src/common/molecules/multiple-selection/multiple-selection.component.tsx',
         './src/common/molecules/navbar/navbar.component.tsx',
         './src/common/molecules/pagination-r123/pagination-r123.component.tsx',
