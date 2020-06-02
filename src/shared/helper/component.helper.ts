@@ -10,8 +10,6 @@ import {
     RangeSliderValueInterface
 } from '../../common/molecules/range-slider/interface/component.interface';
 
-const { createCanvas } = require('canvas');
-
 /**
  * Component Helper
  * @author Irfan Andriansyah <irfan@99.co>
@@ -131,7 +129,7 @@ class ComponentHelper extends LogHelperAbstract {
      * @param {string} font - font attribute like font-family font-size
      */
     static getWidthFromText(text: string, font: string): number {
-        const canvas = createCanvas(200, 200);
+        const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         if (context) {
             context.font = font;
