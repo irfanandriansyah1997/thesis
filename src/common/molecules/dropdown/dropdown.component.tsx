@@ -247,11 +247,11 @@ DropdownComponent.propTypes = {
     >,
     refForward: PropTypes.oneOfType([
         PropTypes.func,
-        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        PropTypes.shape({})
     ]) as Validator<RefObject<HTMLDivElement>>,
     refContentForward: PropTypes.oneOfType([
         PropTypes.func,
-        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+        PropTypes.shape({})
     ]) as Validator<RefObject<HTMLDivElement>>
 };
 
