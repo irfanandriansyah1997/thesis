@@ -15,12 +15,21 @@ const ListingInquiryR123ContactComponent: FunctionComponent<ListingInquiryContac
     phoneNumbers
 }: ListingInquiryContactPropsInterface) => {
     /**
-     * Create Icon
+     * Whatsapp Icon
      * @return {string}
      */
-    const Icon: FunctionComponent = () => (
+    const WhatsAppIcon: FunctionComponent = () => (
         <IconComponent color="success" size={20}>
             rui-icon-whatsapp
+        </IconComponent>
+    );
+    /**
+     * Call Icon
+     * @return {string}
+     */
+    const CallIcon: FunctionComponent = () => (
+        <IconComponent color="success" size={20}>
+            rui-icon-call-small
         </IconComponent>
     );
     const [phone] = phoneNumbers;
@@ -30,6 +39,7 @@ const ListingInquiryR123ContactComponent: FunctionComponent<ListingInquiryContac
                 size="big"
                 theme="secondary"
                 onClick={onClickPhoneButton}
+                icon={<CallIcon />}
             >
                 {phone}
             </ButtonComponent>
@@ -37,7 +47,7 @@ const ListingInquiryR123ContactComponent: FunctionComponent<ListingInquiryContac
                 size="big"
                 theme="secondary"
                 onClick={onClickWhatsAppButton}
-                icon={<Icon />}
+                icon={<WhatsAppIcon />}
             >
                 WhatsApp
             </ButtonComponent>

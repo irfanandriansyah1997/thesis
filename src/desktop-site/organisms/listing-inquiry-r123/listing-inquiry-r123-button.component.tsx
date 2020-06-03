@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import { ListingInquiryButtonPropsInterface } from './interface/component.interface';
+import IconComponent from '../../../common/atomic/icon/icon.component';
 
 /**
  * Listing Inquiry Button Component
@@ -13,12 +14,27 @@ const ListingInquiryButtonComponent: FunctionComponent<ListingInquiryButtonProps
     buttonIcon,
     onClickInquiryButton
 }: ListingInquiryButtonPropsInterface) => {
+    /**
+     * Inquiry Button Icon
+     * @return {string}
+     */
+    const icon = (): ReactNode => {
+        if (buttonIcon) {
+            return (
+                <IconComponent color="black" size={20}>
+                    {buttonIcon}
+                </IconComponent>
+            );
+        }
+        return null;
+    };
+
     return (
         <div className="ui-organism-listing-inquiry-r123__email-button">
             <ButtonComponent
                 size="big"
                 theme="danger"
-                icon={buttonIcon}
+                icon={icon()}
                 onClick={onClickInquiryButton}
             >
                 {buttonText}
@@ -34,7 +50,7 @@ ListingInquiryButtonComponent.propTypes = {
 };
 
 ListingInquiryButtonComponent.defaultProps = {
-    buttonIcon: ''
+    buttonIcon: undefined
 };
 
 export default ListingInquiryButtonComponent;

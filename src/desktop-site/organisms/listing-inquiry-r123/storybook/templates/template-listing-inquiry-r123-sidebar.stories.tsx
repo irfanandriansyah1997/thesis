@@ -15,6 +15,7 @@ export const DefaultPropsListingInquiryR123Sidebar: ListingInquirySidebarPropsIn
             'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
     },
     inquiryButton: {
+        buttonIcon: 'rui-icon-email-small',
         buttonText: 'Kirim Pertanyaan',
         onClickInquiryButton: (): void => undefined
     },
