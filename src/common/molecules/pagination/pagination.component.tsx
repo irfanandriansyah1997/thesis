@@ -23,6 +23,7 @@ const PaginationComponent: React.SFC<MoleculePaginationPropsInterface> = ({
 }: MoleculePaginationPropsInterface) => {
     const name: ComponentClassnameDefaultInterface = {
         relative: true,
+        flex: true,
         [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className),
         'ui-molecule-paginate': true
     };
