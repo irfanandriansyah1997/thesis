@@ -9,11 +9,17 @@ export type MoleculePaginationPropsInterface = Omit<
     ComponentDefaultInterface,
     'children'
 > & {
-    onPageChange: (selectedItem: { selected: number }) => void;
-    pageRange?: number;
-    marginPageDisplay?: number;
-    className?: string;
     page: number;
     rowCount: number;
     totalPage?: number;
+    className?: string;
+    pageRange?: number;
+    marginPageDisplay?: number;
+    onPageChange: MoleculePaginationOnPageChange;
 };
+
+export type MoleculePaginationValueOnPageChange = { selected: number };
+
+export type MoleculePaginationOnPageChange = (
+    selectedItem: MoleculePaginationValueOnPageChange
+) => void;
