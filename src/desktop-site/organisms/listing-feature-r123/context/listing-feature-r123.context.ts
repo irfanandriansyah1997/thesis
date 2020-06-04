@@ -1,24 +1,49 @@
 import { createContext } from 'react';
 
-import { ListingFeatureContextInterface } from '../interface/component.interface';
+import { ListingFeatureDetailContextInterface } from '../interface/component.interface';
 
 /**
  * Listing Feature Context
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.06.03
  */
-const ListingFeatureContext = createContext<ListingFeatureContextInterface>({
+const ListingFeatureDetailContext = createContext<
+    ListingFeatureDetailContextInterface
+>({
     propertyDetail: {
-        floor: '',
-        listingId: '',
-        furnishing: '',
-        postedDate: '',
-        certificate: '',
-        electricity: '',
-        propertyType: '',
-        propertyCondition: ''
-    },
-    propertyFacility: ''
+        floor: {
+            label: '',
+            value: 0
+        },
+        listingId: {
+            label: '',
+            value: ''
+        },
+        furnishing: {
+            label: '',
+            value: ''
+        },
+        postedDate: {
+            label: '',
+            value: ''
+        },
+        certificate: {
+            label: '',
+            value: ''
+        },
+        electricity: {
+            label: '',
+            value: 0
+        },
+        propertyType: {
+            label: '',
+            value: ''
+        },
+        propertyCondition: {
+            label: '',
+            value: ''
+        }
+    }
 });
 
-export default ListingFeatureContext;
+export default ListingFeatureDetailContext;

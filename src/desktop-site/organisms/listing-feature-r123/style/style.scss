@@ -1,1 +1,16 @@
 @import '../../../../style/import.scss';
+
+.ui-organisms-listing-feature-r123-detail {
+    &__attribute {
+        @include padding-top(16px);
+        @include padding-right(8px);
+        @include padding-bottom(16px);
+        @include border-bottom(1px, solid, get-color(grayR123));
+
+        &--label,
+        &--value {
+            @include font-size(14px);
+            @include line-height(21);
+        }
+    }
+}

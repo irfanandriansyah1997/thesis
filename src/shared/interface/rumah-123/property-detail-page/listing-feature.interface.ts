@@ -4,12 +4,36 @@
  * @since 2020.06.03
  */
 export type R123ListingFeatureDataInterface = {
-    floor: string;
-    listingId: string;
-    furnishing: string;
-    postedDate: string;
-    certificate: string;
-    electricity: string;
-    propertyType: string;
-    propertyCondition: string;
+    floor: {
+        label: string;
+        value: number;
+    };
+    listingId: {
+        label: string;
+        value: string;
+    };
+    furnishing: {
+        label: string;
+        value: string;
+    };
+    postedDate: {
+        label: string;
+        value: string;
+    };
+    certificate: {
+        label: string;
+        value: string;
+    };
+    electricity: {
+        label: string;
+        value: number;
+    };
+    propertyType: {
+        label: string;
+        value: string;
+    };
+    propertyCondition: {
+        label: string;
+        value: string;
+    };
 };
