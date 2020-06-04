@@ -1,4 +1,4 @@
-# Carousel Component
+# Listing Description R123 Component
 
 ## How to use
 Explanation on how to import and render listing description component, including list of props.

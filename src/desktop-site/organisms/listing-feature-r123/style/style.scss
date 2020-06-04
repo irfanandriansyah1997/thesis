@@ -7,6 +7,13 @@
         @include padding-bottom(16px);
         @include border-bottom(1px, solid, get-color(grayR123));
 
+        &:last-child,
+        &:nth-last-child(2) {
+            &:nth-child(2n + 1) {
+                @include no-border();
+            }
+        }
+
         &--label,
         &--value {
             @include font-size(14px);

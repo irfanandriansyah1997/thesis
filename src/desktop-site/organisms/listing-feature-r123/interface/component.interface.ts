@@ -9,6 +9,7 @@ import { ExpandTextToggleButtonInterface } from '../../../../common/molecules/ex
 export type ListingFeatureR123PropsInterface = {
     title: string;
     propertyFacility: string;
+    tabItemLabel: ListingFeatureTabLabelPropsInterface;
     tabContentToggleSelector: ExpandTextToggleButtonInterface;
 } & ListingFeatureDetailDataPropsInterface;
 
@@ -27,3 +28,13 @@ export type ListingFeatureDetailDataPropsInterface = data;
 export interface ListingFeatureDetailContextInterface {
     propertyDetail: ListingFeatureDetailDataPropsInterface;
 }
+
+/**
+ * Listing Feature Tab Label Props Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.06.04
+ */
+export type ListingFeatureTabLabelPropsInterface = {
+    detailLabel: string;
+    facilityLabel: string;
+};

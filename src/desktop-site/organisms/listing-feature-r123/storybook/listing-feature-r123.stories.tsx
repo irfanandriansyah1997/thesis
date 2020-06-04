@@ -65,6 +65,10 @@ const ListingFeatureR123Documentation = require('./markdown/listing-feature-r123
                         `       ${'onCLose: "Menampilkan lebih banyak",'}\n` +
                         `       ${'onExpand: "Menampilkan lebih sedikit",'}\n` +
                         `   ${'}}'}\n` +
+                        `   ${'tabItemLabel={{'}\n` +
+                        `       ${'detailLabel: "Detil Property",'}\n` +
+                        `       ${'facilityLabel: "Fasilitas"'}\n` +
+                        `   ${'}}'}\n` +
                         `${'>'}`
                     }
                 >
@@ -93,7 +97,7 @@ const ListingFeatureR123Documentation = require('./markdown/listing-feature-r123
                             }}
                             certificate={{
                                 label: 'Sertifikat:',
-                                value: 'SHM - Sertifikat Hak Milik'
+                                value: ''
                             }}
                             propertyCondition={{
                                 label: 'Kondisi Properti:',
@@ -107,6 +111,10 @@ const ListingFeatureR123Documentation = require('./markdown/listing-feature-r123
                             tabContentToggleSelector={{
                                 onCLose: 'Menampilkan lebih banyak',
                                 onExpand: 'Menampilkan lebih sedikit'
+                            }}
+                            tabItemLabel={{
+                                detailLabel: 'Detil Property',
+                                facilityLabel: 'Fasilitas'
                             }}
                         />
                     </div>

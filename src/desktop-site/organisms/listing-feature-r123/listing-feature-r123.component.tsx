@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import CardComponent from '../../../common/atomic/card/card.component';
 import TextComponent from '../../../common/atomic/text/text.component';
@@ -19,7 +19,7 @@ import {
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.06.03
  */
-const ListingFeatureR123: SFC<ListingFeatureR123PropsInterface> = ({
+const ListingFeatureR123: FunctionComponent<ListingFeatureR123PropsInterface> = ({
     title,
     floor,
     listingId,
@@ -27,6 +27,7 @@ const ListingFeatureR123: SFC<ListingFeatureR123PropsInterface> = ({
     postedDate,
     certificate,
     electricity,
+    tabItemLabel,
     propertyType,
     propertyFacility,
     propertyCondition,
@@ -70,7 +71,7 @@ const ListingFeatureR123: SFC<ListingFeatureR123PropsInterface> = ({
                     {title}
                 </TextComponent>
                 <TabsComponent tabsID="tabs-1">
-                    <TabsComponent.Item tab="Detil property">
+                    <TabsComponent.Item tab={tabItemLabel.detailLabel}>
                         <ExpandTextComponent
                             showArrow
                             color="primary"
@@ -84,7 +85,7 @@ const ListingFeatureR123: SFC<ListingFeatureR123PropsInterface> = ({
                             <PropertyDetailComponent />
                         </ExpandTextComponent>
                     </TabsComponent.Item>
-                    <TabsComponent.Item tab="Fasilitas">
+                    <TabsComponent.Item tab={tabItemLabel.facilityLabel}>
                         <TextComponent
                             tag="p"
                             style={{
