@@ -42,6 +42,7 @@ export interface ListingInquiryButtonPropsInterface {
  */
 export interface ListingInquiryContactPropsInterface {
     phoneNumbers: string[];
+    hasWhatsapp: boolean;
     onClickWhatsAppButton: (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => void;
@@ -59,7 +60,7 @@ export interface ListingInquiryMsgPropsInterface {
     buyerName?: string;
     buyerEmail?: string;
     placeholder: ListingInquiryMsgPlaceholderInterface;
-    onChange: (
+    onChangeInquiryField: (
         fieldName: 'name' | 'email' | 'phone' | 'message',
         event: React.ChangeEvent<HTMLInputElement>
     ) => void;
@@ -90,21 +91,27 @@ export interface ListingInquirySidebarPropsInterface {
 }
 
 /**
+ * Listing Inquiry Contact Props Interface
+ * @author Nafhul <nafhul.arsyad@99.co>
+ * @since 2020.05.28
+ */
+export interface ListingInquiryContactSectionPropsInterface {
+    agent: ListingInquiryAgentPropsInterface;
+    contact: ListingInquiryContactPropsInterface;
+}
+
+/**
+ * Listing Inquiry Email Section Props Interface
+ * @author Nafhul <nafhul.arsyad@99.co>
+ * @since 2020.05.28
+ */
+export type ListingInquiryEmailSectionPropsInterface = ListingInquiryButtonPropsInterface &
+    ListingInquiryMsgPropsInterface;
+
+/**
  * Listing Inquiry R123 Box Props Interface
  * @author Nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.28
  */
-export type ListingInquiryBoxPropsInterface = ListingInquiryAgentPropsInterface &
-    ListingInquiryOrgPropsInterface &
-    ListingInquiryContactPropsInterface &
-    ListingInquiryButtonPropsInterface &
-    ListingInquiryMsgPropsInterface;
-
-export interface ListingInquiryContactSectionPropsInterface {
-    agent: ListingInquiryAgentPropsInterface;
-    organization?: ListingInquiryOrgPropsInterface;
-    contact: ListingInquiryContactPropsInterface;
-}
-
-export type ListingInquiryEmailSectionPropsInterface = ListingInquiryButtonPropsInterface &
-    ListingInquiryMsgPropsInterface;
+export type ListingInquiryBoxPropsInterface = ListingInquiryContactSectionPropsInterface &
+    ListingInquiryEmailSectionPropsInterface;

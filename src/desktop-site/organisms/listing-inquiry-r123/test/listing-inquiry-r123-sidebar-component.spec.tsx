@@ -2,21 +2,36 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import {
     DefaultPropsListingInquiryR123Sidebar,
-    NoOrgPropsListingInquiryR123Sidebar
+    NoOrgPropsListingInquiryR123Sidebar,
+    DefaultPropsListingInquiryR123Box
 } from '../storybook/templates/template-listing-inquiry-r123-sidebar.stories';
-import ListingInquiryR123SidebarComponent from '../listing-inquiry-r123-sidebar.component';
-import ListingInquiryR123ContactComponent from '../listing-inquiry-r123-contact.component';
 import ButtonComponent from '../../../../common/atomic/button/button.component';
 import ListingInquiryR123OrgComponent from '../sidebar-organization.component';
 import ImageComponent from '../../../../common/atomic/image/image.component';
 import ListingInquiryR123SidebarAgentComponent from '../sidebar-agent.component';
 import TextComponent from '../../../../common/atomic/text/text.component';
+import R123ListingInquirySidebarComponent from '../r123-listing-inquiry-sidebar.component';
+import R123ListingInquiryContactComponent from '../r123-listing-inquiry-contact.component';
+import R123ListingInquiryBoxComponent from '../r123-listing-inquiry-box.component';
+import ListingInquiryButtonComponent from '../sidebar-inquiry-button.component';
 
-describe('Testing listing inquiry r123 sidebar in organisms component ', () => {
+describe('Testing r123 listing inquiry sidebar in organisms component ', () => {
     it('should render component working properly', () => {
         render(
-            <ListingInquiryR123SidebarComponent
+            <R123ListingInquirySidebarComponent
                 {...DefaultPropsListingInquiryR123Sidebar}
+            />
+        );
+    });
+
+    it('testing render multiple contact', () => {
+        const inquiry = jest.fn();
+        render(
+            <R123ListingInquiryContactComponent
+                onClickWhatsAppButton={inquiry}
+                onClickPhoneButton={inquiry}
+                phoneNumbers={['+6212121', '+624343434']}
+                hasWhatsapp={false}
             />
         );
     });
@@ -24,10 +39,11 @@ describe('Testing listing inquiry r123 sidebar in organisms component ', () => {
     it('testing onClick contact button', () => {
         const inquiry = jest.fn();
         const inquiryComponent = mount(
-            <ListingInquiryR123ContactComponent
+            <R123ListingInquiryContactComponent
                 onClickWhatsAppButton={inquiry}
                 onClickPhoneButton={inquiry}
                 phoneNumbers={[]}
+                hasWhatsapp
             />
         );
 
@@ -57,7 +73,7 @@ describe('Testing listing inquiry r123 sidebar in organisms component ', () => {
 
     it('testing does not have organization', () => {
         const inquirySidebarComponent = mount(
-            <ListingInquiryR123SidebarComponent
+            <R123ListingInquirySidebarComponent
                 {...NoOrgPropsListingInquiryR123Sidebar}
             />
         );
@@ -81,5 +97,24 @@ describe('Testing listing inquiry r123 sidebar in organisms component ', () => {
             TextComponent
         );
         expect(agentSectionComponent.length).toBe(2);
+    });
+
+    it('should inquiry button no icon', () => {
+        render(
+            <ListingInquiryButtonComponent
+                buttonText="test text"
+                onClickInquiryButton={(): void => undefined}
+            />
+        );
+    });
+});
+
+describe('Testing r123 listing inquiry box in organisms component ', () => {
+    it('should render component working properly', () => {
+        render(
+            <R123ListingInquiryBoxComponent
+                {...DefaultPropsListingInquiryR123Box}
+            />
+        );
     });
 });

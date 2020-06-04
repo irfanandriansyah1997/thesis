@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import TextDocsComponent from '../../../../../.storybook/component/atomic/text/text.component';
-import ListingInquiryR123SidebarComponent from '../../r123-listing-inquiry-sidebar.component';
+import R123ListingInquirySidebarComponent from '../../r123-listing-inquiry-sidebar.component';
 import { NoOrgPropsListingInquiryR123Sidebar } from '../templates/template-listing-inquiry-r123-sidebar.stories';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 import '../../style/style.scss';
@@ -12,7 +12,7 @@ import '../../style/style.scss';
  * @return {string}
  */
 const docs = (): string =>
-    `<ListingInquiryR123SidebarComponent \n` +
+    `<R123ListingInquirySidebarComponent \n` +
     ` {...{ \n` +
     `       agent: { \n` +
     `           agentName: 'John Doe', \n` +
@@ -53,7 +53,7 @@ class SectionSidebarNoOrgComponent extends React.PureComponent<
                     Just do not send organization props
                 </TextDocsComponent>
                 <CodingViewerDocsComponent sourceCode={docs()}>
-                    <ListingInquiryR123SidebarComponent
+                    <R123ListingInquirySidebarComponent
                         {...NoOrgPropsListingInquiryR123Sidebar}
                     />
                 </CodingViewerDocsComponent>

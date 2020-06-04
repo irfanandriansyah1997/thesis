@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { ListingInquirySidebarPropsInterface } from './interface/component.interface';
-import ListingInquiryR123ContactComponent from './listing-inquiry-r123-contact.component';
+import R123ListingInquiryContactComponent from './r123-listing-inquiry-contact.component';
 import ListingInquiryButtonComponent from './sidebar-inquiry-button.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ListingInquiryR123SidebarAgentComponent from './sidebar-agent.component';
@@ -11,7 +11,7 @@ import ListingInquiryR123OrgComponent from './sidebar-organization.component';
  * @author nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.18
  */
-const ListingInquiryR123SidebarComponent: FunctionComponent<ListingInquirySidebarPropsInterface> = ({
+const R123ListingInquirySidebarComponent: FunctionComponent<ListingInquirySidebarPropsInterface> = ({
     agent,
     organization,
     contact,
@@ -36,8 +36,9 @@ const ListingInquiryR123SidebarComponent: FunctionComponent<ListingInquirySideba
                             agentPageUrl={agent.agentPageUrl}
                         />
                     </div>
-                    <ListingInquiryR123ContactComponent
+                    <R123ListingInquiryContactComponent
                         phoneNumbers={contact.phoneNumbers}
+                        hasWhatsapp={contact.hasWhatsapp}
                         onClickWhatsAppButton={contact.onClickWhatsAppButton}
                         onClickPhoneButton={contact.onClickPhoneButton}
                     />
@@ -61,4 +62,4 @@ const ListingInquiryR123SidebarComponent: FunctionComponent<ListingInquirySideba
     );
 };
 
-export default ListingInquiryR123SidebarComponent;
+export default R123ListingInquirySidebarComponent;

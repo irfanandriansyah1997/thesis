@@ -21,7 +21,7 @@ const ListingInquiryButtonComponent: FunctionComponent<ListingInquiryButtonProps
     const icon = (): ReactNode => {
         if (buttonIcon) {
             return (
-                <IconComponent color="black" size={20}>
+                <IconComponent color="white" size={20}>
                     {buttonIcon}
                 </IconComponent>
             );
