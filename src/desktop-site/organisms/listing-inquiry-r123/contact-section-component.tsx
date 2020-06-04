@@ -12,8 +12,16 @@ import StringHelper from '../../../shared/helper/string.helper';
  * @since 2020.05.18
  */
 const ListingInquiryR123ContactSectionComponent: FunctionComponent<ListingInquiryContactSectionPropsInterface> = ({
-    contact
+    contact,
+    agent
 }: ListingInquiryContactSectionPropsInterface) => {
+    const agentInfoMarkup = () => {
+        if (agent.agentInfo) {
+            return { __html: agent.agentInfo };
+        }
+        return { __html: '' };
+    };
+
     return (
         <div
             className={StringHelper.objToString({
@@ -23,23 +31,23 @@ const ListingInquiryR123ContactSectionComponent: FunctionComponent<ListingInquir
                 'flex-align-start': true
             })}
         >
-            <div className="ui-organism-listing-inquiry-r123__inquiry-box-wrapper">                
+            <div className="ui-organism-listing-inquiry-r123__inquiry-box-wrapper">
                 <LinkComponent noUnderline>
                     <ImageComponent
-                        src="https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                        src={agent.agentImageUrl}
                         alt="agent-image"
                         type="circle"
                         width={80}
                         height={80}
                         objectFit="fill"
-                    />
+                    />                    
                 </LinkComponent>
                 <div className="ui-organism-listing-inquiry-r123__contact-form-title">
                     <TextComponent
                         tag="p"
-                        className="ui-organism-listing-inquiry-r123__agent-contact-name"
-                    >
-                        "Kontak Sielly Lilianti tentang properti ini"
+                        dangerouslySetInnerHTML={agentInfoMarkup()}
+                        className="ui-organism-listing-inquiry-r123__agent-info"
+                    >                        
                     </TextComponent>
                 </div>
                 <div className="ui-organism-listing-inquiry-r123__container-wrapper">
@@ -48,7 +56,7 @@ const ListingInquiryR123ContactSectionComponent: FunctionComponent<ListingInquir
                         onClickPhoneButton={contact.onClickPhoneButton}
                         onClickWhatsAppButton={contact.onClickWhatsAppButton}
                     />
-                </div>                
+                </div>
             </div>
         </div>
     );

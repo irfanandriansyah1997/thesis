@@ -22,7 +22,7 @@ const docs = (): string =>
     `       agent: { \n` +
     `           agentName: 'John Doe', \n` +
     `           agentPageUrl: 'http://google.com', \n` +
-    `           agentJoinInfo: 'Bergabung dari kemarin', \n` +
+    `           agentInfo: 'Bergabung dari kemarin', \n` +
     `           agentImageUrl: \n` +
     `               'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' \n` +
     `           }, \n` +
@@ -63,6 +63,17 @@ const docs = (): string =>
                 <DividerDocsComponent />
                 <ListingInquiryR123ContactSectionComponent
                     {...{
+                        agent: {
+                            agentName: 'John Doe',
+                            agentImageUrl:
+                                'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+                            agentPageUrl:
+                                'https://www.rumah123.com/agen-properti/pakarindo-buana-property/ari-kurniawan-38984/',
+                            agentInfo:
+                                'Kontak <a class="ui-atomic-link ui-atomic-link--styling-underline-none ui-organism-listing-inquiry-r123__link-info"' +
+                                'href="https://www.rumah123.com/agen-properti/pakarindo-buana-property/ari-kurniawan-38984">Ari Kurniawan</a>' +
+                                ' dari Pakarindo Buana Property tentang properti ini'
+                        },
                         contact: {
                             phoneNumbers: ['+621212....'],
                             onClickPhoneButton: (): void => undefined,
@@ -73,7 +84,20 @@ const docs = (): string =>
                 <ListingInquiryR123EmailSectionComponent
                     {...{
                         buttonText: 'Kirim ke agen',
-                        onClickInquiryButton: (): void => undefined
+                        onClickInquiryButton: (): void => undefined,
+                        agreement:
+                            'Dengan mengirimkan, Saya Setuju dengan <a class="ui-organism-listing-inquiry-r123__link-info" href="http://www.first-link.com">Persyaratan Penggunaan</a> ' +
+                            'dan <a class="ui-organism-listing-inquiry-r123__link-info" href="http://www.first-link.com">Kebijakan Privasi</a> PT Web Marketing Indonesia/Anda termasuk pengumpulan, ' +
+                            'penggunaan, pengungkapan, pemrosesan, penyimpanan dan penanganan informasi pribadi saya; dan komunikasi pemasaran langsung dari Anda dan / atau mitra Anda.',
+                        placeholder: {
+                            name: 'nama',
+                            email: 'email',
+                            phone: 'nomor telepon',
+                            message: 'hai, \nsaya tertarik deh'
+                        },
+                        // buyerName: 'nama buyer',
+                        // buyerEmail: 'as@sa',
+                        onChange: (): void => undefined
                     }}
                 />
             </>

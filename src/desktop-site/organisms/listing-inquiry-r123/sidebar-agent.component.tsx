@@ -12,7 +12,7 @@ import TextComponent from '../../../common/atomic/text/text.component';
  */
 const ListingInquiryR123SidebarAgentComponent: FunctionComponent<ListingInquiryAgentPropsInterface> = ({
     agentName,
-    agentJoinInfo,
+    agentInfo: agentJoinInfo,
     agentImageUrl,
     agentPageUrl
 }: ListingInquiryAgentPropsInterface) => {
@@ -50,13 +50,13 @@ const ListingInquiryR123SidebarAgentComponent: FunctionComponent<ListingInquiryA
 
 ListingInquiryR123SidebarAgentComponent.propTypes = {
     agentName: PropTypes.string.isRequired,
-    agentJoinInfo: PropTypes.string,
+    agentInfo: PropTypes.string,
     agentImageUrl: PropTypes.string.isRequired,
     agentPageUrl: PropTypes.string.isRequired
 };
 
 ListingInquiryR123SidebarAgentComponent.defaultProps = {
-    agentJoinInfo: undefined
+    agentInfo: undefined
 };
 
 export default ListingInquiryR123SidebarAgentComponent;

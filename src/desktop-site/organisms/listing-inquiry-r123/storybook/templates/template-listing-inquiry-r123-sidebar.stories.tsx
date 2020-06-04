@@ -4,7 +4,7 @@ export const DefaultPropsListingInquiryR123Sidebar: ListingInquirySidebarPropsIn
     agent: {
         agentName: 'John Doe',
         agentPageUrl: 'http://google.com',
-        agentJoinInfo: 'Bergabung dari kemarin',
+        agentInfo: 'Bergabung dari kemarin',
         agentImageUrl:
             'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
     },
@@ -30,7 +30,7 @@ export const NoOrgPropsListingInquiryR123Sidebar: ListingInquirySidebarPropsInte
     agent: {
         agentName: 'John Doe',
         agentPageUrl: 'http://google.com',
-        agentJoinInfo: 'Bergabung dari kemarin',
+        agentInfo: 'Bergabung dari kemarin',
         agentImageUrl:
             'https://images.unsplash.com/photo-1562184552-b7a1069700fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
     },

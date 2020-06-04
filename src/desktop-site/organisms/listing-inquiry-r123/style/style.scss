@@ -104,6 +104,31 @@
         border-image: initial;
     }
 
+    &__agent-info {
+        @include font-color(black);
+    }
+
+    &__link-info {
+        text-decoration: none;
+
+        @include font-color(black);
+        @include font-weight(500);
+
+        &:hover {
+            text-decoration: underline;                
+        }
+    }
+
+    &__term {
+        @include font-color(text);
+        @include font-size(12px);
+        @include font-weight(300);
+    }
+
+    &__email-submit {
+        text-align: right;
+    }
+
     &__email-form-body {
         display: flex;
         flex-direction: row;
@@ -111,10 +136,24 @@
         justify-content: space-between;
     }
 
-    &__email-form-footer {
-        display: flex;
-        flex-direction: column;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
+    &__inquiry_buyer_info {
+        @include margin-top(20px);
+    }
+
+    &__input-label {
+        @include font-color(text);
+        @include font-size(10px);
+        @include font-weight(300);
+    }
+}
+
+input#inquiry-input {
+    height: 32px;
+    font-size: 14px;
+
+    @include font-weight(300);
+
+    &:hover {
+        border-color: #49a9ee;
     }
 }

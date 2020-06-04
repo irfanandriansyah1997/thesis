@@ -5,7 +5,7 @@
  */
 export type ListingInquiryAgentPropsInterface = {
     agentName: string;
-    agentJoinInfo?: string;
+    agentInfo?: string;
     agentImageUrl: string;
     agentPageUrl: string;
 };
@@ -29,6 +29,7 @@ export interface ListingInquiryOrgPropsInterface {
 export interface ListingInquiryButtonPropsInterface {
     buttonText: string;
     buttonIcon?: string;
+    agreement?: string;
     onClickInquiryButton: (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => void;
@@ -50,13 +51,30 @@ export interface ListingInquiryContactPropsInterface {
 }
 
 /**
- * Listing Inquiry Button Email Props Interface
+ * Listing Inquiry Message Box Props Interface
  * @author Nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.28
  */
 export interface ListingInquiryMsgPropsInterface {
     buyerName?: string;
     buyerEmail?: string;
+    placeholder: ListingInquiryMsgPlaceholderInterface;
+    onChange: (
+        fieldName: 'name' | 'email' | 'phone' | 'message',
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+}
+
+/**
+ * Listing Inquiry Message Box Placeholder Props Interface
+ * @author Nafhul <nafhul.arsyad@99.co>
+ * @since 2020.06.03
+ */
+export interface ListingInquiryMsgPlaceholderInterface {
+    name: string;
+    email: string;
+    phone: string;
+    message: string;
 }
 
 /**
@@ -83,10 +101,10 @@ export type ListingInquiryBoxPropsInterface = ListingInquiryAgentPropsInterface 
     ListingInquiryMsgPropsInterface;
 
 export interface ListingInquiryContactSectionPropsInterface {
-    agent?: ListingInquiryAgentPropsInterface;
+    agent: ListingInquiryAgentPropsInterface;
     organization?: ListingInquiryOrgPropsInterface;
     contact: ListingInquiryContactPropsInterface;
 }
 
-export type ListingInquiryEmailSectionPropsInterface = ListingInquiryMsgPropsInterface &
-    ListingInquiryButtonPropsInterface;
+export type ListingInquiryEmailSectionPropsInterface = ListingInquiryButtonPropsInterface &
+    ListingInquiryMsgPropsInterface;

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { ListingInquirySidebarPropsInterface } from './interface/component.interface';
 import ListingInquiryR123ContactComponent from './listing-inquiry-r123-contact.component';
-import ListingInquiryButtonComponent from './listing-inquiry-r123-button.component';
+import ListingInquiryButtonComponent from './sidebar-inquiry-button.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ListingInquiryR123SidebarAgentComponent from './sidebar-agent.component';
 import ListingInquiryR123OrgComponent from './sidebar-organization.component';
@@ -31,7 +31,7 @@ const ListingInquiryR123SidebarComponent: FunctionComponent<ListingInquirySideba
                     <div className="ui-organism-listing-inquiry-r123__agent-wrapper block">
                         <ListingInquiryR123SidebarAgentComponent
                             agentName={agent.agentName}
-                            agentJoinInfo={agent.agentJoinInfo}
+                            agentInfo={agent.agentInfo}
                             agentImageUrl={agent.agentImageUrl}
                             agentPageUrl={agent.agentPageUrl}
                         />
