@@ -72,36 +72,24 @@
     }
 
     &__inquiry-box-wrapper {
-        display: block;
-        // text-align: center;
-        max-width: 800px;
-        padding: 24px 24px 40px;
-        margin: 0px auto;
         display: flex;
         flex-direction: column;
+        max-width: 800px;
+
+        @include margin(all, 0 auto);
+        @include padding(all, 10px 24px 10px);
     }
 
     &__contact-form {
-        margin-bottom: 24px;
+        @include margin-bottom(24px);
     }
 
     &__contact-form-title {
-        color: rgb(51, 63, 72);
-        font-size: 18px;
-        line-height: 22px;
-        font-weight: 300;
-        margin: 16px 0px;
-    }
-
-    &__agent-logo {
-        width: 80px;
-        height: 80px;
-        display: block;
-        background-color: transparent;
-        border-width: initial;
-        border-style: none;
-        border-color: initial;
-        border-image: initial;
+        @include font-color(headingR123);
+        @include font-size(18px);
+        @include font-weight(300);
+        @include line-height(22);
+        @include margin(all, 16px 0);
     }
 
     &__agent-info {
@@ -115,7 +103,7 @@
         @include font-weight(500);
 
         &:hover {
-            text-decoration: underline;                
+            text-decoration: underline;
         }
     }
 
@@ -129,13 +117,6 @@
         text-align: right;
     }
 
-    &__email-form-body {
-        display: flex;
-        flex-direction: row;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-    }
-
     &__inquiry_buyer_info {
         @include margin-top(20px);
     }
@@ -145,13 +126,41 @@
         @include font-size(10px);
         @include font-weight(300);
     }
+
+    // Would be use later for multiple contact varian
+    // .rui-icon-arrow-down-small {
+    //     width: 30px;
+
+    //     margin-left: -7px;
+    //     color: rgb(105, 118, 132);
+    //     height: 40px;
+    //     font-size: 16px;
+    //     background-color: #d2d6da;
+    //     border-radius: 0.25rem;
+    //     border-left: 0 solid #000;
+    //     border-right: 0 solid #000;
+    //     border-top: 0 solid #000;
+    //     border-bottom: 0 solid #000;
+    //     text-align: center;
+    //     padding-top: 15px;
+    // }
+
+    // .ui-molecules-dropdown {
+    //     &__wrapper {
+    //         right: 0;
+    //         width: 182px;
+    //     }
+    // }
 }
 
-input#inquiry-input {
-    height: 32px;
+// stylelint-disable selector-no-qualifying-type
+// stylelint-disable selector-class-pattern
+div.ui-organism-listing-inquiry-r123__buyer_info > input {
     font-size: 14px;
+    height: 32px;
 
     @include font-weight(300);
+    @include margin-top(20px);
 
     &:hover {
         border-color: #49a9ee;

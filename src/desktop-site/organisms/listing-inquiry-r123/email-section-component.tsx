@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FunctionComponent } from 'react';
 import { ListingInquiryEmailSectionPropsInterface } from './interface/component.interface';
 import TextComponent from '../../../common/atomic/text/text.component';
@@ -6,24 +7,29 @@ import ButtonComponent from '../../../common/atomic/button/button.component';
 import EditTextComponent from '../../../common/atomic/edit-text/edit-text.component';
 
 /**
- * Listing Inquiry Sidebar Agent Component
+ * R123 Listing Inquiry Email Section Component
  * @author nafhul <nafhul.arsyad@99.co>
  * @since 2020.05.18
  */
-const ListingInquiryR123EmailSectionComponent: FunctionComponent<ListingInquiryEmailSectionPropsInterface> = ({
+const R123ListingInquiryEmailSectionComponent: FunctionComponent<ListingInquiryEmailSectionPropsInterface> = ({
     buttonText,
     agreement,
     onClickInquiryButton,
     buyerName,
     buyerEmail,
-    placeholder
+    placeholder,
+    onChangeInquiryField
 }: ListingInquiryEmailSectionPropsInterface) => {
-    const agreementMarkup = () => {
-        return { __html: agreement ? agreement : '' };
+    /**
+     * Agreement HTML text
+     * @return {any}
+     */
+    const agreementMarkup: any = () => {
+        return { __html: agreement || '' };
     };
 
     return (
-        <div>
+        <div className="ui-organism-listing-inquiry-r123__inquiry-box-wrapper">
             <GridComponent.Container className="container-example">
                 <GridComponent.Row>
                     <GridComponent.Column defaultSize={6} id="email-column">
@@ -32,7 +38,8 @@ const ListingInquiryR123EmailSectionComponent: FunctionComponent<ListingInquiryE
                             style={{
                                 width: '100%',
                                 height: '135px',
-                                resize: 'none'
+                                resize: 'none',
+                                marginTop: '20px'
                             }}
                         />
                     </GridComponent.Column>
@@ -47,21 +54,30 @@ const ListingInquiryR123EmailSectionComponent: FunctionComponent<ListingInquiryE
                             type="text"
                             value={buyerName}
                             placeholder={placeholder.name}
+                            onChange={(event): void => {
+                                onChangeInquiryField('name', event);
+                            }}
                         />
                         <EditTextComponent
-                            className="ui-organism-listing-inquiry-r123__inquiry_buyer_info"
+                            className="ui-organism-listing-inquiry-r123__buyer_info"
                             id="inquiry-input"
                             name="inquiry-email"
                             type="email"
                             value={buyerEmail}
                             placeholder={placeholder.email}
+                            onChange={(event): void => {
+                                onChangeInquiryField('email', event);
+                            }}
                         />
                         <EditTextComponent
-                            className="ui-organism-listing-inquiry-r123__inquiry_buyer_info"
+                            className="ui-organism-listing-inquiry-r123__buyer_info"
                             id="inquiry-input"
                             name="inquiry-phone"
                             type="text"
                             placeholder={placeholder.phone}
+                            onChange={(event): void => {
+                                onChangeInquiryField('phone', event);
+                            }}
                         />
                     </GridComponent.Column>
                 </GridComponent.Row>
@@ -92,6 +108,6 @@ const ListingInquiryR123EmailSectionComponent: FunctionComponent<ListingInquiryE
     );
 };
 
-ListingInquiryR123EmailSectionComponent.defaultProps = {};
+R123ListingInquiryEmailSectionComponent.defaultProps = {};
 
-export default ListingInquiryR123EmailSectionComponent;
+export default R123ListingInquiryEmailSectionComponent;
