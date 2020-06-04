@@ -7,7 +7,6 @@
 
     &__item {
         align-items: center;
-        display: flex;
         height: 40px;
         justify-content: center;
         min-width: 40px;
@@ -25,7 +24,6 @@
         &--prev,
         &--next {
             align-items: center;
-            display: flex;
             height: 40px;
             justify-content: center;
             width: 40px;

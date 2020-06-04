@@ -61,10 +61,10 @@ const PaginationComponent: React.SFC<MoleculePaginationPropsInterface> = ({
                 containerClassName={StringHelper.objToString(name)}
                 breakClassName="ui-molecule-paginate__break"
                 activeLinkClassName="ui-molecule-paginate__link--active"
-                pageClassName="ui-molecule-paginate__item"
-                activeClassName="ui-molecule-paginate__item--active"
-                previousClassName="ui-molecule-paginate__item--prev"
-                nextClassName="ui-molecule-paginate__item--next"
+                pageClassName="ui-molecule-paginate__item flex"
+                activeClassName="ui-molecule-paginate__item--active flex"
+                previousClassName="ui-molecule-paginate__item--prev flex"
+                nextClassName="ui-molecule-paginate__item--next flex"
                 onPageChange={onPageChange}
             />
         </div>
