@@ -36,7 +36,8 @@ export default [
         './src/common/molecules/radio-button/radio-button.component.tsx',
         './src/common/molecules/range-slider/range-slider.component.tsx',
         './src/common/molecules/tabs/tabs.component.tsx',
-        './src/common/molecules/toggle/toggle.component.tsx'
+        './src/common/molecules/toggle/toggle.component.tsx',
+        './src/common/molecules/pagination/pagination.component.tsx'
     ],
     /**
      * Organism
