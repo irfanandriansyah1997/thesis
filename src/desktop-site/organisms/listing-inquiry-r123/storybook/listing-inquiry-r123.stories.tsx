@@ -5,8 +5,8 @@ import DividerDocsComponent from '../../../../.storybook/component/atomic/divide
 import SectionSidebarFullComponent from './section/section-sidebar-full.stories';
 import SectionSidebarNoOrgComponent from './section/section-sidebar-no-org.stories';
 import SectionSidebarNoWhatsAppComponent from './section/section-sidebar-no-whatsapp.stories';
+import SectionBoxFullComponent from './section/section-box-full.stories';
 import '../style/style.scss';
-import SectionBoxFullComponent from './section/section-box-full';
 
 ((): void => {
     new StorybookDocumentationBuilder(
