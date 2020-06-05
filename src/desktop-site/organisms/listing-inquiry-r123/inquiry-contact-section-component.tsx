@@ -19,11 +19,8 @@ const R123ListingInquiryContactSectionComponent: FunctionComponent<ListingInquir
      * Agent info HTML text
      * @return {any}
      */
-    const agentInfoMarkup: any = () => {
-        if (agent.agentInfo) {
-            return { __html: agent.agentInfo };
-        }
-        return { __html: '' };
+    const agentInfoMarkup: any = (): Record<string, string> => {
+        return { __html: agent.agentInfo || '' };
     };
     /* eslint-enable @typescript-eslint/no-explicit-any */
 

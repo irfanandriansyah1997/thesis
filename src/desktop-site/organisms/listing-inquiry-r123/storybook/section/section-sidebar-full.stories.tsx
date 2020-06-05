@@ -68,25 +68,3 @@ class SectionSidebarFullComponent extends React.PureComponent<
 }
 
 export default SectionSidebarFullComponent;
-
-// ((): void => {
-//     new StorybookDocumentationBuilder(
-//         'Listing Inquiry R123 Component',
-//         'organism'
-//     )
-//         .setSection('desktop')
-//         .setDescriptionComponent('Listing Inquiry R123 Component')
-//         .registerDocumentation(
-//             <>
-//                 <HeadingDocsComponent>Usage</HeadingDocsComponent>
-//                 <TextDocsComponent>Listing Inquiry component</TextDocsComponent>
-//                 <CodingViewerDocsComponent sourceCode={docs()}>
-//                     <ListingInquiryR123SidebarComponent
-//                         {...DefaultPropsListingInquiryR123Sidebar}
-//                     />
-//                 </CodingViewerDocsComponent>
-//                 <DividerDocsComponent />
-//             </>
-//         )
-//         .execute();
-// })();

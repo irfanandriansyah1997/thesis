@@ -24,7 +24,7 @@ const R123ListingInquiryEmailSectionComponent: FunctionComponent<ListingInquiryE
      * Agreement HTML text
      * @return {any}
      */
-    const agreementMarkup: any = () => {
+    const agreementMarkup: any = (): Record<string, string> => {
         return { __html: agreement || '' };
     };
 
