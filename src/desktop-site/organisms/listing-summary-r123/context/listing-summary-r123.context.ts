@@ -22,9 +22,18 @@ const ListingSummaryContext = createContext<ListingSummaryContextInterface>({
         }
     },
     action: {
-        onClickSave: (): void => {},
-        onClickShare: (): void => {},
-        onClickPreview: (): void => {}
+        saveAction: {
+            label: '',
+            onCLick: (): void => {}
+        },
+        shareAction: {
+            label: '',
+            onCLick: (): void => {}
+        },
+        previewAction: {
+            label: '',
+            onCLick: (): void => {}
+        }
     }
 });
 

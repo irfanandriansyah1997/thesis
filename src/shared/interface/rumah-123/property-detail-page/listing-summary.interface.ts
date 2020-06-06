@@ -7,6 +7,7 @@ export type R123ListingSummaryDataInterface = {
     address: string;
     priceTag: string;
     installment?: string;
+    tier?: 'featured' | 'premier';
     attribute: R123ListingSummaryAttributeInterface;
 };
 
@@ -16,10 +17,20 @@ export type R123ListingSummaryDataInterface = {
  * @since 2020.06.05
  */
 export interface R123ListingSummaryActionInterface {
-    onClickSave: () => void;
-    onClickShare: () => void;
-    onClickPreview: () => void;
+    saveAction: R123ListingSummaryActionItemInterface;
+    shareAction: R123ListingSummaryActionItemInterface;
+    previewAction: R123ListingSummaryActionItemInterface;
 }
+
+/**
+ * Listing Summary Action Item Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.06.03
+ */
+export type R123ListingSummaryActionItemInterface = {
+    label: string;
+    onCLick: () => void;
+};
 
 /**
  * R123 Listing Summary Attribute Interface

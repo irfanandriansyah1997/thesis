@@ -93,7 +93,8 @@ const ColorDefaultConstant = {
     editTextSecondary: '#f3f4f6',
     addOnTextR123: '#555',
     addOnBgR123: '#eee',
-    addOnBorderR123: '#ccc'
+    addOnBorderR123: '#ccc',
+    actionIconR123: '#a5adb6'
 } as const;
 
 export default ColorDefaultConstant;

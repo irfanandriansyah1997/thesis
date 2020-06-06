@@ -1,6 +1,6 @@
 import {
-    R123ListingSummaryActionInterface as action,
-    R123ListingSummaryDataInterface as data
+    R123ListingSummaryDataInterface as data,
+    R123ListingSummaryActionInterface as action
 } from '../../../../shared/interface/rumah-123/property-detail-page/listing-summary.interface';
 
 /**
@@ -8,13 +8,11 @@ import {
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.06.05
  */
-export type ListingSummaryR123PropsInterface = ListingSummaryDataPropsInterface & {
-    action: action;
-    flaggingBadge: string;
-    tierBadge?: 'featured' | 'premier';
-    mortgage?: ListingSummaryMortgagePropsInterface;
-    actionLabel: ListingSummaryActionLabelPropsInterface;
-};
+export type ListingSummaryR123PropsInterface = ListingSummaryDataPropsInterface &
+    ListingSummaryActionPropsInterface & {
+        flaggingBadge: string;
+        mortgage?: ListingSummaryMortgagePropsInterface;
+    };
 
 /**
  * Listing Summary Props Data Interface
@@ -24,25 +22,21 @@ export type ListingSummaryR123PropsInterface = ListingSummaryDataPropsInterface 
 export type ListingSummaryDataPropsInterface = data;
 
 /**
+ * Listing Summary Action Props Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.06.05
+ */
+export type ListingSummaryActionPropsInterface = action;
+
+/**
  * Listing Summary Context API Interface
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.06.05
  */
 export interface ListingSummaryContextInterface {
-    action: action;
+    action: ListingSummaryActionPropsInterface;
     data: ListingSummaryDataPropsInterface;
 }
-
-/**
- * Listing Summary Action Label Interface
- * @author Dedik Budianto <dedik.budianto@99.co>
- * @since 2020.06.05
- */
-export type ListingSummaryActionLabelPropsInterface = {
-    save: string;
-    share: string;
-    preview: string;
-};
 
 /**
  * Listing Summary Mortgage Interface
@@ -50,7 +44,6 @@ export type ListingSummaryActionLabelPropsInterface = {
  * @since 2020.06.05
  */
 export type ListingSummaryMortgagePropsInterface = {
-    link: string;
     label: string;
     installment: string;
     onClickMortgage: () => void;
