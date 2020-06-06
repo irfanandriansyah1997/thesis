@@ -102,8 +102,8 @@ const CardR123BasicGridComponent: FunctionComponent<CardR123BasicGridPropsInterf
 };
 
 CardR123BasicGridComponent.propTypes = {
+    to: PropTypes.string,
     id: PropTypes.string.isRequired,
-    to: PropTypes.string.isRequired,
     type: PropTypes.oneOf(['text', 'text-with-icon']).isRequired as Validator<
         'text' | 'text-with-icon'
     >,
@@ -118,7 +118,8 @@ CardR123BasicGridComponent.propTypes = {
 
 CardR123BasicGridComponent.defaultProps = {
     type: 'text',
-    listItem: []
+    listItem: [],
+    to: undefined
 };
 
 export default CardR123BasicGridComponent;
