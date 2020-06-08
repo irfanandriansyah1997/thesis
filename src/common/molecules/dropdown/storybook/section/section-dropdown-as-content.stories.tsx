@@ -124,7 +124,7 @@ class SectionDropdownAsContentComponent extends React.PureComponent<
                                 <IconComponent
                                     color="text"
                                     size={16}
-                                    style={{ marginRight: 5 }}
+                                    marginRight={5}
                                 >
                                     rui-icon-avatar
                                 </IconComponent>

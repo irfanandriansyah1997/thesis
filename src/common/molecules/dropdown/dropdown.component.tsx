@@ -186,11 +186,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                     )}
 
                     {icon ? (
-                        <IconComponent
-                            color="text"
-                            size={16}
-                            style={{ marginLeft: 5 }}
-                        >
+                        <IconComponent color="text" size={16} marginLeft={5}>
                             {icon}
                         </IconComponent>
                     ) : null}

@@ -82,7 +82,7 @@ const ExpandTextComponent: SFC<ExpandTextPropsInterface> = ({
                         <IconComponent
                             color={color as ColorType}
                             size={16}
-                            style={{ marginLeft: 5 }}
+                            marginLeft={5}
                         >
                             {expand ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
                         </IconComponent>

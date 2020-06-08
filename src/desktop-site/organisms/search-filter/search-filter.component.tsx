@@ -202,7 +202,7 @@ const SearchFilter: SFC<FilterNavbarComponent> = ({
                             <IconComponent
                                 color="text"
                                 size={16}
-                                style={{ marginLeft: 4 }}
+                                marginLeft={4}
                             >
                                 {show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
                             </IconComponent>

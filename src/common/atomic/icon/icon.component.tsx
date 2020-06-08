@@ -17,6 +17,14 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  */
 const IconComponent: SFC<IconPropsInterface> = ({
     size,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
     color,
     style,
     children,
@@ -51,7 +59,31 @@ const IconComponent: SFC<IconPropsInterface> = ({
                 ? ColorDefaultConstant[color as ColorType]
                 : undefined,
             height: ValidatorHelper.isNumber(size) ? `${size}px` : undefined,
-            fontSize: ValidatorHelper.isNumber(size) ? `${size}px` : undefined
+            fontSize: ValidatorHelper.isNumber(size) ? `${size}px` : undefined,
+            'margin-top': ValidatorHelper.isNumber(marginTop)
+                ? `${marginTop}px`
+                : undefined,
+            'margin-right': ValidatorHelper.isNumber(marginRight)
+                ? `${marginRight}px`
+                : undefined,
+            'margin-bottom': ValidatorHelper.isNumber(marginBottom)
+                ? `${marginBottom}px`
+                : undefined,
+            'margin-left': ValidatorHelper.isNumber(marginLeft)
+                ? `${marginLeft}px`
+                : undefined,
+            'padding-top': ValidatorHelper.isNumber(paddingTop)
+                ? `${paddingTop}px`
+                : undefined,
+            'padding-right': ValidatorHelper.isNumber(paddingRight)
+                ? `${paddingRight}px`
+                : undefined,
+            'padding-bottom': ValidatorHelper.isNumber(paddingBottom)
+                ? `${paddingBottom}px`
+                : undefined,
+            'padding-left': ValidatorHelper.isNumber(paddingLeft)
+                ? `${paddingLeft}px`
+                : undefined
         },
         children: isVendorIcon ? undefined : children,
         ...res
@@ -65,7 +97,11 @@ IconComponent.propTypes = {
     size: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.oneOf<ComponentDefaultSize>(['big', 'default', 'small'])
-    ]).isRequired
+    ]).isRequired,
+    marginTop: PropTypes.number,
+    marginRight: PropTypes.number,
+    marginBottom: PropTypes.number,
+    marginLeft: PropTypes.number
 };
 
 IconComponent.defaultProps = {

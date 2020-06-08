@@ -64,7 +64,7 @@ const KprCalculatorR123Component: SFC<KPRCalculatorComponentInterface> = ({
                 <IconComponent
                     color="headingR123"
                     size={10}
-                    style={{ marginLeft: 5 }}
+                    marginLeft={5}
                     className="selector-icon"
                 >
                     rui-icon-arrow-right-small
