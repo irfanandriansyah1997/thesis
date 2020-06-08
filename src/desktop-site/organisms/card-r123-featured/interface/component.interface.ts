@@ -30,7 +30,10 @@ export type CardR123FeaturedPropsInterface = Omit<
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.21
  */
-export type CardR123FeaturedPropsDataInterface = data & {
+export type CardR123FeaturedPropsDataInterface = Omit<
+    data,
+    'unit' | 'completionDate'
+> & {
     tier: tier;
     agentName: string;
     mediaCount: number;

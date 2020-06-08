@@ -32,11 +32,13 @@ export interface R123SearchPageCardActionInterface {
 export type R123SearchPageCardDataInterface = {
     id: string;
     link: string;
+    unit: number;
     title: string;
     address: string;
     priceTag: string;
     installment: string;
     propertyType: string;
+    completionDate: string;
     media: R123SearchPageCardMediaInterface;
     attribute: R123SearchPageCardAttributeInterface;
 };

@@ -30,7 +30,10 @@ export type CardR123BasicPropsInterface = Omit<
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.21
  */
-export type CardR123BasicPropsDataInterface = data;
+export type CardR123BasicPropsDataInterface = Omit<
+    data,
+    'unit' | 'completionDate'
+>;
 
 /**
  * Card R123 Basic Grid Props Interface
