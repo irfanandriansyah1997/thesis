@@ -1,4 +1,4 @@
-import React, { SFC, useState } from 'react';
+import React, { SFC, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import IconComponent from '../../atomic/icon/icon.component';
@@ -21,12 +21,24 @@ import {
  * @since 2020.05.04
  */
 const CarouselComponent: SFC<CarouselPropsInterface> = ({
-    className,
     item,
+    value,
+    className,
     indicator,
-    scrollEffect
+    scrollEffect,
+    onChangeActive
 }) => {
-    const [position, setPosition] = useState(0);
+    const [position, setPosition] = useState(value || 0);
+
+    useEffect(() => {
+        onChangeActive(position);
+    }, [position]);
+
+    useEffect(() => {
+        if (value) {
+            setPosition(value);
+        }
+    }, [value]);
 
     const name: ComponentClassnameDefaultInterface = {
         relative: true,
@@ -82,7 +94,11 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                 <div className="ui-molecules-carousel__action--prev absolute">
                     <IconComponent
                         color="white"
-                        size={30}
+                        size={
+                            indicator && indicator.fontSizeIcon
+                                ? indicator.fontSizeIcon
+                                : 30
+                        }
                         onClick={(): void => handleClick('prev')}
                     >
                         {indicator ? indicator.previous : ''}
@@ -91,7 +107,11 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                 <div className="ui-molecules-carousel__action--next absolute">
                     <IconComponent
                         color="white"
-                        size={30}
+                        size={
+                            indicator && indicator.fontSizeIcon
+                                ? indicator.fontSizeIcon
+                                : 30
+                        }
                         onClick={(): void => handleClick('next')}
                     >
                         {indicator ? indicator.next : ''}
@@ -105,14 +125,19 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
 CarouselComponent.defaultProps = {
     className: '',
     scrollEffect: false,
+    value: 0,
     indicator: {
         next: ARROW_ON_NEXT,
-        previous: ARROW_ON_PREVIOUS
+        previous: ARROW_ON_PREVIOUS,
+        fontSizeIcon: 30
     }
 };
 
 CarouselComponent.propTypes = {
+    value: PropTypes.number,
     className: PropTypes.string,
+    scrollEffect: PropTypes.bool,
+    onChangeActive: PropTypes.func.isRequired,
     item: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -121,10 +146,10 @@ CarouselComponent.propTypes = {
             src: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    scrollEffect: PropTypes.bool,
     indicator: PropTypes.shape({
         previous: PropTypes.string.isRequired,
-        next: PropTypes.string.isRequired
+        next: PropTypes.string.isRequired,
+        fontSizeIcon: PropTypes.number
     })
 };
 

@@ -1,0 +1,86 @@
+/* stylelint-disable */
+
+@import '../../../../style/import.scss';
+
+.ui-organism-gallery {
+    width: 100%;
+    height: 100%;
+
+    @include background-color(black);
+
+    &__footer {
+        min-height: 168px;
+        width: 100%;
+
+        @include padding(all, 0 5%);
+
+        > .ui-atomic-text {
+            height: 67px;
+
+            @include padding(all, 15px 0);
+            @include border-bottom(1px, solid, white);
+        }
+    }
+
+    &__thumbnail {
+        height: 100px;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+
+        ul {
+            height: 98px;
+            -webkit-box-align: center;
+        }
+
+        &-item {
+            cursor: pointer;
+            display: inline-flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            height: 71px;
+            width: 107px;
+
+            @include margin(all, 0 4px);
+            @include border(all, 1px, solid, black);
+
+            img {
+                opacity: 0.5;
+
+                @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            }
+        }
+
+        &-item:hover,
+        &-item--active {
+            img {
+                opacity: 1;
+
+                @include border(all, 1px, solid, white);
+            }
+        }
+    }
+
+    .ui-molecules-carousel {
+        &__item {
+            @include padding(all, 0 150px);
+
+            img.ui-molecules-carousel__item {
+                @include no-padding();
+            }
+        }
+
+        &__action {
+            &--prev,
+            &--next {
+                display: flex;
+                align-items: center;
+                height: 48px;
+                justify-content: center;
+                width: 150px;
+            }
+        }
+    }
+}

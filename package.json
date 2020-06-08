@@ -48,6 +48,7 @@
         "react-paginate": "^6.3.2",
         "react-router-dom": "^5.1.2",
         "react-transition-group": "^4.3.0",
+        "react-youtube": "^7.11.2",
         "resize-observer": "^1.0.0"
     },
     "devDependencies": {
@@ -77,6 +78,7 @@
         "@types/react-paginate": "^6.2.1",
         "@types/react-router-dom": "^5.1.3",
         "@types/react-transition-group": "^4.2.4",
+        "@types/react-youtube": "^7.6.2",
         "@types/resize-observer-browser": "^0.1.3",
         "@types/vfile-message": "^2.0.0",
         "@typescript-eslint/eslint-plugin": "^2.22.0",

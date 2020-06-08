@@ -6,6 +6,7 @@
  */
 export interface CarouselPropsInterface {
     className?: string;
+    value?: number;
     item: CarouselItemInterface[];
     indicator?: CarouselIndicatorInterface;
     onChangeActive: (position: number) => void;
@@ -21,4 +22,5 @@ export interface CarouselItemInterface {
 export interface CarouselIndicatorInterface {
     previous: string;
     next: string;
+    fontSizeIcon?: number;
 }
