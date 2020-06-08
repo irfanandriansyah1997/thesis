@@ -3,13 +3,14 @@ import React from 'react';
 
 import GalleryComponent from '../gallery.component';
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
+import { CarouselItemInterface } from '../../../molecules/carousel/interface/component.interface';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
 import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 import '../style/style.scss';
 
-const carouselItem = [
+const carouselItem: CarouselItemInterface[] = [
     {
         id: 1,
         src: 'https://i.postimg.cc/LXbhnMdf/image-01.jpg',
@@ -37,53 +38,9 @@ const carouselItem = [
     },
     {
         id: 6,
-        src: 'https://i.postimg.cc/LXbhnMdf/image-01.jpg',
-        alt: 'Image 06'
-    },
-    {
-        id: 7,
-        src: 'https://i.postimg.cc/dt7N7RCT/image-02.jpg',
-        alt: 'Image 07'
-    },
-    {
-        id: 8,
-        src: 'https://i.postimg.cc/j546n2x9/image-03.jpg',
-        alt: 'Image 08'
-    },
-    {
-        id: 9,
-        src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg',
-        alt: 'Image 09'
-    },
-    {
-        id: 10,
-        src: 'https://i.postimg.cc/RZj4T70Z/image-05.jpg',
-        alt: 'Image 10'
-    },
-    {
-        id: 11,
-        src: 'https://i.postimg.cc/LXbhnMdf/image-01.jpg',
-        alt: 'Image 11'
-    },
-    {
-        id: 12,
-        src: 'https://i.postimg.cc/dt7N7RCT/image-02.jpg',
-        alt: 'Image 12'
-    },
-    {
-        id: 13,
-        src: 'https://i.postimg.cc/j546n2x9/image-03.jpg',
-        alt: 'Image 13'
-    },
-    {
-        id: 5,
-        src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg',
-        alt: 'Image 05'
-    },
-    {
-        id: 5,
-        src: 'https://i.postimg.cc/RZj4T70Z/image-05.jpg',
-        alt: 'Image 05'
+        src: '04mfKJWDSzI',
+        alt: 'Image 06',
+        type: 'youtube'
     }
 ];
 
@@ -113,6 +70,10 @@ const carouselItem = [
                         }}
                     >
                         <GalleryComponent
+                            labelToggle={{
+                                onCLose: 'Sembunyikan Thumbnail',
+                                onExpand: 'Tampilkan Thumbnail'
+                            }}
                             showNumbering
                             item={carouselItem}
                             onChangeActive={(): void => {}}

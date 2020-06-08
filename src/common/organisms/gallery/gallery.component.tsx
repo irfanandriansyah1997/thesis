@@ -1,15 +1,28 @@
 import PropTypes from 'prop-types';
-import React, { FunctionComponent, useState, useRef, useEffect } from 'react';
+import React, {
+    useRef,
+    useState,
+    useEffect,
+    Validator,
+    FunctionComponent
+} from 'react';
 
 import TextComponent from '../../atomic/text/text.component';
 import ImageComponent from '../../atomic/image/image.component';
 import StringHelper from '../../../shared/helper/string.helper';
+import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { GalleryPropsInterface } from './interface/component.interface';
 import CarouselComponent from '../../molecules/carousel/carousel.component';
+import { ExpandTextToggleButtonInterface } from '../../molecules/expand-text/interfaces/component.interface';
 import {
     ARROW_LEFT_KEY_CHARCODE,
     ARROW_RIGHT_KEY_CHARCODE
 } from '../../../shared/constant/keyboard.constant';
+import IconComponent from '../../atomic/icon/icon.component';
+import {
+    ARROW_ON_EXPAND,
+    ARROW_ON_HIDE
+} from '../../../shared/constant/component.constant';
 
 /**
  * Gallery Component
@@ -17,13 +30,15 @@ import {
  * @since 2020.06.08
  */
 const GalleryComponent: FunctionComponent<GalleryPropsInterface> = ({
+    labelToggle,
     showNumbering,
     onChangeActive,
     ...res
 }) => {
+    const [position, setPosition] = useState<number>(0);
     const componentElement = useRef<HTMLDivElement>(null);
     const containerElement = useRef<HTMLDivElement>(null);
-    const [position, setPosition] = useState<number>(0);
+    const [showToggle, setShowToggle] = useState<boolean>(true);
 
     /**
      * On Change Active Carousel
@@ -64,6 +79,19 @@ const GalleryComponent: FunctionComponent<GalleryPropsInterface> = ({
         }
     };
 
+    /**
+     * Get Thumbnail
+     * @param {}
+     */
+    const getThumbnail = (
+        src: string,
+        type: 'image' | 'youtube' | undefined
+    ): string => {
+        return type === 'youtube'
+            ? `https://img.youtube.com/vi/${src}/0.jpg`
+            : src;
+    };
+
     useEffect(() => {
         if (componentElement.current) {
             componentElement.current.focus();
@@ -87,7 +115,12 @@ const GalleryComponent: FunctionComponent<GalleryPropsInterface> = ({
         <div
             tabIndex={-1}
             ref={componentElement}
-            className="ui-organism-gallery flex flex-column"
+            className={StringHelper.objToString({
+                'ui-organism-gallery': true,
+                'ui-organism-gallery--hide-thumbnail': !showToggle,
+                flex: true,
+                'flex-column': true
+            })}
         >
             <CarouselComponent
                 {...res}
@@ -100,52 +133,102 @@ const GalleryComponent: FunctionComponent<GalleryPropsInterface> = ({
                 }}
             />
             <div className="ui-organism-gallery__footer">
-                {showNumbering && (
+                <div className="ui-organism-gallery__label flex flex-align-center">
+                    {showNumbering && (
+                        <TextComponent
+                            tag="p"
+                            color="white"
+                            fontWeight={500}
+                            styling="heading-6"
+                            className={StringHelper.objToString({
+                                'ui-organism-gallery__numbering': true,
+                                flex: true,
+                                'flex-align-center': true
+                            })}
+                        >
+                            {`${position + 1}/${res.item.length}`}
+                        </TextComponent>
+                    )}
+                    {ValidatorHelper.verifiedIsNotEmpty(
+                        res.item[position].alt
+                    ) && (
+                        <TextComponent
+                            tag="p"
+                            color="white"
+                            fontWeight={500}
+                            styling="heading-6"
+                            className={StringHelper.objToString({
+                                'ui-organism-gallery__caption': true,
+                                flex: true,
+                                'flex-align-center': true
+                            })}
+                        >
+                            {res.item[position].alt}
+                        </TextComponent>
+                    )}
                     <TextComponent
                         tag="p"
                         color="white"
-                        fontWeight={600}
+                        fontWeight={500}
                         styling="heading-6"
-                        className="flex flex-align-center"
+                        className={StringHelper.objToString({
+                            'ui-organism-gallery__toggle-text': true,
+                            flex: true,
+                            'flex-justify-end': true,
+                            'flex-align-center': true
+                        })}
+                        onClick={(): void => setShowToggle(!showToggle)}
                     >
-                        {`${position + 1}/${res.item.length}`}
+                        <IconComponent color="white" size={16}>
+                            {showToggle ? ARROW_ON_HIDE : ARROW_ON_EXPAND}
+                        </IconComponent>
+                        {showToggle
+                            ? labelToggle.onCLose
+                            : labelToggle.onExpand}
                     </TextComponent>
-                )}
-                <div
-                    className="ui-organism-gallery__thumbnail block"
-                    ref={containerElement}
-                    tabIndex={-1}
-                >
-                    <ul
-                        className="flex flex-align-center"
-                        style={{ width: res.item.length * 115 }}
-                    >
-                        {res.item.map(({ id, ...resItem }, index) => (
-                            <li
-                                key={`thumbnail-${id}-${resItem.src}`}
-                                className={StringHelper.objToString({
-                                    'ui-organism-gallery__thumbnail-item': true,
-                                    'ui-organism-gallery__thumbnail-item--active':
-                                        index === position,
-                                    relative: true
-                                })}
-                            >
-                                <ImageComponent
-                                    {...resItem}
-                                    width={107}
-                                    height={71}
-                                    onClick={(): void => setPosition(index)}
-                                />
-                            </li>
-                        ))}
-                    </ul>
                 </div>
+                {showToggle && (
+                    <div
+                        className="ui-organism-gallery__thumbnail block"
+                        ref={containerElement}
+                        tabIndex={-1}
+                    >
+                        <ul
+                            className="flex flex-align-center"
+                            style={{ width: res.item.length * 115 }}
+                        >
+                            {res.item.map(({ id, src, alt, type }, index) => (
+                                <li
+                                    key={`thumbnail-${id}-${src}`}
+                                    className={StringHelper.objToString({
+                                        'ui-organism-gallery__thumbnail-item': true,
+                                        'ui-organism-gallery__thumbnail-item--active':
+                                            index === position,
+                                        relative: true
+                                    })}
+                                >
+                                    <ImageComponent
+                                        width={107}
+                                        height={71}
+                                        src={getThumbnail(src, type)}
+                                        alt={alt}
+                                        onClick={(): void => setPosition(index)}
+                                    />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </div>
         </div>
     );
 };
 
 GalleryComponent.propTypes = {
+    labelToggle: PropTypes.shape({
+        onCLose: PropTypes.string,
+        onExpand: PropTypes.string
+    }) as Validator<ExpandTextToggleButtonInterface>,
     item: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -159,7 +242,11 @@ GalleryComponent.propTypes = {
 };
 
 GalleryComponent.defaultProps = {
-    showNumbering: false
+    showNumbering: false,
+    labelToggle: {
+        onCLose: 'Sembunyikan Thumbnail',
+        onExpand: 'Tampilkan Thumbnail'
+    }
 };
 
 export default GalleryComponent;

@@ -14,6 +14,7 @@ import {
     ARROW_ON_NEXT,
     ARROW_ON_PREVIOUS
 } from '../../../shared/constant/component.constant';
+import MediaPlayerComponent from '../../atomic/media-player/media-player.component';
 
 /**
  * Default Carousel Component
@@ -74,19 +75,27 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                     transform: `translateX(${position * -100}%)`
                 }}
             >
-                {item.map((image: CarouselItemInterface) => (
+                {item.map(({ alt, id, src, type }: CarouselItemInterface) => (
                     <div
                         className="ui-molecules-carousel__item relative"
-                        key={image.id}
+                        key={id}
                     >
-                        <ImageComponent
-                            width="100%"
-                            height="100%"
-                            src={image.src}
-                            alt={image.alt}
-                            objectFit="cover"
-                            className="ui-molecules-carousel__item"
-                        />
+                        {type === 'youtube' ? (
+                            <MediaPlayerComponent
+                                youtubeId={src}
+                                width="100%"
+                                height="100%"
+                            />
+                        ) : (
+                            <ImageComponent
+                                width="100%"
+                                height="100%"
+                                src={src}
+                                alt={alt}
+                                objectFit="cover"
+                                className="ui-molecules-carousel__item"
+                            />
+                        )}
                     </div>
                 ))}
             </div>

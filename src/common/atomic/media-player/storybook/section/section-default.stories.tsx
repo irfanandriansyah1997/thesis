@@ -21,7 +21,7 @@ const SectionDefaultMediaComponent: SFC = () => (
         </TextDocsComponent>
         <CodingViewerDocsComponent sourceCode="">
             <MediaPlayerComponent
-                youtubeId="Rb6Scz-5YOs"
+                youtubeId="04mfKJWDSzI"
                 width="500"
                 height="300"
             />
