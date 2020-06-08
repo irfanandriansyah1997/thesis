@@ -22,7 +22,7 @@ export type CardR123BasicPropsInterface = Omit<
     | 'style'
 > &
     CardR123BasicPropsDataInterface & {
-        action: action;
+        action: CardR123BasicActionInterface;
     };
 
 /**
@@ -32,7 +32,7 @@ export type CardR123BasicPropsInterface = Omit<
  */
 export type CardR123BasicPropsDataInterface = Omit<
     data,
-    'unit' | 'completionDate'
+    'unit' | 'completionDate' | 'mediaCount' | 'publishingDate' | 'agencyName'
 >;
 
 /**
@@ -67,6 +67,16 @@ export interface CardR123BasicGridItemInterface {
  * @since 2020.05.21
  */
 export interface CardR123BasicContextInterface {
-    action: action;
+    action: CardR123BasicActionInterface;
     data: CardR123BasicPropsDataInterface;
 }
+
+/**
+ * Card R123 Basic Action Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.06.08
+ */
+export type CardR123BasicActionInterface = Omit<
+    action,
+    'onClickContact' | 'onClickViewDetail'
+>;

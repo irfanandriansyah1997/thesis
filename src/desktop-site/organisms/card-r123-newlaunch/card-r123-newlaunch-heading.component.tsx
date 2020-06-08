@@ -1,26 +1,26 @@
-import React, { SFC, useContext } from 'react';
+import React, { useContext, FunctionComponent } from 'react';
 
 import StringHelper from '../../../shared/helper/string.helper';
 import TextComponent from '../../../common/atomic/text/text.component';
 import LinkComponent from '../../../common/atomic/link/link.component';
-import CardR123FeaturedContext from './context/card-r123-featured.context';
-import { CardR123FeaturedContextInterface } from './interface/component.interface';
+import CardR123NewLaunchContext from './context/card-r123-newlaunch.context';
+import { CardR123NewLaunchContextInterface } from './interface/component.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
- * Featured / Premier Card Heading Component
+ * New Launch Card Heading Component
  * @author Dedik Budianto <dedik.budianto@99.co>
- * @description featured / premier card heading
- * @since 2020.05.04
+ * @description
+ * @since 2020.06.08
  */
-const CardR123FeaturedHeadingComponent: SFC = () => {
-    const { data } = useContext<CardR123FeaturedContextInterface>(
-        CardR123FeaturedContext
+const CardR123NewLaunchHeadingComponent: FunctionComponent = () => {
+    const { data } = useContext<CardR123NewLaunchContextInterface>(
+        CardR123NewLaunchContext
     );
     const { agencyName, publishingDate, link } = data;
 
     const name: ComponentClassnameDefaultInterface = {
-        [`ui-organisms-card-r123-featured__heading-section`]: true,
+        [`ui-organisms-card-r123-newlaunch__heading-section`]: true,
         flex: true,
         relative: true,
         'flex-align-baseline': true
@@ -40,7 +40,6 @@ const CardR123FeaturedHeadingComponent: SFC = () => {
                     color="heading"
                     fontWeight={500}
                     styling="heading-6"
-                    className="attribute-config__landsize-info"
                 >
                     {agencyName}
                 </LinkComponent>
@@ -58,7 +57,4 @@ const CardR123FeaturedHeadingComponent: SFC = () => {
     );
 };
 
-CardR123FeaturedHeadingComponent.displayName =
-    'CardR123FeaturedHeadingComponent';
-
-export default CardR123FeaturedHeadingComponent;
+export default CardR123NewLaunchHeadingComponent;

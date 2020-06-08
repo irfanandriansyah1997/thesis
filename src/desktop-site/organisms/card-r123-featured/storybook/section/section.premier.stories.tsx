@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { SFC } from 'react';
 
 import CardR123Featured from '../../card-r123-featured.component';
@@ -17,7 +18,7 @@ const docs = (): string =>
     `    tier="premier"\n` +
     `    priceTag="Rp 2,1 M"\n` +
     `    propertyType="Rumah"\n` +
-    `    agentName="Ray White"\n` +
+    `    agencyName="Ray White"\n` +
     `    address="Lebak Bulus, Jakarta Selatan"\n` +
     `    publishingDate="Tayang 5 hari yang lalu"\n` +
     `    installment="Cicilan : Rp. 7,46 Jt/bulan"\n` +
@@ -43,10 +44,10 @@ const docs = (): string =>
     `        buildingSize: 'Luas Bangunan : 60m²'\n` +
     `    }}\n` +
     `    action={{\n` +
-    `        onClickSave: (): void => undefined,\n` +
-    `        onClickContactAgent: (): void => undefined,\n` +
-    `        onClickMortgageSimulation: (): void => undefined,\n` +
-    `        onClickViewDetail: (): void => undefined\n` +
+    `        onClickSave: (): void => {},\n` +
+    `        onClickContact: (): void => {},\n` +
+    `        onClickViewDetail: (): void => {}\n` +
+    `        onClickMortgageSimulation: (): void => {},\n` +
     `    }}\n` +
     `/>\n`;
 
@@ -67,7 +68,7 @@ const SectionPremierCardComponent: SFC = () => (
                 tier="premier"
                 priceTag="Rp 2,1 M"
                 propertyType="Rumah"
-                agentName="Ray White"
+                agencyName="Ray White"
                 address="Lebak Bulus, Jakarta Selatan"
                 publishingDate="Tayang 5 hari yang lalu"
                 installment="Cicilan : Rp. 7,46 Jt/bulan"
@@ -93,10 +94,10 @@ const SectionPremierCardComponent: SFC = () => (
                     buildingSize: 'Luas Bangunan : 60m²'
                 }}
                 action={{
-                    onClickSave: (): void => undefined,
-                    onClickViewDetail: (): void => undefined,
-                    onClickContactAgent: (): void => undefined,
-                    onClickMortgageSimulation: (): void => undefined
+                    onClickSave: (): void => {},
+                    onClickContact: (): void => {},
+                    onClickViewDetail: (): void => {},
+                    onClickMortgageSimulation: (): void => {}
                 }}
             />
         </CodingViewerDocsComponent>

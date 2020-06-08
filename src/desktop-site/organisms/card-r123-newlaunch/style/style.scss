@@ -1,0 +1,7 @@
+@import '../../../../style/import.scss';
+
+.ui-organisms-card-r123-newlaunch {
+    &__heading-section {
+        @include padding(all, 10px 16px);
+    }
+}

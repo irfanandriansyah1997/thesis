@@ -37,11 +37,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
     const { data, action } = useContext<CardR123FeaturedContextInterface>(
         CardR123FeaturedContext
     );
-    const {
-        onClickSave,
-        onClickContactAgent,
-        onClickMortgageSimulation
-    } = action;
+    const { onClickSave, onClickContact, onClickMortgageSimulation } = action;
     const { id, link, title, address, propertyType, attribute } = data;
     const PropertySizeAttribute: CardR123BasicGridItemInterface[] = [
         { key: 'landSize' },
@@ -196,7 +192,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
                         color="outline"
                         fontWeight={500}
                         icon={<PhoneIcon />}
-                        onClick={onClickContactAgent}
+                        onClick={onClickContact}
                     >
                         Kontak Agen
                     </LinkComponent>

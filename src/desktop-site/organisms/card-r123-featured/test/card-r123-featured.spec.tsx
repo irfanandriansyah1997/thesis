@@ -14,7 +14,7 @@ const MOCK_PROPS: CardR123FeaturedPropsInterface = {
     tier: 'premier',
     priceTag: 'Rp 2,1 M',
     propertyType: 'Rumah',
-    agentName: 'Ray White',
+    agencyName: 'Ray White',
     address: 'Lebak Bulus, Jakarta Selatan',
     publishingDate: 'Tayang 5 hari yang lalu',
     installment: 'Cicilan : Rp. 7,46 Jt/bulan',
@@ -43,7 +43,7 @@ const MOCK_PROPS: CardR123FeaturedPropsInterface = {
     action: {
         onClickSave: (): void => undefined,
         onClickViewDetail: (): void => undefined,
-        onClickContactAgent: (): void => undefined,
+        onClickContact: (): void => undefined,
         onClickMortgageSimulation: (): void => undefined
     }
 };
@@ -100,7 +100,7 @@ describe('Testing card r123 featured', () => {
                     ...MOCK_PROPS.action,
                     onClickMortgageSimulation: mortgageClick,
                     onClickSave: favouriteClick,
-                    onClickContactAgent: agentClick
+                    onClickContact: agentClick
                 }}
             />
         );

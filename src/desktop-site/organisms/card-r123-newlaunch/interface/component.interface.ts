@@ -33,10 +33,7 @@ export type CardR123NewLaunchPropsDataInterface = Omit<
     data,
     'installment' | 'attribute'
 > & {
-    agencyName: string;
-    mediaCount: number;
     developerLogo: string;
-    publishingDate: string;
 };
 
 /**
@@ -57,7 +54,4 @@ export interface CardR123NewLaunchContextInterface {
 export type CardR123NewLaunchActionInterface = Omit<
     action,
     'onClickMortgageSimulation'
-> & {
-    onClickViewDetail: () => void;
-    onClickContactDeveloper: () => void;
-};
+>;

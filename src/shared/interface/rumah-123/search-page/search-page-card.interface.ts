@@ -21,6 +21,8 @@ export type R123SearchPageCardMediaInterface = CarouselItemInterface[];
  */
 export interface R123SearchPageCardActionInterface {
     onClickSave: () => void;
+    onClickContact: () => void;
+    onClickViewDetail: () => void;
     onClickMortgageSimulation: () => void;
 }
 
@@ -32,13 +34,16 @@ export interface R123SearchPageCardActionInterface {
 export type R123SearchPageCardDataInterface = {
     id: string;
     link: string;
-    unit: number;
+    unit: string;
     title: string;
     address: string;
     priceTag: string;
+    mediaCount: number;
+    agencyName: string;
     installment: string;
     propertyType: string;
     completionDate: string;
+    publishingDate: string;
     media: R123SearchPageCardMediaInterface;
     attribute: R123SearchPageCardAttributeInterface;
 };

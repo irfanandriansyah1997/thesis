@@ -19,7 +19,7 @@ const CardR123FeaturedContext = createContext<CardR123FeaturedContextInterface>(
             address: '',
             priceTag: '',
             mediaCount: 0,
-            agentName: '',
+            agencyName: '',
             installment: '',
             propertyType: '',
             tier: 'featured',
@@ -34,8 +34,8 @@ const CardR123FeaturedContext = createContext<CardR123FeaturedContextInterface>(
         },
         action: {
             onClickSave: (): void => {},
+            onClickContact: (): void => {},
             onClickViewDetail: (): void => {},
-            onClickContactAgent: (): void => {},
             onClickMortgageSimulation: (): void => {}
         }
     }

@@ -35,9 +35,6 @@ export type CardR123FeaturedPropsDataInterface = Omit<
     'unit' | 'completionDate'
 > & {
     tier: tier;
-    agentName: string;
-    mediaCount: number;
-    publishingDate: string;
 };
 
 /**
@@ -55,7 +52,4 @@ export interface CardR123FeaturedContextInterface {
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.04.28
  */
-export type CardR123FeaturedActionInterface = action & {
-    onClickViewDetail: () => void;
-    onClickContactAgent: () => void;
-};
+export type CardR123FeaturedActionInterface = action;
