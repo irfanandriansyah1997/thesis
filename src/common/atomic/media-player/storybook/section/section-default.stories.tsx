@@ -5,6 +5,13 @@ import TextDocsComponent from '../../../../../.storybook/component/atomic/text/t
 import HeadingDocsComponent from '../../../../../.storybook/component/atomic/heading/heading.component';
 import CodingViewerDocsComponent from '../../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
+const docs =
+    `<MediaPlayerComponent \n` +
+    `    youtubeId="04mfKJWDSzI" \n` +
+    `    width="500" \n` +
+    `    height="300" \n` +
+    `/> \n`;
+
 /**
  * Section Default Media
  * @author Irfan Andriansyah <irfan@99.co>
@@ -19,7 +26,7 @@ const SectionDefaultMediaComponent: SFC = () => (
         <TextDocsComponent>
             Berikut adalah contoh penggunaan komponent media player
         </TextDocsComponent>
-        <CodingViewerDocsComponent sourceCode="">
+        <CodingViewerDocsComponent sourceCode={docs}>
             <MediaPlayerComponent
                 youtubeId="04mfKJWDSzI"
                 width="500"
