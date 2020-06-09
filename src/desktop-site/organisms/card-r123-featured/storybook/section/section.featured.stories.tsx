@@ -23,6 +23,8 @@ const docs = (): string =>
     `    address="Lebak Bulus, Jakarta Selatan"\n` +
     `    publishingDate="Tayang 5 hari yang lalu"\n` +
     `    installment="Cicilan : Rp. 7,46 Jt/bulan"\n` +
+    `    agencyName="Ray White"\n` +
+    `    publishingDate="Tayang 5 hari yang lalu"\n` +
     `    title="Lebak Bulus Rumah Murah Siap Huni, Lebak Bulus, Jakarta Selatan, DKI Jakarta, Indonesia"\n` +
     `    media={[\n` +
     `        {\n` +
@@ -69,10 +71,10 @@ const SectionFeaturedCardComponent: SFC = () => (
                 tier="featured"
                 priceTag="Rp 2,1 M"
                 propertyType="Rumah"
-                agencyName="Ray White"
                 address="Lebak Bulus, Jakarta Selatan"
-                publishingDate="Tayang 5 hari yang lalu"
                 installment="Cicilan : Rp. 7,46 Jt/bulan"
+                agencyName="Ray White"
+                publishingDate="Tayang 5 hari yang lalu"
                 title="Lebak Bulus Rumah Murah Siap Huni, Lebak Bulus, Jakarta Selatan, DKI Jakarta, Indonesia"
                 media={[
                     {

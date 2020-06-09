@@ -94,7 +94,8 @@ const ColorDefaultConstant = {
     addOnTextR123: '#555',
     addOnBgR123: '#eee',
     addOnBorderR123: '#ccc',
-    actionIconR123: '#a5adb6'
+    actionIconR123: '#a5adb6',
+    newPropertyBadgeR123: '#dc4504'
 } as const;
 
 export default ColorDefaultConstant;

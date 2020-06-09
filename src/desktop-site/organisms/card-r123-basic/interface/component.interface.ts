@@ -32,7 +32,12 @@ export type CardR123BasicPropsInterface = Omit<
  */
 export type CardR123BasicPropsDataInterface = Omit<
     data,
-    'unit' | 'completionDate' | 'mediaCount' | 'publishingDate' | 'agencyName'
+    | 'unit'
+    | 'mediaCount'
+    | 'videoCount'
+    | 'agencyName'
+    | 'completionDate'
+    | 'publishingDate'
 >;
 
 /**

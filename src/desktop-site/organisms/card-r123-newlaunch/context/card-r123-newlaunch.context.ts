@@ -21,6 +21,7 @@ const CardR123NewLaunchContext = createContext<
         address: '',
         priceTag: '',
         mediaCount: 0,
+        videoCount: 0,
         agencyName: '',
         propertyType: '',
         developerLogo: '',

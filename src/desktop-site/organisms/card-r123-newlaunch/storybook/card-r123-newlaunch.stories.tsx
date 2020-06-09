@@ -34,15 +34,19 @@ const CardR123NewlaunchDocumentation = require('./markdown/card-r123-newlaunch.d
                         `   ${'link="99.co"'}\n` +
                         `   ${'unit="3"'}\n` +
                         `   ${'mediaCount={2}'}\n` +
+                        `   ${'videoCount={1}'}\n` +
                         `   ${'priceTag="Mulai Rp. 796 Jt - Rp. 1,59 M"'}\n` +
                         `   ${'propertyType="Apartemen"'}\n` +
-                        `   ${'agencyName="PT. Adhi Commuter Properti"'}\n` +
                         `   ${'completionDate="Feb 2023"'}\n` +
                         `   ${'address="Lebak Bulus, Jakarta Selatan"'}\n` +
+                        `   ${'developerLogo="https://d3p0bla3numw14.cloudfront.net/developer/logo/developer-2.-logo-developer-1553849796.png"'}\n` +
+                        `   ${'title="The Premier MTH"'}\n` +
+                        `   ${'agencyName="PT. Adhi Commuter Properti",'}\n` +
+                        `   ${'publishingDate="Tayang sejak 1 Jan, 2020"'}\n` +
                         `   ${'media={['}\n` +
                         `       ${'{'}\n` +
                         `           ${'id: "img-1",'}\n` +
-                        `           ${'src: "https://img.rea-asia.com/rumah123/750x420-crop/house/ho64/6491275/original/hos6491275-rumah-di-jual-di-bintaro-tangerang-15881493488971.jpg"'}\n` +
+                        `           ${'src: "https://img.rea-asia.com/rumah123/750x560-crop/primary_property/project/1650/1580285287_background_1650.jpg"'}\n` +
                         `           ${'alt: "image",'}\n` +
                         `       ${'},'}\n` +
                         `       ${'{'}\n` +
@@ -63,22 +67,23 @@ const CardR123NewlaunchDocumentation = require('./markdown/card-r123-newlaunch.d
                         <CardR123Newlaunch
                             id="r12399co"
                             link="99.co"
-                            unit="3"
+                            unit="Tipe unit tersedia : 3"
                             mediaCount={2}
+                            videoCount={1}
                             priceTag="Mulai Rp. 796 Jt - Rp. 1,59 M"
                             propertyType="Apartemen"
-                            agencyName="PT. Adhi Commuter Properti"
-                            completionDate="Feb 2023"
+                            completionDate="Tanggal penyelesaian : Feb 2023"
                             address="Lebak Bulus, Jakarta Selatan"
-                            publishingDate="Tayang sejak 1 Jan, 2020"
                             developerLogo="https://d3p0bla3numw14.cloudfront.net/developer/logo/developer-2.-logo-developer-1553849796.png"
                             title="The Premier MTH"
+                            agencyName="PT. Adhi Commuter Properti"
+                            publishingDate="Tayang sejak 1 Jan, 2020"
                             media={[
                                 {
                                     alt: '',
                                     id: 'image-1',
                                     src:
-                                        'https://img.rea-asia.com/rumah123/750x420-crop/house/ho64/6491275/original/hos6491275-rumah-di-jual-di-bintaro-tangerang-15881493488971.jpg'
+                                        'https://img.rea-asia.com/rumah123/750x560-crop/primary_property/project/1650/1580285287_background_1650.jpg'
                                 },
                                 {
                                     alt: '',

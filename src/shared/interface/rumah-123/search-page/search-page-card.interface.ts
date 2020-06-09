@@ -41,6 +41,7 @@ export type R123SearchPageCardDataInterface = {
     mediaCount: number;
     agencyName: string;
     installment: string;
+    videoCount?: number;
     propertyType: string;
     completionDate: string;
     publishingDate: string;

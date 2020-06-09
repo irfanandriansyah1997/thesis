@@ -1,10 +1,13 @@
 import React, { FunctionComponent } from 'react';
 
+import CardComponent from '../../../common/atomic/card/card.component';
+import CardR123NewLaunchMediaComponent from './card-r123-newlaunch-media.component';
+import CardR123NewLaunchContentComponent from './card-r123-newlaunch-content.component';
+import CardR123HeadingComponent from '../../molecules/card-heading-r123/card-heading-r123.component';
+
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
-import CardComponent from '../../../common/atomic/card/card.component';
 import CardR123NewLaunchContext from './context/card-r123-newlaunch.context';
-import CardR123NewLaunchHeadingComponent from './card-r123-newlaunch-heading.component';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     CardR123NewLaunchPropsInterface,
@@ -25,12 +28,13 @@ const CardR123Newlaunch: FunctionComponent<CardR123NewLaunchPropsInterface> = ({
     action,
     address,
     priceTag,
-    agencyName,
+    videoCount,
     mediaCount,
+    agencyName,
     propertyType,
     developerLogo,
-    publishingDate,
     completionDate,
+    publishingDate,
     ...res
 }: CardR123NewLaunchPropsInterface) => {
     const className: ComponentClassnameDefaultInterface = {
@@ -49,12 +53,13 @@ const CardR123Newlaunch: FunctionComponent<CardR123NewLaunchPropsInterface> = ({
             title,
             address,
             priceTag,
+            videoCount,
             mediaCount,
             agencyName,
             propertyType,
             developerLogo,
-            publishingDate,
-            completionDate
+            completionDate,
+            publishingDate
         }
     };
 
@@ -65,7 +70,12 @@ const CardR123Newlaunch: FunctionComponent<CardR123NewLaunchPropsInterface> = ({
                 {...res}
                 boxShadow="r123"
             >
-                <CardR123NewLaunchHeadingComponent />
+                <CardR123HeadingComponent
+                    agencyName={agencyName}
+                    publishingDate={publishingDate}
+                />
+                <CardR123NewLaunchMediaComponent />
+                <CardR123NewLaunchContentComponent />
             </CardComponent>
         </CardR123NewLaunchContext.Provider>
     );

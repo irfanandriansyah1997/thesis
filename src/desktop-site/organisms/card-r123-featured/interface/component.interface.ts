@@ -32,7 +32,7 @@ export type CardR123FeaturedPropsInterface = Omit<
  */
 export type CardR123FeaturedPropsDataInterface = Omit<
     data,
-    'unit' | 'completionDate'
+    'unit' | 'completionDate' | 'videoCount'
 > & {
     tier: tier;
 };

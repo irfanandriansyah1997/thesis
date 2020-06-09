@@ -7,7 +7,8 @@ export default [
      * Molecules
      */
     ...[
-        './src/desktop-site/molecules/autocomplete-r123/autocomplete-r123.component.tsx'
+        './src/desktop-site/molecules/autocomplete-r123/autocomplete-r123.component.tsx',
+        './src/desktop-site/molecules/card-heading-r123/card-heading-r123.component.tsx'
     ],
     /**
      * Organism
