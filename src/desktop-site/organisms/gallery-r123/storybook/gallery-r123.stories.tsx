@@ -99,13 +99,13 @@ const videoItem: CarouselItemInterface[] = [
                         }}
                     >
                         <GalleryR123Component
-                            address="BSD City, Tangerang"
-                            title="Alesha House, Vanya Park BSD City"
                             media={mediaItem}
                             video={videoItem}
                             blueprint={blueprintItem}
                             onClickSave={(): void => {}}
+                            address="BSD City, Tangerang"
                             onChangeActive={(): void => {}}
+                            title="Alesha House, Vanya Park BSD City"
                             labelToggle={{
                                 videoBadges: 'Video',
                                 mediaBadges: 'Media',

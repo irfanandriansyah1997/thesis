@@ -13,6 +13,7 @@ import {
     GalleryR123ContextInterface,
     GalleryR123BadgesItemInterface
 } from './interface/component.interface';
+import StringHelper from '../../../shared/helper/string.helper';
 
 /**
  * Gallery R123 Component
@@ -42,7 +43,7 @@ const GalleryR123Component: FunctionComponent<GalleryR123PropsInterface> = ({
         const param: GalleryR123BadgesItemInterface[] = [
             {
                 count: media.length,
-                icon: 'rui-icon-camera-small',
+                icon: 'rui-icon-camera',
                 label: labelToggle.mediaBadges,
                 type: 'media'
             },
@@ -68,17 +69,27 @@ const GalleryR123Component: FunctionComponent<GalleryR123PropsInterface> = ({
     }
 
     const contextValue: GalleryR123ContextInterface = {
-        media,
         title,
-        video,
         address,
-        blueprint,
         showDialog,
+        isNewLaunch,
         labelToggle,
         onClickSave,
         setShowDialog,
         onChangeActive,
-        badges: generateBadges()
+        badges: generateBadges(),
+        media: media.map((item) => ({
+            ...item,
+            objectFit: isNewLaunch ? 'cover' : 'contain'
+        })),
+        video: video.map((item) => ({
+            ...item,
+            objectFit: isNewLaunch ? 'cover' : 'contain'
+        })),
+        blueprint: blueprint.map((item) => ({
+            ...item,
+            objectFit: isNewLaunch ? 'cover' : 'contain'
+        }))
     };
 
     return (
@@ -99,7 +110,14 @@ const GalleryR123Component: FunctionComponent<GalleryR123PropsInterface> = ({
                     >
                         {contextValue.badges.map((item) => {
                             return (
-                                <ListComponent.Item key={item.type}>
+                                <ListComponent.Item
+                                    key={item.type}
+                                    className={StringHelper.objToString({
+                                        flex: true,
+                                        'flex-align-center': true,
+                                        'flex-justify-center': true
+                                    })}
+                                >
                                     <IconComponent
                                         size={18}
                                         color="headingR123"

@@ -8,7 +8,8 @@ import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     CarouselItemInterface,
-    CarouselPropsInterface
+    CarouselPropsInterface,
+    CarouselIndicatorInterface
 } from './interface/component.interface';
 import {
     ARROW_ON_NEXT,
@@ -75,29 +76,37 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                     transform: `translateX(${position * -100}%)`
                 }}
             >
-                {item.map(({ alt, id, src, type }: CarouselItemInterface) => (
-                    <div
-                        className="ui-molecules-carousel__item relative"
-                        key={id}
-                    >
-                        {type === 'youtube' ? (
-                            <MediaPlayerComponent
-                                youtubeId={src}
-                                width="100%"
-                                height="100%"
-                            />
-                        ) : (
-                            <ImageComponent
-                                width="100%"
-                                height="100%"
-                                src={src}
-                                alt={alt}
-                                objectFit="cover"
-                                className="ui-molecules-carousel__item"
-                            />
-                        )}
-                    </div>
-                ))}
+                {item.map(
+                    ({
+                        alt,
+                        id,
+                        src,
+                        type,
+                        objectFit
+                    }: CarouselItemInterface) => (
+                        <div
+                            className="ui-molecules-carousel__item relative"
+                            key={id}
+                        >
+                            {type === 'youtube' ? (
+                                <MediaPlayerComponent
+                                    youtubeId={src}
+                                    width="100%"
+                                    height="100%"
+                                />
+                            ) : (
+                                <ImageComponent
+                                    width="100%"
+                                    height="100%"
+                                    src={src}
+                                    alt={alt}
+                                    objectFit={objectFit || 'cover'}
+                                    className="ui-molecules-carousel__item"
+                                />
+                            )}
+                        </div>
+                    )
+                )}
             </div>
             <div className="ui-molecules-carousel__action">
                 <div className="ui-molecules-carousel__action--prev absolute">
@@ -110,7 +119,7 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                         }
                         onClick={(): void => handleClick('prev')}
                     >
-                        {indicator ? indicator.previous : ''}
+                        {(indicator as CarouselIndicatorInterface).previous}
                     </IconComponent>
                 </div>
                 <div className="ui-molecules-carousel__action--next absolute">
@@ -123,7 +132,7 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                         }
                         onClick={(): void => handleClick('next')}
                     >
-                        {indicator ? indicator.next : ''}
+                        {(indicator as CarouselIndicatorInterface).next}
                     </IconComponent>
                 </div>
             </div>

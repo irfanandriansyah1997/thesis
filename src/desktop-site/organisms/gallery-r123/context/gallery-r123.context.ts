@@ -12,6 +12,7 @@ const GalleryR123Context = createContext<GalleryR123ContextInterface>({
     badges: [],
     blueprint: [],
     showDialog: false,
+    isNewLaunch: false,
     labelToggle: {
         onCLose: '',
         onExpand: '',

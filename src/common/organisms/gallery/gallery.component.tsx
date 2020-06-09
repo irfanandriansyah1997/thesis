@@ -46,7 +46,11 @@ const GalleryComponent: FunctionComponent<GalleryPropsInterface> = ({
      * @return {void}
      */
     const onCarouselChangeActive = (carouselPosition: number): void => {
-        if (containerElement.current && carouselPosition !== position) {
+        if (
+            containerElement.current &&
+            containerElement.current.scrollBy &&
+            carouselPosition !== position
+        ) {
             const diffRange = carouselPosition - position;
             containerElement.current.scrollBy({
                 left: diffRange * 115

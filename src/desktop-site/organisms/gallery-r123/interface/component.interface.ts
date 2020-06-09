@@ -43,7 +43,7 @@ export interface GalleryR123BadgesItemInterface {
  */
 export type GalleryR123ContextInterface = Omit<
     GalleryR123PropsInterface,
-    'isNewLaunch' | 'onCloseDialog' | 'labelToggle'
+    'onCloseDialog' | 'labelToggle'
 > & {
     showDialog: boolean;
     labelToggle: GalleryR123LabelInterface;

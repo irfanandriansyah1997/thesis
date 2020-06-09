@@ -103,10 +103,16 @@ const ListComponent: ListDefaultExportInterface = ({
         >
             {children.map(({ props, key }: any, index) => (
                 <div
+                    {...props}
                     key={key}
                     style={getStylingItem(index)}
-                    className="ui-molecules-list__item relative"
-                    {...props}
+                    className={StringHelper.objToString({
+                        'ui-molecules-list__item': true,
+                        relative: true,
+                        [`${props.className}`]: ValidatorHelper.verifiedIsNotEmpty(
+                            props.className
+                        )
+                    })}
                 >
                     {props.children}
                 </div>

@@ -3,6 +3,7 @@ import { render, mount } from 'enzyme';
 
 import CarouselComponent from '../carousel.component';
 import IconComponent from '../../../atomic/icon/icon.component';
+import MediaPlayerComponent from '../../../atomic/media-player/media-player.component';
 
 describe('Testing <CarouselComponent> in molecules component ', () => {
     const callback = jest.fn();
@@ -91,5 +92,41 @@ describe('Testing <CarouselComponent> in molecules component ', () => {
         expect(
             cardWrapper.find('div.ui-molecules-carousel__content').props().style
         ).toHaveProperty('transform', 'translateX(0%)');
+    });
+
+    it('render video in carousel component', () => {
+        const cardWrapper = mount(
+            <CarouselComponent
+                item={[
+                    {
+                        alt: '',
+                        id: '',
+                        src: '',
+                        type: 'youtube'
+                    }
+                ]}
+                onChangeActive={callback}
+            />
+        );
+
+        expect(cardWrapper.find(MediaPlayerComponent).length).toBe(1);
+    });
+
+    it('render video in carousel component', () => {
+        const cardWrapper = mount(
+            <CarouselComponent
+                item={[
+                    {
+                        alt: '',
+                        id: '',
+                        src: '',
+                        type: 'youtube'
+                    }
+                ]}
+                onChangeActive={callback}
+            />
+        );
+
+        expect(cardWrapper.find(MediaPlayerComponent).length).toBe(1);
     });
 });

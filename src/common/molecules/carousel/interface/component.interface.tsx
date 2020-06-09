@@ -1,3 +1,5 @@
+import { ObjectFitProperty } from 'csstype';
+
 /**
  * Carousel Props Interface
  * @author Dedik Budianto <dedik.budianto@99.co>
@@ -24,6 +26,7 @@ export interface CarouselItemInterface {
     alt: string;
     src: string;
     type?: 'image' | 'youtube';
+    objectFit?: ObjectFitProperty;
 }
 
 /**

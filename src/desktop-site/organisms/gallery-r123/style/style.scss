@@ -32,6 +32,15 @@
             @include margin-left(6px);
             @include margin-right(6px);
         }
+
+        .ui-molecules-list {
+            &__item {
+                height: 100%;
+                width: 45px;
+
+                @include border-right(1px, solid, #ddd);
+            }
+        }
     }
 
     &__dialog {
