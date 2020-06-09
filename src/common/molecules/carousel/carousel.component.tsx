@@ -1,8 +1,16 @@
-import React, { SFC, useState, useEffect } from 'react';
+import React, {
+    FunctionComponent,
+    useState,
+    useEffect,
+    ReactNode
+} from 'react';
 import PropTypes from 'prop-types';
+import { ObjectFitProperty } from 'csstype';
 
 import IconComponent from '../../atomic/icon/icon.component';
+import LinkComponent from '../../atomic/link/link.component';
 import ImageComponent from '../../atomic/image/image.component';
+
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
@@ -22,9 +30,10 @@ import MediaPlayerComponent from '../../atomic/media-player/media-player.compone
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.04
  */
-const CarouselComponent: SFC<CarouselPropsInterface> = ({
+const CarouselComponent: FunctionComponent<CarouselPropsInterface> = ({
     item,
     value,
+    itemLink,
     className,
     indicator,
     scrollEffect,
@@ -55,6 +64,45 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
         ),
         flex: true,
         relative: true
+    };
+
+    /**
+     *
+     * @param itemLink
+     * @param src
+     * @param alt
+     * @param objectFit
+     */
+    const generateCarouselImageItem = (
+        link: string,
+        src: string,
+        alt: string,
+        objectFit: ObjectFitProperty
+    ): ReactNode => {
+        if (link) {
+            return (
+                <LinkComponent noUnderline href={link}>
+                    <ImageComponent
+                        width="100%"
+                        height="100%"
+                        src={src}
+                        alt={alt}
+                        objectFit={objectFit}
+                        className="ui-molecules-carousel__item"
+                    />
+                </LinkComponent>
+            );
+        }
+        return (
+            <ImageComponent
+                width="100%"
+                height="100%"
+                src={src}
+                alt={alt}
+                objectFit={objectFit}
+                className="ui-molecules-carousel__item"
+            />
+        );
     };
 
     /**
@@ -95,14 +143,12 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                                     height="100%"
                                 />
                             ) : (
-                                <ImageComponent
-                                    width="100%"
-                                    height="100%"
-                                    src={src}
-                                    alt={alt}
-                                    objectFit={objectFit || 'cover'}
-                                    className="ui-molecules-carousel__item"
-                                />
+                                generateCarouselImageItem(
+                                    itemLink || '',
+                                    src,
+                                    alt,
+                                    objectFit || 'cover'
+                                )
                             )}
                         </div>
                     )
@@ -141,6 +187,7 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
 };
 
 CarouselComponent.defaultProps = {
+    itemLink: '',
     className: '',
     scrollEffect: false,
     value: 0,
@@ -153,6 +200,7 @@ CarouselComponent.defaultProps = {
 
 CarouselComponent.propTypes = {
     value: PropTypes.number,
+    itemLink: PropTypes.string,
     className: PropTypes.string,
     scrollEffect: PropTypes.bool,
     onChangeActive: PropTypes.func.isRequired,

@@ -7,12 +7,13 @@ import { ObjectFitProperty } from 'csstype';
  * @since 2020.04.30
  */
 export interface CarouselPropsInterface {
-    className?: string;
     value?: number;
+    itemLink?: string;
+    className?: string;
+    scrollEffect?: boolean;
     item: CarouselItemInterface[];
     indicator?: CarouselIndicatorInterface;
     onChangeActive: (position: number) => void;
-    scrollEffect?: boolean;
 }
 
 /**

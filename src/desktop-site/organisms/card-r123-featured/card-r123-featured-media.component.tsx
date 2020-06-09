@@ -102,6 +102,7 @@ const CardR123FeaturedMediaComponent: SFC = () => {
                             item={media}
                             scrollEffect
                             onChangeActive={(): void => undefined}
+                            itemLink={link}
                         />
                     </div>
                 ) : (

@@ -28,6 +28,7 @@ return (
 |**item**|string||ClassName of carousel|
 |**onChangeActive**|function||Function called after the current index changes|
 |**scrollEffect**|boolean|`false`|Whether to give scroll transition effect|
+|**itemLink**|string||If provided, carousel item will have a link|
 
 # Carousel Item Props
 

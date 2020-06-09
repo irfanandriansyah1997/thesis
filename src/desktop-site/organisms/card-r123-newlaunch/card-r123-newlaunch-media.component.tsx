@@ -97,6 +97,7 @@ const CardR123NewLaunchMediaComponent: FunctionComponent = () => {
                             item={media}
                             scrollEffect
                             onChangeActive={(): void => undefined}
+                            itemLink={link}
                         />
                     </div>
                 ) : (

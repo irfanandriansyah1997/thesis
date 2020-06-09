@@ -92,10 +92,10 @@ describe('Testing card r123 new launch in organism component', () => {
 
         expect(clickSave).toHaveBeenCalledTimes(1);
 
-        expect(card.find(LinkComponent).length).toBe(8);
+        expect(card.find(LinkComponent).length).toBe(10);
         expect(clickContact).toHaveBeenCalledTimes(0);
 
-        const agentLink = card.find(LinkComponent).at(7);
+        const agentLink = card.find(LinkComponent).at(9);
         agentLink.simulate('click');
 
         expect(clickContact).toHaveBeenCalledTimes(1);

@@ -147,10 +147,10 @@ describe('Testing card r123 featured', () => {
         /**
          * Click Link Component
          */
-        expect(card.find(LinkComponent).length).toBe(13);
+        expect(card.find(LinkComponent).length).toBe(15);
         expect(agentClick).toHaveBeenCalledTimes(0);
 
-        const agent = card.find(LinkComponent).at(12);
+        const agent = card.find(LinkComponent).at(14);
         agent.simulate('click');
 
         expect(agentClick).toHaveBeenCalledTimes(1);
