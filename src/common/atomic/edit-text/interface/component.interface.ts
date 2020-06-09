@@ -38,6 +38,17 @@ export type EditTextAddonInterface = EditTextPropsInterface &
     };
 
 /**
+ * Edit TextArea add on Interface
+ */
+export type EditTextAreaAddonInterface = EditTextPropsInterface &
+    ColorInterface & {
+        fontSize?: number;
+        fontWeight?: number;
+        children: ReactNode;
+        position?: 'left' | 'right';
+    };
+
+/**
  * Edit Text Type Interface
  * @author Cathrine <cathrine@99.co>
  * @since 2020.05.02
