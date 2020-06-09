@@ -67,6 +67,7 @@ class SectionDefaultDropdownComponent extends React.PureComponent<
                         name="hello"
                         trigger="click"
                         icon={ARROW_ON_HIDE}
+                        iconMargin={{ left: 5 }}
                     >
                         <DropdownComponent.Item>
                             Dropdown Toggle 1

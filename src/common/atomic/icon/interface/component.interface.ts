@@ -8,12 +8,6 @@ import {
     ComponentCustomMarginBottom,
     ComponentCustomMarginLeft
 } from '../../../../shared/interface/component/component-margin.interface';
-import {
-    ComponentCustomPaddingTop,
-    ComponentCustomPaddingRight,
-    ComponentCustomPaddingBottom,
-    ComponentCustomPaddingLeft
-} from '../../../../shared/interface/component/component-padding.interface';
 
 /**
  * Icon Props Interface
@@ -31,8 +25,4 @@ export type IconPropsInterface = Omit<
         marginRight?: ComponentCustomMarginRight;
         marginBottom?: ComponentCustomMarginBottom;
         marginLeft?: ComponentCustomMarginLeft;
-        paddingTop?: ComponentCustomPaddingTop;
-        paddingRight?: ComponentCustomPaddingRight;
-        paddingBottom?: ComponentCustomPaddingBottom;
-        paddingLeft?: ComponentCustomPaddingLeft;
     };

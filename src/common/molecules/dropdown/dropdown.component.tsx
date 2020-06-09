@@ -32,6 +32,7 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
     show,
     type,
     icon,
+    iconMargin,
     label,
     scroll,
     onClick,
@@ -186,7 +187,13 @@ const DropdownComponent: DropdownDefaultExportInterface = ({
                     )}
 
                     {icon ? (
-                        <IconComponent color="text" size={16} marginLeft={5}>
+                        <IconComponent
+                            color="text"
+                            size={16}
+                            marginLeft={
+                                iconMargin ? iconMargin.left : undefined
+                            }
+                        >
                             {icon}
                         </IconComponent>
                     ) : null}
@@ -227,6 +234,12 @@ DropdownComponent.propTypes = {
     show: PropTypes.bool,
     scroll: PropTypes.bool,
     icon: PropTypes.string,
+    iconMargin: PropTypes.shape({
+        top: PropTypes.number,
+        right: PropTypes.number,
+        bottom: PropTypes.number,
+        left: PropTypes.number
+    }),
     onClick: PropTypes.func,
     name: PropTypes.string.isRequired,
     label: PropTypes.oneOfType([
@@ -256,6 +269,12 @@ DropdownComponent.defaultProps = {
     type: 'list',
     scroll: false,
     icon: undefined,
+    iconMargin: {
+        top: undefined,
+        right: undefined,
+        bottom: undefined,
+        left: undefined
+    },
     trigger: 'click',
     onClick: undefined,
     refForward: undefined,

@@ -118,6 +118,7 @@ class SectionDropdownToggleCustomComponent extends React.PureComponent<
                         name="hello"
                         trigger="click"
                         icon={ARROW_ON_HIDE}
+                        iconMargin={{ left: 5 }}
                         label={SectionDropdownToggleCustomComponent.renderLabel()}
                     >
                         <DropdownComponent.Item>

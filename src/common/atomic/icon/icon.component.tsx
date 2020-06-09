@@ -21,10 +21,6 @@ const IconComponent: SFC<IconPropsInterface> = ({
     marginRight,
     marginBottom,
     marginLeft,
-    paddingTop,
-    paddingRight,
-    paddingBottom,
-    paddingLeft,
     color,
     style,
     children,
@@ -71,18 +67,6 @@ const IconComponent: SFC<IconPropsInterface> = ({
                 : undefined,
             marginLeft: ValidatorHelper.isNumber(marginLeft)
                 ? `${marginLeft}px`
-                : undefined,
-            paddingTop: ValidatorHelper.isNumber(paddingTop)
-                ? `${paddingTop}px`
-                : undefined,
-            paddingRight: ValidatorHelper.isNumber(paddingRight)
-                ? `${paddingRight}px`
-                : undefined,
-            paddingBottom: ValidatorHelper.isNumber(paddingBottom)
-                ? `${paddingBottom}px`
-                : undefined,
-            paddingLeft: ValidatorHelper.isNumber(paddingLeft)
-                ? `${paddingLeft}px`
                 : undefined
         },
         children: isVendorIcon ? undefined : children,

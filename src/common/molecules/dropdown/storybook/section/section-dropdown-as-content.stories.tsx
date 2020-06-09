@@ -84,6 +84,7 @@ class SectionDropdownAsContentComponent extends React.PureComponent<
                         trigger="hover"
                         label="Account"
                         icon={ARROW_ON_HIDE}
+                        iconMargin={{ left: 5 }}
                     >
                         <DropdownComponent.Item disableHover withoutPadding>
                             <div

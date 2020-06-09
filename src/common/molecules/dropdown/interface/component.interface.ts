@@ -33,6 +33,7 @@ export type DropdownPropsInterface = Omit<
     name: string;
     label: string | React.ReactNode;
     icon?: string;
+    iconMargin?: IconMarginInterface;
     show?: boolean;
     scroll?: boolean;
     type?: 'list' | 'content';
@@ -74,3 +75,10 @@ export type DropdownItemPropsInterface = Omit<
  * @since 2020.04.27
  */
 export type DropdownDividerPropInterface = {};
+
+export type IconMarginInterface = {
+    top?: number;
+    right?: number;
+    bottom?: number;
+    left?: number;
+};
