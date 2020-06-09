@@ -40,7 +40,7 @@ export type EditTextAddonInterface = EditTextPropsInterface &
 /**
  * Edit TextArea add on Interface
  */
-export type EditTextAreaAddonInterface = EditTextPropsInterface &
+export type EditTextAreaAddonInterface = Omit<EditTextPropsInterface, 'type'> &
     ColorInterface & {
         fontSize?: number;
         fontWeight?: number;
