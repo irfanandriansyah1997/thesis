@@ -15,6 +15,7 @@ export default [
     ...[
         './src/desktop-site/organisms/card-r123-basic/card-r123-basic.component.tsx',
         './src/desktop-site/organisms/card-r123-featured/card-r123-featured.component.tsx',
+        './src/desktop-site/organisms/card-r123-newlaunch/card-r123-newlaunch.component.tsx',
         './src/desktop-site/organisms/footer-r123/footer-r123.component.tsx',
         './src/desktop-site/organisms/gallery-r123/gallery-r123.component.tsx',
         './src/desktop-site/organisms/kpr-calculator-r123/kpr-calculator-r123.component.tsx',
