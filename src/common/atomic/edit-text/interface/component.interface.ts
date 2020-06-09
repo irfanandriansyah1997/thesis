@@ -1,4 +1,9 @@
-import { SFC, InputHTMLAttributes, ReactNode } from 'react';
+import {
+    SFC,
+    InputHTMLAttributes,
+    TextareaHTMLAttributes,
+    ReactNode
+} from 'react';
 import { ColorInterface } from '../../../../shared/interface/common/color.interface';
 
 /**
@@ -25,6 +30,15 @@ export type EditTextPropsInterface = Omit<
 };
 
 /**
+ * Edit TextArea Component Interface
+ */
+export type EditTextAreaPropsInterface = Omit<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    'dangerouslySetInnerHTML' | 'children' | 'style'
+> &
+    Pick<EditTextPropsInterface, 'name' | 'styling'>;
+
+/**
  * Edit Text add on Interface
  * @author Cathrine <cathrine@99.co>
  * @since 2020.05.28
@@ -40,7 +54,7 @@ export type EditTextAddonInterface = EditTextPropsInterface &
 /**
  * Edit TextArea add on Interface
  */
-export type EditTextAreaAddonInterface = Omit<EditTextPropsInterface, 'type'> &
+export type EditTextAreaAddonInterface = EditTextAreaPropsInterface &
     ColorInterface & {
         fontSize?: number;
         fontWeight?: number;
