@@ -36,8 +36,8 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
     }, [position]);
 
     useEffect(() => {
-        if (value) {
-            setPosition(value);
+        if (ValidatorHelper.verifiedIsNotEmpty(value)) {
+            setPosition(value || 0);
         }
     }, [value]);
 

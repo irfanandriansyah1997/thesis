@@ -2,6 +2,8 @@ import { CarouselItemInterface } from '../../../../common/molecules/carousel/int
 import { GalleryPropsInterface } from '../../../../common/organisms/gallery/interface/component.interface';
 import { ExpandTextToggleButtonInterface } from '../../../../common/molecules/expand-text/interfaces/component.interface';
 
+export type GaleryR123BadgesType = 'media' | 'video' | 'blueprint';
+
 /**
  * Gallery R123 Props Interface
  * @author Irfan Andriansyah <irfan@99.co>
@@ -17,9 +19,9 @@ export type GalleryR123PropsInterface = Omit<
     media: CarouselItemInterface[];
     video: CarouselItemInterface[];
     blueprint: CarouselItemInterface[];
-    labelToggle?: ExpandTextToggleButtonInterface;
     onClickSave: () => void;
     onCloseDialog?: () => void;
+    labelToggle: GalleryR123LabelInterface;
 };
 
 /**
@@ -30,7 +32,8 @@ export type GalleryR123PropsInterface = Omit<
 export interface GalleryR123BadgesItemInterface {
     icon: string;
     count: number;
-    type: 'media' | 'video' | 'blueprint';
+    label: string;
+    type: GaleryR123BadgesType;
 }
 
 /**
@@ -40,9 +43,24 @@ export interface GalleryR123BadgesItemInterface {
  */
 export type GalleryR123ContextInterface = Omit<
     GalleryR123PropsInterface,
-    'isNewLaunch' | 'onCloseDialog'
+    'isNewLaunch' | 'onCloseDialog' | 'labelToggle'
 > & {
     showDialog: boolean;
+    labelToggle: GalleryR123LabelInterface;
     badges: GalleryR123BadgesItemInterface[];
     setShowDialog: (show: boolean) => void;
+};
+
+/**
+ * Generate Interface
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @description
+ * @since 2020.06.09
+ */
+export type GalleryR123LabelInterface = Partial<
+    ExpandTextToggleButtonInterface
+> & {
+    videoBadges: string;
+    mediaBadges: string;
+    blueprintBadges: string;
 };

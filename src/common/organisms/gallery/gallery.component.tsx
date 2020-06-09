@@ -93,6 +93,10 @@ const GalleryComponent: FunctionComponent<GalleryPropsInterface> = ({
     };
 
     useEffect(() => {
+        setPosition(0);
+    }, [res.item]);
+
+    useEffect(() => {
         if (componentElement.current) {
             componentElement.current.focus();
             componentElement.current.addEventListener(

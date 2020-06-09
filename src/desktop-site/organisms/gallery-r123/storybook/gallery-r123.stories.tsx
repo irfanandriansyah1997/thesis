@@ -10,31 +10,66 @@ import CodingViewerDocsComponent from '../../../../.storybook/component/molecule
 
 import '../style/style.scss';
 
-const carouselItem: CarouselItemInterface[] = [
+const mediaItem: CarouselItemInterface[] = [
     {
         id: 1,
-        src: 'https://i.postimg.cc/LXbhnMdf/image-01.jpg',
+        src:
+            'https://img.rea-asia.com/rumah123/800x1080-fit/house/ho65/6535047/original/hos6535047-rumah-di-jual-di-bintaro-jakarta-selatan-15889638051847.jpg',
         alt: 'Image 01'
     },
     {
         id: 2,
-        src: 'https://i.postimg.cc/dt7N7RCT/image-02.jpg',
+        src:
+            'https://img.rea-asia.com/rumah123/1620x1080-fit/house/ho65/6535047/original/hos6535047-rumah-di-jual-di-bintaro-jakarta-selatan-15889638598536.jpg',
         alt: 'Image 02'
     },
     {
         id: 3,
-        src: 'https://i.postimg.cc/j546n2x9/image-03.jpg',
+        src:
+            'https://img.rea-asia.com/rumah123/1620x1080-fit/house/ho65/6535047/original/hos6535047-rumah-di-jual-di-bintaro-jakarta-selatan-15889638944909.jpg',
         alt: 'Image 03'
+    }
+];
+
+const blueprintItem: CarouselItemInterface[] = [
+    {
+        id: 1,
+        src:
+            'https://img.rea-asia.com/rumah123/premium/1620x1080-fit/primary_property/project/1674/1584585989_siteplan_1674.jpg',
+        alt: 'Image 01'
     },
     {
-        id: 4,
-        src: 'https://i.postimg.cc/sXCf3YFN/image-04.jpg',
-        alt: 'Image 04'
+        id: 2,
+        src:
+            'https://img.rea-asia.com/rumah123/premium/1620x1080-fit/primary_property/project/1674/1584600009_5e7313c902628floorplan_3110.png',
+        alt: 'Image 02'
     },
     {
-        id: 5,
-        src: 'https://i.postimg.cc/RZj4T70Z/image-05.jpg',
-        alt: 'Image 05'
+        id: 3,
+        src:
+            'https://img.rea-asia.com/rumah123/premium/1620x1080-fit/primary_property/project/1674/1584600438_5e7315764d5f0floorplan_3111.png',
+        alt: 'Image 03'
+    }
+];
+
+const videoItem: CarouselItemInterface[] = [
+    {
+        id: 1,
+        src: 'PKXloFW_ZCA',
+        alt: 'Image 01',
+        type: 'youtube'
+    },
+    {
+        id: 2,
+        src: 'ZLKZKmdZEjM',
+        alt: 'Image 02',
+        type: 'youtube'
+    },
+    {
+        id: 3,
+        src: 'HyHNuVaZJ-k',
+        alt: 'Image 03',
+        type: 'youtube'
     }
 ];
 
@@ -66,11 +101,18 @@ const carouselItem: CarouselItemInterface[] = [
                         <GalleryR123Component
                             address="BSD City, Tangerang"
                             title="Alesha House, Vanya Park BSD City"
-                            media={carouselItem}
-                            video={[]}
-                            blueprint={carouselItem}
+                            media={mediaItem}
+                            video={videoItem}
+                            blueprint={blueprintItem}
                             onClickSave={(): void => {}}
                             onChangeActive={(): void => {}}
+                            labelToggle={{
+                                videoBadges: 'Video',
+                                mediaBadges: 'Media',
+                                blueprintBadges: 'Denah',
+                                onExpand: 'Tampilkan Thumbnail',
+                                onCLose: 'Sembunyikan Thumbnail'
+                            }}
                         />
                     </div>
                 </CodingViewerDocsComponent>

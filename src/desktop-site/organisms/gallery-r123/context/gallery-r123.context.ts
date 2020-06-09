@@ -14,7 +14,10 @@ const GalleryR123Context = createContext<GalleryR123ContextInterface>({
     showDialog: false,
     labelToggle: {
         onCLose: '',
-        onExpand: ''
+        onExpand: '',
+        videoBadges: '',
+        mediaBadges: '',
+        blueprintBadges: ''
     },
     onClickSave: (): void => {},
     setShowDialog: (): void => {},

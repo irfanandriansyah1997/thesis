@@ -106,6 +106,7 @@ const ListComponent: ListDefaultExportInterface = ({
                     key={key}
                     style={getStylingItem(index)}
                     className="ui-molecules-list__item relative"
+                    {...props}
                 >
                     {props.children}
                 </div>
