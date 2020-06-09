@@ -14,6 +14,7 @@ export default [
         './src/common/atomic/image/image.component.tsx',
         './src/common/atomic/label/label.component.tsx',
         './src/common/atomic/link/link.component.tsx',
+        './src/common/atomic/media-player/media-player.component.tsx',
         './src/common/atomic/spin/spin.component.tsx',
         './src/common/atomic/sticky/sticky.component.tsx',
         './src/common/atomic/text/text.component.tsx'
@@ -42,5 +43,5 @@ export default [
     /**
      * Organism
      */
-    ...[]
+    ...['./src/common/organisms/gallery/gallery.component.tsx']
 ];
