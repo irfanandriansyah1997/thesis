@@ -46,12 +46,24 @@ const docs = (): string =>
     `        landSize: 'Luas Tanah : 60m²',\n` +
     `        buildingSize: 'Luas Bangunan : 60m²'\n` +
     `    }}\n` +
-    `    action={{\n` +
-    `        onClickSave: (): void => {},\n` +
-    `        onClickContact: (): void => {},\n` +
-    `        onClickViewDetail: (): void => {}\n` +
-    `        onClickMortgageSimulation: (): void => {},\n` +
-    `    }}\n` +
+    `    action={{ \n` +
+    `        saveAction: {, \n` +
+    `           label: 'Simpan', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
+    `        contactAction: {, \n` +
+    `           label: 'Kontak Agen', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
+    `        viewDetailAction: {, \n` +
+    `           label: 'Lihat Detail', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
+    `        mortgageSimulationAction: {, \n` +
+    `           label: 'Simulasi KPR', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
+    `    }} \n` +
     `/>\n`;
 
 /**
@@ -97,10 +109,22 @@ const SectionFeaturedCardComponent: SFC = () => (
                     buildingSize: 'Luas Bangunan : 60m²'
                 }}
                 action={{
-                    onClickSave: (): void => {},
-                    onClickContact: (): void => {},
-                    onClickViewDetail: (): void => {},
-                    onClickMortgageSimulation: (): void => {}
+                    saveAction: {
+                        label: 'Simpan',
+                        onCLick: (): void => {}
+                    },
+                    contactAction: {
+                        label: 'Kontak Agen',
+                        onCLick: (): void => {}
+                    },
+                    viewDetailAction: {
+                        label: 'Lihat Detail',
+                        onCLick: (): void => {}
+                    },
+                    mortgageSimulationAction: {
+                        label: 'Simulasi KPR',
+                        onCLick: (): void => {}
+                    }
                 }}
             />
         </CodingViewerDocsComponent>

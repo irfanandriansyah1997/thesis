@@ -41,10 +41,22 @@ const MOCK_PROPS: CardR123FeaturedPropsInterface = {
         buildingSize: 'Luas Bangunan : 60m²'
     },
     action: {
-        onClickSave: (): void => undefined,
-        onClickViewDetail: (): void => undefined,
-        onClickContact: (): void => undefined,
-        onClickMortgageSimulation: (): void => undefined
+        saveAction: {
+            label: 'Simpan',
+            onCLick: (): void => undefined
+        },
+        contactAction: {
+            label: 'Kontak Agen',
+            onCLick: (): void => undefined
+        },
+        viewDetailAction: {
+            label: 'Lihat Detail',
+            onCLick: (): void => undefined
+        },
+        mortgageSimulationAction: {
+            label: 'Simulasi KPR',
+            onCLick: (): void => undefined
+        }
     }
 };
 
@@ -98,9 +110,18 @@ describe('Testing card r123 featured', () => {
                 {...MOCK_PROPS}
                 action={{
                     ...MOCK_PROPS.action,
-                    onClickMortgageSimulation: mortgageClick,
-                    onClickSave: favouriteClick,
-                    onClickContact: agentClick
+                    mortgageSimulationAction: {
+                        label: '',
+                        onCLick: mortgageClick
+                    },
+                    saveAction: {
+                        label: '',
+                        onCLick: favouriteClick
+                    },
+                    contactAction: {
+                        label: '',
+                        onCLick: agentClick
+                    }
                 }}
             />
         );

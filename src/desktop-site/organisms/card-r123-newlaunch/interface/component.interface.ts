@@ -53,5 +53,5 @@ export interface CardR123NewLaunchContextInterface {
  */
 export type CardR123NewLaunchActionInterface = Omit<
     action,
-    'onClickMortgageSimulation'
+    'mortgageSimulationAction'
 >;

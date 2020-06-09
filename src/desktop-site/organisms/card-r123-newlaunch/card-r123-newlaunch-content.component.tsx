@@ -38,7 +38,7 @@ const CardR123NewLaunchContentComponent: FunctionComponent = () => {
     const { data, action } = useContext<CardR123NewLaunchContextInterface>(
         CardR123NewLaunchContext
     );
-    const { onClickSave, onClickContact } = action;
+    const { saveAction, contactAction, viewDetailAction } = action;
     const {
         link,
         title,
@@ -157,9 +157,9 @@ const CardR123NewLaunchContentComponent: FunctionComponent = () => {
                     <div>
                         <HollowLinkComponent
                             icon="rui-icon-save-hollow"
-                            onClick={onClickSave}
+                            onClick={saveAction.onCLick}
                         >
-                            Simpan
+                            {saveAction.label}
                         </HollowLinkComponent>
                     </div>
                     <div className="ui-organisms-card-r123-newlaunch__developer-logo flex">
@@ -185,16 +185,17 @@ const CardR123NewLaunchContentComponent: FunctionComponent = () => {
                                 color="outline"
                                 fontWeight={500}
                                 icon={<PhoneIcon />}
-                                onClick={onClickContact}
+                                onClick={contactAction.onCLick}
                             >
-                                Kontak Pengembang
+                                {contactAction.label}
                             </LinkComponent>
                             <ButtonComponent
                                 outline
                                 size="default"
                                 className="contact-detail-button"
+                                onClick={viewDetailAction.onCLick}
                             >
-                                Lihat Detail
+                                {viewDetailAction.label}
                             </ButtonComponent>
                         </GridComponent.Column>
                     </GridComponent.Row>

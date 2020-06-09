@@ -36,9 +36,18 @@ const baseProps: CardR123NewLaunchPropsInterface = {
         }
     ],
     action: {
-        onClickSave: (): void => undefined,
-        onClickViewDetail: (): void => undefined,
-        onClickContact: (): void => undefined
+        saveAction: {
+            label: 'Simpan',
+            onCLick: (): void => undefined
+        },
+        contactAction: {
+            label: 'Kontak Pengembang',
+            onCLick: (): void => undefined
+        },
+        viewDetailAction: {
+            label: 'Lihat Detail',
+            onCLick: (): void => undefined
+        }
     }
 };
 
@@ -59,8 +68,14 @@ describe('Testing card r123 new launch in organism component', () => {
                 {...baseProps}
                 action={{
                     ...baseProps.action,
-                    onClickSave: clickSave,
-                    onClickContact: clickContact
+                    saveAction: {
+                        label: '',
+                        onCLick: clickSave
+                    },
+                    contactAction: {
+                        label: '',
+                        onCLick: clickContact
+                    }
                 }}
             />
         );

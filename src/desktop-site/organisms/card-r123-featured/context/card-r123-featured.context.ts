@@ -33,10 +33,22 @@ const CardR123FeaturedContext = createContext<CardR123FeaturedContextInterface>(
             }
         },
         action: {
-            onClickSave: (): void => {},
-            onClickContact: (): void => {},
-            onClickViewDetail: (): void => {},
-            onClickMortgageSimulation: (): void => {}
+            saveAction: {
+                label: '',
+                onCLick: (): void => {}
+            },
+            contactAction: {
+                label: '',
+                onCLick: (): void => {}
+            },
+            viewDetailAction: {
+                label: '',
+                onCLick: (): void => {}
+            },
+            mortgageSimulationAction: {
+                label: '',
+                onCLick: (): void => {}
+            }
         }
     }
 );

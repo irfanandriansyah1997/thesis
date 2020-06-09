@@ -56,9 +56,18 @@ const CardR123NewlaunchDocumentation = require('./markdown/card-r123-newlaunch.d
                         `       ${'}'}\n` +
                         `   ${']}'}\n` +
                         `   ${'action={{'}\n` +
-                        `       ${'onClickSave: (): void => {},'}\n` +
-                        `       ${'onClickViewDetail: (): void => {},'}\n` +
-                        `       ${'onClickContact: (): void => {}'}\n` +
+                        `       ${'saveAction: {'}\n` +
+                        `           ${'label: "Simpan",'}\n` +
+                        `           ${'onCLick: (): void => {}'}\n` +
+                        `       ${'}'}\n` +
+                        `       ${'contactAction: {'}\n` +
+                        `           ${'label: "Kontak Pengembang",'}\n` +
+                        `           ${'onCLick: (): void => {}'}\n` +
+                        `       ${'}'}\n` +
+                        `       ${'viewDetailAction: {'}\n` +
+                        `           ${'label: "Lihat Detail",'}\n` +
+                        `           ${'onCLick: (): void => {}'}\n` +
+                        `       ${'}'}\n` +
                         `   ${'}}'}\n` +
                         `${'>'}`
                     }
@@ -93,9 +102,18 @@ const CardR123NewlaunchDocumentation = require('./markdown/card-r123-newlaunch.d
                                 }
                             ]}
                             action={{
-                                onClickSave: (): void => {},
-                                onClickViewDetail: (): void => {},
-                                onClickContact: (): void => {}
+                                saveAction: {
+                                    label: 'Simpan',
+                                    onCLick: (): void => {}
+                                },
+                                contactAction: {
+                                    label: 'Kontak Pengembang',
+                                    onCLick: (): void => {}
+                                },
+                                viewDetailAction: {
+                                    label: 'Lihat Detail',
+                                    onCLick: (): void => {}
+                                }
                             }}
                         />
                     </div>

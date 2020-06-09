@@ -37,7 +37,12 @@ const CardR123FeaturedContentComponent: SFC = () => {
     const { data, action } = useContext<CardR123FeaturedContextInterface>(
         CardR123FeaturedContext
     );
-    const { onClickSave, onClickContact, onClickMortgageSimulation } = action;
+    const {
+        saveAction,
+        contactAction,
+        mortgageSimulationAction,
+        viewDetailAction
+    } = action;
     const { id, link, title, address, propertyType, attribute } = data;
     const PropertySizeAttribute: CardR123BasicGridItemInterface[] = [
         { key: 'landSize' },
@@ -119,15 +124,15 @@ const CardR123FeaturedContentComponent: SFC = () => {
                 >
                     <HollowLinkComponent
                         icon="rui-icon-calculator"
-                        onClick={onClickMortgageSimulation}
+                        onClick={mortgageSimulationAction.onCLick}
                     >
-                        Simulasi KPR
+                        {mortgageSimulationAction.label}
                     </HollowLinkComponent>
                     <HollowLinkComponent
                         icon="rui-icon-save-hollow"
-                        onClick={onClickSave}
+                        onClick={saveAction.onCLick}
                     >
-                        Simpan
+                        {saveAction.label}
                     </HollowLinkComponent>
                 </GridComponent.Column>
             </GridComponent.Row>
@@ -192,16 +197,17 @@ const CardR123FeaturedContentComponent: SFC = () => {
                         color="outline"
                         fontWeight={500}
                         icon={<PhoneIcon />}
-                        onClick={onClickContact}
+                        onClick={contactAction.onCLick}
                     >
-                        Kontak Agen
+                        {contactAction.label}
                     </LinkComponent>
                     <ButtonComponent
                         outline
                         size="default"
                         className="contact-detail-button"
+                        onClick={viewDetailAction.onCLick}
                     >
-                        Lihat Detail
+                        {viewDetailAction.label}
                     </ButtonComponent>
                 </GridComponent.Column>
             </GridComponent.Row>

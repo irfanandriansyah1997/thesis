@@ -45,8 +45,14 @@ const docs = (): string =>
     `        buildingSize: 'Luas Bangunan : 60m²' \n` +
     `    }} \n` +
     `    action={{ \n` +
-    `        onClickSave: (): void => {}, \n` +
-    `        onClickMortgageSimulation: (): void => {} \n` +
+    `        saveAction: {, \n` +
+    `           label: 'Simpan', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
+    `        mortgageSimulationAction: {, \n` +
+    `           label: 'Simulasi KPR', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
     `    }} \n` +
     `/> \n`;
 
@@ -92,8 +98,14 @@ const docs = (): string =>
                             buildingSize: 'Luas Bangunan : 60m²'
                         }}
                         action={{
-                            onClickSave: (): void => {},
-                            onClickMortgageSimulation: (): void => {}
+                            saveAction: {
+                                label: 'Simpan',
+                                onCLick: (): void => {}
+                            },
+                            mortgageSimulationAction: {
+                                label: 'Simulasi KPR',
+                                onCLick: (): void => {}
+                            }
                         }}
                     />
                 </CodingViewerDocsComponent>

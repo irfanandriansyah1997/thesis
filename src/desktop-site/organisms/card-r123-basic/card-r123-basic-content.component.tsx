@@ -39,7 +39,7 @@ const CardContentComponent: SFC = () => {
         installment,
         propertyType
     } = data;
-    const { onClickMortgageSimulation, onClickSave } = action;
+    const { saveAction, mortgageSimulationAction } = action;
 
     const PropertySizeAttribute: CardR123BasicGridItemInterface[] = [
         { key: 'landSize' },
@@ -98,15 +98,15 @@ const CardContentComponent: SFC = () => {
                 >
                     <HollowLinkComponent
                         icon="rui-icon-calculator"
-                        onClick={onClickMortgageSimulation}
+                        onClick={mortgageSimulationAction.onCLick}
                     >
-                        Simulasi KPR
+                        {mortgageSimulationAction.label}
                     </HollowLinkComponent>
                     <HollowLinkComponent
-                        onClick={onClickSave}
+                        onClick={saveAction.onCLick}
                         icon="rui-icon-save-hollow"
                     >
-                        Simpan
+                        {saveAction.label}
                     </HollowLinkComponent>
                 </GridComponent.Column>
             </GridComponent.Row>

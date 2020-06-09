@@ -83,5 +83,5 @@ export interface CardR123BasicContextInterface {
  */
 export type CardR123BasicActionInterface = Omit<
     action,
-    'onClickContact' | 'onClickViewDetail'
+    'contactAction' | 'viewDetailAction'
 >;

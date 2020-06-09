@@ -29,9 +29,18 @@ const CardR123NewLaunchContext = createContext<
         publishingDate: ''
     },
     action: {
-        onClickSave: (): void => {},
-        onClickViewDetail: (): void => {},
-        onClickContact: (): void => {}
+        saveAction: {
+            label: '',
+            onCLick: (): void => {}
+        },
+        contactAction: {
+            label: '',
+            onCLick: (): void => {}
+        },
+        viewDetailAction: {
+            label: '',
+            onCLick: (): void => {}
+        }
     }
 });
 
