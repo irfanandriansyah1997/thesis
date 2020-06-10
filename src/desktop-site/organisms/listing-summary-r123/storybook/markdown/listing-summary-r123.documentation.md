@@ -27,15 +27,15 @@ return (
         }}
         saveAction={{
             label: 'Simpan',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         }}
         shareAction={{
             label: 'Bagikan',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         }}
         previewAction={{
             label: 'Sudah dilihat',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         }}
         mortgage={{
             installment: 'Rp. 26.110.000 / bulan',
@@ -60,7 +60,7 @@ return (
 | Property | Type | Default | Description |
 |-------|-----------|---------|-----------|
 |**label**|string|-|Text label of the action button|
-|**onCLick**|`(event) => void`|-|Callback executed when action button is clicked|
+|**onClick**|`(event) => void`|-|Callback executed when action button is clicked|
 
 ## Attribute Props
 

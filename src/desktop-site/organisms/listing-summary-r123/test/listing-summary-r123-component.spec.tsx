@@ -19,15 +19,15 @@ const baseProps: ListingSummaryR123PropsInterface = {
     },
     saveAction: {
         label: 'Simpan',
-        onCLick: (): void => {}
+        onClick: (): void => {}
     },
     shareAction: {
         label: 'Bagikan',
-        onCLick: (): void => {}
+        onClick: (): void => {}
     },
     previewAction: {
         label: 'Sudah dilihat',
-        onCLick: (): void => {}
+        onClick: (): void => {}
     },
     mortgage: {
         installment: 'Rp. 26.110.000 / bulan',

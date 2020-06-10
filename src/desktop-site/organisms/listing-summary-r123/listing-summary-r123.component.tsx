@@ -120,15 +120,15 @@ ListingSummaryR123.propTypes = {
     }).isRequired,
     saveAction: PropTypes.shape({
         label: PropTypes.string.isRequired,
-        onCLick: PropTypes.func.isRequired
+        onClick: PropTypes.func.isRequired
     }).isRequired,
     shareAction: PropTypes.shape({
         label: PropTypes.string.isRequired,
-        onCLick: PropTypes.func.isRequired
+        onClick: PropTypes.func.isRequired
     }).isRequired,
     previewAction: PropTypes.shape({
         label: PropTypes.string.isRequired,
-        onCLick: PropTypes.func.isRequired
+        onClick: PropTypes.func.isRequired
     }).isRequired,
     mortgage: PropTypes.shape({
         label: PropTypes.string.isRequired,

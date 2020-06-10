@@ -58,15 +58,15 @@ const CardR123NewlaunchDocumentation = require('./markdown/card-r123-newlaunch.d
                         `   ${'action={{'}\n` +
                         `       ${'saveAction: {'}\n` +
                         `           ${'label: "Simpan",'}\n` +
-                        `           ${'onCLick: (): void => {}'}\n` +
+                        `           ${'onClick: (): void => {}'}\n` +
                         `       ${'}'}\n` +
                         `       ${'contactAction: {'}\n` +
                         `           ${'label: "Kontak Pengembang",'}\n` +
-                        `           ${'onCLick: (): void => {}'}\n` +
+                        `           ${'onClick: (): void => {}'}\n` +
                         `       ${'}'}\n` +
                         `       ${'viewDetailAction: {'}\n` +
                         `           ${'label: "Lihat Detail",'}\n` +
-                        `           ${'onCLick: (): void => {}'}\n` +
+                        `           ${'onClick: (): void => {}'}\n` +
                         `       ${'}'}\n` +
                         `   ${'}}'}\n` +
                         `${'>'}`
@@ -104,15 +104,15 @@ const CardR123NewlaunchDocumentation = require('./markdown/card-r123-newlaunch.d
                             action={{
                                 saveAction: {
                                     label: 'Simpan',
-                                    onCLick: (): void => {}
+                                    onClick: (): void => {}
                                 },
                                 contactAction: {
                                     label: 'Kontak Pengembang',
-                                    onCLick: (): void => {}
+                                    onClick: (): void => {}
                                 },
                                 viewDetailAction: {
                                     label: 'Lihat Detail',
-                                    onCLick: (): void => {}
+                                    onClick: (): void => {}
                                 }
                             }}
                         />

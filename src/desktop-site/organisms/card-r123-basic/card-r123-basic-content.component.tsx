@@ -98,12 +98,12 @@ const CardContentComponent: SFC = () => {
                 >
                     <HollowLinkComponent
                         icon="rui-icon-calculator"
-                        onClick={mortgageSimulationAction.onCLick}
+                        onClick={mortgageSimulationAction.onClick}
                     >
                         {mortgageSimulationAction.label}
                     </HollowLinkComponent>
                     <HollowLinkComponent
-                        onClick={saveAction.onCLick}
+                        onClick={saveAction.onClick}
                         icon="rui-icon-save-hollow"
                     >
                         {saveAction.label}

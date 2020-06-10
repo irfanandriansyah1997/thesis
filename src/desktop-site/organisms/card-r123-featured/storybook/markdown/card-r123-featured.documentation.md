@@ -74,7 +74,7 @@ return (
 |**address**|string|-|Address of the listed property|
 |**installment**|string|-|Monthly installment of the listed property|
 |**title**|string|-|Title of the listed property|
-|**agencyName**|string|-|Agency name of the listed property|
+|**agencyName**|string|`'Independent Property Agent'`|Agency name of the listed property|
 |**publishingDate**|string|-|Date in which the listed property is published|
 
 

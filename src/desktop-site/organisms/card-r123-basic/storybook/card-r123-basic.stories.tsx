@@ -100,11 +100,11 @@ const docs = (): string =>
                         action={{
                             saveAction: {
                                 label: 'Simpan',
-                                onCLick: (): void => {}
+                                onClick: (): void => {}
                             },
                             mortgageSimulationAction: {
                                 label: 'Simulasi KPR',
-                                onCLick: (): void => {}
+                                onClick: (): void => {}
                             }
                         }}
                     />

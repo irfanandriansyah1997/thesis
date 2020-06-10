@@ -167,7 +167,7 @@ const PropertySummaryComponent: FunctionComponent = () => {
                     noUnderline
                     fontWeight={500}
                     styling="heading-6"
-                    onClick={previewAction.onCLick}
+                    onClick={previewAction.onClick}
                     className={StringHelper.objToString({
                         ...basicActionLinkClassName,
                         absolute: true,
@@ -181,7 +181,7 @@ const PropertySummaryComponent: FunctionComponent = () => {
                     fontWeight={500}
                     styling="heading-6"
                     icon={<ShareIcon />}
-                    onClick={shareAction.onCLick}
+                    onClick={shareAction.onClick}
                     className={StringHelper.objToString({
                         ...basicActionLinkClassName,
                         'share-link': true
@@ -194,7 +194,7 @@ const PropertySummaryComponent: FunctionComponent = () => {
                     fontWeight={500}
                     styling="heading-6"
                     icon={<SaveIcon />}
-                    onClick={saveAction.onCLick}
+                    onClick={saveAction.onClick}
                     className={StringHelper.objToString({
                         ...basicActionLinkClassName,
                         'save-link': true

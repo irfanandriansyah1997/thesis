@@ -157,7 +157,7 @@ const CardR123NewLaunchContentComponent: FunctionComponent = () => {
                     <div>
                         <HollowLinkComponent
                             icon="rui-icon-save-hollow"
-                            onClick={saveAction.onCLick}
+                            onClick={saveAction.onClick}
                         >
                             {saveAction.label}
                         </HollowLinkComponent>
@@ -185,7 +185,7 @@ const CardR123NewLaunchContentComponent: FunctionComponent = () => {
                                 color="outline"
                                 fontWeight={500}
                                 icon={<PhoneIcon />}
-                                onClick={contactAction.onCLick}
+                                onClick={contactAction.onClick}
                             >
                                 {contactAction.label}
                             </LinkComponent>
@@ -193,7 +193,7 @@ const CardR123NewLaunchContentComponent: FunctionComponent = () => {
                                 outline
                                 size="default"
                                 className="contact-detail-button"
-                                onClick={viewDetailAction.onCLick}
+                                onClick={viewDetailAction.onClick}
                             >
                                 {viewDetailAction.label}
                             </ButtonComponent>

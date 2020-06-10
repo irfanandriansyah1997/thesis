@@ -14,6 +14,6 @@ export type CardHeadingPropsInterface = Omit<
     | 'onKeyPress'
     | 'onChange'
 > & {
-    agencyName: string;
+    agencyName?: string;
     publishingDate: string;
 };

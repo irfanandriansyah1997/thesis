@@ -29,7 +29,7 @@ export interface R123ListingSummaryActionInterface {
  */
 export type R123ListingSummaryActionItemInterface = {
     label: string;
-    onCLick: () => void;
+    onClick: () => void;
 };
 
 /**

@@ -49,8 +49,12 @@ const CardR123HeadingComponent: FunctionComponent<CardHeadingPropsInterface> = (
 
 CardR123HeadingComponent.displayName = 'CardR123HeadingComponent';
 
+CardR123HeadingComponent.defaultProps = {
+    agencyName: 'Independent Property Agent'
+};
+
 CardR123HeadingComponent.propTypes = {
-    agencyName: PropTypes.string.isRequired,
+    agencyName: PropTypes.string,
     publishingDate: PropTypes.string.isRequired
 };
 

@@ -43,19 +43,19 @@ const MOCK_PROPS: CardR123FeaturedPropsInterface = {
     action: {
         saveAction: {
             label: 'Simpan',
-            onCLick: (): void => undefined
+            onClick: (): void => undefined
         },
         contactAction: {
             label: 'Kontak Agen',
-            onCLick: (): void => undefined
+            onClick: (): void => undefined
         },
         viewDetailAction: {
             label: 'Lihat Detail',
-            onCLick: (): void => undefined
+            onClick: (): void => undefined
         },
         mortgageSimulationAction: {
             label: 'Simulasi KPR',
-            onCLick: (): void => undefined
+            onClick: (): void => undefined
         }
     }
 };
@@ -112,15 +112,15 @@ describe('Testing card r123 featured', () => {
                     ...MOCK_PROPS.action,
                     mortgageSimulationAction: {
                         label: '',
-                        onCLick: mortgageClick
+                        onClick: mortgageClick
                     },
                     saveAction: {
                         label: '',
-                        onCLick: favouriteClick
+                        onClick: favouriteClick
                     },
                     contactAction: {
                         label: '',
-                        onCLick: agentClick
+                        onClick: agentClick
                     }
                 }}
             />

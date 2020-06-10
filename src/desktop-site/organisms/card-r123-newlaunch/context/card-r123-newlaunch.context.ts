@@ -31,15 +31,15 @@ const CardR123NewLaunchContext = createContext<
     action: {
         saveAction: {
             label: '',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         },
         contactAction: {
             label: '',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         },
         viewDetailAction: {
             label: '',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         }
     }
 });

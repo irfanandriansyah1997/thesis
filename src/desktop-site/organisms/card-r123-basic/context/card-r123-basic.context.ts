@@ -29,11 +29,11 @@ const CardR123BasicContext = createContext<CardR123BasicContextInterface>({
     action: {
         saveAction: {
             label: '',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         },
         mortgageSimulationAction: {
             label: '',
-            onCLick: (): void => {}
+            onClick: (): void => {}
         }
     }
 });

@@ -41,15 +41,15 @@ const ListingSummaryR123Documentation = require('./markdown/listing-summary-r123
                         `   ${'}}'}\n` +
                         `   ${'saveAction={{'}\n` +
                         `       ${'label: "Simpan",'}\n` +
-                        `       ${'onCLick: (): void => {}'}\n` +
+                        `       ${'onClick: (): void => {}'}\n` +
                         `   ${'}}'}\n` +
                         `   ${'shareAction={{'}\n` +
                         `       ${'label: "Bagikan",'}\n` +
-                        `       ${'onCLick: (): void => {}'}\n` +
+                        `       ${'onClick: (): void => {}'}\n` +
                         `   ${'}}'}\n` +
                         `   ${'previewAction={{'}\n` +
                         `       ${'label: "Sudah dilihat",'}\n` +
-                        `       ${'onCLick: (): void => {}'}\n` +
+                        `       ${'onClick: (): void => {}'}\n` +
                         `   ${'}}'}\n` +
                         `   ${'mortgage={{'}\n` +
                         `       ${'installment: "Rp. 26.110.000 / bulan",'}\n` +
@@ -74,15 +74,15 @@ const ListingSummaryR123Documentation = require('./markdown/listing-summary-r123
                             }}
                             saveAction={{
                                 label: 'Simpan',
-                                onCLick: (): void => {}
+                                onClick: (): void => {}
                             }}
                             shareAction={{
                                 label: 'Bagikan',
-                                onCLick: (): void => {}
+                                onClick: (): void => {}
                             }}
                             previewAction={{
                                 label: 'Sudah dilihat',
-                                onCLick: (): void => {}
+                                onClick: (): void => {}
                             }}
                             mortgage={{
                                 installment: 'Rp. 26.110.000 / bulan',

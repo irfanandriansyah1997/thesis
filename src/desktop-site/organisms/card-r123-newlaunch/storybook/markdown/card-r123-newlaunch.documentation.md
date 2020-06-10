@@ -43,15 +43,15 @@ return (
         action={{
             saveAction: {
                 label: 'Simpan',
-                onCLick: (): void => {}
+                onClick: (): void => {}
             },
             contactAction: {
                 label: 'Kontak Pengembang',
-                onCLick: (): void => {}
+                onClick: (): void => {}
             },
             viewDetailAction: {
                 label: 'Lihat Detail',
-                onCLick: (): void => {}
+                onClick: (): void => {}
             }
         }}
     />

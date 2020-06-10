@@ -41,11 +41,11 @@ return (
         action={{
             saveAction: {
                 label: 'Simpan',
-                onCLick: (): void => {}
+                onClick: (): void => {}
             },
             mortgageSimulationAction: {
                 label: 'Simulasi KPR',
-                onCLick: (): void => {}
+                onClick: (): void => {}
             }
         }}
         link="https://www.rumah123.com/"

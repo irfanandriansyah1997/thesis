@@ -39,7 +39,7 @@ export type R123SearchPageCardDataInterface = {
     address: string;
     priceTag: string;
     mediaCount: number;
-    agencyName: string;
+    agencyName?: string;
     installment: string;
     videoCount?: number;
     propertyType: string;
@@ -69,5 +69,5 @@ export interface R123SearchPageCardAttributeInterface {
  */
 export type R123SearchPageCardActionItemInterface = {
     label: string;
-    onCLick: () => void;
+    onClick: () => void;
 };

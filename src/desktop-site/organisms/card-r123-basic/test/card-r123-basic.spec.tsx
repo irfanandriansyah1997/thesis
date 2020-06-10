@@ -36,11 +36,11 @@ const MOCK_PROPS: CardR123BasicPropsInterface = {
     action: {
         saveAction: {
             label: 'Simpan',
-            onCLick: (): void => undefined
+            onClick: (): void => undefined
         },
         mortgageSimulationAction: {
             label: 'Simulasi KPR',
-            onCLick: (): void => undefined
+            onClick: (): void => undefined
         }
     }
 };

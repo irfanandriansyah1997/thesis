@@ -124,13 +124,13 @@ const CardR123FeaturedContentComponent: SFC = () => {
                 >
                     <HollowLinkComponent
                         icon="rui-icon-calculator"
-                        onClick={mortgageSimulationAction.onCLick}
+                        onClick={mortgageSimulationAction.onClick}
                     >
                         {mortgageSimulationAction.label}
                     </HollowLinkComponent>
                     <HollowLinkComponent
                         icon="rui-icon-save-hollow"
-                        onClick={saveAction.onCLick}
+                        onClick={saveAction.onClick}
                     >
                         {saveAction.label}
                     </HollowLinkComponent>
@@ -197,7 +197,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
                         color="outline"
                         fontWeight={500}
                         icon={<PhoneIcon />}
-                        onClick={contactAction.onCLick}
+                        onClick={contactAction.onClick}
                     >
                         {contactAction.label}
                     </LinkComponent>
@@ -205,7 +205,7 @@ const CardR123FeaturedContentComponent: SFC = () => {
                         outline
                         size="default"
                         className="contact-detail-button"
-                        onClick={viewDetailAction.onCLick}
+                        onClick={viewDetailAction.onClick}
                     >
                         {viewDetailAction.label}
                     </ButtonComponent>

@@ -108,19 +108,19 @@ const SectionPremierCardComponent: SFC = () => (
                 action={{
                     saveAction: {
                         label: 'Simpan',
-                        onCLick: (): void => {}
+                        onClick: (): void => {}
                     },
                     contactAction: {
                         label: 'Kontak Agen',
-                        onCLick: (): void => {}
+                        onClick: (): void => {}
                     },
                     viewDetailAction: {
                         label: 'Lihat Detail',
-                        onCLick: (): void => {}
+                        onClick: (): void => {}
                     },
                     mortgageSimulationAction: {
                         label: 'Simulasi KPR',
-                        onCLick: (): void => {}
+                        onClick: (): void => {}
                     }
                 }}
             />
