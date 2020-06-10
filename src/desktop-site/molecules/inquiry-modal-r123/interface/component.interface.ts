@@ -4,7 +4,7 @@
  * @since 2020.06.09
  */
 export interface R123InquiryModalPropsInterface {
-    icon: string;
+    type: 'success' | 'failed';
     title: string;
     button: R123InquiryModalButtonPropsInterface;
     remarks: string;
