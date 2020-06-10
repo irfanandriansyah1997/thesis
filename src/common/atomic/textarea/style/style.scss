@@ -1,0 +1,34 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-textarea {
+    $c: &;
+
+    &--styling {
+        &-primary {
+            @include background-color(white);
+        }
+
+        &-secondary {
+            @include background-color(
+                map-get($color-general, editTextSecondary)
+            );
+        }
+    }
+
+    &__input {
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+        padding: 10px 7px;
+        width: 100%;
+
+        @include rounded(2px);
+        @include border(all, 1px, solid, greyDarkerR123);
+
+        &:disabled {
+            cursor: not-allowed;
+            @include background-color(
+                map-get($color-general, editTextSecondary)
+            );
+        }
+    }
+}
