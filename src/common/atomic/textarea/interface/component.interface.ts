@@ -3,9 +3,7 @@ import { SFC, TextareaHTMLAttributes } from 'react';
 /**
  * TextArea Default Interface
  */
-export type TextAreaDefaultExportInterface = SFC<TextAreaPropsInterface> & {
-    // Addon: SFC<TextAreaAddonInterface>;
-};
+export type TextAreaDefaultExportInterface = SFC<TextAreaPropsInterface>;
 
 /**
  * TextArea Component Interface
@@ -17,17 +15,6 @@ export type TextAreaPropsInterface = Omit<
     name: string;
     styling?: TextAreaStyle;
 };
-
-/**
- * TextArea add on Interface
- */
-// export type TextAreaAddonInterface = TextAreaPropsInterface &
-//     ColorInterface & {
-//         fontSize?: number;
-//         fontWeight?: number;
-//         children: ReactNode;
-//         position?: 'left' | 'right';
-//     };
 
 /**
  * Text Styling Interface
