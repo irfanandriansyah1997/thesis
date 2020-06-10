@@ -26,6 +26,7 @@
 
         &:disabled {
             cursor: not-allowed;
+
             @include background-color(
                 map-get($color-general, editTextSecondary)
             );
