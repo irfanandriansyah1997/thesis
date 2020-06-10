@@ -1,10 +1,13 @@
 import React from 'react';
 
-import TextAreaComponent from '../textarea.component';
+import SectionPrimaryStylingTextAreaComponent from './section/section-primary-styling.stories';
+import SectionSecondaryStylingTextAreaComponent from './section/section-secondary-styling.stories';
+import SectionDisabledTextAreaComponent from './section/section-disabled.stories';
+import SectionOnChangeTextAreaComponent from './section/section-onchange.stories';
+
 import TextDocsComponent from '../../../../.storybook/component/atomic/text/text.component';
 import HeadingDocsComponent from '../../../../.storybook/component/atomic/heading/heading.component';
 import StorybookDocumentationBuilder from '../../../../.storybook/builder/storybook-documentation.builder';
-import CodingViewerDocsComponent from '../../../../.storybook/component/molecules/code-viewer/code-viewer.component';
 
 import '../style/style.scss';
 
@@ -26,65 +29,11 @@ const TextAreaDocumentation = require('./markdown/textarea.documentation.md');
                 <TextDocsComponent>
                     The usage of this particular component is as follow :
                 </TextDocsComponent>
-                <CodingViewerDocsComponent
-                    sourceCode={`${'<TextAreaComponent className="textarea-class" id="textarea" name="textarea"/>'}`}
-                >
-                    <TextDocsComponent>
-                        TextArea default / primary styling
-                    </TextDocsComponent>
-                    <div
-                        style={{
-                            width: '300px'
-                        }}
-                    >
-                        <TextAreaComponent
-                            className="textarea-class"
-                            id="textarea"
-                            name="textarea"
-                        />
-                    </div>
-                </CodingViewerDocsComponent>
 
-                <CodingViewerDocsComponent
-                    sourceCode={`${'<TextAreaComponent className="textarea-class" id="textarea" name="textarea" styling="secondary"/>'}`}
-                >
-                    <TextDocsComponent>
-                        TextArea secondary styling
-                    </TextDocsComponent>
-                    <div
-                        style={{
-                            width: '300px'
-                        }}
-                    >
-                        <TextAreaComponent
-                            className="textarea-class"
-                            id="textarea"
-                            name="textarea"
-                            styling="secondary"
-                        />
-                    </div>
-                </CodingViewerDocsComponent>
-
-                <CodingViewerDocsComponent
-                    sourceCode={`${'<TextAreaComponent name="textarea" styling="primary" disabled/>'}`}
-                >
-                    <TextDocsComponent>
-                        Example of disabled TextArea component
-                    </TextDocsComponent>
-                    <div
-                        style={{
-                            width: '300px'
-                        }}
-                    >
-                        <TextAreaComponent
-                            className="textarea-class"
-                            id="textarea"
-                            name="textarea"
-                            styling="primary"
-                            disabled
-                        />
-                    </div>
-                </CodingViewerDocsComponent>
+                <SectionPrimaryStylingTextAreaComponent />
+                <SectionSecondaryStylingTextAreaComponent />
+                <SectionDisabledTextAreaComponent />
+                <SectionOnChangeTextAreaComponent />
             </>
         )
         .execute();
