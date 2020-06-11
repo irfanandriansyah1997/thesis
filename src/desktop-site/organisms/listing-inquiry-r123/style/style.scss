@@ -127,6 +127,25 @@
         @include font-weight(300);
     }
 
+    &__buyer_message {
+        height: 135px;
+        margin-top: 20px;
+        resize: none;
+        width: 100%;
+    }
+
+    &__buyer_info > input {
+        font-size: 14px;
+        height: 32px;
+
+        @include font-weight(300);
+        @include margin-top(20px);
+
+        &:hover {
+            border-color: #49a9ee;
+        }
+    }
+
     // Would be use later for multiple contact varian
     // .rui-icon-arrow-down-small {
     //     width: 30px;
@@ -151,26 +170,4 @@
     //         width: 182px;
     //     }
     // }
-}
-
-// stylelint-disable selector-no-qualifying-type
-// stylelint-disable selector-class-pattern
-
-div.ui-organism-listing-inquiry-r123__buyer_message {
-    height: 135px;
-    margin-top: 20px;
-    resize: none;
-    width: 100%;
-}
-
-div.ui-organism-listing-inquiry-r123__buyer_info > input {
-    font-size: 14px;
-    height: 32px;
-
-    @include font-weight(300);
-    @include margin-top(20px);
-
-    &:hover {
-        border-color: #49a9ee;
-    }
 }
