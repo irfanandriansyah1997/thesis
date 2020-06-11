@@ -20,6 +20,7 @@
         border-top-right-radius: 2px;
         height: 100%;
         padding: 10px 7px;
+        resize: none;
         width: 100%;
 
         @include rounded(2px);
