@@ -1,0 +1,17 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-inquiry-modal-r123 {
+    &__title {
+        @include font-size(18px);
+        @include margin-top(16px);
+    }
+
+    &__success-remarks {
+        @include margin-top(32px);
+    }
+
+    &__failed-remarks {
+        @include font-size(16px);
+        @include margin-top(16px);
+    }
+}
