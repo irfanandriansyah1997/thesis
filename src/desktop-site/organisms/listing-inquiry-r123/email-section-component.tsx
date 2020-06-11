@@ -5,6 +5,7 @@ import TextComponent from '../../../common/atomic/text/text.component';
 import GridComponent from '../../../common/atomic/grid/grid.component';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import EditTextComponent from '../../../common/atomic/edit-text/edit-text.component';
+import TextAreaComponent from '../../../common/atomic/textarea/textarea.component';
 
 /**
  * R123 Listing Inquiry Email Section Component
@@ -33,14 +34,11 @@ const R123ListingInquiryEmailSectionComponent: FunctionComponent<ListingInquiryE
             <GridComponent.Container className="container-example">
                 <GridComponent.Row>
                     <GridComponent.Column defaultSize={6} id="email-column">
-                        <textarea
+                        <TextAreaComponent
+                            className="ui-organism-listing-inquiry-r123__buyer_message"
+                            name="inquiry-message"
                             placeholder={placeholder.message}
-                            style={{
-                                width: '100%',
-                                height: '135px',
-                                resize: 'none',
-                                marginTop: '20px'
-                            }}
+                            styling="primary"
                         />
                     </GridComponent.Column>
                     <GridComponent.Column

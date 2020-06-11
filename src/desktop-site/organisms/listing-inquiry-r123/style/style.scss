@@ -155,6 +155,14 @@
 
 // stylelint-disable selector-no-qualifying-type
 // stylelint-disable selector-class-pattern
+
+div.ui-organism-listing-inquiry-r123__buyer_message {
+    height: 135px;
+    margin-top: 20px;
+    resize: none;
+    width: 100%;
+}
+
 div.ui-organism-listing-inquiry-r123__buyer_info > input {
     font-size: 14px;
     height: 32px;
