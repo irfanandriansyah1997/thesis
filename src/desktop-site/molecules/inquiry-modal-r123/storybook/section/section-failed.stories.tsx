@@ -12,7 +12,19 @@ import { DefaultPropsInquiryListingFailed } from '../templates/template-inquiry-
  * @param {string} type - props
  * @return {string}
  */
-const docs = (): string => `<R123InquiryModalComponent \n`;
+const docs = (): string =>
+    `<R123InquiryModalComponent \n` +
+    ` {...{ \n` +
+    `       type: 'failed', \n` +
+    `       title: 'Maaf terjadi kesalahan', \n` +
+    `       remarks: \n` +
+    `           'Permintaan Anda tidak dapat dikirim saat ini. Silakan coba kembali beberapa saat lagi', \n` +
+    `       button: { \n` +
+    `           buttonText: 'Coba sekarang', \n` +
+    `           onClickInquiryModalButton: (): void => undefined \n` +
+    `       } \n` +
+    `     }} \n` +
+    `/> \n`;
 
 /**
  * Section Inquiry Modal Failed
@@ -27,9 +39,9 @@ class SectionInquiryModalFailedComponent extends React.PureComponent<
         return (
             <>
                 <HeadingDocsComponent>
-                    Listing Inquiry Box Component Failed Case
+                    Listing Inquiry Box Component
                 </HeadingDocsComponent>
-                <TextDocsComponent>Full props case</TextDocsComponent>
+                <TextDocsComponent>Failed Case</TextDocsComponent>
                 <CodingViewerDocsComponent sourceCode={docs()}>
                     <R123InquiryModalComponent
                         {...DefaultPropsInquiryListingFailed}

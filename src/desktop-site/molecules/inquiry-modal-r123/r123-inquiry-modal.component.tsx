@@ -3,6 +3,7 @@ import { R123InquiryModalPropsInterface } from './interface/component.interface'
 import TextComponent from '../../../common/atomic/text/text.component';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import StringHelper from '../../../shared/helper/string.helper';
+import ImageComponent from '../../../common/atomic/image/image.component';
 
 /**
  * R123 Inquiry Modal Component
@@ -15,6 +16,12 @@ const R123InquiryModalComponent: FunctionComponent<R123InquiryModalPropsInterfac
     button,
     remarks
 }: R123InquiryModalPropsInterface) => {
+    let imgUrl =
+        'https://public.urbanindo.com/style-guide/tick-mark-circle.svg';
+    if (type === 'failed') {
+        imgUrl = 'https://public.urbanindo.com/style-guide/close-circle.svg';
+    }
+
     return (
         <div
             className={StringHelper.objToString({
@@ -23,6 +30,12 @@ const R123InquiryModalComponent: FunctionComponent<R123InquiryModalPropsInterfac
                 'flex-column': true
             })}
         >
+            <ImageComponent
+                src={imgUrl}
+                alt="inquiry-icon"
+                width={60}
+                height={60}
+            />
             <TextComponent
                 tag="p"
                 className="ui-molecules-inquiry-modal-r123__title"
