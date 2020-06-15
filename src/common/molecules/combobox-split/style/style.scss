@@ -10,15 +10,18 @@ $max-height: 150px;
     width: 100%;
 
     &--button {
-        background-color: #e9ebed;
+        @include background-color(#e9ebed);
+
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
     }
 
     &--dropdown {
+        @include margin-right(5px);
+        @include background-color(#e9ebed);
+        @include border(all, 1px, solid, #d2d6da);
+
         align-items: center;
-        background-color: #e9ebed;
-        border: 1px solid #d2d6da;
         border-bottom-right-radius: 0.25rem;
         border-top-right-radius: 0.25rem;
         display: flex;
@@ -28,8 +31,6 @@ $max-height: 150px;
 
         .ui-molecules-dropdown {
             &__wrapper {
-                max-width: 204px;
-                min-width: 204px;
                 right: 0;
                 top: 30px;
             }
