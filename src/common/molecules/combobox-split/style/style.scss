@@ -1,0 +1,42 @@
+@import '../../../../style/import.scss';
+
+$max-height: 150px;
+
+.ui-molecules-combobox-split {
+    $c: &;
+
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    &--button {
+        background-color: #e9ebed;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    &--dropdown {
+        align-items: center;
+        background-color: #e9ebed;
+        border: 1px solid #d2d6da;
+        border-bottom-right-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+
+        .ui-molecules-dropdown {
+            &__wrapper {
+                max-width: 204px;
+                min-width: 204px;
+                right: 0;
+                top: 30px;
+            }
+        }
+    }
+
+    &__item {
+        width: 100%;
+    }
+}
