@@ -5,9 +5,6 @@ $max-height: 150px;
 .ui-molecules-combobox-split {
     $c: &;
 
-    height: 100%;
-    width: 100%;
-
     &--button {
         @include background-color(grayR123);
 
@@ -16,7 +13,6 @@ $max-height: 150px;
     }
 
     &--dropdown {
-        @include margin-right(5px);
         @include background-color(grayR123);
         @include border(all, 1px, solid, greyDarkerR123);
 
@@ -28,10 +24,15 @@ $max-height: 150px;
         justify-content: center;
         width: 40px;
 
+        &.relative {
+            position: initial;
+        }
+
         .ui-molecules-dropdown {
             &__wrapper {
-                right: 0;
+                left: 0;
                 top: 30px;
+                width: 100%;
             }
         }
     }

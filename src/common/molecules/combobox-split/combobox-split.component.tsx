@@ -98,7 +98,8 @@ const ComboboxSplitComponent: ComboboxSplitDefaultExportInterface = ({
                 [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
                     res.className
                 ),
-                flex: true,
+                relative: true,
+                'inline-flex': true,
                 'ui-molecules-combobox-split': true
             })}
         >
