@@ -12,9 +12,15 @@ import '../style/style.scss';
         .setDescriptionComponent('Listing Inquiry R123 Component')
         .registerDocumentation(
             <>
-                <SectionInquiryModalSuccessComponent />
+                <SectionInquiryModalSuccessComponent
+                    show={false}
+                    onCloseDialog={(): void => undefined}
+                />
                 <DividerDocsComponent />
-                <SectionInquiryModalFailedComponent />
+                <SectionInquiryModalFailedComponent
+                    show={false}
+                    onCloseDialog={(): void => undefined}
+                />
             </>
         )
         .execute();

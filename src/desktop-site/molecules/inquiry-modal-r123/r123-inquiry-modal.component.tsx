@@ -4,6 +4,8 @@ import TextComponent from '../../../common/atomic/text/text.component';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import StringHelper from '../../../shared/helper/string.helper';
 import ImageComponent from '../../../common/atomic/image/image.component';
+import DialogComponent from '../../../common/atomic/dialog/dialog.component';
+import IconComponent from '../../../common/atomic/icon/icon.component';
 
 /**
  * R123 Inquiry Modal Component
@@ -14,7 +16,8 @@ const R123InquiryModalComponent: FunctionComponent<R123InquiryModalPropsInterfac
     type,
     title,
     button,
-    remarks
+    remarks,
+    dialogBox
 }: R123InquiryModalPropsInterface) => {
     let imgUrl =
         'https://public.urbanindo.com/style-guide/tick-mark-circle.svg';
@@ -23,54 +26,75 @@ const R123InquiryModalComponent: FunctionComponent<R123InquiryModalPropsInterfac
     }
 
     return (
-        <div
-            className={StringHelper.objToString({
-                'ui-molecules-inquiry-modal-r123': true,
-                flex: true,
-                'flex-column': true
-            })}
+        <DialogComponent
+            show={dialogBox.show}
+            onCloseDialog={dialogBox.onCloseDialog}
         >
-            <ImageComponent
-                src={imgUrl}
-                alt="inquiry-icon"
-                width={60}
-                height={60}
-            />
-            <TextComponent
-                tag="p"
-                className="ui-molecules-inquiry-modal-r123__title"
-                fontWeight={700}
+            <div
+                className={StringHelper.objToString({
+                    'ui-molecules-inquiry-modal-r123': true,
+                    flex: true,
+                    'flex-column': true,
+                    'flex-justify-center': true
+                })}
+                style={{ margin: 'auto' }}
             >
-                {title}
-            </TextComponent>
-            {type === 'failed' ? (
+                <IconComponent
+                    color="text"
+                    size={32}
+                    style={{
+                        position: 'absolute',
+                        right: 0,
+                        top: 0,
+                        padding: 8,
+                        cursor: 'pointer'
+                    }}
+                    onClick={dialogBox.onCloseDialog}
+                >
+                    close
+                </IconComponent>
+                <ImageComponent
+                    src={imgUrl}
+                    alt="inquiry-icon"
+                    width={60}
+                    height={60}
+                />
                 <TextComponent
                     tag="p"
-                    className="ui-molecules-inquiry-modal-r123__failed-remarks"
+                    className="ui-molecules-inquiry-modal-r123__title"
+                    fontWeight={700}
                 >
-                    {remarks}
+                    {title}
                 </TextComponent>
-            ) : null}
-            <ButtonComponent
-                size="default"
-                theme="danger"
-                style={{
-                    marginTop: '32px'
-                }}
-                onClick={button.onClickInquiryModalButton}
-            >
-                {button.buttonText}
-            </ButtonComponent>
-            {type === 'success' ? (
-                <TextComponent
-                    tag="p"
-                    className="ui-molecules-inquiry-modal-r123__success-remarks"
-                    fontWeight={300}
+                {type === 'failed' ? (
+                    <TextComponent
+                        tag="p"
+                        className="ui-molecules-inquiry-modal-r123__failed-remarks"
+                    >
+                        {remarks}
+                    </TextComponent>
+                ) : null}
+                <ButtonComponent
+                    size="default"
+                    theme="danger"
+                    style={{
+                        marginTop: '32px'
+                    }}
+                    onClick={button.onClickInquiryModalButton}
                 >
-                    {remarks}
-                </TextComponent>
-            ) : null}
-        </div>
+                    {button.buttonText}
+                </ButtonComponent>
+                {type === 'success' ? (
+                    <TextComponent
+                        tag="p"
+                        className="ui-molecules-inquiry-modal-r123__success-remarks"
+                        fontWeight={300}
+                    >
+                        {remarks}
+                    </TextComponent>
+                ) : null}
+            </div>
+        </DialogComponent>
     );
 };
 

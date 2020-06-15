@@ -1,3 +1,5 @@
+import { DialogPropsInterface } from '../../../../common/atomic/dialog/interface/component.interface';
+
 /**
  * R123 Inquiry Modal Props Interface
  * @author Nafhul <nafhul.arsyad@99.co>
@@ -8,6 +10,7 @@ export interface R123InquiryModalPropsInterface {
     title: string;
     button: R123InquiryModalButtonPropsInterface;
     remarks: string;
+    dialogBox: DialogPropsInterface;
 }
 
 /**

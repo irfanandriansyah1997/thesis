@@ -7,6 +7,10 @@ export const DefaultPropsInquiryListingSuccess: R123InquiryModalPropsInterface =
     button: {
         buttonText: 'Simpan property',
         onClickInquiryModalButton: (): void => undefined
+    },
+    dialogBox: {
+        show: false,
+        onCloseDialog: (): void => undefined
     }
 };
 
@@ -18,5 +22,9 @@ export const DefaultPropsInquiryListingFailed: R123InquiryModalPropsInterface = 
     button: {
         buttonText: 'Coba sekarang',
         onClickInquiryModalButton: (): void => undefined
+    },
+    dialogBox: {
+        show: false,
+        onCloseDialog: (): void => undefined
     }
 };

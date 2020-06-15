@@ -6,6 +6,11 @@ import CodingViewerDocsComponent from '../../../../../.storybook/component/molec
 import R123InquiryModalComponent from '../../r123-inquiry-modal.component';
 import '../../style/style.scss';
 import { DefaultPropsInquiryListingSuccess } from '../templates/template-inquiry-modal.stories';
+import {
+    DialogPropsInterface,
+    DialogStateInterface
+} from '../../../../../common/atomic/dialog/interface/component.interface';
+import ButtonComponent from '../../../../../common/atomic/button/button.component';
 
 /**
  * Generate Docs
@@ -31,10 +36,33 @@ const docs = (): string =>
  * @since 2020.06.10
  */
 class SectionInquiryModalSuccessComponent extends React.PureComponent<
-    {},
-    Record<string, unknown>
+    DialogPropsInterface,
+    DialogStateInterface
 > {
+    constructor(props: DialogPropsInterface) {
+        super(props);
+        this.state = {
+            show: false
+        };
+        this.showDialog = this.showDialog.bind(this);
+    }
+
+    /**
+     * Action triggered to open the dialog.
+     */
+    showDialog = (): void => {
+        this.setState({ show: true });
+    };
+
+    /**
+     * Action triggered to close the dialog.
+     */
+    closeDialog = (): void => {
+        this.setState({ show: false });
+    };
+
     render(): ReactNode {
+        const { show } = this.state;
         return (
             <>
                 <HeadingDocsComponent>
@@ -42,10 +70,17 @@ class SectionInquiryModalSuccessComponent extends React.PureComponent<
                 </HeadingDocsComponent>
                 <TextDocsComponent>Success Case</TextDocsComponent>
                 <CodingViewerDocsComponent sourceCode={docs()}>
-                    <R123InquiryModalComponent
-                        {...DefaultPropsInquiryListingSuccess}
-                    />
+                    <ButtonComponent size="default" onClick={this.showDialog}>
+                        Open inquiry success dialog
+                    </ButtonComponent>
                 </CodingViewerDocsComponent>
+                <R123InquiryModalComponent
+                    {...DefaultPropsInquiryListingSuccess}
+                    dialogBox={{
+                        show,
+                        onCloseDialog: this.closeDialog
+                    }}
+                />
             </>
         );
     }
