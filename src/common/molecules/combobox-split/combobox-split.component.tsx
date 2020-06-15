@@ -93,16 +93,20 @@ const ComboboxSplitComponent: ComboboxSplitDefaultExportInterface = ({
     };
 
     return (
-        <div className="ui-molecules-combobox-split">
+        <div
+            className={StringHelper.objToString({
+                [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
+                    res.className
+                ),
+                'ui-molecules-combobox-split': true
+            })}
+        >
             <ButtonComponent
                 size="big"
                 theme="secondary"
                 onClick={onClick}
                 icon={icon}
                 className={StringHelper.objToString({
-                    [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
-                        res.className
-                    ),
                     'ui-molecules-combobox-split--button': true
                 })}
             >
@@ -117,9 +121,6 @@ const ComboboxSplitComponent: ComboboxSplitDefaultExportInterface = ({
                 label=""
                 icon={show ? ARROW_ON_EXPAND : ARROW_ON_HIDE}
                 className={StringHelper.objToString({
-                    [`${res.className}`]: ValidatorHelper.verifiedIsNotEmpty(
-                        res.className
-                    ),
                     'ui-molecules-combobox-split--dropdown': true
                 })}
             >
