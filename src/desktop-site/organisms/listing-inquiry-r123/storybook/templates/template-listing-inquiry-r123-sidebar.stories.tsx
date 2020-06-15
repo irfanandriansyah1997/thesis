@@ -54,6 +54,16 @@ export const NoWhatsAppPropsListingInquiryR123Sidebar: ListingInquirySidebarProp
     }
 };
 
+export const MultiplePhoneNumbersPropsListingInquiryR123Sidebar: ListingInquirySidebarPropsInterface = {
+    agent: agentProps,
+    inquiryButton: sidebarInquiryButtonProps,
+    contact: {
+        ...contactProps,
+        phoneNumbers: ['+6212121212121', '+6213131313131', '+6214141414141'],
+        hasWhatsapp: false
+    }
+};
+
 export const DefaultPropsListingInquiryR123Box: ListingInquiryBoxPropsInterface = {
     agent: agentProps,
     contact: contactProps,

@@ -55,7 +55,7 @@
 
         &--theme {
             &-secondary {
-                @include margin(all, 0 5px);
+                @include margin-left(5px);
                 @include background-color(grayR123);
             }
 
@@ -145,29 +145,4 @@
             border-color: #49a9ee;
         }
     }
-
-    // Would be use later for multiple contact varian
-    // .rui-icon-arrow-down-small {
-    //     width: 30px;
-
-    //     margin-left: -7px;
-    //     color: rgb(105, 118, 132);
-    //     height: 40px;
-    //     font-size: 16px;
-    //     background-color: #d2d6da;
-    //     border-radius: 0.25rem;
-    //     border-left: 0 solid #000;
-    //     border-right: 0 solid #000;
-    //     border-top: 0 solid #000;
-    //     border-bottom: 0 solid #000;
-    //     text-align: center;
-    //     padding-top: 15px;
-    // }
-
-    // .ui-molecules-dropdown {
-    //     &__wrapper {
-    //         right: 0;
-    //         width: 182px;
-    //     }
-    // }
 }

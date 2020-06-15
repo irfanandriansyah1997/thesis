@@ -5,6 +5,7 @@ import DividerDocsComponent from '../../../../.storybook/component/atomic/divide
 import SectionSidebarFullComponent from './section/section-sidebar-full.stories';
 import SectionSidebarNoOrgComponent from './section/section-sidebar-no-org.stories';
 import SectionSidebarNoWhatsAppComponent from './section/section-sidebar-no-whatsapp.stories';
+import SectionSidebarMultiplePhoneNumbersComponent from './section/section-sidebar-multiple-phone-numbers.stories';
 import SectionBoxFullComponent from './section/section-box-full.stories';
 import '../style/style.scss';
 
@@ -22,6 +23,8 @@ import '../style/style.scss';
                 <SectionSidebarNoOrgComponent />
                 <DividerDocsComponent />
                 <SectionSidebarNoWhatsAppComponent />
+                <DividerDocsComponent />
+                <SectionSidebarMultiplePhoneNumbersComponent />
                 <DividerDocsComponent />
                 <SectionBoxFullComponent />
             </>

@@ -1,10 +1,16 @@
-import React, { FunctionComponent, Validator } from 'react';
+import React, {
+    FunctionComponent,
+    Validator,
+    useEffect,
+    useState,
+    ReactText
+} from 'react';
 import PropTypes from 'prop-types';
 import { ListingInquiryContactPropsInterface } from './interface/component.interface';
 import ButtonComponent from '../../../common/atomic/button/button.component';
 import IconComponent from '../../../common/atomic/icon/icon.component';
 import ImageComponent from '../../../common/atomic/image/image.component';
-import DropdownComponent from '../../../common/molecules/dropdown/dropdown.component';
+import ComboboxSplitComponent from '../../../common/molecules/combobox-split/combobox-split.component';
 
 /**
  * Listing Inquiry R123 Contact Component
@@ -17,6 +23,13 @@ const R123ListingInquiryContactComponent: FunctionComponent<ListingInquiryContac
     phoneNumbers,
     hasWhatsapp
 }: ListingInquiryContactPropsInterface) => {
+    const [selectedNumber, setSelectedNumber] = useState('');
+
+    useEffect(() => {
+        const [p] = phoneNumbers;
+        setSelectedNumber(p);
+    }, []);
+
     /**
      * Whatsapp Icon
      * @return {FunctionComponent}
@@ -29,6 +42,7 @@ const R123ListingInquiryContactComponent: FunctionComponent<ListingInquiryContac
             height={25}
         />
     );
+
     /**
      * Call Icon
      * @return {FunctionComponent}
@@ -38,34 +52,49 @@ const R123ListingInquiryContactComponent: FunctionComponent<ListingInquiryContac
             rui-icon-call-small
         </IconComponent>
     );
-    const [phone] = phoneNumbers;
-    const additionalPhones = phoneNumbers.slice(1);
+
+    /**
+     * handleOnChange function
+     * @return void
+     */
+    const handleOnChange = (res: ReactText): void => {
+        setSelectedNumber(res.toString());
+    };
+
     return (
         <div className="ui-organism-listing-inquiry-r123__inquiry-buttons flex">
-            <ButtonComponent
-                size="big"
-                theme="secondary"
-                onClick={onClickPhoneButton}
-                icon={<CallIcon />}
-            >
-                {phone}
-            </ButtonComponent>
             {phoneNumbers.length > 1 ? (
-                <DropdownComponent
-                    label=""
-                    name="secondary-contacts"
-                    trigger="click"
-                    icon="rui-icon-arrow-down-small"
+                <ComboboxSplitComponent
+                    name="contacts"
+                    value={selectedNumber}
+                    onChange={handleOnChange}
+                    onClick={onClickPhoneButton}
+                    icon={<CallIcon />}
                 >
-                    {additionalPhones.map((addPhone) => {
+                    {phoneNumbers.map((phoneNumber) => {
                         return (
-                            <DropdownComponent.Item key={addPhone}>
-                                {addPhone}
-                            </DropdownComponent.Item>
+                            <ComboboxSplitComponent.Item
+                                key={phoneNumber}
+                                id={phoneNumber}
+                                value={phoneNumber}
+                                label={phoneNumber}
+                            >
+                                {phoneNumber}
+                            </ComboboxSplitComponent.Item>
                         );
                     })}
-                </DropdownComponent>
-            ) : null}
+                </ComboboxSplitComponent>
+            ) : (
+                <ButtonComponent
+                    size="big"
+                    theme="secondary"
+                    onClick={onClickPhoneButton}
+                    icon={<CallIcon />}
+                >
+                    {selectedNumber}
+                </ButtonComponent>
+            )}
+
             {hasWhatsapp ? (
                 <ButtonComponent
                     size="big"
