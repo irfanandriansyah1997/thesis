@@ -26,6 +26,10 @@ const docs = (): string =>
     `       button: { \n` +
     `           buttonText: 'Simpan property', \n` +
     `           onClickInquiryModalButton: (): void => undefined \n` +
+    `       }, \n` +
+    `       dialogBox: { \n` +
+    `           show: false, \n` +
+    `           onCloseDialog: (): void => undefined \n` +
     `       } \n` +
     `     }} \n` +
     `/> \n`;

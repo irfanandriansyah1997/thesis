@@ -27,6 +27,10 @@ const docs = (): string =>
     `       button: { \n` +
     `           buttonText: 'Coba sekarang', \n` +
     `           onClickInquiryModalButton: (): void => undefined \n` +
+    `       }, \n` +
+    `       dialogBox: { \n` +
+    `           show: false, \n` +
+    `           onCloseDialog: (): void => undefined \n` +
     `       } \n` +
     `     }} \n` +
     `/> \n`;
