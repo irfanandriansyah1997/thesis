@@ -55,7 +55,7 @@
 
         &--theme {
             &-secondary {
-                @include margin-left(5px);
+                @include margin(all, 0 5px);
                 @include background-color(grayR123);
             }
 
@@ -69,6 +69,19 @@
         text-align: center;
 
         @include margin-bottom(5px);
+    }
+
+    .ui-molecules-combobox-split {
+        flex: unset;
+        @include margin-right(5px);
+
+        .ui-atomic-button {
+            @include margin-right(unset);
+        }
+
+        .ui-molecules-dropdown__wrapper {
+            padding-left: 5px;
+        }
     }
 
     &__inquiry-box-wrapper {
