@@ -19,7 +19,6 @@ $max-height: 150px;
     &--dropdown {
         @include background-color(grayR123);
         @include border(all, 1px, solid, greyDarkerR123);
-        // @include margin-right(5px);
 
         align-items: center;
         border-bottom-right-radius: 0.25rem;
@@ -35,8 +34,6 @@ $max-height: 150px;
 
         .ui-molecules-dropdown {
             &__wrapper {
-                // @include padding-right(5px);
-
                 left: 0;
                 top: 30px;
                 width: 100%;
