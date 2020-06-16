@@ -23,11 +23,19 @@ const baseProps: ListingSummaryR123PropsInterface = {
     },
     shareAction: {
         label: 'Bagikan',
-        onClick: (): void => {}
+        shareLinks: [
+            {
+                value: 'Facebook',
+                icon: 'rui-icon-facebook',
+                onClick: (): void => undefined
+            }
+        ]
     },
     previewAction: {
-        label: 'Sudah dilihat',
-        onClick: (): void => {}
+        label: 'Text',
+        viewCount: 'Text',
+        headerContent: 'Text',
+        messageContent: 'Message'
     },
     mortgage: {
         installment: 'Rp. 26.110.000 / bulan',

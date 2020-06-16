@@ -31,11 +31,29 @@ return (
         }}
         shareAction={{
             label: 'Bagikan',
-            onClick: (): void => {}
+            shareLinks: [
+                {
+                    value: 'Facebook',
+                    icon: 'rui-icon-facebook',
+                    onClick: (): void => {}
+                },
+                {
+                    value: 'Whatsapp',
+                    icon: 'rui-icon-whatsapp',
+                    onClick: (): void => {}
+                },
+                {
+                    value: 'Twitter',
+                    icon: 'rui-icon-twitter',
+                    onClick: (): void => {}
+                }
+            ]
         }}
         previewAction={{
             label: 'Sudah dilihat',
-            onClick: (): void => {}
+            viewCount: 'Properti sudah dilihat: 965',
+            headerContent: 'Apa artinya angka diatas?',
+            messageContent: 'Angka tersebut menunjukan berapa kali pencari properti sudah melihat listing ini di Rumah123.com'
         }}
         mortgage={{
             installment: 'Rp. 26.110.000 / bulan',
@@ -60,7 +78,11 @@ return (
 | Property | Type | Default | Description |
 |-------|-----------|---------|-----------|
 |**label**|string|-|Text label of the action button|
-|**onClick**|`(event) => void`|-|Callback executed when action button is clicked|
+|**onClick**|`(event) => void`|-|Callback executed when save button is clicked|
+|**shareLinks**|`object[]`|-|Share action items which include **value**, **icon** and **onClick**|
+|**viewCount**|string|-|Number of view displayed inside Preview action dialog|
+|**headerContent**|string|-|Heading text displayed inside Preview action dialog|
+|**messageContent**|string|-|Message text displayed inside Preview action dialog|
 
 ## Attribute Props
 

@@ -28,11 +28,13 @@ const ListingSummaryContext = createContext<ListingSummaryContextInterface>({
         },
         shareAction: {
             label: '',
-            onClick: (): void => {}
+            shareLinks: []
         },
         previewAction: {
             label: '',
-            onClick: (): void => {}
+            viewCount: '',
+            headerContent: '',
+            messageContent: ''
         }
     }
 });

@@ -68,8 +68,36 @@
                 top: 35px;
             }
 
+            &.preview-link button {
+                @include no-border();
+            }
+
+            &.preview-link span {
+                @include font-color(#a5adb6);
+            }
+
             &.save-link {
                 @include margin-left(16px);
+            }
+
+            &.share-link .ui-atomic-link {
+                display: flex;
+                width: 100%;
+            }
+
+            &.share-link .ui-atomic-link--children {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                @include line-height(17);
+            }
+
+            &.share-link .share-item {
+                @include padding-top(8px);
+                @include padding-left(16px);
+                @include padding-bottom(8px);
+                @include padding-right(16px);
             }
 
             .ui-atomic-icon {
@@ -77,10 +105,35 @@
             }
         }
 
-        &--action-link:hover {
-            @include font-color(get-color(outline));
+        &--action-link:not(.share-link):hover {
+            span {
+                @include font-color(get-color(outline));
+            }
 
             .ui-atomic-icon {
+                @include font-color(get-color(outline));
+            }
+        }
+
+        &--action-panel .ui-atomic-dialog {
+            &__content {
+                width: 450px;
+
+                @include rounded(3px);
+                @include padding(all, 24px);
+            }
+        }
+
+        &--action-link .ui-molecules-dropdown {
+            &__wrapper {
+                min-width: 180px;
+            }
+
+            &__toggle:hover {
+                @include font-color(get-color(outline));
+            }
+
+            &__toggle:hover .ui-atomic-icon {
                 @include font-color(get-color(outline));
             }
         }

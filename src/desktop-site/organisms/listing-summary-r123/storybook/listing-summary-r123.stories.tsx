@@ -45,11 +45,29 @@ const ListingSummaryR123Documentation = require('./markdown/listing-summary-r123
                         `   ${'}}'}\n` +
                         `   ${'shareAction={{'}\n` +
                         `       ${'label: "Bagikan",'}\n` +
-                        `       ${'onClick: (): void => {}'}\n` +
+                        `       ${'shareLinks: ['}\n` +
+                        `           ${'{'}\n` +
+                        `               ${'value: "Facebook",'}\n` +
+                        `               ${'icon: "rui-icon-facebook",'}\n` +
+                        `               ${'onClick: (): void => {}'}\n` +
+                        `           ${'},'}\n` +
+                        `           ${'{'}\n` +
+                        `               ${'value: "Whatsapp",'}\n` +
+                        `               ${'icon: "rui-icon-whatsapp",'}\n` +
+                        `               ${'onClick: (): void => {}'}\n` +
+                        `           ${'},'}\n` +
+                        `           ${'{'}\n` +
+                        `               ${'value: "Twitter",'}\n` +
+                        `               ${'icon: "rui-icon-twitter",'}\n` +
+                        `               ${'onClick: (): void => {}'}\n` +
+                        `           ${'}'}\n` +
+                        `       ${']'}\n` +
                         `   ${'}}'}\n` +
                         `   ${'previewAction={{'}\n` +
                         `       ${'label: "Sudah dilihat",'}\n` +
-                        `       ${'onClick: (): void => {}'}\n` +
+                        `       ${'viewCount: "Properti sudah dilihat: 965",'}\n` +
+                        `       ${'headerContent: "Apa artinya angka diatas?",'}\n` +
+                        `       ${'messageContent: "Angka tersebut menunjukan berapa kali pencari properti sudah melihat listing ini di Rumah123.com",'}\n` +
                         `   ${'}}'}\n` +
                         `   ${'mortgage={{'}\n` +
                         `       ${'installment: "Rp. 26.110.000 / bulan",'}\n` +
@@ -78,11 +96,30 @@ const ListingSummaryR123Documentation = require('./markdown/listing-summary-r123
                             }}
                             shareAction={{
                                 label: 'Bagikan',
-                                onClick: (): void => {}
+                                shareLinks: [
+                                    {
+                                        value: 'Facebook',
+                                        icon: 'rui-icon-facebook',
+                                        onClick: (): void => undefined
+                                    },
+                                    {
+                                        value: 'Whatsapp',
+                                        icon: 'rui-icon-whatsapp',
+                                        onClick: (): void => undefined
+                                    },
+                                    {
+                                        value: 'Twitter',
+                                        icon: 'rui-icon-twitter',
+                                        onClick: (): void => undefined
+                                    }
+                                ]
                             }}
                             previewAction={{
                                 label: 'Sudah dilihat',
-                                onClick: (): void => {}
+                                viewCount: 'Properti sudah dilihat: 965',
+                                headerContent: 'Apa artinya angka diatas?',
+                                messageContent:
+                                    'Angka tersebut menunjukan berapa kali pencari properti sudah melihat listing ini di Rumah123.com'
                             }}
                             mortgage={{
                                 installment: 'Rp. 26.110.000 / bulan',

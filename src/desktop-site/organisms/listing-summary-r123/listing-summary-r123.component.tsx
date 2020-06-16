@@ -10,8 +10,8 @@ import StringHelper from '../../../shared/helper/string.helper';
 import ListingSummaryContext from './context/listing-summary-r123.context';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
-    ListingSummaryR123PropsInterface,
-    ListingSummaryContextInterface
+    ListingSummaryContextInterface,
+    ListingSummaryR123PropsInterface
 } from './interface/component.interface';
 
 /**
@@ -67,8 +67,8 @@ const ListingSummaryR123: FunctionComponent<ListingSummaryR123PropsInterface> = 
                 <div className="ui-organisms-listing-summary-r123__flagging-badge absolute">
                     <TextComponent
                         tag="p"
-                        fontWeight={500}
                         color="white"
+                        fontWeight={500}
                         className="ui-organisms-listing-summary-r123__flagging-badge--text"
                     >
                         {flaggingBadge}
@@ -124,11 +124,13 @@ ListingSummaryR123.propTypes = {
     }).isRequired,
     shareAction: PropTypes.shape({
         label: PropTypes.string.isRequired,
-        onClick: PropTypes.func.isRequired
+        shareLinks: PropTypes.array.isRequired
     }).isRequired,
     previewAction: PropTypes.shape({
         label: PropTypes.string.isRequired,
-        onClick: PropTypes.func.isRequired
+        viewCount: PropTypes.string.isRequired,
+        headerContent: PropTypes.string.isRequired,
+        messageContent: PropTypes.string.isRequired
     }).isRequired,
     mortgage: PropTypes.shape({
         label: PropTypes.string.isRequired,

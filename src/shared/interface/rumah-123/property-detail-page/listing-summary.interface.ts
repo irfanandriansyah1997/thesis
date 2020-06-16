@@ -17,9 +17,17 @@ export type R123ListingSummaryDataInterface = {
  * @since 2020.06.05
  */
 export interface R123ListingSummaryActionInterface {
-    saveAction: R123ListingSummaryActionItemInterface;
-    shareAction: R123ListingSummaryActionItemInterface;
-    previewAction: R123ListingSummaryActionItemInterface;
+    saveAction: R123ListingSummaryActionItemInterface & {
+        onClick: () => void;
+    };
+    previewAction: R123ListingSummaryActionItemInterface & {
+        viewCount: string;
+        headerContent: string;
+        messageContent: string;
+    };
+    shareAction: R123ListingSummaryActionItemInterface & {
+        shareLinks: R123ShareActionItemInterface[];
+    };
 }
 
 /**
@@ -29,7 +37,6 @@ export interface R123ListingSummaryActionInterface {
  */
 export type R123ListingSummaryActionItemInterface = {
     label: string;
-    onClick: () => void;
 };
 
 /**
@@ -44,3 +51,14 @@ export interface R123ListingSummaryAttributeInterface {
     landSize?: string;
     buildingSize?: string;
 }
+
+/**
+ * R123 Share Action Item Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.06.16
+ */
+export type R123ShareActionItemInterface = {
+    icon: string;
+    value: string;
+    onClick: () => void;
+};

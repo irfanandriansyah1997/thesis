@@ -1,9 +1,18 @@
-import React, { FunctionComponent, useContext } from 'react';
+/* eslint-disable react/no-array-index-key */
+import React, {
+    FunctionComponent,
+    useContext,
+    ReactElement,
+    useState
+} from 'react';
 
 import TextComponent from '../../../common/atomic/text/text.component';
 import LinkComponent from '../../../common/atomic/link/link.component';
 import GridComponent from '../../../common/atomic/grid/grid.component';
 import IconComponent from '../../../common/atomic/icon/icon.component';
+import DialogComponent from '../../../common/atomic/dialog/dialog.component';
+import ButtonComponent from '../../../common/atomic/button/button.component';
+import DropdownComponent from '../../../common/molecules/dropdown/dropdown.component';
 
 import StringHelper from '../../../shared/helper/string.helper';
 import ListingSummaryContext from './context/listing-summary-r123.context';
@@ -13,20 +22,27 @@ import { CardR123BasicGridItemInterface } from '../card-r123-basic/interface/com
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 
 /**
- * Create Save Icon
- * @return {string}
+ * Create Listing Summary Action Label Icon
  */
-const SaveIcon: FunctionComponent = () => (
-    <IconComponent size={16}>rui-icon-save-hollow</IconComponent>
+const generateIcon = (icon: string, marginRight?: number): ReactElement => (
+    <IconComponent size={16} marginRight={marginRight}>
+        {icon}
+    </IconComponent>
 );
 
 /**
- * Create Share Icon
- * @return {string}
+ * Create Share Action Label Icon
  */
-const ShareIcon: FunctionComponent = () => (
-    <IconComponent size={16}>rui-icon-share</IconComponent>
-);
+const shareActionLabel = (label: string): ReactElement => {
+    return (
+        <>
+            {generateIcon('rui-icon-share')}
+            <TextComponent tag="span" fontWeight={500} styling="heading-6">
+                {label}
+            </TextComponent>
+        </>
+    );
+};
 
 /**
  * ListingSummary Detail Component
@@ -34,6 +50,22 @@ const ShareIcon: FunctionComponent = () => (
  * @since 2020.06.05
  */
 const PropertySummaryComponent: FunctionComponent = () => {
+    const [show, setShow] = useState<boolean>(false);
+
+    /**
+     * Action triggered to open the dialog.
+     */
+    const showDialog = (): void => {
+        setShow(true);
+    };
+
+    /**
+     * Action triggered to close the dialog.
+     */
+    const closeDialog = (): void => {
+        setShow(false);
+    };
+
     const basicActionLinkClassName: ComponentClassnameDefaultInterface = {
         'ui-organisms-listing-summary-r123__detail--action-link': true
     };
@@ -163,37 +195,112 @@ const PropertySummaryComponent: FunctionComponent = () => {
                     absolute: true
                 })}
             >
-                <LinkComponent
-                    noUnderline
-                    fontWeight={500}
-                    styling="heading-6"
-                    onClick={previewAction.onClick}
+                <div
                     className={StringHelper.objToString({
                         ...basicActionLinkClassName,
                         absolute: true,
                         'preview-link': true
                     })}
                 >
-                    {previewAction.label}
-                </LinkComponent>
-                <LinkComponent
-                    noUnderline
-                    fontWeight={500}
-                    styling="heading-6"
-                    icon={<ShareIcon />}
-                    onClick={shareAction.onClick}
+                    <ButtonComponent
+                        size="default"
+                        outline
+                        onClick={showDialog}
+                        style={{ padding: 0 }}
+                        icon={generateIcon('rui-icon-bell')}
+                    >
+                        {previewAction.label}
+                    </ButtonComponent>
+                    <DialogComponent
+                        show={show}
+                        onCloseDialog={closeDialog}
+                        className="preview-link-dialog"
+                    >
+                        <IconComponent
+                            color="text"
+                            size={16}
+                            onClick={closeDialog}
+                            style={{
+                                position: 'absolute',
+                                right: 16,
+                                top: 16,
+                                cursor: 'pointer'
+                            }}
+                        >
+                            close
+                        </IconComponent>
+                        <div>
+                            <TextComponent
+                                tag="p"
+                                align="center"
+                                fontWeight={500}
+                                style={{
+                                    fontSize: 18,
+                                    padding: '40px 0',
+                                    lineHeight: '26px'
+                                }}
+                            >
+                                {previewAction.viewCount}
+                            </TextComponent>
+                            <TextComponent
+                                tag="p"
+                                align="center"
+                                fontWeight={500}
+                                styling="heading-6"
+                                style={{ marginBottom: 16 }}
+                            >
+                                {previewAction.headerContent}
+                            </TextComponent>
+                            <TextComponent
+                                tag="p"
+                                align="center"
+                                fontWeight={300}
+                                style={{
+                                    fontSize: 14,
+                                    paddingBottom: 40,
+                                    lineHeight: '24px'
+                                }}
+                            >
+                                {previewAction.messageContent}
+                            </TextComponent>
+                        </div>
+                    </DialogComponent>
+                </div>
+
+                <DropdownComponent
+                    label={shareActionLabel(shareAction.label)}
+                    name="share"
+                    trigger="click"
                     className={StringHelper.objToString({
                         ...basicActionLinkClassName,
                         'share-link': true
                     })}
                 >
-                    {shareAction.label}
-                </LinkComponent>
+                    {shareAction.shareLinks &&
+                        shareAction.shareLinks.map((item, index) => (
+                            <DropdownComponent.Item
+                                key={index}
+                                className="share-item"
+                            >
+                                <LinkComponent
+                                    noUnderline
+                                    color="text"
+                                    fontWeight={500}
+                                    onClick={item.onClick}
+                                    style={{ fontSize: 14 }}
+                                    icon={generateIcon(item.icon, 8)}
+                                >
+                                    {item.value}
+                                    {generateIcon('rui-icon-arrow-right')}
+                                </LinkComponent>
+                            </DropdownComponent.Item>
+                        ))}
+                </DropdownComponent>
                 <LinkComponent
                     noUnderline
                     fontWeight={500}
                     styling="heading-6"
-                    icon={<SaveIcon />}
+                    icon={generateIcon('rui-icon-save-hollow')}
                     onClick={saveAction.onClick}
                     className={StringHelper.objToString({
                         ...basicActionLinkClassName,
