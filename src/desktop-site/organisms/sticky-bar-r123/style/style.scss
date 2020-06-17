@@ -1,0 +1,61 @@
+@import '../../../../style/import.scss';
+
+.ui-organisms-sticky-bar-r123 {
+    @include padding-top(16px);
+    @include padding-bottom(16px);
+    @include box-shadow(get-shadow(r123-pdp));
+
+    &__title {
+        max-width: 590px;
+
+        @include line-height(27);
+        @include font-size(text-size(lg));
+    }
+
+    &__address-wrapper {
+        @include margin-top(8px);
+    }
+
+    &__address-info {
+        -webkit-line-clamp: 1;
+        max-height: 24px;
+        max-width: 590px;
+
+        @include line-height(17);
+    }
+
+    &__tier-badge {
+        @include rounded(20px);
+        @include font-size(12px);
+        @include line-height(17);
+        @include padding-top(2px);
+        @include margin-left(10px);
+        @include padding-left(10px);
+        @include padding-bottom(2px);
+        @include padding-right(10px);
+        @include font-color(get-color(headingR123));
+        @include background-color(get-color(grayR123));
+    }
+
+    &__right-container {
+        &--price {
+            line-height: normal;
+        }
+
+        &--feature {
+            @include margin-right(16px);
+            @include padding-right(16px);
+            @include border(right, 1px, solid, #e1e4e6);
+        }
+
+        &--save-link {
+            @include font-size(16px);
+            @include line-height(20);
+            @include font-color(#a5adb6);
+        }
+
+        &--save-link:hover {
+            @include font-color(get-color(outline));
+        }
+    }
+}

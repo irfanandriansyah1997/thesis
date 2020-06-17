@@ -25,6 +25,7 @@ export default [
         './src/desktop-site/organisms/listing-summary-r123/listing-summary-r123.component.tsx',
         './src/desktop-site/organisms/navbar-r123/navbar-r123.component.tsx',
         './src/desktop-site/organisms/search-filter/search-filter.component.tsx',
-        './src/desktop-site/organisms/searchbar-srp-r123/searchbar-srp-r123.component.tsx'
+        './src/desktop-site/organisms/searchbar-srp-r123/searchbar-srp-r123.component.tsx',
+        './src/desktop-site/organisms/sticky-bar-r123/sticky-bar-r123.component.tsx'
     ]
 ];

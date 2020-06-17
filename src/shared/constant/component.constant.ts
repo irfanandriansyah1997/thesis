@@ -5,3 +5,6 @@ export const ARROW_ON_PREVIOUS = 'rui-icon-arrow-left-small';
 
 export const HEIGHT_PREMIER = 420;
 export const HEIGHT_NON_PREMIER = 320;
+
+export const PREMIER = 'Premier';
+export const FEATURED = 'Fetured';
