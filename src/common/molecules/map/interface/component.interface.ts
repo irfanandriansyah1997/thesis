@@ -1,4 +1,7 @@
-import { MapHTMLAttributes } from 'react';
+import { ClickEventValue, MapOptions, Props } from 'google-map-react';
+
+import { ComponentDefaultInterface } from '../../../../shared/interface/component/component-default.interface';
+import { DefaultLocationMapsInterface } from '../../../../shared/interface/common/location.interface';
 
 /**
  * Map Props Interface
@@ -15,3 +18,8 @@ export type MapsPropsInterface = Omit<ComponentDefaultInterface, 'children'> & {
     location: DefaultLocationMapsInterface;
     onClick?: (param: ClickEventValue) => void;
 };
+
+export interface MapsPinPropsInterface extends DefaultLocationMapsInterface {
+    alt: string;
+    src: string;
+}
