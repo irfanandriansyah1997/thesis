@@ -67,4 +67,37 @@ describe('Testing icon component in atomic component ', () => {
             ColorDefaultConstant.primary
         );
     });
+
+    it('Test render icon specific margin', () => {
+        const icon = render(
+            <IconComponent
+                color="info100"
+                size={16}
+                marginTop={5}
+                marginRight={5}
+                marginBottom={5}
+                marginLeft={5}
+            >
+                edit
+            </IconComponent>
+        );
+
+        expect(icon.text()).toContain('edit');
+        expect(icon.hasClass('uif')).toBe(false);
+        expect(icon.hasClass('rui-icon')).toBe(false);
+        expect(icon.hasClass('rui-icon-rss')).toBe(false);
+        expect(icon.hasClass('material-icons')).toBe(true);
+        expect(icon.hasClass('uif-prospek-harga')).toBe(false);
+        expect(icon.hasClass('ui-atomic-icon--size-default')).toBe(false);
+        expect(icon.prop('style')).toHaveProperty('font-size', '16px');
+        expect(icon.prop('style')).toHaveProperty(
+            'color',
+            ColorDefaultConstant.info100
+        );
+
+        expect(icon.prop('style')).toHaveProperty('margin-top', '5px');
+        expect(icon.prop('style')).toHaveProperty('margin-right', '5px');
+        expect(icon.prop('style')).toHaveProperty('margin-bottom', '5px');
+        expect(icon.prop('style')).toHaveProperty('margin-left', '5px');
+    });
 });

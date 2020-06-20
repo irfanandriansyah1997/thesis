@@ -1,0 +1,111 @@
+@import '../../../../style/import.scss';
+
+$link-color: #d2d6da;
+
+.ui-organism-footer-r123 {
+    @include font-color($link-color);
+    text-decoration: none;
+
+    &__upper-section {
+        float: left;
+        width: 100%;
+
+        @include background-color(#20282e);
+        @include margin-top(16px);
+        @include padding(all, 16px 16px 0);
+
+        &__active-content {
+            display: inline-block;
+            line-height: 1.4;
+            vertical-align: top;
+            width: 25%;
+
+            @include padding(all, 10px 20px 10px 0);
+        }
+
+        &__toggler {
+            cursor: pointer;
+        }
+
+        @media (max-width: 1388px) {
+            &__footer-section {
+                width: 95%;
+            }
+        }
+    }
+
+    &__bottom-section {
+        width: 100%;
+
+        @include background-color(#333f48);
+        @include padding(all, 0 16px);
+
+        &__block-container {
+            @include margin(all, 32px 0);
+        }
+
+        &__copyright-container {
+            @include padding(all, 16px 0);
+        }
+
+        &__wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 1388px) {
+            &__footer-section {
+                width: 95%;
+            }
+        }
+    }
+
+    .ui-molecules-tab {
+        @include font-color($link-color);
+
+        &__bar {
+            border-bottom: 1px solid rgb(51, 63, 72);
+            height: 40px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+
+        &__pane {
+            @include margin-right(56px);
+            @include padding(all, 8px 0);
+
+            &::after {
+                opacity: 0;
+            }
+
+            &:hover {
+                @include font-color($link-color);
+            }
+
+            &--active {
+                border-bottom: 1px solid rgb(41, 128, 185);
+
+                @include font-color(white);
+                @include font-weight(500);
+            }
+        }
+    }
+
+    .ui-atomic-link {
+        text-decoration: none;
+
+        @include font-color($link-color);
+
+        &:hover {
+            @include font-color(white);
+        }
+    }
+
+    .ui-molecules-toggle {
+        &__selector {
+            @include font-size(14px);
+            @include font-weight(700);
+        }
+    }
+}

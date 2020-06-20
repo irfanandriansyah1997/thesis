@@ -1,0 +1,57 @@
+@import '../../../../style/import.scss';
+
+.ui-organism-search-srp-r123 {
+    width: 100%;
+
+    @include background-color(white);
+
+    &__autocomplete {
+        flex: 1 1 auto;
+    }
+
+    &__search-button {
+        @include margin-right(24px);
+    }
+
+    &__button-group {
+        height: 54px;
+
+        @include border-left(1px, solid, greyDarkerR123);
+    }
+
+    &__button {
+        height: 100%;
+
+        @include no-border();
+        @include padding(all, 0 16px);
+        @include background-color(transparent);
+
+        .ui-atomic-text {
+            @include font-color(heading);
+        }
+
+        &:hover {
+            .ui-atomic-text {
+                @include font-color(primary);
+            }
+        }
+    }
+
+    &__button--active {
+        height: 100%;
+
+        @include no-border();
+        @include padding(all, 0 16px);
+        @include background-color(text);
+
+        .ui-atomic-text {
+            @include font-color(white);
+        }
+
+        &:hover {
+            .ui-atomic-text {
+                @include font-color(white);
+            }
+        }
+    }
+}

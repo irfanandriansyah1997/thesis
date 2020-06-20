@@ -8,11 +8,13 @@ export default [
         './src/common/atomic/button/button.component.tsx',
         './src/common/atomic/card/card.component.tsx',
         './src/common/atomic/dialog/dialog.component.tsx',
+        './src/common/atomic/edit-text/edit-text.component.tsx',
         './src/common/atomic/grid/grid.component.tsx',
         './src/common/atomic/icon/icon.component.tsx',
         './src/common/atomic/image/image.component.tsx',
         './src/common/atomic/label/label.component.tsx',
         './src/common/atomic/link/link.component.tsx',
+        './src/common/atomic/media-player/media-player.component.tsx',
         './src/common/atomic/spin/spin.component.tsx',
         './src/common/atomic/sticky/sticky.component.tsx',
         './src/common/atomic/text/text.component.tsx'
@@ -28,15 +30,18 @@ export default [
         './src/common/molecules/expand-text/expand-text.component.tsx',
         './src/common/molecules/hollow-link/hollow-link.component.tsx',
         './src/common/molecules/list/list.component.tsx',
+        './src/common/molecules/map/map.component.tsx',
+        './src/common/molecules/multiple-selection/multiple-selection.component.tsx',
         './src/common/molecules/navbar/navbar.component.tsx',
         './src/common/molecules/pagination-r123/pagination-r123.component.tsx',
         './src/common/molecules/radio-button/radio-button.component.tsx',
         './src/common/molecules/range-slider/range-slider.component.tsx',
         './src/common/molecules/tabs/tabs.component.tsx',
-        './src/common/molecules/toggle/toggle.component.tsx'
+        './src/common/molecules/toggle/toggle.component.tsx',
+        './src/common/molecules/pagination/pagination.component.tsx'
     ],
     /**
      * Organism
      */
-    ...[]
+    ...['./src/common/organisms/gallery/gallery.component.tsx']
 ];

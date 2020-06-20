@@ -1,32 +1,55 @@
-import React, { SFC, useState } from 'react';
+import React, {
+    FunctionComponent,
+    useState,
+    useEffect,
+    ReactNode
+} from 'react';
 import PropTypes from 'prop-types';
+import { ObjectFitProperty } from 'csstype';
 
 import IconComponent from '../../atomic/icon/icon.component';
+import LinkComponent from '../../atomic/link/link.component';
 import ImageComponent from '../../atomic/image/image.component';
+
 import StringHelper from '../../../shared/helper/string.helper';
 import ValidatorHelper from '../../../shared/helper/validator.helper';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
 import {
     CarouselItemInterface,
-    CarouselPropsInterface
+    CarouselPropsInterface,
+    CarouselIndicatorInterface
 } from './interface/component.interface';
 import {
     ARROW_ON_NEXT,
     ARROW_ON_PREVIOUS
 } from '../../../shared/constant/component.constant';
+import MediaPlayerComponent from '../../atomic/media-player/media-player.component';
 
 /**
  * Default Carousel Component
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.05.04
  */
-const CarouselComponent: SFC<CarouselPropsInterface> = ({
-    className,
+const CarouselComponent: FunctionComponent<CarouselPropsInterface> = ({
     item,
+    value,
+    itemLink,
+    className,
     indicator,
-    scrollEffect
+    scrollEffect,
+    onChangeActive
 }) => {
-    const [position, setPosition] = useState(0);
+    const [position, setPosition] = useState(value || 0);
+
+    useEffect(() => {
+        onChangeActive(position);
+    }, [position]);
+
+    useEffect(() => {
+        if (ValidatorHelper.verifiedIsNotEmpty(value)) {
+            setPosition(value || 0);
+        }
+    }, [value]);
 
     const name: ComponentClassnameDefaultInterface = {
         relative: true,
@@ -41,6 +64,45 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
         ),
         flex: true,
         relative: true
+    };
+
+    /**
+     *
+     * @param itemLink
+     * @param src
+     * @param alt
+     * @param objectFit
+     */
+    const generateCarouselImageItem = (
+        link: string,
+        src: string,
+        alt: string,
+        objectFit: ObjectFitProperty
+    ): ReactNode => {
+        if (link) {
+            return (
+                <LinkComponent noUnderline href={link}>
+                    <ImageComponent
+                        width="100%"
+                        height="100%"
+                        src={src}
+                        alt={alt}
+                        objectFit={objectFit}
+                        className="ui-molecules-carousel__item"
+                    />
+                </LinkComponent>
+            );
+        }
+        return (
+            <ImageComponent
+                width="100%"
+                height="100%"
+                src={src}
+                alt={alt}
+                objectFit={objectFit}
+                className="ui-molecules-carousel__item"
+            />
+        );
     };
 
     /**
@@ -62,39 +124,61 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
                     transform: `translateX(${position * -100}%)`
                 }}
             >
-                {item.map((image: CarouselItemInterface) => (
-                    <div
-                        className="ui-molecules-carousel__item relative"
-                        key={image.id}
-                    >
-                        <ImageComponent
-                            width="100%"
-                            height="100%"
-                            src={image.src}
-                            alt={image.alt}
-                            objectFit="cover"
-                            className="ui-molecules-carousel__item"
-                        />
-                    </div>
-                ))}
+                {item.map(
+                    ({
+                        alt,
+                        id,
+                        src,
+                        type,
+                        objectFit
+                    }: CarouselItemInterface) => (
+                        <div
+                            className="ui-molecules-carousel__item relative"
+                            key={id}
+                        >
+                            {type === 'youtube' ? (
+                                <MediaPlayerComponent
+                                    youtubeId={src}
+                                    width="100%"
+                                    height="100%"
+                                />
+                            ) : (
+                                generateCarouselImageItem(
+                                    itemLink || '',
+                                    src,
+                                    alt,
+                                    objectFit || 'cover'
+                                )
+                            )}
+                        </div>
+                    )
+                )}
             </div>
             <div className="ui-molecules-carousel__action">
                 <div className="ui-molecules-carousel__action--prev absolute">
                     <IconComponent
                         color="white"
-                        size={30}
+                        size={
+                            indicator && indicator.fontSizeIcon
+                                ? indicator.fontSizeIcon
+                                : 30
+                        }
                         onClick={(): void => handleClick('prev')}
                     >
-                        {indicator ? indicator.previous : ''}
+                        {(indicator as CarouselIndicatorInterface).previous}
                     </IconComponent>
                 </div>
                 <div className="ui-molecules-carousel__action--next absolute">
                     <IconComponent
                         color="white"
-                        size={30}
+                        size={
+                            indicator && indicator.fontSizeIcon
+                                ? indicator.fontSizeIcon
+                                : 30
+                        }
                         onClick={(): void => handleClick('next')}
                     >
-                        {indicator ? indicator.next : ''}
+                        {(indicator as CarouselIndicatorInterface).next}
                     </IconComponent>
                 </div>
             </div>
@@ -103,16 +187,23 @@ const CarouselComponent: SFC<CarouselPropsInterface> = ({
 };
 
 CarouselComponent.defaultProps = {
+    itemLink: '',
     className: '',
     scrollEffect: false,
+    value: 0,
     indicator: {
         next: ARROW_ON_NEXT,
-        previous: ARROW_ON_PREVIOUS
+        previous: ARROW_ON_PREVIOUS,
+        fontSizeIcon: 30
     }
 };
 
 CarouselComponent.propTypes = {
+    value: PropTypes.number,
+    itemLink: PropTypes.string,
     className: PropTypes.string,
+    scrollEffect: PropTypes.bool,
+    onChangeActive: PropTypes.func.isRequired,
     item: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
@@ -121,10 +212,10 @@ CarouselComponent.propTypes = {
             src: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    scrollEffect: PropTypes.bool,
     indicator: PropTypes.shape({
         previous: PropTypes.string.isRequired,
-        next: PropTypes.string.isRequired
+        next: PropTypes.string.isRequired,
+        fontSizeIcon: PropTypes.number
     })
 };
 

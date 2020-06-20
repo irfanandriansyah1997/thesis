@@ -1,4 +1,12 @@
-import { HTMLAttributes, SFC, ReactNode } from 'react';
+import {
+    SFC,
+    ReactNode,
+    RefObject,
+    RefAttributes,
+    HTMLAttributes,
+    PropsWithoutRef,
+    ForwardRefExoticComponent
+} from 'react';
 
 /**
  * Dropdown Default Export Interface
@@ -8,6 +16,9 @@ import { HTMLAttributes, SFC, ReactNode } from 'react';
 export type DropdownDefaultExportInterface = SFC<DropdownPropsInterface> & {
     Item: SFC<DropdownItemPropsInterface>;
     Divider: SFC<DropdownDividerPropInterface>;
+    WithRef: ForwardRefExoticComponent<
+        PropsWithoutRef<DropdownPropsInterface> & RefAttributes<HTMLDivElement>
+    >;
 };
 
 /**
@@ -22,10 +33,14 @@ export type DropdownPropsInterface = Omit<
     name: string;
     label: string | React.ReactNode;
     icon?: string;
+    iconMargin?: IconMarginInterface;
+    show?: boolean;
     scroll?: boolean;
     type?: 'list' | 'content';
     trigger: 'hover' | 'click';
     onClick?: (show: boolean) => void;
+    refForward?: RefObject<HTMLDivElement>;
+    refContentForward?: RefObject<HTMLDivElement>;
 };
 
 export type DropdownChildren = {
@@ -60,3 +75,10 @@ export type DropdownItemPropsInterface = Omit<
  * @since 2020.04.27
  */
 export type DropdownDividerPropInterface = {};
+
+export type IconMarginInterface = {
+    top?: number;
+    right?: number;
+    bottom?: number;
+    left?: number;
+};

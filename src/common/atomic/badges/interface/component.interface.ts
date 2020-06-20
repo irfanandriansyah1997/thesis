@@ -14,7 +14,7 @@ export type BadgesPropsInterface = Omit<
     color?: ColorType;
     rounded?: boolean;
     textColor?: ColorType;
-    transparent?: boolean;
     size?: ComponentDefaultSize;
+    transparent?: boolean | number;
     onCloseBadges?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };

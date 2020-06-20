@@ -77,6 +77,7 @@ const ColorDefaultConstant = {
     heading1000: '#151a30',
     heading1100: '#101426',
     grayR123: '#e9ebed',
+    primaryR123: '#0084ff',
     greyDarkerR123: '#d2d6da',
     borderR123: '#030303',
     actionR123: '#c20014',
@@ -88,7 +89,13 @@ const ColorDefaultConstant = {
     headingDarkerR123: '#20282e',
     hoverDanger: '#a30000',
     basicCardHeadingR123: '#a5adb5',
-    headingR123: '#333f48'
+    headingR123: '#333f48',
+    editTextSecondary: '#f3f4f6',
+    addOnTextR123: '#555',
+    addOnBgR123: '#eee',
+    addOnBorderR123: '#ccc',
+    actionIconR123: '#a5adb6',
+    newPropertyBadgeR123: '#dc4504'
 } as const;
 
 export default ColorDefaultConstant;

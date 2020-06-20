@@ -1,0 +1,156 @@
+@import '../../../../style/import.scss';
+
+.ui-organisms-listing-summary-r123 {
+    @include box-shadow(get-shadow(r123-pdp));
+
+    &__flagging-badge {
+        height: 20px;
+        top: -10px;
+        z-index: 1;
+
+        @include rounded(20px);
+        @include padding-left(20px);
+        @include padding-right(20px);
+        @include background-color(get-color(actionR123));
+
+        &--text {
+            @include font-size(12px);
+            @include line-height(20);
+        }
+    }
+
+    &__detail {
+        @include padding-top(24px);
+        @include padding-bottom(16px);
+
+        &--address {
+            @include margin-top(8px);
+
+            &__info {
+                @include font-size(14px);
+            }
+
+            &__tier-badge {
+                @include rounded(20px);
+                @include font-size(12px);
+                @include line-height(17);
+                @include padding-top(2px);
+                @include margin-left(10px);
+                @include padding-left(10px);
+                @include padding-bottom(2px);
+                @include padding-right(10px);
+                @include font-color(get-color(headingR123));
+                @include background-color(get-color(grayR123));
+            }
+        }
+
+        &--area-info,
+        &--attribute {
+            @include margin-top(16px);
+
+            a {
+                pointer-events: none;
+            }
+        }
+
+        &--action-panel {
+            right: 0;
+            top: 26px;
+        }
+
+        &--action-link {
+            @include font-size(16px);
+            @include line-height(20);
+            @include font-color(#a5adb6);
+
+            &.preview-link {
+                right: 0;
+                top: 35px;
+            }
+
+            &.preview-link button {
+                @include no-border();
+            }
+
+            &.preview-link span {
+                @include font-color(#a5adb6);
+            }
+
+            &.save-link {
+                @include margin-left(16px);
+            }
+
+            &.share-link .ui-atomic-link {
+                display: flex;
+                width: 100%;
+            }
+
+            &.share-link .ui-atomic-link--children {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                @include line-height(17);
+            }
+
+            &.share-link .share-item {
+                @include padding-top(8px);
+                @include padding-left(16px);
+                @include padding-bottom(8px);
+                @include padding-right(16px);
+            }
+
+            .ui-atomic-icon {
+                @include font-color(#a5adb6);
+            }
+        }
+
+        &--action-link:not(.share-link):hover {
+            span {
+                @include font-color(get-color(outline));
+            }
+
+            .ui-atomic-icon {
+                @include font-color(get-color(outline));
+            }
+        }
+
+        &--action-panel .ui-atomic-dialog {
+            &__content {
+                width: 450px;
+
+                @include rounded(3px);
+                @include padding(all, 24px);
+            }
+        }
+
+        &--action-link .ui-molecules-dropdown {
+            &__wrapper {
+                min-width: 180px;
+            }
+
+            &__toggle:hover {
+                @include font-color(get-color(outline));
+            }
+
+            &__toggle:hover .ui-atomic-icon {
+                @include font-color(get-color(outline));
+            }
+        }
+    }
+
+    &__mortgage {
+        @include padding-top(16px);
+        @include padding-bottom(16px);
+        @include border-top(1px, solid, get-color(grayR123));
+
+        &--info {
+            @include line-height(21);
+            @include font-color(get-color(headingDarkerR123));
+        }
+
+        &--link {
+            @include line-height(21);
+        }
+    }
+}

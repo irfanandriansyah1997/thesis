@@ -18,13 +18,28 @@
         }
     }
 
+    &--show {
+        #{$c}__spinning {
+            opacity: 1;
+        }
+    }
+
+    &--without-shadow {
+        #{$c}__wrapper {
+            @include no-box-shadow();
+        }
+    }
+
     &__spinning {
         height: 100%;
         left: 0;
         max-height: 400px;
+        opacity: 0;
         top: 0;
         width: 100%;
         z-index: 4;
+
+        @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
     }
 
     &__wrapper {
@@ -61,7 +76,7 @@
             dashoffset: 0;
             linecap: round;
             miterlimit: 0;
-            width: 20;
+            width: 10;
         }
 
         animation: loading-circle 1s linear infinite;

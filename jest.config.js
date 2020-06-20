@@ -44,6 +44,7 @@ module.exports = {
     snapshotSerializers: ['enzyme-to-json/serializer'],
     setupFilesAfterEnv: [
         '<rootDir>/etc/jest/enzyme.config.ts',
-        '@testing-library/jest-dom/extend-expect'
+        '@testing-library/jest-dom/extend-expect',
+        'jest-canvas-mock'
     ]
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 
 import CardR123Basic from '../card-r123-basic.component';
@@ -44,8 +45,14 @@ const docs = (): string =>
     `        buildingSize: 'Luas Bangunan : 60m²' \n` +
     `    }} \n` +
     `    action={{ \n` +
-    `        onClickSave: (): void => undefined, \n` +
-    `        onClickMortgageSimulation: (): void => undefined \n` +
+    `        saveAction: {, \n` +
+    `           label: 'Simpan', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
+    `        mortgageSimulationAction: {, \n` +
+    `           label: 'Simulasi KPR', \n` +
+    `           onClick: (): void => {}, \n` +
+    `        }, \n` +
     `    }} \n` +
     `/> \n`;
 
@@ -91,8 +98,14 @@ const docs = (): string =>
                             buildingSize: 'Luas Bangunan : 60m²'
                         }}
                         action={{
-                            onClickSave: (): void => undefined,
-                            onClickMortgageSimulation: (): void => undefined
+                            saveAction: {
+                                label: 'Simpan',
+                                onClick: (): void => {}
+                            },
+                            mortgageSimulationAction: {
+                                label: 'Simulasi KPR',
+                                onClick: (): void => {}
+                            }
                         }}
                     />
                 </CodingViewerDocsComponent>

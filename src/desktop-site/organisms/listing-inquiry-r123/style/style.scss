@@ -1,0 +1,162 @@
+// stylelint-disable selector-class-pattern
+@import '../../../../style/import.scss';
+
+.ui-organism-listing-inquiry-r123 {
+    &__container-wrapper {
+        object-fit: contain;
+        pointer-events: all;
+        width: 360px;
+    }
+
+    &__contact-wrapper {
+        @include border(all, 1px, solid, greyDarkerR123);
+        @include padding(all, 16px);
+    }
+
+    &__agent-wrapper {
+        @include margin-bottom(24px);
+    }
+
+    &__agent-contact-name {
+        @include font-color(outline);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__agent-join-info {
+        @include font-color(basicCardHeadingR123);
+        @include font-size(10px);
+    }
+
+    &__inquiry-buttons {
+        @include margin(all, 0 -5px);
+    }
+
+    &__email-button {
+        @include border-top(1px, solid, #cccccc);
+        @include margin-top(16px);
+        @include padding-top(16px);
+    }
+
+    &__organization-wrapper {
+        @include border(all, 1px, solid, greyDarkerR123);
+        @include no-border-top();
+    }
+
+    &__organization-content {
+        @include font-color(black);
+        @include padding(all, 8px 16px);
+    }
+
+    .ui-atomic-button {
+        justify-content: center;
+        width: 100%;
+
+        &--theme {
+            &-secondary {
+                @include margin(all, 0 5px);
+                @include background-color(grayR123);
+            }
+
+            &-secondary:hover {
+                @include background-color(greyDarkerR123);
+            }
+        }
+    }
+
+    .ui-atomic-text {
+        text-align: center;
+
+        @include margin-bottom(5px);
+    }
+
+    .ui-molecules-combobox-split {
+        flex: unset;
+        @include margin-right(5px);
+
+        .ui-atomic-button {
+            @include margin-right(unset);
+        }
+
+        .ui-molecules-dropdown__wrapper {
+            padding-left: 5px;
+        }
+    }
+
+    &__inquiry-box-wrapper {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+
+        @include margin(all, 0 auto);
+        @include padding(all, 10px 24px 10px);
+    }
+
+    &__contact-form {
+        @include margin-bottom(24px);
+    }
+
+    &__contact-form-title {
+        @include font-color(headingR123);
+        @include font-size(18px);
+        @include font-weight(300);
+        @include line-height(22);
+        @include margin(all, 16px 0);
+    }
+
+    &__agent-info {
+        @include font-color(black);
+    }
+
+    &__link-info {
+        text-decoration: none;
+
+        @include font-color(black);
+        @include font-weight(500);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__term {
+        @include font-color(text);
+        @include font-size(12px);
+        @include font-weight(300);
+    }
+
+    &__email-submit {
+        text-align: right;
+    }
+
+    &__inquiry_buyer_info {
+        @include margin-top(20px);
+    }
+
+    &__input-label {
+        @include font-color(text);
+        @include font-size(10px);
+        @include font-weight(300);
+    }
+
+    &__buyer_message {
+        height: 135px;
+        margin-top: 20px;
+        resize: none;
+        width: 100%;
+    }
+
+    &__buyer_info > input {
+        font-size: 14px;
+        height: 32px;
+
+        @include font-weight(300);
+        @include margin-top(20px);
+
+        &:hover {
+            border-color: #49a9ee;
+        }
+    }
+}

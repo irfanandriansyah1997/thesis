@@ -10,6 +10,7 @@ export type SpinPropsInterface = Omit<
     HTMLAttributes<HTMLElement>,
     'dangerouslySetInnerHTML'
 > & {
-    color: ColorType;
     show: boolean;
+    color: ColorType;
+    withoutShadow?: boolean;
 };

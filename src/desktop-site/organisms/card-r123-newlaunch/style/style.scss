@@ -1,0 +1,129 @@
+@import '../../../../style/import.scss';
+
+.ui-organisms-card-r123-newlaunch {
+    &__heading-section {
+        @include padding(all, 10px 16px);
+    }
+
+    &__media-section {
+        width: 100%;
+
+        &__caption {
+            bottom: 0;
+            height: auto;
+            left: 0;
+            min-height: 80px;
+            width: 100%;
+
+            @include padding(all, 0 16px 8px);
+            @include linear-gradient(rgba(0, 0, 0, 0) 0, rgb(0, 0, 0), 180deg);
+        }
+    }
+
+    &__content-section {
+        height: 100%;
+        width: 100%;
+
+        @include padding(all, 16px);
+    }
+
+    &__attribute-info {
+        .ui-atomic-badges {
+            &:first-child {
+                min-width: 105px;
+
+                @include padding(all, 10px 12px);
+                @include margin-right(8px);
+            }
+
+            &:last-child {
+                opacity: 0.7;
+
+                @include padding(all, 10px 12px);
+            }
+
+            &__children {
+                display: flex;
+                line-height: normal;
+            }
+        }
+
+        .ui-atomic-badges:last-child .ui-atomic-icon {
+            &:first-child {
+                @include margin-right(5px);
+            }
+
+            &:last-child {
+                @include margin-left(5px);
+            }
+        }
+    }
+
+    &__title {
+        h2 {
+            @include line-height(24);
+        }
+
+        .ui-atomic-link:first-child {
+            min-height: 18px;
+
+            @include margin-bottom(3px);
+        }
+    }
+
+    &__developer-logo {
+        height: 62px;
+
+        @include margin-bottom(8px);
+        @include margin-top(8px);
+
+        img {
+            max-height: 62px;
+            max-width: 110px;
+        }
+    }
+
+    &__top-row,
+    &__middle-row,
+    &__bottom-row {
+        width: 100%;
+    }
+
+    &__top-row {
+        > .ui-col {
+            max-width: initial;
+            min-height: initial;
+            width: initial;
+        }
+    }
+
+    &__middle-row {
+        @include padding-top(14px);
+
+        .ui-atomic-link {
+            @include margin-bottom(3px);
+        }
+
+        .ui-molecules-list {
+            height: 21px;
+        }
+    }
+
+    &__button {
+        .contact-detail-button {
+            @include margin-left(10px);
+        }
+    }
+}
+
+@media (min-width: 1023px) {
+    .ui-organisms-card-r123-newlaunch {
+        width: 750px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .ui-organisms-card-r123-newlaunch {
+        width: 100%;
+    }
+}

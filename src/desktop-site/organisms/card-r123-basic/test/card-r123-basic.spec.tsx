@@ -34,8 +34,14 @@ const MOCK_PROPS: CardR123BasicPropsInterface = {
         buildingSize: 'Luas Bangunan : 60m²'
     },
     action: {
-        onClickSave: (): void => undefined,
-        onClickMortgageSimulation: (): void => undefined
+        saveAction: {
+            label: 'Simpan',
+            onClick: (): void => undefined
+        },
+        mortgageSimulationAction: {
+            label: 'Simulasi KPR',
+            onClick: (): void => undefined
+        }
     }
 };
 

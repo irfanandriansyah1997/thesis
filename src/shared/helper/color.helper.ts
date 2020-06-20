@@ -93,9 +93,12 @@ class ColorHelper extends LogHelperAbstract {
      */
     static generateColorComponent(
         color: ColorType,
-        transparent: boolean,
+        transparent: boolean | number,
         defaultColor: ColorType = 'heading'
     ): ComponentStyleColorInterface {
+        const transparentRange: number = ValidatorHelper.isNumber(transparent)
+            ? (transparent as number)
+            : 0.25;
         try {
             if (
                 ValidatorHelper.verifiedKeyIsExist(ColorDefaultConstant, color)
@@ -139,16 +142,18 @@ class ColorHelper extends LogHelperAbstract {
                         color,
                         hexColor: ColorHelper.hexToRgba(
                             ColorHelper.getColor(color, defaultColor),
-                            transparent ? 0.25 : 1
+                            transparent !== false ? transparentRange : 1
                         )
                     },
                     text: {
-                        color: transparent
-                            ? transparentColor.color
-                            : notTransparentTextColor.color,
-                        hexColor: transparent
-                            ? transparentColor.hexColor
-                            : notTransparentTextColor.hexColor
+                        color:
+                            transparent !== false
+                                ? transparentColor.color
+                                : notTransparentTextColor.color,
+                        hexColor:
+                            transparent !== false
+                                ? transparentColor.hexColor
+                                : notTransparentTextColor.hexColor
                     }
                 };
             }

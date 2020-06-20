@@ -2,6 +2,12 @@ import { HTMLAttributes } from 'react';
 
 import { ColorInterface } from '../../../../shared/interface/common/color.interface';
 import { ComponentCustomSize } from '../../../../shared/interface/component/component-size.interface';
+import {
+    ComponentCustomMarginTop,
+    ComponentCustomMarginRight,
+    ComponentCustomMarginBottom,
+    ComponentCustomMarginLeft
+} from '../../../../shared/interface/component/component-margin.interface';
 
 /**
  * Icon Props Interface
@@ -15,4 +21,8 @@ export type IconPropsInterface = Omit<
     ColorInterface & {
         children: string;
         size: ComponentCustomSize;
+        marginTop?: ComponentCustomMarginTop;
+        marginRight?: ComponentCustomMarginRight;
+        marginBottom?: ComponentCustomMarginBottom;
+        marginLeft?: ComponentCustomMarginLeft;
     };

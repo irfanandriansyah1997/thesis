@@ -17,6 +17,10 @@ import { ComponentClassnameDefaultInterface } from '../../../shared/interface/co
  */
 const IconComponent: SFC<IconPropsInterface> = ({
     size,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
     color,
     style,
     children,
@@ -51,7 +55,19 @@ const IconComponent: SFC<IconPropsInterface> = ({
                 ? ColorDefaultConstant[color as ColorType]
                 : undefined,
             height: ValidatorHelper.isNumber(size) ? `${size}px` : undefined,
-            fontSize: ValidatorHelper.isNumber(size) ? `${size}px` : undefined
+            fontSize: ValidatorHelper.isNumber(size) ? `${size}px` : undefined,
+            marginTop: ValidatorHelper.isNumber(marginTop)
+                ? `${marginTop}px`
+                : undefined,
+            marginRight: ValidatorHelper.isNumber(marginRight)
+                ? `${marginRight}px`
+                : undefined,
+            marginBottom: ValidatorHelper.isNumber(marginBottom)
+                ? `${marginBottom}px`
+                : undefined,
+            marginLeft: ValidatorHelper.isNumber(marginLeft)
+                ? `${marginLeft}px`
+                : undefined
         },
         children: isVendorIcon ? undefined : children,
         ...res
@@ -65,7 +81,11 @@ IconComponent.propTypes = {
     size: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.oneOf<ComponentDefaultSize>(['big', 'default', 'small'])
-    ]).isRequired
+    ]).isRequired,
+    marginTop: PropTypes.number,
+    marginRight: PropTypes.number,
+    marginBottom: PropTypes.number,
+    marginLeft: PropTypes.number
 };
 
 IconComponent.defaultProps = {

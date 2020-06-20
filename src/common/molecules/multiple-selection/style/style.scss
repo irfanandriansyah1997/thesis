@@ -1,0 +1,103 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-multiple-selection {
+    $c: &;
+    $dropdown: '.ui-molecules-dropdown';
+
+    width: 100%;
+
+    &__toggle {
+        min-height: 42px;
+        width: 100%;
+
+        @include rounded(5px);
+        @include border(all, 1px, solid, greyDarkerR123);
+        @include padding(all, 5px);
+
+        input {
+            height: 100%;
+            max-width: 100%;
+            width: 20px;
+
+            @include no-border();
+        }
+
+        ul {
+            @include margin(all, -2.5px);
+
+            li {
+                @include margin(all, 2.5px);
+            }
+
+            li:last-child {
+                flex: 1 1 auto;
+            }
+        }
+
+        &-content {
+            width: 100%;
+        }
+    }
+
+    input,
+    &__placeholder {
+        @include font-face(
+            primary,
+            text,
+            18px,
+            400,
+            normal,
+            none,
+            none,
+            initial
+        );
+    }
+
+    &__placeholder {
+        left: 5px;
+        top: 50%;
+        user-select: none;
+        width: 100%;
+
+        @include transform-translate-y(-50%);
+    }
+
+    &__item {
+        width: 100%;
+
+        &-content {
+            width: 100%;
+
+            @include padding(all, 10px);
+        }
+
+        &:hover#{$dropdown}__item--without-padding,
+        &--active {
+            @include background-color(grayR123);
+        }
+    }
+
+    #{$dropdown} {
+        &__toggle,
+        &__toggle__children {
+            width: 100%;
+        }
+
+        &__wrapper {
+            width: 100%;
+
+            #{$dropdown}__content {
+                @include margin-top(5px);
+            }
+        }
+    }
+
+    .ui-atomic-badges {
+        &__children {
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}

@@ -1,0 +1,81 @@
+@import '../../../../style/import.scss';
+
+.ui-atomic-edit-text {
+    $c: &;
+
+    &--styling {
+        &-primary {
+            @include background-color(white);
+        }
+
+        &-secondary {
+            @include background-color(
+                map-get($color-general, editTextSecondary)
+            );
+        }
+    }
+
+    &__input {
+        border-bottom-right-radius: 2px;
+        border-top-right-radius: 2px;
+        padding: 10px 7px;
+        width: 100%;
+
+        @include rounded(2px);
+        @include border(all, 1px, solid, greyDarkerR123);
+
+        &:disabled {
+            cursor: not-allowed;
+            @include background-color(
+                map-get($color-general, editTextSecondary)
+            );
+        }
+    }
+
+    &__add-on-container {
+        width: fit-content;
+
+        &--right {
+            flex-direction: row-reverse;
+
+            #{$c}__add-on {
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+
+                @include border-left(0, null, null);
+            }
+
+            #{$c}__input {
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+            }
+        }
+
+        &--left {
+            flex-direction: row;
+
+            #{$c}__add-on {
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+
+                @include border-right(0, null, null);
+            }
+
+            #{$c}__input {
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+    }
+
+    &__add-on {
+        border: 1px solid map-get($color-general, addOnBorderR123);
+        border-radius: 4px;
+        height: 40px;
+        padding: 13px 0;
+        text-align: center;
+        width: 40px;
+
+        @include background-color(map-get($color-general, addOnBgR123));
+    }
+}

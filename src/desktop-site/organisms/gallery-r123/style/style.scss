@@ -1,0 +1,116 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-gallery-r123 {
+    height: 460px;
+    width: 100%;
+
+    &__content {
+        height: 100%;
+        width: 100%;
+
+        @include background-color(headingDarkerR123);
+    }
+
+    &__badges {
+        bottom: 15px;
+        height: 32px;
+        left: 50%;
+
+        @include rounded(3px);
+        @include background-color(white);
+        @include transform-translate-x(-50%);
+
+        .ui-atomic-icon {
+            @include margin-left(6px);
+
+            &.youtube {
+                @include margin-right(6px);
+            }
+        }
+
+        .ui-atomic-text {
+            @include margin-left(6px);
+            @include margin-right(6px);
+        }
+
+        .ui-molecules-list {
+            &__item {
+                height: 100%;
+                width: 45px;
+
+                @include border-right(1px, solid, #ddd);
+            }
+        }
+    }
+
+    &__dialog {
+        &-heading {
+            min-height: 100px;
+            width: 100%;
+
+            @include padding(all, 40px 5% 20px);
+
+            span {
+                @include margin-top(5px);
+            }
+        }
+
+        &-content {
+            max-height: calc(100% - 100px);
+            min-height: calc(100% - 100px);
+        }
+
+        &-close {
+            cursor: pointer;
+            right: 30px;
+            top: 20px;
+        }
+
+        .ui-atomic-dialog {
+            &__content {
+                align-items: flex-start;
+                flex-direction: column;
+
+                @include no-padding();
+                @include background-color(black);
+            }
+        }
+
+        .ui-molecules-list {
+            @include margin-top(5px);
+
+            &__item {
+                align-items: center;
+                cursor: pointer;
+                display: flex;
+            }
+
+            .ui-atomic-icon {
+                @include margin-top(-2px);
+                @include margin-right(6px);
+            }
+
+            .ui-atomic-text {
+                opacity: 0.7;
+
+                @include transition(0.31s cubic-bezier(0.7, 0.3, 0, 1));
+            }
+
+            .ui-atomic-text:hover,
+            .ui-atomic-text.active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .ui-molecules-list {
+        &__item {
+            align-items: center;
+            display: flex;
+
+            .ui-atomic-icon {
+                @include margin-top(-2px);
+            }
+        }
+    }
+}

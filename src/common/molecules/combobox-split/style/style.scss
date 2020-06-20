@@ -1,0 +1,47 @@
+@import '../../../../style/import.scss';
+
+$max-height: 150px;
+
+.ui-molecules-combobox-split {
+    $c: &;
+
+    flex: 0 0 40px;
+    width: 100%;
+
+    &--button {
+        @include background-color(grayR123);
+
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        flex: 1 1 0;
+    }
+
+    &--dropdown {
+        @include background-color(grayR123);
+        @include border(all, 1px, solid, greyDarkerR123);
+
+        align-items: center;
+        border-bottom-right-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+
+        &.relative {
+            position: initial;
+        }
+
+        .ui-molecules-dropdown {
+            &__wrapper {
+                left: 0;
+                top: 30px;
+                width: 100%;
+            }
+        }
+    }
+
+    &__item {
+        width: 100%;
+    }
+}

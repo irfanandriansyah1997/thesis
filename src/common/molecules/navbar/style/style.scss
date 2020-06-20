@@ -23,6 +23,12 @@ $height-navbar: 51px;
         }
 
         .ui-molecules-dropdown {
+            height: 100%;
+
+            > .flex {
+                height: 100%;
+            }
+
             &__content {
                 min-width: 150px;
 

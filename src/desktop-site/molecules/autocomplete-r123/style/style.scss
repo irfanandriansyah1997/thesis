@@ -1,0 +1,90 @@
+@import '../../../../style/import.scss';
+
+.ui-molecules-autocomplete-r123 {
+    min-height: 54px;
+
+    @include background-color(white);
+
+    &__loading-bar {
+        flex: 0 0 50px;
+        min-height: 54px;
+
+        > .relative {
+            align-items: center;
+            display: flex;
+            height: 54px;
+            justify-content: center;
+            width: 54px;
+        }
+    }
+
+    &__item {
+        height: calc(100% + 20px);
+        width: calc(100% + 20px);
+
+        @include margin(all, -10px);
+        @include padding(all, 10px);
+
+        .ui-atomic-image {
+            @include margin-top(4px);
+            @include margin-right(8px);
+        }
+
+        span {
+            @include margin-bottom(4px);
+        }
+    }
+
+    &__images {
+        width: 24px;
+    }
+
+    .ui-molecules-dropdown {
+        &__toggle {
+            height: 100%;
+
+            &__children {
+                height: 100%;
+            }
+        }
+
+        &__content {
+            left: -55px;
+            max-height: 230px;
+            width: calc(100% + 50px);
+        }
+    }
+
+    .ui-molecules-multiple-selection {
+        flex: 0 0 calc(100% - 50px);
+        min-height: 54px;
+
+        > .flex {
+            min-height: 54px;
+        }
+
+        &__toggle {
+            height: 100%;
+
+            @include no-border();
+            @include padding(all, 11px 5px);
+
+            li {
+                @include margin(all, 3.5px 2.5px);
+            }
+        }
+
+        &__placeholder {
+            width: calc(100% - 15px);
+        }
+    }
+
+    .ui-atomic-spin {
+        top: 0;
+
+        &__spinning {
+            min-height: 100%;
+            min-width: 100%;
+        }
+    }
+}

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import StringHelper from './string.helper';
 import ValidatorHelper from './validator.helper';
 import LogHelperAbstract from '../abstract/log/log-helper.abstract';
@@ -119,6 +121,24 @@ class ComponentHelper extends LogHelperAbstract {
         });
 
         return StringHelper.objToString(response);
+    }
+
+    /**
+     * Getter Width From Text
+     * @param {string} text - text sample
+     * @param {string} font - font attribute like font-family font-size
+     */
+    static getWidthFromText(text: string, font: string): number {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        if (context) {
+            context.font = font;
+            const { width } = context.measureText(text);
+
+            return width;
+        }
+
+        return 0;
     }
 }
 

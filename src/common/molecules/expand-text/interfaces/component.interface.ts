@@ -1,5 +1,6 @@
 import { TogglePropsInterface } from '../../toggle/interfaces/component.interface';
 import { ColorInterface } from '../../../../shared/interface/common/color.interface';
+import { ComponentFontWeightTypography } from '../../../../shared/interface/component/component-typography.interface';
 
 /**
  * Expand Text Props Interface
@@ -8,15 +9,12 @@ import { ColorInterface } from '../../../../shared/interface/common/color.interf
  */
 export type ExpandTextPropsInterface = Omit<
     TogglePropsInterface,
-    | 'gradient'
-    | 'selectorPosition'
-    | 'selector'
-    | 'onComponentResize'
-    | 'collapsedHeight'
+    'selectorPosition' | 'selector' | 'onComponentResize' | 'collapsedHeight'
 > &
     ColorInterface & {
         showArrow?: boolean;
         collapsedHeight: number;
+        fontWeight?: ComponentFontWeightTypography;
         textToggleButton?: ExpandTextToggleButtonInterface;
     };
 

@@ -6,7 +6,7 @@ Explanation on how to import and render basic R123 card component, including lis
 ### Import Component
 
 ```jsx
-import CardR123Basic from '@99/component-ninetynine/lib/common/organisms/card-r123-basic/CardR123Basic.component'
+import CardR123Basic from '@99/component-ninetynine/lib/desktop-site/organisms/card-r123-basic/CardR123Basic.component'
 ```
 
 ### Implementation In Component Render Method
@@ -39,8 +39,14 @@ return (
             ]
         }}
         action={{
-            onClickSave: (): void => undefined,
-            onClickViewDetail: (): void => undefined
+            saveAction: {
+                label: 'Simpan',
+                onClick: (): void => {}
+            },
+            mortgageSimulationAction: {
+                label: 'Simulasi KPR',
+                onClick: (): void => {}
+            }
         }}
         link="https://www.rumah123.com/"
     />
@@ -51,9 +57,9 @@ return (
 
 | Property | Type | Default | Description |
 |-------|-----------|---------|-----------|
-|**images**|string|-|The address of the media image to be displayed|
+|**id**|string|-|Image id|
+|**src**|string|-|The address of the media image to be displayed|
 |**alt**|string|-|[alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img), defines the alternative text describing the image|
-|**onClick**|`(event) => void`|-|Set the handler to handle `click` event|
 
 ## Content Props
 
@@ -68,12 +74,11 @@ return (
 |**buildingSize**|string|-|Building size of the listed property|
 |**propertyType**|string|-|Type of the listed property|
 |**attribute**|`[icon: ReactNode | value: string | alt: string]`|-|Add property attribute, e.g. bedroom, bathroom, carpark, etc|
+|**link**|string|-|The URL to link to when a component is clicked|
 
-## Action & Link Props
+## Action Props
 
 | Property | Type | Default | Description |
 |-------|-----------|---------|-----------|
-|**onClickSave**|`(event) => void`|-|Callback executed when save button is clicked|
-|**onClickViewDetail**|`(event) => void`|-|Callback executed when view detail button or any area redirects to detail page is clicked|
-|**onClickContactAgent**|`(event) => void`|-|Callback executed when contact button is clicked|
-|**link**|string|-|The URL to link to when a component is clicked|
+|**onClick**|`(event) => void`|-|Callback executed when action button is clicked|
+|**label**|string|-|Text label added to action button|

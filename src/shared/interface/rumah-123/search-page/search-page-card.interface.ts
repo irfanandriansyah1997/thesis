@@ -20,8 +20,10 @@ export type R123SearchPageCardMediaInterface = CarouselItemInterface[];
  * @since 2020.04.28
  */
 export interface R123SearchPageCardActionInterface {
-    onClickSave: () => void;
-    onClickMortgageSimulation: () => void;
+    saveAction: R123SearchPageCardActionItemInterface;
+    contactAction: R123SearchPageCardActionItemInterface;
+    viewDetailAction: R123SearchPageCardActionItemInterface;
+    mortgageSimulationAction: R123SearchPageCardActionItemInterface;
 }
 
 /**
@@ -32,11 +34,17 @@ export interface R123SearchPageCardActionInterface {
 export type R123SearchPageCardDataInterface = {
     id: string;
     link: string;
+    unit: string;
     title: string;
     address: string;
     priceTag: string;
+    mediaCount: number;
+    agencyName?: string;
     installment: string;
+    videoCount?: number;
     propertyType: string;
+    completionDate: string;
+    publishingDate: string;
     media: R123SearchPageCardMediaInterface;
     attribute: R123SearchPageCardAttributeInterface;
 };
@@ -53,3 +61,13 @@ export interface R123SearchPageCardAttributeInterface {
     landSize?: string;
     buildingSize?: string;
 }
+
+/**
+ *  Search Page Card Action Item Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.06.03
+ */
+export type R123SearchPageCardActionItemInterface = {
+    label: string;
+    onClick: () => void;
+};

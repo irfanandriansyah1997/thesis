@@ -84,6 +84,7 @@ class SectionDropdownAsContentComponent extends React.PureComponent<
                         trigger="hover"
                         label="Account"
                         icon={ARROW_ON_HIDE}
+                        iconMargin={{ left: 5 }}
                     >
                         <DropdownComponent.Item disableHover withoutPadding>
                             <div
@@ -124,7 +125,7 @@ class SectionDropdownAsContentComponent extends React.PureComponent<
                                 <IconComponent
                                     color="text"
                                     size={16}
-                                    style={{ marginRight: 5 }}
+                                    marginRight={5}
                                 >
                                     rui-icon-avatar
                                 </IconComponent>

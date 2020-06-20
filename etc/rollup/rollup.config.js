@@ -15,7 +15,17 @@ export default {
         format: 'cjs',
         dir: 'lib'
     },
-    external: ['react', 'react-transition-group', 'prop-types'],
+    external: [
+        'react',
+        'csstype',
+        'react-dom',
+        'prop-types',
+        'react-youtube',
+        'react-paginate',
+        'react-router-dom',
+        'google-map-react',
+        'react-transition-group'
+    ],
     plugins: [
         multiInput({ relative: 'src/' }),
         terser({

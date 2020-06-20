@@ -22,7 +22,7 @@ export type CardR123BasicPropsInterface = Omit<
     | 'style'
 > &
     CardR123BasicPropsDataInterface & {
-        action: action;
+        action: CardR123BasicActionInterface;
     };
 
 /**
@@ -30,7 +30,15 @@ export type CardR123BasicPropsInterface = Omit<
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2020.05.21
  */
-export type CardR123BasicPropsDataInterface = data;
+export type CardR123BasicPropsDataInterface = Omit<
+    data,
+    | 'unit'
+    | 'mediaCount'
+    | 'videoCount'
+    | 'agencyName'
+    | 'completionDate'
+    | 'publishingDate'
+>;
 
 /**
  * Card R123 Basic Grid Props Interface
@@ -42,7 +50,7 @@ export type CardR123BasicGridPropsInterface = Omit<
     'children' | 'key'
 > & {
     id: string;
-    to: string;
+    to?: string;
     type: 'text' | 'text-with-icon';
     object: Record<string, unknown>;
     listItem: CardR123BasicGridItemInterface[];
@@ -64,6 +72,16 @@ export interface CardR123BasicGridItemInterface {
  * @since 2020.05.21
  */
 export interface CardR123BasicContextInterface {
-    action: action;
+    action: CardR123BasicActionInterface;
     data: CardR123BasicPropsDataInterface;
 }
+
+/**
+ * Card R123 Basic Action Interface
+ * @author Dedik Budianto <dedik.budianto@99.co>
+ * @since 2020.06.08
+ */
+export type CardR123BasicActionInterface = Omit<
+    action,
+    'contactAction' | 'viewDetailAction'
+>;
