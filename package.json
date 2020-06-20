@@ -1,6 +1,6 @@
 {
     "name": "@99/component-ninetynine-sample",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "description": "base component for 99 group website",
     "main": "index.js",
     "publishConfig": {

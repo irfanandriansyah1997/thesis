@@ -1,42 +1,18 @@
-<<<<<<< HEAD
-import React, { SFC } from 'react';
-
-import { MapInterface } from './interface/component.interface';
-import StringHelper from '../../../shared/helper/string.helper';
-import ValidatorHelper from '../../../shared/helper/validator.helper';
-import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-=======
 import React, { SFC, useState } from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapComponent from 'google-map-react';
 
 import MapPinComponent from './map-pin.component';
+import StringHelper from '../../../shared/helper/string.helper';
 import { MapsPropsInterface } from './interface/component.interface';
 import { DefaultLocationMapsMarkerInterface } from '../../../shared/interface/common/location.interface';
 import { ComponentClassnameDefaultInterface } from '../../../shared/interface/component/component-default.interface';
-
-import StringHelper from '../../../shared/helper/string.helper';
->>>>>>> Create map UI component
 
 /**
  * Map Component
  * @author Dedik Budianto <dedik.budianto@99.co>
  * @since 2020.06.02
  */
-<<<<<<< HEAD
-const MapComponent: SFC<MapInterface> = ({
-    name,
-    title,
-    mapSource,
-    className,
-    onClickMap,
-    ...res
-}: MapInterface) => {
-    const classname: ComponentClassnameDefaultInterface = {
-        'ui-molecules-map': true,
-        relative: true,
-        [`${className}`]: ValidatorHelper.verifiedIsNotEmpty(className)
-=======
 const MapComponent: SFC<MapsPropsInterface> = ({
     width,
     height,
@@ -101,21 +77,10 @@ const MapComponent: SFC<MapsPropsInterface> = ({
                 }
             }, 500) as unknown) as number
         );
->>>>>>> Create map UI component
     };
 
     return (
         <div
-<<<<<<< HEAD
-            role="link"
-            tabIndex={0}
-            onClick={onClickMap}
-            onKeyPress={undefined}
-            style={{ width: '100%', ...res.style }}
-            className={StringHelper.objToString(classname)}
-        >
-            <iframe title={title} src={mapSource} name={name} />
-=======
             className={StringHelper.objToString(name)}
             style={{ width, height }}
         >
@@ -145,13 +110,10 @@ const MapComponent: SFC<MapsPropsInterface> = ({
                     {...location}
                 />
             </GoogleMapComponent>
->>>>>>> Create map UI component
         </div>
     );
 };
 
-<<<<<<< HEAD
-=======
 MapComponent.defaultProps = {
     options: {},
     mapOptions: {},
@@ -174,5 +136,4 @@ MapComponent.propTypes = {
     })
 };
 
->>>>>>> Create map UI component
 export default MapComponent;
