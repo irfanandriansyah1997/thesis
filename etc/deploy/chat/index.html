@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Realtime Chat</title>
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="chat/public/style/style.css" />
+        <link
+            href="https://public.urbanindo.com/fonts/Avenir/style.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="apps-logo">
+            <img src="https://i.ibb.co/60tV5Ts/doc.png">
+            <h5>
+                Simulasi Aplikasi Chat
+                <p>berikut adalah simulasi chat</p>
+            </h5>
+        </div>
+        <div class="firebase-apps" id="apps">
+            <div class="firebase-apps__messages" id="messages">
+            </div>
+            <div class="firebase-apps__footer">
+                <input name="message" id="msg" placeholder="Masukan Pesan"></input>
+                <button type="button">
+                    <span class="material-icons">
+                        send
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/locale/id.min.js"></script>
+        <script src="chat/public/script/firebase.js"></script>
+        <script>
+            (function() {
+                $('#apps').FirebaseChat({
+                    projectId: 'test-1346f',
+                    messagingSenderId: '747812239219',
+                    storageBucket: 'test-1346f.appspot.com',
+                    authDomain: 'test-1346f.firebaseapp.com',
+                    apiKey: 'AIzaSyCf-pMcBdZqiqArSoLBYqsMjKec7CnbNtg',
+                    databaseURL: 'https://test-1346f.firebaseio.com',
+                    appId: '1:747812239219:web:5831c5e40cc5d71b603706'
+                });
+            })();
+        </script>
+    </body>
+</html>
