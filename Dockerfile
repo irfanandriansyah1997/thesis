@@ -10,6 +10,7 @@ LABEL maintainer="Irfan Andriansyah <irfan@99.co>"
 
 COPY etc/deploy/index.js ./
 COPY etc/deploy/documentation documentation
+COPY etc/deploy/chat chat
 
 CMD [ "node", "index.js" ]
 
