@@ -31,7 +31,6 @@ stop-dev:
 init-test:
 	yarn run lint
 	yarn run test
-	./node_modules/.bin/codecov --token=8de315f6-6f4a-4eea-a24a-d3e42af54287	
 
 ###########################################################################
 ## Build Asset & Docker Images
