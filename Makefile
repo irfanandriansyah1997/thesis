@@ -37,7 +37,13 @@ init-test:
 ###########################################################################
 
 build-asset:
+	make build-javascript
+	make build-documentation
+
+build-javascript:
 	yarn run build-asset
+
+build-documentation:
 	yarn run build-documentation
 
 build-docker:
