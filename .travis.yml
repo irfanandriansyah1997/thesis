@@ -11,7 +11,6 @@ git:
 
 env:
   global:
-  - AWS_ACCESS_KEY_ID=AKIAYD73MS25G7K74AHI
   - TIMESTAMP=$(date +%y%m%d%H%M)
   - AWS_REGION=ap-southeast-1
   - BRANCH_NAME=$TRAVIS_BRANCH
