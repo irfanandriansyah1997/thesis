@@ -86,7 +86,7 @@ response = client.register_task_definition(
     networkMode=task_definition['networkMode'],
     cpu="256",
     memory="512",
-    executionRoleArn="arn:aws:iam::558336087738:role/ecsTaskExecutionRole",
+    executionRoleArn="arn:aws:iam::420367221296:role/ecsTaskExecutionRole",
     containerDefinitions=task_definition['containerDefinitions'],
     requiresCompatibilities=task_definition['requiresCompatibilities']
 )
