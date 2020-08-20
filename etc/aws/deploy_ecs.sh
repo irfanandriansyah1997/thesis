@@ -2,6 +2,7 @@
 ################################################################################
 # Deploy to ECS Production
 #
+# Author: Irfan Andriansyah <irfanandriansyah10@gmail.com>
 # Author: Adinata <mail.dieend@gmail.com>
 # Author: Rifki <askrifki@gmail.com>
 # Author: Egi <egi@urbanindo.com>
