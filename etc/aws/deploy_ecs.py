@@ -2,6 +2,7 @@
 ###############################################################################
 # Deploy ECS for Prod, Beta, and Alpha
 #
+# Author: Irfan Andriansyah <irfanandriansyah10@gmail.com>
 # Author: Adinata <mail.dieend@gmail.com>
 # Author: Rifki <askrifki@gmail.com>
 #
