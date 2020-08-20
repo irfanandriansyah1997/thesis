@@ -34,10 +34,10 @@ script:
   - node -v
   - make init-test
   - bash <(curl -s https://codecov.io/bash) -t 8de315f6-6f4a-4eea-a24a-d3e42af54287
-  - build-javascript
+  - make build-javascript
 
 before_deploy:
-  - build-documentation
+  - make build-documentation
 
 deploy:
   - provider: script
